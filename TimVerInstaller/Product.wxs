@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+  <!-- Define variables -->
+  <?define PRODUCT="TimVer"?>
+  <?define COMPANY="TimCo"?>
+  <?define MAINEXE=$(var.TimVer.TargetFileName)?>
+  <?define VERSION=!(bind.FileVersion.MyAppEXE)?>
+  <?define ICONSOURCE="D:\Visual Studio\Resources\Blue T.ico"?>
+
+  <!-- Add a GUID to Id -->
+  <Product Name="$(var.PRODUCT) $(var.VERSION)"
+           Id="{E3367F3F-D5FB-4D25-A0DD-93B8845BA13D}"
+           Language="1033"
+           Version="$(var.VERSION)"
+           Manufacturer="$(var.COMPANY)"
+           UpgradeCode="{4B56537E-0AF3-43FB-8F2C-C20116447D5C}">
+
+    <!-- Provide package details -->
+    <Package Id="*"
+             Keywords="MSI, Installer"
+             Description="$(var.PRODUCT) $(var.VERSION) Installer"
+             Comments="$(var.PRODUCT) version $(var.VERSION)."
+             Manufacturer="$(var.COMPANY)"
+             InstallerVersion="200"
+             Compressed="yes"
+             InstallScope="perMachine" />
+
+    <!-- Downgrade error message -->
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+
+    <!-- Define app icon -->
+    <Icon Id="icon.ico" 
+          SourceFile="$(var.ICONSOURCE)" />
+
+    <!-- Use the icon.ico icon for this installer (shows up in Add/Remove programs) -->
+    <Property Id="ARPPRODUCTICON">icon.ico</Property>
+
+    <!-- Remove Repair option -->
+    <Property Id="ARPNOREPAIR" 
+              Value="yes" 
+              Secure="yes" />
+
+    <!-- Include .cab file into .msi file -->
+    <MediaTemplate EmbedCab="yes" />
+
+    <Directory Id='TARGETDIR' Name='SourceDir'>
+
+      <Directory Id='ProgramFilesFolder'
+                 Name='PFiles'>
+        <Directory Id='OurFolder'
+                   Name="$(var.COMPANY)">
+          <Directory Id='INSTALLDIR'
+                     Name="$(var.PRODUCT)">
+
+            <Component Id='MainExecutable'
+                       Guid="{99325DE2-6EF0-4BF0-8784-0C3765AB44A1}">
+
+              <!--Main application and shortcuts-->
+              <File Id="MyAppEXE"
+                    Name="$(var.MAINEXE)"
+                    Source="$(var.TimVer.TargetPath)"
+                    KeyPath="yes">
+
+                <Shortcut Id="startmenu"
+                          Directory="ProgramMenuDir"
+                          Name="$(var.PRODUCT)"
+                          WorkingDirectory="INSTALLDIR"
+                          Advertise="yes"
+                          Icon="icon.ico" />
+              </File>
+            </Component>
+
+            <!-- Desktop shortcut -->
+            <Component Id="DesktopShortcut" 
+                       Guid="{C8842F7B-8CAA-4391-B5EA-5DAD436E298C}">
+              <!-- Optional -->
+              <Condition>INSTALLDESKTOPSHORTCUT</Condition>
+              <RegistryKey Root="HKCU" 
+                           Key="Software\[Manufacturer]\[ProductName]">
+                <RegistryValue Name="DesktopShortcut" 
+                               Value="1" 
+                               Type="integer" 
+                               KeyPath="yes" />
+              </RegistryKey>
+              <Shortcut Id="DesktopShortcut"
+                        Directory="DesktopFolder"
+                        Name="$(var.PRODUCT)"
+                        Icon="icon.ico"
+                        Target="[INSTALLDIR]\$(var.MAINEXE)" />
+            </Component>
+
+            <!-- Readme File and shortcut-->
+            <Component Id='Readme'
+                       Guid="{6BDFCB7E-F6DE-4C26-861C-DC557639FF6F}">
+              <File Id='Readme'
+                    Name='Readme.txt'
+                    Source="$(var.TimVer.TargetDir)"
+                    KeyPath='yes'>
+                <Shortcut Id="startmenuManual"
+                          Directory="ProgramMenuDir"
+                          Name="Readme File"
+                          Advertise="yes" />
+              </File>
+            </Component>
+
+            <!-- App.Config -->
+            <Component Id="Config"
+                       Guid="{79D229DB-0D18-4659-8783-0A38B7AC2520}">
+              <File Id="Config"
+                    Name="TimVer.exe.config"
+                    Source="$(var.TimVer.TargetDir)"
+                    KeyPath='yes'>
+              </File>
+            </Component>
+          </Directory>
+        </Directory>
+      </Directory>
+
+      <!-- Desktop folder-->
+      <Directory Id="DesktopFolder"
+                 Name="Desktop">
+      </Directory>
+
+      <!-- Start menu -->
+      <Directory Id="ProgramMenuFolder"
+                 Name="Programs">
+
+        <!-- Our folder in Start menu-->
+        <Directory Id="ProgramMenuDir"
+                   Name="$(var.PRODUCT)">
+          <Component Id="ProgramMenuDir"
+                     Guid="{F6B12C47-3F2E-464A-90D6-943A1E3E1D04}">
+
+            <!-- Remove folder when uninstalling-->
+            <RemoveFolder Id='ProgramMenuDir'
+                          On='uninstall' />
+
+            <!-- Registry entry-->
+            <RegistryValue Root='HKCU'
+                           Key='Software\[Manufacturer]\[ProductName]'
+                           Type='string'
+                           Value=''
+                           KeyPath='yes' />
+          </Component>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <!-- There needs to be one compenentref for each Component Id -->
+    <Feature Id="Complete" Level="1">
+      <ComponentRef Id="MainExecutable" />
+      <ComponentRef Id="ProgramMenuDir" />
+      <ComponentRef Id="Readme" />
+      <ComponentRef Id="Config" />
+      <ComponentRef Id="DesktopShortcut" />
+    </Feature>
+
+    <!-- Installer UI - needs reference to WixUIExtension -->
+    <UI>
+
+      <UIRef Id="MyWixUI_InstallDir" />
+      <UIRef Id="WixUI_ErrorProgressText" />
+
+      <!-- Adds option to open readme file after 'Finish' is clicked -->
+      <Publish Dialog="MyExitDialog"
+               Control="Finish"
+               Order="1"
+               Event="DoAction"
+               Value="LaunchApplication">LAUNCHAPPONEXIT</Publish>
+    </UI>
+
+    <!-- needed when using 'WixUI_InstallDir' -->
+    <Property Id="WIXUI_INSTALLDIR"
+              Value="INSTALLDIR" />
+
+    <!-- Check the open readme checkbox -->
+    <Property Id="LAUNCHAPPONEXIT"
+              Value="1" />
+
+    <!-- Text for the exit dialog option -->
+    <Property Id="LAUNCHAPPONEXIT_TEXT"
+              Value="Open Readme file after exiting" />
+
+    <!-- Include the custom action (open readme) -->
+    <Property Id="WixShellExecTarget"
+              Value="[#Readme]" />
+    <CustomAction Id="LaunchApplication"
+                  BinaryKey="WixCA"
+                  DllEntry="WixShellExec"
+                  Impersonate="yes" />
+    
+    <!-- Check the checkbox  -->
+    <Property Id="INSTALLDESKTOPSHORTCUT"
+              Value="1" />
+
+    <!-- License file -->
+    <WixVariable Id="WixUILicenseRtf"
+                 Value="D:\Visual Studio\Resources\License.rtf" />
+
+    <!-- Bitmaps for UI -->
+    <WixVariable Id="WixUIBannerBmp"
+                 Value="D:\Visual Studio\Resources\TimCo_Banner2.bmp" />
+    <WixVariable Id="WixUIDialogBmp"
+                 Value="D:\Visual Studio\Resources\TimCo_Dialog.bmp" />
+
+    <!-- Check the license accepted checkbox-->
+    <Property Id="LicenseAccepted"
+              Value="1" />
+  </Product>
+</Wix>

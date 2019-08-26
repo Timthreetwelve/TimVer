@@ -6,79 +6,165 @@
         xmlns:local="clr-namespace:TimVer"
         mc:Ignorable="d"
         Title="Tim's WinVer"
-        WindowStartupLocation="CenterScreen"
-        SizeToContent = "WidthAndHeight"
+        SizeToContent = "Width"
+        Height="250"
         ResizeMode="CanMinimize"
+        KeyUp="Window_Keydown"
+        Closing="Window_Closing"
+        xmlns:Properties="clr-namespace:TimVer.Properties" 
+        Left="{Binding WindowLeft, Source={x:Static Properties:Settings.Default}, Mode=TwoWay}"
+        Top="{Binding WindowTop, Source={x:Static Properties:Settings.Default}, Mode=TwoWay}"
         FontFamily="Segoe UI" FontSize="15" FontWeight="Regular">
 
-    <Border Padding="20 10 10 10">
-        <StackPanel Orientation="Vertical">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="2*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+    <Grid>
+        <TabControl >
+            <!-- Tab 1 starts here -->
+            <TabItem x:Name="tab1" MinWidth="110" Height="25" >
+                <TabItem.Header>
+                    <TextBlock Text="Part 1" FontSize="13" />
+                </TabItem.Header>
 
-                <TextBlock Grid.Row="0" Grid.Column="0"
+                <Grid Margin="5" Height="150">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0"
                            Margin="0 3 20 0" Text="Product Name" />
-                <TextBox   x:Name="txtblkProduct" Grid.Row="0" Grid.Column="1"
+                    <TextBox   x:Name="txtblkProduct" Grid.Row="0" Grid.Column="1"
                            VerticalAlignment="Center" Background="#ffffff"
                            IsReadOnly="True" BorderThickness="0"/>
 
-                <TextBlock Grid.Row="1" Grid.Column="0"
+                    <TextBlock Grid.Row="1" Grid.Column="0"
                            Margin="0 3" Text="Version" />
-                <TextBox   x:Name="txtblkVersion" Grid.Row="1" Grid.Column="1"
+                    <TextBox   x:Name="txtblkVersion" Grid.Row="1" Grid.Column="1"
                            VerticalAlignment="Center" Background="#ffffff"
                            IsReadOnly="True" BorderThickness="0"/>
 
-                <TextBlock Grid.Row="2" Grid.Column="0"
+                    <TextBlock Grid.Row="2" Grid.Column="0"
                            Margin="0 3" Text="Build" />
-                <TextBox   x:Name="txtblkBuild" Grid.Row="2" Grid.Column="1"
+                    <TextBox   x:Name="txtblkBuild" Grid.Row="2" Grid.Column="1"
                            VerticalAlignment="Center" Background="#fff"
                            IsReadOnly="True" BorderThickness="0"/>
 
-                <TextBlock Grid.Row="3" Grid.Column="0"
+                    <TextBlock Grid.Row="3" Grid.Column="0"
                            Margin="0 3" Text="Architecture" />
-                <TextBox   x:Name="txtblkOsArch" Grid.Row="3" Grid.Column="1"
+                    <TextBox   x:Name="txtblkOsArch" Grid.Row="3" Grid.Column="1"
                            VerticalAlignment="Center" Background="#fff"
                            IsReadOnly="True" BorderThickness="0"/>
 
-                <TextBlock Grid.Row="4" Grid.Column="0"
-                           Margin="0 3" Text="Install Date" />
-                <TextBox   x:Name="txtblkInstall" Grid.Row="4" Grid.Column="1"
+                    <TextBlock Grid.Row="4" Grid.Column="0"
+                           Margin="0 3" Text="Installed on" />
+                    <TextBox   x:Name="txtblkInstall" Grid.Row="4" Grid.Column="1"
                            VerticalAlignment="Center" Background="#fff"
                            IsReadOnly="True" BorderThickness="0"/>
 
-                <TextBlock Grid.Row="5" Grid.Column="0"
+                    <TextBlock Grid.Row="5" Grid.Column="0"
                            Margin="0 3" Text="Last Reboot" />
-                <TextBox   x:Name="txtblkReboot" Grid.Row="5" Grid.Column="1"
+                    <TextBox   x:Name="txtblkReboot" Grid.Row="5" Grid.Column="1"
                            VerticalAlignment="Center" Background="#fff"      
                            IsReadOnly="True" BorderThickness="0"/>
 
-            </Grid> 
+                </Grid>
+            </TabItem>
 
-
-
-            <Button x:Name="okButton" Grid.Column="0"
-                        FontSize="12"
-                        Content="OK"
-                        Click="OkButton_Click"
-                        Padding="10 3"
-                        Margin="90 10 90 10" />
-
-
+            <!-- Tab 2 starts here -->
+            <TabItem x:Name="tab2" MinWidth="110" Height="25">
+                <TabItem.Header>
+                    <TextBlock Text="Part 2" FontSize="13" />
+                </TabItem.Header>
                 
+                <Grid Margin="5" Height="150">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
 
-            
-        </StackPanel>
-    </Border>
+                    <TextBlock Grid.Row="0" Grid.Column="0"
+                           Margin="0 3 20 0" Text="Build Branch" />
+                    <TextBox   x:Name="txtblkBldBranch" Grid.Row="0" Grid.Column="1"
+                           VerticalAlignment="Center" Background="#ffffff"
+                           IsReadOnly="True" BorderThickness="0"/>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0"
+                           Margin="0 3 20 0" Text="Edition ID" />
+                    <TextBox   x:Name="txtblkEditionID" Grid.Row="1" Grid.Column="1"
+                           VerticalAlignment="Center" Background="#fff"
+                           IsReadOnly="True" BorderThickness="0"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0"
+                           Margin="0 3 20 0" Text="Boot Device" />
+                    <TextBox   x:Name="txtblkBootDev" Grid.Row="2" Grid.Column="1"
+                           VerticalAlignment="Center" Background="#fff"
+                           IsReadOnly="True" BorderThickness="0"/>
+
+                    <TextBlock Grid.Row="3" Grid.Column="0"
+                           Margin="0 3 20 0" Text="System Device" />
+                    <TextBox   x:Name="txtblkSystemDev" Grid.Row="3" Grid.Column="1"
+                           VerticalAlignment="Center" Background="#fff"
+                           IsReadOnly="True" BorderThickness="0"/>
+
+                    <TextBlock Grid.Row="4" Grid.Column="0"
+                           Margin="0 3 20 0" Text="Machine Name " />
+                    <TextBox   x:Name="txtblkMachineName" Grid.Row="4" Grid.Column="1"
+                           VerticalAlignment="Center" Background="#fff"      
+                           IsReadOnly="True" BorderThickness="0" />
+                    
+                    <TextBlock Grid.Row="5" Grid.Column="0"
+                           Margin="0 3 20 0" Text="Registered to" />
+                    <TextBox   x:Name="txtblkRegOwn" Grid.Row="5" Grid.Column="1"
+                           VerticalAlignment="Center" Background="#ffffff"
+                           IsReadOnly="True" BorderThickness="0"/>
+
+                </Grid>
+            </TabItem>
+
+            <!-- Tab 3 starts here -->
+            <TabItem x:Name="tab3" MinWidth="110" Height="25" >
+                <TabItem.Header>
+                    <TextBlock Text="About" FontSize="13" />
+                </TabItem.Header>
+                
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    
+                    <Image Grid.Column="1" Grid.Row="0" Source="Blue T.png" 
+                           Margin="0 15 0 0"/>
+                    <TextBlock FontSize="15" Text="Written by Tim" TextAlignment="Center"
+                               Grid.ColumnSpan="3" Grid.Row="1" Margin="0 5 0 0"/>
+                    <Button x:Name="copyButton" Content="Copy to Clipboard" Grid.Column="0" Grid.ColumnSpan="2" 
+                            Grid.Row="3" Margin="20 5 10 15" Click="CopyButton_Click"/>
+                    <Button x:Name="exitButton" Content="Exit" Grid.Column="2" 
+                            Grid.Row="3" Margin="10 5 20 15" Click="ExitButton_Click"/>
+                    
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
 </Window>
