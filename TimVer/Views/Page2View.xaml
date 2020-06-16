@@ -1,0 +1,95 @@
+﻿<UserControl x:Class="TimVer.Views.Page2View"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Properties="clr-namespace:TimVer.Properties"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:TimVer.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="250"
+    d:DesignWidth="400"
+    FontSize="{Binding FontSize, Source={x:Static Properties:Settings.Default}, Mode=TwoWay}">
+    <Grid Margin="0,10,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="130" />
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="10" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="1"
+            Text="Build Branch" />
+        <TextBox
+            Grid.Row="0"
+            Grid.Column="2"
+            BorderThickness="0"
+            IsReadOnly="True"
+            Text="{Binding BuildBranch, Mode=OneWay}" />
+
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="1"
+            Text="Edition ID" />
+        <TextBox
+            Grid.Row="1"
+            Grid.Column="2"
+            BorderThickness="0"
+            IsReadOnly="True"
+            Text="{Binding EditionID, Mode=OneWay}" />
+
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="1"
+            Text="Boot Device" />
+        <TextBox
+            Grid.Row="2"
+            Grid.Column="2"
+            BorderThickness="0"
+            IsReadOnly="True"
+            Text="{Binding BootDevice, Mode=OneWay}" />
+
+        <TextBlock
+            Grid.Row="3"
+            Grid.Column="1"
+            Text="System Device" />
+        <TextBox
+            Grid.Row="3"
+            Grid.Column="2"
+            BorderThickness="0"
+            IsReadOnly="True"
+            Text="{Binding SystemDevice, Mode=OneWay}" />
+
+        <TextBlock
+            Grid.Row="4"
+            Grid.Column="1"
+            Text="Machine Name " />
+        <TextBox
+            Grid.Row="4"
+            Grid.Column="2"
+            BorderThickness="0"
+            IsReadOnly="True"
+            Text="{Binding MachName, Mode=OneWay}" />
+
+        <TextBlock
+            Grid.Row="5"
+            Grid.Column="1"
+            Text="Registered to" />
+        <TextBox
+            Grid.Row="5"
+            Grid.Column="2"
+            BorderThickness="0"
+            IsReadOnly="True"
+            Text="{Binding RegOwner, Mode=OneWay}" />
+    </Grid>
+</UserControl>

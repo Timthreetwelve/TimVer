@@ -1,6 +1,4 @@
 ﻿using System.Reflection;
-using System.Resources;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows;
 
@@ -10,9 +8,9 @@ using System.Windows;
 [assembly: AssemblyTitle("TimVer")]
 [assembly: AssemblyDescription("A WinVer for people who don't want to squint")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("TimCo")]
+[assembly: AssemblyCompany("T_K")]
 [assembly: AssemblyProduct("TimVer")]
-[assembly: AssemblyCopyright("Copyright ©  2019 Tim Kennedy")]
+[assembly: AssemblyCopyright("Copyright © 2019-2020 Tim Kennedy")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -51,5 +49,5 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.2.21")]
-[assembly: AssemblyFileVersion("0.2.21")]
+[assembly: AssemblyVersion("0.4.0.0253")]
+[assembly: AssemblyFileVersion("0.4.0.0253")]

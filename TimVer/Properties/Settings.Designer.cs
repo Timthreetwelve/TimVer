@@ -12,7 +12,7 @@ namespace TimVer.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.2.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.6.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -20,6 +20,18 @@ namespace TimVer.Properties {
         public static Settings Default {
             get {
                 return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool SettingsUpgradeRequired {
+            get {
+                return ((bool)(this["SettingsUpgradeRequired"]));
+            }
+            set {
+                this["SettingsUpgradeRequired"] = value;
             }
         }
         
@@ -49,13 +61,13 @@ namespace TimVer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool SettingsUpgradeRequired {
+        [global::System.Configuration.DefaultSettingValueAttribute("15")]
+        public double FontSize {
             get {
-                return ((bool)(this["SettingsUpgradeRequired"]));
+                return ((double)(this["FontSize"]));
             }
             set {
-                this["SettingsUpgradeRequired"] = value;
+                this["FontSize"] = value;
             }
         }
         
@@ -72,13 +84,37 @@ namespace TimVer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool BeepOnCopy {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PrevBuild {
             get {
-                return ((bool)(this["BeepOnCopy"]));
+                return ((string)(this["PrevBuild"]));
             }
             set {
-                this["BeepOnCopy"] = value;
+                this["PrevBuild"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PrevBranch {
+            get {
+                return ((string)(this["PrevBranch"]));
+            }
+            set {
+                this["PrevBranch"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PrevVersion {
+            get {
+                return ((string)(this["PrevVersion"]));
+            }
+            set {
+                this["PrevVersion"] = value;
             }
         }
     }
