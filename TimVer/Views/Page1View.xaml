@@ -9,6 +9,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     FontSize="{Binding FontSize, Source={x:Static Properties:Settings.Default}, Mode=TwoWay}">
+
     <Grid Margin="0,10,0,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
@@ -35,6 +36,7 @@
             Grid.Column="2"
             BorderThickness="0"
             IsReadOnly="True"
+            ToolTipService.ToolTip="{Binding ProdName, Mode=OneWay}"
             Text="{Binding ProdName, Mode=OneWay}" />
 
         <TextBlock
@@ -46,6 +48,7 @@
             Grid.Column="2"
             BorderThickness="0"
             IsReadOnly="True"
+            ToolTipService.ToolTip="{Binding Version, Mode=OneWay}"
             Text="{Binding Version, Mode=OneWay}" />
 
         <TextBlock
@@ -57,39 +60,43 @@
             Grid.Column="2"
             BorderThickness="0"
             IsReadOnly="True"
+            ToolTipService.ToolTip="{Binding Build, Mode=OneWay}"
             Text="{Binding Build, Mode=OneWay}" />
 
         <TextBlock
             Grid.Row="3"
             Grid.Column="1"
-            Text="Architecture" />
+            Text="Build Branch" />
         <TextBox
             Grid.Row="3"
             Grid.Column="2"
             BorderThickness="0"
             IsReadOnly="True"
+            ToolTipService.ToolTip="{Binding BuildBranch, Mode=OneWay}"
+            Text="{Binding BuildBranch, Mode=OneWay}" />
+
+        <TextBlock
+            Grid.Row="4"
+            Grid.Column="1"
+            Text="Architecture" />
+        <TextBox
+            Grid.Row="4"
+            Grid.Column="2"
+            BorderThickness="0"
+            IsReadOnly="True"
+            ToolTipService.ToolTip="{Binding Arch, Mode=OneWay}"
             Text="{Binding Arch, Mode=OneWay}" />
 
         <TextBlock
-            Grid.Row="4"
+            Grid.Row="5"
             Grid.Column="1"
             Text="Installed on" />
         <TextBox
-            Grid.Row="4"
+            Grid.Row="5"
             Grid.Column="2"
             BorderThickness="0"
             IsReadOnly="True"
+            ToolTipService.ToolTip="{Binding InstallDate, Mode=OneWay}"
             Text="{Binding InstallDate, Mode=OneWay}" />
-
-        <TextBlock
-            Grid.Row="5"
-            Grid.Column="1"
-            Text="Last Reboot" />
-        <TextBox
-            Grid.Row="5"
-            Grid.Column="2"
-            BorderThickness="0"
-            IsReadOnly="True"
-            Text="{Binding LastBoot, Mode=OneWay}" />
     </Grid>
 </UserControl>

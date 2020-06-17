@@ -7,7 +7,7 @@
     mc:Ignorable="d"
     Title="Replaced in code behind"
     Width="340"
-    Height="255"
+    Height="245"
     Activated="Window_Activated"
     FontSize="14"
     MouseDown="Window_MouseDown"
@@ -23,7 +23,7 @@
             <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10" />
+            <RowDefinition Height="1" />
             <RowDefinition Height="110" />
             <RowDefinition Height="20" />
             <RowDefinition Height="20" />
@@ -48,16 +48,16 @@
             Grid.Column="2"
             Orientation="Vertical">
             <TextBlock
-                Width="145"
+                Width="184"
                 Margin="10,20,0,5"
                 HorizontalAlignment="Left"
                 FontSize="15"
-                Text="TimVer - A WinVer for people who don't like to squint!"
+                Text="TimVer - All the info that Winver provides and more!"
                 TextWrapping="Wrap" />
             <TextBlock
                 Margin="10,2"
                 Text="View "
-                ToolTip="Open ReadMe file in default text editor">
+                ToolTip="Open the ReadMe file in default text editor">
                 <Hyperlink Click="Hyperlink_Click">
                     ReadMe
                 </Hyperlink>

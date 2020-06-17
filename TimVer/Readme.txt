@@ -1,34 +1,37 @@
 ﻿The TimVer ReadMe file
 
+
 Introduction
 ============
 
 TimVer will display the same Windows version related information as the built-in Winver command,
-plus additional information. The information is displayed in a larger font, for those folks whose
-eyes are just a little bit more experienced.
+plus additional information. The information can be displayed in a larger font, for those folks
+whose eyes are just a little bit more experienced.
 
 
 How TimVer Works
 ================
 
-The information is obtained from Windows Management Information (WMI) and from the Windows
-registry at HKLM\Software\Microsoft\Windows NT\CurrentVersion. The machine name is obtained from
-the current environment.
+The information TImVer displayed is obtained from Windows Management Information (WMI) and from the
+Windows registry at HKLM\Software\Microsoft\Windows NT\CurrentVersion.
 
 
 The Pages
 =========
 
-When TimVer is started it will display the first of two pages of information about the Windows
-operating system such as the version and build number.
+When TimVer is started it will display information about the Windows operating system such as
+the version and build number.
+
+The second page shows information about the computer such as the computer name and the last time 
+it booted up.
 
 The third page shows information from the previous time TimVer was run. This can be used to
 compare build numbers before and after running Windows Update.
 
-Pages can be selected either from the View menu or by pressing Ctrl + 1, 2 or 3.
+The pages can be selected either from the Views menu or by pressing Ctrl + 1, 2 or 3.
 
-The information on pages 1 and 2 can be copied to the clipboard by pressing Ctrl + C or by selecting
-Copy to Clipboard from the File menu.
+The information on the first two pages can be copied to the clipboard by pressing Ctrl + C or by
+selecting Copy to Clipboard from the File menu.
 
 The font size may be adjusted by pressing Ctrl + NumPad+ or Ctrl + NumPad-.
 

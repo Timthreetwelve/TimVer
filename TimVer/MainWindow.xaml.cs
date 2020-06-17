@@ -46,7 +46,7 @@ namespace TimVer
 
         private void Page3_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new Page3ViewModel();
+            DataContext = new PrevInfoViewModel();
         }
 
         private void AboutButton_Click(object sender, RoutedEventArgs e)
@@ -84,7 +84,7 @@ namespace TimVer
 
             if (e.Key == Key.D3 && Keyboard.Modifiers.HasFlag(ModifierKeys.Control))
             {
-                DataContext = new Page3ViewModel();
+                DataContext = new PrevInfoViewModel();
             }
 
             if (e.Key == Key.C && Keyboard.Modifiers.HasFlag(ModifierKeys.Control))
@@ -92,12 +92,12 @@ namespace TimVer
                 CopyToClipboard();
             }
 
-            if (e.Key == Key.Add && Keyboard.Modifiers.HasFlag(ModifierKeys.Control) && FontSize < 16)
+            if (e.Key == Key.Add && Keyboard.Modifiers.HasFlag(ModifierKeys.Control) && FontSize < 17)
             {
                 FontSize += 1;
                 Properties.Settings.Default.FontSize = FontSize;
             }
-            if (e.Key == Key.Subtract && Keyboard.Modifiers.HasFlag(ModifierKeys.Control) && FontSize > 13)
+            if (e.Key == Key.Subtract && Keyboard.Modifiers.HasFlag(ModifierKeys.Control) && FontSize > 12)
             {
                 FontSize -= 1;
                 Properties.Settings.Default.FontSize = FontSize;
@@ -108,11 +108,10 @@ namespace TimVer
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             Page1ViewModel page1 = new Page1ViewModel();
-            Page2ViewModel page2 = new Page2ViewModel();
 
             // save the property settings
             Properties.Settings.Default.PrevBuild = page1.Build;
-            Properties.Settings.Default.PrevBranch= page2.BuildBranch;
+            Properties.Settings.Default.PrevBranch= page1.BuildBranch;
             Properties.Settings.Default.PrevVersion = page1.Version;
             Properties.Settings.Default.LastRun = DateTime.Now;
             Properties.Settings.Default.Save();
@@ -146,13 +145,13 @@ namespace TimVer
             _ = builder.AppendLine($"Build         = {page1.Build}");
             _ = builder.AppendLine($"Architecture  = {page1.Arch}");
             _ = builder.AppendLine($"Installed on  = {page1.InstallDate}");
-            _ = builder.AppendLine($"Last Reboot   = {page1.LastBoot}");
-            _ = builder.AppendLine($"Build Branch  = {page2.BuildBranch}");
-            _ = builder.AppendLine($"Edition ID    = {page2.EditionID}");
+            _ = builder.AppendLine($"Build Branch  = {page1.BuildBranch}");
+            _ = builder.AppendLine($"Machine Name  = {page2.MachName}");
+            _ = builder.AppendLine($"Last Reboot   = {page2.LastBoot}");
             _ = builder.AppendLine($"Boot Device   = {page2.BootDevice}");
             _ = builder.AppendLine($"System Device = {page2.SystemDevice}");
-            _ = builder.AppendLine($"Machine Name  = {page2.MachName}");
-            _ = builder.AppendLine($"Registered to = {page2.RegOwner}");
+            _ = builder.AppendLine($"Manufacturer  = {page2.Manufacturer}");
+            _ = builder.AppendLine($"Model         = {page2.Model}");
             Clipboard.SetText(builder.ToString());
         }
 

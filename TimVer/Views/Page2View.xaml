@@ -9,6 +9,7 @@
     d:DesignHeight="250"
     d:DesignWidth="400"
     FontSize="{Binding FontSize, Source={x:Static Properties:Settings.Default}, Mode=TwoWay}">
+
     <Grid Margin="0,10,0,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
@@ -29,24 +30,26 @@
         <TextBlock
             Grid.Row="0"
             Grid.Column="1"
-            Text="Build Branch" />
+            Text="Machine Name" />
         <TextBox
             Grid.Row="0"
             Grid.Column="2"
             BorderThickness="0"
             IsReadOnly="True"
-            Text="{Binding BuildBranch, Mode=OneWay}" />
+            Text="{Binding MachName, Mode=OneWay}"
+            ToolTipService.ToolTip="{Binding MachName, Mode=OneWay}" />
 
         <TextBlock
             Grid.Row="1"
             Grid.Column="1"
-            Text="Edition ID" />
+            Text="Last Boot" />
         <TextBox
             Grid.Row="1"
             Grid.Column="2"
             BorderThickness="0"
             IsReadOnly="True"
-            Text="{Binding EditionID, Mode=OneWay}" />
+            Text="{Binding LastBoot, Mode=OneWay}"
+            ToolTipService.ToolTip="{Binding LastBoot, Mode=OneWay}" />
 
         <TextBlock
             Grid.Row="2"
@@ -57,7 +60,8 @@
             Grid.Column="2"
             BorderThickness="0"
             IsReadOnly="True"
-            Text="{Binding BootDevice, Mode=OneWay}" />
+            Text="{Binding BootDevice, Mode=OneWay}"
+            ToolTipService.ToolTip="{Binding BootDevice, Mode=OneWay}" />
 
         <TextBlock
             Grid.Row="3"
@@ -68,28 +72,31 @@
             Grid.Column="2"
             BorderThickness="0"
             IsReadOnly="True"
-            Text="{Binding SystemDevice, Mode=OneWay}" />
+            Text="{Binding SystemDevice, Mode=OneWay}"
+            ToolTipService.ToolTip="{Binding SystemDevice, Mode=OneWay}" />
 
         <TextBlock
             Grid.Row="4"
             Grid.Column="1"
-            Text="Machine Name " />
+            Text="Manufacturer " />
         <TextBox
             Grid.Row="4"
             Grid.Column="2"
             BorderThickness="0"
             IsReadOnly="True"
-            Text="{Binding MachName, Mode=OneWay}" />
+            Text="{Binding Manufacturer, Mode=OneWay}"
+            ToolTipService.ToolTip="{Binding Manufacturer, Mode=OneWay}" />
 
         <TextBlock
             Grid.Row="5"
             Grid.Column="1"
-            Text="Registered to" />
+            Text="Model" />
         <TextBox
             Grid.Row="5"
             Grid.Column="2"
             BorderThickness="0"
             IsReadOnly="True"
-            Text="{Binding RegOwner, Mode=OneWay}" />
+            Text="{Binding Model, Mode=OneWay}"
+            ToolTipService.ToolTip="{Binding Model, Mode=OneWay}" />
     </Grid>
 </UserControl>

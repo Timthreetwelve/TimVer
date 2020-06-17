@@ -3,5 +3,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:TimVer"
     StartupUri="MainWindow.xaml">
-    <Application.Resources />
+    <Application.Resources>
+        <Style x:Key="{x:Type ToolTip}" TargetType="ToolTip">
+            <Setter Property="Background" Value="LightYellow" />
+            <Setter Property="BorderThickness" Value=".5" />
+        </Style>
+    </Application.Resources>
 </Application>

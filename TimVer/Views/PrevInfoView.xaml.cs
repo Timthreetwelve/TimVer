@@ -5,9 +5,9 @@ namespace TimVer.Views
     /// <summary>
     /// Interaction logic for Page3View.xaml
     /// </summary>
-    public partial class Page3View : UserControl
+    public partial class PrevInfoView : UserControl
     {
-        public Page3View()
+        public PrevInfoView()
         {
             InitializeComponent();
         }

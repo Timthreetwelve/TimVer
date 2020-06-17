@@ -9,15 +9,14 @@
     xmlns:views="clr-namespace:TimVer.Views"
     mc:Ignorable="d"
     Title="Tim's WinVer"
-    Width="350"
+    Width="355"
+    Height="235"
     Closing="Window_Closing"
     FontFamily="Segoe UI"
-    FontSize="15"
-    FontWeight="Regular"
     KeyUp="Window_Keydown"
     Left="{Binding WindowLeft, Source={x:Static Properties:Settings.Default}, Mode=TwoWay}"
     ResizeMode="CanMinimize"
-    SizeToContent="WidthAndHeight"
+    SizeToContent="Width"
     Top="{Binding WindowTop, Source={x:Static Properties:Settings.Default}, Mode=TwoWay}">
 
     <!--#region Window Resources-->
@@ -28,8 +27,8 @@
         <DataTemplate DataType="{x:Type viewmodels:Page2ViewModel}">
             <views:Page2View DataContext="{Binding}" />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:Page3ViewModel}">
-            <views:Page3View DataContext="{Binding}" />
+        <DataTemplate DataType="{x:Type viewmodels:PrevInfoViewModel}">
+            <views:PrevInfoView DataContext="{Binding}" />
         </DataTemplate>
     </Window.Resources>
     <!--#endregion-->
@@ -66,18 +65,18 @@
                         Header="Exit"
                         InputGestureText="Esc" />
                 </MenuItem>
-                <MenuItem Header="View">
+                <MenuItem Header="Views">
                     <MenuItem
                         Click="Page1_Click"
-                        Header="Page 1"
+                        Header="Windows Info"
                         InputGestureText="Ctrl+1" />
                     <MenuItem
                         Click="Page2_Click"
-                        Header="Page 2"
+                        Header="Computer Info"
                         InputGestureText="Ctrl+2" />
                     <MenuItem
                         Click="Page3_Click"
-                        Header="Page 3"
+                        Header="Saved Info"
                         InputGestureText="Ctrl+3" />
                 </MenuItem>
                 <MenuItem Header="_Help">

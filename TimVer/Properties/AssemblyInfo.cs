@@ -6,7 +6,7 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("TimVer")]
-[assembly: AssemblyDescription("A WinVer for people who don't want to squint")]
+[assembly: AssemblyDescription("All the info that Winver provides and more!")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("T_K")]
 [assembly: AssemblyProduct("TimVer")]
@@ -49,5 +49,5 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.4.0.0253")]
-[assembly: AssemblyFileVersion("0.4.0.0253")]
+[assembly: AssemblyVersion("0.4.50.0134")]
+[assembly: AssemblyFileVersion("0.4.50.0134")]

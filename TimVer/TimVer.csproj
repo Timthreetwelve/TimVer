@@ -90,6 +90,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Management.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.Management.Infrastructure\v4.0_1.0.0.0__31bf3856ad364e35\Microsoft.Management.Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -113,23 +117,22 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CleanUp.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="GetInfo.cs" />
     <Compile Include="About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Settings.cs" />
     <Compile Include="TextFileViewer.cs" />
     <Compile Include="ViewModels\Page1ViewModel.cs" />
     <Compile Include="ViewModels\Page2ViewModel.cs" />
-    <Compile Include="ViewModels\Page3ViewModel.cs" />
+    <Compile Include="ViewModels\PrevInfoViewModel.cs" />
     <Compile Include="Views\Page1View.xaml.cs">
       <DependentUpon>Page1View.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Page2View.xaml.cs">
       <DependentUpon>Page2View.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Page3View.xaml.cs">
-      <DependentUpon>Page3View.xaml</DependentUpon>
+    <Compile Include="Views\PrevInfoView.xaml.cs">
+      <DependentUpon>PrevInfoView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -155,7 +158,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Page3View.xaml">
+    <Page Include="Views\PrevInfoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -206,9 +209,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Properties\Blue T.png" />
   </ItemGroup>
