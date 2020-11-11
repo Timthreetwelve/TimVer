@@ -11,9 +11,6 @@
     <Setting Name="WindowTop" Type="System.Double" Scope="User">
       <Value Profile="(Default)">100</Value>
     </Setting>
-    <Setting Name="FontSize" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">15</Value>
-    </Setting>
     <Setting Name="LastRun" Type="System.DateTime" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
@@ -25,6 +22,9 @@
     </Setting>
     <Setting Name="PrevVersion" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Zoom" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">1</Value>
     </Setting>
   </Settings>
 </SettingsFile>

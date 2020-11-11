@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<WixLocalization Culture="en-us" xmlns="http://schemas.microsoft.com/wix/2006/localization">
-  <String Id="InstallDirDlgDescription" Overridable="yes">
-    <!-- _locID_text="InstallDirDlgDescription" _locComment="InstallDirDlgDescription" -->Click Next to install or click Change to choose another folder.
-  </String>
-
-</WixLocalization>

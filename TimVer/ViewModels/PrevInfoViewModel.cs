@@ -2,7 +2,7 @@
 
 namespace TimVer.ViewModels
 {
-    class PrevInfoViewModel
+    internal class PrevInfoViewModel
     {
         public string PreviousBuild
         {

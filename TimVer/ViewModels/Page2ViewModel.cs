@@ -1,6 +1,6 @@
 ﻿namespace TimVer.ViewModels
 {
-    class Page2ViewModel
+    internal class Page2ViewModel
     {
         public string MachName => GetInfo.CimQuerySys("Name");
 
@@ -13,6 +13,5 @@
         public string Manufacturer => GetInfo.CimQuerySys("Manufacturer");
 
         public string Model => GetInfo.CimQuerySys("Model");
-
     }
 }

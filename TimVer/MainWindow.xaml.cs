@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 using TimVer.ViewModels;
 #endregion
 
@@ -49,6 +50,21 @@ namespace TimVer
             DataContext = new PrevInfoViewModel();
         }
 
+        private void GridSmaller_Click(object sender, RoutedEventArgs e)
+        {
+            GridSmaller();
+        }
+
+        private void GridLarger_Click(object sender, RoutedEventArgs e)
+        {
+            GridLarger();
+        }
+
+        private void GridReset_Click(object sender, RoutedEventArgs e)
+        {
+            GridSizeReset();
+        }
+
         private void AboutButton_Click(object sender, RoutedEventArgs e)
         {
             About about = new About
@@ -72,36 +88,57 @@ namespace TimVer
                 Application.Current.Shutdown();
             }
 
-            if (e.Key == Key.D1 && Keyboard.Modifiers.HasFlag(ModifierKeys.Control))
+            if (e.Key == Key.D1 && (e.KeyboardDevice.Modifiers == ModifierKeys.Control))
             {
                 DataContext = new Page1ViewModel();
             }
 
-            if (e.Key == Key.D2 && Keyboard.Modifiers.HasFlag(ModifierKeys.Control))
+            if (e.Key == Key.D2 && (e.KeyboardDevice.Modifiers == ModifierKeys.Control))
             {
                 DataContext = new Page2ViewModel();
             }
 
-            if (e.Key == Key.D3 && Keyboard.Modifiers.HasFlag(ModifierKeys.Control))
+            if (e.Key == Key.D3 && (e.KeyboardDevice.Modifiers == ModifierKeys.Control))
             {
                 DataContext = new PrevInfoViewModel();
             }
 
-            if (e.Key == Key.C && Keyboard.Modifiers.HasFlag(ModifierKeys.Control))
+            if (e.Key == Key.C && (e.KeyboardDevice.Modifiers == ModifierKeys.Control))
             {
                 CopyToClipboard();
             }
 
-            if (e.Key == Key.Add && Keyboard.Modifiers.HasFlag(ModifierKeys.Control) && FontSize < 17)
+            if (e.Key == Key.NumPad0)
             {
-                FontSize += 1;
-                Properties.Settings.Default.FontSize = FontSize;
+                GridSizeReset();
             }
-            if (e.Key == Key.Subtract && Keyboard.Modifiers.HasFlag(ModifierKeys.Control) && FontSize > 12)
+
+            if (e.Key == Key.Add)
             {
-                FontSize -= 1;
-                Properties.Settings.Default.FontSize = FontSize;
+                GridLarger();
             }
+
+            if (e.Key == Key.Subtract)
+            {
+                GridSmaller();
+            }
+        }
+
+        // Mouse wheel
+        private void Grid1_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+            {
+                if (Keyboard.Modifiers != ModifierKeys.Control)
+                    return;
+
+                if (e.Delta > 0)
+                {
+                    GridLarger();
+                }
+                else if (e.Delta < 0)
+                {
+                    GridSmaller();
+                }
+                e.Handled = true;
         }
 
         // Window events
@@ -131,6 +168,14 @@ namespace TimVer
                 Debug.WriteLine("*** SettingsUpgradeRequired");
             }
 
+            // Set grid zoom
+            double curZoom = Properties.Settings.Default.Zoom;
+            if (curZoom < 0.5)
+            {
+                curZoom = 0.5;
+            }
+            Grid1.LayoutTransform = new ScaleTransform(curZoom, curZoom);
+
             WindowTitleVersion();
         }
 
@@ -140,18 +185,18 @@ namespace TimVer
             Page2ViewModel page2 = new Page2ViewModel();
 
             StringBuilder builder = new StringBuilder();
-            _ = builder.AppendLine($"Product Name  = {page1.ProdName}");
-            _ = builder.AppendLine($"Version       = {page1.Version}");
-            _ = builder.AppendLine($"Build         = {page1.Build}");
-            _ = builder.AppendLine($"Architecture  = {page1.Arch}");
-            _ = builder.AppendLine($"Installed on  = {page1.InstallDate}");
-            _ = builder.AppendLine($"Build Branch  = {page1.BuildBranch}");
-            _ = builder.AppendLine($"Machine Name  = {page2.MachName}");
-            _ = builder.AppendLine($"Last Reboot   = {page2.LastBoot}");
-            _ = builder.AppendLine($"Boot Device   = {page2.BootDevice}");
-            _ = builder.AppendLine($"System Device = {page2.SystemDevice}");
-            _ = builder.AppendLine($"Manufacturer  = {page2.Manufacturer}");
-            _ = builder.AppendLine($"Model         = {page2.Model}");
+            _ = builder.Append("Product Name  = ").AppendLine(page1.ProdName);
+            _ = builder.Append("Version       = ").AppendLine(page1.Version);
+            _ = builder.Append("Build         = ").AppendLine(page1.Build);
+            _ = builder.Append("Architecture  = ").AppendLine(page1.Arch);
+            _ = builder.Append("Installed on  = ").AppendLine(page1.InstallDate);
+            _ = builder.Append("Build Branch  = ").AppendLine(page1.BuildBranch);
+            _ = builder.Append("Machine Name  = ").AppendLine(page2.MachName);
+            _ = builder.Append("Last Reboot   = ").AppendLine(page2.LastBoot);
+            _ = builder.Append("Boot Device   = ").AppendLine(page2.BootDevice);
+            _ = builder.Append("System Device = ").AppendLine(page2.SystemDevice);
+            _ = builder.Append("Manufacturer  = ").AppendLine(page2.Manufacturer);
+            _ = builder.Append("Model         = ").AppendLine(page2.Model);
             Clipboard.SetText(builder.ToString());
         }
 
@@ -166,8 +211,34 @@ namespace TimVer
             // Set the windows title
             Title = $"Tim's Winver - v{titleVer}";
         }
-        #endregion
 
+        private void GridSizeReset()
+        {
+            Properties.Settings.Default.Zoom = 1.0;
+            Grid1.LayoutTransform = new ScaleTransform(1, 1);
+        }
 
+        private void GridSmaller()
+        {
+            double curZoom = Properties.Settings.Default.Zoom;
+            if (curZoom > 0.75)
+            {
+                curZoom -= .05;
+                Properties.Settings.Default.Zoom = Math.Round(curZoom, 2);
+            }
+            Grid1.LayoutTransform = new ScaleTransform(curZoom, curZoom);
+        }
+
+        private void GridLarger()
+        {
+            double curZoom = Properties.Settings.Default.Zoom;
+            if (curZoom < 2.0)
+            {
+                curZoom += .05;
+                Properties.Settings.Default.Zoom = Math.Round(curZoom, 2);
+            }
+            Grid1.LayoutTransform = new ScaleTransform(curZoom, curZoom);
+        }
+        #endregion Helper methods
     }
 }

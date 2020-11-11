@@ -12,13 +12,9 @@ namespace TimVer
         {
             try
             {
-                using (RegistryKey key = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows NT\\CurrentVersion"))
+                using (RegistryKey key = Registry.LocalMachine.OpenSubKey(@"Software\Microsoft\Windows NT\CurrentVersion"))
                 {
-                    if (key != null)
-                    {
-                        return key.GetValue(value).ToString();
-                    }
-                    return "no data";
+                    return key.GetValue(value) != null ? key.GetValue(value).ToString() : "no data";
                 }
             }
             catch (Exception ex)
@@ -34,9 +30,8 @@ namespace TimVer
             try
             {
                 CimSession cim = CimSession.Create(null);
-                return cim.QueryInstances(@"root/cimv2", "WQL", "SELECT * From Win32_OperatingSystem")
-                    .FirstOrDefault().CimInstanceProperties[value].Value.ToString();
-
+                return cim.QueryInstances("root/cimv2", "WQL", "SELECT * From Win32_OperatingSystem")
+                    .FirstOrDefault()?.CimInstanceProperties[value].Value.ToString();
             }
             catch (Exception ex)
             {
@@ -51,9 +46,8 @@ namespace TimVer
             try
             {
                 CimSession cim = CimSession.Create(null);
-                return cim.QueryInstances(@"root/cimv2", "WQL", "SELECT * From Win32_ComputerSystem")
-                    .FirstOrDefault().CimInstanceProperties[value].Value.ToString();
-
+                return cim.QueryInstances("root/cimv2", "WQL", "SELECT * From Win32_ComputerSystem")
+                    .FirstOrDefault()?.CimInstanceProperties[value].Value.ToString();
             }
             catch (Exception ex)
             {

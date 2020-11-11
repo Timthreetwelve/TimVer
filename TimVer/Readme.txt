@@ -12,7 +12,7 @@ whose eyes are just a little bit more experienced.
 How TimVer Works
 ================
 
-The information TImVer displayed is obtained from Windows Management Information (WMI) and from the
+The information TimVer displayed is obtained from Windows Management Information (WMI) and from the
 Windows registry at HKLM\Software\Microsoft\Windows NT\CurrentVersion.
 
 
@@ -22,7 +22,7 @@ The Pages
 When TimVer is started it will display information about the Windows operating system such as
 the version and build number.
 
-The second page shows information about the computer such as the computer name and the last time 
+The second page shows information about the computer such as the computer name and the last time
 it booted up.
 
 The third page shows information from the previous time TimVer was run. This can be used to
@@ -33,7 +33,8 @@ The pages can be selected either from the Views menu or by pressing Ctrl + 1, 2 
 The information on the first two pages can be copied to the clipboard by pressing Ctrl + C or by
 selecting Copy to Clipboard from the File menu.
 
-The font size may be adjusted by pressing Ctrl + NumPad+ or Ctrl + NumPad-.
+The window can be zoomed in and out by using the NumPad + and NumPad - keys or by holding the Ctrl
+key and using the mouse wheel. The zoom can be reset by pressing the NumPad 0 key
 
 
 Uninstalling
@@ -48,6 +49,7 @@ Notices and License
 
 TimVer was written in C# by Tim Kennedy. Graphics files were created by Tim Kennedy.
 
+Icons are from the Fugue Icons set https://p.yusukekamiyamane.com/
 
 MIT License
 Copyright (c) 2019 - 2020 Tim Kennedy

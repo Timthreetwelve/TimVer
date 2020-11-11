@@ -84,10 +84,16 @@
     <ManifestKeyFile>TimVer_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Management.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -181,6 +187,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -209,9 +216,29 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Icons\clipboard-plus.png" />
+    <Resource Include="Icons\document-list.png" />
+    <Resource Include="Icons\door-open-out.png" />
+    <Resource Include="Icons\information.png" />
+    <Resource Include="Icons\magnifier.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Properties\Blue T.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\windows.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\monitor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\table.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\magnifier-zoom-actual-equal.png" />
+    <Resource Include="Icons\magnifier-zoom-in.png" />
+    <Resource Include="Icons\magnifier-zoom-out.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

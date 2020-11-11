@@ -2,7 +2,7 @@
 
 namespace TimVer.ViewModels
 {
-    class Page1ViewModel
+    internal class Page1ViewModel
     {
         public string Build
         {
@@ -17,14 +17,19 @@ namespace TimVer.ViewModels
 
         public string ProdName => GetInfo.GetRegistryInfo("ProductName");
 
-        public string Version => GetInfo.GetRegistryInfo("ReleaseID");
+        public string Version
+        {
+            get
+            {
+                string result = GetInfo.GetRegistryInfo("DisplayVersion");
+                return result == "no data" ? GetInfo.GetRegistryInfo("ReleaseID") : result;
+            }
+        }
 
         public string BuildBranch => GetInfo.GetRegistryInfo("BuildBranch");
 
         public string Arch => GetInfo.CimQueryOS("OSArchitecture");
 
         public string InstallDate => GetInfo.CimQueryOS("InstallDate");
-
-        
     }
 }
