@@ -1,7 +1,6 @@
 ﻿#region using directives
 using System;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Reflection;
 using System.Text;
 using System.Windows;
@@ -14,6 +13,8 @@ namespace TimVer
 {
     public partial class MainWindow : Window
     {
+        private readonly MySettings settings = MySettings.Read();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -23,8 +24,24 @@ namespace TimVer
             DataContext = new Page1ViewModel();
         }
 
-        #region Events
-        // Menu events
+        #region Settings
+        private void ReadSettings()
+        {
+            Top = settings.WindowTop;
+            Left = settings.WindowLeft;
+
+            double curZoom = settings.Zoom;
+            if (curZoom < 0.75)
+            {
+                curZoom = 0.75;
+            }
+            Grid1.LayoutTransform = new ScaleTransform(curZoom, curZoom);
+
+            WindowTitleVersion();
+        }
+        #endregion Settings
+
+        #region Menu Events
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
@@ -52,17 +69,17 @@ namespace TimVer
 
         private void GridSmaller_Click(object sender, RoutedEventArgs e)
         {
-            GridSmaller();
+            ZoomSmaller();
         }
 
         private void GridLarger_Click(object sender, RoutedEventArgs e)
         {
-            GridLarger();
+            ZoomLarger();
         }
 
         private void GridReset_Click(object sender, RoutedEventArgs e)
         {
-            GridSizeReset();
+            ZoomReset();
         }
 
         private void AboutButton_Click(object sender, RoutedEventArgs e)
@@ -79,15 +96,11 @@ namespace TimVer
         {
             TextFileViewer.ViewTextFile(@".\ReadMe.txt");
         }
+        #endregion Menu Events
 
-        // Keyboard events
+        #region Keyboard Events
         private void Window_Keydown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Escape)
-            {
-                Application.Current.Shutdown();
-            }
-
             if (e.Key == Key.D1 && (e.KeyboardDevice.Modifiers == ModifierKeys.Control))
             {
                 DataContext = new Page1ViewModel();
@@ -110,75 +123,55 @@ namespace TimVer
 
             if (e.Key == Key.NumPad0)
             {
-                GridSizeReset();
+                ZoomReset();
             }
 
             if (e.Key == Key.Add)
             {
-                GridLarger();
+                ZoomLarger();
             }
 
             if (e.Key == Key.Subtract)
             {
-                GridSmaller();
+                ZoomSmaller();
             }
         }
+        #endregion Keyboard Events
 
-        // Mouse wheel
+        #region Mouse Wheel Events
         private void Grid1_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            if (Keyboard.Modifiers != ModifierKeys.Control)
+                return;
+
+            if (e.Delta > 0)
             {
-                if (Keyboard.Modifiers != ModifierKeys.Control)
-                    return;
-
-                if (e.Delta > 0)
-                {
-                    GridLarger();
-                }
-                else if (e.Delta < 0)
-                {
-                    GridSmaller();
-                }
-                e.Handled = true;
+                ZoomLarger();
+            }
+            else if (e.Delta < 0)
+            {
+                ZoomSmaller();
+            }
+            e.Handled = true;
         }
+        #endregion Mouse Wheel Events
 
-        // Window events
+        #region Window Events
         private void Window_Closing(object sender, CancelEventArgs e)
         {
+            // save the settings
             Page1ViewModel page1 = new Page1ViewModel();
-
-            // save the property settings
-            Properties.Settings.Default.PrevBuild = page1.Build;
-            Properties.Settings.Default.PrevBranch= page1.BuildBranch;
-            Properties.Settings.Default.PrevVersion = page1.Version;
-            Properties.Settings.Default.LastRun = DateTime.Now;
-            Properties.Settings.Default.Save();
+            settings.PrevBuild = page1.Build;
+            settings.PrevBranch = page1.BuildBranch;
+            settings.PrevVersion = page1.Version;
+            settings.LastRun = DateTime.Now;
+            settings.WindowLeft = Left;
+            settings.WindowTop = Top;
+            MySettings.Save(settings);
         }
         #endregion
 
         #region Helper methods
-        private void ReadSettings()
-        {
-            if (Properties.Settings.Default.SettingsUpgradeRequired)
-            {
-                Properties.Settings.Default.Upgrade();
-                Properties.Settings.Default.SettingsUpgradeRequired = false;
-                Properties.Settings.Default.Save();
-                // CleanupPrevSettings must be called AFTER settings Upgrade and Save
-                CleanUp.CleanupPrevSettings();
-                Debug.WriteLine("*** SettingsUpgradeRequired");
-            }
-
-            // Set grid zoom
-            double curZoom = Properties.Settings.Default.Zoom;
-            if (curZoom < 0.5)
-            {
-                curZoom = 0.5;
-            }
-            Grid1.LayoutTransform = new ScaleTransform(curZoom, curZoom);
-
-            WindowTitleVersion();
-        }
-
         private void CopyToClipboard()
         {
             Page1ViewModel page1 = new Page1ViewModel();
@@ -209,36 +202,38 @@ namespace TimVer
             string titleVer = version.ToString().Remove(version.ToString().LastIndexOf("."));
 
             // Set the windows title
-            Title = $"Tim's Winver - v{titleVer}";
+            Title = $"Tim's Winver - {titleVer}";
         }
+        #endregion Helper methods
 
-        private void GridSizeReset()
+        #region Zoom
+        private void ZoomReset()
         {
-            Properties.Settings.Default.Zoom = 1.0;
+            settings.Zoom = 1.0;
             Grid1.LayoutTransform = new ScaleTransform(1, 1);
         }
 
-        private void GridSmaller()
+        private void ZoomSmaller()
         {
-            double curZoom = Properties.Settings.Default.Zoom;
+            double curZoom = settings.Zoom;
             if (curZoom > 0.75)
             {
-                curZoom -= .05;
-                Properties.Settings.Default.Zoom = Math.Round(curZoom, 2);
+                curZoom -= .050;
+                settings.Zoom = Math.Round(curZoom, 2);
             }
             Grid1.LayoutTransform = new ScaleTransform(curZoom, curZoom);
         }
 
-        private void GridLarger()
+        private void ZoomLarger()
         {
-            double curZoom = Properties.Settings.Default.Zoom;
+            double curZoom = settings.Zoom;
             if (curZoom < 2.0)
             {
                 curZoom += .05;
-                Properties.Settings.Default.Zoom = Math.Round(curZoom, 2);
+                settings.Zoom = Math.Round(curZoom, 2);
             }
             Grid1.LayoutTransform = new ScaleTransform(curZoom, curZoom);
         }
-        #endregion Helper methods
+        #endregion Zoom
     }
 }

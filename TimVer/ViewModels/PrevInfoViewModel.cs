@@ -4,13 +4,15 @@ namespace TimVer.ViewModels
 {
     internal class PrevInfoViewModel
     {
+        private readonly MySettings settings = MySettings.Read();
+
         public string PreviousBuild
         {
             get
             {
-                if (!string.IsNullOrEmpty(Properties.Settings.Default.PrevBuild))
+                if (!string.IsNullOrEmpty(settings.PrevBuild))
                 {
-                    return Properties.Settings.Default.PrevBuild;
+                    return settings.PrevBuild;
                 }
                 return "no data";
             }
@@ -20,9 +22,9 @@ namespace TimVer.ViewModels
         {
             get
             {
-                if (!string.IsNullOrEmpty(Properties.Settings.Default.PrevBranch))
+                if (!string.IsNullOrEmpty(settings.PrevBranch))
                 {
-                    return Properties.Settings.Default.PrevBranch;
+                    return settings.PrevBranch;
                 }
                 return "no data";
             }
@@ -32,9 +34,9 @@ namespace TimVer.ViewModels
         {
             get
             {
-                if (!string.IsNullOrEmpty(Properties.Settings.Default.PrevVersion))
+                if (!string.IsNullOrEmpty(settings.PrevVersion))
                 {
-                    return Properties.Settings.Default.PrevVersion;
+                    return settings.PrevVersion;
                 }
                 return "no data";
             }
@@ -44,7 +46,7 @@ namespace TimVer.ViewModels
         {
             get
             {
-                DateTime lr = Properties.Settings.Default.LastRun;
+                DateTime lr = settings.LastRun;
                 return lr.ToString("g");
             }
         }
