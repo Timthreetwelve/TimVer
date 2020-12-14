@@ -1,0 +1,46 @@
+﻿<UserControl
+    x:Class="TimVer.Views.HistoryView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:TimVer.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Width="auto"
+    Height="auto"
+    MinWidth="300"
+    MinHeight="200"
+    FontSize="15"
+    mc:Ignorable="d">
+    <Grid>
+        <DataGrid
+            x:Name="HistoryGrid"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            AutoGenerateColumns="False"
+            Background="WhiteSmoke"
+            BorderBrush="#E2E2E2"
+            CanUserAddRows="False"
+            HeadersVisibility="Column"
+            HorizontalGridLinesBrush="#d0d0d0"
+            VerticalGridLinesBrush="#d0d0d0">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Binding="{Binding HDate}"
+                    ElementStyle="{StaticResource ColumnMargin5}"
+                    Header="Date" />
+                <DataGridTextColumn
+                    Binding="{Binding HVersion}"
+                    ElementStyle="{StaticResource ColumnMargin5}"
+                    Header="Version" />
+                <DataGridTextColumn
+                    Binding="{Binding HBuild}"
+                    ElementStyle="{StaticResource ColumnMargin5}"
+                    Header="Build" />
+                <DataGridTextColumn
+                    Binding="{Binding HBranch}"
+                    ElementStyle="{StaticResource ColumnMargin5}"
+                    Header="Branch" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

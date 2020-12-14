@@ -100,9 +100,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.Management.Infrastructure\v4.0_1.0.0.0__31bf3856ad364e35\Microsoft.Management.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -125,24 +122,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CleanUp.cs" />
     <Compile Include="GetInfo.cs" />
     <Compile Include="About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
     <Compile Include="MySettings.cs" />
     <Compile Include="TextFileViewer.cs" />
+    <Compile Include="CsvHistoryMapping.cs" />
+    <Compile Include="ViewModels\HistoryViewModel.cs" />
     <Compile Include="ViewModels\Page1ViewModel.cs" />
     <Compile Include="ViewModels\Page2ViewModel.cs" />
-    <Compile Include="ViewModels\PrevInfoViewModel.cs" />
+    <Compile Include="Views\HistoryView.xaml.cs">
+      <DependentUpon>HistoryView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Page1View.xaml.cs">
       <DependentUpon>Page1View.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Page2View.xaml.cs">
       <DependentUpon>Page2View.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PrevInfoView.xaml.cs">
-      <DependentUpon>PrevInfoView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -160,15 +157,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\HistoryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Page1View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Page2View.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PrevInfoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -186,7 +183,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
   </ItemGroup>
   <ItemGroup>
@@ -230,6 +226,14 @@
     <Resource Include="Icons\magnifier-zoom-actual-equal.png" />
     <Resource Include="Icons\magnifier-zoom-in.png" />
     <Resource Include="Icons\magnifier-zoom-out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="TinyCsvParser">
+      <Version>2.6.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

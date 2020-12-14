@@ -3,30 +3,27 @@
 
 Introduction
 ============
-
 TimVer will display the same Windows version related information as the built-in Winver command,
-plus additional information. The information can be displayed in a larger font, for those folks
-whose eyes are just a little bit more experienced.
+with additional information that Winver doesn't display.
 
 
 How TimVer Works
 ================
-
 The information TimVer displayed is obtained from Windows Management Information (WMI) and from the
 Windows registry at HKLM\Software\Microsoft\Windows NT\CurrentVersion.
 
 
 The Pages
 =========
-
 When TimVer is started it will display information about the Windows operating system such as
 the version and build number.
 
 The second page shows information about the computer such as the computer name and the last time
 it booted up.
 
-The third page shows information from the previous time TimVer was run. This can be used to
-compare build numbers before and after running Windows Update.
+The third page shows history information from the previous times TimVer was run. This can be used
+to compare build numbers before and after running Windows Update. Only one history record will be
+recorded per build number. The history file is in CSV format.
 
 The pages can be selected either from the Views menu or by pressing Ctrl + 1, 2 or 3.
 
@@ -39,17 +36,22 @@ key and using the mouse wheel. The zoom can be reset by pressing the NumPad 0 ke
 
 Uninstalling
 ============
-
-To uninstall use the regular Windows add/remove programs feature.  If you are not planning to reinstall
-you may want to delete the files and folders in %localappdata%\T_K\TimVer*.
+To uninstall use the regular Windows add/remove programs feature.
 
 
 Notices and License
 ===================
+TimVer was written in C# by Tim Kennedy. TimVer requires .Net Framework version 4.8.
 
-TimVer was written in C# by Tim Kennedy. Graphics files were created by Tim Kennedy.
+TimVer uses the following icons & packages:
 
 Icons are from the Fugue Icons set https://p.yusukekamiyamane.com/
+
+Json.net from Newtonsoft https://www.newtonsoft.com/json
+
+TinyCsvParser from Philipp Wagner https://github.com/bytefish/TinyCsvParser
+
+Inno Setup was used to create the installer. https://jrsoftware.org/isinfo.php
 
 MIT License
 Copyright (c) 2019 - 2020 Tim Kennedy

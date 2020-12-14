@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using Newtonsoft.Json;
@@ -16,14 +14,6 @@ namespace TimVer
         public double WindowTop { get; set; }
 
         public double Zoom { get; set; }
-
-        public string PrevVersion { get; set; }
-
-        public string PrevBuild { get; set; }
-
-        public string PrevBranch { get; set; }
-
-        public DateTime LastRun { get; set; }
 
         /////////////////////////////  Methods //////////////////////////////
 
@@ -77,7 +67,6 @@ namespace TimVer
 
             foreach (PropertyInfo prop in s.GetType().GetProperties())
             {
-                Debug.WriteLine($"*** {prop.Name} : {prop.GetValue(s) }");
                 list.Add($"{prop.Name} = {prop.GetValue(s)}");
             }
             return list;

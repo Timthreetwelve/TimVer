@@ -13,7 +13,6 @@
     Closing="Window_Closing"
     FontFamily="Segoe UI"
     KeyUp="Window_Keydown"
-    ResizeMode="CanMinimize"
     SizeToContent="WidthAndHeight"
     mc:Ignorable="d">
 
@@ -25,8 +24,8 @@
         <DataTemplate DataType="{x:Type viewmodels:Page2ViewModel}">
             <views:Page2View DataContext="{Binding}" />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:PrevInfoViewModel}">
-            <views:PrevInfoView DataContext="{Binding}" />
+        <DataTemplate DataType="{x:Type viewmodels:HistoryViewModel}">
+            <views:HistoryView DataContext="{Binding}" />
         </DataTemplate>
     </Window.Resources>
     <!--#endregion-->
@@ -89,8 +88,8 @@
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem
-                        Click="Page3_Click"
-                        Header="Saved Info"
+                        Click="History_Click"
+                        Header="History"
                         InputGestureText="Ctrl+3">
                         <MenuItem.Icon>
                             <Image Source="Icons\table.png" />

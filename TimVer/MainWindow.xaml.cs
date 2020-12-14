@@ -1,13 +1,16 @@
-﻿#region using directives
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+
+#region using directives
 using System;
 using System.ComponentModel;
+using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using TimVer.ViewModels;
-#endregion
+#endregion using directives
 
 namespace TimVer
 {
@@ -22,6 +25,8 @@ namespace TimVer
             ReadSettings();
 
             DataContext = new Page1ViewModel();
+
+            HistoryViewModel.WriteHistory();
         }
 
         #region Settings
@@ -62,11 +67,10 @@ namespace TimVer
             DataContext = new Page2ViewModel();
         }
 
-        private void Page3_Click(object sender, RoutedEventArgs e)
+        private void History_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new PrevInfoViewModel();
+            DataContext = new HistoryViewModel();
         }
-
         private void GridSmaller_Click(object sender, RoutedEventArgs e)
         {
             ZoomSmaller();
@@ -94,7 +98,8 @@ namespace TimVer
 
         private void ReadMe_Click(object sender, RoutedEventArgs e)
         {
-            TextFileViewer.ViewTextFile(@".\ReadMe.txt");
+            string dir = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+            TextFileViewer.ViewTextFile(Path.Combine(dir, "ReadMe.txt"));
         }
         #endregion Menu Events
 
@@ -113,7 +118,7 @@ namespace TimVer
 
             if (e.Key == Key.D3 && (e.KeyboardDevice.Modifiers == ModifierKeys.Control))
             {
-                DataContext = new PrevInfoViewModel();
+                DataContext = new HistoryViewModel();
             }
 
             if (e.Key == Key.C && (e.KeyboardDevice.Modifiers == ModifierKeys.Control))
@@ -160,11 +165,6 @@ namespace TimVer
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             // save the settings
-            Page1ViewModel page1 = new Page1ViewModel();
-            settings.PrevBuild = page1.Build;
-            settings.PrevBranch = page1.BuildBranch;
-            settings.PrevVersion = page1.Version;
-            settings.LastRun = DateTime.Now;
             settings.WindowLeft = Left;
             settings.WindowTop = Top;
             MySettings.Save(settings);
