@@ -23,9 +23,12 @@ namespace TimVer.ViewModels
         public static List<HistoryViewModel> ReadHistory()
         {
             CsvParserOptions opts = new CsvParserOptions(false, ',');
-            var csvParser = new CsvParser<HistoryViewModel>(opts, new CsvHistoryMapping());
-            var records = csvParser.ReadFromFile(DefaultHistoryFile(), Encoding.UTF8);
-            return records.Select(x => x.Result).ToList();
+            CsvParser<HistoryViewModel> csvParser = new CsvParser<HistoryViewModel>(opts,
+                new CsvHistoryMapping());
+            ParallelQuery<TinyCsvParser.Mapping.CsvMappingResult<HistoryViewModel>> records =
+                csvParser.ReadFromFile(DefaultHistoryFile(), Encoding.UTF8);
+            return records.Select(x => x.Result)
+                .OrderByDescending(o => o.HDate).ToList();
         }
 
         public static void WriteHistory()
