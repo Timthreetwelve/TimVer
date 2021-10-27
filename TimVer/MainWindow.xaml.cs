@@ -27,6 +27,8 @@ namespace TimVer
             DataContext = new Page1ViewModel();
 
             HistoryViewModel.WriteHistory();
+
+            ProcessCommandLine();
         }
 
         #region Settings
@@ -45,6 +47,27 @@ namespace TimVer
             WindowTitleVersion();
         }
         #endregion Settings
+
+        #region Process command line args
+        private void ProcessCommandLine()
+        {
+            // If count is less that two, bail out
+            string[] args = Environment.GetCommandLineArgs();
+            if (args.Length < 2)
+                return;
+
+            foreach (string item in args)
+            {
+                if (item.Replace("-", "").Replace("/", "").Equals("hide", StringComparison.OrdinalIgnoreCase))
+                {
+                    // hide the window
+                    Visibility = Visibility.Hidden;
+
+                    Application.Current.Shutdown();
+                }
+            }
+        }
+        #endregion Process command line args
 
         #region Menu Events
         private void ExitButton_Click(object sender, RoutedEventArgs e)
