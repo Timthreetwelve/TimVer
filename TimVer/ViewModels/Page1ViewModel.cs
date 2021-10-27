@@ -15,7 +15,8 @@ namespace TimVer.ViewModels
             set => Build = value;
         }
 
-        public string ProdName => GetInfo.GetRegistryInfo("ProductName");
+        // Changed public string ProdName => GetInfo.GetRegistryInfo("ProductName"); to the following
+        public string ProdName => GetInfo.CimQueryOS("Caption");
 
         public string Version
         {

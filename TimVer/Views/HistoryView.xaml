@@ -21,6 +21,7 @@
             BorderBrush="#E2E2E2"
             CanUserAddRows="False"
             HeadersVisibility="Column"
+            VerticalScrollBarVisibility="Visible"
             HorizontalGridLinesBrush="#d0d0d0"
             VerticalGridLinesBrush="#d0d0d0">
             <DataGrid.Columns>

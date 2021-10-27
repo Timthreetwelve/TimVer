@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Windows;
 using TinyCsvParser;
 
 namespace TimVer.ViewModels
@@ -25,10 +26,19 @@ namespace TimVer.ViewModels
             CsvParserOptions opts = new CsvParserOptions(false, ',');
             CsvParser<HistoryViewModel> csvParser = new CsvParser<HistoryViewModel>(opts,
                 new CsvHistoryMapping());
-            ParallelQuery<TinyCsvParser.Mapping.CsvMappingResult<HistoryViewModel>> records =
-                csvParser.ReadFromFile(DefaultHistoryFile(), Encoding.UTF8);
-            return records.Select(x => x.Result)
-                .OrderByDescending(o => o.HDate).ToList();
+            try
+            {
+                ParallelQuery<TinyCsvParser.Mapping.CsvMappingResult<HistoryViewModel>> records =
+            csvParser.ReadFromFile(DefaultHistoryFile(), Encoding.UTF8);
+                return records.Select(x => x.Result)
+                    .OrderByDescending(o => o.HDate).ToList();
+            }
+            catch (Exception)
+            {
+                _ = MessageBox.Show($"Cannot read the history file. It may be corrupt.\n\nDelete {DefaultHistoryFile()} and retry.", "TimVer Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Environment.Exit(1);
+            }
+            return null;
         }
 
         public static void WriteHistory()
