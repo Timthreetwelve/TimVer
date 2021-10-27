@@ -101,13 +101,13 @@
             Grid.ColumnSpan="2"
             Margin="10,0"
             Orientation="Horizontal">
-            <TextBlock Width="90" Text="Email:" />
+            <TextBlock Width="90" Text="GitHub:" />
             <TextBlock>
                 <Hyperlink
-                    NavigateUri="mailto: KennedyTim@outlook.com?subject=TimVer Feedback"
+                    NavigateUri="https://github.com/Timthreetwelve/TimVer"
                     RequestNavigate="OnNavigate"
-                    ToolTip="Send a friendly email to Tim">
-                    KennedyTim@outlook.com
+                    ToolTip="https://github.com/Timthreetwelve/TimVer">
+                    TimVer on GitHub
                 </Hyperlink>
             </TextBlock>
         </StackPanel>
