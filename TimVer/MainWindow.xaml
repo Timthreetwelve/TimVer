@@ -51,7 +51,7 @@
                 Padding="3,2"
                 DockPanel.Dock="Top"
                 FontSize="14">
-                <MenuItem Header="_File">
+                <MenuItem Header="_File" >
                     <MenuItem
                         Click="CopyButton_Click"
                         Header="Copy to Clipboard"
@@ -60,6 +60,14 @@
                             <Image Source="Icons\clipboard-plus.png" />
                         </MenuItem.Icon>
                     </MenuItem>
+                    <Separator />
+                    <MenuItem
+                        Name="mnuAddReg"
+                        IsCheckable="True"
+                        Checked="AddRegistry"
+                        Unchecked="RemoveResgistry"
+                        StaysOpenOnClick="True"
+                        Header="Update History on Windows Startup" />
                     <Separator />
                     <MenuItem
                         Click="ExitButton_Click"

@@ -36,10 +36,11 @@ key and using the mouse wheel. The zoom can be reset by pressing the NumPad 0 ke
 
 Command Line Option
 ===================
-
 Specifying the /hide option on the command line will start TimVer, update the history file and then
 shutdown without showing the window. This option is intended to be used in automation after reboot
-to keep a more accurate history file.
+to keep a more accurate history file. When checked, the Update History on Windows Startup option on
+the File menu will add a key to HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\ that will run
+TimVer with the /hide option everytime Windows starts. Unchecking this option will remove the key.
 
 
 Uninstalling
@@ -55,11 +56,13 @@ TimVer uses the following icons & packages:
 
 Icons are from the Fugue Icons set https://p.yusukekamiyamane.com/
 
-Json.net from Newtonsoft https://www.newtonsoft.com/json
+NLog 4.7.12 https://nlog-project.org/
 
-TinyCsvParser from Philipp Wagner https://github.com/bytefish/TinyCsvParser
+Json.net 13.0.1 from Newtonsoft https://www.newtonsoft.com/json
 
-Inno Setup was used to create the installer. https://jrsoftware.org/isinfo.php
+TinyCsvParser 2.6.1 from Philipp Wagner https://github.com/bytefish/TinyCsvParser
+
+Inno Setup 6.2.0 was used to create the installer. https://jrsoftware.org/isinfo.php
 
 MIT License
 Copyright (c) 2019 - 2021 Tim Kennedy
