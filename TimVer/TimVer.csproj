@@ -78,7 +78,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Blue T.ico</ApplicationIcon>
+    <ApplicationIcon>TV.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>8FFB21AFDD9E4D952CE7FB130FAACF287E1A1696</ManifestCertificateThumbprint>
@@ -125,6 +125,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AppInfo.cs" />
     <Compile Include="GetInfo.cs" />
     <Compile Include="About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
@@ -187,6 +188,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\app.manifest" />
   </ItemGroup>
   <ItemGroup>
@@ -195,12 +202,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Blue T.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Blue T.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt">
@@ -213,9 +214,6 @@
     <Resource Include="Icons\door-open-out.png" />
     <Resource Include="Icons\information.png" />
     <Resource Include="Icons\magnifier.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Properties\Blue T.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\windows.png" />
@@ -235,9 +233,16 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.1</Version>
     </PackageReference>
+    <PackageReference Include="NLog">
+      <Version>4.7.12</Version>
+    </PackageReference>
     <PackageReference Include="TinyCsvParser">
       <Version>2.6.1</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TV.ico" />
+    <Resource Include="TV.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

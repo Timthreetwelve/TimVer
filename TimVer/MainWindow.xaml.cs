@@ -1,8 +1,11 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 #region using directives
+using Microsoft.Win32;
+using NLog;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Text;
@@ -10,12 +13,17 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using TimVer.ViewModels;
+using TKUtils;
 #endregion using directives
 
 namespace TimVer
 {
     public partial class MainWindow : Window
     {
+        #region NLog Instance
+        private static readonly Logger log = LogManager.GetCurrentClassLogger();
+        #endregion NLog Instance
+
         private readonly MySettings settings = MySettings.Read();
 
         public MainWindow()
@@ -34,6 +42,16 @@ namespace TimVer
         #region Settings
         private void ReadSettings()
         {
+            // Change the log file filename when debugging
+            string env = Debugger.IsAttached ? "debug" : "temp";
+            GlobalDiagnosticsContext.Set("TempOrDebug", env);
+
+            // Unhandled exception handler
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
+            // Startup message in the temp file
+            log.Info($"{AppInfo.AppName} {AppInfo.TitleVersion} is starting up.");
+
             Top = settings.WindowTop;
             Left = settings.WindowLeft;
 
@@ -45,6 +63,8 @@ namespace TimVer
             Grid1.LayoutTransform = new ScaleTransform(curZoom, curZoom);
 
             WindowTitleVersion();
+
+            CheckRegEntry();
         }
         #endregion Settings
 
@@ -62,7 +82,7 @@ namespace TimVer
                 {
                     // hide the window
                     Visibility = Visibility.Hidden;
-
+                    log.Info("Command line argument 'hide' was found. Shutting down.");
                     Application.Current.Shutdown();
                 }
             }
@@ -78,6 +98,16 @@ namespace TimVer
         private void CopyButton_Click(object sender, RoutedEventArgs e)
         {
             CopyToClipboard();
+        }
+
+        private void AddRegistry(object sender, RoutedEventArgs e)
+        {
+            AddRegEntry();
+        }
+
+        private void RemoveResgistry(object sender, RoutedEventArgs e)
+        {
+            RemoveRegEntry();
         }
 
         private void Page1_Click(object sender, RoutedEventArgs e)
@@ -191,6 +221,10 @@ namespace TimVer
             settings.WindowLeft = Left;
             settings.WindowTop = Top;
             MySettings.Save(settings);
+
+            // Shut down NLog
+            log.Info("TimVer is shutting down.");
+            LogManager.Shutdown();
         }
         #endregion
 
@@ -229,6 +263,79 @@ namespace TimVer
         }
         #endregion Helper methods
 
+        #region Registry methods
+        public void CheckRegEntry()
+        {
+            const string regpath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
+            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(regpath, true))
+            {
+                var timver = key.GetValue("TimVer");
+                if (timver != null)
+                {
+                    mnuAddReg.IsChecked = true;
+                    log.Debug($"Registry key HKCU\\{regpath}\\TimVer was found.");
+                }
+                else
+                {
+                    log.Debug($"Registry key HKCU\\{regpath}\\TimVer was not found.");
+                    mnuAddReg.IsChecked = false;
+                }
+            }
+        }
+
+        public void AddRegEntry()
+        {
+            if (IsLoaded)
+            {
+                const string regpath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
+                string loc = AppInfo.AppPath;
+                Debug.WriteLine("AddRegEntry fired");
+                try
+                {
+                    using (RegistryKey key = Registry.CurrentUser.OpenSubKey(regpath, true))
+                    {
+                        {
+                            key.SetValue("TimVer", loc + " /hide");
+                            log.Info($"Registry key HKCU\\{regpath}\\Timver has been added.");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    log.Error(ex, $"Unsuccessful attempt to update Registry.");
+                    _ = MessageBox.Show($"Unsuccessful attempt to update Registry.\n{ex}",
+                        "TimVer Error",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Error);
+                }
+            }
+        }
+
+        public void RemoveRegEntry()
+        {
+            if (IsLoaded)
+            {
+                const string regpath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
+                try
+                {
+                    using (RegistryKey key = Registry.CurrentUser.OpenSubKey(regpath, true))
+                    {
+                        key.DeleteValue("TimVer", false);
+                        log.Info($"Registry key HKCU\\{regpath}\\Timver has been removed.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    log.Error(ex, $"Unsuccessful attempt to update Registry.");
+                    _ = MessageBox.Show($"Unsuccessful attempt to update Registry.\n{ex}",
+                                        "TimVer Error",
+                                        MessageBoxButton.OK,
+                                        MessageBoxImage.Error);
+                }
+            }
+        } 
+        #endregion Registry methods
+
         #region Zoom
         private void ZoomReset()
         {
@@ -258,5 +365,19 @@ namespace TimVer
             Grid1.LayoutTransform = new ScaleTransform(curZoom, curZoom);
         }
         #endregion Zoom
+
+        #region Unhandled Exception Handler
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs args)
+        {
+            log.Error("Unhandled Exception");
+            Exception e = (Exception)args.ExceptionObject;
+            log.Error(e.Message);
+            if (e.InnerException != null)
+            {
+                log.Error(e.InnerException.ToString());
+            }
+            log.Error(e.StackTrace);
+        }
+        #endregion Unhandled Exception Handler
     }
 }
