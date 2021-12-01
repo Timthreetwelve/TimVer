@@ -1,0 +1,91 @@
+﻿<Page
+    x:Class="TimVer.Page4"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:TimVer"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Page4"
+    d:DesignHeight="400"
+    d:DesignWidth="450"
+    FontSize="14"
+    Loaded="Page_Loaded"
+    mc:Ignorable="d">
+
+    <Grid Background="White">
+        <!--#region Row and Column definitions-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="10" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <!--#endregion-->
+
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Style="{DynamicResource PageHeader}"
+            Text="OPTIONS" />
+
+        <CheckBox
+            Grid.Row="1"
+            Grid.Column="1"
+            VerticalAlignment="Center"
+            VerticalContentAlignment="Center"
+            Content="Keep window on top"
+            IsChecked="{Binding KeepOnTop, Source={x:Static local:UserSettings.Setting}}" />
+
+        <CheckBox
+            x:Name="cbxHistOnStart"
+            Grid.Row="2"
+            Grid.Column="1"
+            VerticalAlignment="Center"
+            VerticalContentAlignment="Center"
+            Checked="CbxHsitory_Checked"
+            Content="Update history on Windows startup"
+            Unchecked="CbxHistory_Unchecked" />
+
+        <CheckBox
+            Grid.Row="3"
+            Grid.Column="1"
+            VerticalAlignment="Center"
+            VerticalContentAlignment="Center"
+            Checked="CbxHsitory_Checked"
+            Content="Display registered user on Windows Information page"
+            IsChecked="{Binding ShowUser, Source={x:Static local:UserSettings.Setting}}" />
+
+        <CheckBox
+            Grid.Row="4"
+            Grid.Column="1"
+            VerticalAlignment="Center"
+            VerticalContentAlignment="Center"
+            Checked="CbxHsitory_Checked"
+            Content="Display disk drives on Computer Information page"
+            IsChecked="{Binding ShowDrives, Source={x:Static local:UserSettings.Setting}}" />
+
+        <Button
+            x:Name="btnOpenLog"
+            Grid.Row="8"
+            Grid.Column="1"
+            Width="85"
+            Margin="0,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            Click="BtnOpenLog_Click"
+            Content="Debug Log"
+            Style="{DynamicResource BtnStyle2}" />
+
+    </Grid>
+</Page>

@@ -5,155 +5,56 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:TimVer"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewmodels="clr-namespace:TimVer.ViewModels"
-    xmlns:views="clr-namespace:TimVer.Views"
-    Title="Tim's WinVer"
-    Width="355"
-    Height="235"
+    Title="TimVer"
+    Width="650"
+    Height="400"
+    BorderThickness="1"
     Closing="Window_Closing"
-    FontFamily="Segoe UI"
-    KeyUp="Window_Keydown"
-    SizeToContent="WidthAndHeight"
+    ResizeMode="CanMinimize"
     mc:Ignorable="d">
+    <Window.Resources />
 
-    <!--#region Window Resources-->
-    <Window.Resources>
-        <DataTemplate DataType="{x:Type viewmodels:Page1ViewModel}">
-            <views:Page1View DataContext="{Binding}" />
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:Page2ViewModel}">
-            <views:Page2View DataContext="{Binding}" />
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:HistoryViewModel}">
-            <views:HistoryView DataContext="{Binding}" />
-        </DataTemplate>
-    </Window.Resources>
-    <!--#endregion-->
-
-    <Grid x:Name="Grid1" PreviewMouseWheel="Grid1_PreviewMouseWheel">
-        <!--#region Row & Column definitions-->
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <!--#endregion-->
-
-        <!--#region Menu-->
+    <Grid Background="#e6e6e6">
         <DockPanel
-            Grid.Row="0"
-            Grid.Column="0"
+            Width="120"
+            Margin="10,10"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Stretch"
+            Background="White"
             LastChildFill="True">
-            <Menu
-                Height="28"
-                Padding="3,2"
+            <Button
+                Click="BtnClick_Page1"
+                Content="Windows Info"
                 DockPanel.Dock="Top"
-                FontSize="14">
-                <MenuItem Header="_File" >
-                    <MenuItem
-                        Click="CopyButton_Click"
-                        Header="Copy to Clipboard"
-                        InputGestureText="Ctrl+C">
-                        <MenuItem.Icon>
-                            <Image Source="Icons\clipboard-plus.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <Separator />
-                    <MenuItem
-                        Name="mnuAddReg"
-                        IsCheckable="True"
-                        Checked="AddRegistry"
-                        Unchecked="RemoveResgistry"
-                        StaysOpenOnClick="True"
-                        Header="Update History on Windows Startup" />
-                    <Separator />
-                    <MenuItem
-                        Click="ExitButton_Click"
-                        Header="Exit"
-                        InputGestureText="Esc">
-                        <MenuItem.Icon>
-                            <Image Source="Icons\door-open-out.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                </MenuItem>
-                <MenuItem Header="Views">
-                    <MenuItem
-                        Click="Page1_Click"
-                        Header="Windows Info"
-                        InputGestureText="Ctrl+1">
-                        <MenuItem.Icon>
-                            <Image Source="Icons\windows.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem
-                        Click="Page2_Click"
-                        Header="Computer Info"
-                        InputGestureText="Ctrl+2">
-                        <MenuItem.Icon>
-                            <Image Source="Icons\monitor.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem
-                        Click="History_Click"
-                        Header="History"
-                        InputGestureText="Ctrl+3">
-                        <MenuItem.Icon>
-                            <Image Source="Icons\table.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <Separator />
-                    <MenuItem Header="_Zoom">
-                        <MenuItem
-                            Click="GridSmaller_Click"
-                            Header="_Smaller"
-                            InputGestureText="NumPad -"
-                            StaysOpenOnClick="True">
-                            <MenuItem.Icon>
-                                <Image Source="Icons\magnifier-zoom-out.png" />
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <Separator />
-                        <MenuItem
-                            Click="GridLarger_Click"
-                            Header="_Larger"
-                            InputGestureText="NumPad +"
-                            StaysOpenOnClick="True">
-                            <MenuItem.Icon>
-                                <Image Source="Icons\magnifier-zoom-in.png" />
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <Separator />
-                        <MenuItem
-                            Click="GridReset_Click"
-                            Header="_Reset"
-                            InputGestureText="NumPad 0">
-                            <MenuItem.Icon>
-                                <Image Source="Icons\magnifier-zoom-actual-equal.png" />
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <MenuItem.Icon>
-                            <Image Source="Icons\magnifier.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                </MenuItem>
-                <MenuItem Header="_Help">
-                    <MenuItem Click="AboutButton_Click" Header="About">
-                        <MenuItem.Icon>
-                            <Image Source="Icons\information.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Click="ReadMe_Click" Header="View ReadMe">
-                        <MenuItem.Icon>
-                            <Image Source="Icons\document-list.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                </MenuItem>
-            </Menu>
+                Margin="0,5,0,0"
+                Style="{DynamicResource BtnStyle1}" />
+            <Button
+                Click="BtnClick_Page2"
+                Content="Computer Info"
+                DockPanel.Dock="Top"
+                Style="{DynamicResource BtnStyle1}" />
+            <Button
+                Click="BtnClick_Page3"
+                Content="History"
+                DockPanel.Dock="Top"
+                Style="{DynamicResource BtnStyle1}" />
+            <Button
+                VerticalAlignment="Bottom"
+                Click="BtnClick_Page5"
+                Content="About"
+                DockPanel.Dock="Bottom"
+                Style="{DynamicResource BtnStyle1}" />
+            <Button
+                VerticalAlignment="Bottom"
+                Click="BtnClick_Page4"
+                Content="Options"
+                DockPanel.Dock="Bottom"
+                Style="{DynamicResource BtnStyle1}" />
         </DockPanel>
-        <!--#endregion-->
-
-        <ContentControl Grid.Row="1" Content="{Binding}" />
+        <Frame
+            x:Name="MainFrame"
+            Margin="140,10,10,10"
+            Background="White"
+            NavigationUIVisibility="Hidden" />
     </Grid>
 </Window>

@@ -5,12 +5,93 @@
     xmlns:local="clr-namespace:TimVer"
     StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <Style x:Key="{x:Type ToolTip}" TargetType="ToolTip">
-            <Setter Property="Background" Value="LightYellow" />
-            <Setter Property="BorderThickness" Value=".5" />
-        </Style>
-        <Style x:Key="ColumnMargin5" TargetType="TextBlock">
-            <Setter Property="Margin" Value="5,0,8,0" />
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries />
+            <Style x:Key="BtnStyle1" TargetType="{x:Type Button}">
+                <Setter Property="HorizontalContentAlignment" Value="Left" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+                <Setter Property="Padding" Value="5" />
+                <Setter Property="Height" Value="30" />
+                <Setter Property="Width" Value="110" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="Margin" Value="0,0,0,5" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Grid x:Name="grid">
+                                <Border
+                                    x:Name="border"
+                                    Background="White"
+                                    BorderBrush="White"
+                                    BorderThickness="0"
+                                    CornerRadius="5">
+                                    <ContentPresenter
+                                        Margin="7,0"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        TextElement.FontWeight="Normal" />
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="LightGray" />
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="BorderBrush" Value="SlateBlue" />
+                                    <Setter TargetName="border" Property="BorderThickness" Value="1.5" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="BtnStyle2" TargetType="{x:Type Button}">
+                <Setter Property="HorizontalContentAlignment" Value="Left" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+                <Setter Property="Padding" Value="5" />
+                <Setter Property="Height" Value="30" />
+                <Setter Property="Width" Value="110" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Grid x:Name="grid">
+                                <Border
+                                    x:Name="border"
+                                    Background="WhiteSmoke"
+                                    BorderBrush="LightGray"
+                                    BorderThickness="1"
+                                    CornerRadius="5">
+                                    <ContentPresenter
+                                        Margin="7,0"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        TextElement.FontWeight="Normal" />
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="lightgray" />
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="BorderBrush" Value="SlateBlue" />
+                                    <Setter TargetName="border" Property="BorderThickness" Value="1.5" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="PageHeader" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontWeight" Value="DemiBold" />
+                <Setter Property="Foreground" Value="DimGray" />
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Foreground" Value="#7215D0" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -1,0 +1,152 @@
+﻿<Page
+    x:Class="TimVer.Page1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:TimVer"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DataContext="{d:DesignInstance Type=local:Page1}"
+    Title="Page1"
+    d:DesignHeight="400"
+    d:DesignWidth="400"
+    FontSize="14"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Page.Resources>
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="130" />
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="10" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Style="{DynamicResource PageHeader}"
+            Text="WINDOWS INFORMATION" />
+
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="1"
+            Text="OS Edition" />
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="2"
+            Text="{Binding Source={x:Static local:InfoVM.ProdName}}" />
+
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="1"
+            Text="Version" />
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="2"
+            Text="{Binding Source={x:Static local:InfoVM.Version}}" />
+
+        <TextBlock
+            Grid.Row="3"
+            Grid.Column="1"
+            Text="Build" />
+        <TextBlock
+            Grid.Row="3"
+            Grid.Column="2"
+            Text="{Binding Source={x:Static local:InfoVM.Build}}" />
+
+        <TextBlock
+            Grid.Row="5"
+            Grid.Column="1"
+            Text="Build Branch" />
+        <TextBlock
+            Grid.Row="5"
+            Grid.Column="2"
+            Text="{Binding Source={x:Static local:InfoVM.BuildBranch}}" />
+
+        <TextBlock
+            Grid.Row="4"
+            Grid.Column="1"
+            Text="Architecture" />
+        <TextBlock
+            Grid.Row="4"
+            Grid.Column="2"
+            Text="{Binding Source={x:Static local:InfoVM.Arch}}" />
+
+        <TextBlock
+            Grid.Row="6"
+            Grid.Column="1"
+            Text="Edition ID" />
+        <TextBlock
+            Grid.Row="6"
+            Grid.Column="2"
+            Text="{Binding Source={x:Static local:InfoVM.EditionID}}" />
+
+        <TextBlock
+            Grid.Row="7"
+            Grid.Column="1"
+            Text="Installed on" />
+        <TextBlock
+            Grid.Row="7"
+            Grid.Column="2"
+            Text="{Binding Source={x:Static local:InfoVM.InstallDate}}" />
+
+        <TextBlock
+            Grid.Row="8"
+            Grid.Column="1"
+            Text="Windows Folder" />
+        <TextBlock
+            Grid.Row="8"
+            Grid.Column="2"
+            Text="{Binding Source={x:Static local:InfoVM.WindowsFolder}}" />
+
+        <TextBlock
+            Grid.Row="9"
+            Grid.Column="1"
+            Text="Temp Folder" />
+        <TextBlock
+            Grid.Row="9"
+            Grid.Column="2"
+            Text="{Binding Source={x:Static local:InfoVM.TempFolder}}" />
+
+        <TextBlock
+            Grid.Row="10"
+            Grid.Column="1"
+            Text="Registered to"
+            Visibility="{Binding ShowUser, Source={x:Static local:UserSettings.Setting}, Converter={StaticResource BooleanToVisibilityConverter}}" />
+        <TextBlock
+            x:Name="tbRegUser"
+            Grid.Row="10"
+            Grid.Column="2"
+            Text="{Binding Source={x:Static local:InfoVM.RegUser}}"
+            Visibility="{Binding ShowUser, Source={x:Static local:UserSettings.Setting}, Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+        <Button
+            x:Name="btnCopy"
+            Grid.Row="11"
+            Grid.Column="1"
+            Width="50"
+            Margin="0,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            Click="BtnCopy_Click"
+            Content="Copy"
+            Style="{DynamicResource BtnStyle2}" />
+    </Grid>
+</Page>

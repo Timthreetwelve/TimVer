@@ -1,0 +1,104 @@
+﻿<Page
+    x:Class="TimVer.Page5"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:TimVer"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="400"
+    d:DesignWidth="450"
+    FontSize="14"
+    Loaded="Page_Loaded"
+    mc:Ignorable="d">
+
+    <Grid Background="White">
+        <!--#region Row and Column definitions-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="10" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <!--#endregion-->
+
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Style="{DynamicResource PageHeader}"
+            Text="ABOUT TIMVER" />
+
+        <TextBlock
+            x:Name="tbName"
+            Grid.Row="1"
+            Grid.Column="1" />
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="2"
+            Text="All the info that Winver provides and more!" />
+
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="1"
+            Text="Version" />
+        <TextBlock
+            x:Name="tbVersion"
+            Grid.Row="2"
+            Grid.Column="2" />
+
+        <TextBlock
+            Grid.Row="3"
+            Grid.Column="1"
+            Text="Created by: " />
+        <TextBlock
+            Grid.Row="3"
+            Grid.Column="2"
+            Text="Tim Kennedy" />
+
+        <TextBlock
+            Grid.Row="4"
+            Grid.Column="1"
+            Text="Copyright: " />
+        <TextBlock
+            x:Name="tbCopyright"
+            Grid.Row="4"
+            Grid.Column="2" />
+
+        <TextBlock
+            Grid.Row="5"
+            Grid.Column="1"
+            Text="GitHub" />
+        <TextBlock Grid.Row="5" Grid.Column="2">
+            <Hyperlink
+                Foreground="Blue"
+                NavigateUri="https://github.com/Timthreetwelve/TimVer"
+                RequestNavigate="OnNavigate">
+                https://github.com/Timthreetwelve/TimVer
+            </Hyperlink>
+        </TextBlock>
+
+        <Button
+            Grid.Row="8"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Width="70"
+            Margin="0,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            Click="BtnReadme_Click"
+            Content="ReadMe"
+            Style="{DynamicResource BtnStyle2}" />
+    </Grid>
+
+</Page>
