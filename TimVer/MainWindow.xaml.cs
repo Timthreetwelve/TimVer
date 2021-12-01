@@ -31,8 +31,6 @@ public partial class MainWindow : Window
         Page3.WriteHistory();
 
         ProcessCommandLine();
-
-        log.Debug(InfoVM.DiskDrives);
     }
 
     #region Settings

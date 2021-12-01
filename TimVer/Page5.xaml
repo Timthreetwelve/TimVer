@@ -88,6 +88,15 @@
             </Hyperlink>
         </TextBlock>
 
+        <TextBlock
+           Grid.Row="6"
+           Grid.Column="1"
+           Text="Commit ID: " />
+        <TextBlock
+           x:Name="tbCommit"
+           Grid.Row="6"
+           Grid.Column="2" />
+
         <Button
             Grid.Row="8"
             Grid.Column="1"
