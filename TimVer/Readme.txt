@@ -9,34 +9,39 @@ with additional information that Winver doesn't display.
 
 How TimVer Works
 ================
-The information TimVer displayed is obtained from Windows Management Information (WMI) and from the
-Windows registry at HKLM\Software\Microsoft\Windows NT\CurrentVersion.
+The information TimVer displays is obtained from the Environment, Windows Management Information
+(WMI) and from the Windows registry at HKLM\Software\Microsoft\Windows NT\CurrentVersion.
 
 
 The Pages
 =========
-When TimVer is started it will display information about the Windows operating system such as
-the version and build number.
+Use the bar on the left for page navigation.
 
-The second page shows information about the computer such as the computer name and the last time
-it booted up.
+The Windows Info page shows Windows operating system information such as the version, build number
+and architecture.
 
-The third page shows history information from the previous times TimVer was run. This can be used
+The Computer Info page shows information about the computer such as the computer make, model and name.
+It also shows information about the CPU, memory and optionally the disk drive letters.
+
+The History page shows history information from the previous times TimVer was run. This can be used
 to compare build numbers before and after running Windows Update. Only one history record will be
 recorded per build number. The history file is in CSV format.
 
+The Options page has options that determine how the application runs.
 
-The information on the first two pages can be copied to the clipboard by 
+The About page displays version information and a link to the GitHib repository.
 
+The information on the first two pages can be copied to the clipboard by clicking on the Copy button
+in the lower left corner.
 
 
 Command Line Option
 ===================
 Specifying the /hide option on the command line will start TimVer, update the history file and then
 shutdown without showing the window. This option is intended to be used in automation after reboot
-to keep a more accurate history file. When checked, the Update History on Windows Startup option on
-the File menu will add a key to HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\ that will run
-TimVer with the /hide option every time Windows starts. Unchecking this option will remove the key.
+to keep a more accurate history file. When checked, the "Update history on Windows startup"" option
+on the Options page will add a key to HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\ that will
+run TimVer with the /hide option every time Windows starts. Unchecking this option will remove the key.
 
 
 Uninstalling
@@ -46,7 +51,7 @@ To uninstall use the regular Windows add/remove programs feature.
 
 Notices and License
 ===================
-TimVer was written in C# by Tim Kennedy. TimVer requires .Net 6.
+TimVer was written in C# by Tim Kennedy and now requires .Net 6.
 
 TimVer uses the following NuGet packages:
 
