@@ -38,11 +38,11 @@
                 DockPanel.Dock="Top"
                 Style="{DynamicResource BtnStyle1}" />
             <Button
+                Margin="0,5,0,5"
                 VerticalAlignment="Bottom"
                 Click="BtnClick_Page5"
                 Content="About"
                 DockPanel.Dock="Bottom"
-                Margin="0,5,0,5"
                 Style="{DynamicResource BtnStyle1}" />
             <Button
                 VerticalAlignment="Bottom"
@@ -51,6 +51,7 @@
                 DockPanel.Dock="Bottom"
                 Style="{DynamicResource BtnStyle1}" />
         </DockPanel>
+
         <Frame
             x:Name="MainFrame"
             Margin="140,10,10,10"

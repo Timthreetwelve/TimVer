@@ -1,13 +1,5 @@
 ﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-#region Using directives
-using System;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
-using System.Windows;
-#endregion Using directives
-
 namespace TimVer;
 
 /// <summary>

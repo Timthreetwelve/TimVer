@@ -4,13 +4,8 @@
 // https://stackoverflow.com/a/56961180/10277297 and https://stackoverflow.com/a/62220399/10277297
 
 #region Using directives
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Reflection;
 using System.Text.Json;
-using System.Windows;
 #endregion Using directives
 
 namespace TimVer

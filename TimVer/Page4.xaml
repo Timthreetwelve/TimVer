@@ -75,17 +75,23 @@
             Content="Display disk drives on Computer Information page"
             IsChecked="{Binding ShowDrives, Source={x:Static local:UserSettings.Setting}}" />
 
+        <CheckBox
+            Grid.Row="5"
+            Grid.Column="1"
+            VerticalAlignment="Bottom"
+            VerticalContentAlignment="Center"
+            Content="Include debug messages in log"
+            IsChecked="{Binding IncludeDebug, Source={x:Static local:UserSettings.Setting}}" />
+
         <Button
-            x:Name="btnOpenLog"
             Grid.Row="8"
             Grid.Column="1"
-            Width="85"
+            Width="80"
             Margin="0,5"
             HorizontalAlignment="Left"
             VerticalAlignment="Bottom"
             Click="BtnOpenLog_Click"
-            Content="Debug Log"
+            Content="Open Log"
             Style="{DynamicResource BtnStyle2}" />
-
     </Grid>
 </Page>

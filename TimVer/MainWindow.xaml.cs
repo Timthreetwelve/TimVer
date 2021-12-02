@@ -1,13 +1,24 @@
 ﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 #region using directives
-using NLog;
-using System;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Reflection;
-using System.Windows;
-using TKUtils;
+global using Microsoft.Win32;
+global using System;
+global using System.ComponentModel;
+global using System.Diagnostics;
+global using System.IO;
+global using System.Linq;
+global using System.Reflection;
+global using System.Text;
+global using System.Windows;
+global using System.Windows.Controls;
+global using NLog;
+global using NLog.Targets;
+global using TKUtils;
+global using System.Windows.Navigation;
+global using System.Collections.Generic;
+global using System.Globalization;
+global using CsvHelper;
+global using CsvHelper.Configuration;
 #endregion using directives
 
 namespace TimVer;
@@ -52,10 +63,14 @@ public partial class MainWindow : Window
         // Startup message in the temp file
         log.Info($"{AppInfo.AppName} {AppInfo.TitleVersion} is starting up.");
 
+        // NLog logging level
+        LogManager.Configuration.Variables["logLev"] = UserSettings.Setting.IncludeDebug ? "Debug" : "Info";
+        LogManager.ReconfigExistingLoggers();
+
         // .NET version
-        string runtimeVer = System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription.Replace(".NET","");
+        string runtimeVer = System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription.Replace(".NET", "");
         string version = Environment.Version.ToString();
-        log.Info($".NET version: {runtimeVer}    {version}.");
+        log.Debug($".NET version: {runtimeVer}    {version}.");
 
         // Window position
         Top = UserSettings.Setting.WindowTop;
@@ -134,6 +149,17 @@ public partial class MainWindow : Window
         {
             case "KeepOnTop":
                 Topmost = (bool)newValue;
+                break;
+            case "IncludeDebug":
+                if ((bool)newValue)
+                {
+                    LogManager.Configuration.Variables["logLev"] = "Debug";
+                }
+                else
+                {
+                    LogManager.Configuration.Variables["logLev"] = "Info";
+                }
+                LogManager.ReconfigExistingLoggers();
                 break;
         }
         log.Debug($"Setting change: {e.PropertyName} New Value: {newValue}");

@@ -1,11 +1,5 @@
 ﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-#region Using directives
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-#endregion Using directives
-
 namespace TimVer;
 
 /// <summary>

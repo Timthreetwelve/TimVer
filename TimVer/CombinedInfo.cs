@@ -1,11 +1,5 @@
 ﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-#region Using directives
-using System;
-using System.IO;
-using System.Text;
-#endregion Using directives
-
 namespace TimVer;
 
 /// <summary>
@@ -13,6 +7,10 @@ namespace TimVer;
 /// </summary>
 internal static class CombinedInfo
 {
+    #region NLog Instance
+    private static readonly Logger log = LogManager.GetCurrentClassLogger();
+    #endregion NLog Instance
+
     public static string Arch => GetInfo.CimQueryOS("OSArchitecture");
 
     public static string BootDevice => GetInfo.CimQueryOS("BootDevice");
@@ -40,9 +38,10 @@ internal static class CombinedInfo
                 {
                     if (drive.IsReady)
                     {
-                        sb.Append(drive.Name.Replace("\\", "  "));
+                        _ = sb.Append(drive.Name.Replace("\\", " "));
                     }
                 }
+                log.Debug($"Disk Drives: {sb}");
                 return sb.ToString();
             }
             else
@@ -112,5 +111,5 @@ internal static class CombinedInfo
         }
     }
 
-    public static string WindowsFolder => Environment.GetFolderPath(Environment.SpecialFolder.Windows);
+    public static string WindowsFolder => GetInfo.GetSpecialFolder(Environment.SpecialFolder.Windows);
 }

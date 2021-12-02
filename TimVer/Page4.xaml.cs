@@ -1,16 +1,10 @@
 ﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-#region using directives
-using System;
-using System.Windows;
-using System.Windows.Controls;
-using NLog;
-using NLog.Targets;
-using TKUtils;
-#endregion using directives
-
 namespace TimVer;
 
+/// <summary>
+/// Display the Options page
+/// </summary>
 public partial class Page4 : Page
 {
     #region NLog Instance

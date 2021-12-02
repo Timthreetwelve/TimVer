@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace TimVer;
@@ -12,6 +11,7 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
     {
         // Set defaults
         GridZoom = 1;
+        IncludeDebug = false;
         KeepOnTop = false;
         ShowUser = true;
         ShowUser = true;
@@ -21,6 +21,16 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
     #endregion Constructor
 
     #region Properties
+
+    public bool IncludeDebug
+    {
+        get => includeDebug;
+        set
+        {
+            includeDebug = value;
+            OnPropertyChanged();
+        }
+    }
 
     public bool KeepOnTop
     {
@@ -96,6 +106,7 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
     #endregion Properties
 
     #region Private backing fields
+    private bool includeDebug;
     private bool keepOnTop;
     private double gridZoom;
     private bool showDrives;

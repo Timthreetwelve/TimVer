@@ -1,20 +1,10 @@
 ﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-#region using directives
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Windows;
-using System.Windows.Controls;
-using CsvHelper;
-using CsvHelper.Configuration;
-using NLog;
-#endregion using directives
-
 namespace TimVer;
+
+/// <summary>
+/// Displays the history page
+/// </summary>
 public partial class Page3 : Page
 {
     #region NLog Instance

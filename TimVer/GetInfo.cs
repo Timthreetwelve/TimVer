@@ -3,7 +3,6 @@
 #region Using directives
 using Microsoft.Management.Infrastructure;
 using Microsoft.Win32;
-using System;
 using System.Linq;
 #endregion Using directives
 
@@ -14,6 +13,10 @@ namespace TimVer
     /// </summary>
     public static class GetInfo
     {
+        #region NLog Instance
+        private static readonly Logger log = LogManager.GetCurrentClassLogger();
+        #endregion NLog Instance
+
         #region Get registry information
         /// <summary>
         /// Gets a value from HKLM\Software\Microsoft\Windows NT\CurrentVersion
@@ -25,10 +28,13 @@ namespace TimVer
             try
             {
                 using RegistryKey key = Registry.LocalMachine.OpenSubKey(@"Software\Microsoft\Windows NT\CurrentVersion");
-                return key.GetValue(value) != null ? key.GetValue(value).ToString() : "no data";
+                string retval = key.GetValue(value) != null ? key.GetValue(value).ToString() : "no data";
+                log.Debug($"Registry: {value} = {retval}");
+                return retval;
             }
             catch (Exception ex)
             {
+                log.Error(ex, "Registry call failed.");
                 return ex.Message;
             }
         }
@@ -45,11 +51,14 @@ namespace TimVer
             try
             {
                 CimSession cim = CimSession.Create(null);
-                return cim.QueryInstances("root/cimv2", "WQL", $"SELECT {value} From Win32_OperatingSystem")
+                string retval = cim.QueryInstances("root/cimv2", "WQL", $"SELECT {value} From Win32_OperatingSystem")
                     .FirstOrDefault()?.CimInstanceProperties[value].Value.ToString();
+                log.Debug($"Win32_OperatingSystem: {value} = {retval}");
+                return retval;
             }
             catch (Exception ex)
             {
+                log.Error(ex, "Win32_OperatingSystem call failed.");
                 return ex.Message;
             }
         }
@@ -66,11 +75,14 @@ namespace TimVer
             try
             {
                 CimSession cim = CimSession.Create(null);
-                return cim.QueryInstances("root/cimv2", "WQL", $"SELECT {value} From Win32_ComputerSystem")
+                string retval = cim.QueryInstances("root/cimv2", "WQL", $"SELECT {value} From Win32_ComputerSystem")
                     .FirstOrDefault()?.CimInstanceProperties[value].Value.ToString();
+                log.Debug($"Win32_ComputerSystem: {value} = {retval}");
+                return retval;
             }
             catch (Exception ex)
             {
+                log.Error(ex, "Win32_ComputerSystem call failed.");
                 return ex.Message;
             }
         }
@@ -87,11 +99,14 @@ namespace TimVer
             try
             {
                 CimSession cim = CimSession.Create(null);
-                return cim.QueryInstances("root/cimv2", "WQL", $"SELECT {value} From Win32_Processor")
+                string retval = cim.QueryInstances("root/cimv2", "WQL", $"SELECT {value} From Win32_Processor")
                     .FirstOrDefault()?.CimInstanceProperties[value].Value.ToString();
+                log.Debug($"Win32_Processor: {value} = {retval}");
+                return retval;
             }
             catch (Exception ex)
             {
+                log.Error(ex, "Win32_Processor call failed.");
                 return ex.Message;
             }
         }
@@ -99,14 +114,30 @@ namespace TimVer
 
         #region Get environment variable
         /// <summary>
-        /// Get CIM value from Win32_Processor
+        /// Get environment variable
         /// </summary>
         /// <param name="value">Value to retrieve</param>
         /// <returns>Data for value</returns>
         public static string GetEnvironment(string value)
         {
-            return Environment.GetEnvironmentVariable(value);
+            string retval = Environment.GetEnvironmentVariable(value);
+            log.Debug($"Environment: {value} variable = {retval}");
+            return retval;
         }
         #endregion Get environment variable
+
+        #region Get special folder
+        /// <summary>
+        /// Get special folder
+        /// </summary>
+        /// <param name="value">Special folder name</param>
+        /// <returns>Path to folder</returns>
+        public static string GetSpecialFolder(Environment.SpecialFolder value)
+        {
+            string retval = Environment.GetFolderPath(value);
+            log.Debug($"Environment: {value} folder = {retval}");
+            return retval;
+        }
+        #endregion Get special folder
     }
 }
