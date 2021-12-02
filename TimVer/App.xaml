@@ -7,6 +7,8 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries />
+
+            <!--#region Style for buttons in the left side navigation bar-->
             <Style x:Key="BtnStyle1" TargetType="{x:Type Button}">
                 <Setter Property="HorizontalContentAlignment" Value="Left" />
                 <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -14,7 +16,7 @@
                 <Setter Property="Height" Value="30" />
                 <Setter Property="Width" Value="110" />
                 <Setter Property="FontSize" Value="14" />
-                <Setter Property="Margin" Value="0,0,0,5" />
+                <Setter Property="Margin" Value="0,5,0,0" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Button}">
@@ -23,7 +25,7 @@
                                     x:Name="border"
                                     Background="White"
                                     BorderBrush="White"
-                                    BorderThickness="0"
+                                    BorderThickness="1.5"
                                     CornerRadius="5">
                                     <ContentPresenter
                                         Margin="7,0"
@@ -45,6 +47,9 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            <!--#endregion-->
+
+            <!--#region Style for buttons used in various pages-->
             <Style x:Key="BtnStyle2" TargetType="{x:Type Button}">
                 <Setter Property="HorizontalContentAlignment" Value="Left" />
                 <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -60,7 +65,7 @@
                                     x:Name="border"
                                     Background="WhiteSmoke"
                                     BorderBrush="LightGray"
-                                    BorderThickness="1"
+                                    BorderThickness="1.5"
                                     CornerRadius="5">
                                     <ContentPresenter
                                         Margin="7,0"
@@ -82,6 +87,9 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            <!--#endregion-->
+
+            <!--#region Style for the headers of the various pages-->
             <Style x:Key="PageHeader" TargetType="TextBlock">
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="FontWeight" Value="DemiBold" />
@@ -92,6 +100,8 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
+            <!--#endregion-->
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

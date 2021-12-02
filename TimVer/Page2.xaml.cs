@@ -8,6 +8,9 @@ using System.Windows.Controls;
 
 namespace TimVer;
 
+/// <summary>
+/// Displays Computer information
+/// </summary>
 public partial class Page2 : Page
 {
     public Page2()
@@ -15,7 +18,7 @@ public partial class Page2 : Page
         InitializeComponent();
 
         // workaround for a weird binding error that I couldn't resolve
-        tbDiskDrives.Text = InfoVM.DiskDrives;
+        tbDiskDrives.Text = CombinedInfo.DiskDrives;
     }
 
     #region Copy to clipboard
@@ -24,21 +27,21 @@ public partial class Page2 : Page
         CopyToClipboard();
     }
 
-    private void CopyToClipboard()
+    private static void CopyToClipboard()
     {
         StringBuilder builder = new();
         _ = builder.AppendLine("COMPUTER INFORMATION");
-        _ = builder.Append("Manufacturer    = ").AppendLine(InfoVM.Manufacturer);
-        _ = builder.Append("Model           = ").AppendLine(InfoVM.Model);
-        _ = builder.Append("Machine Name    = ").AppendLine(InfoVM.MachName);
-        _ = builder.Append("Last Rebooted   = ").AppendLine(InfoVM.LastBoot);
-        _ = builder.Append("CPU             = ").AppendLine(InfoVM.ProcName);
-        _ = builder.Append("Total Cores     = ").AppendLine(InfoVM.ProcCores);
-        _ = builder.Append("Architecture    = ").AppendLine(InfoVM.ProcArch);
-        _ = builder.Append("Physical Memory = ").AppendLine(InfoVM.TotalMemory);
+        _ = builder.Append("Manufacturer    = ").AppendLine(CombinedInfo.Manufacturer);
+        _ = builder.Append("Model           = ").AppendLine(CombinedInfo.Model);
+        _ = builder.Append("Machine Name    = ").AppendLine(CombinedInfo.MachName);
+        _ = builder.Append("Last Rebooted   = ").AppendLine(CombinedInfo.LastBoot);
+        _ = builder.Append("CPU             = ").AppendLine(CombinedInfo.ProcName);
+        _ = builder.Append("Total Cores     = ").AppendLine(CombinedInfo.ProcCores);
+        _ = builder.Append("Architecture    = ").AppendLine(CombinedInfo.ProcArch);
+        _ = builder.Append("Physical Memory = ").AppendLine(CombinedInfo.TotalMemory);
         if (UserSettings.Setting.ShowDrives)
         {
-            _ = builder.Append("Disk Drives     = ").AppendLine(InfoVM.DiskDrives);
+            _ = builder.Append("Disk Drives     = ").AppendLine(CombinedInfo.DiskDrives);
         }
         Clipboard.SetText(builder.ToString());
     }

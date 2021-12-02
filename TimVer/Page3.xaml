@@ -61,13 +61,13 @@
                     ElementStyle="{StaticResource ColumnMargins}"
                     Header="Build" />
                 <DataGridTextColumn
-                    Binding="{Binding HBranch}"
-                    ElementStyle="{StaticResource ColumnMargins}"
-                    Header="Branch" />
-                <DataGridTextColumn
                     Binding="{Binding HVersion}"
                     ElementStyle="{StaticResource ColumnMargins}"
                     Header="Version" />
+                <DataGridTextColumn
+                    Binding="{Binding HBranch}"
+                    ElementStyle="{StaticResource ColumnMargins}"
+                    Header="Branch" />
             </DataGrid.Columns>
             <DataGrid.ContextMenu>
                 <ContextMenu>

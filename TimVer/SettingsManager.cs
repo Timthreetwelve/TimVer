@@ -1,6 +1,5 @@
-// --------------------------------------------------------
-// This is the .NET 5 version using System.Text.Json
-// --------------------------------------------------------
+// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+
 // Inspired by these answers on Stack Overflow:
 // https://stackoverflow.com/a/56961180/10277297 and https://stackoverflow.com/a/62220399/10277297
 
@@ -14,7 +13,7 @@ using System.Text.Json;
 using System.Windows;
 #endregion Using directives
 
-namespace TKUtils
+namespace TimVer
 {
     /// <summary>
     /// A class and methods for reading, updating and saving user settings in a JSON file
@@ -135,7 +134,7 @@ namespace TKUtils
         {
             try
             {
-                JsonSerializerOptions opts = new JsonSerializerOptions
+                JsonSerializerOptions opts = new()
                 {
                     AllowTrailingCommas = true,
                     ReadCommentHandling = JsonCommentHandling.Skip,
@@ -185,7 +184,7 @@ namespace TKUtils
         public static Dictionary<string, object> ListSettings()
         {
             Type type = typeof(T);
-            Dictionary<string, object> properties = new Dictionary<string, object>();
+            Dictionary<string, object> properties = new();
             foreach (PropertyInfo p in type.GetProperties())
             {
                 properties.Add(p.Name, p.GetValue(Setting));

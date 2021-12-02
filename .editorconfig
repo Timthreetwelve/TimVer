@@ -1,0 +1,8 @@
+﻿[*.cs]
+
+# RCS1158: Static member in generic type should use a type parameter.
+dotnet_diagnostic.RCS1158.severity = none
+
+csharp_style_prefer_switch_expression=false:suggestion
+
+csharp_style_namespace_declarations=file_scoped:silent

@@ -9,6 +9,9 @@ using System.Linq;
 
 namespace TimVer
 {
+    /// <summary>
+    /// Gets information from the registry, CIM or the Environment
+    /// </summary>
     public static class GetInfo
     {
         #region Get registry information
@@ -29,7 +32,7 @@ namespace TimVer
                 return ex.Message;
             }
         }
-        #endregion
+        #endregion Get registry information
 
         #region Get OS information
         /// <summary>
@@ -71,7 +74,7 @@ namespace TimVer
                 return ex.Message;
             }
         }
-        #endregion
+        #endregion Get System Information
 
         #region Get Processor Information
         /// <summary>
@@ -92,7 +95,7 @@ namespace TimVer
                 return ex.Message;
             }
         }
-        #endregion
+        #endregion Get Processor Information
 
         #region Get environment variable
         /// <summary>

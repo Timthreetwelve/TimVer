@@ -26,7 +26,6 @@
                 Click="BtnClick_Page1"
                 Content="Windows Info"
                 DockPanel.Dock="Top"
-                Margin="0,5,0,0"
                 Style="{DynamicResource BtnStyle1}" />
             <Button
                 Click="BtnClick_Page2"
@@ -43,6 +42,7 @@
                 Click="BtnClick_Page5"
                 Content="About"
                 DockPanel.Dock="Bottom"
+                Margin="0,5,0,5"
                 Style="{DynamicResource BtnStyle1}" />
             <Button
                 VerticalAlignment="Bottom"

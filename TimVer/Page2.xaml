@@ -48,7 +48,7 @@
         <TextBlock
             Grid.Row="1"
             Grid.Column="2"
-            Text="{Binding Source={x:Static local:InfoVM.Manufacturer}}" />
+            Text="{Binding Source={x:Static local:CombinedInfo.Manufacturer}}" />
 
         <TextBlock
             Grid.Row="2"
@@ -57,7 +57,7 @@
         <TextBlock
             Grid.Row="2"
             Grid.Column="2"
-            Text="{Binding Source={x:Static local:InfoVM.Model}}" />
+            Text="{Binding Source={x:Static local:CombinedInfo.Model}}" />
 
         <TextBlock
             Grid.Row="3"
@@ -66,7 +66,7 @@
         <TextBlock
             Grid.Row="3"
             Grid.Column="2"
-            Text="{Binding Source={x:Static local:InfoVM.MachName}}" />
+            Text="{Binding Source={x:Static local:CombinedInfo.MachName}}" />
 
         <TextBlock
             Grid.Row="4"
@@ -75,7 +75,7 @@
         <TextBlock
             Grid.Row="4"
             Grid.Column="2"
-            Text="{Binding Source={x:Static local:InfoVM.LastBoot}}" />
+            Text="{Binding Source={x:Static local:CombinedInfo.LastBoot}}" />
 
         <TextBlock
             Grid.Row="5"
@@ -84,7 +84,7 @@
         <TextBlock
             Grid.Row="5"
             Grid.Column="2"
-            Text="{Binding Source={x:Static local:InfoVM.ProcName}}"
+            Text="{Binding Source={x:Static local:CombinedInfo.ProcName}}"
             TextWrapping="NoWrap" />
 
         <TextBlock
@@ -94,7 +94,7 @@
         <TextBlock
             Grid.Row="6"
             Grid.Column="2"
-            Text="{Binding Source={x:Static local:InfoVM.ProcCores}}" />
+            Text="{Binding Source={x:Static local:CombinedInfo.ProcCores}}" />
 
         <TextBlock
             Grid.Row="7"
@@ -103,7 +103,7 @@
         <TextBlock
             Grid.Row="7"
             Grid.Column="2"
-            Text="{Binding Source={x:Static local:InfoVM.ProcArch}}" />
+            Text="{Binding Source={x:Static local:CombinedInfo.ProcArch}}" />
 
         <TextBlock
             Grid.Row="8"
@@ -112,7 +112,7 @@
         <TextBlock
             Grid.Row="8"
             Grid.Column="2"
-            Text="{Binding Source={x:Static local:InfoVM.TotalMemory}}" />
+            Text="{Binding Source={x:Static local:CombinedInfo.TotalMemory}}" />
 
         <TextBlock
             Grid.Row="9"

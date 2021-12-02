@@ -136,7 +136,7 @@ public partial class MainWindow : Window
                 Topmost = (bool)newValue;
                 break;
         }
-        log.Debug($"***Setting change: {e.PropertyName} New Value: {newValue}");
+        log.Debug($"Setting change: {e.PropertyName} New Value: {newValue}");
     }
     #endregion Setting change
 

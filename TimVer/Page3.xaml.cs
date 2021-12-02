@@ -60,11 +60,11 @@ public partial class Page3 : Page
     #region Write the history file
     public static void WriteHistory()
     {
-        //InfoVM vm = new();
+        //CombinedInfo vm = new();
         History newHist = new();
-        newHist.HBuild = InfoVM.Build;
-        newHist.HVersion = InfoVM.Version;
-        newHist.HBranch = InfoVM.BuildBranch;
+        newHist.HBuild = CombinedInfo.Build;
+        newHist.HVersion = CombinedInfo.Version;
+        newHist.HBranch = CombinedInfo.BuildBranch;
         newHist.HDate = DateTime.Now.ToString("yyyy/MM/dd HH:mm");
 
         CsvConfiguration config = new(CultureInfo.InvariantCulture);

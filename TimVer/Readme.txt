@@ -25,13 +25,9 @@ The third page shows history information from the previous times TimVer was run.
 to compare build numbers before and after running Windows Update. Only one history record will be
 recorded per build number. The history file is in CSV format.
 
-The pages can be selected either from the Views menu or by pressing Ctrl + 1, 2 or 3.
 
-The information on the first two pages can be copied to the clipboard by pressing Ctrl + C or by
-selecting Copy to Clipboard from the File menu.
+The information on the first two pages can be copied to the clipboard by 
 
-The window can be zoomed in and out by using the NumPad + and NumPad - keys or by holding the Ctrl
-key and using the mouse wheel. The zoom can be reset by pressing the NumPad 0 key
 
 
 Command Line Option
@@ -40,7 +36,7 @@ Specifying the /hide option on the command line will start TimVer, update the hi
 shutdown without showing the window. This option is intended to be used in automation after reboot
 to keep a more accurate history file. When checked, the Update History on Windows Startup option on
 the File menu will add a key to HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\ that will run
-TimVer with the /hide option everytime Windows starts. Unchecking this option will remove the key.
+TimVer with the /hide option every time Windows starts. Unchecking this option will remove the key.
 
 
 Uninstalling
@@ -50,19 +46,19 @@ To uninstall use the regular Windows add/remove programs feature.
 
 Notices and License
 ===================
-TimVer was written in C# by Tim Kennedy. TimVer requires .Net Framework version 4.8.
+TimVer was written in C# by Tim Kennedy. TimVer requires .Net 6.
 
-TimVer uses the following icons & packages:
+TimVer uses the following NuGet packages:
 
-Icons are from the Fugue Icons set https://p.yusukekamiyamane.com/
+NLog https://nlog-project.org/
 
-NLog 4.7.12 https://nlog-project.org/
+CSVHelper https://joshclose.github.io/CsvHelper/
 
-Json.net 13.0.1 from Newtonsoft https://www.newtonsoft.com/json
+Microsoft.Management.Infrastructure https://github.com/PowerShell/MMI
 
-TinyCsvParser 2.6.1 from Philipp Wagner https://github.com/bytefish/TinyCsvParser
+Inno Setup was used to create the installer. https://jrsoftware.org/isinfo.php
 
-Inno Setup 6.2.0 was used to create the installer. https://jrsoftware.org/isinfo.php
+
 
 MIT License
 Copyright (c) 2019 - 2021 Tim Kennedy

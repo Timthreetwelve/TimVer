@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:TimVer"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DataContext="{d:DesignInstance Type=local:Page5}"
     d:DesignHeight="400"
     d:DesignWidth="450"
     FontSize="14"
@@ -32,13 +33,16 @@
         </Grid.RowDefinitions>
         <!--#endregion-->
 
+        <!--#region Page header-->
         <TextBlock
             Grid.Row="0"
             Grid.Column="1"
             Grid.ColumnSpan="2"
             Style="{DynamicResource PageHeader}"
             Text="ABOUT TIMVER" />
+        <!--#endregion-->
 
+        <!--#region Text blocks-->
         <TextBlock
             x:Name="tbName"
             Grid.Row="1"
@@ -89,14 +93,16 @@
         </TextBlock>
 
         <TextBlock
-           Grid.Row="6"
-           Grid.Column="1"
-           Text="Commit ID: " />
+            Grid.Row="6"
+            Grid.Column="1"
+            Text="Commit ID: " />
         <TextBlock
-           x:Name="tbCommit"
-           Grid.Row="6"
-           Grid.Column="2" />
+            x:Name="tbCommit"
+            Grid.Row="6"
+            Grid.Column="2" />
+        <!--#endregion-->
 
+        <!--#region Button to open readme file-->
         <Button
             Grid.Row="8"
             Grid.Column="1"
@@ -108,6 +114,7 @@
             Click="BtnReadme_Click"
             Content="ReadMe"
             Style="{DynamicResource BtnStyle2}" />
+        <!--#endregion-->
     </Grid>
 
 </Page>

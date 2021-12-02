@@ -1,14 +1,19 @@
 ﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
+#region Using directives
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+#endregion Using directives
 
 namespace TimVer;
 
+/// <summary>
+/// Displays the About page
+/// </summary>
 public partial class Page5 : Page
 {
     public Page5()

@@ -36,32 +36,31 @@ namespace TKUtils
                 Assembly.GetEntryAssembly().GetName().Version.ToString();
 
         /// <summary>
-        /// Returns the app's full path including the EXE name
+        /// Returns the full path including the EXE name
         /// </summary>
         public static string AppPath =>
-                // Assembly.GetEntryAssembly().Location;
-                Process.GetCurrentProcess().MainModule.FileName;
+                Environment.ProcessPath;
 
         /// <summary>
-        /// Returns the app's full path excluding the EXE name
+        /// Returns the full path excluding the EXE name
         /// </summary>
         public static string AppDirectory =>
                 Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
 
         /// <summary>
-        /// Returns the app's name without the extension
+        /// Returns the name without the extension
         /// </summary>
         public static string AppName =>
                 Assembly.GetEntryAssembly().GetName().Name;
 
         /// <summary>
-        /// Returns the app's name with the extension
+        /// Returns the name with the extension
         /// </summary>
         public static string AppExeName =>
                 Path.GetFileName(Assembly.GetEntryAssembly().Location);
 
         /// <summary>
-        /// Returns the app's full name (name, version, culture, etc.)
+        /// Returns the full name (name, version, culture, etc.)
         /// </summary>
         public static string AppFullName =>
                 Assembly.GetEntryAssembly().GetName().FullName;
@@ -74,14 +73,7 @@ namespace TKUtils
             get
             {
                 var info = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).CompanyName;
-                if (!string.IsNullOrWhiteSpace(info))
-                {
-                    return info;
-                }
-                else
-                {
-                    return "missing";
-                }
+                return !string.IsNullOrWhiteSpace(info) ? info : "missing";
             }
         }
 
@@ -93,14 +85,7 @@ namespace TKUtils
             get
             {
                 var info = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).LegalCopyright;
-                if (!string.IsNullOrWhiteSpace(info))
-                {
-                    return info;
-                }
-                else
-                {
-                    return "missing";
-                }
+                return !string.IsNullOrWhiteSpace(info) ? info : "missing";
             }
         }
 
@@ -112,14 +97,7 @@ namespace TKUtils
             get
             {
                 string info = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).ProductName;
-                if (!string.IsNullOrWhiteSpace(info))
-                {
-                    return info;
-                }
-                else
-                {
-                    return "missing";
-                }
+                return !string.IsNullOrWhiteSpace(info) ? info : "missing";
             }
         }
 
@@ -131,14 +109,7 @@ namespace TKUtils
             get
             {
                 string info = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).FileName;
-                if (!string.IsNullOrWhiteSpace(info))
-                {
-                    return info;
-                }
-                else
-                {
-                    return "missing";
-                }
+                return !string.IsNullOrWhiteSpace(info) ? info : "missing";
             }
         }
 
@@ -152,7 +123,7 @@ namespace TKUtils
         /// Returns the Process ID as Int
         /// </summary>
         public static int AppProcessID =>
-                Process.GetCurrentProcess().Id;
+                Environment.ProcessId;
 
         /// <summary>
         /// Returns the Process Start Time as DateTime
