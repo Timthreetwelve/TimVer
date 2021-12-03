@@ -11,8 +11,10 @@
 TimVer will display the same Windows version related information as the built-in Winver command,
 with additional information that Winver doesn't display.
 
-👉  TimVer requires .Net Framework 4.8 
+✨ TimVer now requires .NET 6
 
-<br/>
+## Screenshots
 
-![TimVer screenshot](/Images/TimVer.png)
+![Windows Info](https://github.com/Timthreetwelve/TimVer/blob/main/Images/Timver_W.png)
+
+![Computer Info](https://github.com/Timthreetwelve/TimVer/blob/main/Images/Timver_C.png)
