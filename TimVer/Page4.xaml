@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Page4"
     d:DesignHeight="400"
-    d:DesignWidth="450"
+    d:DesignWidth="600"
     FontSize="14"
     Loaded="Page_Loaded"
     mc:Ignorable="d">
@@ -32,13 +32,16 @@
         </Grid.RowDefinitions>
         <!--#endregion-->
 
+        <!--#region Page header -->
         <TextBlock
             Grid.Row="0"
             Grid.Column="1"
             Grid.ColumnSpan="2"
             Style="{DynamicResource PageHeader}"
             Text="OPTIONS" />
+        <!--#endregion-->
 
+        <!--#region Check boxes -->
         <CheckBox
             Grid.Row="1"
             Grid.Column="1"
@@ -78,11 +81,24 @@
         <CheckBox
             Grid.Row="5"
             Grid.Column="1"
+            Margin="20,4,0,0"
+            VerticalAlignment="Center"
+            VerticalContentAlignment="Center"
+            Checked="CbxHsitory_Checked"
+            Content="Include drive labels"
+            IsChecked="{Binding ShowLabels, Source={x:Static local:UserSettings.Setting}}"
+            IsEnabled="{Binding ShowDrives, Source={x:Static local:UserSettings.Setting}}" />
+
+        <CheckBox
+            Grid.Row="6"
+            Grid.Column="1"
             VerticalAlignment="Bottom"
             VerticalContentAlignment="Center"
             Content="Include debug messages in log"
             IsChecked="{Binding IncludeDebug, Source={x:Static local:UserSettings.Setting}}" />
+        <!--#endregion-->
 
+        <!--#region Button at bottom -->
         <Button
             Grid.Row="8"
             Grid.Column="1"
@@ -92,6 +108,8 @@
             VerticalAlignment="Bottom"
             Click="BtnOpenLog_Click"
             Content="Open Log"
-            Style="{DynamicResource BtnStyle2}" />
+            Style="{DynamicResource BtnStyle2}"
+            ToolTip="Open the log file in the default application" />
+        <!--#endregion-->
     </Grid>
 </Page>

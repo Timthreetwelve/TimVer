@@ -8,6 +8,12 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries />
 
+            <!--#region Style for text blocks-->
+            <Style TargetType="{x:Type TextBlock}">
+                <Setter Property="TextTrimming" Value="WordEllipsis" />
+            </Style>
+            <!--#endregion-->
+
             <!--#region Style for buttons in the left side navigation bar-->
             <Style x:Key="BtnStyle1" TargetType="{x:Type Button}">
                 <Setter Property="HorizontalContentAlignment" Value="Left" />

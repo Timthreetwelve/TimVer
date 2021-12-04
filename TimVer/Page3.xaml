@@ -7,16 +7,19 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Page3"
     d:DesignHeight="400"
-    d:DesignWidth="400"
+    d:DesignWidth="600"
     FontSize="14"
     mc:Ignorable="d">
 
+    <!--#region Style for datagrid-->
     <Page.Resources>
         <Style x:Key="ColumnMargins" TargetType="TextBlock">
             <Setter Property="Margin" Value="5,0,15,0" />
         </Style>
     </Page.Resources>
+    <!--#endregion-->
 
+    <!--#region Row & Column definitions-->
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
@@ -28,11 +31,17 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="30" />
         </Grid.RowDefinitions>
+        <!--#endregion-->
+
+        <!--#region Page headder-->
         <TextBlock
             Grid.Row="0"
             Grid.Column="1"
             Style="{DynamicResource PageHeader}"
             Text="HISTORY" />
+        <!--#endregion-->
+
+        <!--#region Datagrid-->
         <DataGrid
             x:Name="HistoryGrid"
             Grid.Row="1"
@@ -75,6 +84,9 @@
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>
+        <!--#endregion-->
+
+        <!--#region Text block at bottom-->
         <TextBlock
             Grid.Row="2"
             Grid.Column="1"
@@ -83,5 +95,6 @@
             FontSize="13"
             Foreground="Gray"
             Text="A new history record is added when the build number changes." />
+        <!--#endregion-->
     </Grid>
 </Page>

@@ -7,17 +7,22 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Page2"
     d:DesignHeight="400"
-    d:DesignWidth="400"
+    d:DesignWidth="600"
     FontSize="14"
     mc:Ignorable="d">
+
+    <!--#region Converter -->
     <Page.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </Page.Resources>
+    <!--#endregion-->
+
+    <!--#region Row & Column definitions-->
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
             <ColumnDefinition Width="130" />
-            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="*" />
             <ColumnDefinition Width="10" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -34,13 +39,18 @@
             <RowDefinition Height="25" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        <!--#endregion-->
+
+        <!--#region Row & Column definitions -->
         <TextBlock
             Grid.Row="0"
             Grid.Column="1"
             Grid.ColumnSpan="2"
             Style="{DynamicResource PageHeader}"
             Text="COMPUTER INFORMATION" />
+        <!--#endregion-->
 
+        <!--#region Text blocks -->
         <TextBlock
             Grid.Row="1"
             Grid.Column="1"
@@ -80,12 +90,11 @@
         <TextBlock
             Grid.Row="5"
             Grid.Column="1"
-            Text="CPU" />
+            Text="Processor" />
         <TextBlock
             Grid.Row="5"
             Grid.Column="2"
-            Text="{Binding Source={x:Static local:CombinedInfo.ProcName}}"
-            TextWrapping="NoWrap" />
+            Text="{Binding Source={x:Static local:CombinedInfo.ProcName}}" />
 
         <TextBlock
             Grid.Row="6"
@@ -124,7 +133,9 @@
             Grid.Row="9"
             Grid.Column="2"
             Visibility="{Binding ShowDrives, Source={x:Static local:UserSettings.Setting}, Converter={StaticResource BooleanToVisibilityConverter}}" />
+        <!--#endregion-->
 
+        <!--#region Copy button -->
         <Button
             x:Name="btnCopy"
             Grid.Row="12"
@@ -135,6 +146,8 @@
             VerticalAlignment="Bottom"
             Click="BtnCopy_Click"
             Content="Copy"
-            Style="{DynamicResource BtnStyle2}" />
+            Style="{DynamicResource BtnStyle2}"
+            ToolTip="Copy Computer Information to the clipboard" />
+        <!--#endregion-->
     </Grid>
 </Page>

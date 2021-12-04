@@ -5,17 +5,19 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:TimVer"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DataContext="{d:DesignInstance Type=local:Page1}"
     Title="Page1"
     d:DesignHeight="400"
-    d:DesignWidth="400"
+    d:DesignWidth="600"
     FontSize="14"
     mc:Ignorable="d">
 
+    <!--#region Converter -->
     <Page.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </Page.Resources>
+    <!--#endregion-->
 
+    <!--#region Row & Column headers-->
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
@@ -37,13 +39,18 @@
             <RowDefinition Height="25" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        <!--#endregion-->
+
+        <!--#region Page header-->
         <TextBlock
             Grid.Row="0"
             Grid.Column="1"
             Grid.ColumnSpan="2"
             Style="{DynamicResource PageHeader}"
             Text="WINDOWS INFORMATION" />
+        <!--#endregion-->
 
+        <!--#region Text blocks -->
         <TextBlock
             Grid.Row="1"
             Grid.Column="1"
@@ -136,7 +143,9 @@
             Grid.Column="2"
             Text="{Binding Source={x:Static local:CombinedInfo.RegUser}}"
             Visibility="{Binding ShowUser, Source={x:Static local:UserSettings.Setting}, Converter={StaticResource BooleanToVisibilityConverter}}" />
+        <!--#endregion-->
 
+        <!--#region Copy button-->
         <Button
             x:Name="btnCopy"
             Grid.Row="11"
@@ -147,6 +156,8 @@
             VerticalAlignment="Bottom"
             Click="BtnCopy_Click"
             Content="Copy"
-            Style="{DynamicResource BtnStyle2}" />
+            Style="{DynamicResource BtnStyle2}"
+            ToolTip="Copy Windows Information to the clipboard" />
+        <!--#endregion-->
     </Grid>
 </Page>
