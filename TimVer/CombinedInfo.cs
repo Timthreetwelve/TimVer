@@ -39,6 +39,10 @@ internal static class CombinedInfo
                     if (drive.IsReady)
                     {
                         _ = sb.Append(drive.Name.Replace("\\", " "));
+                        if (UserSettings.Setting.ShowLabels)
+                        {
+                            _ = sb.Append('[').Append(drive.VolumeLabel).Append("] ");
+                        }
                     }
                 }
                 log.Debug($"Disk Drives: {sb}");
