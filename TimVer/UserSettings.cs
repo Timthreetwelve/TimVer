@@ -1,7 +1,5 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-using System.Runtime.CompilerServices;
-
 namespace TimVer;
 
 public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChanged
@@ -10,13 +8,15 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
     public UserSettings()
     {
         // Set defaults
-        GridZoom = 1;
         IncludeDebug = false;
         KeepOnTop = false;
+        ShowDrives = true;
+        ShowLabels = false;
         ShowUser = true;
-        ShowUser = true;
+        windowHeight = 400;
         WindowLeft = 100;
         WindowTop = 100;
+        WindowWidth = 600;
     }
     #endregion Constructor
 
@@ -68,6 +68,17 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
             OnPropertyChanged();
         }
     }
+
+    public bool ShowLabels
+    {
+        get => showLabels;
+        set
+        {
+            showLabels = value;
+            OnPropertyChanged();
+        }
+    }
+
     public bool ShowUser
     {
         get => showUser;
@@ -78,13 +89,26 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
         }
     }
 
+    public double WindowHeight
+    {
+        get
+        {
+            if (windowHeight < 100)
+            {
+                windowHeight = 100;
+            }
+            return windowHeight;
+        }
+        set => windowHeight = value;
+    }
+
     public double WindowLeft
     {
         get
         {
             if (windowLeft < 0)
             {
-                windowLeft = 100;
+                windowLeft = 0;
             }
             return windowLeft;
         }
@@ -97,11 +121,24 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
         {
             if (windowTop < 0)
             {
-                windowTop = 100;
+                windowTop = 0;
             }
             return windowTop;
         }
         set => windowTop = value;
+    }
+
+    public double WindowWidth
+    {
+        get
+        {
+            if (windowWidth < 100)
+            {
+                windowWidth = 100;
+            }
+            return windowWidth;
+        }
+        set => windowWidth = value;
     }
     #endregion Properties
 
@@ -110,15 +147,18 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
     private bool keepOnTop;
     private double gridZoom;
     private bool showDrives;
+    private bool showLabels;
     private bool showUser;
+    private double windowHeight;
     private double windowLeft;
     private double windowTop;
+    private double windowWidth;
     #endregion Private backing fields
 
     #region Handle property change event
     public event PropertyChangedEventHandler PropertyChanged;
 
-    protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    protected virtual void OnPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }

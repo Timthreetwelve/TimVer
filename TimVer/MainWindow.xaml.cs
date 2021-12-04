@@ -19,6 +19,7 @@ global using System.Collections.Generic;
 global using System.Globalization;
 global using CsvHelper;
 global using CsvHelper.Configuration;
+global using System.Windows.Input;
 #endregion using directives
 
 namespace TimVer;
@@ -75,6 +76,8 @@ public partial class MainWindow : Window
         // Window position
         Top = UserSettings.Setting.WindowTop;
         Left = UserSettings.Setting.WindowLeft;
+        Height = UserSettings.Setting.WindowHeight;
+        Width = UserSettings.Setting.WindowWidth;
         Topmost = UserSettings.Setting.KeepOnTop;
     }
 
@@ -104,15 +107,30 @@ public partial class MainWindow : Window
     #region Page Navigation
     private void BtnClick_Page1(object sender, RoutedEventArgs e)
     {
+        Mouse.OverrideCursor = Cursors.Wait;
+        Stopwatch sw = Stopwatch.StartNew();
         MainFrame.Content = new Page1();
+        sw.Stop();
+        log.Debug($"Time to load Windows info: {sw.ElapsedMilliseconds} ms.");
+        Mouse.OverrideCursor = null;
     }
     private void BtnClick_Page2(object sender, RoutedEventArgs e)
     {
+        Mouse.OverrideCursor = Cursors.Wait;
+        Stopwatch sw = Stopwatch.StartNew();
         MainFrame.Content = new Page2();
+        sw.Stop();
+        log.Debug($"Time to load Computer info: {sw.ElapsedMilliseconds} ms.");
+        Mouse.OverrideCursor = null;
     }
     private void BtnClick_Page3(object sender, RoutedEventArgs e)
     {
+        Mouse.OverrideCursor = Cursors.Wait;
+        Stopwatch sw = Stopwatch.StartNew();
         MainFrame.Content = new Page3();
+        sw.Stop();
+        log.Debug($"Time to load History: {sw.ElapsedMilliseconds} ms.");
+        Mouse.OverrideCursor = null;
     }
     private void BtnClick_Page4(object sender, RoutedEventArgs e)
     {
@@ -178,6 +196,8 @@ public partial class MainWindow : Window
         // Save settings
         UserSettings.Setting.WindowLeft = Left;
         UserSettings.Setting.WindowTop = Top;
+        UserSettings.Setting.WindowWidth = Width;
+        UserSettings.Setting.WindowHeight = Height;
         UserSettings.SaveSettings();
     }
     #endregion Window closing
