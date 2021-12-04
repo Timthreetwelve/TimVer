@@ -18,7 +18,9 @@ public partial class Page2 : Page
     #region Copy to clipboard
     private void BtnCopy_Click(object sender, RoutedEventArgs e)
     {
+        Mouse.OverrideCursor = Cursors.Wait;
         CopyToClipboard();
+        Mouse.OverrideCursor = null;
     }
 
     private static void CopyToClipboard()
