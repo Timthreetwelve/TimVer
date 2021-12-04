@@ -8,8 +8,8 @@
     <Company>T_K</Company>
     <Copyright>Copyright © 2019-2021 Tim Kennedy</Copyright>
     <ApplicationIcon>Images\TV.ico</ApplicationIcon>
-    <AssemblyVersion>0.6.1.0</AssemblyVersion>
-    <FileVersion>0.6.1.0</FileVersion>
+    <AssemblyVersion>0.6.2.0</AssemblyVersion>
+    <FileVersion>0.6.2.0</FileVersion>
     <PlatformTarget>x64</PlatformTarget>
     <Platforms>AnyCPU;x64</Platforms>
     <Authors>Tim Kennedy</Authors>

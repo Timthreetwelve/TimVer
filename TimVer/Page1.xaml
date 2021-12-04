@@ -11,7 +11,7 @@
     FontSize="14"
     mc:Ignorable="d">
 
-    <!--#region Converter -->
+    <!--#region Converter-->
     <Page.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </Page.Resources>
@@ -50,7 +50,7 @@
             Text="WINDOWS INFORMATION" />
         <!--#endregion-->
 
-        <!--#region Text blocks -->
+        <!--#region Text blocks-->
         <TextBlock
             Grid.Row="1"
             Grid.Column="1"

@@ -65,7 +65,6 @@
             Grid.Column="1"
             VerticalAlignment="Center"
             VerticalContentAlignment="Center"
-            Checked="CbxHsitory_Checked"
             Content="Display registered user on Windows Information page"
             IsChecked="{Binding ShowUser, Source={x:Static local:UserSettings.Setting}}" />
 
@@ -74,7 +73,6 @@
             Grid.Column="1"
             VerticalAlignment="Center"
             VerticalContentAlignment="Center"
-            Checked="CbxHsitory_Checked"
             Content="Display disk drives on Computer Information page"
             IsChecked="{Binding ShowDrives, Source={x:Static local:UserSettings.Setting}}" />
 
@@ -84,7 +82,6 @@
             Margin="20,4,0,0"
             VerticalAlignment="Center"
             VerticalContentAlignment="Center"
-            Checked="CbxHsitory_Checked"
             Content="Include drive labels"
             IsChecked="{Binding ShowLabels, Source={x:Static local:UserSettings.Setting}}"
             IsEnabled="{Binding ShowDrives, Source={x:Static local:UserSettings.Setting}}" />
