@@ -27,7 +27,7 @@ The History page shows history information from the previous times TimVer was ru
 to compare build numbers before and after running Windows Update. Only one history record will be
 recorded per build number. The history file is in CSV format.
 
-The Options page has options that determine how the application runs.
+The Options page has options that determine how the application looks and runs.
 
 The About page displays version information and a link to the GitHib repository.
 
@@ -54,6 +54,8 @@ Notices and License
 TimVer was written in C# by Tim Kennedy and now requires .Net 6.
 
 TimVer uses the following NuGet packages:
+
+Adonis UI https://github.com/benruehl/adonis-ui
 
 NLog https://nlog-project.org/
 
