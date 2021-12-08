@@ -10,17 +10,12 @@ public partial class Page2 : Page
     public Page2()
     {
         InitializeComponent();
-
-        // workaround for a weird binding error that I couldn't resolve
-        tbDiskDrives.Text = CombinedInfo.DiskDrives;
     }
 
     #region Copy to clipboard
     private void BtnCopy_Click(object sender, RoutedEventArgs e)
     {
-        Mouse.OverrideCursor = Cursors.Wait;
         CopyToClipboard();
-        Mouse.OverrideCursor = null;
     }
 
     private static void CopyToClipboard()

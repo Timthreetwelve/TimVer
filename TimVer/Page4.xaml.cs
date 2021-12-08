@@ -16,12 +16,28 @@ public partial class Page4 : Page
         InitializeComponent();
     }
 
-    #region Check registry on page load
+    #region Page loaded events
     private void Page_Loaded(object sender, EventArgs e)
     {
         cbxHistOnStart.IsChecked = RegRun.RegRunEntry("TimVer");
+
+        switch (UserSettings.Setting.DarkMode)
+        {
+            case 0:
+                rb0.IsChecked = true;
+                break;
+            case 1:
+                rb1.IsChecked = true;
+                break;
+            case 2:
+                rb2.IsChecked = true;
+                break;
+            default:
+                rb0.IsChecked = true;
+                break;
+        }
     }
-    #endregion Check registry on page load
+    #endregion Page loaded events
 
     #region History Checkbox
     private void CbxHsitory_Checked(object sender, RoutedEventArgs e)
@@ -60,17 +76,51 @@ public partial class Page4 : Page
     #region Button events
     private void BtnOpenLog_Click(object sender, RoutedEventArgs e)
     {
-        TextFileViewer.ViewTextFile(GetTempLogFile());
+        TextFileViewer.ViewTextFile(TempLogFile);
+    }
+    private void RbMode_Checked(object sender, RoutedEventArgs e)
+    {
+        RadioButton rb = sender as RadioButton;
+        UserSettings.Setting.DarkMode = Convert.ToUInt16(rb.Tag);
+    }
+
+    private void BtnSmaller_Click(object sender, RoutedEventArgs e)
+    {
+        double curZoom = UserSettings.Setting.SizeZoom;
+        if (curZoom > 0.85)
+        {
+            curZoom -= .05;
+            UserSettings.Setting.SizeZoom = Math.Round(curZoom, 2);
+        }
+    }
+    private void BtnLarger_Click(object sender, RoutedEventArgs e)
+    {
+        double curZoom = UserSettings.Setting.SizeZoom;
+        if (curZoom < 1.05)
+        {
+            curZoom += .05;
+            UserSettings.Setting.SizeZoom = Math.Round(curZoom, 2);
+        }
     }
     #endregion Button events
 
     #region Get log file name
-    public static string GetTempLogFile()
+    public static string TempLogFile
     {
-        // Ask NLog what the file name is
-        FileTarget target = LogManager.Configuration.FindTargetByName("logFile") as FileTarget;
-        LogEventInfo logEventInfo = new() { TimeStamp = DateTime.Now };
-        return target.FileName.Render(logEventInfo);
+        get
+        {
+            // Ask NLog what the file name is
+            using (FileTarget target = LogManager.Configuration.FindTargetByName("logFile") as FileTarget)
+            {
+                if (target != null)
+                {
+                    LogEventInfo logEventInfo = new() { TimeStamp = DateTime.Now };
+                    return target.FileName.Render(logEventInfo);
+                }
+            }
+            return null;
+        }
     }
     #endregion Get log file name
+
 }

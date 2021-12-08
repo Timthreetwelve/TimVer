@@ -1,60 +1,71 @@
-﻿<Window
+﻿<adonisControls:AdonisWindow
     x:Class="TimVer.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+    xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
+    xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:TimVer"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="TimVer"
-    MinHeight="400"
-    MinWidth="480"
+    MinWidth="580"
+    MinHeight="380"
+    BorderBrush="{DynamicResource {x:Static adonisUi:Brushes.AccentHighlightBrush}}"
+    BorderThickness="1"
     Closing="Window_Closing"
+    MouseWheel="Window_MouseWheel"
     ResizeMode="CanResize"
     mc:Ignorable="d">
     <Window.Resources />
 
-    <Grid Background="#e6e6e6">
-        <DockPanel
-            Width="120"
-            Margin="10,10"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Stretch"
-            Background="White"
-            LastChildFill="True">
-            <Button
-                Click="BtnClick_Page1"
-                Content="Windows Info"
-                DockPanel.Dock="Top"
-                Style="{DynamicResource BtnStyle1}" />
-            <Button
-                Click="BtnClick_Page2"
-                Content="Computer Info"
-                DockPanel.Dock="Top"
-                Style="{DynamicResource BtnStyle1}" />
-            <Button
-                Click="BtnClick_Page3"
-                Content="History"
-                DockPanel.Dock="Top"
-                Style="{DynamicResource BtnStyle1}" />
-            <Button
-                Margin="0,5,0,5"
-                VerticalAlignment="Bottom"
-                Click="BtnClick_Page5"
-                Content="About"
-                DockPanel.Dock="Bottom"
-                Style="{DynamicResource BtnStyle1}" />
-            <Button
-                VerticalAlignment="Bottom"
-                Click="BtnClick_Page4"
-                Content="Options"
-                DockPanel.Dock="Bottom"
-                Style="{DynamicResource BtnStyle1}" />
-        </DockPanel>
+    <!--#region Window style-->
+    <Window.Style>
+        <Style BasedOn="{StaticResource {x:Type Window}}" TargetType="Window" />
+    </Window.Style>
+    <!--#endregion-->
 
-        <Frame
-            x:Name="MainFrame"
-            Margin="140,10,10,10"
-            Background="White"
-            NavigationUIVisibility="Hidden" />
+    <Grid x:Name="MainGrid">
+        <!--#region Column definitions-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <!--#endregion-->
+
+        <!--#region Navigation panel on left-->
+        <GroupBox
+            Grid.Column="0"
+            Margin="10"
+            adonisExtensions:CornerRadiusExtension.CornerRadius="8"
+            adonisExtensions:LayerExtension.IncreaseLayer="True">
+            <ListBox
+                x:Name="lbNavigation"
+                Width="auto"
+                FontSize="14"
+                SelectionChanged="LbNavigation_SelectionChanged">
+                <ListBox.ItemContainerStyle>
+                    <Style BasedOn="{StaticResource {x:Type ListBoxItem}}" TargetType="ListBoxItem">
+                        <Setter Property="BorderThickness" Value="0" />
+                        <Setter Property="Padding" Value="8,10" />
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
+        </GroupBox>
+        <!--#endregion-->
+
+        <!--#region Frame for info on right-->
+        <GroupBox
+            Grid.Column="1"
+            Margin="0,10,10,10"
+            adonisExtensions:CornerRadiusExtension.CornerRadius="8"
+            adonisExtensions:LayerExtension.IncreaseLayer="True">
+            <Frame
+                x:Name="MainFrame"
+                Grid.Column="1"
+                NavigationUIVisibility="Hidden" />
+        </GroupBox>
+        <!--#endregion-->
+
     </Grid>
-</Window>
+</adonisControls:AdonisWindow>

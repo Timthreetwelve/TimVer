@@ -18,7 +18,8 @@ public partial class Page5 : Page
         if (versionInfo != null)
         {
             tbName.Text = versionInfo.ProductName;
-            tbVersion.Text = versionInfo.FileVersion.Remove(versionInfo.FileVersion.LastIndexOf("."));
+            //tbVersion.Text = versionInfo.FileVersion.Remove(versionInfo.FileVersion.LastIndexOf("."));
+            tbVersion.Text = versionInfo.FileVersion;
             tbCopyright.Text = versionInfo.LegalCopyright.Replace("Copyright ", "");
             tbCommit.Text = Properties.Resources.CurrentCommit;
         }

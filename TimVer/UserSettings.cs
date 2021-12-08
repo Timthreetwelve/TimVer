@@ -8,12 +8,14 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
     public UserSettings()
     {
         // Set defaults
+        DarkMode = 0;
         IncludeDebug = false;
         KeepOnTop = false;
+        SizeZoom = 1.0;
         ShowDrives = true;
         ShowLabels = false;
         ShowUser = true;
-        windowHeight = 400;
+        WindowHeight = 400;
         WindowLeft = 100;
         WindowTop = 100;
         WindowWidth = 600;
@@ -21,6 +23,22 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
     #endregion Constructor
 
     #region Properties
+    public int DarkMode
+    {
+        get
+        {
+            if ( darkmode < 0 || darkmode > 2)
+            {
+                darkmode = 0;
+            }
+            return darkmode;
+        }
+        set
+        {
+            darkmode = value;
+            OnPropertyChanged();
+        }
+    }
 
     public bool IncludeDebug
     {
@@ -38,23 +56,6 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
         set
         {
             keepOnTop = value;
-            OnPropertyChanged();
-        }
-    }
-
-    public double GridZoom
-    {
-        get
-        {
-            if (gridZoom <= 0)
-            {
-                gridZoom = 1;
-            }
-            return gridZoom;
-        }
-        set
-        {
-            gridZoom = value;
             OnPropertyChanged();
         }
     }
@@ -85,6 +86,22 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
         set
         {
             showUser = value;
+            OnPropertyChanged();
+        }
+    }
+    public double SizeZoom
+    {
+        get
+        {
+            if (sizeZoom <= 0)
+            {
+                sizeZoom = 1;
+            }
+            return sizeZoom;
+        }
+        set
+        {
+            sizeZoom = value;
             OnPropertyChanged();
         }
     }
@@ -143,9 +160,10 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
     #endregion Properties
 
     #region Private backing fields
+    private int darkmode;
     private bool includeDebug;
     private bool keepOnTop;
-    private double gridZoom;
+    private double sizeZoom;
     private bool showDrives;
     private bool showLabels;
     private bool showUser;

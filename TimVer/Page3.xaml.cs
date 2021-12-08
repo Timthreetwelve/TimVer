@@ -36,11 +36,11 @@ public partial class Page3 : Page
         }
         catch (Exception ex)
         {
+            log.Error(ex, "Cannot read the history file.");
             _ = MessageBox.Show($"Cannot read the history file. It may be corrupt.\n\nDelete {DefaultHistoryFile()} and retry.",
                                 "TimVer is Unable to Continue",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
-            log.Error(ex, "Cannot read the history file.");
             Environment.Exit(1);
         }
         return null;
@@ -50,7 +50,6 @@ public partial class Page3 : Page
     #region Write the history file
     public static void WriteHistory()
     {
-        //CombinedInfo vm = new();
         History newHist = new();
         newHist.HBuild = CombinedInfo.Build;
         newHist.HVersion = CombinedInfo.Version;

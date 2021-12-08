@@ -61,7 +61,7 @@ namespace TimVer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to e59274e
+        ///   Looks up a localized string similar to 72c6cb1
         ///.
         /// </summary>
         internal static string CurrentCommit {
