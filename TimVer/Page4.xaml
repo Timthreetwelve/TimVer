@@ -2,7 +2,6 @@
     x:Class="TimVer.Page4"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
     xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
     xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -30,8 +29,9 @@
             <RowDefinition Height="25" />
             <RowDefinition Height="25" />
             <RowDefinition Height="25" />
-            <RowDefinition Height="25" />
             <RowDefinition Height="10" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="30" />
             <RowDefinition Height="30" />
             <RowDefinition Height="*" />
             <RowDefinition Height="50" />
@@ -97,56 +97,86 @@
             Content="Include debug messages in log"
             IsChecked="{Binding IncludeDebug, Source={x:Static local:UserSettings.Setting}}"
             Style="{DynamicResource {x:Static adonisUi:Styles.ToggleSwitch}}" />
+        <!--#endregion-->
 
+        <!--#region ComboBoxes-->
         <StackPanel
-            Grid.Row="7"
+            Grid.Row="8"
             Grid.Column="1"
             Orientation="Horizontal">
-            <RadioButton
-                x:Name="rb0"
-                Margin="0,0,10,0"
-                Checked="RbMode_Checked"
-                Content="Light Mode"
-                Style="{DynamicResource {x:Static adonisUi:Styles.ToggleSwitch}}"
-                Tag="0" />
-            <RadioButton
-                x:Name="rb1"
-                Margin="0,0,10,0"
-                Checked="RbMode_Checked"
-                Content="Dark Mode"
-                Style="{DynamicResource {x:Static adonisUi:Styles.ToggleSwitch}}"
-                Tag="1" />
-            <RadioButton
-                x:Name="rb2"
-                Margin="0,0,10,0"
-                Checked="RbMode_Checked"
-                Content="Use System Preference"
-                Style="{DynamicResource {x:Static adonisUi:Styles.ToggleSwitch}}"
-                Tag="2" />
+            <Label
+                Width="80"
+                VerticalAlignment="Center"
+                Content="Theme"
+                FontWeight="Normal" />
+            <ComboBox
+                x:Name="cbxMode"
+                Width="95"
+                Height="25"
+                Margin="10,0"
+                FontSize="13"
+                SelectionChanged="CbxMode_SelectionChanged">
+                <ComboBox.Items>
+                    <ComboBoxItem Content="Light" Tag="0" />
+                    <ComboBoxItem Content="Lighter" Tag="1" />
+                    <ComboBoxItem Content="Dark" Tag="2" />
+                    <ComboBoxItem Content="Darker" Tag="3" />
+                    <ComboBoxItem Content="System" Tag="4" />
+                </ComboBox.Items>
+            </ComboBox>
         </StackPanel>
 
         <StackPanel
             Grid.Row="9"
             Grid.Column="1"
-            Margin="0"
             Orientation="Horizontal">
-            <Button
-                Width="100"
-                Margin="00"
-                VerticalAlignment="Bottom"
-                adonisExtensions:CornerRadiusExtension.CornerRadius="5"
-                Click="BtnSmaller_Click"
-                Content="Font Smaller" />
-            <Button
-                Width="100"
+            <Label
+                Width="80"
+                VerticalAlignment="Center"
+                Content="Font Size"
+                FontWeight="Normal" />
+            <ComboBox
+                x:Name="cbxSize"
+                Width="95"
+                Height="25"
                 Margin="10,0"
-                VerticalAlignment="Bottom"
-                adonisExtensions:CornerRadiusExtension.CornerRadius="5"
-                Click="BtnLarger_Click"
-                Content="Font Larger" />
+                FontSize="13"
+                SelectionChanged="SizeComboBox_SelectionChanged">
+                <ComboBox.Items>
+                    <ComboBoxItem Content="Smallest" Tag="1" />
+                    <ComboBoxItem Content="Small" Tag="2" />
+                    <ComboBoxItem Content="Medium" Tag="3" />
+                    <ComboBoxItem Content="Large" Tag="4" />
+                    <ComboBoxItem Content="Largest" Tag="5" />
+                </ComboBox.Items>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel
+            Grid.Row="10"
+            Grid.Column="1"
+            Orientation="Horizontal">
+            <Label
+                Width="80"
+                VerticalAlignment="Center"
+                Content="Initial View"
+                FontWeight="Normal" />
+            <ComboBox
+                x:Name="cbxPage"
+                Width="120"
+                Height="25"
+                Margin="10,0"
+                FontSize="13"
+                SelectionChanged="CbxPage_SelectionChanged">
+                <ComboBox.Items>
+                    <ComboBoxItem Content="Windows Info" Tag="1" />
+                    <ComboBoxItem Content="Computer Info" Tag="2" />
+                    <ComboBoxItem Content="History" Tag="3" />
+                    <ComboBoxItem Content="Options" Tag="4" />
+                    <ComboBoxItem Content="About" Tag="5" />
+                </ComboBox.Items>
+            </ComboBox>
         </StackPanel>
         <!--#endregion-->
-
 
         <!--#region Button at bottom-->
         <GroupBox Grid.Row="12" Grid.Column="1">

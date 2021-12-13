@@ -21,7 +21,14 @@
 
     <!--#region Window style-->
     <Window.Style>
-        <Style BasedOn="{StaticResource {x:Type Window}}" TargetType="Window" />
+        <Style BasedOn="{StaticResource {x:Type Window}}" TargetType="adonisControls:AdonisWindow">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding DarkMode, Source={x:Static local:UserSettings.Setting}}" Value="1">
+                    <Setter Property="TitleBarBackground" Value="White" />
+                    <Setter Property="TitleBarForeground" Value="MediumPurple" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
     </Window.Style>
     <!--#endregion-->
 

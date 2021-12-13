@@ -50,7 +50,7 @@ public partial class MainWindow
 
         ProcessCommandLine();
 
-        LoadNavigationBar(0);
+        LoadNavigationBar(UserSettings.Setting.InitialPage);
 
         log.Debug($"Startup time: {stopwatch.ElapsedMilliseconds} ms.");
     }
@@ -90,9 +90,15 @@ public partial class MainWindow
                 UseLightMode();
                 break;
             case 1:
-                UseDarkMode();
+                UseMyLightMode();
                 break;
             case 2:
+                UseDarkMode();
+                break;
+            case 3:
+                UseMyDarkMode();
+                break;
+            case 4:
                 UseSysMode();
                 break;
             default:
@@ -143,7 +149,7 @@ public partial class MainWindow
         _ = lbNavigation.Items.Add("History");
         _ = lbNavigation.Items.Add("Options");
         _ = lbNavigation.Items.Add("About");
-        lbNavigation.SelectedIndex = page;
+        lbNavigation.SelectedIndex = page - 1;
     }
 
     private void LbNavigation_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -244,9 +250,15 @@ public partial class MainWindow
                         UseLightMode();
                         break;
                     case 1:
-                        UseDarkMode();
+                       UseMyLightMode();
                         break;
                     case 2:
+                        UseDarkMode();
+                        break;
+                    case 3:
+                        UseMyDarkMode();
+                        break;
+                    case 4:
                         UseSysMode();
                         break;
                     default:
@@ -272,6 +284,19 @@ public partial class MainWindow
     private static void UseLightMode()
     {
         ResourceLocator.SetColorScheme(Application.Current.Resources, ResourceLocator.LightColorScheme);
+    }
+
+    private void UseMyLightMode()
+    {
+        UseLightMode();
+        Uri mylight = new("pack://application:,,,/TimVer;component/Dictionaries/MyLight.xaml");
+        ResourceLocator.SetColorScheme(Application.Current.Resources, mylight, ResourceLocator.LightColorScheme);
+    }
+
+    private static void UseMyDarkMode()
+    {
+        Uri mydark = new("pack://application:,,,/TimVer;component/Dictionaries/MyDark.xaml");
+        ResourceLocator.SetColorScheme(Application.Current.Resources, mydark);
     }
 
     private static void UseSysMode()
@@ -345,10 +370,10 @@ public partial class MainWindow
         LogManager.Shutdown();
 
         // Save settings
-        UserSettings.Setting.WindowLeft = Left;
-        UserSettings.Setting.WindowTop = Top;
-        UserSettings.Setting.WindowWidth = Width;
-        UserSettings.Setting.WindowHeight = Height;
+        UserSettings.Setting.WindowLeft = Math.Floor(Left);
+        UserSettings.Setting.WindowTop = Math.Floor(Top);
+        UserSettings.Setting.WindowWidth = Math.Floor(Width);
+        UserSettings.Setting.WindowHeight = Math.Floor(Height);
         UserSettings.SaveSettings();
     }
     #endregion Window closing

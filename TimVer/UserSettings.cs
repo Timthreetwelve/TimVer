@@ -10,6 +10,7 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
         // Set defaults
         DarkMode = 0;
         IncludeDebug = false;
+        InitialPage = 1;
         KeepOnTop = false;
         SizeZoom = 1.0;
         ShowDrives = true;
@@ -25,14 +26,7 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
     #region Properties
     public int DarkMode
     {
-        get
-        {
-            if ( darkmode < 0 || darkmode > 2)
-            {
-                darkmode = 0;
-            }
-            return darkmode;
-        }
+        get => darkmode;
         set
         {
             darkmode = value;
@@ -46,6 +40,16 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
         set
         {
             includeDebug = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public int InitialPage
+    {
+        get => initialPage;
+        set
+        {
+            initialPage = value;
             OnPropertyChanged();
         }
     }
@@ -162,6 +166,7 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
     #region Private backing fields
     private int darkmode;
     private bool includeDebug;
+    private int initialPage;
     private bool keepOnTop;
     private double sizeZoom;
     private bool showDrives;

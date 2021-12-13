@@ -21,21 +21,28 @@ public partial class Page4 : Page
     {
         cbxHistOnStart.IsChecked = RegRun.RegRunEntry("TimVer");
 
-        switch (UserSettings.Setting.DarkMode)
+        cbxMode.SelectedIndex = UserSettings.Setting.DarkMode;
+
+        switch (UserSettings.Setting.SizeZoom)
         {
-            case 0:
-                rb0.IsChecked = true;
+            case 0.85:
+                cbxSize.SelectedIndex = 0;
                 break;
-            case 1:
-                rb1.IsChecked = true;
+            case 0.90:
+                cbxSize.SelectedIndex = 1;
                 break;
-            case 2:
-                rb2.IsChecked = true;
+            case 0.95:
+                cbxSize.SelectedIndex = 2;
                 break;
-            default:
-                rb0.IsChecked = true;
+            case 1.0:
+                cbxSize.SelectedIndex = 3;
+                break;
+            case 1.05:
+                cbxSize.SelectedIndex = 4;
                 break;
         }
+
+        cbxPage.SelectedIndex = UserSettings.Setting.InitialPage - 1;
     }
     #endregion Page loaded events
 
@@ -123,4 +130,49 @@ public partial class Page4 : Page
     }
     #endregion Get log file name
 
+    #region ComboBox events
+    private void SizeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (sender is ComboBox comboBox)
+        {
+            switch (((ComboBoxItem)comboBox.SelectedItem).Tag.ToString())
+            {
+                case "1":
+                    UserSettings.Setting.SizeZoom = 0.85;
+                    break;
+                case "2":
+                    UserSettings.Setting.SizeZoom = 0.90;
+                    break;
+                case "3":
+                    UserSettings.Setting.SizeZoom = 0.95;
+                    break;
+                case "4":
+                    UserSettings.Setting.SizeZoom = 1.0;
+                    break;
+                case "5":
+                    UserSettings.Setting.SizeZoom = 1.05;
+                    break;
+                default:
+                    UserSettings.Setting.SizeZoom = 1.0;
+                    break;
+            }
+        }
+    }
+
+    private void CbxPage_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (sender is ComboBox comboBox)
+        {
+            UserSettings.Setting.InitialPage = Convert.ToInt32(((ComboBoxItem)comboBox.SelectedItem).Tag);
+        }
+    }
+
+    private void CbxMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (sender is ComboBox comboBox)
+        {
+            UserSettings.Setting.DarkMode = Convert.ToInt32(((ComboBoxItem)comboBox.SelectedItem).Tag);
+        }
+    }
+    #endregion ComboBox events
 }

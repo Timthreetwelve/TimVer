@@ -9,6 +9,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/AdonisUI.ClassicTheme;component/Resources.xaml" />
+                <ResourceDictionary Source="Dictionaries/MyLight.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <!--#region Style for the headers of the various pages-->
@@ -30,6 +31,5 @@
             <!--#endregion-->
 
         </ResourceDictionary>
-
     </Application.Resources>
 </Application>
