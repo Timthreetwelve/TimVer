@@ -8,16 +8,19 @@
     <Company>T_K</Company>
     <Copyright>Copyright © 2019-2021 Tim Kennedy</Copyright>
     <ApplicationIcon>Images\TV.ico</ApplicationIcon>
-    <AssemblyVersion>0.6.5.0</AssemblyVersion>
-    <FileVersion>0.6.5.0</FileVersion>
+    <AssemblyVersion>0.7.0.0</AssemblyVersion>
+    <FileVersion>0.7.0</FileVersion>
     <PlatformTarget>x64</PlatformTarget>
     <Platforms>AnyCPU;x64</Platforms>
     <Authors>Tim Kennedy</Authors>
-    <Version>$(AssemblyVersion)</Version>
+    <Version>$(FileVersion)</Version>
     <EnforceCodeStyleInBuild>False</EnforceCodeStyleInBuild>
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="..\LICENSE.txt" Link="LICENSE.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\TV.ico" />
   </ItemGroup>
 
@@ -26,11 +29,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AdonisUI" Version="1.17.1" />
-    <PackageReference Include="AdonisUI.ClassicTheme" Version="1.17.1" />
     <PackageReference Include="CsvHelper" Version="27.2.1" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.3.0" />
     <PackageReference Include="Microsoft.Management.Infrastructure" Version="2.0.0" />
-    <PackageReference Include="NLog" Version="4.7.12" />
+    <PackageReference Include="NLog" Version="4.7.13" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,7 +45,7 @@
 
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
@@ -57,8 +59,5 @@
     </None>
   </ItemGroup>
 
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="git rev-parse --short HEAD &gt; &quot;$(ProjectDir)CurrentCommit.txt&quot;" />
-  </Target>
 
 </Project>

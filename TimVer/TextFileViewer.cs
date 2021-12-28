@@ -1,5 +1,8 @@
 ﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
+using MaterialDesignThemes.Wpf;
+using TimVer.Dialogs;
+
 namespace TimVer;
 
 /// <summary>
@@ -9,7 +12,7 @@ namespace TimVer;
 internal static class TextFileViewer
 {
     #region Text file viewer
-    public static void ViewTextFile(string txtfile)
+    public static async Task<bool> ViewTextFile(string txtfile)
     {
         if (File.Exists(txtfile))
         {
@@ -34,25 +37,27 @@ internal static class TextFileViewer
                 }
                 else
                 {
-                    _ = MessageBox.Show($"Error reading file {txtfile}\n{ex.Message}",
-                        "Watcher Error",
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Error);
+                    ErrorDialog ed = new();
+                    ed.Message = $"Error reading \n{txtfile}\n{ex.Message}";
+                    _ = await DialogHost.Show(ed, "dh1").ConfigureAwait(true);
                 }
             }
             catch (Exception ex)
             {
-                _ = MessageBox.Show("Unable to start default application used to open" +
-                    $" {txtfile}\n{ex.Message}",
-                    "Error",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error);
+                ErrorDialog ed = new();
+                ed.Message = $"Unable to start default application used to open\n{txtfile}\n{ex.Message}";
+                _ = await DialogHost.Show(ed, "dh1").ConfigureAwait(true);
             }
         }
         else
         {
             Debug.WriteLine($">>> File not found: {txtfile}");
+            ErrorDialog ed = new();
+            ed.Message = $"File not found:\n{txtfile}";
+            _ = await DialogHost.Show(ed, "dh1").ConfigureAwait(true);
         }
+
+        return true;
     }
     #endregion Text file viewer
 }

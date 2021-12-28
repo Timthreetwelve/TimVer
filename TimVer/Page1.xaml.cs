@@ -5,7 +5,7 @@ namespace TimVer;
 /// <summary>
 /// Displays Windows information page
 /// </summary>
-public partial class Page1 : Page
+public partial class Page1 : UserControl
 {
     public Page1()
     {

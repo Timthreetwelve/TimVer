@@ -12,7 +12,7 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
         IncludeDebug = false;
         InitialPage = 1;
         KeepOnTop = false;
-        SizeZoom = 1.0;
+        UISize = 3;
         ShowDrives = true;
         ShowLabels = false;
         ShowUser = true;
@@ -93,19 +93,13 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
             OnPropertyChanged();
         }
     }
-    public double SizeZoom
+
+    public int UISize
     {
-        get
-        {
-            if (sizeZoom <= 0)
-            {
-                sizeZoom = 1;
-            }
-            return sizeZoom;
-        }
+        get => uiSize;
         set
         {
-            sizeZoom = value;
+            uiSize = value;
             OnPropertyChanged();
         }
     }
@@ -168,10 +162,10 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
     private bool includeDebug;
     private int initialPage;
     private bool keepOnTop;
-    private double sizeZoom;
     private bool showDrives;
     private bool showLabels;
     private bool showUser;
+    private int uiSize;
     private double windowHeight;
     private double windowLeft;
     private double windowTop;

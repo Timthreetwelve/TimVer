@@ -341,3 +341,4 @@ healthchecksdb
 
 /MigrationBackup/
 /TimVer/CurrentCommit.txt
+**/.vshistory

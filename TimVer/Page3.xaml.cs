@@ -5,7 +5,7 @@ namespace TimVer;
 /// <summary>
 /// Displays the history page
 /// </summary>
-public partial class Page3 : Page
+public partial class Page3 : UserControl
 {
     #region NLog Instance
     private static readonly Logger log = LogManager.GetCurrentClassLogger();
@@ -14,6 +14,7 @@ public partial class Page3 : Page
     public Page3()
     {
         InitializeComponent();
+
         HistoryGrid.ItemsSource = ReadHistory();
     }
 
@@ -37,6 +38,7 @@ public partial class Page3 : Page
         catch (Exception ex)
         {
             log.Error(ex, "Cannot read the history file.");
+            // This needs to stay a message box since it can occur before the window is loaded
             _ = MessageBox.Show($"Cannot read the history file. It may be corrupt.\n\nDelete {DefaultHistoryFile()} and retry.",
                                 "TimVer is Unable to Continue",
                                 MessageBoxButton.OK,
@@ -51,6 +53,7 @@ public partial class Page3 : Page
     public static void WriteHistory()
     {
         History newHist = new();
+        log.Debug("Getting build info:");
         newHist.HBuild = CombinedInfo.Build;
         newHist.HVersion = CombinedInfo.Version;
         newHist.HBranch = CombinedInfo.BuildBranch;
@@ -64,6 +67,7 @@ public partial class Page3 : Page
         if (File.Exists(DefaultHistoryFile()))
         {
             List<History> hist = ReadHistory();
+            // Add to history file if build doesn't exist
             if (!hist.Exists(x => x.HBuild == newHist.HBuild))
             {
                 hist.Add(newHist);
@@ -89,7 +93,7 @@ public partial class Page3 : Page
                 csv.WriteRecord(newHist);
             }
 
-            log.Info($"History file was updated with {newHist.HBuild}");
+            log.Info($"History file was created with {newHist.HBuild}");
         }
     }
     #endregion Write the history file

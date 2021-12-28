@@ -1,11 +1,14 @@
 ﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
+using MaterialDesignThemes.Wpf;
+using TimVer.Dialogs;
+
 namespace TimVer;
 
 /// <summary>
 /// Display the Options page
 /// </summary>
-public partial class Page4 : Page
+public partial class Page4 : UserControl
 {
     #region NLog Instance
     private static readonly Logger log = LogManager.GetCurrentClassLogger();
@@ -17,97 +20,25 @@ public partial class Page4 : Page
     }
 
     #region Page loaded events
-    private void Page_Loaded(object sender, EventArgs e)
+    private void UserControl_Loaded(object sender, RoutedEventArgs e)
     {
-        cbxHistOnStart.IsChecked = RegRun.RegRunEntry("TimVer");
-
-        cbxMode.SelectedIndex = UserSettings.Setting.DarkMode;
-
-        switch (UserSettings.Setting.SizeZoom)
-        {
-            case 0.85:
-                cbxSize.SelectedIndex = 0;
-                break;
-            case 0.90:
-                cbxSize.SelectedIndex = 1;
-                break;
-            case 0.95:
-                cbxSize.SelectedIndex = 2;
-                break;
-            case 1.0:
-                cbxSize.SelectedIndex = 3;
-                break;
-            case 1.05:
-                cbxSize.SelectedIndex = 4;
-                break;
-        }
-
-        cbxPage.SelectedIndex = UserSettings.Setting.InitialPage - 1;
+        tbHistOnStart.IsChecked = RegRun.RegRunEntry("TimVer");
     }
     #endregion Page loaded events
 
-    #region History Checkbox
-    private void CbxHsitory_Checked(object sender, RoutedEventArgs e)
-    {
-        if (IsLoaded && !RegRun.RegRunEntry("TimVer"))
-        {
-            string result = RegRun.AddRegEntry("TimVer", AppInfo.AppPath + " /hide");
-            if (result == "OK")
-            {
-                log.Info(@"TimVer added to HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
-            }
-            else
-            {
-                log.Info($"TimVer add to startup failed: {result}");
-            }
-        }
-    }
-
-    private void CbxHistory_Unchecked(object sender, RoutedEventArgs e)
-    {
-        if (IsLoaded)
-        {
-            string result = RegRun.RemoveRegEntry("TimVer");
-            if (result == "OK")
-            {
-                log.Info(@"TimVer removed from HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
-            }
-            else
-            {
-                log.Info($"Attempt to remove startup entry failed: {result}");
-            }
-        }
-    }
-    #endregion History Checkbox
-
     #region Button events
-    private void BtnOpenLog_Click(object sender, RoutedEventArgs e)
+    private async void BtnLogFile_Click(object sender, RoutedEventArgs e)
     {
-        TextFileViewer.ViewTextFile(TempLogFile);
+        _ = await TextFileViewer.ViewTextFile(TempLogFile).ConfigureAwait(true);
     }
-    private void RbMode_Checked(object sender, RoutedEventArgs e)
+    private async void BtnReadme_Click(object sender, RoutedEventArgs e)
     {
-        RadioButton rb = sender as RadioButton;
-        UserSettings.Setting.DarkMode = Convert.ToUInt16(rb.Tag);
+        string dir = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+        _ = await TextFileViewer.ViewTextFile(Path.Combine(dir, "ReadMe.txt")).ConfigureAwait(true);
     }
-
-    private void BtnSmaller_Click(object sender, RoutedEventArgs e)
+    private void BtnExit_Click(object sender, RoutedEventArgs e)
     {
-        double curZoom = UserSettings.Setting.SizeZoom;
-        if (curZoom > 0.85)
-        {
-            curZoom -= .05;
-            UserSettings.Setting.SizeZoom = Math.Round(curZoom, 2);
-        }
-    }
-    private void BtnLarger_Click(object sender, RoutedEventArgs e)
-    {
-        double curZoom = UserSettings.Setting.SizeZoom;
-        if (curZoom < 1.05)
-        {
-            curZoom += .05;
-            UserSettings.Setting.SizeZoom = Math.Round(curZoom, 2);
-        }
+        Application.Current.Shutdown();
     }
     #endregion Button events
 
@@ -130,49 +61,49 @@ public partial class Page4 : Page
     }
     #endregion Get log file name
 
-    #region ComboBox events
-    private void SizeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    #region History on Windows startup
+    private async void TbHistOnStart_CheckedAsync(object sender, RoutedEventArgs e)
     {
-        if (sender is ComboBox comboBox)
+        if (IsLoaded && !RegRun.RegRunEntry("TimVer"))
         {
-            switch (((ComboBoxItem)comboBox.SelectedItem).Tag.ToString())
+            string result = RegRun.AddRegEntry("TimVer", AppInfo.AppPath + " /hide");
+            if (result == "OK")
             {
-                case "1":
-                    UserSettings.Setting.SizeZoom = 0.85;
-                    break;
-                case "2":
-                    UserSettings.Setting.SizeZoom = 0.90;
-                    break;
-                case "3":
-                    UserSettings.Setting.SizeZoom = 0.95;
-                    break;
-                case "4":
-                    UserSettings.Setting.SizeZoom = 1.0;
-                    break;
-                case "5":
-                    UserSettings.Setting.SizeZoom = 1.05;
-                    break;
-                default:
-                    UserSettings.Setting.SizeZoom = 1.0;
-                    break;
+                log.Info(@"TimVer added to HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
+                OkDialog ok = new();
+                ok.Message = "TimVer was added to Windows startup";
+                _ = await DialogHost.Show(ok, "dh1").ConfigureAwait(true);
+            }
+            else
+            {
+                log.Info($"TimVer add to startup failed: {result}");
+                ErrorDialog ed = new();
+                ed.Message = "Failed to add TimVer to Windows startup.\n\nSee log file for additional info.";
+                _ = await DialogHost.Show(ed, "dh1").ConfigureAwait(true);
             }
         }
     }
 
-    private void CbxPage_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private async void TbHistOnStart_Unchecked(object sender, RoutedEventArgs e)
     {
-        if (sender is ComboBox comboBox)
+        if (IsLoaded)
         {
-            UserSettings.Setting.InitialPage = Convert.ToInt32(((ComboBoxItem)comboBox.SelectedItem).Tag);
+            string result = RegRun.RemoveRegEntry("TimVer");
+            if (result == "OK")
+            {
+                log.Info(@"TimVer removed from HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
+                OkDialog ok = new();
+                ok.Message = "TimVer was removed from Windows startup";
+                _ = await DialogHost.Show(ok, "dh1").ConfigureAwait(true);
+            }
+            else
+            {
+                log.Info($"Attempt to remove startup entry failed: {result}");
+                ErrorDialog ed = new();
+                ed.Message = "Failed to remove TimVer from Windows startup.\n\nSee log file for additional info.";
+                _ = await DialogHost.Show(ed, "dh1").ConfigureAwait(true);
+            }
         }
     }
-
-    private void CbxMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        if (sender is ComboBox comboBox)
-        {
-            UserSettings.Setting.DarkMode = Convert.ToInt32(((ComboBoxItem)comboBox.SelectedItem).Tag);
-        }
-    }
-    #endregion ComboBox events
+    #endregion History on Windows startup
 }

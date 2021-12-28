@@ -1,12 +1,30 @@
 ﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-namespace TKUtils
+using System.Runtime.Versioning;
+using System.Runtime.InteropServices;
+
+namespace TimVer
 {
     /// <summary>
     /// Class to return information about the current application
     /// </summary>
     public static class AppInfo
     {
+        /// <summary>
+        /// Returns the operating system description e.g. Microsoft Windows 10.0.19044
+        /// </summary>
+        public static string OsPlatform => RuntimeInformation.OSDescription;
+
+        /// <summary>
+        /// Returns the framework name
+        /// </summary>
+        public static string Framework => Assembly.GetEntryAssembly()?.GetCustomAttribute<TargetFrameworkAttribute>()?.FrameworkName;
+
+        /// <summary>
+        /// Returns the framework description
+        /// </summary>
+        public static string RuntimeVersion => RuntimeInformation.FrameworkDescription;
+
         /// <summary>
         ///  Returns the version number in Major.Minor.Build format
         /// </summary>
@@ -21,6 +39,11 @@ namespace TKUtils
                 return version.ToString().Remove(version.ToString().LastIndexOf("."));
             }
         }
+
+        /// <summary>
+        /// Returns the file version
+        /// </summary>
+        public static string AppFileVersion => Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyFileVersionAttribute>().Version;
 
         /// <summary>
         /// Returns the full version number

@@ -10,6 +10,7 @@ global using System.IO;
 global using System.Linq;
 global using System.Reflection;
 global using System.Text;
+global using System.Threading.Tasks;
 global using System.Windows;
 global using System.Windows.Controls;
 global using System.Windows.Input;
@@ -19,9 +20,8 @@ global using CsvHelper.Configuration;
 global using Microsoft.Win32;
 global using NLog;
 global using NLog.Targets;
-global using TKUtils;
 using System.Windows.Media;
-using AdonisUI;
+using MaterialDesignThemes.Wpf;
 #endregion using directives
 
 namespace TimVer;
@@ -38,24 +38,23 @@ public partial class MainWindow
 
     public MainWindow()
     {
-        stopwatch.Start();
-
-        UserSettings.Init(UserSettings.AppFolder, UserSettings.DefaultFilename, true);
+        InitializeSettings();
 
         InitializeComponent();
 
         ReadSettings();
 
-        Page3.WriteHistory();
-
         ProcessCommandLine();
-
-        LoadNavigationBar(UserSettings.Setting.InitialPage);
-
-        log.Debug($"Startup time: {stopwatch.ElapsedMilliseconds} ms.");
     }
 
     #region Settings
+    private void InitializeSettings()
+    {
+        stopwatch.Start();
+
+        UserSettings.Init(UserSettings.AppFolder, UserSettings.DefaultFilename, true);
+    }
+
     private void ReadSettings()
     {
         // Change the log file filename when debugging
@@ -65,46 +64,21 @@ public partial class MainWindow
         // Unhandled exception handler
         AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
-        // Settings change event
-        UserSettings.Setting.PropertyChanged += UserSettingChanged;
-
         // Put the version number in the title bar
         Title = $"TimVer - {AppInfo.TitleVersion}";
 
         // Startup message in the temp file
-        log.Info($"{AppInfo.AppName} {AppInfo.TitleVersion} is starting up.");
+        log.Info($"{AppInfo.AppName} {AppInfo.TitleVersion} ({AppInfo.AppVersion}) is starting up.");
 
         // NLog logging level
         LogManager.Configuration.Variables["logLev"] = UserSettings.Setting.IncludeDebug ? "Debug" : "Info";
         LogManager.ReconfigExistingLoggers();
 
-        // .NET version
-        string runtimeVer = System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription.Replace(".NET", "");
+        // .NET version, app framework and OS platform
         string version = Environment.Version.ToString();
-        log.Debug($".NET version: {runtimeVer}    {version}.");
-
-        // Light or dark
-        switch (UserSettings.Setting.DarkMode)
-        {
-            case 0:
-                UseLightMode();
-                break;
-            case 1:
-                UseMyLightMode();
-                break;
-            case 2:
-                UseDarkMode();
-                break;
-            case 3:
-                UseMyDarkMode();
-                break;
-            case 4:
-                UseSysMode();
-                break;
-            default:
-                UseLightMode();
-                break;
-        }
+        log.Debug($".NET version: {AppInfo.RuntimeVersion.Replace(".NET", "")}  ({version})");
+        log.Debug(AppInfo.Framework);
+        log.Debug(AppInfo.OsPlatform);
 
         // Window position
         Top = UserSettings.Setting.WindowTop;
@@ -113,20 +87,96 @@ public partial class MainWindow
         Width = UserSettings.Setting.WindowWidth;
         Topmost = UserSettings.Setting.KeepOnTop;
 
-        // Zoom
-        double curZoom = UserSettings.Setting.SizeZoom;
-        MainGrid.LayoutTransform = new ScaleTransform(curZoom, curZoom);
+        // Light or dark
+        SetBaseTheme(UserSettings.Setting.DarkMode);
+
+        // UI size
+        double size = UIScale(UserSettings.Setting.UISize);
+        MainGrid.LayoutTransform = new ScaleTransform(size, size);
+
+        // Initial page viewed
+        SetInitialView(UserSettings.Setting.InitialPage);
+
+        // Settings change event
+        UserSettings.Setting.PropertyChanged += UserSettingChanged;
+
+        // Update history file (if needed)
+        Page3.WriteHistory();
     }
 
     #endregion Settings
 
+    #region UI scale converter
+    private static double UIScale(int size)
+    {
+        switch (size)
+        {
+            case 0:
+                return 0.90;
+            case 1:
+                return 0.95;
+            case 2:
+                return 1.0;
+            case 3:
+                return 1.05;
+            case 4:
+                return 1.1;
+            default:
+                return 1.0;
+        }
+    }
+    #endregion UI scale converter
+
+    #region Set initial view
+    private void SetInitialView(int page)
+    {
+        Stopwatch sw;
+        switch (page)
+        {
+            case 0:
+                sw = Stopwatch.StartNew();
+                tabWinInfo.Content = new Page1();
+                sw.Stop();
+                log.Debug($"Windows information loaded in {sw.Elapsed.TotalMilliseconds:N2} ms");
+                break;
+            case 1:
+                sw = Stopwatch.StartNew();
+                tabCompInfo.Content = new Page2();
+                sw.Stop();
+                log.Debug($"Computer information loaded in {sw.Elapsed.TotalMilliseconds:N2} ms");
+                _ = tabCompInfo.Focus();
+                break;
+            case 2:
+                sw = Stopwatch.StartNew();
+                tabHistory.Content = new Page3();
+                sw.Stop();
+                log.Debug($"History loaded in {sw.Elapsed.TotalMilliseconds:N2} ms");
+                _ = tabHistory.Focus();
+                break;
+            case 4:
+                _ = tabSettings.Focus();
+                break;
+            case 5:
+                _ = tabAbout.Focus();
+                break;
+            default:
+                _ = tabWinInfo.Focus();
+                break;
+        }
+    }
+    #endregion Set initial view
+
     #region Process command line args
     private void ProcessCommandLine()
     {
+        log.Debug($"Startup time: {stopwatch.ElapsedMilliseconds} ms.");
+
         // If count is less that two, bail out
         string[] args = Environment.GetCommandLineArgs();
         if (args.Length < 2)
+        {
             return;
+        }
 
         foreach (string item in args)
         {
@@ -140,73 +190,6 @@ public partial class MainWindow
         }
     }
     #endregion Process command line args
-
-    #region Page Navigation
-    private void LoadNavigationBar(int page)
-    {
-        _ = lbNavigation.Items.Add("Windows Info");
-        _ = lbNavigation.Items.Add("Computer Info");
-        _ = lbNavigation.Items.Add("History");
-        _ = lbNavigation.Items.Add("Options");
-        _ = lbNavigation.Items.Add("About");
-        lbNavigation.SelectedIndex = page - 1;
-    }
-
-    private void LbNavigation_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        switch (lbNavigation.SelectedIndex)
-        {
-            case 0:
-                {
-                    Mouse.OverrideCursor = Cursors.Wait;
-                    Stopwatch sw = Stopwatch.StartNew();
-                    MainFrame.Content = new Page1();
-                    sw.Stop();
-                    log.Debug($"Time to load Windows info: {sw.ElapsedMilliseconds} ms.");
-                    Mouse.OverrideCursor = null;
-                }
-                break;
-            case 1:
-                {
-                    Mouse.OverrideCursor = Cursors.Wait;
-                    Stopwatch sw = Stopwatch.StartNew();
-                    MainFrame.Content = new Page2();
-                    sw.Stop();
-                    log.Debug($"Time to load Computer info: {sw.ElapsedMilliseconds} ms.");
-                    Mouse.OverrideCursor = null;
-                }
-                break;
-            case 2:
-                {
-                    Mouse.OverrideCursor = Cursors.Wait;
-                    Stopwatch sw = Stopwatch.StartNew();
-                    MainFrame.Content = new Page3();
-                    sw.Stop();
-                    log.Debug($"Time to load History: {sw.ElapsedMilliseconds} ms.");
-                    Mouse.OverrideCursor = null;
-                }
-                break;
-            case 3:
-                {
-                    Stopwatch sw = Stopwatch.StartNew();
-                    MainFrame.Content = new Page4();
-                    sw.Stop();
-                    log.Debug($"Time to load Options: {sw.ElapsedMilliseconds} ms.");
-                }
-                break;
-            case 4:
-                {
-                    Stopwatch sw = Stopwatch.StartNew();
-                    MainFrame.Content = new Page5();
-                    sw.Stop();
-                    log.Debug($"Time to load About: {sw.ElapsedMilliseconds} ms.");
-                }
-                break;
-            default:
-                break;
-        }
-    }
-    #endregion Page Navigation
 
     #region Unhandled Exception Handler
     private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs args)
@@ -232,6 +215,7 @@ public partial class MainWindow
             case "KeepOnTop":
                 Topmost = (bool)newValue;
                 break;
+
             case "IncludeDebug":
                 if ((bool)newValue)
                 {
@@ -243,83 +227,22 @@ public partial class MainWindow
                 }
                 LogManager.ReconfigExistingLoggers();
                 break;
+
             case "DarkMode":
-                switch (newValue)
-                {
-                    case 0:
-                        UseLightMode();
-                        break;
-                    case 1:
-                       UseMyLightMode();
-                        break;
-                    case 2:
-                        UseDarkMode();
-                        break;
-                    case 3:
-                        UseMyDarkMode();
-                        break;
-                    case 4:
-                        UseSysMode();
-                        break;
-                    default:
-                        UseLightMode();
-                        break;
-                }
+                SetBaseTheme((int)newValue);
                 break;
-            case "SizeZoom":
-                double curZoom = (double)newValue;
-                MainGrid.LayoutTransform = new ScaleTransform(curZoom, curZoom);
+
+            case "UISize":
+                int size = (int)newValue;
+                double newSize = UIScale(size);
+                MainGrid.LayoutTransform = new ScaleTransform(newSize, newSize);
                 break;
         }
         log.Debug($"Setting change: {e.PropertyName} New Value: {newValue}");
     }
     #endregion Setting change
 
-    #region Light/Dark/System mode
-    private static void UseDarkMode()
-    {
-        ResourceLocator.SetColorScheme(Application.Current.Resources, ResourceLocator.DarkColorScheme);
-    }
-
-    private static void UseLightMode()
-    {
-        ResourceLocator.SetColorScheme(Application.Current.Resources, ResourceLocator.LightColorScheme);
-    }
-
-    private void UseMyLightMode()
-    {
-        UseLightMode();
-        Uri mylight = new("pack://application:,,,/TimVer;component/Dictionaries/MyLight.xaml");
-        ResourceLocator.SetColorScheme(Application.Current.Resources, mylight, ResourceLocator.LightColorScheme);
-    }
-
-    private static void UseMyDarkMode()
-    {
-        Uri mydark = new("pack://application:,,,/TimVer;component/Dictionaries/MyDark.xaml");
-        ResourceLocator.SetColorScheme(Application.Current.Resources, mydark);
-    }
-
-    private static void UseSysMode()
-    {
-        const string regpath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize";
-        using RegistryKey key = Registry.CurrentUser.OpenSubKey(regpath, true);
-        object darkPref = key.GetValue("AppsUseLightTheme");
-        if (darkPref != null)
-        {
-            if (darkPref.ToString() == "0")
-            {
-                UseDarkMode();
-            }
-            else
-            {
-                UseLightMode();
-            }
-        }
-    }
-    #endregion Light/Dark/System mode
-
     #region Smaller/Larger
-
     private void Window_MouseWheel(object sender, MouseWheelEventArgs e)
     {
         if (Keyboard.Modifiers != ModifierKeys.Control)
@@ -337,26 +260,26 @@ public partial class MainWindow
 
     public void EverythingSmaller()
     {
-        double curZoom = UserSettings.Setting.SizeZoom;
-        if (curZoom > 0.85)
+        int size = UserSettings.Setting.UISize;
+        if (size > 0)
         {
-            curZoom -= .05;
-            UserSettings.Setting.SizeZoom = Math.Round(curZoom, 2);
+            size--;
+            UserSettings.Setting.UISize = size;
+            double newSize = UIScale(size);
+            MainGrid.LayoutTransform = new ScaleTransform(newSize, newSize);
         }
-
-        MainGrid.LayoutTransform = new ScaleTransform(curZoom, curZoom);
     }
 
     public void EverythingLarger()
     {
-        double curZoom = UserSettings.Setting.SizeZoom;
-        if (curZoom < 1.05)
+        int size = UserSettings.Setting.UISize;
+        if (size < 4)
         {
-            curZoom += .05;
-            UserSettings.Setting.SizeZoom = Math.Round(curZoom, 2);
+            size++;
+            UserSettings.Setting.UISize = size;
+            double newSize = UIScale(size);
+            MainGrid.LayoutTransform = new ScaleTransform(newSize, newSize);
         }
-
-        MainGrid.LayoutTransform = new ScaleTransform(curZoom, curZoom);
     }
     #endregion Smaller/Larger
 
@@ -377,4 +300,89 @@ public partial class MainWindow
         UserSettings.SaveSettings();
     }
     #endregion Window closing
+
+    #region Set light or dark theme
+    private static void SetBaseTheme(int mode)
+    {
+        //Retrieve the app's existing theme
+        PaletteHelper paletteHelper = new();
+        ITheme theme = paletteHelper.GetTheme();
+
+        switch (mode)
+        {
+            case 0:
+                theme.SetBaseTheme(Theme.Light);
+                break;
+            case 1:
+                theme.SetBaseTheme(Theme.Dark);
+                break;
+            case 2:
+                if (GetSystemTheme().Equals("light", StringComparison.OrdinalIgnoreCase))
+                {
+                    theme.SetBaseTheme(Theme.Light);
+                }
+                else
+                {
+                    theme.SetBaseTheme(Theme.Dark);
+                }
+                break;
+            default:
+                theme.SetBaseTheme(Theme.Light);
+                break;
+        }
+
+        //Change the app's current theme
+        paletteHelper.SetTheme(theme);
+    }
+
+    private static string GetSystemTheme()
+    {
+        BaseTheme? sysTheme = Theme.GetSystemTheme();
+        if (sysTheme != null)
+        {
+            return sysTheme.ToString();
+        }
+        return string.Empty;
+    }
+    #endregion Set light or dark theme
+
+    private void TcMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (sender is TabControl && IsLoaded)
+        {
+            if (tabWinInfo.IsSelected)
+            {
+                Stopwatch sw = Stopwatch.StartNew();
+                tabWinInfo.Content = new Page1();
+                sw.Stop();
+                log.Debug($"Windows information loaded in {sw.Elapsed.TotalMilliseconds:N2} ms");
+            }
+
+            if (tabCompInfo.IsSelected)
+            {
+                Stopwatch sw = Stopwatch.StartNew();
+                tabCompInfo.Content = new Page2();
+                sw.Stop();
+                log.Debug($"Computer information loaded in {sw.Elapsed.TotalMilliseconds:N2} ms");
+            }
+
+            if (tabHistory.IsSelected)
+            {
+                Stopwatch sw = Stopwatch.StartNew();
+                tabHistory.Content = new Page3();
+                sw.Stop();
+                log.Debug($"History loaded in {sw.Elapsed.TotalMilliseconds:N2} ms");
+            }
+        }
+    }
+
+    #region Dialog closing
+    private void DialogClosing(object sender, DialogClosingEventArgs e)
+    {
+        if (!(bool)e.Parameter)
+        {
+            return;
+        }
+    }
+    #endregion Dialog closing
 }
