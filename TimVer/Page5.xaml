@@ -47,7 +47,7 @@
                         Margin="0">
                         <StackPanel Orientation="Vertical">
                             <Button
-                                Click="Log_Click"
+                                Click="BtnLog_Click"
                                 Content="Log"
                                 Style="{StaticResource MaterialDesignFlatLightButton}" />
                             <Button

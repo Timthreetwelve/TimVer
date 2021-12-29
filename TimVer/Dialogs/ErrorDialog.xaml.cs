@@ -2,8 +2,15 @@
 
 namespace TimVer.Dialogs;
 
+/// <summary>
+/// A dialog to display a message with an OK button.
+/// This dialog has a RED border and button background.
+/// </summary>
 public partial class ErrorDialog : UserControl
 {
+    /// <summary>
+    /// Message to be displayed
+    /// </summary>
     public string Message { get; set; }
 
     public ErrorDialog()

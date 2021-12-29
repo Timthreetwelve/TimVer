@@ -10,16 +10,16 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
         // Set defaults
         DarkMode = 0;
         IncludeDebug = false;
-        InitialPage = 1;
+        InitialPage = 0;
         KeepOnTop = false;
-        UISize = 3;
+        UISize = 2;
         ShowDrives = true;
         ShowLabels = false;
         ShowUser = true;
-        WindowHeight = 400;
+        WindowHeight = 480;
         WindowLeft = 100;
         WindowTop = 100;
-        WindowWidth = 600;
+        WindowWidth = 645;
     }
     #endregion Constructor
 

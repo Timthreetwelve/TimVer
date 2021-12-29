@@ -14,14 +14,15 @@ global using System.Threading.Tasks;
 global using System.Windows;
 global using System.Windows.Controls;
 global using System.Windows.Input;
+global using System.Windows.Media;
 global using System.Windows.Navigation;
 global using CsvHelper;
 global using CsvHelper.Configuration;
+global using MaterialDesignThemes.Wpf;
 global using Microsoft.Win32;
 global using NLog;
+global using NLog.Config;
 global using NLog.Targets;
-using System.Windows.Media;
-using MaterialDesignThemes.Wpf;
 #endregion using directives
 
 namespace TimVer;
@@ -57,9 +58,8 @@ public partial class MainWindow
 
     private void ReadSettings()
     {
-        // Change the log file filename when debugging
-        string env = Debugger.IsAttached ? "debug" : "temp";
-        GlobalDiagnosticsContext.Set("TempOrDebug", env);
+        // Set NLog configuration
+        NLHelpers.NLogConfig();
 
         // Unhandled exception handler
         AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
@@ -69,10 +69,6 @@ public partial class MainWindow
 
         // Startup message in the temp file
         log.Info($"{AppInfo.AppName} {AppInfo.TitleVersion} ({AppInfo.AppVersion}) is starting up.");
-
-        // NLog logging level
-        LogManager.Configuration.Variables["logLev"] = UserSettings.Setting.IncludeDebug ? "Debug" : "Info";
-        LogManager.ReconfigExistingLoggers();
 
         // .NET version, app framework and OS platform
         string version = Environment.Version.ToString();
@@ -106,26 +102,34 @@ public partial class MainWindow
 
     #endregion Settings
 
-    #region UI scale converter
-    private static double UIScale(int size)
+    #region Setting change
+    private void UserSettingChanged(object sender, PropertyChangedEventArgs e)
     {
-        switch (size)
+        PropertyInfo prop = sender.GetType().GetProperty(e.PropertyName);
+        var newValue = prop?.GetValue(sender, null);
+        switch (e.PropertyName)
         {
-            case 0:
-                return 0.90;
-            case 1:
-                return 0.95;
-            case 2:
-                return 1.0;
-            case 3:
-                return 1.05;
-            case 4:
-                return 1.1;
-            default:
-                return 1.0;
+            case "KeepOnTop":
+                Topmost = (bool)newValue;
+                break;
+
+            case "IncludeDebug":
+                NLHelpers.SetLogLevel((bool)newValue);
+                break;
+
+            case "DarkMode":
+                SetBaseTheme((int)newValue);
+                break;
+
+            case "UISize":
+                int size = (int)newValue;
+                double newSize = UIScale(size);
+                MainGrid.LayoutTransform = new ScaleTransform(newSize, newSize);
+                break;
         }
+        log.Debug($"Setting change: {e.PropertyName} New Value: {newValue}");
     }
-    #endregion UI scale converter
+    #endregion Setting change
 
     #region Set initial view
     private void SetInitialView(int page)
@@ -166,6 +170,38 @@ public partial class MainWindow
     }
     #endregion Set initial view
 
+    #region Tab selection changed
+    private void TcMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (sender is TabControl && IsLoaded)
+        {
+            if (tabWinInfo.IsSelected)
+            {
+                Stopwatch sw = Stopwatch.StartNew();
+                tabWinInfo.Content = new Page1();
+                sw.Stop();
+                log.Debug($"Windows information loaded in {sw.Elapsed.TotalMilliseconds:N2} ms");
+            }
+
+            if (tabCompInfo.IsSelected)
+            {
+                Stopwatch sw = Stopwatch.StartNew();
+                tabCompInfo.Content = new Page2();
+                sw.Stop();
+                log.Debug($"Computer information loaded in {sw.Elapsed.TotalMilliseconds:N2} ms");
+            }
+
+            if (tabHistory.IsSelected)
+            {
+                Stopwatch sw = Stopwatch.StartNew();
+                tabHistory.Content = new Page3();
+                sw.Stop();
+                log.Debug($"History loaded in {sw.Elapsed.TotalMilliseconds:N2} ms");
+            }
+        }
+    }
+    #endregion Tab selection changed
+
     #region Process command line args
     private void ProcessCommandLine()
     {
@@ -191,6 +227,24 @@ public partial class MainWindow
     }
     #endregion Process command line args
 
+    #region Window closing
+    private void Window_Closing(object sender, CancelEventArgs e)
+    {
+        stopwatch.Stop();
+        log.Info($"{AppInfo.AppName} is shutting down.  Elapsed time: {stopwatch.Elapsed:h\\:mm\\:ss\\.ff}");
+
+        // Shut down NLog
+        LogManager.Shutdown();
+
+        // Save settings
+        UserSettings.Setting.WindowLeft = Math.Floor(Left);
+        UserSettings.Setting.WindowTop = Math.Floor(Top);
+        UserSettings.Setting.WindowWidth = Math.Floor(Width);
+        UserSettings.Setting.WindowHeight = Math.Floor(Height);
+        UserSettings.SaveSettings();
+    }
+    #endregion Window closing
+
     #region Unhandled Exception Handler
     private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs args)
     {
@@ -204,43 +258,6 @@ public partial class MainWindow
         log.Error(e.StackTrace);
     }
     #endregion Unhandled Exception Handler
-
-    #region Setting change
-    private void UserSettingChanged(object sender, PropertyChangedEventArgs e)
-    {
-        PropertyInfo prop = sender.GetType().GetProperty(e.PropertyName);
-        var newValue = prop?.GetValue(sender, null);
-        switch (e.PropertyName)
-        {
-            case "KeepOnTop":
-                Topmost = (bool)newValue;
-                break;
-
-            case "IncludeDebug":
-                if ((bool)newValue)
-                {
-                    LogManager.Configuration.Variables["logLev"] = "Debug";
-                }
-                else
-                {
-                    LogManager.Configuration.Variables["logLev"] = "Info";
-                }
-                LogManager.ReconfigExistingLoggers();
-                break;
-
-            case "DarkMode":
-                SetBaseTheme((int)newValue);
-                break;
-
-            case "UISize":
-                int size = (int)newValue;
-                double newSize = UIScale(size);
-                MainGrid.LayoutTransform = new ScaleTransform(newSize, newSize);
-                break;
-        }
-        log.Debug($"Setting change: {e.PropertyName} New Value: {newValue}");
-    }
-    #endregion Setting change
 
     #region Smaller/Larger
     private void Window_MouseWheel(object sender, MouseWheelEventArgs e)
@@ -282,24 +299,6 @@ public partial class MainWindow
         }
     }
     #endregion Smaller/Larger
-
-    #region Window closing
-    private void Window_Closing(object sender, CancelEventArgs e)
-    {
-        stopwatch.Stop();
-        log.Info($"{AppInfo.AppName} is shutting down.  Elapsed time: {stopwatch.Elapsed:g}");
-
-        // Shut down NLog
-        LogManager.Shutdown();
-
-        // Save settings
-        UserSettings.Setting.WindowLeft = Math.Floor(Left);
-        UserSettings.Setting.WindowTop = Math.Floor(Top);
-        UserSettings.Setting.WindowWidth = Math.Floor(Width);
-        UserSettings.Setting.WindowHeight = Math.Floor(Height);
-        UserSettings.SaveSettings();
-    }
-    #endregion Window closing
 
     #region Set light or dark theme
     private static void SetBaseTheme(int mode)
@@ -346,35 +345,26 @@ public partial class MainWindow
     }
     #endregion Set light or dark theme
 
-    private void TcMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    #region UI scale converter
+    private static double UIScale(int size)
     {
-        if (sender is TabControl && IsLoaded)
+        switch (size)
         {
-            if (tabWinInfo.IsSelected)
-            {
-                Stopwatch sw = Stopwatch.StartNew();
-                tabWinInfo.Content = new Page1();
-                sw.Stop();
-                log.Debug($"Windows information loaded in {sw.Elapsed.TotalMilliseconds:N2} ms");
-            }
-
-            if (tabCompInfo.IsSelected)
-            {
-                Stopwatch sw = Stopwatch.StartNew();
-                tabCompInfo.Content = new Page2();
-                sw.Stop();
-                log.Debug($"Computer information loaded in {sw.Elapsed.TotalMilliseconds:N2} ms");
-            }
-
-            if (tabHistory.IsSelected)
-            {
-                Stopwatch sw = Stopwatch.StartNew();
-                tabHistory.Content = new Page3();
-                sw.Stop();
-                log.Debug($"History loaded in {sw.Elapsed.TotalMilliseconds:N2} ms");
-            }
+            case 0:
+                return 0.90;
+            case 1:
+                return 0.95;
+            case 2:
+                return 1.0;
+            case 3:
+                return 1.05;
+            case 4:
+                return 1.1;
+            default:
+                return 1.0;
         }
     }
+    #endregion UI scale converter
 
     #region Dialog closing
     private void DialogClosing(object sender, DialogClosingEventArgs e)

@@ -1,6 +1,5 @@
 ﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-using MaterialDesignThemes.Wpf;
 using TimVer.Dialogs;
 
 namespace TimVer;
@@ -29,7 +28,7 @@ public partial class Page4 : UserControl
     #region Button events
     private async void BtnLogFile_Click(object sender, RoutedEventArgs e)
     {
-        _ = await TextFileViewer.ViewTextFile(TempLogFile).ConfigureAwait(true);
+        _ = await TextFileViewer.ViewTextFile(NLHelpers.GetLogfileName()).ConfigureAwait(true);
     }
     private async void BtnReadme_Click(object sender, RoutedEventArgs e)
     {
@@ -41,25 +40,6 @@ public partial class Page4 : UserControl
         Application.Current.Shutdown();
     }
     #endregion Button events
-
-    #region Get log file name
-    public static string TempLogFile
-    {
-        get
-        {
-            // Ask NLog what the file name is
-            using (FileTarget target = LogManager.Configuration.FindTargetByName("logFile") as FileTarget)
-            {
-                if (target != null)
-                {
-                    LogEventInfo logEventInfo = new() { TimeStamp = DateTime.Now };
-                    return target.FileName.Render(logEventInfo);
-                }
-            }
-            return null;
-        }
-    }
-    #endregion Get log file name
 
     #region History on Windows startup
     private async void TbHistOnStart_CheckedAsync(object sender, RoutedEventArgs e)

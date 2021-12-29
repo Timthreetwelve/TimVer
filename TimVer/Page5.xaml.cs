@@ -27,42 +27,23 @@ public partial class Page5 : UserControl
     private async void BtnLicense_Click(object sender, RoutedEventArgs e)
     {
         string dir = AppInfo.AppDirectory;
-        _ = await TextFileViewer.ViewTextFile(Path.Combine(dir, "License.txt")).ConfigureAwait(false);
+        _ = await TextFileViewer.ViewTextFile(Path.Combine(dir, "License.txt")).ConfigureAwait(true);
     }
 
     private async void BtnReadme_Click(object sender, RoutedEventArgs e)
     {
         string dir = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-        _ = await TextFileViewer.ViewTextFile(Path.Combine(dir, "ReadMe.txt")).ConfigureAwait(false);
+        _ = await TextFileViewer.ViewTextFile(Path.Combine(dir, "ReadMe.txt")).ConfigureAwait(true);
     }
 
     private void BtnExit_Click(object sender, RoutedEventArgs e)
     {
         Application.Current.Shutdown();
     }
+
+    private async void BtnLog_Click(object sender, RoutedEventArgs e)
+    {
+        _ = await TextFileViewer.ViewTextFile(NLHelpers.GetLogfileName()).ConfigureAwait(true);
+    }
     #endregion Other Click events
-
-    #region Get log file name
-    public static string TempLogFile
-    {
-        get
-        {
-            // Ask NLog what the file name is
-            using (FileTarget target = LogManager.Configuration.FindTargetByName("logFile") as FileTarget)
-            {
-                if (target != null)
-                {
-                    LogEventInfo logEventInfo = new() { TimeStamp = DateTime.Now };
-                    return target.FileName.Render(logEventInfo);
-                }
-            }
-            return null;
-        }
-    }
-    #endregion Get log file name
-
-    private async void Log_Click(object sender, RoutedEventArgs e)
-    {
-        _ = await TextFileViewer.ViewTextFile(TempLogFile).ConfigureAwait(false);
-    }
 }

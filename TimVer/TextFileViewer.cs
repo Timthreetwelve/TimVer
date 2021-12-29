@@ -1,6 +1,5 @@
 ﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-using MaterialDesignThemes.Wpf;
 using TimVer.Dialogs;
 
 namespace TimVer;
@@ -12,6 +11,10 @@ namespace TimVer;
 internal static class TextFileViewer
 {
     #region Text file viewer
+    /// <summary>
+    /// Open the file in the default application
+    /// </summary>
+    /// <param name="txtfile">File to open</param>
     public static async Task<bool> ViewTextFile(string txtfile)
     {
         if (File.Exists(txtfile))

@@ -2,8 +2,14 @@
 
 namespace TimVer.Dialogs;
 
+/// <summary>
+/// A dialog to display a message with an OK button.
+/// </summary>
 public partial class OkDialog : UserControl
 {
+    /// <summary>
+    /// Message to be displayed
+    /// </summary>
     public string Message { get; set; }
 
     public OkDialog()
