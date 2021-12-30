@@ -226,7 +226,7 @@
                                 Style="{StaticResource MaterialDesignSwitchToggleButton}" />
                             <Label
                                 Margin="10,-1,0,0"
-                                Content="Display disk drives on Computer Information page" />
+                                Content="Display drive letters on Computer Information page" />
                         </StackPanel>
 
                         <StackPanel
