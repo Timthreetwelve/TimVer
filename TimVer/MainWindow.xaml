@@ -10,6 +10,7 @@
     Background="{DynamicResource MaterialDesignPaper}"
     Closing="Window_Closing"
     FontSize="14"
+    KeyDown="Window_KeyDown"
     MouseWheel="Window_MouseWheel"
     TextElement.FontWeight="Regular"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"

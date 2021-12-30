@@ -375,4 +375,44 @@ public partial class MainWindow
         }
     }
     #endregion Dialog closing
+
+    #region Keyboard events
+    private void Window_KeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.KeyboardDevice.Modifiers == ModifierKeys.Control)
+        {
+            if (e.Key == Key.M)
+            {
+                switch (UserSettings.Setting.DarkMode)
+                {
+                    case 0:
+                        UserSettings.Setting.DarkMode = 1;
+                        break;
+                    case 1:
+                        UserSettings.Setting.DarkMode = 2;
+                        break;
+                    case 2:
+                        UserSettings.Setting.DarkMode = 0;
+                        break;
+                }
+            }
+            if (e.Key == Key.Add)
+            {
+                EverythingLarger();
+            }
+            if (e.Key == Key.Subtract)
+            {
+                EverythingSmaller();
+            }
+            if (e.Key == Key.OemComma)
+            {
+                _ = tabSettings.Focus();
+            }
+        }
+        if (e.Key == Key.F1)
+        {
+            _ = tabAbout.Focus();
+        }
+    }
+    #endregion Keyboard events
 }
