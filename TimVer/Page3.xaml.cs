@@ -105,4 +105,11 @@ public partial class Page3 : UserControl
         return Path.Combine(dir, "history.csv");
     }
     #endregion Get path to history file
+
+    #region GridView selection change
+    private void HistoryGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        e.Handled = true;
+    }
+    #endregion GridView selection change
 }

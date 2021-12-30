@@ -92,6 +92,8 @@
                 <ListView
                     x:Name="HistoryGrid"
                     Margin="0,0,0,0"
+                    d:ItemsSource="{d:SampleData ItemCount=5}"
+                    SelectionChanged="HistoryGrid_SelectionChanged"
                     materialDesign:ListViewAssist.ListViewItemPadding="8">
                     <ListView.Resources>
                         <Style
@@ -99,7 +101,7 @@
                             TargetType="ScrollBar" />
                     </ListView.Resources>
                     <ListView.View>
-                        <GridView>
+                        <GridView >
                             <GridViewColumn
                                 Width="135"
                                 DisplayMemberBinding="{Binding HDate}"
