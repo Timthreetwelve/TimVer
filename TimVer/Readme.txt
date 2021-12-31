@@ -23,6 +23,9 @@ and architecture.
 The Computer Info page shows information about the computer such as the computer make, model and name.
 It also shows information about the CPU, memory and optionally the disk drive letters.
 
+The information on these first two pages can be copied to the clipboard by clicking on the icon on
+the right end if the page header (blue bar).
+
 The History page shows history information from the previous times TimVer was run. This can be used
 to compare build numbers before and after running Windows Update. Only one history record will be
 recorded per build number. The history file is in CSV format.
@@ -31,9 +34,18 @@ The Options page has options that determine how the application looks and runs.
 
 The About page displays version information and a link to the GitHib repository.
 
-The information on the first two pages can be copied to the clipboard by clicking on the Copy button
-in the lower left corner.
+These last two pages have a three-dot menu at the right end of the page header that has options to
+view the log file, open the readme file and exit the application.
 
+These keyboard shortcuts are available:
+
+	Ctrl + Tab = Select the next screen
+	Ctrl + Comma = Go to the Settings screen
+	Ctrl + M = Change the theme
+	Ctrl + Numpad Plus = Increase size
+	Ctrl + Numpad Minus = Decrease size
+	Ctrl + Mouse Wheel = Increase/Decrease size
+	F1 = Go to the About screen
 
 Command Line Option
 ===================
@@ -55,15 +67,15 @@ TimVer was written in C# by Tim Kennedy and now requires .Net 6.
 
 TimVer uses the following NuGet packages:
 
-Adonis UI https://github.com/benruehl/adonis-ui
+* Material Design in XAML Toolkit https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit
 
-NLog https://nlog-project.org/
+* NLog https://nlog-project.org/
 
-CSVHelper https://joshclose.github.io/CsvHelper/
+* CSVHelper https://joshclose.github.io/CsvHelper/
 
-Microsoft.Management.Infrastructure https://github.com/PowerShell/MMI
+* Microsoft.Management.Infrastructure https://github.com/PowerShell/MMI
 
-Inno Setup was used to create the installer. https://jrsoftware.org/isinfo.php
+* Inno Setup was used to create the installer. https://jrsoftware.org/isinfo.php
 
 
 
