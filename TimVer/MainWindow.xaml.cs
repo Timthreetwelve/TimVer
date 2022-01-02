@@ -106,28 +106,29 @@ public partial class MainWindow
     private void UserSettingChanged(object sender, PropertyChangedEventArgs e)
     {
         PropertyInfo prop = sender.GetType().GetProperty(e.PropertyName);
-        var newValue = prop?.GetValue(sender, null);
+        object newValue = prop?.GetValue(sender, null);
+        log.Debug($"Setting change: {e.PropertyName} New Value: {newValue}");
+
         switch (e.PropertyName)
         {
-            case "KeepOnTop":
+            case nameof(UserSettings.Setting.KeepOnTop):
                 Topmost = (bool)newValue;
                 break;
 
-            case "IncludeDebug":
+            case nameof(UserSettings.Setting.IncludeDebug):
                 NLHelpers.SetLogLevel((bool)newValue);
                 break;
 
-            case "DarkMode":
+            case nameof(UserSettings.Setting.DarkMode):
                 SetBaseTheme((int)newValue);
                 break;
 
-            case "UISize":
+            case nameof(UserSettings.Setting.UISize):
                 int size = (int)newValue;
                 double newSize = UIScale(size);
                 MainGrid.LayoutTransform = new ScaleTransform(newSize, newSize);
                 break;
         }
-        log.Debug($"Setting change: {e.PropertyName} New Value: {newValue}");
     }
     #endregion Setting change
 
