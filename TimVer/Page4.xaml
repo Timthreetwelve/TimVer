@@ -86,7 +86,7 @@
                     Margin="15,10"
                     Padding="10,10"
                     HorizontalAlignment="Stretch"
-                    materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth2"
                     UniformCornerRadius="7">
                     <Grid>
                         <Grid.RowDefinitions>

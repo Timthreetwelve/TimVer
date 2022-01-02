@@ -86,7 +86,7 @@
             Padding="10"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            materialDesign:ShadowAssist.ShadowDepth="Depth3"
+            materialDesign:ShadowAssist.ShadowDepth="Depth2"
             UniformCornerRadius="7">
             <Grid>
                 <ListView
