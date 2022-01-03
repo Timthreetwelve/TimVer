@@ -1,11 +1,5 @@
 ﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-#region Using directives
-using Microsoft.Management.Infrastructure;
-using Microsoft.Win32;
-using System.Linq;
-#endregion Using directives
-
 namespace TimVer
 {
     /// <summary>
