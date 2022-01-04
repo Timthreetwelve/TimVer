@@ -15,6 +15,11 @@ with additional information that Winver doesn't display.
 
 ## Screenshots
 
-![Windows Info](https://github.com/Timthreetwelve/TimVer/blob/main/Images/Timver_W.png)
+![Windows Info](https://github.com/Timthreetwelve/TimVer/blob/main/Images/TimVer_Light_W.png)
 
-![Computer Info](https://github.com/Timthreetwelve/TimVer/blob/main/Images/Timver_C.png)
+![Computer Info](https://github.com/Timthreetwelve/TimVer/blob/main/Images/TimVer_Light_C.png)
+
+
+![Windows Info_Dark](https://github.com/Timthreetwelve/TimVer/blob/main/Images/TimVer_Dark_W.png)
+
+![Computer Info_Dark](https://github.com/Timthreetwelve/TimVer/blob/main/Images/TimVer_Dark_C.png)
