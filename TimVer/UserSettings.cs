@@ -12,10 +12,11 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
         IncludeDebug = false;
         InitialPage = 0;
         KeepOnTop = false;
-        UISize = 2;
+        Page1Alt = false;
         ShowDrives = true;
         ShowLabels = false;
         ShowUser = true;
+        UISize = 2;
         WindowHeight = 480;
         WindowLeft = 100;
         WindowTop = 100;
@@ -60,6 +61,16 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
         set
         {
             keepOnTop = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public bool Page1Alt
+    {
+        get => page1alt;
+        set
+        {
+            page1alt = value;
             OnPropertyChanged();
         }
     }
@@ -162,6 +173,7 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
     private bool includeDebug;
     private int initialPage;
     private bool keepOnTop;
+    private bool page1alt;
     private bool showDrives;
     private bool showLabels;
     private bool showUser;

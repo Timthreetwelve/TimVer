@@ -115,7 +115,7 @@ public partial class MainWindow
         {
             case 0:
                 sw = Stopwatch.StartNew();
-                tabWinInfo.Content = new Page1();
+                tabWinInfo.Content = UserSettings.Setting.Page1Alt ? new Page1Alt() : new Page1();
                 sw.Stop();
                 log.Debug($"Windows information loaded in {sw.Elapsed.TotalMilliseconds:N2} ms");
                 break;
@@ -154,7 +154,7 @@ public partial class MainWindow
             if (tabWinInfo.IsSelected)
             {
                 Stopwatch sw = Stopwatch.StartNew();
-                tabWinInfo.Content = new Page1();
+                tabWinInfo.Content = UserSettings.Setting.Page1Alt ? new Page1Alt() : new Page1();
                 sw.Stop();
                 log.Debug($"Windows information loaded in {sw.Elapsed.TotalMilliseconds:N2} ms");
             }
