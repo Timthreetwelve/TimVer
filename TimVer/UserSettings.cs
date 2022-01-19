@@ -1,5 +1,7 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
+using MaterialDesignColors;
+
 namespace TimVer;
 
 public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChanged
@@ -71,6 +73,16 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
         set
         {
             page1alt = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public int PrimaryColor
+{
+        get => primaryColor;
+set
+{
+            primaryColor = value;
             OnPropertyChanged();
         }
     }
@@ -177,6 +189,7 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
     private bool showDrives;
     private bool showLabels;
     private bool showUser;
+    private int primaryColor = 5;
     private int uiSize;
     private double windowHeight;
     private double windowLeft;

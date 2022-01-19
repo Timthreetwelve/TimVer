@@ -1,5 +1,7 @@
 ﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
+using MaterialDesignColors;
+
 namespace TimVer;
 
 public partial class MainWindow
@@ -61,6 +63,9 @@ public partial class MainWindow
         // Light or dark
         SetBaseTheme(UserSettings.Setting.DarkMode);
 
+        // Primary color
+        SetPrimaryColor(UserSettings.Setting.PrimaryColor);
+
         // UI size
         double size = UIScale(UserSettings.Setting.UISize);
         MainGrid.LayoutTransform = new ScaleTransform(size, size);
@@ -102,6 +107,10 @@ public partial class MainWindow
                 int size = (int)newValue;
                 double newSize = UIScale(size);
                 MainGrid.LayoutTransform = new ScaleTransform(newSize, newSize);
+                break;
+
+            case nameof(UserSettings.Setting.PrimaryColor):
+                SetPrimaryColor((int)newValue);
                 break;
         }
     }
@@ -320,6 +329,82 @@ public partial class MainWindow
         return string.Empty;
     }
     #endregion Set light or dark theme
+
+    #region Set primary color
+    private void SetPrimaryColor(int color)
+    {
+        PaletteHelper paletteHelper = new PaletteHelper();
+        ITheme theme = paletteHelper.GetTheme();
+
+        PrimaryColor primary;
+        switch (color)
+        {
+            case 0:
+                primary = PrimaryColor.Red;
+                break;
+            case 1:
+                primary = PrimaryColor.Pink;
+                break;
+            case 2:
+                primary = PrimaryColor.Purple;
+                break;
+            case 3:
+                primary = PrimaryColor.DeepPurple;
+                break;
+            case 4:
+                primary = PrimaryColor.Indigo;
+                break;
+            case 5:
+                primary = PrimaryColor.Blue;
+                break;
+            case 6:
+                primary = PrimaryColor.LightBlue;
+                break;
+            case 7:
+                primary = PrimaryColor.Cyan;
+                break;
+            case 8:
+                primary = PrimaryColor.Teal;
+                break;
+            case 9:
+                primary = PrimaryColor.Green;
+                break;
+            case 10:
+                primary = PrimaryColor.LightGreen;
+                break;
+            case 11:
+                primary = PrimaryColor.Lime;
+                break;
+            case 12:
+                primary = PrimaryColor.Yellow;
+                break;
+            case 13:
+                primary = PrimaryColor.Amber;
+                break;
+            case 14:
+                primary = PrimaryColor.Orange;
+                break;
+            case 15:
+                primary = PrimaryColor.DeepOrange;
+                break;
+            case 16:
+                primary = PrimaryColor.Brown;
+                break;
+            case 17:
+                primary = PrimaryColor.Grey;
+                break;
+            case 18:
+                primary = PrimaryColor.BlueGrey;
+                break;
+            default:
+                primary = PrimaryColor.Blue;
+                break;
+        }
+        Color primaryColor = SwatchHelper.Lookup[(MaterialDesignColor)primary];
+        theme.SetPrimaryColor(primaryColor);
+        paletteHelper.SetTheme(theme);
+    }
+    #endregion Set primary color
 
     #region UI scale converter
     private static double UIScale(int size)

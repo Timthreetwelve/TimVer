@@ -89,27 +89,33 @@
                 <!--#region Top Card (ComboBoxes)-->
                 <materialDesign:Card
                     Grid.Row="0"
+                    Width="500"
                     Margin="15,10"
                     Padding="10,10"
-                    HorizontalAlignment="Stretch"
+                    HorizontalAlignment="Left"
                     materialDesign:ShadowAssist.ShadowDepth="Depth2"
                     UniformCornerRadius="7">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="35" />
                             <RowDefinition Height="35" />
-                            <RowDefinition Height="35" />
+
                         </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
                         <StackPanel
                             Grid.Row="0"
                             Grid.Column="0"
                             Orientation="Horizontal">
                             <Label
-                                Width="85"
+                                Width="95"
                                 Content="Initial View" />
                             <ComboBox
                                 x:Name="cbxView"
-                                Width="120"
+                                Width="110"
                                 Margin="0,0,0,5"
                                 HorizontalAlignment="Left"
                                 materialDesign:HintAssist.Hint="View"
@@ -126,15 +132,15 @@
                         </StackPanel>
 
                         <StackPanel
-                            Grid.Row="1"
-                            Grid.Column="0"
+                            Grid.Row="0"
+                            Grid.Column="1"
                             Orientation="Horizontal">
                             <Label
-                                Width="85"
+                                Width="70"
                                 Content="Theme" />
                             <ComboBox
                                 x:Name="cbxMode"
-                                Width="120"
+                                Width="110"
                                 Margin="0,0,0,5"
                                 HorizontalAlignment="Left"
                                 materialDesign:HintAssist.Hint="Theme"
@@ -149,15 +155,15 @@
                         </StackPanel>
 
                         <StackPanel
-                            Grid.Row="2"
+                            Grid.Row="1"
                             Grid.Column="0"
                             Orientation="Horizontal">
                             <Label
-                                Width="85"
-                                Content="Size" />
+                                Width="95"
+                                Content="UI Size" />
                             <ComboBox
                                 x:Name="cbxSize"
-                                Width="120"
+                                Width="110"
                                 Margin="0,0,0,5"
                                 HorizontalAlignment="Left"
                                 materialDesign:HintAssist.Hint="Size"
@@ -173,6 +179,45 @@
                             </ComboBox>
                         </StackPanel>
 
+                        <StackPanel
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Orientation="Horizontal">
+                            <Label
+                                Width="70"
+                                Content="Color" />
+                            <ComboBox
+                                x:Name="cbxColor"
+                                Width="110"
+                                Margin="0,0,0,5"
+                                HorizontalAlignment="Left"
+                                materialDesign:HintAssist.Hint="Size"
+                                MaxDropDownHeight="140"
+                                SelectedIndex="{Binding PrimaryColor, Source={x:Static local:UserSettings.Setting}}"
+                                Style="{StaticResource MaterialDesignComboBox}">
+                                <ComboBox.Items>
+                                    <ComboBoxItem Content="Red" />
+                                    <ComboBoxItem Content="Pink" />
+                                    <ComboBoxItem Content="Purple" />
+                                    <ComboBoxItem Content="Deep Purple" />
+                                    <ComboBoxItem Content="Indigo" />
+                                    <ComboBoxItem Content="Blue" />
+                                    <ComboBoxItem Content="Light Blue" />
+                                    <ComboBoxItem Content="Cyan" />
+                                    <ComboBoxItem Content="Teal" />
+                                    <ComboBoxItem Content="Green" />
+                                    <ComboBoxItem Content="Light Green" />
+                                    <ComboBoxItem Content="Lime" />
+                                    <ComboBoxItem Content="Yellow" />
+                                    <ComboBoxItem Content="Amber" />
+                                    <ComboBoxItem Content="Orange" />
+                                    <ComboBoxItem Content="Deep Orange" />
+                                    <ComboBoxItem Content="Brown" />
+                                    <ComboBoxItem Content="Grey" />
+                                    <ComboBoxItem Content="Blue Grey" />
+                                </ComboBox.Items>
+                            </ComboBox>
+                        </StackPanel>
                     </Grid>
                 </materialDesign:Card>
                 <!--#endregion-->
@@ -180,9 +225,10 @@
                 <!--#region Bottom Card (Toggle buttons)-->
                 <materialDesign:Card
                     Grid.Row="1"
+                    Width="500"
                     Margin="15,10"
                     Padding="10"
-                    HorizontalAlignment="Stretch"
+                    HorizontalAlignment="Left"
                     materialDesign:ShadowAssist.ShadowDepth="Depth2"
                     UniformCornerRadius="7">
                     <Grid>
@@ -214,7 +260,8 @@
                             Grid.Row="1"
                             Grid.Column="1"
                             Orientation="Horizontal">
-                            <ToggleButton x:Name="page1alt"
+                            <ToggleButton
+                                x:Name="page1alt"
                                 HorizontalAlignment="Left"
                                 IsChecked="{Binding Page1Alt, Source={x:Static local:UserSettings.Setting}}"
                                 Style="{StaticResource MaterialDesignSwitchToggleButton}" />
@@ -229,8 +276,8 @@
                             Orientation="Horizontal">
                             <ToggleButton
                                 HorizontalAlignment="Left"
-                                IsEnabled="{Binding ElementName=page1alt, Path=IsChecked, Converter={StaticResource boolInverter}}"
                                 IsChecked="{Binding ShowUser, Source={x:Static local:UserSettings.Setting}}"
+                                IsEnabled="{Binding ElementName=page1alt, Path=IsChecked, Converter={StaticResource boolInverter}}"
                                 Style="{StaticResource MaterialDesignSwitchToggleButton}" />
                             <Label
                                 Margin="10,-1,0,0"
