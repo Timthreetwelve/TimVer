@@ -23,11 +23,13 @@
             BasedOn="{StaticResource {x:Type GridViewColumnHeader}}"
             TargetType="GridViewColumnHeader">
             <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Padding" Value="7,0,0,0" />
             <Setter Property="FontSize" Value="13" />
             <Setter Property="FontWeight" Value="Bold" />
             <Setter Property="Foreground" Value="{Binding ElementName=PageHeader, Path=Background}" />
+            <Setter Property="Padding" Value="7,0,0,0" />
         </Style>
+        <local:TodayConverter x:Key="TodayConverter" />
+
     </UserControl.Resources>
     <!--#endregion-->
 
@@ -46,7 +48,8 @@
         <!--#endregion-->
 
         <!--#region Page header-->
-        <materialDesign:ColorZone x:Name="PageHeader"
+        <materialDesign:ColorZone
+            x:Name="PageHeader"
             Grid.Row="0"
             Grid.Column="1"
             Height="35"
@@ -93,31 +96,83 @@
                     x:Name="HistoryGrid"
                     Margin="0,0,0,0"
                     d:ItemsSource="{d:SampleData ItemCount=5}"
-                    SelectionChanged="HistoryGrid_SelectionChanged"
-                    materialDesign:ListViewAssist.ListViewItemPadding="8">
+                    materialDesign:ListViewAssist.ListViewItemPadding="8"
+                    SelectionChanged="HistoryGrid_SelectionChanged">
                     <ListView.Resources>
                         <Style
                             BasedOn="{StaticResource MaterialDesignScrollBarMinimal}"
                             TargetType="ScrollBar" />
                     </ListView.Resources>
                     <ListView.View>
-                        <GridView >
+                        <GridView>
                             <GridViewColumn
                                 Width="135"
-                                DisplayMemberBinding="{Binding HDate}"
-                                Header="Date" />
+                                Header="Date">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding HDate}" />
+                                        <DataTemplate.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding HDate, Converter={StaticResource TodayConverter}}"
+                                                Value="True">
+                                                <Setter Property="TextBlock.FontWeight" Value="Bold" />
+
+                                            </DataTrigger>
+                                        </DataTemplate.Triggers>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
                             <GridViewColumn
                                 Width="105"
-                                DisplayMemberBinding="{Binding HBuild}"
-                                Header="Build" />
+                                Header="Build">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding HBuild}" />
+                                        <DataTemplate.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding HDate, Converter={StaticResource TodayConverter}}"
+                                                Value="True">
+                                                <Setter Property="TextBlock.FontWeight" Value="Bold" />
+
+                                            </DataTrigger>
+                                        </DataTemplate.Triggers>
+
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
                             <GridViewColumn
                                 Width="75"
-                                DisplayMemberBinding="{Binding HVersion}"
-                                Header="Version" />
+                                Header="Version">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding HVersion}" />
+                                        <DataTemplate.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding HDate, Converter={StaticResource TodayConverter}}"
+                                                Value="True">
+                                                <Setter Property="TextBlock.FontWeight" Value="Bold" />
+
+                                            </DataTrigger>
+                                        </DataTemplate.Triggers>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
                             <GridViewColumn
                                 Width="110"
-                                DisplayMemberBinding="{Binding HBranch}"
-                                Header="Branch" />
+                                Header="Branch">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding HBranch}" />
+                                        <DataTemplate.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding HDate, Converter={StaticResource TodayConverter}}"
+                                                Value="True">
+                                                <Setter Property="TextBlock.FontWeight" Value="Bold" />
+                                            </DataTrigger>
+                                        </DataTemplate.Triggers>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
                         </GridView>
                     </ListView.View>
                 </ListView>
