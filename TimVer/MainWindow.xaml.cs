@@ -1,7 +1,5 @@
 ﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-using MaterialDesignColors;
-
 namespace TimVer;
 
 public partial class MainWindow
@@ -45,13 +43,16 @@ public partial class MainWindow
         Title = $"TimVer - {AppInfo.TitleVersion}";
 
         // Startup message in the temp file
-        log.Info($"{AppInfo.AppName} {AppInfo.TitleVersion} ({AppInfo.AppVersion}) is starting up.");
+        log.Info($"{AppInfo.AppName} ({AppInfo.AppProduct}) {AppInfo.AppVersion} is starting up");
+        log.Info($"{AppInfo.AppCopyright}");
+        log.Debug($"{AppInfo.AppName} Build date: {BuildInfo.BuildDateString} UTC");
+        log.Debug($"{AppInfo.AppName} Commit ID: {BuildInfo.CommitIDString}");
 
-        // .NET version, app framework and OS platform
+        // Log the .NET version, app framework and OS platform
         string version = Environment.Version.ToString();
         log.Debug($".NET version: {AppInfo.RuntimeVersion.Replace(".NET", "")}  ({version})");
-        log.Debug(AppInfo.Framework);
-        log.Debug(AppInfo.OsPlatform);
+        log.Debug($"Framework Version: {AppInfo.Framework}");
+        log.Debug($"Operating System: {AppInfo.OsPlatform}");
 
         // Window position
         Top = UserSettings.Setting.WindowTop;

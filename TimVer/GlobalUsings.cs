@@ -24,6 +24,7 @@ global using CsvHelper;
 global using CsvHelper.Configuration;
 global using CsvHelper.Configuration.Attributes;
 
+global using MaterialDesignColors;
 global using MaterialDesignThemes.Wpf;
 
 global using Microsoft.Management.Infrastructure;
