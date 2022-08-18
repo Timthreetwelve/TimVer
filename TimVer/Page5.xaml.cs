@@ -10,6 +10,8 @@ public partial class Page5 : UserControl
     public Page5()
     {
         InitializeComponent();
+
+        txtBuildDate.Text = $"{BuildInfo.BuildDateUtc:f}  (UTC)";
     }
 
     #region Clicked on the GitHub link
