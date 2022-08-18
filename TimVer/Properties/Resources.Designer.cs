@@ -59,15 +59,5 @@ namespace TimVer.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to bfc2ee1
-        ///.
-        /// </summary>
-        public static string CurrentCommit {
-            get {
-                return ResourceManager.GetString("CurrentCommit", resourceCulture);
-            }
-        }
     }
 }
