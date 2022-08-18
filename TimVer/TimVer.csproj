@@ -6,12 +6,13 @@
     <Nullable>disable</Nullable>
     <UseWPF>true</UseWPF>
     <Company>T_K</Company>
-    <Copyright>Copyright © 2019-2022 Tim Kennedy</Copyright>
+	<Copyright>Copyright © $([System.DateTime]::UtcNow.Year) Tim Kennedy</Copyright>
     <ApplicationIcon>Images\TV.ico</ApplicationIcon>
-    <AssemblyVersion>0.7.1.0</AssemblyVersion>
-    <FileVersion>0.7.1</FileVersion>
+    <AssemblyVersion>0.7.2.0</AssemblyVersion>
+    <FileVersion>0.7.2</FileVersion>
     <PlatformTarget>x64</PlatformTarget>
     <Platforms>AnyCPU;x64</Platforms>
+	<Description>It's like Winver, only more</Description>
     <Authors>Tim Kennedy</Authors>
     <Version>$(FileVersion)</Version>
     <EnforceCodeStyleInBuild>False</EnforceCodeStyleInBuild>
@@ -29,10 +30,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CsvHelper" Version="27.2.1" />
-    <PackageReference Include="MaterialDesignThemes" Version="4.3.0" />
+    <PackageReference Include="CsvHelper" Version="28.0.1" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
     <PackageReference Include="Microsoft.Management.Infrastructure" Version="2.0.0" />
-    <PackageReference Include="NLog" Version="4.7.13" />
+    <PackageReference Include="NLog" Version="5.0.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -56,9 +57,9 @@
     </None>
   </ItemGroup>
 
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="git rev-parse --short HEAD &gt; &quot;$(ProjectDir)CurrentCommit.txt&quot;&#xD;&#xA;" />
-  </Target>
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+		<Exec Command="powershell -NoProfile -File &quot;$(ProjectDir)Powershell\GenBuildInfo.ps1&quot; -assemblyName $(AssemblyName) -assemblyVersion $(AssemblyVersion)" />
+	</Target>
 
 
 </Project>
