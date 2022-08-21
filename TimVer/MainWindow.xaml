@@ -1,4 +1,4 @@
-﻿<Window
+<Window
     x:Class="TimVer.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -12,6 +12,7 @@
     FontSize="14"
     KeyDown="Window_KeyDown"
     MouseWheel="Window_MouseWheel"
+    MouseDoubleClick="Window_MouseDoubleClick"
     TextElement.FontWeight="Regular"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
     TextOptions.TextFormattingMode="Ideal"

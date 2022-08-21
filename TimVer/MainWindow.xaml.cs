@@ -477,4 +477,18 @@ public partial class MainWindow
         }
     }
     #endregion Keyboard events
+
+    #region Double click window to resize
+    /// <summary>
+    /// Double click the window to set optimal width
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void Window_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+    {
+        SizeToContent = SizeToContent.WidthAndHeight;
+        _ = Task.Delay(50);
+        SizeToContent = SizeToContent.Manual;
+    }
+    #endregion Double click window to resize
 }
