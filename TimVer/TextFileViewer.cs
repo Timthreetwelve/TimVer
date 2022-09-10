@@ -38,23 +38,29 @@ internal static class TextFileViewer
                 }
                 else
                 {
-                    ErrorDialog ed = new();
-                    ed.Message = $"Error reading \n{txtfile}\n{ex.Message}";
+                    ErrorDialog ed = new()
+                    {
+                        Message = $"Error reading \n{txtfile}\n{ex.Message}"
+                    };
                     _ = await DialogHost.Show(ed, "dh1").ConfigureAwait(true);
                 }
             }
             catch (Exception ex)
             {
-                ErrorDialog ed = new();
-                ed.Message = $"Unable to start default application used to open\n{txtfile}\n{ex.Message}";
+                ErrorDialog ed = new()
+                {
+                    Message = $"Unable to start default application used to open\n{txtfile}\n{ex.Message}"
+                };
                 _ = await DialogHost.Show(ed, "dh1").ConfigureAwait(true);
             }
         }
         else
         {
             Debug.WriteLine($">>> File not found: {txtfile}");
-            ErrorDialog ed = new();
-            ed.Message = $"File not found:\n{txtfile}";
+            ErrorDialog ed = new()
+            {
+                Message = $"File not found:\n{txtfile}"
+            };
             _ = await DialogHost.Show(ed, "dh1").ConfigureAwait(true);
         }
 

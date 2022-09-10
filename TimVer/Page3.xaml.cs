@@ -21,11 +21,13 @@ public partial class Page3 : UserControl
     #region Read history file
     public static List<History> ReadHistory()
     {
-        CsvConfiguration config = new(CultureInfo.InvariantCulture);
-        config.HasHeaderRecord = false;
-        config.Delimiter = ",";
-        config.TrimOptions = TrimOptions.Trim;
-        config.IgnoreBlankLines = true;
+        CsvConfiguration config = new(CultureInfo.InvariantCulture)
+        {
+            HasHeaderRecord = false,
+            Delimiter = ",",
+            TrimOptions = TrimOptions.Trim,
+            IgnoreBlankLines = true
+        };
 
         try
         {
@@ -59,10 +61,12 @@ public partial class Page3 : UserControl
         newHist.HBranch = CombinedInfo.BuildBranch;
         newHist.HDate = DateTime.Now.ToString("yyyy/MM/dd HH:mm");
 
-        CsvConfiguration config = new(CultureInfo.InvariantCulture);
-        config.HasHeaderRecord = false;
-        config.Delimiter = ",";
-        config.TrimOptions = TrimOptions.Trim;
+        CsvConfiguration config = new(CultureInfo.InvariantCulture)
+        {
+            HasHeaderRecord = false,
+            Delimiter = ",",
+            TrimOptions = TrimOptions.Trim
+        };
 
         if (File.Exists(DefaultHistoryFile()))
         {

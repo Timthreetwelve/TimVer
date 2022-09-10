@@ -48,15 +48,19 @@ public partial class Page4 : UserControl
             if (result == "OK")
             {
                 log.Info(@"TimVer added to HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
-                OkDialog ok = new();
-                ok.Message = "TimVer was added to Windows startup";
+                OkDialog ok = new()
+                {
+                    Message = "TimVer was added to Windows startup"
+                };
                 _ = await DialogHost.Show(ok, "dh1").ConfigureAwait(true);
             }
             else
             {
                 log.Info($"TimVer add to startup failed: {result}");
-                ErrorDialog ed = new();
-                ed.Message = "Failed to add TimVer to Windows startup.\n\nSee log file for additional info.";
+                ErrorDialog ed = new()
+                {
+                    Message = "Failed to add TimVer to Windows startup.\n\nSee log file for additional info."
+                };
                 _ = await DialogHost.Show(ed, "dh1").ConfigureAwait(true);
             }
         }
@@ -70,15 +74,19 @@ public partial class Page4 : UserControl
             if (result == "OK")
             {
                 log.Info(@"TimVer removed from HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
-                OkDialog ok = new();
-                ok.Message = "TimVer was removed from Windows startup";
+                OkDialog ok = new()
+                {
+                    Message = "TimVer was removed from Windows startup"
+                };
                 _ = await DialogHost.Show(ok, "dh1").ConfigureAwait(true);
             }
             else
             {
                 log.Info($"Attempt to remove startup entry failed: {result}");
-                ErrorDialog ed = new();
-                ed.Message = "Failed to remove TimVer from Windows startup.\n\nSee log file for additional info.";
+                ErrorDialog ed = new()
+                {
+                    Message = "Failed to remove TimVer from Windows startup.\n\nSee log file for additional info."
+                };
                 _ = await DialogHost.Show(ed, "dh1").ConfigureAwait(true);
             }
         }
