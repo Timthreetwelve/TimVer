@@ -45,26 +45,23 @@
                     Style="{DynamicResource PageHeader}"
                     Text="SETTINGS" />
                 <materialDesign:PopupBox
-                    HorizontalAlignment="Right"
+                    HorizontalAlignment="Right" Padding="0"
                     PlacementMode="BottomAndAlignRightEdges">
-                    <Grid
-                        Width="90"
-                        Margin="0">
-                        <StackPanel Orientation="Vertical">
-                            <Button
-                                Click="BtnLogFile_Click"
-                                Content="Log"
-                                Style="{StaticResource MaterialDesignFlatLightButton}" />
-                            <Button
-                                Click="BtnReadme_Click"
-                                Content="ReadMe"
-                                Style="{StaticResource MaterialDesignFlatLightButton}" />
-                            <Button
-                                Click="BtnExit_Click"
-                                Content="Exit"
-                                Style="{StaticResource MaterialDesignFlatSecondaryLightButton}" />
-                        </StackPanel>
-                    </Grid>
+                    <Border Padding="3"
+                            BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                            BorderThickness="2">
+                        <Grid Width="150" Margin="0">
+                            <StackPanel Orientation="Vertical">
+                                <Button Click="BtnLogFile_Click"
+                                        Content="View Log File" />
+                                <Button Click="BtnReadme_Click"
+                                        Content="View ReadMe" />
+                                <Separator Margin="0" Padding="1"
+                                           Background="{DynamicResource PrimaryHueMidBrush}" />
+                                <Button Click="BtnExit_Click" Content="Exit TimVer" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
                 </materialDesign:PopupBox>
             </Grid>
         </materialDesign:ColorZone>
