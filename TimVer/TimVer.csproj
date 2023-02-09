@@ -30,10 +30,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CsvHelper" Version="28.0.1" />
-    <PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
+    <PackageReference Include="CsvHelper" Version="30.0.1" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.7.1" />
     <PackageReference Include="Microsoft.Management.Infrastructure" Version="2.0.0" />
-    <PackageReference Include="NLog" Version="5.0.2" />
+    <PackageReference Include="NLog" Version="5.1.1" />
   </ItemGroup>
 
   <ItemGroup>
