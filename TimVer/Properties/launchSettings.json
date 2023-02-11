@@ -2,6 +2,10 @@
   "profiles": {
     "TimVer": {
       "commandName": "Project"
+    },
+    "Hidden": {
+      "commandName": "Project",
+      "commandLineArgs": "--hide"
     }
   }
 }

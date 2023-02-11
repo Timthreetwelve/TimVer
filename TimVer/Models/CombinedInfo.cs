@@ -1,6 +1,6 @@
 ﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-namespace TimVer;
+namespace TimVer.Models;
 
 /// <summary>
 /// Class that works the TimVer magic
@@ -8,7 +8,7 @@ namespace TimVer;
 internal static class CombinedInfo
 {
     #region NLog Instance
-    private static readonly Logger log = LogManager.GetCurrentClassLogger();
+    private static readonly Logger _log = LogManager.GetCurrentClassLogger();
     #endregion NLog Instance
 
     #region OS Architecture
@@ -95,7 +95,7 @@ internal static class CombinedInfo
                 _ = sb.Append('[').Append(drive.VolumeLabel).Append("]  ");
             }
         }
-        log.Debug($"Disk Drives: {sb}");
+        _log.Debug($"Disk Drives: {sb}");
         _driveInfoLab = sb.ToString();
         return _driveInfoLab;
     }
@@ -110,7 +110,7 @@ internal static class CombinedInfo
                 _ = sb.Append(drive.Name.Replace("\\", " "));
             }
         }
-        log.Debug($"Disk Drives: {sb}");
+        _log.Debug($"Disk Drives: {sb}");
         _driveInfo = sb.ToString();
         return _driveInfo;
     }

@@ -1,4 +1,4 @@
-﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer;
 
@@ -11,25 +11,31 @@ internal static class NLHelpers
     /// <summary>
     /// Configure NLog
     /// </summary>
-    public static void NLogConfig()
+    /// <param name="newfile">True to start with new _log file. False to append to current file.</param>
+    public static void NLogConfig(bool newfile)
     {
         LoggingConfiguration config = new();
 
-        // create log file Target for NLog
+        // create _log file Target for NLog
         FileTarget logfile = new("logfile")
         {
+            // new file on startup
+            DeleteOldFileOnStartup = newfile,
+
+            // create the file if needed
             FileName = CreateFilename(),
+
+            // message and footer layouts
             Footer = "${date:format=yyyy/MM/dd HH\\:mm\\:ss}",
             Layout = "${date:format=yyyy/MM/dd HH\\:mm\\:ss} " +
                          "${pad:padding=-5:inner=${level:uppercase=true}}  " +
-                         "${message}${onexception:${newline}${exception:format=tostring}}",
-            DeleteOldFileOnStartup = true
+                         "${message}${onexception:${newline}${exception:format=tostring}}"
         };
 
-        // add the log file target
+        // add the _log file target
         config.AddTarget(logfile);
 
-        // add the rule for the log file
+        // add the rule for the _log file
         LoggingRule file = new("*", LogLevel.Debug, logfile)
         {
             RuleName = "LogToFile"
@@ -106,19 +112,14 @@ internal static class NLHelpers
 
     #region Get the log file name
     /// <summary>
-    /// Gets the filename for the NLog log fie
+    /// Gets the filename for the NLog _log fie
     /// </summary>
     /// <returns></returns>
     public static string GetLogfileName()
     {
         LoggingConfiguration config = LogManager.Configuration;
-        Target target = config.FindTargetByName("logfile");
-        if (target is FileTarget ft)
-        {
-            // remove the enclosing apostrophes
-            return ft.FileName.ToString().Trim('\'');
-        }
-        return string.Empty;
+        return (config.FindTargetByName("logfile")
+                as FileTarget)?.FileName.Render(new LogEventInfo { TimeStamp = DateTime.Now });
     }
     #endregion Get the log file name
 }

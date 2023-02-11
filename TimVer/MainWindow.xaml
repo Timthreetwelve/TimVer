@@ -1,147 +1,240 @@
-﻿<Window
-    x:Class="TimVer.MainWindow"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:TimVer"
-    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="TimVer"
-    Background="{DynamicResource MaterialDesignPaper}"
-    Closing="Window_Closing"
-    FontSize="14"
-    KeyDown="Window_KeyDown"
-    MouseWheel="Window_MouseWheel"
-    MouseDoubleClick="Window_MouseDoubleClick"
-    TextElement.FontWeight="Regular"
-    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-    TextOptions.TextFormattingMode="Ideal"
-    TextOptions.TextRenderingMode="Auto"
-    mc:Ignorable="d">
+﻿<Window x:Class="TimVer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:TimVer"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodels="clr-namespace:TimVer.ViewModels"
+        xmlns:views="clr-namespace:TimVer.Views"
+        mc:Ignorable="d"
+        Width="400" Height="400"
+        Background="{DynamicResource MaterialDesignPaper}"
+        Closing="Window_Closing" FontSize="12"
+        Style="{StaticResource MaterialDesignWindow}"
+        TextElement.FontWeight="Regular"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto">
 
-    <materialDesign:DialogHost
-        CloseOnClickAway="True"
-        DialogTheme="Inherit"
-        Identifier="dh1">
-        <Grid x:Name="MainGrid">
-            <TabControl
-                x:Name="tcMain"
-                materialDesign:ColorZoneAssist.Mode="Standard"
-                materialDesign:NavigationRailAssist.ShowSelectionBackground="False"
-                materialDesign:ShadowAssist.ShadowDepth="Depth2"
-                FontWeight="Normal"
-                SelectionChanged="TcMain_SelectionChanged"
-                SnapsToDevicePixels="True"
-                Style="{StaticResource MaterialDesignNavigatilRailTabControl}"
-                TabStripPlacement="Left">
+    <!--#region Window resources-->
+    <Window.Resources>
+        <DataTemplate x:Name="winInfoViewTemplate"
+                      DataType="{x:Type viewmodels:WindowsInfoViewModel}">
+            <views:WindowsInfoPage DataContext="{Binding}" />
+        </DataTemplate>
 
-                <!--#region Windows tab-->
-                <TabItem
-                    x:Name="tabWinInfo"
-                    Height="90"
-                    Width="80">
-                    <TabItem.Header>
-                        <StackPanel>
-                            <materialDesign:PackIcon
-                                Width="24"
-                                Height="24"
-                                HorizontalAlignment="Center"
-                                Kind="MicrosoftWindows" />
-                            <TextBlock
-                                HorizontalAlignment="Center"
-                                Text="Windows" />
-                        </StackPanel>
-                    </TabItem.Header>
-                </TabItem>
+        <DataTemplate x:Name="compInfoViewTemplate"
+                      DataType="{x:Type viewmodels:ComputerInfoViewModel}">
+            <views:ComputerInfoPage DataContext="{Binding}" />
+        </DataTemplate>
+
+        <DataTemplate x:Name="historyViewTemplate"
+                      DataType="{x:Type viewmodels:HistoryViewModel}">
+            <views:HistoryPage DataContext="{Binding}" />
+        </DataTemplate>
+
+        <DataTemplate x:Name="settingsViewTemplate"
+                      DataType="{x:Type viewmodels:SettingsViewModel}">
+            <views:SettingsPage DataContext="{Binding}" />
+        </DataTemplate>
+
+        <DataTemplate x:Name="aboutViewTemplate"
+                      DataType="{x:Type viewmodels:AboutViewModel}">
+            <views:AboutPage DataContext="{Binding}" />
+        </DataTemplate>
+
+        <DataTemplate x:Name="envViewTemplate"
+                      DataType="{x:Type viewmodels:EnvVarViewModel}">
+            <views:EnvVarPage DataContext="{Binding}" />
+        </DataTemplate>
+    </Window.Resources>
+    <!--#endregion-->
+
+    <Grid x:Name="MainGrid">
+        <!--#region Row definitions-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <!--#endregion-->
+
+        <!--#region Title Row-->
+        <Grid Grid.Column="1">
+            <Grid.DataContext>
+                <viewmodels:AboutViewModel />
+            </Grid.DataContext>
+            <Label x:Name="PageTitle"
+                   Margin="10,0" HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Content="Cool Title" FontSize="22"
+                   FontWeight="Regular" />
+            <StackPanel Margin="0,0,5,0"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+
+                <!--#region Button with pop-up box-->
+                <Button Width="45"
+                        Padding="0"
+                        Foreground="{DynamicResource MaterialDesignBody}"
+                        IsDefault="False" IsTabStop="False"
+                        Style="{StaticResource MaterialDesignFlatButton}">
+                    <materialDesign:PopupBox Padding="0" HorizontalAlignment="Right"
+                                             Focusable="False"
+                                             PlacementMode="LeftAndAlignTopEdges"
+                                             Style="{DynamicResource MaterialDesignPopupBox}"
+                                             ToolTip="Additional Actions">
+                        <materialDesign:PopupBox.ToggleContent>
+                            <materialDesign:PackIcon Width="45" Height="28"
+                                                     Foreground="{Binding ElementName=PageTitle,
+                                                                          Path=Foreground}"
+                                                     Kind="DotsHorizontal" />
+                        </materialDesign:PopupBox.ToggleContent>
+                        <Border Padding="3"
+                                BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                BorderThickness="2">
+                            <Grid Width="150"
+                                  Margin="0">
+                                <Grid.DataContext>
+                                    <local:Commands />
+                                </Grid.DataContext>
+                                <StackPanel Orientation="Vertical">
+                                    <Button Height="35"
+                                            Padding="15,1,0,22"
+                                            Command="{Binding ViewLogFileCommand}"
+                                            Content="View Log File"
+                                            ToolTip="Open the application log file in the default application." />
+                                    <Button Height="35"
+                                            Padding="15,1,0,22"
+                                            Command="{Binding ViewHistoryFileCommand}"
+                                            Content="View History File"
+                                            ToolTip="Open the history file in the default application." />
+                                    <Separator Margin="0" Padding="1"
+                                               Background="{DynamicResource MaterialDesignDivider}" />
+                                    <Button Height="35"
+                                            Padding="15,1,0,22"
+                                            Command="{Binding CopyToClipboardCommand}"
+                                            CommandParameter="{Binding ElementName=MainContent}"
+                                            Content="Copy to Clipboard"
+                                            ToolTip="`" />
+                                    <Button Content="Cancel" />
+
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </materialDesign:PopupBox>
+                </Button>
                 <!--#endregion-->
-
-                <!--#region Computer tab-->
-                <TabItem
-                    x:Name="tabCompInfo"
-                    Height="90"
-                    Width="80">
-                    <TabItem.Header>
-                        <StackPanel>
-                            <materialDesign:PackIcon
-                                Width="24"
-                                Height="24"
-                                HorizontalAlignment="Center"
-                                Kind="ComputerClassic" />
-                            <TextBlock
-                                HorizontalAlignment="Center"
-                                Text="Computer" />
-                        </StackPanel>
-                    </TabItem.Header>
-                </TabItem>
-                <!--#endregion-->
-
-                <!--#region History tab-->
-                <TabItem
-                    x:Name="tabHistory"
-                    Height="90"
-                    Width="80">
-                    <TabItem.Header>
-                        <StackPanel>
-                            <materialDesign:PackIcon
-                                Width="24"
-                                Height="24"
-                                HorizontalAlignment="Center"
-                                Kind="History" />
-                            <TextBlock
-                                HorizontalAlignment="Center"
-                                Text="History" />
-                        </StackPanel>
-                    </TabItem.Header>
-                </TabItem>
-                <!--#endregion-->
-
-                <!--#region Settings tab-->
-                <TabItem
-                    x:Name="tabSettings"
-                    Height="90"
-                    Width="80">
-                    <TabItem.Header>
-                        <StackPanel>
-                            <materialDesign:PackIcon
-                                Width="24"
-                                Height="24"
-                                HorizontalAlignment="Center"
-                                Kind="GearOutline" />
-                            <TextBlock
-                                HorizontalAlignment="Center"
-                                Text="Settings" />
-                        </StackPanel>
-                    </TabItem.Header>
-                    <TabItem.Content>
-                        <local:Page4 />
-                    </TabItem.Content>
-                </TabItem>
-                <!--#endregion-->
-
-                <!--#region About tab-->
-                <TabItem
-                    x:Name="tabAbout"
-                    Height="90"
-                    Width="80">
-                    <TabItem.Header>
-                        <StackPanel>
-                            <materialDesign:PackIcon
-                                Width="24"
-                                Height="24"
-                                HorizontalAlignment="Center"
-                                Kind="InformationVariant" />
-                            <TextBlock
-                                HorizontalAlignment="Center"
-                                Text="About" />
-                        </StackPanel>
-                    </TabItem.Header>
-                    <TabItem.Content>
-                        <local:Page5 />
-                    </TabItem.Content>
-                </TabItem>
-                <!--#endregion-->
-
-            </TabControl>
+            </StackPanel>
         </Grid>
-    </materialDesign:DialogHost>
+        <!--#endregion-->
+
+        <!--#region Navigation Listbox-->
+        <ListBox x:Name="NavListBox"
+                 Grid.Row="0" Grid.RowSpan="2"
+                 Grid.Column="0"
+                 Width="180"
+                 Margin="0,5,0,0"
+                 HorizontalAlignment="Left"
+                 SelectionChanged="NavListBox_SelectionChanged"
+                 Style="{StaticResource MaterialDesignNavigationListBox}">
+
+            <ListBoxItem ToolTip="Operating System Information">
+                <ListBoxItem.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Border Style="{StaticResource NavItemIndicator}" />
+                        <materialDesign:PackIcon Width="22" Height="22"
+                                                 Kind="Microsoft" />
+                        <TextBlock Style="{StaticResource NavItemText}"
+                                   Text="Windows Info" />
+                    </StackPanel>
+                </ListBoxItem.Content>
+            </ListBoxItem>
+
+            <ListBoxItem ToolTip="Computer Information">
+                <ListBoxItem.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Border Style="{StaticResource NavItemIndicator}" />
+                        <materialDesign:PackIcon Width="22" Height="22"
+                                                 Kind="ComputerClassic" />
+                        <TextBlock Style="{StaticResource NavItemText}"
+                                   Text="Computer Info" />
+                    </StackPanel>
+                </ListBoxItem.Content>
+            </ListBoxItem>
+
+            <ListBoxItem ToolTip="Environment Variables">
+                <ListBoxItem.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Border Style="{StaticResource NavItemIndicator}" />
+                        <materialDesign:PackIcon Width="22" Height="22"
+                                                 Kind="ListBoxOutline" />
+                        <TextBlock Style="{StaticResource NavItemText}"
+                                   Text="Environment" />
+                    </StackPanel>
+                </ListBoxItem.Content>
+            </ListBoxItem>
+
+            <ListBoxItem ToolTip="Build History">
+                <ListBoxItem.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Border Style="{StaticResource NavItemIndicator}" />
+                        <materialDesign:PackIcon Width="22" Height="22"
+                                                 Kind="History" />
+                        <TextBlock Style="{StaticResource NavItemText}"
+                                   Text="History" />
+                    </StackPanel>
+                </ListBoxItem.Content>
+            </ListBoxItem>
+
+            <ListBoxItem ToolTip="Application Settings">
+                <ListBoxItem.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Border Style="{StaticResource NavItemIndicator}" />
+                        <materialDesign:PackIcon Width="22" Height="22"
+                                                 Kind="CogOutline" />
+                        <TextBlock Style="{StaticResource NavItemText}"
+                                   Text="Settings" />
+                    </StackPanel>
+                </ListBoxItem.Content>
+            </ListBoxItem>
+
+            <ListBoxItem ToolTip="About the application">
+                <ListBoxItem.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Border Style="{StaticResource NavItemIndicator}" />
+                        <materialDesign:PackIcon Width="22" Height="22"
+                                                 Kind="AboutOutline" />
+                        <TextBlock Style="{StaticResource NavItemText}"
+                                   Text="About" />
+                    </StackPanel>
+                </ListBoxItem.Content>
+            </ListBoxItem>
+
+            <ListBoxItem ToolTip="Exit the application">
+                <ListBoxItem.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Border Style="{StaticResource NavItemIndicator}" />
+                        <materialDesign:PackIcon Width="22" Height="22"
+                                                 Kind="ExitRun" />
+                        <TextBlock Style="{StaticResource NavItemText}"
+                                   Text="Exit" />
+                    </StackPanel>
+                </ListBoxItem.Content>
+            </ListBoxItem>
+        </ListBox>
+        <!--#endregion-->
+
+        <!--#region Content control for pages-->
+        <Grid Grid.Row="1" Grid.Column="1"
+              Background="{DynamicResource MaterialDesignCardBackground}">
+            <ContentControl Content="{Binding}" x:Name="MainContent"/>
+        </Grid>
+        <!--#endregion-->
+    </Grid>
 </Window>

@@ -1,208 +1,68 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-using MaterialDesignColors;
-
 namespace TimVer;
 
-public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChanged
+[INotifyPropertyChanged]
+public partial class UserSettings : SettingsManager<UserSettings>
 {
-    #region Constructor
-    public UserSettings()
+    #region Methods
+    public void SaveWindowPos()
     {
-        // Set defaults
-        DarkMode = 0;
-        IncludeDebug = false;
-        InitialPage = 0;
-        KeepOnTop = false;
-        Page1Alt = false;
-        ShowDrives = true;
-        ShowLabels = false;
-        ShowUser = true;
-        UISize = 2;
-        WindowHeight = 480;
-        WindowLeft = 100;
-        WindowTop = 100;
-        WindowWidth = 645;
+        Window mainWindow = Application.Current.MainWindow;
+        WindowHeight = Math.Floor(mainWindow.Height);
+        WindowLeft = Math.Floor(mainWindow.Left);
+        WindowTop = Math.Floor(mainWindow.Top);
+        WindowWidth = Math.Floor(mainWindow.Width);
     }
-    #endregion Constructor
 
-    #region Properties
-    public int DarkMode
+    public void SetWindowPos()
     {
-        get => darkmode;
-        set
-        {
-            darkmode = value;
-            OnPropertyChanged();
-        }
+        Window mainWindow = Application.Current.MainWindow;
+        mainWindow.Height = WindowHeight;
+        mainWindow.Left = WindowLeft;
+        mainWindow.Top = WindowTop;
+        mainWindow.Width = WindowWidth;
     }
+    #endregion Methods
 
-    public bool IncludeDebug
-    {
-        get => includeDebug;
-        set
-        {
-            includeDebug = value;
-            OnPropertyChanged();
-        }
-    }
+    #region Properties (some with default values)
+    [ObservableProperty]
+    private bool _includeDebug = true;
 
-    public int InitialPage
-    {
-        get => initialPage;
-        set
-        {
-            initialPage = value;
-            OnPropertyChanged();
-        }
-    }
+    [ObservableProperty]
+    private NavPage _initialPage = NavPage.ComputerInfo;
 
-    public bool KeepOnTop
-    {
-        get => keepOnTop;
-        set
-        {
-            keepOnTop = value;
-            OnPropertyChanged();
-        }
-    }
+    [ObservableProperty]
+    private bool _keepOnTop;
 
-    public bool Page1Alt
-    {
-        get => page1alt;
-        set
-        {
-            page1alt = value;
-            OnPropertyChanged();
-        }
-    }
+    [ObservableProperty]
+    private AccentColor _primaryColor = AccentColor.Blue;
 
-    public int PrimaryColor
-{
-        get => primaryColor;
-set
-{
-            primaryColor = value;
-            OnPropertyChanged();
-        }
-    }
+    [ObservableProperty]
+    private bool _showUser;
 
-    public bool ShowDrives
-    {
-        get => showDrives;
-        set
-        {
-            showDrives = value;
-            OnPropertyChanged();
-        }
-    }
+    [ObservableProperty]
+    private bool _showDrives;
 
-    public bool ShowLabels
-    {
-        get => showLabels;
-        set
-        {
-            showLabels = value;
-            OnPropertyChanged();
-        }
-    }
+    [ObservableProperty]
+    private bool _showLabels;
 
-    public bool ShowUser
-    {
-        get => showUser;
-        set
-        {
-            showUser = value;
-            OnPropertyChanged();
-        }
-    }
+    [ObservableProperty]
+    private MySize _uISize = MySize.Default;
 
-    public int UISize
-    {
-        get => uiSize;
-        set
-        {
-            uiSize = value;
-            OnPropertyChanged();
-        }
-    }
+    [ObservableProperty]
+    private ThemeType _uITheme = ThemeType.System;
 
-    public double WindowHeight
-    {
-        get
-        {
-            if (windowHeight < 100)
-            {
-                windowHeight = 100;
-            }
-            return windowHeight;
-        }
-        set => windowHeight = value;
-    }
+    [ObservableProperty]
+    private double _windowHeight = 450;
 
-    public double WindowLeft
-    {
-        get
-        {
-            if (windowLeft < 0)
-            {
-                windowLeft = 0;
-            }
-            return windowLeft;
-        }
-        set => windowLeft = value;
-    }
+    [ObservableProperty]
+    private double _windowLeft = 100;
 
-    public double WindowTop
-    {
-        get
-        {
-            if (windowTop < 0)
-            {
-                windowTop = 0;
-            }
-            return windowTop;
-        }
-        set => windowTop = value;
-    }
+    [ObservableProperty]
+    private double _windowTop = 100;
 
-    public double WindowWidth
-    {
-        get
-        {
-            if (windowWidth < 100)
-            {
-                windowWidth = 100;
-            }
-            return windowWidth;
-        }
-        set => windowWidth = value;
-    }
-    #endregion Properties
-
-    #region Private backing fields
-    private int darkmode;
-    private bool includeDebug;
-    private int initialPage;
-    private bool keepOnTop;
-    private bool page1alt;
-    private bool showDrives;
-    private bool showLabels;
-    private bool showUser;
-    private int primaryColor = 5;
-    private int uiSize;
-    private double windowHeight;
-    private double windowLeft;
-    private double windowTop;
-    private double windowWidth;
-    #endregion Private backing fields
-
-    #region Handle property change event
-    public event PropertyChangedEventHandler PropertyChanged;
-
-    protected virtual void OnPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-    #endregion Handle property change event
+    [ObservableProperty]
+    private double _windowWidth = 850;
+    #endregion Properties (some with default values)
 }

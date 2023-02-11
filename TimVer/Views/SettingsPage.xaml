@@ -1,0 +1,221 @@
+﻿<UserControl x:Class="TimVer.Views.SettingsPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:TimVer.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:set="clr-namespace:TimVer"
+             xmlns:viewmodels="clr-namespace:TimVer.ViewModels"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800"
+             FontSize="14"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}">
+
+    <!--#region Resources-->
+    <UserControl.DataContext>
+        <viewmodels:SettingsViewModel />
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <set:EnumDescConverter x:Key="descConv" />
+    </UserControl.Resources>
+    <!--#endregion-->
+
+    <Grid>
+        <ScrollViewer Margin="15,15,15,5"
+                      HorizontalScrollBarVisibility="Auto"
+                      VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <!--#region Row definitions-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="15" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="15" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <!--#endregion-->
+
+                <!--#region UI Settings-->
+                <materialDesign:Card Grid.Row="0"
+                                     UniformCornerRadius="5">
+                    <Expander x:Name="UIExpander"
+                              materialDesign:ExpanderAssist.HorizontalHeaderPadding="10"
+                              IsExpanded="{Binding UIExpanderOpen}">
+                        <Expander.Header>
+                            <Grid>
+                                <!--#region Row definitions-->
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition Height="5" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <!--#endregion-->
+                                <TextBlock Grid.Row="0"
+                                           FontSize="16" FontWeight="SemiBold"
+                                           Text="UI Settings" />
+                                <TextBlock Grid.Row="2"
+                                           FontSize="12"
+                                           Text="Initial View, UI Size, Accent Color &amp; Theme" />
+                            </Grid>
+                        </Expander.Header>
+
+                        <Grid Margin="15,10">
+                            <!--#region Row & Column definitions-->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="240" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <!--#endregion-->
+                            <StackPanel Grid.Row="0" Grid.Column="0"
+                                        Orientation="Horizontal">
+                                <Label Width="100"
+                                       Content="Initial View" />
+                                <ComboBox x:Name="cbxView"
+                                          Width="110"
+                                          Margin="0,0,0,5"
+                                          HorizontalAlignment="Left"
+                                          ItemsSource="{Binding Source={StaticResource enumNavPage}}"
+                                          SelectedItem="{Binding InitialPage,
+                                                                 Source={x:Static set:UserSettings.Setting}}"
+                                          Style="{StaticResource MaterialDesignComboBox}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Converter={StaticResource descConv}}" />
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="1" Grid.Column="1"
+                                        Orientation="Horizontal">
+                                <Label Width="70"
+                                       VerticalAlignment="Center"
+                                       Content="Theme" />
+                                <ComboBox x:Name="cbxMode"
+                                          Width="100"
+                                          Margin="0,3,0,0"
+                                          HorizontalAlignment="Left"
+                                          ItemsSource="{Binding Source={StaticResource enumThemeType}}"
+                                          SelectedItem="{Binding UITheme,
+                                                                 Source={x:Static set:UserSettings.Setting}}"
+                                          Style="{StaticResource MaterialDesignComboBox}" />
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="0" Grid.Column="1"
+                                        HorizontalAlignment="Left"
+                                        Orientation="Horizontal">
+                                <Label Width="70"
+                                       VerticalAlignment="Center"
+                                       Content="UI Size" />
+                                <ComboBox x:Name="cbxSize"
+                                          Width="100"
+                                          Margin="0,3,0,0"
+                                          HorizontalAlignment="Left"
+                                          ItemsSource="{Binding Source={StaticResource enumUISize}}"
+                                          SelectedItem="{Binding UISize,
+                                                                 Source={x:Static set:UserSettings.Setting}}"
+                                          Style="{StaticResource MaterialDesignComboBox}" />
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="1" Grid.Column="0"
+                                        Orientation="Horizontal">
+                                <Label Width="100"
+                                       VerticalAlignment="Center"
+                                       Content="Accent Color" />
+                                <ComboBox x:Name="cbxColor"
+                                          Width="110"
+                                          Margin="0,3,0,0"
+                                          HorizontalAlignment="Left"
+                                          ItemsSource="{Binding Source={StaticResource enumAccentColors}}"
+                                          MaxDropDownHeight="140"
+                                          SelectedItem="{Binding PrimaryColor,
+                                                                 Source={x:Static set:UserSettings.Setting}}"
+                                          Style="{StaticResource MaterialDesignComboBox}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Converter={StaticResource descConv}}" />
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                            </StackPanel>
+                        </Grid>
+                    </Expander>
+                </materialDesign:Card>
+                <!--#endregion-->
+
+                <!--#region App Settings-->
+                <materialDesign:Card Grid.Row="2"
+                                     UniformCornerRadius="5">
+                    <Expander x:Name="AppExpander"
+                              materialDesign:ExpanderAssist.HorizontalHeaderPadding="10"
+                              IsExpanded="{Binding AppExpanderOpen}">
+                        <Expander.Header>
+                            <Grid>
+                                <!--#region Row definitions-->
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition Height="5" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <!--#endregion-->
+                                <TextBlock Grid.Row="0"
+                                           FontSize="16" FontWeight="SemiBold"
+                                           Text="App Settings" />
+                                <TextBlock Grid.Row="2"
+                                           FontSize="12"
+                                           Text="Update history, Show user, Show drives, Keep on top &amp; Log verbosity " />
+                            </Grid>
+                        </Expander.Header>
+                        <Grid Margin="15,10">
+                            <!--#region Row & Column definitions-->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="31" />
+                                <RowDefinition Height="31" />
+                                <RowDefinition Height="31" />
+                                <RowDefinition Height="31" />
+                                <RowDefinition Height="31" />
+                                <RowDefinition Height="31" />
+                            </Grid.RowDefinitions>
+                            <!--#endregion-->
+                            <CheckBox Grid.Row="0"
+                                      Checked="HistOnStart_Checked"
+                                      Unchecked="HistOnStart_Unchecked"
+                                      Content=" Update history on Windows startup" />
+                            <CheckBox Grid.Row="1"
+                                      Content=" Display registered user on Windows Information page"
+                                      IsChecked="{Binding ShowUser,
+                                                          Source={x:Static set:UserSettings.Setting}}" />
+                            <CheckBox Grid.Row="2"
+                                      Content=" Display drive letters on Computer Information page"
+                                      IsChecked="{Binding ShowDrives,
+                                                          Source={x:Static set:UserSettings.Setting}}" />
+                            <CheckBox Grid.Row="3"
+                                      Content="Include drive labels"
+                                      IsChecked="{Binding ShowLabels,
+                                                          Source={x:Static set:UserSettings.Setting}}"
+                                      IsEnabled="{Binding ShowDrives,
+                                                          Source={x:Static set:UserSettings.Setting}}" />
+
+                            <CheckBox Grid.Row="4"
+                                      Content="Keep TimVer on top of other windows"
+                                      IsChecked="{Binding KeepOnTop,
+                                                          Source={x:Static set:UserSettings.Setting}}" />
+
+                            <CheckBox Grid.Row="5"
+                                      Content="Include debug level messages in log file"
+                                      IsChecked="{Binding IncludeDebug,
+                                                          Source={x:Static set:UserSettings.Setting}}" />
+
+                        </Grid>
+                    </Expander>
+                </materialDesign:Card>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

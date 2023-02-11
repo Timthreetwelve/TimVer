@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="TimVer.Views.ComputerInfoPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:TimVer.Views"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:models="clr-namespace:TimVer.Models"
+             xmlns:settings="clr-namespace:TimVer"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800"
+             FontFamily="Segoe UI" FontSize="14"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}">
+    <Grid>
+        <!--#region Text blocks-->
+        <ScrollViewer Grid.Row="1" Grid.Column="1"
+                      Margin="20,20,20,5"
+                      HorizontalScrollBarVisibility="Auto"
+                      VerticalScrollBarVisibility="Auto">
+
+            <Grid>
+                <!--#region Row & Column definitions-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="130" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <!--#endregion-->
+
+                <TextBlock Grid.Row="0" Grid.Column="0"
+                           Text="Manufacturer" />
+                <TextBlock Grid.Row="0" Grid.Column="1"
+                           Text="{Binding Source={x:Static models:CombinedInfo.Manufacturer}}" />
+
+                <TextBlock Grid.Row="1" Grid.Column="0"
+                           Text="Model" />
+                <TextBlock Grid.Row="1" Grid.Column="1"
+                           Text="{Binding Source={x:Static models:CombinedInfo.Model}}" />
+
+                <TextBlock Grid.Row="2" Grid.Column="0"
+                           Text="Machine Name" />
+                <TextBlock Grid.Row="2" Grid.Column="1"
+                           Text="{Binding Source={x:Static models:CombinedInfo.MachName}}" />
+
+                <TextBlock Grid.Row="3" Grid.Column="0"
+                           Text="Last Rebooted" />
+                <TextBlock Grid.Row="3" Grid.Column="1"
+                           Text="{Binding Source={x:Static models:CombinedInfo.LastBoot}}" />
+
+                <TextBlock Grid.Row="4" Grid.Column="0"
+                           Text="Processor" />
+                <TextBlock Grid.Row="4" Grid.Column="1"
+                           Text="{Binding Source={x:Static models:CombinedInfo.ProcName}}" />
+
+                <TextBlock Grid.Row="5" Grid.Column="0"
+                           Text="Total Cores" />
+                <TextBlock Grid.Row="5" Grid.Column="1"
+                           Text="{Binding Source={x:Static models:CombinedInfo.ProcCores}}" />
+
+                <TextBlock Grid.Row="6" Grid.Column="0"
+                           Text="Architecture" />
+                <TextBlock Grid.Row="6" Grid.Column="1"
+                           Text="{Binding Source={x:Static models:CombinedInfo.ProcArch}}" />
+
+                <TextBlock Grid.Row="7" Grid.Column="0"
+                           Text="Physical Memory" />
+                <TextBlock Grid.Row="7" Grid.Column="1"
+                           Text="{Binding Source={x:Static models:CombinedInfo.TotalMemory}}" />
+
+                <TextBlock Grid.Row="8" Grid.Column="0"
+                           Text="Disk Drives"
+                           Visibility="{Binding ShowDrives,
+                                                Source={x:Static settings:UserSettings.Setting},
+                                                Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <TextBlock x:Name="tbDiskDrives"
+                           Grid.Row="8" Grid.Column="1"
+                           Text="{Binding Source={x:Static models:CombinedInfo.DiskDrives}}"
+                           TextWrapping="Wrap"
+                           Visibility="{Binding ShowDrives,
+                                                Source={x:Static settings:UserSettings.Setting},
+                                                Converter={StaticResource BooleanToVisibilityConverter}}" />
+            </Grid>
+        </ScrollViewer>
+        <!--#endregion-->
+
+    </Grid>
+</UserControl>

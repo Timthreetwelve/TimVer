@@ -1,19 +1,25 @@
-﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+
+// Comment out the following if MessageBox is not to be used
+#define messagebox
 
 namespace TimVer;
 
 /// <summary>
-/// Class to open text files in the default application for the file type.
-/// If there isn't a default, open the file in notepad.exe
+///  Class for viewing text files. If the file extension is not associated
+///  with an application, notepad.exe will be attempted.
 /// </summary>
-internal static class TextFileViewer
+public static class TextFileViewer
 {
+    private static readonly Logger _log = LogManager.GetCurrentClassLogger();
+
     #region Text file viewer
     /// <summary>
-    /// Open the file in the default application
+    /// Opens specified text file
     /// </summary>
-    /// <param name="txtfile">File to open</param>
-    public static async Task<bool> ViewTextFile(string txtfile)
+    /// <param name="txtfile">Full path for text file</param>
+    ///
+    public static void ViewTextFile(string txtfile)
     {
         if (File.Exists(txtfile))
         {
@@ -35,36 +41,32 @@ internal static class TextFileViewer
                     p.StartInfo.UseShellExecute = true;
                     p.StartInfo.ErrorDialog = false;
                     _ = p.Start();
+                    _log.Debug($"Opening {txtfile} in Notepad.exe");
                 }
                 else
                 {
-                    ErrorDialog ed = new()
-                    {
-                        Message = $"Error reading \n{txtfile}\n{ex.Message}"
-                    };
-                    _ = await DialogHost.Show(ed, "dh1").ConfigureAwait(true);
+#if messagebox
+                    _ = MessageBox.Show($"Error reading file {txtfile}\n{ex.Message}", "Watcher Error",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+#endif
+                    _log.Error($"* Unable to open {txtfile}");
+                    _log.Error($"* {ex.Message}");
                 }
             }
             catch (Exception ex)
             {
-                ErrorDialog ed = new()
-                {
-                    Message = $"Unable to start default application used to open\n{txtfile}\n{ex.Message}"
-                };
-                _ = await DialogHost.Show(ed, "dh1").ConfigureAwait(true);
+#if messagebox
+                _ = MessageBox.Show("Unable to start default application used to open" +
+                                    $" {txtfile}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+#endif
+                _log.Error($"* Unable to open {txtfile}");
+                _log.Error($"* {ex.Message}");
             }
         }
         else
         {
-            Debug.WriteLine($">>> File not found: {txtfile}");
-            ErrorDialog ed = new()
-            {
-                Message = $"File not found:\n{txtfile}"
-            };
-            _ = await DialogHost.Show(ed, "dh1").ConfigureAwait(true);
+            _log.Error($">>> File not found: {txtfile}");
         }
-
-        return true;
     }
-    #endregion Text file viewer
+    #endregion
 }

@@ -3,14 +3,17 @@
     [Parameter(Mandatory = $true)] [string] $assemblyVersion,
     [Parameter(Mandatory = $false)] [string] $outputFile="BuildInfo.cs"
 )
-Write-Host "GenBuildInfo: Assembly name parameter: $assemblyName"
-Write-Host "GenBuildInfo: Assembly version parameter: $assemblyVersion"
 
 $nowUTC = (Get-Date).ToUniversalTime()
 
 $commitID = git rev-parse --short HEAD
 if ($commitID.Length -lt 1 ) {
     $commitID = "n/a"
+}
+
+$commitIDFull = git rev-parse HEAD
+if ($commitIDFull.Length -lt 1 ) {
+    $commitIDFull = "n/a"
 }
 
 $class =
@@ -25,9 +28,15 @@ namespace $assemblyName
     {
         public const string CommitIDString = `"$commitID`";
 
+        public const string CommitIDFullString = `"$commitIDFull`";
+
+        public const string VersionString = `"$assemblyVersion`";
+
         public const string BuildDateString = `"$nowUTC`";
 
         public static readonly DateTime BuildDateUtc = DateTime.SpecifyKind(DateTime.Parse(BuildDateString), DateTimeKind.Utc);
+
+        public static readonly DateTime BuildDateLocal = BuildDateUtc.ToLocalTime();
     }
 }"
 
