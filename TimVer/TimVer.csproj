@@ -6,7 +6,11 @@
     <Nullable>disable</Nullable>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Images\TV.ico</ApplicationIcon>
-    <Version>0.8.0</Version>
+    <Description>It's like Winver only more</Description>
+    <Copyright>Copyright © $([System.DateTime]::UtcNow.Year) Tim Kennedy</Copyright>
+    <Authors>Tim Kennedy</Authors>
+    <Company>T_K</Company>
+    <Product>TimVer</Product>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,6 +25,10 @@
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
+    <PackageReference Include="GitVersion.MsBuild" Version="5.12.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="MaterialDesignThemes" Version="4.7.1" />
     <PackageReference Include="Microsoft.Management.Infrastructure" Version="2.0.0" />
     <PackageReference Include="NLog" Version="5.1.1" />
