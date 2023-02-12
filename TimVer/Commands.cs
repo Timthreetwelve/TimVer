@@ -13,9 +13,9 @@ internal partial class Commands
     }
 
     [RelayCommand]
-    public static void ViewHistoryFile()
+    public static void ViewReadMeFile()
     {
-        TextFileViewer.ViewTextFile(Path.Combine(AppInfo.AppDirectory, "history.json"));
+        TextFileViewer.ViewTextFile(Path.Combine(AppInfo.AppDirectory, "readme.txt"));
     }
 
     [RelayCommand]
