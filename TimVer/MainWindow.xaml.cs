@@ -271,4 +271,96 @@ public partial class MainWindow : Window
         }
     }
     #endregion Process the command line
+
+    #region Keyboard Events
+    /// <summary>
+    /// Keyboard events for window
+    /// </summary>
+    private void Window_PreviewKeyUp(object sender, KeyEventArgs e)
+    {
+        // No Ctrl or Shift
+        switch (e.Key)
+        {
+            case Key.F1:
+                {
+                    NavigateToPage(NavPage.About);
+                    break;
+                }
+        }
+        // CTRL key combos
+        if (e.KeyboardDevice.Modifiers == ModifierKeys.Control)
+        {
+            switch (e.Key)
+            {
+                case Key.OemComma:
+                    {
+                        NavigateToPage(NavPage.Settings);
+                        break;
+                    }
+                case Key.M:
+                    {
+                        switch (UserSettings.Setting.UITheme)
+                        {
+                            case ThemeType.Light:
+                                UserSettings.Setting.UITheme = ThemeType.Dark;
+                                break;
+                            case ThemeType.Dark:
+                                UserSettings.Setting.UITheme = ThemeType.Darker;
+                                break;
+                            case ThemeType.Darker:
+                                UserSettings.Setting.UITheme = ThemeType.System;
+                                break;
+                            case ThemeType.System:
+                                UserSettings.Setting.UITheme = ThemeType.Light;
+                                break;
+                        }
+                        break;
+                    }
+                case Key.Add:
+                    {
+                        EverythingLarger();
+                        break;
+                    }
+                    case Key.Subtract:
+                    {
+                        EverythingSmaller();
+                        break;
+                    }
+            }
+        }
+    }
+    #endregion Keyboard Events
+
+
+    #region Smaller/Larger
+    /// <summary>
+    /// Decreases the size of the UI
+    /// </summary>
+    public void EverythingSmaller()
+    {
+        int size = (int)UserSettings.Setting.UISize;
+        if (size > 0)
+        {
+            size--;
+            UserSettings.Setting.UISize = (MySize)size;
+            double newSize = MainWindowUIHelpers.UIScale((MySize)size);
+            MainGrid.LayoutTransform = new ScaleTransform(newSize, newSize);
+        }
+    }
+
+    /// <summary>
+    /// Increases the size of the UI
+    /// </summary>
+    public void EverythingLarger()
+    {
+        int size = (int)UserSettings.Setting.UISize;
+        if (size < (int)MySize.Largest)
+        {
+            size++;
+            UserSettings.Setting.UISize = (MySize)size;
+            double newSize = MainWindowUIHelpers.UIScale((MySize)size);
+            MainGrid.LayoutTransform = new ScaleTransform(newSize, newSize);
+        }
+    }
+    #endregion Smaller/Larger
 }
