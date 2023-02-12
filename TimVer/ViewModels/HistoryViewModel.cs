@@ -18,6 +18,10 @@ public static class HistoryViewModel
         {
             string json = File.ReadAllText(DefaultHistoryFile());
             History.HistoryList = JsonSerializer.Deserialize<List<History>>(json);
+            int count = History.HistoryList.Count;
+            string ent = string.Empty;
+            ent = count == 1 ? "entry" : "entries";
+            _log.Debug($"History file has {count} {ent}");
         }
         catch (Exception ex)
         {
@@ -29,7 +33,6 @@ public static class HistoryViewModel
                                 MessageBoxImage.Error);
             Environment.Exit(1);
         }
-        //return null;
     }
     #endregion Read history file
 
