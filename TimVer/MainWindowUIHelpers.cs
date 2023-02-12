@@ -4,6 +4,7 @@ namespace TimVer;
 
 internal static class MainWindowUIHelpers
 {
+    #region Theme
     /// <summary>
     /// Gets the current theme
     /// </summary>
@@ -54,7 +55,9 @@ internal static class MainWindowUIHelpers
         //Change the app's current theme
         paletteHelper.SetTheme(theme);
     }
+    #endregion Theme
 
+    #region Accent color
     /// <summary>
     /// Sets the MDIX primary accent color
     /// </summary>
@@ -90,7 +93,9 @@ internal static class MainWindowUIHelpers
         theme.SetPrimaryColor(primaryColor);
         paletteHelper.SetTheme(theme);
     }
+    #endregion Accent color
 
+    #region UI scale
     /// <summary>
     /// Sets the value for UI scaling
     /// </summary>
@@ -110,4 +115,5 @@ internal static class MainWindowUIHelpers
             _ => 1.0,
         };
     }
+    #endregion UI scale
 }

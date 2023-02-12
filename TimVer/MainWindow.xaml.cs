@@ -331,7 +331,6 @@ public partial class MainWindow : Window
     }
     #endregion Keyboard Events
 
-
     #region Smaller/Larger
     /// <summary>
     /// Decreases the size of the UI
