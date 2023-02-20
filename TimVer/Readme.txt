@@ -33,13 +33,15 @@ The Setting page has options that determine how the application looks and runs.
 
 The About page displays version information and a link to the GitHib repository.
 
-The three-dot menu at the right end of the page header that has options to 
+The three-dot menu at the right end of the page header that has options to
 view the log file, open the readme file and exit the application.
 
 These keyboard shortcuts are available:
 
 	Ctrl + Comma = Go to Settings
+	Ctrl + C = Copy the current page to the clipboard
 	Ctrl + M = Change the theme
+	Ctrl + N = Change the accent color
 	Ctrl + Numpad Plus = Increase size
 	Ctrl + Numpad Minus = Decrease size
 	F1 = Go to the About screen
