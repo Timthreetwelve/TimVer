@@ -4,15 +4,26 @@ namespace TimVer;
 
 internal class TodayConverter : IValueConverter
 {
+    #region NLog Instance
+    private static readonly Logger _log = LogManager.GetLogger("logTemp");
+    #endregion NLog Instance
+
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        //todo needs a try catch
         if (value is string)
         {
-            DateTime dt = DateTime.ParseExact(value.ToString(), "yyyy/MM/dd HH:mm", null);
-            if (dt.Date == DateTime.Today)
+            try
             {
-                return true;
+                DateTime dt = DateTime.ParseExact(value.ToString(), "yyyy/MM/dd HH:mm", null);
+                if (dt.Date == DateTime.Today)
+                {
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex, $"TodayConverter failed {ex.Message}");
+                return false;
             }
         }
         return false;
