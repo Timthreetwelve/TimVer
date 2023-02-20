@@ -271,6 +271,7 @@ public partial class MainWindow : Window
         {
             HistoryViewModel.WriteHistory();
             EnvVarViewModel.GetEnvironmentVariables();
+            SettingsViewModel.ParseInitialPage();
             NavigateToPage(UserSettings.Setting.InitialPage);
         }
     }
