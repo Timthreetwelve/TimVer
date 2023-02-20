@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer;
+
 /// <summary>
 /// Interaction logic for MainWindow.xaml
 /// </summary>
@@ -121,6 +122,9 @@ public partial class MainWindow : Window
     #region Window Events
     private void Window_Closing(object sender, CancelEventArgs e)
     {
+        // Clear any remaining messages
+        SnackBar1.MessageQueue.Clear();
+
         // Stop the _stopwatch and record elapsed time
         _stopwatch.Stop();
         _log.Info($"{AppInfo.AppName} is shutting down.  Elapsed time: {_stopwatch.Elapsed:h\\:mm\\:ss\\.ff}");
@@ -297,6 +301,14 @@ public partial class MainWindow : Window
                         NavigateToPage(NavPage.Settings);
                         break;
                     }
+                case Key.C:
+                    {
+                        if (MainContent.Content != null)
+                        {
+                            Commands.CopyToClipboard(MainContent);
+                        }
+                        break;
+                    }
                 case Key.M:
                     {
                         switch (UserSettings.Setting.UITheme)
@@ -314,16 +326,33 @@ public partial class MainWindow : Window
                                 UserSettings.Setting.UITheme = ThemeType.Light;
                                 break;
                         }
+                        SnackbarMsg.ClearAndQueueMessage($"Theme set to {UserSettings.Setting.UITheme}");
                         break;
                     }
+                case Key.N:
+                    if (e.Key == Key.N)
+                    {
+                        if ((int)UserSettings.Setting.PrimaryColor >= (int)AccentColor.BlueGray)
+                        {
+                            UserSettings.Setting.PrimaryColor = 0;
+                        }
+                        else
+                        {
+                            UserSettings.Setting.PrimaryColor++;
+                        }
+                        SnackbarMsg.ClearAndQueueMessage($"Accent color set to {UserSettings.Setting.PrimaryColor}");
+                    }
+                    break;
                 case Key.Add:
                     {
                         EverythingLarger();
+                        SnackbarMsg.ClearAndQueueMessage($"Size set to {UserSettings.Setting.UISize}");
                         break;
                     }
-                    case Key.Subtract:
+                case Key.Subtract:
                     {
                         EverythingSmaller();
+                        SnackbarMsg.ClearAndQueueMessage($"Size set to {UserSettings.Setting.UISize}");
                         break;
                     }
             }

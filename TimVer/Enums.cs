@@ -2,6 +2,7 @@
 
 namespace TimVer;
 
+#region Navigation
 /// <summary>
 /// Navigation Page
 /// </summary>
@@ -17,7 +18,9 @@ public enum NavPage
     About = 5,
     Exit = 6
 }
+#endregion Navigation
 
+#region Theme
 /// <summary>
 /// Theme type, Light, Dark, Darker, or System
 /// </summary>
@@ -28,7 +31,9 @@ public enum ThemeType
     Darker = 2,
     System = 3
 }
+#endregion Theme
 
+#region UI size
 /// <summary>
 /// Size of the UI, Smallest, Smaller, Small, Default, Large, Larger, or Largest
 /// </summary>
@@ -42,7 +47,9 @@ public enum MySize
     Larger = 5,
     Largest = 6
 }
+#endregion UI size
 
+#region Accent color
 /// <summary>
 /// One of the 19 predefined Material Design in XAML colors
 /// </summary>
@@ -73,3 +80,4 @@ public enum AccentColor
     [Description("Blue Gray")]
     BlueGray = 18
 }
+#endregion Accent color

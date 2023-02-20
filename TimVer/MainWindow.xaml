@@ -11,8 +11,8 @@
         Width="400" Height="400"
         Background="{DynamicResource MaterialDesignPaper}"
         Closing="Window_Closing" FontSize="12"
-        Style="{StaticResource MaterialDesignWindow}"
         PreviewKeyUp="Window_PreviewKeyUp"
+        Style="{StaticResource MaterialDesignWindow}"
         TextElement.FontWeight="Regular"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextOptions.TextFormattingMode="Ideal"
@@ -234,8 +234,21 @@
         <!--#region Content control for pages-->
         <Grid Grid.Row="1" Grid.Column="1"
               Background="{DynamicResource MaterialDesignCardBackground}">
-            <ContentControl Content="{Binding}" x:Name="MainContent"/>
+            <ContentControl x:Name="MainContent"
+                            Content="{Binding}" />
         </Grid>
         <!--#endregion-->
+
+        <!--#region SnackBar-->
+        <materialDesign:Snackbar x:Name="SnackBar1"
+                                 Grid.Row="1" Grid.Column="0"
+                                 Grid.ColumnSpan="2"
+                                 HorizontalAlignment="Stretch"
+                                 HorizontalContentAlignment="Center"
+                                 Background="#FF202020" Focusable="False"
+                                 FontWeight="DemiBold" Foreground="White"
+                                 MessageQueue="{materialDesign:MessageQueue}" />
+        <!--#endregion-->
+
     </Grid>
 </Window>

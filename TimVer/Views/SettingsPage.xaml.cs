@@ -1,6 +1,6 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-using NLog.Fluent;
+using TimVer.Dialogs;
 
 namespace TimVer.Views
 {
@@ -26,14 +26,7 @@ namespace TimVer.Views
                 if (result == "OK")
                 {
                     _log.Info(@"TimVer added to HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
-                    _ = new MDCustMsgBox(
-                        "TimVer was added to Windows startup",
-                        "TimVer",
-                        ButtonType.Ok,
-                        true,
-                        true,
-                        Application.Current.MainWindow,
-                        false).ShowDialog();
+                    SnackbarMsg.ClearAndQueueMessage("TimVer was added to Windows startup");
                 }
                 else
                 {
@@ -58,14 +51,7 @@ namespace TimVer.Views
                 if (result == "OK")
                 {
                     _log.Info(@"TimVer removed from HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
-                    _ = new MDCustMsgBox(
-                        "TimVer was removed from Windows startup",
-                        "TimVer",
-                        ButtonType.Ok,
-                        true,
-                        true,
-                        Application.Current.MainWindow,
-                        false).ShowDialog();
+                    SnackbarMsg.ClearAndQueueMessage("TimVer was removed from Windows startup");
                 }
                 else
                 {

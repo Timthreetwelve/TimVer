@@ -1,23 +1,29 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer;
+
 /// <summary>
 /// Relay commands
 /// </summary>
 internal partial class Commands
 {
+    #region View log file
     [RelayCommand]
     public static void ViewLogFile()
     {
         TextFileViewer.ViewTextFile(NLHelpers.GetLogfileName());
     }
+    #endregion View log file
 
+    #region View readme file
     [RelayCommand]
     public static void ViewReadMeFile()
     {
         TextFileViewer.ViewTextFile(Path.Combine(AppInfo.AppDirectory, "readme.txt"));
     }
+    #endregion View readme file
 
+    #region Copy to clipboard
     [RelayCommand]
     public static void CopyToClipboard(object obj)
     {
@@ -39,6 +45,8 @@ internal partial class Commands
                         _ = builder.Append("Windows Folder = ").AppendLine(CombinedInfo.WindowsFolder);
                         _ = builder.Append("Temp Folder    = ").AppendLine(CombinedInfo.TempFolder);
                         Clipboard.SetText(builder.ToString());
+                        SnackbarMsg.ClearAndQueueMessage("Windows information copied to the clipboard");
+
                         break;
                     }
 
@@ -59,6 +67,7 @@ internal partial class Commands
                             _ = builder.Append("Disk Drives     = ").AppendLine(CombinedInfo.DiskDrives);
                         }
                         Clipboard.SetText(builder.ToString());
+                        SnackbarMsg.ClearAndQueueMessage("Computer information copied to the clipboard");
                         break;
                     }
 
@@ -73,6 +82,7 @@ internal partial class Commands
                             _ = builder.AppendLine(item.Value);
                         }
                         Clipboard.SetText(builder.ToString());
+                        SnackbarMsg.ClearAndQueueMessage("Environment variables copied to the clipboard");
                         break;
                     }
 
@@ -88,13 +98,17 @@ internal partial class Commands
                             _ = builder.AppendLine(item.HBranch);
                         }
                         Clipboard.SetText(builder.ToString());
+                        SnackbarMsg.ClearAndQueueMessage("History copied to the clipboard");
+
                         break;
                     }
 
                 default:
+                    SnackbarMsg.ClearAndQueueMessage("Copy to clipboard is not valid on this page");
                     SystemSounds.Exclamation.Play();
                     break;
             }
         }
     }
+    #endregion Copy to clipboard
 }
