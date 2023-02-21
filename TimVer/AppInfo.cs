@@ -53,7 +53,7 @@ public static class AppInfo
     /// Returns the app's full path including the EXE name
     /// </summary>
     public static string AppPath =>
-            Assembly.GetEntryAssembly().Location;
+            Environment.ProcessPath;
 
     /// <summary>
     /// Returns the app's full path excluding the EXE name

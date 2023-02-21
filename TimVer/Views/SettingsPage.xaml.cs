@@ -20,7 +20,7 @@ public partial class SettingsPage : UserControl
     {
         if (IsLoaded && !RegRun.RegRunEntry("TimVer"))
         {
-            string result = RegRun.AddRegEntry("TimVer", AppInfo.AppPath + " /hide");
+            string result = RegRun.AddRegEntry("TimVer", AppInfo.AppPath + " --hide");
             if (result == "OK")
             {
                 _log.Info(@"TimVer added to HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
