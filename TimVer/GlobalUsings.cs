@@ -15,6 +15,7 @@ global using System.Runtime.Versioning;
 global using System.Security.Principal;
 global using System.Text;
 global using System.Text.Json;
+global using System.Text.Json.Serialization;
 global using System.Windows;
 global using System.Windows.Controls;
 global using System.Windows.Data;

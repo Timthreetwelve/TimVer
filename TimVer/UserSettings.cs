@@ -64,5 +64,9 @@ public partial class UserSettings : SettingsManager<UserSettings>
 
     [ObservableProperty]
     private double _windowWidth = 850;
+
+    [ObservableProperty]
+    [property: JsonIgnore]
+    private bool _historyOnBoot;
     #endregion Properties (some with default values)
 }

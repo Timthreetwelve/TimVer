@@ -185,6 +185,8 @@
                             <!--#endregion-->
                             <CheckBox Grid.Row="0"
                                       Checked="HistOnStart_Checked"
+                                      IsChecked="{Binding HistoryOnBoot,
+                                                          Source={x:Static set:UserSettings.Setting}}"
                                       Unchecked="HistOnStart_Unchecked"
                                       Content=" Update history on Windows startup" />
                             <CheckBox Grid.Row="1"

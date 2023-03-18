@@ -74,6 +74,9 @@ public partial class MainWindow : Window
         double size = MainWindowUIHelpers.UIScale(UserSettings.Setting.UISize);
         MainGrid.LayoutTransform = new ScaleTransform(size, size);
 
+        // Check registry for run
+        UserSettings.Setting.HistoryOnBoot = RegRun.RegRunEntry("TimVer");
+
         // Settings change event
         UserSettings.Setting.PropertyChanged += UserSettingChanged;
 
