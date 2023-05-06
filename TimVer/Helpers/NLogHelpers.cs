@@ -1,11 +1,11 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-namespace TimVer;
+namespace TimVer.Helpers;
 
 /// <summary>
 /// Class for NLog helper methods
 /// </summary>
-internal static class NLHelpers
+internal static class NLogHelpers
 {
     #region Create the NLog configuration
     /// <summary>

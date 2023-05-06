@@ -39,6 +39,7 @@ global using NLog.Config;
 global using NLog.Targets;
 
 global using TimVer.Dialogs;
+global using TimVer.Helpers;
 global using TimVer.Models;
 global using TimVer.ViewModels;
 global using TimVer.Views;

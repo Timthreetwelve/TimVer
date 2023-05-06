@@ -3,7 +3,7 @@
 // Comment out the following if MessageBox is not to be used
 #define messagebox
 
-namespace TimVer;
+namespace TimVer.Helpers;
 
 /// <summary>
 ///  Class for viewing text files. If the file extension is not associated

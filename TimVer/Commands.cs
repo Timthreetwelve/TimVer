@@ -11,7 +11,7 @@ internal partial class Commands
     [RelayCommand]
     public static void ViewLogFile()
     {
-        TextFileViewer.ViewTextFile(NLHelpers.GetLogfileName());
+        TextFileViewer.ViewTextFile(NLogHelpers.GetLogfileName());
     }
     #endregion View log file
 

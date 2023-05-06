@@ -40,7 +40,7 @@ public partial class MainWindow : Window
     public void ReadSettings()
     {
         // Set NLog configuration
-        NLHelpers.NLogConfig(false);
+        NLogHelpers.NLogConfig(false);
 
         // Unhandled exception handler
         AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
@@ -102,7 +102,7 @@ public partial class MainWindow : Window
                 break;
 
             case nameof(UserSettings.Setting.IncludeDebug):
-                NLHelpers.SetLogLevel((bool)newValue);
+                NLogHelpers.SetLogLevel((bool)newValue);
                 break;
 
             case nameof(UserSettings.Setting.UITheme):

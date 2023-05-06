@@ -1,6 +1,6 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-namespace TimVer;
+namespace TimVer.Helpers;
 
 /// <summary>
 /// Class to return information about the current application
@@ -44,10 +44,16 @@ public static class AppInfo
         Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyFileVersionAttribute>().Version;
 
     /// <summary>
-    /// Returns the full version number
+    /// Returns the full version number as String
     /// </summary>
     public static string AppVersion =>
             Assembly.GetEntryAssembly().GetName().Version.ToString();
+
+    /// <summary>
+    /// Returns the full version number as Version
+    /// </summary>
+    public static Version AppVersionVer =>
+            Assembly.GetEntryAssembly().GetName().Version;
 
     /// <summary>
     /// Returns the app's full path including the EXE name
@@ -87,14 +93,7 @@ public static class AppInfo
         get
         {
             var info = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).CompanyName;
-            if (!string.IsNullOrWhiteSpace(info))
-            {
-                return info;
-            }
-            else
-            {
-                return "missing";
-            }
+            return !string.IsNullOrWhiteSpace(info) ? info : "missing";
         }
     }
 
@@ -106,14 +105,7 @@ public static class AppInfo
         get
         {
             string info = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).FileDescription;
-            if (!string.IsNullOrWhiteSpace(info))
-            {
-                return info;
-            }
-            else
-            {
-                return "missing";
-            }
+            return !string.IsNullOrWhiteSpace(info) ? info : "missing";
         }
     }
 
@@ -125,14 +117,7 @@ public static class AppInfo
         get
         {
             var info = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).LegalCopyright;
-            if (!string.IsNullOrWhiteSpace(info))
-            {
-                return info;
-            }
-            else
-            {
-                return "missing";
-            }
+            return !string.IsNullOrWhiteSpace(info) ? info : "missing";
         }
     }
 
@@ -144,14 +129,7 @@ public static class AppInfo
         get
         {
             string info = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).ProductName;
-            if (!string.IsNullOrWhiteSpace(info))
-            {
-                return info;
-            }
-            else
-            {
-                return "missing";
-            }
+            return !string.IsNullOrWhiteSpace(info) ? info : "missing";
         }
     }
 
@@ -163,16 +141,17 @@ public static class AppInfo
         get
         {
             string info = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).FileName;
-            if (!string.IsNullOrWhiteSpace(info))
-            {
-                return info;
-            }
-            else
-            {
-                return "missing";
-            }
+            return !string.IsNullOrWhiteSpace(info) ? info : "missing";
         }
     }
+
+    /// <summary>
+    /// Combines the product name with the title version.
+    /// </summary>
+    /// <value>
+    /// String in the format: AppName - 0.0.1
+    /// </value>
+    public static string ToolTipVersion => $"{AppProduct} - {TitleVersion}";
 
     /// <summary>
     /// Returns the Process Name
@@ -197,4 +176,9 @@ public static class AppInfo
     /// </summary>
     public static string AppProcessMainModule =>
             Process.GetCurrentProcess().MainModule.ModuleName;
+
+    /// <summary>
+    /// The CLR version
+    /// </summary>
+    public static string CLRVersion => Environment.Version.ToString();
 }
