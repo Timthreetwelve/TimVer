@@ -27,7 +27,7 @@ The Environment page shows the current environmental variables.
 
 The History page shows history information from the previous times TimVer was run. This can be used
 to compare build numbers before and after running Windows Update. Only one history record will be
-recorded per build number. The history file is in CSV format.
+recorded per build number. The history file is now in JSON format.
 
 The Setting page has options that determine how the application looks and runs.
 
