@@ -1,30 +1,10 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-namespace TimVer;
+namespace TimVer.Configuration;
 
 [INotifyPropertyChanged]
-public partial class UserSettings : SettingsManager<UserSettings>
+public partial class UserSettings : ConfigManager<UserSettings>
 {
-    #region Methods
-    public void SaveWindowPos()
-    {
-        Window mainWindow = Application.Current.MainWindow;
-        WindowHeight = Math.Floor(mainWindow.Height);
-        WindowLeft = Math.Floor(mainWindow.Left);
-        WindowTop = Math.Floor(mainWindow.Top);
-        WindowWidth = Math.Floor(mainWindow.Width);
-    }
-
-    public void SetWindowPos()
-    {
-        Window mainWindow = Application.Current.MainWindow;
-        mainWindow.Height = WindowHeight;
-        mainWindow.Left = WindowLeft;
-        mainWindow.Top = WindowTop;
-        mainWindow.Width = WindowWidth;
-    }
-    #endregion Methods
-
     #region Properties (some with default values)
     [ObservableProperty]
     private bool _includeDebug = true;

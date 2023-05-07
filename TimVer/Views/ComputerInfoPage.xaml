@@ -5,11 +5,15 @@
              xmlns:local="clr-namespace:TimVer.Views"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:models="clr-namespace:TimVer.Models"
-             xmlns:settings="clr-namespace:TimVer"
+             xmlns:config="clr-namespace:TimVer.Configuration"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800"
              FontFamily="Segoe UI" FontSize="14"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}">
+
+    <UserControl.Resources>
+        <config:UserSettings x:Key="config" />
+    </UserControl.Resources>
     <Grid>
         <!--#region Text blocks-->
         <ScrollViewer Grid.Row="1" Grid.Column="1"
@@ -80,14 +84,14 @@
                 <TextBlock Grid.Row="8" Grid.Column="0"
                            Text="Disk Drives"
                            Visibility="{Binding ShowDrives,
-                                                Source={x:Static settings:UserSettings.Setting},
+                                                Source={x:Static config:UserSettings.Setting},
                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
                 <TextBlock x:Name="tbDiskDrives"
                            Grid.Row="8" Grid.Column="1"
                            Text="{Binding Source={x:Static models:CombinedInfo.DiskDrives}}"
                            TextWrapping="Wrap"
                            Visibility="{Binding ShowDrives,
-                                                Source={x:Static settings:UserSettings.Setting},
+                                                Source={x:Static config:UserSettings.Setting},
                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
             </Grid>
         </ScrollViewer>

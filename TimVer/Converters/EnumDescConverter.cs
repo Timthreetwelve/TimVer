@@ -1,6 +1,6 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-namespace TimVer;
+namespace TimVer.Converters;
 /// <summary>
 /// Enum description converter
 /// </summary>

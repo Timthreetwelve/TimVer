@@ -17,9 +17,11 @@ public partial class MainWindow : Window
 
     public MainWindow()
     {
-        InitializeSettings();
+        ConfigHelpers.InitializeSettings();
 
         InitializeComponent();
+
+        _stopwatch.Start();
 
         ReadSettings();
 
@@ -27,16 +29,6 @@ public partial class MainWindow : Window
     }
 
     #region Settings
-    /// <summary>
-    /// Read and apply settings
-    /// </summary>
-    private void InitializeSettings()
-    {
-        _stopwatch.Start();
-
-        UserSettings.Init(UserSettings._appFolder, UserSettings._defaultFilename, true);
-    }
-
     public void ReadSettings()
     {
         // Set NLog configuration
@@ -61,8 +53,7 @@ public partial class MainWindow : Window
         _log.Debug(AppInfo.OsPlatform);
 
         // Window position
-        UserSettings.Setting.SetWindowPos();
-        Topmost = UserSettings.Setting.KeepOnTop;
+        MainWindowHelpers.SetWindowPosition();
 
         // Light or dark
         MainWindowUIHelpers.SetBaseTheme(UserSettings.Setting.UITheme);
@@ -97,10 +88,6 @@ public partial class MainWindow : Window
         _log.Debug($"Setting change: {e.PropertyName} New Value: {newValue}");
         switch (e.PropertyName)
         {
-            case nameof(UserSettings.Setting.KeepOnTop):
-                Topmost = (bool)newValue;
-                break;
-
             case nameof(UserSettings.Setting.IncludeDebug):
                 NLogHelpers.SetLogLevel((bool)newValue);
                 break;
@@ -136,8 +123,8 @@ public partial class MainWindow : Window
         LogManager.Shutdown();
 
         // Save settings
-        UserSettings.Setting.SaveWindowPos();
-        UserSettings.SaveSettings();
+        MainWindowHelpers.SaveWindowPosition();
+        ConfigHelpers.SaveSettings();
     }
     #endregion Window Events
 

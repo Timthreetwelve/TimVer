@@ -1,6 +1,6 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-namespace TimVer;
+namespace TimVer.Converters;
 
 internal class TodayConverter : IValueConverter
 {
@@ -12,6 +12,7 @@ internal class TodayConverter : IValueConverter
     {
         if (value is string)
         {
+            //todo see if code from wuview will work here
             try
             {
                 DateTime dt = DateTime.ParseExact(value.ToString(), "yyyy/MM/dd HH:mm", null);
