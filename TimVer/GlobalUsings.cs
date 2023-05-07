@@ -16,6 +16,7 @@ global using System.Security.Principal;
 global using System.Text;
 global using System.Text.Json;
 global using System.Text.Json.Serialization;
+global using System.Threading.Tasks;
 global using System.Windows;
 global using System.Windows.Controls;
 global using System.Windows.Data;
@@ -39,6 +40,7 @@ global using NLog.Config;
 global using NLog.Targets;
 
 global using TimVer.Configuration;
+global using TimVer.Constants;
 global using TimVer.Dialogs;
 global using TimVer.Helpers;
 global using TimVer.Models;

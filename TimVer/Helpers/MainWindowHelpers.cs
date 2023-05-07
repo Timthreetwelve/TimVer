@@ -8,7 +8,7 @@ namespace TimVer.Helpers;
 internal static class MainWindowHelpers
 {
     #region NLog Instance
-    private static readonly Logger _log = LogManager.GetLogger("logTemp");
+    //private static readonly Logger _log = LogManager.GetLogger("logTemp");
     #endregion NLog Instance
 
     #region Get property value

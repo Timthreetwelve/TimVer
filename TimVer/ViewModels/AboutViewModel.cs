@@ -26,4 +26,10 @@ public partial class AboutViewModel
         p.StartInfo.UseShellExecute = true;
         p.Start();
     }
+
+    [RelayCommand]
+    public static async Task CheckReleaseAsync()
+    {
+        await GitHubHelpers.CheckRelease();
+    }
 }
