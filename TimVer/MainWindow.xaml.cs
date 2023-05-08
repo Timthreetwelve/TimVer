@@ -69,45 +69,12 @@ public partial class MainWindow : Window
         UserSettings.Setting.HistoryOnBoot = RegRun.RegRunEntry("TimVer");
 
         // Settings change event
-        UserSettings.Setting.PropertyChanged += UserSettingChanged;
+        UserSettings.Setting.PropertyChanged += SettingChange.UserSettingChanged;
 
         // Initial page viewed
         NavigateToPage(UserSettings.Setting.InitialPage);
     }
     #endregion Settings
-
-    #region Setting change
-    /// <summary>
-    /// My way of handling changes in UserSettings
-    /// </summary>
-    /// <param name="sender"></param>
-    private void UserSettingChanged(object sender, PropertyChangedEventArgs e)
-    {
-        PropertyInfo prop = sender.GetType().GetProperty(e.PropertyName);
-        object newValue = prop?.GetValue(sender, null);
-        _log.Debug($"Setting change: {e.PropertyName} New Value: {newValue}");
-        switch (e.PropertyName)
-        {
-            case nameof(UserSettings.Setting.IncludeDebug):
-                NLogHelpers.SetLogLevel((bool)newValue);
-                break;
-
-            case nameof(UserSettings.Setting.UITheme):
-                MainWindowUIHelpers.SetBaseTheme((ThemeType)newValue);
-                break;
-
-            case nameof(UserSettings.Setting.PrimaryColor):
-                MainWindowUIHelpers.SetPrimaryColor((AccentColor)newValue);
-                break;
-
-            case nameof(UserSettings.Setting.UISize):
-                int size = (int)newValue;
-                double newSize = MainWindowUIHelpers.UIScale((MySize)size);
-                MainGrid.LayoutTransform = new ScaleTransform(newSize, newSize);
-                break;
-        }
-    }
-    #endregion Setting change
 
     #region Window Events
     private void Window_Closing(object sender, CancelEventArgs e)
