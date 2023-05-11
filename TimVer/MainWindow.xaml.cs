@@ -25,7 +25,7 @@ public partial class MainWindow : Window
 
         ReadSettings();
 
-        ProcessCommandline();
+        ProcessCommandLine();
     }
 
     #region Settings
@@ -201,7 +201,7 @@ public partial class MainWindow : Window
     /// <summary>
     /// Parse any command line options
     /// </summary>
-    private void ProcessCommandline()
+    private void ProcessCommandLine()
     {
         // Since this is not a console app, get the command line args
         string[] args = Environment.GetCommandLineArgs();

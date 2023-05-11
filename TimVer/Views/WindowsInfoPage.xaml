@@ -10,14 +10,15 @@
              FontFamily="Segoe UI" FontSize="14"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}">
 
+    <!--#region Resources-->
     <UserControl.Resources>
         <config:UserSettings x:Key="config" />
     </UserControl.Resources>
+    <!--#endregion-->
 
     <Grid>
         <!--#region Text blocks-->
-        <ScrollViewer Grid.Row="1" Grid.Column="1"
-                      Margin="20,20,20,5"
+        <ScrollViewer Margin="20,20,20,5"
                       HorizontalScrollBarVisibility="Auto"
                       VerticalScrollBarVisibility="Auto">
             <Grid>
@@ -91,8 +92,7 @@
                            Visibility="{Binding ShowUser,
                                                 Source={x:Static config:UserSettings.Setting},
                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
-                <TextBlock x:Name="tbRegUser"
-                           Grid.Row="9" Grid.Column="1"
+                <TextBlock Grid.Row="9" Grid.Column="1"
                            Text="{Binding Source={x:Static models:CombinedInfo.RegUser}}"
                            Visibility="{Binding ShowUser,
                                                 Source={x:Static config:UserSettings.Setting},

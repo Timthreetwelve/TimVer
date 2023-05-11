@@ -12,9 +12,11 @@
              FontSize="14"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}">
 
+    <!--#region DataContext -->
     <UserControl.DataContext>
         <viewmodels:AboutViewModel />
     </UserControl.DataContext>
+    <!--#endregion-->
 
     <Grid Background="{DynamicResource MaterialDesignCardBackground}">
         <ScrollViewer Margin="20,20,20,5"
@@ -117,7 +119,7 @@
                 <!--#endregion-->
 
                 <!--#region Check for new release button-->
-                <Button Grid.Row="9"
+                <Button Grid.Row="9" Grid.Column="0"
                         Width="140"
                         Margin="0,20" HorizontalAlignment="Left"
                         Command="{Binding CheckReleaseCommand}"

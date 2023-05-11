@@ -16,8 +16,8 @@
     <UserControl.DataContext>
         <viewmodels:SettingsViewModel />
     </UserControl.DataContext>
+
     <UserControl.Resources>
-        <config:UserSettings x:Key="config" />
         <convert:EnumDescConverter x:Key="descConv" />
     </UserControl.Resources>
     <!--#endregion-->
@@ -41,8 +41,7 @@
                 <!--#region UI Settings-->
                 <materialDesign:Card Grid.Row="0"
                                      UniformCornerRadius="5">
-                    <Expander x:Name="UIExpander"
-                              materialDesign:ExpanderAssist.HorizontalHeaderPadding="10"
+                    <Expander materialDesign:ExpanderAssist.HorizontalHeaderPadding="10"
                               IsExpanded="{Binding UIExpanderOpen}">
                         <Expander.Header>
                             <Grid>
@@ -77,8 +76,7 @@
                                         Orientation="Horizontal">
                                 <Label Width="100"
                                        Content="Initial View" />
-                                <ComboBox x:Name="cbxView"
-                                          Width="110"
+                                <ComboBox Width="110"
                                           Margin="0,0,0,5"
                                           HorizontalAlignment="Left"
                                           ItemsSource="{Binding NavPages}"
@@ -98,8 +96,7 @@
                                 <Label Width="70"
                                        VerticalAlignment="Center"
                                        Content="Theme" />
-                                <ComboBox x:Name="cbxMode"
-                                          Width="100"
+                                <ComboBox Width="100"
                                           Margin="0,3,0,0"
                                           HorizontalAlignment="Left"
                                           ItemsSource="{Binding Source={StaticResource enumThemeType}}"
@@ -114,8 +111,7 @@
                                 <Label Width="70"
                                        VerticalAlignment="Center"
                                        Content="UI Size" />
-                                <ComboBox x:Name="cbxSize"
-                                          Width="100"
+                                <ComboBox Width="100"
                                           Margin="0,3,0,0"
                                           HorizontalAlignment="Left"
                                           ItemsSource="{Binding Source={StaticResource enumUISize}}"
@@ -129,8 +125,7 @@
                                 <Label Width="100"
                                        VerticalAlignment="Center"
                                        Content="Accent Color" />
-                                <ComboBox x:Name="cbxColor"
-                                          Width="110"
+                                <ComboBox Width="110"
                                           Margin="0,3,0,0"
                                           HorizontalAlignment="Left"
                                           ItemsSource="{Binding Source={StaticResource enumAccentColors}}"
@@ -153,8 +148,7 @@
                 <!--#region App Settings-->
                 <materialDesign:Card Grid.Row="2"
                                      UniformCornerRadius="5">
-                    <Expander x:Name="AppExpander"
-                              materialDesign:ExpanderAssist.HorizontalHeaderPadding="10"
+                    <Expander materialDesign:ExpanderAssist.HorizontalHeaderPadding="10"
                               IsExpanded="{Binding AppExpanderOpen}">
                         <Expander.Header>
                             <Grid>
