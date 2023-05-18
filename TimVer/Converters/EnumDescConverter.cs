@@ -21,7 +21,7 @@ internal class EnumDescConverter : IValueConverter
         return myEnum.ToString();
     }
 
-    private static string GetEnumDescription(Enum enumObj)
+    internal static string GetEnumDescription(Enum enumObj)
     {
         if (enumObj == null)
         {

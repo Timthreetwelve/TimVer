@@ -217,4 +217,99 @@ internal partial class NavigationViewModel : ObservableObject
         TextFileViewer.ViewTextFile(Path.Combine(AppInfo.AppDirectory, "readme.txt"));
     }
     #endregion View readme file command
+
+    #region Key down events
+    /// <summary>
+    /// Keyboard events
+    /// </summary>
+    [RelayCommand]
+    public void KeyDown(KeyEventArgs e)
+    {
+        #region Keys without modifiers
+        switch (e.Key)
+        {
+            case Key.F1:
+                {
+                    NavigateToPage(NavPage.About);
+                    break;
+                }
+        }
+        #endregion Keys without modifiers
+
+        #region Keys with Ctrl
+        if (e.KeyboardDevice.Modifiers == ModifierKeys.Control)
+        {
+            switch (e.Key)
+            {
+                case Key.OemComma:
+                    {
+                        NavigateToPage(NavPage.Settings);
+                        break;
+                    }
+                case Key.C:
+                    {
+                        CopyToClipboard();
+                        break;
+                    }
+                case Key.Add:
+                    {
+                        MainWindowUIHelpers.EverythingLarger();
+                        SnackbarMsg.ClearAndQueueMessage($"Size set to {UserSettings.Setting.UISize}");
+                        break;
+                    }
+                case Key.Subtract:
+                    {
+                        MainWindowUIHelpers.EverythingSmaller();
+                        SnackbarMsg.ClearAndQueueMessage($"Size set to {UserSettings.Setting.UISize}");
+                        break;
+                    }
+            }
+        }
+        #endregion Keys with Ctrl
+
+        #region Keys with Ctrl and Shift
+        if (e.KeyboardDevice.Modifiers == (ModifierKeys.Control | ModifierKeys.Shift))
+        {
+            if (e.Key == Key.T)
+            {
+                switch (UserSettings.Setting.UITheme)
+                {
+                    case ThemeType.Light:
+                        UserSettings.Setting.UITheme = ThemeType.Dark;
+                        break;
+                    case ThemeType.Dark:
+                        UserSettings.Setting.UITheme = ThemeType.Darker;
+                        break;
+                    case ThemeType.Darker:
+                        UserSettings.Setting.UITheme = ThemeType.System;
+                        break;
+                    case ThemeType.System:
+                        UserSettings.Setting.UITheme = ThemeType.Light;
+                        break;
+                }
+                string theme = Converters.EnumDescConverter.GetEnumDescription(UserSettings.Setting.UITheme);
+                SnackbarMsg.ClearAndQueueMessage($"Theme set to {theme}", 2000);
+            }
+            if (e.Key == Key.C)
+            {
+                if (UserSettings.Setting.PrimaryColor >= AccentColor.BlueGray)
+                {
+                    UserSettings.Setting.PrimaryColor = AccentColor.Red;
+                }
+                else
+                {
+                    UserSettings.Setting.PrimaryColor++;
+                }
+                string color = Converters.EnumDescConverter.GetEnumDescription(UserSettings.Setting.PrimaryColor);
+                SnackbarMsg.ClearAndQueueMessage($"Accent color set to {color}");
+            }
+            if (e.Key == Key.S)
+            {
+                TextFileViewer.ViewTextFile(ConfigHelpers.SettingsFileName);
+                SnackbarMsg.ClearAndQueueMessage("Opening settings file", 2000);
+            }
+        }
+        #endregion
+    }
+    #endregion Key down events
 }

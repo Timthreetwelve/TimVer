@@ -4,16 +4,13 @@
         xmlns:bh="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:config="clr-namespace:TimVer.Configuration"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:local="clr-namespace:TimVer"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewmodels="clr-namespace:TimVer.ViewModels"
-        xmlns:views="clr-namespace:TimVer.Views"
         mc:Ignorable="d"
-        Width="400" Height="400"
+        d:DesignHeight="400" d:DesignWidth="500"
         Background="{DynamicResource MaterialDesignPaper}"
         Closing="Window_Closing" FontSize="12"
-        PreviewKeyUp="Window_PreviewKeyUp"
         Style="{StaticResource MaterialDesignWindow}"
         TextElement.FontWeight="Regular"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -26,6 +23,15 @@
     <Window.DataContext>
         <viewmodels:NavigationViewModel />
     </Window.DataContext>
+    <!--#endregion-->
+
+    <!--#region Interaction Triggers-->
+    <bh:Interaction.Triggers>
+        <bh:EventTrigger EventName="KeyDown">
+            <bh:InvokeCommandAction Command="{Binding KeyDownCommand}"
+                                    PassEventArgsToCommand="True" />
+        </bh:EventTrigger>
+    </bh:Interaction.Triggers>
     <!--#endregion-->
 
     <Grid x:Name="MainGrid">
