@@ -4,6 +4,10 @@ namespace TimVer.Helpers;
 
 internal static class MainWindowUIHelpers
 {
+    #region MainWindow instance
+    private static readonly MainWindow _mainWindow = Application.Current.MainWindow as MainWindow;
+    #endregion MainWindow instance
+
     #region Theme
     /// <summary>
     /// Gets the current theme
@@ -100,10 +104,10 @@ internal static class MainWindowUIHelpers
     /// Sets the value for UI scaling
     /// </summary>
     /// <param name="size">One of 7 values</param>
-    /// <returns></returns>
-    internal static double UIScale(MySize size)
+    /// <returns>Scaling multiplier</returns>
+    internal static void UIScale(MySize size)
     {
-        return size switch
+        double newSize = size switch
         {
             MySize.Smallest => 0.8,
             MySize.Smaller => 0.9,
@@ -114,6 +118,35 @@ internal static class MainWindowUIHelpers
             MySize.Largest => 1.2,
             _ => 1.0,
         };
+        _mainWindow.MainGrid.LayoutTransform = new ScaleTransform(newSize, newSize);
+    }
+
+    /// <summary>
+    /// Decreases the size of the UI
+    /// </summary>
+    public static void EverythingSmaller()
+    {
+        MySize size = UserSettings.Setting.UISize;
+        if (size > 0)
+        {
+            size--;
+            UserSettings.Setting.UISize = size;
+            UIScale(UserSettings.Setting.UISize);
+        }
+    }
+
+    /// <summary>
+    /// Increases the size of the UI
+    /// </summary>
+    public static void EverythingLarger()
+    {
+        MySize size = UserSettings.Setting.UISize;
+        if (size < MySize.Largest)
+        {
+            size++;
+            UserSettings.Setting.UISize = size;
+            UIScale(UserSettings.Setting.UISize);
+        }
     }
     #endregion UI scale
 }
