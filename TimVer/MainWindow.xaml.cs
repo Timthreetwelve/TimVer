@@ -70,9 +70,6 @@ public partial class MainWindow : Window
 
         // Settings change event
         UserSettings.Setting.PropertyChanged += SettingChange.UserSettingChanged;
-
-        // Initial page viewed
-        NavigateToPage(UserSettings.Setting.InitialPage);
     }
     #endregion Settings
 
@@ -148,55 +145,6 @@ public partial class MainWindow : Window
     }
     #endregion Unhandled Exception Handler
 
-    #region Navigation
-    /// <summary>
-    /// Navigates to the requested dialog or page
-    /// </summary>
-    private void NavigateToPage(NavPage page)
-    {
-        NavListBox.SelectedIndex = (int)page;
-        _ = NavListBox.Focus();
-        switch (page)
-        {
-            case NavPage.WindowsInfo:
-                DataContext = new WindowsInfoPage();
-                PageTitle.Content = "Windows Information";
-                break;
-            case NavPage.ComputerInfo:
-                DataContext = new ComputerInfoPage();
-                PageTitle.Content = "Computer Information";
-                break;
-            case NavPage.History:
-                DataContext = new HistoryPage();
-                PageTitle.Content = "History";
-                break;
-            case NavPage.Environment:
-                DataContext = new EnvVarPage();
-                PageTitle.Content = "Environment Variables";
-                break;
-            case NavPage.Settings:
-                DataContext = new SettingsPage();
-                PageTitle.Content = "Settings";
-                break;
-            case NavPage.About:
-                DataContext = new AboutPage();
-                PageTitle.Content = "About";
-                break;
-            case NavPage.Exit:
-                Application.Current.Shutdown();
-                break;
-        }
-    }
-
-    private void NavListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        if (IsLoaded)
-        {
-            NavigateToPage((NavPage)NavListBox.SelectedIndex);
-        }
-    }
-    #endregion
-
     #region Process the command line
     /// <summary>
     /// Parse any command line options
@@ -229,7 +177,7 @@ public partial class MainWindow : Window
             HistoryViewModel.WriteHistory();
             EnvVarViewModel.GetEnvironmentVariables();
             SettingsViewModel.ParseInitialPage();
-            NavigateToPage(UserSettings.Setting.InitialPage);
+            //NavigateToPage(UserSettings.Setting.InitialPage);
         }
     }
     #endregion Process the command line
@@ -245,7 +193,7 @@ public partial class MainWindow : Window
         {
             case Key.F1:
                 {
-                    NavigateToPage(NavPage.About);
+                    //NavigateToPage(NavPage.About);
                     break;
                 }
         }
@@ -256,15 +204,15 @@ public partial class MainWindow : Window
             {
                 case Key.OemComma:
                     {
-                        NavigateToPage(NavPage.Settings);
+                        //NavigateToPage(NavPage.Settings);
                         break;
                     }
                 case Key.C:
                     {
-                        if (MainContent.Content != null)
-                        {
-                            Commands.CopyToClipboard(MainContent);
-                        }
+                        //if (MainContent.Content != null)
+                        //{
+                        //    Commands.CopyToClipboard(MainContent);
+                        //}
                         break;
                     }
                 case Key.M:

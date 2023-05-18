@@ -1,6 +1,7 @@
 ﻿<Window x:Class="TimVer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:bh="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:config="clr-namespace:TimVer.Configuration"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:TimVer"
@@ -17,9 +18,15 @@
         TextElement.FontWeight="Regular"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
         Topmost="{Binding KeepOnTop,
-                  Source={x:Static config:UserSettings.Setting}}"
-        TextOptions.TextRenderingMode="Auto">
+                          Source={x:Static config:UserSettings.Setting}}">
+
+    <!--#region DataContext-->
+    <Window.DataContext>
+        <viewmodels:NavigationViewModel />
+    </Window.DataContext>
+    <!--#endregion-->
 
     <!--#region Window resources-->
     <Window.Resources>
@@ -63,21 +70,18 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="180" />
+            <ColumnDefinition Width="190" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <!--#endregion-->
 
         <!--#region Page Title and 3-dot menu-->
         <Grid Grid.Column="1">
-            <Grid.DataContext>
-                <viewmodels:AboutViewModel />
-            </Grid.DataContext>
             <Label x:Name="PageTitle"
                    Margin="10,0" HorizontalAlignment="Left"
                    VerticalAlignment="Center"
-                   Content="Cool Title" FontSize="22"
-                   FontWeight="Regular" />
+                   Content="{Binding PageTitle}"
+                   FontSize="22" FontWeight="SemiBold" />
             <StackPanel Margin="0,0,5,0"
                         HorizontalAlignment="Right"
                         Orientation="Horizontal">
@@ -104,9 +108,6 @@
                                 BorderThickness="2">
                             <Grid Width="150"
                                   Margin="0">
-                                <Grid.DataContext>
-                                    <local:Commands />
-                                </Grid.DataContext>
                                 <StackPanel Orientation="Vertical">
                                     <Button Height="35"
                                             Padding="15,1,0,22"
@@ -123,7 +124,6 @@
                                     <Button Height="35"
                                             Padding="15,1,0,22"
                                             Command="{Binding CopyToClipboardCommand}"
-                                            CommandParameter="{Binding ElementName=MainContent}"
                                             Content="Copy to Clipboard"
                                             ToolTip="Copy this page to the clipboard" />
                                     <Button Content="Cancel" />
@@ -139,106 +139,41 @@
         <!--#endregion-->
 
         <!--#region Navigation Listbox-->
-        <ListBox x:Name="NavListBox"
+        <ListBox x:Name="NavigationListBox"
                  Grid.Row="0" Grid.RowSpan="2"
                  Grid.Column="0"
-                 Width="180"
-                 Margin="0,5,0,0"
-                 HorizontalAlignment="Left"
-                 SelectionChanged="NavListBox_SelectionChanged"
+                 Margin="5,5,5,0"
+                 ItemsSource="{Binding NavigationViewModelTypes,
+                                       Mode=TwoWay}"
+                 SelectedIndex="0"
                  Style="{StaticResource MaterialDesignNavigationListBox}">
-
-            <ListBoxItem ToolTip="Operating System Information">
-                <ListBoxItem.Content>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <Border Style="{StaticResource NavItemIndicator}" />
-                        <materialDesign:PackIcon Width="22" Height="22"
-                                                 Kind="Microsoft" />
-                        <TextBlock Style="{StaticResource NavItemText}"
-                                   Text="Windows Info" />
+                        <materialDesign:PackIcon Width="auto" Height="auto"
+                                                 VerticalAlignment="Center"
+                                                 Kind="{Binding IconKind}" />
+                        <TextBlock Margin="15,0" VerticalAlignment="Center"
+                                   FontSize="14"
+                                   Text="{Binding Name}" />
                     </StackPanel>
-                </ListBoxItem.Content>
-            </ListBoxItem>
-
-            <ListBoxItem ToolTip="Computer Information">
-                <ListBoxItem.Content>
-                    <StackPanel Orientation="Horizontal">
-                        <Border Style="{StaticResource NavItemIndicator}" />
-                        <materialDesign:PackIcon Width="22" Height="22"
-                                                 Kind="ComputerClassic" />
-                        <TextBlock Style="{StaticResource NavItemText}"
-                                   Text="Computer Info" />
-                    </StackPanel>
-                </ListBoxItem.Content>
-            </ListBoxItem>
-
-            <ListBoxItem ToolTip="Environment Variables">
-                <ListBoxItem.Content>
-                    <StackPanel Orientation="Horizontal">
-                        <Border Style="{StaticResource NavItemIndicator}" />
-                        <materialDesign:PackIcon Width="22" Height="22"
-                                                 Kind="ListBoxOutline" />
-                        <TextBlock Style="{StaticResource NavItemText}"
-                                   Text="Environment" />
-                    </StackPanel>
-                </ListBoxItem.Content>
-            </ListBoxItem>
-
-            <ListBoxItem ToolTip="Build History">
-                <ListBoxItem.Content>
-                    <StackPanel Orientation="Horizontal">
-                        <Border Style="{StaticResource NavItemIndicator}" />
-                        <materialDesign:PackIcon Width="22" Height="22"
-                                                 Kind="History" />
-                        <TextBlock Style="{StaticResource NavItemText}"
-                                   Text="History" />
-                    </StackPanel>
-                </ListBoxItem.Content>
-            </ListBoxItem>
-
-            <ListBoxItem ToolTip="Application Settings">
-                <ListBoxItem.Content>
-                    <StackPanel Orientation="Horizontal">
-                        <Border Style="{StaticResource NavItemIndicator}" />
-                        <materialDesign:PackIcon Width="22" Height="22"
-                                                 Kind="CogOutline" />
-                        <TextBlock Style="{StaticResource NavItemText}"
-                                   Text="Settings" />
-                    </StackPanel>
-                </ListBoxItem.Content>
-            </ListBoxItem>
-
-            <ListBoxItem ToolTip="About the application">
-                <ListBoxItem.Content>
-                    <StackPanel Orientation="Horizontal">
-                        <Border Style="{StaticResource NavItemIndicator}" />
-                        <materialDesign:PackIcon Width="22" Height="22"
-                                                 Kind="AboutOutline" />
-                        <TextBlock Style="{StaticResource NavItemText}"
-                                   Text="About" />
-                    </StackPanel>
-                </ListBoxItem.Content>
-            </ListBoxItem>
-
-            <ListBoxItem ToolTip="Exit the application">
-                <ListBoxItem.Content>
-                    <StackPanel Orientation="Horizontal">
-                        <Border Style="{StaticResource NavItemIndicator}" />
-                        <materialDesign:PackIcon Width="22" Height="22"
-                                                 Kind="ExitRun" />
-                        <TextBlock Style="{StaticResource NavItemText}"
-                                   Text="Exit" />
-                    </StackPanel>
-                </ListBoxItem.Content>
-            </ListBoxItem>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <bh:Interaction.Triggers>
+                <bh:EventTrigger EventName="SelectionChanged">
+                    <bh:InvokeCommandAction Command="{Binding NavigateCommand}"
+                                            CommandParameter="{Binding Path=SelectedItem,
+                                                                       RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" />
+                </bh:EventTrigger>
+            </bh:Interaction.Triggers>
         </ListBox>
         <!--#endregion-->
 
         <!--#region Content control for pages-->
         <Grid Grid.Row="1" Grid.Column="1"
               Background="{DynamicResource MaterialDesignCardBackground}">
-            <ContentControl x:Name="MainContent"
-                            Content="{Binding}" />
+            <ContentControl Content="{Binding CurrentViewModel}" />
         </Grid>
         <!--#endregion-->
 

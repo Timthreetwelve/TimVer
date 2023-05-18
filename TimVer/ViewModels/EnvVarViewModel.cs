@@ -2,7 +2,7 @@
 
 namespace TimVer.ViewModels;
 
-public static class EnvVarViewModel
+public partial class EnvVarViewModel : ObservableObject
 {
     #region NLog Instance
     private static readonly Logger _log = LogManager.GetCurrentClassLogger();

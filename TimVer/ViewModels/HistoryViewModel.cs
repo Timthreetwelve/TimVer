@@ -2,7 +2,7 @@
 
 namespace TimVer.ViewModels;
 
-public static class HistoryViewModel
+public partial class HistoryViewModel : ObservableObject
 {
     #region NLog Instance
     private static readonly Logger _log = LogManager.GetCurrentClassLogger();
