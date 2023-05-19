@@ -14,6 +14,10 @@ internal partial class NavigationViewModel : ObservableObject
     }
     #endregion Constructor
 
+    #region MainWindow Instance
+    private static readonly MainWindow _mainWindow = Application.Current.MainWindow as MainWindow;
+    #endregion MainWindow Instance
+
     #region Properties
     [ObservableProperty]
     private object _currentViewModel;
@@ -230,7 +234,8 @@ internal partial class NavigationViewModel : ObservableObject
         {
             case Key.F1:
                 {
-                    NavigateToPage(NavPage.About);
+                    //NavigateToPage(NavPage.About);
+                    _mainWindow.NavigationListBox.SelectedValue = FindNavPage(NavPage.About);
                     break;
                 }
         }
@@ -243,7 +248,8 @@ internal partial class NavigationViewModel : ObservableObject
             {
                 case Key.OemComma:
                     {
-                        NavigateToPage(NavPage.Settings);
+                        //NavigateToPage(NavPage.Settings);
+                        _mainWindow.NavigationListBox.SelectedValue = FindNavPage(NavPage.Settings);
                         break;
                     }
                 case Key.C:
