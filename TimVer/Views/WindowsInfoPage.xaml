@@ -10,12 +10,6 @@
              FontFamily="Segoe UI" FontSize="14"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}">
 
-    <!--#region Resources-->
-    <UserControl.Resources>
-        <config:UserSettings x:Key="config" />
-    </UserControl.Resources>
-    <!--#endregion-->
-
     <Grid>
         <!--#region Text blocks-->
         <ScrollViewer Margin="20,20,20,5"
