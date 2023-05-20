@@ -48,7 +48,7 @@ internal static class GitHubHelpers
         {
             _log.Debug("No newer releases were found.");
             _ = new MDCustMsgBox("No newer releases were found.",
-                "Windows Update Viewer",
+                "TimVer",
                 ButtonType.Ok,
                 false,
                 true,
@@ -60,7 +60,7 @@ internal static class GitHubHelpers
             _log.Debug($"A newer release ({latestVersion}) has been found.");
             _ = new MDCustMsgBox($"A newer release ({latestVersion}) has been found.\n\n" +
                              "Do you want to go to the release page?\n",
-                "Windows Update Viewer",
+                "TimVer",
                 ButtonType.YesNo,
                 false,
                 true,
