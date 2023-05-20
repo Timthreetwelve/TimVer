@@ -44,6 +44,14 @@
                     <x:Type TypeName="models:MySize" />
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
+
+            <ObjectDataProvider x:Key="enumRowSpacing"
+                        MethodName="GetValues"
+                        ObjectType="{x:Type system:Enum}">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="models:Spacing" />
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <!--#endregion-->
 
             <!--#region DataTemplates-->

@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Configuration;
 
@@ -20,6 +20,9 @@ public partial class UserSettings : ConfigManager<UserSettings>
 
     [ObservableProperty]
     private AccentColor _primaryColor = AccentColor.Blue;
+
+    [ObservableProperty]
+    private Spacing _rowSpacing = Spacing.Comfortable;
 
     [ObservableProperty]
     private bool _showUser;

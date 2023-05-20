@@ -81,3 +81,13 @@ public enum AccentColor
     BlueGray = 18
 }
 #endregion Accent color
+
+/// <summary>
+/// Space between rows in the data grids
+/// </summary>
+public enum Spacing
+{
+    Compact = 0,
+    Comfortable = 1,
+    Wide = 2
+}

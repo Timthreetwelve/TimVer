@@ -17,6 +17,7 @@
     </UserControl.DataContext>
     <UserControl.Resources>
         <convert:TodayConverter x:Key="TodayConverter" />
+        <convert:SpacingConverter x:Key="Spacing" />
     </UserControl.Resources>
     <!--#endregion-->
 
@@ -24,7 +25,8 @@
         <!--#region DataGrid-->
         <DataGrid Name="HistoryGrid"
                   Margin="15,20,20,5"
-                  materialDesign:DataGridAssist.ColumnHeaderPadding="18,0,0,5"
+                  materialDesign:DataGridAssist.ColumnHeaderPadding="15,0,0,5"
+                  materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
                   AutoGenerateColumns="False"
                   Background="{DynamicResource MaterialDesignCardBackground}"
                   CanUserAddRows="False"
