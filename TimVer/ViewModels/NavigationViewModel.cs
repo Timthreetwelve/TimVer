@@ -24,6 +24,9 @@ internal partial class NavigationViewModel : ObservableObject
 
     [ObservableProperty]
     private string _pageTitle;
+
+    [ObservableProperty]
+    private static NavigationItem _navItem;
     #endregion Properties
 
     #region List of navigation items
@@ -110,11 +113,12 @@ internal partial class NavigationViewModel : ObservableObject
             {
                 Application.Current.Shutdown();
             }
-            if (item.ViewModelType is not null)
+            else if (item.ViewModelType is not null)
             {
                 PageTitle = item.PageTitle;
                 CurrentViewModel = null;
                 CurrentViewModel = Activator.CreateInstance((Type)item.ViewModelType);
+                NavItem = item;
             }
         }
     }
@@ -170,7 +174,7 @@ internal partial class NavigationViewModel : ObservableObject
                 {
                     StringBuilder builder = new();
                     _ = builder.AppendLine("ENVIRONMENT VARIABLES");
-                    foreach (EnvVariable item in EnvVariable.EnvVariableList)
+                    foreach (EnvVariable item in CombinedInfo.EnvVariableList)
                     {
                         _ = builder.Append(item.Variable);
                         _ = builder.Append(" = ");

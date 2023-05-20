@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:bh="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:config="clr-namespace:TimVer.Configuration"
+        xmlns:convert="clr-namespace:TimVer.Converters"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -19,10 +20,13 @@
         Topmost="{Binding KeepOnTop,
                           Source={x:Static config:UserSettings.Setting}}">
 
-    <!--#region DataContext-->
+    <!--#region DataContext & Resources-->
     <Window.DataContext>
         <viewmodels:NavigationViewModel />
     </Window.DataContext>
+    <Window.Resources>
+        <convert:SelectedItemConverter x:Key="SelItemConv" />
+    </Window.Resources>
     <!--#endregion-->
 
     <!--#region Interaction Triggers-->
@@ -115,9 +119,10 @@
                  Grid.Row="0" Grid.RowSpan="2"
                  Grid.Column="0"
                  Margin="5,5,5,0"
-                 IsSynchronizedWithCurrentItem="True"
                  ItemsSource="{Binding NavigationViewModelTypes,
                                        Mode=TwoWay}"
+                 SelectedItem="{Binding NavItem, Mode=OneWay,
+                                        Converter={StaticResource SelItemConv}}"
                  Style="{StaticResource MaterialDesignNavigationListBox}">
             <ListBox.ItemTemplate>
                 <DataTemplate>

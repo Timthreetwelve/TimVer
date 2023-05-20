@@ -14,6 +14,9 @@ public partial class NavigationItem : ObservableObject
     private bool _isExit;
 
     [ObservableProperty]
+    private bool _isLaunch;
+
+    [ObservableProperty]
     private string _name;
 
     [ObservableProperty]
