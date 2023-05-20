@@ -4,12 +4,6 @@ namespace TimVer.ViewModels;
 
 public partial class SettingsViewModel : ObservableObject
 {
-    [ObservableProperty]
-    private static bool _uIExpanderOpen;
-
-    [ObservableProperty]
-    private static bool _appExpanderOpen;
-
     public static List<NavPage> NavPages { get; private set; } = new();
 
     public static void ParseInitialPage()

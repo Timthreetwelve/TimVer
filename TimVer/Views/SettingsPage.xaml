@@ -38,11 +38,12 @@
                 </Grid.RowDefinitions>
                 <!--#endregion-->
 
-                <!--#region UI Settings-->
+                <!--#region App Settings-->
                 <materialDesign:Card Grid.Row="0"
                                      UniformCornerRadius="5">
                     <Expander materialDesign:ExpanderAssist.HorizontalHeaderPadding="10"
-                              IsExpanded="{Binding UIExpanderOpen}">
+                              IsExpanded="{Binding AppExpanderOpen,
+                                                   Source={x:Static config:UserSettings.Setting}}">
                         <Expander.Header>
                             <Grid>
                                 <!--#region Row definitions-->
@@ -51,118 +52,21 @@
                                     <RowDefinition Height="5" />
                                     <RowDefinition />
                                 </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="55" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
                                 <!--#endregion-->
-                                <TextBlock Grid.Row="0"
+                                <materialDesign:PackIcon Grid.RowSpan="3"
+                                                     Width="28" Height="28"
+                                                     Margin="0,5,0,0"
+                                                     VerticalAlignment="Center"
+                                                     Foreground="{DynamicResource PrimaryHueMidBrush}"
+                                                     Kind="Wrench" />
+                                <TextBlock Grid.Row="0" Grid.Column="1"
                                            FontSize="16" FontWeight="SemiBold"
-                                           Text="UI Settings" />
-                                <TextBlock Grid.Row="2"
-                                           FontSize="12"
-                                           Text="Initial View, UI Size, Accent Color &amp; Theme" />
-                            </Grid>
-                        </Expander.Header>
-
-                        <Grid Margin="15,10">
-                            <!--#region Row & Column definitions-->
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="40" />
-                                <RowDefinition Height="40" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="240" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <!--#endregion-->
-                            <StackPanel Grid.Row="0" Grid.Column="0"
-                                        Orientation="Horizontal">
-                                <Label Width="100"
-                                       Content="Initial View" />
-                                <ComboBox Width="110"
-                                          Margin="0,0,0,5"
-                                          HorizontalAlignment="Left"
-                                          ItemsSource="{Binding NavPages}"
-                                          SelectedItem="{Binding InitialPage,
-                                                                 Source={x:Static config:UserSettings.Setting}}"
-                                          Style="{StaticResource MaterialDesignComboBox}">
-                                    <ComboBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding Converter={StaticResource descConv}}" />
-                                        </DataTemplate>
-                                    </ComboBox.ItemTemplate>
-                                </ComboBox>
-                            </StackPanel>
-
-                            <StackPanel Grid.Row="1" Grid.Column="1"
-                                        Orientation="Horizontal">
-                                <Label Width="70"
-                                       VerticalAlignment="Center"
-                                       Content="Theme" />
-                                <ComboBox Width="100"
-                                          Margin="0,3,0,0"
-                                          HorizontalAlignment="Left"
-                                          ItemsSource="{Binding Source={StaticResource enumThemeType}}"
-                                          SelectedItem="{Binding UITheme,
-                                                                 Source={x:Static config:UserSettings.Setting}}"
-                                          Style="{StaticResource MaterialDesignComboBox}" />
-                            </StackPanel>
-
-                            <StackPanel Grid.Row="0" Grid.Column="1"
-                                        HorizontalAlignment="Left"
-                                        Orientation="Horizontal">
-                                <Label Width="70"
-                                       VerticalAlignment="Center"
-                                       Content="UI Size" />
-                                <ComboBox Width="100"
-                                          Margin="0,3,0,0"
-                                          HorizontalAlignment="Left"
-                                          ItemsSource="{Binding Source={StaticResource enumUISize}}"
-                                          SelectedItem="{Binding UISize,
-                                                                 Source={x:Static config:UserSettings.Setting}}"
-                                          Style="{StaticResource MaterialDesignComboBox}" />
-                            </StackPanel>
-
-                            <StackPanel Grid.Row="1" Grid.Column="0"
-                                        Orientation="Horizontal">
-                                <Label Width="100"
-                                       VerticalAlignment="Center"
-                                       Content="Accent Color" />
-                                <ComboBox Width="110"
-                                          Margin="0,3,0,0"
-                                          HorizontalAlignment="Left"
-                                          ItemsSource="{Binding Source={StaticResource enumAccentColors}}"
-                                          MaxDropDownHeight="140"
-                                          SelectedItem="{Binding PrimaryColor,
-                                                                 Source={x:Static config:UserSettings.Setting}}"
-                                          Style="{StaticResource MaterialDesignComboBox}">
-                                    <ComboBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding Converter={StaticResource descConv}}" />
-                                        </DataTemplate>
-                                    </ComboBox.ItemTemplate>
-                                </ComboBox>
-                            </StackPanel>
-                        </Grid>
-                    </Expander>
-                </materialDesign:Card>
-                <!--#endregion-->
-
-                <!--#region App Settings-->
-                <materialDesign:Card Grid.Row="2"
-                                     UniformCornerRadius="5">
-                    <Expander materialDesign:ExpanderAssist.HorizontalHeaderPadding="10"
-                              IsExpanded="{Binding AppExpanderOpen}">
-                        <Expander.Header>
-                            <Grid>
-                                <!--#region Row definitions-->
-                                <Grid.RowDefinitions>
-                                    <RowDefinition />
-                                    <RowDefinition Height="5" />
-                                    <RowDefinition />
-                                </Grid.RowDefinitions>
-                                <!--#endregion-->
-                                <TextBlock Grid.Row="0"
-                                           FontSize="16" FontWeight="SemiBold"
-                                           Text="App Settings" />
-                                <TextBlock Grid.Row="2"
+                                           Text="Application Settings" />
+                                <TextBlock Grid.Row="2" Grid.Column="1"
                                            FontSize="12"
                                            Text="Update history, Show user, Show drives, Keep on top &amp; Log verbosity " />
                             </Grid>
@@ -177,38 +81,157 @@
                                 <RowDefinition Height="31" />
                                 <RowDefinition Height="31" />
                             </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="45" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
                             <!--#endregion-->
-                            <CheckBox Grid.Row="0"
+                            <CheckBox Grid.Row="0" Grid.Column="1"
                                       Checked="HistOnStart_Checked"
                                       Content=" Update history on Windows startup"
                                       IsChecked="{Binding HistoryOnBoot,
                                                           Source={x:Static config:UserSettings.Setting}}"
                                       Unchecked="HistOnStart_Unchecked" />
-                            <CheckBox Grid.Row="1"
+                            <CheckBox Grid.Row="1" Grid.Column="1"
                                       Content=" Display registered user on Windows Information page"
                                       IsChecked="{Binding ShowUser,
                                                           Source={x:Static config:UserSettings.Setting}}" />
-                            <CheckBox Grid.Row="2"
+                            <CheckBox Grid.Row="2" Grid.Column="1"
                                       Content=" Display drive letters on Computer Information page"
                                       IsChecked="{Binding ShowDrives,
                                                           Source={x:Static config:UserSettings.Setting}}" />
-                            <CheckBox Grid.Row="3"
+                            <CheckBox Grid.Row="3" Grid.Column="1"
                                       Content="Include drive labels"
                                       IsChecked="{Binding ShowLabels,
                                                           Source={x:Static config:UserSettings.Setting}}"
                                       IsEnabled="{Binding ShowDrives,
                                                           Source={x:Static config:UserSettings.Setting}}" />
-
-                            <CheckBox Grid.Row="4"
+                            <CheckBox Grid.Row="4" Grid.Column="1"
                                       Content="Keep TimVer on top of other windows"
                                       IsChecked="{Binding KeepOnTop,
                                                           Source={x:Static config:UserSettings.Setting}}" />
-
-                            <CheckBox Grid.Row="5"
+                            <CheckBox Grid.Row="5" Grid.Column="1"
                                       Content="Include debug level messages in log file"
                                       IsChecked="{Binding IncludeDebug,
                                                           Source={x:Static config:UserSettings.Setting}}" />
 
+                        </Grid>
+                    </Expander>
+                </materialDesign:Card>
+                <!--#endregion-->
+
+                <!--#region UI Settings-->
+                <materialDesign:Card Grid.Row="2"
+                                     UniformCornerRadius="5">
+                    <Expander materialDesign:ExpanderAssist.HorizontalHeaderPadding="10"
+                              IsExpanded="{Binding UIExpanderOpen,
+                                                   Source={x:Static config:UserSettings.Setting}}">
+                        <Expander.Header>
+                            <Grid>
+                                <!--#region Row definitions-->
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition Height="5" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="55" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <!--#endregion-->
+                                <materialDesign:PackIcon Grid.RowSpan="3"
+                                                     Width="28" Height="28"
+                                                     Margin="0,5,0,0"
+                                                     VerticalAlignment="Center"
+                                                     Foreground="{DynamicResource PrimaryHueMidBrush}"
+                                                     Kind="Monitor" />
+                                <TextBlock Grid.Row="0" Grid.Column="1"
+                                           FontSize="16" FontWeight="SemiBold"
+                                           Text="UI Settings" />
+                                <TextBlock Grid.Row="2" Grid.Column="1"
+                                           FontSize="12"
+                                           Text="UI Size, Accent Color, Theme and Row Height" />
+                            </Grid>
+                        </Expander.Header>
+
+                        <Grid Margin="15,10">
+                            <!--#region Row & Column definitions-->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="45" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <!--#endregion-->
+
+
+                            <StackPanel Grid.Row="0" Grid.Column="1"
+                                        Orientation="Horizontal">
+                                <Label Width="100"
+                                       VerticalAlignment="Center"
+                                       Content="Theme" />
+                                <ComboBox Width="110"
+                                          Margin="0,3,0,0"
+                                          HorizontalAlignment="Left"
+                                          ItemsSource="{Binding Source={StaticResource enumThemeType}}"
+                                          SelectedItem="{Binding UITheme,
+                                                                 Source={x:Static config:UserSettings.Setting}}"
+                                          Style="{StaticResource MaterialDesignComboBox}" />
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="2" Grid.Column="1"
+                                        HorizontalAlignment="Left"
+                                        Orientation="Horizontal">
+                                <Label Width="100"
+                                       VerticalAlignment="Center"
+                                       Content="UI Size" />
+                                <ComboBox Width="110"
+                                          Margin="0,3,0,0"
+                                          HorizontalAlignment="Left"
+                                          ItemsSource="{Binding Source={StaticResource enumUISize}}"
+                                          SelectedItem="{Binding UISize,
+                                                                 Source={x:Static config:UserSettings.Setting}}"
+                                          Style="{StaticResource MaterialDesignComboBox}" />
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="1" Grid.Column="1"
+                                        Orientation="Horizontal">
+                                <Label Width="100"
+                                       VerticalAlignment="Center"
+                                       Content="Accent Color" />
+                                <ComboBox Width="110"
+                                          Margin="0,3,0,0"
+                                          HorizontalAlignment="Left"
+                                          ItemsSource="{Binding Source={StaticResource enumAccentColors}}"
+                                          MaxDropDownHeight="300"
+                                          SelectedItem="{Binding PrimaryColor,
+                                                                 Source={x:Static config:UserSettings.Setting}}"
+                                          Style="{StaticResource MaterialDesignComboBox}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Converter={StaticResource descConv}}" />
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="3" Grid.Column="1"
+                                    Orientation="Horizontal">
+                                <Label Width="100"
+                                   VerticalAlignment="Center"
+                                   Content="Row Height" />
+                                <ComboBox Width="110"
+                                      Margin="0,3,0,0"
+                                      HorizontalAlignment="Left"
+                                      ItemsSource="{Binding Source={StaticResource enumRowSpacing}}"
+                                      SelectedItem="{Binding RowSpacing,
+                                                             Source={x:Static config:UserSettings.Setting}}"
+                                      Style="{StaticResource MaterialDesignComboBox}" />
+                            </StackPanel>
                         </Grid>
                     </Expander>
                 </materialDesign:Card>

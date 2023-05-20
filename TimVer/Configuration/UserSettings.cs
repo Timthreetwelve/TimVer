@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Configuration;
 
@@ -6,6 +6,9 @@ namespace TimVer.Configuration;
 public partial class UserSettings : ConfigManager<UserSettings>
 {
     #region Properties (some with default values)
+    [ObservableProperty]
+    private static bool _appExpanderOpen;
+
     [ObservableProperty]
     private bool _includeDebug = true;
 
@@ -28,6 +31,9 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private bool _showLabels;
 
     [ObservableProperty]
+    private static bool _uIExpanderOpen;
+
+    [ObservableProperty]
     private MySize _uISize = MySize.Default;
 
     [ObservableProperty]
@@ -46,7 +52,7 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private double _windowWidth = 850;
 
     [ObservableProperty]
-    [property: JsonIgnore]
+    [JsonIgnore]
     private bool _historyOnBoot;
     #endregion Properties (some with default values)
 }
