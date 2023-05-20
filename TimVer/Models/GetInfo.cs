@@ -106,20 +106,6 @@ public static class GetInfo
     }
     #endregion Get Processor Information
 
-    #region Get environment variable
-    /// <summary>
-    /// Get environment variable
-    /// </summary>
-    /// <param name="value">Value to retrieve</param>
-    /// <returns>Data for value</returns>
-    public static string GetEnvironment(string value)
-    {
-        string retval = Environment.GetEnvironmentVariable(value);
-        _log.Debug($"Environment: {value} variable = {retval}");
-        return retval;
-    }
-    #endregion Get environment variable
-
     #region Get special folder
     /// <summary>
     /// Get special folder
@@ -133,4 +119,65 @@ public static class GetInfo
         return retval;
     }
     #endregion Get special folder
+
+    #region Get GPU Information
+    /// <summary>
+    /// Get CIM value from Win32_VideoController
+    /// </summary>
+    /// <param name="value">Value to retrieve</param>
+    /// <returns>Data for value or exception message</returns>
+    public static string CimQueryGPU(string value)
+    {
+        try
+        {
+            CimSession cim = CimSession.Create(null);
+            string retval = cim.QueryInstances("root/cimv2", "WQL", $"SELECT {value} From Win32_VideoController")
+                .FirstOrDefault()?.CimInstanceProperties[value].Value.ToString();
+            _log.Debug($"Win32_VideoController: {value} = {retval}");
+            return retval;
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, "Win32_VideoController call failed.");
+            return ex.Message;
+        }
+    }
+    #endregion Get GPU Information
+
+    #region Get environment variables
+    /// <summary>
+    /// Gets the environment variables and sorts by variable name
+    /// </summary>
+    public static List<EnvVariable> GetEnvironmentVariables()
+    {
+        try
+        {
+            List<EnvVariable> envList = new();
+            IDictionary env = Environment.GetEnvironmentVariables();
+            _log.Debug($"Found {env.Count} environment variables");
+            foreach (DictionaryEntry entry in env)
+            {
+                EnvVariable envVariable = new()
+                {
+                    Variable = entry.Key.ToString(),
+                    Value = entry.Value.ToString()
+                };
+                envList.Add(envVariable);
+            }
+            return envList.OrderBy(envVariable => envVariable.Variable).ToList();
+        }
+        catch (Exception ex)
+        {
+            _log.Debug(ex, "Error occurred in GetEnvironmentVariables.");
+            List<EnvVariable> errorList = new();
+            EnvVariable envVariable = new()
+            {
+                Variable = "An Error has occurred.",
+                Value = "See the log for more information."
+            };
+            errorList.Add(envVariable);
+            return errorList;
+        }
+    }
+    #endregion Get environment variables
 }

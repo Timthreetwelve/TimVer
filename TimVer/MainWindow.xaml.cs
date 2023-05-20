@@ -43,14 +43,12 @@ public partial class MainWindow : Window
         // Log the version, build date and commit id
         _log.Info($"{AppInfo.AppName} ({AppInfo.AppProduct}) {AppInfo.AppVersion} is starting up");
         _log.Info($"{AppInfo.AppName} {AppInfo.AppCopyright}");
-        _log.Debug($"{AppInfo.AppName} Build date: {BuildInfo.BuildDateUtc.ToUniversalTime():f} (UTC)");
+        _log.Debug($"{AppInfo.AppName} Build date: {BuildInfo.BuildDateString} (UTC)");
         _log.Debug($"{AppInfo.AppName} Commit ID: {BuildInfo.CommitIDString} ");
 
-        // Log the .NET version, app framework and OS platform
-        string version = Environment.Version.ToString();
-        _log.Debug($".NET version: {AppInfo.RuntimeVersion.Replace(".NET", "")}  ({version})");
-        _log.Debug(AppInfo.Framework);
-        _log.Debug(AppInfo.OsPlatform);
+        // Log the .NET version and OS platform
+        _log.Debug($"Operating System version: {AppInfo.OsPlatform}");
+        _log.Debug($".NET version: {AppInfo.RuntimeVersion.Replace(".NET", "")}");
 
         // Window position
         MainWindowHelpers.SetWindowPosition();
@@ -174,7 +172,7 @@ public partial class MainWindow : Window
         else
         {
             HistoryViewModel.WriteHistory();
-            EnvVarViewModel.GetEnvironmentVariables();
+            //EnvVarViewModel.GetEnvironmentVariables();
             SettingsViewModel.ParseInitialPage();
             //NavigateToPage(UserSettings.Setting.InitialPage);
         }

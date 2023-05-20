@@ -5,13 +5,11 @@ namespace TimVer.Models;
 /// <summary>
 /// Environment variables
 /// </summary>
-internal partial class EnvVariable : ObservableObject
+public partial class EnvVariable : ObservableObject
 {
     [ObservableProperty]
     private string _variable;
 
     [ObservableProperty]
     private string _value;
-
-    public static List<EnvVariable> EnvVariableList { get; set; } = new();
 }

@@ -10,7 +10,5 @@ public partial class EnvVarPage : UserControl
     public EnvVarPage()
     {
         InitializeComponent();
-
-        EnvDataGrid.ItemsSource = EnvVariable.EnvVariableList;
     }
 }

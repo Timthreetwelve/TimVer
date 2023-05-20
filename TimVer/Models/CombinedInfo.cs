@@ -1,4 +1,4 @@
-﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Models;
 
@@ -374,4 +374,14 @@ internal static class CombinedInfo
         }
     }
     #endregion Windows folder
+    #region Environment variables
+    private static List<EnvVariable> _envVariableList;
+    public static List<EnvVariable> EnvVariableList
+    {
+        get
+        {
+            return _envVariableList ??= GetInfo.GetEnvironmentVariables();
+        }
+    }
+    #endregion Environment variables
 }

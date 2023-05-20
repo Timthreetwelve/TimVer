@@ -4,6 +4,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:models="clr-namespace:TimVer.Models"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
 
@@ -16,7 +17,8 @@
                   CanUserAddRows="False"
                   CanUserDeleteRows="False"
                   CanUserSortColumns="True"
-                  IsReadOnly="True">
+                  IsReadOnly="True"
+                  ItemsSource="{Binding Source={x:Static models:CombinedInfo.EnvVariableList}}">
 
             <!--#region Columns-->
             <DataGrid.Columns>
