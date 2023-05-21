@@ -33,7 +33,7 @@
                   CanUserDeleteRows="False"
                   CanUserSortColumns="True" FontSize="14"
                   IsReadOnly="True"
-                  ItemsSource="{Binding}">
+                  ItemsSource="{Binding HistoryList}">
 
             <!--#region Columns-->
             <DataGrid.Columns>
