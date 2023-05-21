@@ -58,11 +58,11 @@
                                 </Grid.ColumnDefinitions>
                                 <!--#endregion-->
                                 <materialDesign:PackIcon Grid.RowSpan="3"
-                                                     Width="28" Height="28"
-                                                     Margin="0,5,0,0"
-                                                     VerticalAlignment="Center"
-                                                     Foreground="{DynamicResource PrimaryHueMidBrush}"
-                                                     Kind="Wrench" />
+                                                         Width="28" Height="28"
+                                                         Margin="0,5,0,0"
+                                                         VerticalAlignment="Center"
+                                                         Foreground="{DynamicResource PrimaryHueMidBrush}"
+                                                         Kind="Wrench" />
                                 <TextBlock Grid.Row="0" Grid.Column="1"
                                            FontSize="16" FontWeight="SemiBold"
                                            Text="Application Settings" />
@@ -74,6 +74,7 @@
                         <Grid Margin="15,10">
                             <!--#region Row & Column definitions-->
                             <Grid.RowDefinitions>
+                                <RowDefinition Height="41" />
                                 <RowDefinition Height="31" />
                                 <RowDefinition Height="31" />
                                 <RowDefinition Height="31" />
@@ -86,35 +87,53 @@
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <!--#endregion-->
-                            <CheckBox Grid.Row="0" Grid.Column="1"
+                            <StackPanel Grid.Row="0" Grid.Column="1"
+                                        Margin="0,5"
+                                        Orientation="Horizontal">
+                                <Label Width="160"
+                                       Content="Initial Page Displayed" />
+                                <ComboBox Width="120"
+                                          Margin="0,0,0,5"
+                                          HorizontalAlignment="Left"
+                                          ItemsSource="{Binding NavPages}"
+                                          SelectedItem="{Binding InitialPage,
+                                                                 Source={x:Static config:UserSettings.Setting}}"
+                                          Style="{StaticResource MaterialDesignComboBox}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Converter={StaticResource descConv}}" />
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                            </StackPanel>
+                            <CheckBox Grid.Row="1" Grid.Column="1"
                                       Checked="HistOnStart_Checked"
-                                      Content=" Update history on Windows startup"
+                                      Content=" Update build history on Windows startup"
                                       IsChecked="{Binding HistoryOnBoot,
                                                           Source={x:Static config:UserSettings.Setting}}"
                                       Unchecked="HistOnStart_Unchecked" />
-                            <CheckBox Grid.Row="1" Grid.Column="1"
+                            <CheckBox Grid.Row="2" Grid.Column="1"
                                       Content=" Display registered user on Windows Information page"
                                       IsChecked="{Binding ShowUser,
                                                           Source={x:Static config:UserSettings.Setting}}" />
-                            <CheckBox Grid.Row="2" Grid.Column="1"
+                            <CheckBox Grid.Row="3" Grid.Column="1"
                                       Content=" Display drive letters on Computer Information page"
                                       IsChecked="{Binding ShowDrives,
                                                           Source={x:Static config:UserSettings.Setting}}" />
-                            <CheckBox Grid.Row="3" Grid.Column="1"
+                            <CheckBox Grid.Row="4" Grid.Column="1"
                                       Content="Include drive labels"
                                       IsChecked="{Binding ShowLabels,
                                                           Source={x:Static config:UserSettings.Setting}}"
                                       IsEnabled="{Binding ShowDrives,
                                                           Source={x:Static config:UserSettings.Setting}}" />
-                            <CheckBox Grid.Row="4" Grid.Column="1"
+                            <CheckBox Grid.Row="5" Grid.Column="1"
                                       Content="Keep TimVer on top of other windows"
                                       IsChecked="{Binding KeepOnTop,
                                                           Source={x:Static config:UserSettings.Setting}}" />
-                            <CheckBox Grid.Row="5" Grid.Column="1"
-                                      Content="Include debug level messages in log file"
+                            <CheckBox Grid.Row="6" Grid.Column="1"
+                                      Content="Include debug level messages in application log file"
                                       IsChecked="{Binding IncludeDebug,
                                                           Source={x:Static config:UserSettings.Setting}}" />
-
                         </Grid>
                     </Expander>
                 </materialDesign:Card>
@@ -140,11 +159,11 @@
                                 </Grid.ColumnDefinitions>
                                 <!--#endregion-->
                                 <materialDesign:PackIcon Grid.RowSpan="3"
-                                                     Width="28" Height="28"
-                                                     Margin="0,5,0,0"
-                                                     VerticalAlignment="Center"
-                                                     Foreground="{DynamicResource PrimaryHueMidBrush}"
-                                                     Kind="Monitor" />
+                                                         Width="28" Height="28"
+                                                         Margin="0,5,0,0"
+                                                         VerticalAlignment="Center"
+                                                         Foreground="{DynamicResource PrimaryHueMidBrush}"
+                                                         Kind="Monitor" />
                                 <TextBlock Grid.Row="0" Grid.Column="1"
                                            FontSize="16" FontWeight="SemiBold"
                                            Text="UI Settings" />
@@ -180,7 +199,13 @@
                                           ItemsSource="{Binding Source={StaticResource enumThemeType}}"
                                           SelectedItem="{Binding UITheme,
                                                                  Source={x:Static config:UserSettings.Setting}}"
-                                          Style="{StaticResource MaterialDesignComboBox}" />
+                                          Style="{StaticResource MaterialDesignComboBox}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Converter={StaticResource descConv}}" />
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
                             </StackPanel>
 
                             <StackPanel Grid.Row="2" Grid.Column="1"
@@ -220,17 +245,17 @@
                             </StackPanel>
 
                             <StackPanel Grid.Row="3" Grid.Column="1"
-                                    Orientation="Horizontal">
+                                        Orientation="Horizontal">
                                 <Label Width="100"
-                                   VerticalAlignment="Center"
-                                   Content="Row Height" />
+                                       VerticalAlignment="Center"
+                                       Content="Row Height" />
                                 <ComboBox Width="110"
-                                      Margin="0,3,0,0"
-                                      HorizontalAlignment="Left"
-                                      ItemsSource="{Binding Source={StaticResource enumRowSpacing}}"
-                                      SelectedItem="{Binding RowSpacing,
-                                                             Source={x:Static config:UserSettings.Setting}}"
-                                      Style="{StaticResource MaterialDesignComboBox}" />
+                                          Margin="0,3,0,0"
+                                          HorizontalAlignment="Left"
+                                          ItemsSource="{Binding Source={StaticResource enumRowSpacing}}"
+                                          SelectedItem="{Binding RowSpacing,
+                                                                 Source={x:Static config:UserSettings.Setting}}"
+                                          Style="{StaticResource MaterialDesignComboBox}" />
                             </StackPanel>
                         </Grid>
                     </Expander>
