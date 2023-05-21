@@ -13,7 +13,7 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private bool _includeDebug = true;
 
     [ObservableProperty]
-    private NavPage _initialPage = NavPage.ComputerInfo;
+    private NavPage _initialPage = NavPage.WindowsInfo;
 
     [ObservableProperty]
     private bool _keepOnTop;
