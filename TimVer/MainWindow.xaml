@@ -10,6 +10,7 @@
         xmlns:viewmodels="clr-namespace:TimVer.ViewModels"
         mc:Ignorable="d"
         d:DesignHeight="400" d:DesignWidth="500"
+        MinWidth="400" MinHeight="150"
         Background="{DynamicResource MaterialDesignPaper}"
         Closing="Window_Closing" FontSize="12"
         Style="{StaticResource MaterialDesignWindow}"
@@ -121,7 +122,8 @@
                  Margin="5,5,5,0"
                  ItemsSource="{Binding NavigationViewModelTypes,
                                        Mode=TwoWay}"
-                 SelectedItem="{Binding NavItem, Mode=OneWay,
+                 SelectedItem="{Binding NavItem,
+                                        Mode=OneWay,
                                         Converter={StaticResource SelItemConv}}"
                  Style="{StaticResource MaterialDesignNavigationListBox}">
             <ListBox.ItemTemplate>

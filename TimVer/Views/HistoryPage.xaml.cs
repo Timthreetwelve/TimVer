@@ -10,7 +10,5 @@ public partial class HistoryPage : UserControl
     public HistoryPage()
     {
         InitializeComponent();
-
-        HistoryGrid.ItemsSource = History.HistoryList;
     }
 }
