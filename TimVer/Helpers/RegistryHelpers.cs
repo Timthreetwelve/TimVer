@@ -5,10 +5,11 @@ namespace TimVer.Helpers;
 /// <summary>
 /// Class to check, add or remove entries in HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
 /// </summary>
-public static class RegRun
+public static class RegistryHelpers
 {
     private const string _regPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
 
+    #region Check run value
     /// <summary>
     /// Checks to see if an entry exists in HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
     /// </summary>
@@ -19,7 +20,9 @@ public static class RegRun
         using RegistryKey key = Registry.CurrentUser.OpenSubKey(_regPath, true);
         return key.GetValue(name) != null;
     }
+    #endregion Check run value
 
+    #region Add run value
     /// <summary>
     /// Adds an entry to HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
     /// </summary>
@@ -40,7 +43,9 @@ public static class RegRun
             return ex.Message;
         }
     }
+    #endregion Add run value
 
+    #region Remove run value
     /// <summary>
     /// Removes an entry from HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
     /// </summary>
@@ -60,4 +65,5 @@ public static class RegRun
             return ex.Message;
         }
     }
+    #endregion Remove run value
 }

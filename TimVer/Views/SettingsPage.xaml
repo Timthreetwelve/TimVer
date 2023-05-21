@@ -109,6 +109,7 @@
                             <CheckBox Grid.Row="1" Grid.Column="1"
                                       Checked="HistOnStart_Checked"
                                       Content=" Update build history on Windows startup"
+                                      IsEnabled="{Binding RegistryAccessAllowed ,Source={x:Static config:UserSettings.Setting}}"
                                       IsChecked="{Binding HistoryOnBoot,
                                                           Source={x:Static config:UserSettings.Setting}}"
                                       Unchecked="HistOnStart_Unchecked" />
