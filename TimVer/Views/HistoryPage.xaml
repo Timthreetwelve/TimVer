@@ -16,15 +16,13 @@
         <models:History />
     </UserControl.DataContext>
     <UserControl.Resources>
-        <convert:TodayConverter x:Key="TodayConverter" />
         <convert:SpacingConverter x:Key="Spacing" />
     </UserControl.Resources>
     <!--#endregion-->
 
     <Grid>
         <!--#region DataGrid-->
-        <DataGrid Name="HistoryGrid"
-                  Margin="15,20,20,5"
+        <DataGrid Margin="15,20,20,5"
                   materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
                   materialDesign:DataGridAssist.ColumnHeaderPadding="15,0,0,5"
                   AutoGenerateColumns="False"
@@ -34,8 +32,8 @@
                   CanUserSortColumns="True"
                   CellStyle="{StaticResource DisplayOnly}"
                   FontSize="14" IsReadOnly="True"
-                  RowStyle="{StaticResource HistoryRows}"
-                  ItemsSource="{Binding HistoryList}">
+                  ItemsSource="{Binding HistoryList}"
+                  RowStyle="{StaticResource HistoryRows}">
 
             <!--#region Columns-->
             <DataGrid.Columns>

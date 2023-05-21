@@ -56,33 +56,27 @@
             <!--#endregion-->
 
             <!--#region DataTemplates-->
-            <DataTemplate x:Name="winInfoViewTemplate"
-                          DataType="{x:Type viewmodels:WindowsInfoViewModel}">
+            <DataTemplate DataType="{x:Type viewmodels:WindowsInfoViewModel}">
                 <views:WindowsInfoPage DataContext="{Binding}" />
             </DataTemplate>
 
-            <DataTemplate x:Name="compInfoViewTemplate"
-                          DataType="{x:Type viewmodels:ComputerInfoViewModel}">
+            <DataTemplate DataType="{x:Type viewmodels:ComputerInfoViewModel}">
                 <views:ComputerInfoPage DataContext="{Binding}" />
             </DataTemplate>
 
-            <DataTemplate x:Name="historyViewTemplate"
-                          DataType="{x:Type viewmodels:HistoryViewModel}">
+            <DataTemplate DataType="{x:Type viewmodels:HistoryViewModel}">
                 <views:HistoryPage DataContext="{Binding}" />
             </DataTemplate>
 
-            <DataTemplate x:Name="settingsViewTemplate"
-                          DataType="{x:Type viewmodels:SettingsViewModel}">
+            <DataTemplate DataType="{x:Type viewmodels:SettingsViewModel}">
                 <views:SettingsPage DataContext="{Binding}" />
             </DataTemplate>
 
-            <DataTemplate x:Name="aboutViewTemplate"
-                          DataType="{x:Type viewmodels:AboutViewModel}">
+            <DataTemplate DataType="{x:Type viewmodels:AboutViewModel}">
                 <views:AboutPage DataContext="{Binding}" />
             </DataTemplate>
 
-            <DataTemplate x:Name="envViewTemplate"
-                          DataType="{x:Type viewmodels:EnvVarViewModel}">
+            <DataTemplate DataType="{x:Type viewmodels:EnvVarViewModel}">
                 <views:EnvVarPage DataContext="{Binding}" />
             </DataTemplate>
             <!--#endregion-->

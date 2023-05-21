@@ -53,7 +53,7 @@
         <!--#endregion-->
 
         <!--#region Title Row-->
-        <Grid Grid.Column="1" Grid.ColumnSpan="2">
+        <Grid Grid.Column="1">
             <!--#region Column definitions for the title row-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />

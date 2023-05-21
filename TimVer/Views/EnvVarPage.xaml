@@ -16,8 +16,7 @@
     <!--#endregion-->
 
     <Grid>
-        <DataGrid x:Name="EnvDataGrid"
-                  Margin="15,20,20,5"
+        <DataGrid Margin="15,20,20,5"
                   materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
                   AutoGenerateColumns="False"
                   Background="{DynamicResource MaterialDesignCardBackground}"
