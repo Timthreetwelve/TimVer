@@ -25,14 +25,16 @@
         <!--#region DataGrid-->
         <DataGrid Name="HistoryGrid"
                   Margin="15,20,20,5"
-                  materialDesign:DataGridAssist.ColumnHeaderPadding="15,0,0,5"
                   materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
+                  materialDesign:DataGridAssist.ColumnHeaderPadding="15,0,0,5"
                   AutoGenerateColumns="False"
                   Background="{DynamicResource MaterialDesignCardBackground}"
                   CanUserAddRows="False"
                   CanUserDeleteRows="False"
-                  CanUserSortColumns="True" FontSize="14"
-                  IsReadOnly="True"
+                  CanUserSortColumns="True"
+                  CellStyle="{StaticResource DisplayOnly}"
+                  FontSize="14" IsReadOnly="True"
+                  RowStyle="{StaticResource HistoryRows}"
                   ItemsSource="{Binding HistoryList}">
 
             <!--#region Columns-->
@@ -47,31 +49,6 @@
                                     Header="Branch" />
             </DataGrid.Columns>
             <!--#endregion-->
-
-            <!--#region Cell style-->
-            <DataGrid.CellStyle>
-                <Style TargetType="DataGridCell"
-                       BasedOn="{StaticResource {x:Type DataGridCell}}">
-                    <Setter Property="Focusable" Value="False" />
-                    <Setter Property="IsHitTestVisible" Value="False" />
-                </Style>
-            </DataGrid.CellStyle>
-            <!--#endregion-->
-
-            <!--#region Row style-->
-            <DataGrid.RowStyle>
-                <Style TargetType="DataGridRow"
-                       BasedOn="{StaticResource {x:Type DataGridRow}}">
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding HDate, Converter={StaticResource TodayConverter}}"
-                                     Value="True">
-                            <Setter Property="FontWeight" Value="Bold" />
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </DataGrid.RowStyle>
-            <!--#endregion-->
-
         </DataGrid>
         <!--#endregion-->
     </Grid>

@@ -15,6 +15,7 @@
                                              PrimaryColor="Blue" SecondaryColor="Red" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="Styles/ButtonStyles.xaml" />
+                <ResourceDictionary Source="Styles/DataGridStyles.xaml" />
                 <ResourceDictionary Source="Styles/NavigationStyles.xaml" />
                 <ResourceDictionary Source="Styles/ScrollBarStyle.xaml" />
                 <ResourceDictionary Source="Styles/SnackbarStyle.xaml" />
@@ -46,8 +47,8 @@
             </ObjectDataProvider>
 
             <ObjectDataProvider x:Key="enumRowSpacing"
-                        MethodName="GetValues"
-                        ObjectType="{x:Type system:Enum}">
+                                MethodName="GetValues"
+                                ObjectType="{x:Type system:Enum}">
                 <ObjectDataProvider.MethodParameters>
                     <x:Type TypeName="models:Spacing" />
                 </ObjectDataProvider.MethodParameters>
