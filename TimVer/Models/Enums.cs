@@ -13,6 +13,7 @@ public enum NavPage
     [Description("Computer Info")]
     ComputerInfo = 1,
     Environment = 2,
+    [Description("Build History")]
     History = 3,
     Settings = 4,
     About = 5,
@@ -27,6 +28,7 @@ public enum NavPage
 public enum ThemeType
 {
     Light = 0,
+    [Description("Material Dark")]
     Dark = 1,
     Darker = 2,
     System = 3
