@@ -147,4 +147,27 @@ internal static class MainWindowUIHelpers
         }
     }
     #endregion UI scale
+
+    #region Apply UI settings
+    /// <summary>
+    /// Single method called during startup to apply UI settings.
+    /// </summary>
+    public static void ApplyUISettings()
+    {
+        // Put version number in window title
+        _mainWindow.Title = MainWindowHelpers.WindowTitleVersionAdmin();
+
+        // Window position
+        MainWindowHelpers.SetWindowPosition();
+
+        // Light or dark theme
+        SetBaseTheme(UserSettings.Setting.UITheme);
+
+        // Primary accent color
+        SetPrimaryColor(UserSettings.Setting.PrimaryColor);
+
+        // UI size
+        UIScale(UserSettings.Setting.UISize);
+    }
+    #endregion Apply UI settings
 }
