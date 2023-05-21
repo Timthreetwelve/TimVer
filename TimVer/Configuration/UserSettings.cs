@@ -55,7 +55,11 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private double _windowWidth = 850;
 
     [ObservableProperty]
-    [JsonIgnore]
+    [property:JsonIgnore]
     private bool _historyOnBoot;
+
+    [ObservableProperty]
+    [property:JsonIgnore]
+    private bool _registryAccessAllowed;
     #endregion Properties (some with default values)
 }

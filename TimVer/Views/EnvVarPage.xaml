@@ -16,14 +16,14 @@
     <!--#endregion-->
 
     <Grid>
-        <DataGrid x:Name="EnvDataGrid"
-                  Margin="15,20,20,5"
+        <DataGrid Margin="15,20,20,5"
                   materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
                   AutoGenerateColumns="False"
                   Background="{DynamicResource MaterialDesignCardBackground}"
                   CanUserAddRows="False"
                   CanUserDeleteRows="False"
                   CanUserSortColumns="True"
+                  CellStyle="{StaticResource DisplayOnly}"
                   IsReadOnly="True"
                   ItemsSource="{Binding Source={x:Static models:CombinedInfo.EnvVariableList}}">
 
@@ -35,17 +35,6 @@
                                     Header="Value" />
             </DataGrid.Columns>
             <!--#endregion-->
-
-            <!--#region Cell style-->
-            <DataGrid.CellStyle>
-                <Style TargetType="DataGridCell"
-                       BasedOn="{StaticResource {x:Type DataGridCell}}">
-                    <Setter Property="Focusable" Value="False" />
-                    <Setter Property="IsHitTestVisible" Value="False" />
-                </Style>
-            </DataGrid.CellStyle>
-            <!--#endregion-->
-
         </DataGrid>
     </Grid>
 </UserControl>

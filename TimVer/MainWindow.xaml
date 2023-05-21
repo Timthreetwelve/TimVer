@@ -12,7 +12,7 @@
         d:DesignHeight="400" d:DesignWidth="500"
         MinWidth="400" MinHeight="150"
         Background="{DynamicResource MaterialDesignPaper}"
-        Closing="Window_Closing" FontSize="12"
+        FontSize="12"
         Style="{StaticResource MaterialDesignWindow}"
         TextElement.FontWeight="Regular"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -52,66 +52,84 @@
         </Grid.ColumnDefinitions>
         <!--#endregion-->
 
-        <!--#region Page Title and 3-dot menu-->
+        <!--#region Title Row-->
         <Grid Grid.Column="1">
+            <!--#region Column definitions for the title row-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="60" />
+            </Grid.ColumnDefinitions>
+            <!--#endregion-->
+
+            <!--#region Page title label-->
             <Label x:Name="PageTitle"
+                   Grid.Column="0"
                    Margin="10,0" HorizontalAlignment="Left"
                    VerticalAlignment="Center"
                    Content="{Binding PageTitle}"
                    FontSize="22" FontWeight="SemiBold" />
-            <StackPanel Margin="0,0,5,0"
-                        HorizontalAlignment="Right"
-                        Orientation="Horizontal">
+            <!--#endregion-->
 
-                <!--#region Button with pop-up box-->
-                <Button Width="45"
-                        Padding="0"
-                        Foreground="{DynamicResource MaterialDesignBody}"
-                        IsDefault="False" IsTabStop="False"
-                        Style="{StaticResource MaterialDesignFlatButton}">
-                    <materialDesign:PopupBox Padding="0" HorizontalAlignment="Right"
-                                             Focusable="False"
-                                             PlacementMode="LeftAndAlignTopEdges"
-                                             Style="{DynamicResource MaterialDesignPopupBox}"
-                                             ToolTip="Additional Actions">
-                        <materialDesign:PopupBox.ToggleContent>
-                            <materialDesign:PackIcon Width="45" Height="28"
-                                                     Foreground="{Binding ElementName=PageTitle,
-                                                                          Path=Foreground}"
-                                                     Kind="DotsHorizontal" />
-                        </materialDesign:PopupBox.ToggleContent>
-                        <Border Padding="3"
-                                BorderBrush="{DynamicResource MaterialDesignDivider}"
-                                BorderThickness="2">
-                            <Grid Width="150"
-                                  Margin="0">
-                                <StackPanel Orientation="Vertical">
-                                    <Button Height="35"
-                                            Padding="15,1,0,22"
-                                            Command="{Binding ViewLogFileCommand}"
-                                            Content="View Log File"
-                                            ToolTip="Open the application log file in the default application." />
-                                    <Button Height="35"
-                                            Padding="15,1,0,22"
-                                            Command="{Binding ViewReadMeFileCommand}"
-                                            Content="View ReadMe File"
-                                            ToolTip="Open the ReadMe file in the default application." />
-                                    <Separator Margin="0" Padding="1"
-                                               Background="{DynamicResource MaterialDesignDivider}" />
-                                    <Button Height="35"
-                                            Padding="15,1,0,22"
-                                            Command="{Binding CopyToClipboardCommand}"
-                                            Content="Copy to Clipboard"
-                                            ToolTip="Copy this page to the clipboard" />
-                                    <Button Content="Cancel" />
+            <!--#region SnackBar-->
+            <materialDesign:Snackbar x:Name="SnackBar1"
+                                     Grid.Column="0"
+                                     HorizontalAlignment="Right"
+                                     VerticalAlignment="Top"
+                                     Background="{DynamicResource MaterialDesignPaper}"
+                                     Foreground="{DynamicResource MaterialDesignBody}"
+                                     MessageQueue="{materialDesign:MessageQueue}" />
+            <!--#endregion-->
 
-                                </StackPanel>
-                            </Grid>
-                        </Border>
-                    </materialDesign:PopupBox>
-                </Button>
-                <!--#endregion-->
-            </StackPanel>
+            <!--#region PopupBox in button-->
+            <Button Grid.Column="1"
+                    Width="45"
+                    Padding="0" HorizontalAlignment="Right"
+                    Foreground="{DynamicResource MaterialDesignBody}"
+                    IsDefault="False" IsTabStop="False"
+                    Style="{StaticResource MaterialDesignFlatButton}">
+                <materialDesign:PopupBox Padding="0" HorizontalAlignment="Right"
+                                         Focusable="False"
+                                         PlacementMode="LeftAndAlignTopEdges"
+                                         Style="{DynamicResource MaterialDesignPopupBox}"
+                                         ToolTip="Additional Actions">
+                    <materialDesign:PopupBox.ToggleContent>
+                        <materialDesign:PackIcon Width="45" Height="28"
+                                                 Foreground="{Binding ElementName=PageTitle,
+                                                                      Path=Foreground}"
+                                                 Kind="DotsHorizontal" />
+                    </materialDesign:PopupBox.ToggleContent>
+                    <Border Padding="3"
+                            BorderBrush="{DynamicResource MaterialDesignDivider}"
+                            BorderThickness="2">
+                        <Grid Width="150"
+                              Margin="0">
+                            <StackPanel Orientation="Vertical">
+                                <Button Height="35"
+                                        Padding="15,1,0,22"
+                                        Command="{Binding ViewLogFileCommand}"
+                                        Content="View Log File"
+                                        ToolTip="Open the application log file in the default application." />
+                                <Button Height="35"
+                                        Padding="15,1,0,22"
+                                        Command="{Binding ViewReadMeFileCommand}"
+                                        Content="View ReadMe File"
+                                        ToolTip="Open the ReadMe file in the default application." />
+                                <Separator Margin="0" Padding="1"
+                                           Background="{DynamicResource MaterialDesignDivider}" />
+                                <Button Height="35"
+                                        Padding="15,1,0,22"
+                                        Command="{Binding CopyToClipboardCommand}"
+                                        Content="Copy to Clipboard"
+                                        ToolTip="Copy this page to the clipboard" />
+                                <Button Content="Cancel" />
+
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </materialDesign:PopupBox>
+            </Button>
+            <!--#endregion-->
+
         </Grid>
         <!--#endregion-->
 
@@ -155,17 +173,5 @@
             <ContentControl Content="{Binding CurrentViewModel}" />
         </Grid>
         <!--#endregion-->
-
-        <!--#region SnackBar-->
-        <materialDesign:Snackbar x:Name="SnackBar1"
-                                 Grid.Row="1" Grid.Column="0"
-                                 Grid.ColumnSpan="2"
-                                 HorizontalAlignment="Stretch"
-                                 HorizontalContentAlignment="Center"
-                                 Background="#FF202020" Focusable="False"
-                                 FontWeight="DemiBold" Foreground="White"
-                                 MessageQueue="{materialDesign:MessageQueue}" />
-        <!--#endregion-->
-
     </Grid>
 </Window>

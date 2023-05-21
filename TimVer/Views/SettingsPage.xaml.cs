@@ -18,9 +18,9 @@ public partial class SettingsPage : UserControl
 
     private void HistOnStart_Checked(object sender, RoutedEventArgs e)
     {
-        if (IsLoaded && !RegRun.RegRunEntry("TimVer"))
+        if (IsLoaded && !RegistryHelpers.RegRunEntry("TimVer"))
         {
-            string result = RegRun.AddRegEntry("TimVer", AppInfo.AppPath + " --hide");
+            string result = RegistryHelpers.AddRegEntry("TimVer", AppInfo.AppPath + " --hide");
             if (result == "OK")
             {
                 _log.Info(@"TimVer added to HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
@@ -45,7 +45,7 @@ public partial class SettingsPage : UserControl
     {
         if (IsLoaded)
         {
-            string result = RegRun.RemoveRegEntry("TimVer");
+            string result = RegistryHelpers.RemoveRegEntry("TimVer");
             if (result == "OK")
             {
                 _log.Info(@"TimVer removed from HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
