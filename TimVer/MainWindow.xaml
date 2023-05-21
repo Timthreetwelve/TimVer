@@ -1,159 +1,169 @@
-﻿<Window
-    x:Class="TimVer.MainWindow"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:TimVer"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewmodels="clr-namespace:TimVer.ViewModels"
-    xmlns:views="clr-namespace:TimVer.Views"
-    Title="Tim's WinVer"
-    Width="355"
-    Height="235"
-    Closing="Window_Closing"
-    FontFamily="Segoe UI"
-    KeyUp="Window_Keydown"
-    SizeToContent="WidthAndHeight"
-    mc:Ignorable="d">
+﻿<Window x:Class="TimVer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:bh="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:config="clr-namespace:TimVer.Configuration"
+        xmlns:convert="clr-namespace:TimVer.Converters"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodels="clr-namespace:TimVer.ViewModels"
+        mc:Ignorable="d"
+        d:DesignHeight="400" d:DesignWidth="500"
+        Background="{DynamicResource MaterialDesignPaper}"
+        Closing="Window_Closing" FontSize="12"
+        Style="{StaticResource MaterialDesignWindow}"
+        TextElement.FontWeight="Regular"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Topmost="{Binding KeepOnTop,
+                          Source={x:Static config:UserSettings.Setting}}">
 
-    <!--#region Window Resources-->
+    <!--#region DataContext & Resources-->
+    <Window.DataContext>
+        <viewmodels:NavigationViewModel />
+    </Window.DataContext>
     <Window.Resources>
-        <DataTemplate DataType="{x:Type viewmodels:Page1ViewModel}">
-            <views:Page1View DataContext="{Binding}" />
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:Page2ViewModel}">
-            <views:Page2View DataContext="{Binding}" />
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:HistoryViewModel}">
-            <views:HistoryView DataContext="{Binding}" />
-        </DataTemplate>
+        <convert:SelectedItemConverter x:Key="SelItemConv" />
     </Window.Resources>
     <!--#endregion-->
 
-    <Grid x:Name="Grid1" PreviewMouseWheel="Grid1_PreviewMouseWheel">
-        <!--#region Row & Column definitions-->
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto" />
-        </Grid.ColumnDefinitions>
+    <!--#region Interaction Triggers-->
+    <bh:Interaction.Triggers>
+        <bh:EventTrigger EventName="KeyDown">
+            <bh:InvokeCommandAction Command="{Binding KeyDownCommand}"
+                                    PassEventArgsToCommand="True" />
+        </bh:EventTrigger>
+    </bh:Interaction.Triggers>
+    <!--#endregion-->
+
+    <Grid x:Name="MainGrid">
+        <!--#region Row definitions-->
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
         <!--#endregion-->
 
-        <!--#region Menu-->
-        <DockPanel
-            Grid.Row="0"
-            Grid.Column="0"
-            LastChildFill="True">
-            <Menu
-                Height="28"
-                Padding="3,2"
-                DockPanel.Dock="Top"
-                FontSize="14">
-                <MenuItem Header="_File" >
-                    <MenuItem
-                        Click="CopyButton_Click"
-                        Header="Copy to Clipboard"
-                        InputGestureText="Ctrl+C">
-                        <MenuItem.Icon>
-                            <Image Source="Icons\clipboard-plus.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <Separator />
-                    <MenuItem
-                        Name="mnuAddReg"
-                        IsCheckable="True"
-                        Checked="AddRegistry"
-                        Unchecked="RemoveResgistry"
-                        StaysOpenOnClick="True"
-                        Header="Update History on Windows Startup" />
-                    <Separator />
-                    <MenuItem
-                        Click="ExitButton_Click"
-                        Header="Exit"
-                        InputGestureText="Esc">
-                        <MenuItem.Icon>
-                            <Image Source="Icons\door-open-out.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                </MenuItem>
-                <MenuItem Header="Views">
-                    <MenuItem
-                        Click="Page1_Click"
-                        Header="Windows Info"
-                        InputGestureText="Ctrl+1">
-                        <MenuItem.Icon>
-                            <Image Source="Icons\windows.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem
-                        Click="Page2_Click"
-                        Header="Computer Info"
-                        InputGestureText="Ctrl+2">
-                        <MenuItem.Icon>
-                            <Image Source="Icons\monitor.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem
-                        Click="History_Click"
-                        Header="History"
-                        InputGestureText="Ctrl+3">
-                        <MenuItem.Icon>
-                            <Image Source="Icons\table.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <Separator />
-                    <MenuItem Header="_Zoom">
-                        <MenuItem
-                            Click="GridSmaller_Click"
-                            Header="_Smaller"
-                            InputGestureText="NumPad -"
-                            StaysOpenOnClick="True">
-                            <MenuItem.Icon>
-                                <Image Source="Icons\magnifier-zoom-out.png" />
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <Separator />
-                        <MenuItem
-                            Click="GridLarger_Click"
-                            Header="_Larger"
-                            InputGestureText="NumPad +"
-                            StaysOpenOnClick="True">
-                            <MenuItem.Icon>
-                                <Image Source="Icons\magnifier-zoom-in.png" />
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <Separator />
-                        <MenuItem
-                            Click="GridReset_Click"
-                            Header="_Reset"
-                            InputGestureText="NumPad 0">
-                            <MenuItem.Icon>
-                                <Image Source="Icons\magnifier-zoom-actual-equal.png" />
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <MenuItem.Icon>
-                            <Image Source="Icons\magnifier.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                </MenuItem>
-                <MenuItem Header="_Help">
-                    <MenuItem Click="AboutButton_Click" Header="About">
-                        <MenuItem.Icon>
-                            <Image Source="Icons\information.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Click="ReadMe_Click" Header="View ReadMe">
-                        <MenuItem.Icon>
-                            <Image Source="Icons\document-list.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                </MenuItem>
-            </Menu>
-        </DockPanel>
+        <!--#region Page Title and 3-dot menu-->
+        <Grid Grid.Column="1">
+            <Label x:Name="PageTitle"
+                   Margin="10,0" HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Content="{Binding PageTitle}"
+                   FontSize="22" FontWeight="SemiBold" />
+            <StackPanel Margin="0,0,5,0"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+
+                <!--#region Button with pop-up box-->
+                <Button Width="45"
+                        Padding="0"
+                        Foreground="{DynamicResource MaterialDesignBody}"
+                        IsDefault="False" IsTabStop="False"
+                        Style="{StaticResource MaterialDesignFlatButton}">
+                    <materialDesign:PopupBox Padding="0" HorizontalAlignment="Right"
+                                             Focusable="False"
+                                             PlacementMode="LeftAndAlignTopEdges"
+                                             Style="{DynamicResource MaterialDesignPopupBox}"
+                                             ToolTip="Additional Actions">
+                        <materialDesign:PopupBox.ToggleContent>
+                            <materialDesign:PackIcon Width="45" Height="28"
+                                                     Foreground="{Binding ElementName=PageTitle,
+                                                                          Path=Foreground}"
+                                                     Kind="DotsHorizontal" />
+                        </materialDesign:PopupBox.ToggleContent>
+                        <Border Padding="3"
+                                BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                BorderThickness="2">
+                            <Grid Width="150"
+                                  Margin="0">
+                                <StackPanel Orientation="Vertical">
+                                    <Button Height="35"
+                                            Padding="15,1,0,22"
+                                            Command="{Binding ViewLogFileCommand}"
+                                            Content="View Log File"
+                                            ToolTip="Open the application log file in the default application." />
+                                    <Button Height="35"
+                                            Padding="15,1,0,22"
+                                            Command="{Binding ViewReadMeFileCommand}"
+                                            Content="View ReadMe File"
+                                            ToolTip="Open the ReadMe file in the default application." />
+                                    <Separator Margin="0" Padding="1"
+                                               Background="{DynamicResource MaterialDesignDivider}" />
+                                    <Button Height="35"
+                                            Padding="15,1,0,22"
+                                            Command="{Binding CopyToClipboardCommand}"
+                                            Content="Copy to Clipboard"
+                                            ToolTip="Copy this page to the clipboard" />
+                                    <Button Content="Cancel" />
+
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </materialDesign:PopupBox>
+                </Button>
+                <!--#endregion-->
+            </StackPanel>
+        </Grid>
         <!--#endregion-->
 
-        <ContentControl Grid.Row="1" Content="{Binding}" />
+        <!--#region Navigation Listbox-->
+        <ListBox x:Name="NavigationListBox"
+                 Grid.Row="0" Grid.RowSpan="2"
+                 Grid.Column="0"
+                 Margin="5,5,5,0"
+                 ItemsSource="{Binding NavigationViewModelTypes,
+                                       Mode=TwoWay}"
+                 SelectedItem="{Binding NavItem, Mode=OneWay,
+                                        Converter={StaticResource SelItemConv}}"
+                 Style="{StaticResource MaterialDesignNavigationListBox}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Border Style="{StaticResource NavItemIndicator}" />
+                        <materialDesign:PackIcon Width="auto" Height="auto"
+                                                 VerticalAlignment="Center"
+                                                 Kind="{Binding IconKind}" />
+                        <TextBlock Margin="15,0" VerticalAlignment="Center"
+                                   FontSize="14"
+                                   Text="{Binding Name}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <bh:Interaction.Triggers>
+                <bh:EventTrigger EventName="SelectionChanged">
+                    <bh:InvokeCommandAction Command="{Binding NavigateCommand}"
+                                            CommandParameter="{Binding Path=SelectedItem,
+                                                                       RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" />
+                </bh:EventTrigger>
+            </bh:Interaction.Triggers>
+        </ListBox>
+        <!--#endregion-->
+
+        <!--#region Content control for pages-->
+        <Grid Grid.Row="1" Grid.Column="1"
+              Background="{DynamicResource MaterialDesignCardBackground}">
+            <ContentControl Content="{Binding CurrentViewModel}" />
+        </Grid>
+        <!--#endregion-->
+
+        <!--#region SnackBar-->
+        <materialDesign:Snackbar x:Name="SnackBar1"
+                                 Grid.Row="1" Grid.Column="0"
+                                 Grid.ColumnSpan="2"
+                                 HorizontalAlignment="Stretch"
+                                 HorizontalContentAlignment="Center"
+                                 Background="#FF202020" Focusable="False"
+                                 FontWeight="DemiBold" Foreground="White"
+                                 MessageQueue="{materialDesign:MessageQueue}" />
+        <!--#endregion-->
+
     </Grid>
 </Window>

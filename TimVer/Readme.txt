@@ -9,38 +9,52 @@ with additional information that Winver doesn't display.
 
 How TimVer Works
 ================
-The information TimVer displayed is obtained from Windows Management Information (WMI) and from the
-Windows registry at HKLM\Software\Microsoft\Windows NT\CurrentVersion.
+The information TimVer displays is obtained from the Environment, Windows Management Information
+(WMI) and from the Windows registry at HKLM\Software\Microsoft\Windows NT\CurrentVersion.
 
 
 The Pages
 =========
-When TimVer is started it will display information about the Windows operating system such as
-the version and build number.
+Use the menu on the left for page navigation.
 
-The second page shows information about the computer such as the computer name and the last time
-it booted up.
+The Windows Info page shows Windows operating system information such as the version, build number
+and architecture.
 
-The third page shows history information from the previous times TimVer was run. This can be used
+The Computer Info page shows information about the computer such as the computer make, model and name.
+It also shows information about the CPU, memory and optionally the disk drive letters.
+
+The Environment page shows the current environmental variables.
+
+The History page shows history information from the previous times TimVer was run. This can be used
 to compare build numbers before and after running Windows Update. Only one history record will be
-recorded per build number. The history file is in CSV format.
+recorded per build number. The history file is now in JSON format.
 
-The pages can be selected either from the Views menu or by pressing Ctrl + 1, 2 or 3.
+The Setting page has options that determine how the application looks and runs.
 
-The information on the first two pages can be copied to the clipboard by pressing Ctrl + C or by
-selecting Copy to Clipboard from the File menu.
+The About page displays version information and a link to the GitHib repository.
 
-The window can be zoomed in and out by using the NumPad + and NumPad - keys or by holding the Ctrl
-key and using the mouse wheel. The zoom can be reset by pressing the NumPad 0 key
+The three-dot menu at the right end of the page header that has options to
+view the log file, open the readme file and exit the application.
+
+These keyboard shortcuts are available:
+
+	Ctrl + Comma = Go to Settings
+	Ctrl + C = Copy the current page to the clipboard
+	Ctrl + M = Change the theme
+	Ctrl + N = Change the accent color
+	Ctrl + Numpad Plus = Increase size
+	Ctrl + Numpad Minus = Decrease size
+	F1 = Go to the About screen
 
 
 Command Line Option
 ===================
-Specifying the /hide option on the command line will start TimVer, update the history file and then
-shutdown without showing the window. This option is intended to be used in automation after reboot
-to keep a more accurate history file. When checked, the Update History on Windows Startup option on
-the File menu will add a key to HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\ that will run
-TimVer with the /hide option everytime Windows starts. Unchecking this option will remove the key.
+Specifying the --hide (or -h) option on the command line will start TimVer, update the history file
+and then shutdown without showing the window. This option is intended to be used in automation after
+reboot to keep a more accurate history file. When checked, the "Update history on Windows startup"
+option on the Options page will add a key to HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\
+that will run TimVer with the --hide option every time Windows starts. Unchecking this option will
+remove the key.
 
 
 Uninstalling
@@ -50,22 +64,26 @@ To uninstall use the regular Windows add/remove programs feature.
 
 Notices and License
 ===================
-TimVer was written in C# by Tim Kennedy. TimVer requires .Net Framework version 4.8.
+TimVer was written by Tim Kennedy.
 
-TimVer uses the following icons & packages:
+TimVer uses the following packages:
 
-Icons are from the Fugue Icons set https://p.yusukekamiyamane.com/
+    * Material Design in XAML Toolkit https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit
 
-NLog 4.7.12 https://nlog-project.org/
+	* Command Line Parser https://github.com/commandlineparser/commandline
 
-Json.net 13.0.1 from Newtonsoft https://www.newtonsoft.com/json
+    * Community Toolkit MVVM https://github.com/CommunityToolkit/dotnet
 
-TinyCsvParser 2.6.1 from Philipp Wagner https://github.com/bytefish/TinyCsvParser
+    * NLog https://nlog-project.org/
 
-Inno Setup 6.2.0 was used to create the installer. https://jrsoftware.org/isinfo.php
+    * Microsoft.Management.Infrastructure https://github.com/PowerShell/MMI
+
+    * Inno Setup was used to create the installer. https://jrsoftware.org/isinfo.php
+
+
 
 MIT License
-Copyright (c) 2019 - 2021 Tim Kennedy
+Copyright (c) 2019 - 2023 Tim Kennedy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
 associated documentation files (the "Software"), to deal in the Software without restriction, including

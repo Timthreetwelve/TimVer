@@ -1,90 +1,92 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-#region using directives
-using NLog;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Windows;
-using TinyCsvParser; 
-#endregion using directives
+namespace TimVer.ViewModels;
 
-namespace TimVer.ViewModels
+public partial class HistoryViewModel : ObservableObject
 {
-    internal class HistoryViewModel
+    #region NLog Instance
+    private static readonly Logger _log = LogManager.GetCurrentClassLogger();
+    #endregion NLog Instance
+
+    #region Read history file
+    /// <summary>
+    /// Reads the history file.
+    /// </summary>
+    public static void ReadHistory()
     {
-        #region NLog Instance
-        private static readonly Logger log = LogManager.GetCurrentClassLogger();
-        #endregion NLog Instance
-
-        public string HDate { get; set; }
-
-        public string HBuild { get; set; }
-
-        public string HBranch { get; set; }
-
-        public string HVersion { get; set; }
-
-        public static List<HistoryViewModel> ReadHistory()
+        try
         {
-            CsvParserOptions opts = new CsvParserOptions(false, ',');
-            CsvParser<HistoryViewModel> csvParser = new CsvParser<HistoryViewModel>(opts,
-                new CsvHistoryMapping());
-            try
-            {
-                ParallelQuery<TinyCsvParser.Mapping.CsvMappingResult<HistoryViewModel>> records =
-            csvParser.ReadFromFile(DefaultHistoryFile(), Encoding.UTF8);
-                return records.Select(x => x.Result)
-                    .OrderByDescending(o => o.HDate).ToList();
-            }
-            catch (Exception ex)
-            {
-                _ = MessageBox.Show($"Cannot read the history file. It may be corrupt.\n\nDelete {DefaultHistoryFile()} and retry.", "TimVer Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                log.Error(ex, $"Cannot read the history file.");
-                Environment.Exit(1);
-            }
-            return null;
+            string json = File.ReadAllText(DefaultHistoryFile());
+            History.HistoryList = JsonSerializer.Deserialize<List<History>>(json);
+            int count = History.HistoryList.Count;
+            string entry = string.Empty;
+            entry = count == 1 ? "entry" : "entries";
+            _log.Debug($"History file has {count} {entry}");
         }
-
-        public static void WriteHistory()
+        catch (Exception ex)
         {
-            Page1ViewModel p1 = new Page1ViewModel();
-            string build = p1.Build;
-            string version = p1.Version;
-            string branch = p1.BuildBranch;
-            string now = DateTime.Now.ToString("yyyy/MM/dd HH:mm");
-            string historyCSV = string.Format($"{now}, {build}, {version}, {branch}\r\n");
-            log.Debug($"Build:         {build}");
-            log.Debug($"Version:       {version}");
-            log.Debug($"Build branch:  {branch}");
+            _log.Error(ex, "Cannot read the history file.");
+            // This needs to stay a message box since it can occur before the window is loaded
+            _ = MessageBox.Show($"Cannot read the history file. It may be corrupt.\n\nDelete {DefaultHistoryFile()} and retry.",
+                                "TimVer is Unable to Continue",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+            Environment.Exit(1);
+        }
+    }
+    #endregion Read history file
 
-            if (File.Exists(DefaultHistoryFile()))
+    #region Write the history file
+    /// <summary>
+    /// Writes the history file (json) if needed.
+    /// </summary>
+    public static void WriteHistory()
+    {
+        History newHist = new()
+        {
+            HBuild = CombinedInfo.Build,
+            HVersion = CombinedInfo.Version,
+            HBranch = CombinedInfo.BuildBranch,
+            HDate = DateTime.Now.ToString("yyyy/MM/dd HH:mm")
+        };
+
+        if (File.Exists(DefaultHistoryFile()))
+        {
+            ReadHistory();
+            // Add to history file if build doesn't exist
+            if (!History.HistoryList.Exists(x => x.HBuild == newHist.HBuild))
             {
-                List<HistoryViewModel> hist = ReadHistory();
-                if (!hist.Exists(x => x.HBuild == build))
-                {
-                    File.AppendAllText(DefaultHistoryFile(), historyCSV);
-                    log.Info("Hisory file was updated.");
-                }
-                else
-                {
-                    log.Info("History file is up to date.");
-                }
+                History.HistoryList.Add(newHist);
+                History.HistoryList = History.HistoryList.OrderByDescending(o => o.HDate).ToList();
+                JsonSerializerOptions opts = new() { WriteIndented = true };
+                string json = JsonSerializer.Serialize(History.HistoryList, opts);
+                File.WriteAllText(DefaultHistoryFile(), json);
+                _log.Info($"History file was updated with {newHist.HBuild}");
             }
             else
             {
-                File.AppendAllText(DefaultHistoryFile(), historyCSV);
-                log.Info("Hisory file was updated.");
+                _log.Info("History file is up to date.");
             }
         }
-
-        private static string DefaultHistoryFile()
+        else
         {
-            string dir = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-            return Path.Combine(dir, "history.csv");
+            History.HistoryList.Add(newHist);
+            JsonSerializerOptions opts = new() { WriteIndented = true };
+            string json = JsonSerializer.Serialize(History.HistoryList, opts);
+            File.WriteAllText(DefaultHistoryFile(), json);
+            _log.Info($"History file was created with {newHist.HBuild}");
         }
     }
+    #endregion Write the history file
+
+    #region Get path to history file
+    /// <summary>
+    /// Gets the history file.
+    /// </summary>
+    /// <returns></returns>
+    private static string DefaultHistoryFile()
+    {
+        return Path.Combine(AppInfo.AppDirectory, "history.json");
+    }
+    #endregion Get path to history file
 }

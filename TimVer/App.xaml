@@ -1,16 +1,91 @@
-﻿<Application
-    x:Class="TimVer.App"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:TimVer"
-    StartupUri="MainWindow.xaml">
+﻿<Application x:Class="TimVer.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:models="clr-namespace:TimVer.Models"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:viewmodels="clr-namespace:TimVer.ViewModels"
+             xmlns:views="clr-namespace:TimVer.Views"
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <Style x:Key="{x:Type ToolTip}" TargetType="ToolTip">
-            <Setter Property="Background" Value="LightYellow" />
-            <Setter Property="BorderThickness" Value=".5" />
-        </Style>
-        <Style x:Key="ColumnMargin5" TargetType="TextBlock">
-            <Setter Property="Margin" Value="5,0,8,0" />
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <materialDesign:BundledTheme BaseTheme="Dark"
+                                             ColorAdjustment="{materialDesign:ColorAdjustment}"
+                                             PrimaryColor="Blue" SecondaryColor="Red" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="Styles/ButtonStyles.xaml" />
+                <ResourceDictionary Source="Styles/NavigationStyles.xaml" />
+                <ResourceDictionary Source="Styles/ScrollBarStyle.xaml" />
+                <ResourceDictionary Source="Styles/SnackbarStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!--#region Data providers for enums on the settings page-->
+            <ObjectDataProvider x:Key="enumAccentColors"
+                                MethodName="GetValues"
+                                ObjectType="{x:Type system:Enum}">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="models:AccentColor" />
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+
+            <ObjectDataProvider x:Key="enumThemeType"
+                                MethodName="GetValues"
+                                ObjectType="{x:Type system:Enum}">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="models:ThemeType" />
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+
+            <ObjectDataProvider x:Key="enumUISize"
+                                MethodName="GetValues"
+                                ObjectType="{x:Type system:Enum}">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="models:MySize" />
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+
+            <ObjectDataProvider x:Key="enumRowSpacing"
+                        MethodName="GetValues"
+                        ObjectType="{x:Type system:Enum}">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="models:Spacing" />
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+            <!--#endregion-->
+
+            <!--#region DataTemplates-->
+            <DataTemplate x:Name="winInfoViewTemplate"
+                          DataType="{x:Type viewmodels:WindowsInfoViewModel}">
+                <views:WindowsInfoPage DataContext="{Binding}" />
+            </DataTemplate>
+
+            <DataTemplate x:Name="compInfoViewTemplate"
+                          DataType="{x:Type viewmodels:ComputerInfoViewModel}">
+                <views:ComputerInfoPage DataContext="{Binding}" />
+            </DataTemplate>
+
+            <DataTemplate x:Name="historyViewTemplate"
+                          DataType="{x:Type viewmodels:HistoryViewModel}">
+                <views:HistoryPage DataContext="{Binding}" />
+            </DataTemplate>
+
+            <DataTemplate x:Name="settingsViewTemplate"
+                          DataType="{x:Type viewmodels:SettingsViewModel}">
+                <views:SettingsPage DataContext="{Binding}" />
+            </DataTemplate>
+
+            <DataTemplate x:Name="aboutViewTemplate"
+                          DataType="{x:Type viewmodels:AboutViewModel}">
+                <views:AboutPage DataContext="{Binding}" />
+            </DataTemplate>
+
+            <DataTemplate x:Name="envViewTemplate"
+                          DataType="{x:Type viewmodels:EnvVarViewModel}">
+                <views:EnvVarPage DataContext="{Binding}" />
+            </DataTemplate>
+            <!--#endregion-->
+
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
