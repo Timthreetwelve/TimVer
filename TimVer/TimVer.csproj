@@ -15,11 +15,8 @@
 
   <ItemGroup>
     <Content Include="Images\TV.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\TV.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="Images\TK.png" />
+    <Resource Include="Images\TV.png"/>
   </ItemGroup>
 
   <ItemGroup>
