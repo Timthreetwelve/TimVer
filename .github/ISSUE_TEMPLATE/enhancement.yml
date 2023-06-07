@@ -1,0 +1,9 @@
+name: enhancement request
+description: Suggest an enhancement or new feature
+title: "Enhancement Request"
+labels: ["enhancement", "needs triage"]
+assignees: Timthreetwelve
+body:
+  - type: markdown
+    attributes:
+      value: Introduction text goes here
