@@ -18,6 +18,13 @@ body:
     id: request
     attributes:
       label: Request details
-      description: Tell me what's on your mind
+      description: Tell me what you would like to see. Feel free to attach an image file if it helps describe your idea.
     validations:
       required: true
+  - type: textarea
+    id: anything-else
+    attributes:
+      label: Anything else?
+      description: Is there an example that you can point me to? Provide a link here.
+    validations:
+      required: false
