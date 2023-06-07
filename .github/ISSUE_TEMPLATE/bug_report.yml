@@ -59,7 +59,6 @@ body:
         
         You can open the application log file by clicking on the three dot menu in the upper right and selecting View Log File.
         If the error occurred during installation, paste the setup log (found in the %Temp% directory). The file name will look like *Setup Log date sequence#.txt*
-      render: shell
     validations:
       required: false
   - type: textarea
