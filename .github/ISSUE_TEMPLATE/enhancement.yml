@@ -7,3 +7,10 @@ body:
   - type: markdown
     attributes:
       value: Introduction text goes here
+  - type: textarea
+    id: summary
+    attributes:
+      label: Brief summary of your request
+      description: Enter a short description
+    validations:
+      required: true
