@@ -6,7 +6,7 @@ assignees: Timthreetwelve
 body:
   - type: markdown
     attributes:
-      value: If you have an idea for a feature or enhancement that would make the app better, tell me about it
+      value: "## If you have an idea for a feature or enhancement that would make the app better, tell me about it ##"
   - type: input
     id: summary
     attributes:
