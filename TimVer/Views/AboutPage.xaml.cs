@@ -13,6 +13,7 @@ public partial class AboutPage : UserControl
 
         txtBuildDate.Text = $"{BuildInfo.BuildDateUtc:f}  (UTC)";
     }
+
     #region Clicked on the GitHub link
     /// <summary>
     /// Opens the default browser to the GitHub page .

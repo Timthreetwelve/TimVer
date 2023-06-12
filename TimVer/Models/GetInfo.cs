@@ -22,9 +22,9 @@ public static class GetInfo
         try
         {
             using RegistryKey key = Registry.LocalMachine.OpenSubKey(@"Software\Microsoft\Windows NT\CurrentVersion");
-            string retval = key.GetValue(value) != null ? key.GetValue(value).ToString() : "no data";
-            _log.Debug($"Registry: {value} = {retval}");
-            return retval;
+            string regVal = key.GetValue(value) != null ? key.GetValue(value).ToString() : "no data";
+            _log.Debug($"Registry: {value} = {regVal}");
+            return regVal;
         }
         catch (Exception ex)
         {
@@ -45,10 +45,10 @@ public static class GetInfo
         try
         {
             CimSession cim = CimSession.Create(null);
-            string retval = cim.QueryInstances("root/cimv2", "WQL", $"SELECT {value} From Win32_OperatingSystem")
+            string cimVal = cim.QueryInstances("root/CIMV2", "WQL", $"SELECT {value} From Win32_OperatingSystem")
                 .FirstOrDefault()?.CimInstanceProperties[value].Value.ToString();
-            _log.Debug($"Win32_OperatingSystem: {value} = {retval}");
-            return retval;
+            _log.Debug($"Win32_OperatingSystem: {value} = {cimVal}");
+            return cimVal;
         }
         catch (Exception ex)
         {
@@ -69,10 +69,10 @@ public static class GetInfo
         try
         {
             CimSession cim = CimSession.Create(null);
-            string retval = cim.QueryInstances("root/cimv2", "WQL", $"SELECT {value} From Win32_ComputerSystem")
+            string cimVal = cim.QueryInstances("root/CIMV2", "WQL", $"SELECT {value} From Win32_ComputerSystem")
                 .FirstOrDefault()?.CimInstanceProperties[value].Value.ToString();
-            _log.Debug($"Win32_ComputerSystem: {value} = {retval}");
-            return retval;
+            _log.Debug($"Win32_ComputerSystem: {value} = {cimVal}");
+            return cimVal;
         }
         catch (Exception ex)
         {
@@ -93,10 +93,10 @@ public static class GetInfo
         try
         {
             CimSession cim = CimSession.Create(null);
-            string retval = cim.QueryInstances("root/cimv2", "WQL", $"SELECT {value} From Win32_Processor")
+            string cimVal = cim.QueryInstances("root/CIMV2", "WQL", $"SELECT {value} From Win32_Processor")
                 .FirstOrDefault()?.CimInstanceProperties[value].Value.ToString();
-            _log.Debug($"Win32_Processor: {value} = {retval}");
-            return retval;
+            _log.Debug($"Win32_Processor: {value} = {cimVal}");
+            return cimVal;
         }
         catch (Exception ex)
         {
@@ -114,35 +114,11 @@ public static class GetInfo
     /// <returns>Path to folder</returns>
     public static string GetSpecialFolder(Environment.SpecialFolder value)
     {
-        string retval = Environment.GetFolderPath(value);
-        _log.Debug($"Environment: {value} folder = {retval}");
-        return retval;
+        string cimVal = Environment.GetFolderPath(value);
+        _log.Debug($"Environment: {value} folder = {cimVal}");
+        return cimVal;
     }
     #endregion Get special folder
-
-    #region Get GPU Information
-    /// <summary>
-    /// Get CIM value from Win32_VideoController
-    /// </summary>
-    /// <param name="value">Value to retrieve</param>
-    /// <returns>Data for value or exception message</returns>
-    public static string CimQueryGPU(string value)
-    {
-        try
-        {
-            CimSession cim = CimSession.Create(null);
-            string retval = cim.QueryInstances("root/cimv2", "WQL", $"SELECT {value} From Win32_VideoController")
-                .FirstOrDefault()?.CimInstanceProperties[value].Value.ToString();
-            _log.Debug($"Win32_VideoController: {value} = {retval}");
-            return retval;
-        }
-        catch (Exception ex)
-        {
-            _log.Error(ex, "Win32_VideoController call failed.");
-            return ex.Message;
-        }
-    }
-    #endregion Get GPU Information
 
     #region Get environment variables
     /// <summary>
@@ -152,9 +128,9 @@ public static class GetInfo
     {
         try
         {
+            Stopwatch watch = Stopwatch.StartNew();
             List<EnvVariable> envList = new();
             IDictionary env = Environment.GetEnvironmentVariables();
-            _log.Debug($"Found {env.Count} environment variables");
             foreach (DictionaryEntry entry in env)
             {
                 EnvVariable envVariable = new()
@@ -164,6 +140,8 @@ public static class GetInfo
                 };
                 envList.Add(envVariable);
             }
+            watch.Stop();
+            _log.Debug($"Found {env.Count} environment variables in {watch.Elapsed.TotalMilliseconds:N2} ms");
             return envList.OrderBy(envVariable => envVariable.Variable).ToList();
         }
         catch (Exception ex)

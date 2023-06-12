@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -16,7 +16,7 @@
   <ItemGroup>
     <Content Include="Images\TV.ico" />
     <Resource Include="Images\TK.png" />
-    <Resource Include="Images\TV.png"/>
+    <Resource Include="Images\TV.png" />
   </ItemGroup>
 
   <ItemGroup>
