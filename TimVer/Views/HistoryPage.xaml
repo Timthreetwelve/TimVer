@@ -8,6 +8,7 @@
              xmlns:models="clr-namespace:TimVer.Models"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800"
+             Background="{DynamicResource MaterialDesignPaper}"
              FontFamily="Segoe UI" FontSize="14"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}">
 
@@ -22,7 +23,7 @@
 
     <Grid>
         <!--#region DataGrid-->
-        <DataGrid Margin="15,20,20,5"
+        <DataGrid Margin="0" x:Name="HistoryGrid"
                   materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
                   materialDesign:DataGridAssist.ColumnHeaderPadding="15,0,0,5"
                   AutoGenerateColumns="False"
@@ -49,5 +50,7 @@
             <!--#endregion-->
         </DataGrid>
         <!--#endregion-->
+
+
     </Grid>
 </UserControl>
