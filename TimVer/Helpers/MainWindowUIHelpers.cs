@@ -63,7 +63,7 @@ internal static class MainWindowUIHelpers
     /// <summary>
     /// Sets the MDIX primary accent color
     /// </summary>
-    /// <param name="color">One of the 18 color values</param>
+    /// <param name="color">One of the 18 MDIX color values plus Black and White</param>
     internal static void SetPrimaryColor(AccentColor color)
     {
         PaletteHelper paletteHelper = new();
@@ -91,8 +91,19 @@ internal static class MainWindowUIHelpers
             AccentColor.BlueGray => PrimaryColor.BlueGrey,
             _ => PrimaryColor.Blue,
         };
-        Color primaryColor = SwatchHelper.Lookup[(MaterialDesignColor)primary];
-        theme.SetPrimaryColor(primaryColor);
+        if (color == AccentColor.Black)
+        {
+            theme.SetPrimaryColor(Colors.Black);
+        }
+        else if (color == AccentColor.White)
+        {
+            theme.SetPrimaryColor(Colors.White);
+        }
+        else
+        {
+            Color primaryColor = SwatchHelper.Lookup[(MaterialDesignColor)primary];
+            theme.SetPrimaryColor(primaryColor);
+        }
         paletteHelper.SetTheme(theme);
     }
     #endregion Accent color
