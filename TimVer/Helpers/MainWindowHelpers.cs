@@ -14,16 +14,13 @@ internal static class MainWindowHelpers
 
         EventHandlers();
 
-        UserSettings.Setting.RegistryAccessAllowed = RegAccessPermitted();
-
-        if (UserSettings.Setting.RegistryAccessAllowed)
-        {
-            UserSettings.Setting.HistoryOnBoot = RegistryHelpers.RegRunEntry("TimVer");
-        }
-
         MainWindowUIHelpers.ApplyUISettings();
 
         CommandLineHelpers.ProcessCommandLine();
+
+        ToggleHistory();
+
+        SettingsViewModel.ParseInitialPage();
     }
     #endregion Startup
 
@@ -50,6 +47,11 @@ internal static class MainWindowHelpers
         mainWindow.Left = UserSettings.Setting.WindowLeft;
         mainWindow.Top = UserSettings.Setting.WindowTop;
         mainWindow.Width = UserSettings.Setting.WindowWidth;
+
+        if (UserSettings.Setting.StartCentered)
+        {
+            mainWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+        }
     }
 
     /// <summary>
@@ -104,11 +106,9 @@ internal static class MainWindowHelpers
         // Unhandled exception handler
         AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
-        // Settings change event
+        // Settings change events
         UserSettings.Setting.PropertyChanged += SettingChange.UserSettingChanged;
-
-        // Content rendered
-        // _mainWindow.ContentRendered += MainWindow_ContentRendered;
+        TempSettings.Setting.PropertyChanged += SettingChange.TempSettingChanged;
 
         // Window closing event
         _mainWindow.Closing += MainWindow_Closing;
@@ -173,13 +173,12 @@ internal static class MainWindowHelpers
 
     #endregion Unhandled Exception Handler
 
-    #region Log Startup
+    #region Write startup messages to the log
     /// <summary>
     /// Initializes NLog and writes startup messages to the log.
     /// </summary>
     internal static void LogStartup()
     {
-        #region Write to log
         // Set NLog configuration
         NLogHelpers.NLogConfig(false);
 
@@ -188,30 +187,38 @@ internal static class MainWindowHelpers
         _log.Info($"{AppInfo.AppName} {AppInfo.AppCopyright}");
         _log.Debug($"{AppInfo.AppName} was started from {AppInfo.AppPath}");
         _log.Debug($"{AppInfo.AppName} Build date: {BuildInfo.BuildDateString} (UTC)");
-        _log.Debug($"{AppInfo.AppName} Commit ID: {BuildInfo.CommitIDString} ");
+        _log.Debug($"{AppInfo.AppName} Commit ID: {BuildInfo.CommitIDString}");
+        if (IsAdministrator())
+        {
+            _log.Debug($"{AppInfo.AppName} is running as Administrator");
+        }
 
         // Log the .NET version and OS platform
         _log.Debug($"Operating System version: {AppInfo.OsPlatform}");
         _log.Debug($".NET version: {AppInfo.RuntimeVersion.Replace(".NET", "")}");
-        #endregion Write to log
     }
-    #endregion Log Startup
+    #endregion Write startup messages to the log
 
-    #region Registry access
+    #region Toggle History item in navigation list
     /// <summary>
-    /// Allow update access to the Registry only if running from a fixed drive.
+    /// Toggle the History item in the navigation ListBox.
     /// </summary>
     /// <remarks>
-    ///  This needed so an entry in HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
-    ///  isn't created for a application on a removeable drive.
+    /// Called during startup and by change to UserSettings.Setting.KeepHistory
     /// </remarks>
-    /// <returns>
-    /// true if the drive letter corresponds to a fixed drive; otherwise false.
-    /// </returns>
-    private static bool RegAccessPermitted()
+    public static void ToggleHistory()
     {
-        char drive = StringInfo.GetNextTextElement(AppInfo.AppPath)[0];
-        return DiskDriveHelpers.IsDriveFixed(drive);
+        if (!UserSettings.Setting.KeepHistory)
+        {
+            NavigationViewModel.PopulateNoHistoryList();
+            _mainWindow.NavigationListBox.ItemsSource = NavigationViewModel.NavigationListNoHistory;
+            _mainWindow.NavigationListBox.Items.Refresh();
+        }
+        else
+        {
+            _mainWindow.NavigationListBox.ItemsSource = NavigationViewModel.NavigationViewModelTypes;
+            _mainWindow.NavigationListBox.Items.Refresh();
+        }
     }
-    #endregion Registry access
+    #endregion Toggle History item in navigation list
 }

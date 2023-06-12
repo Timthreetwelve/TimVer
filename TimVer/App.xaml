@@ -10,7 +10,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <materialDesign:BundledTheme BaseTheme="Dark"
+                <materialDesign:BundledTheme BaseTheme="Light"
                                              ColorAdjustment="{materialDesign:ColorAdjustment}"
                                              PrimaryColor="Blue" SecondaryColor="Red" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
@@ -19,6 +19,7 @@
                 <ResourceDictionary Source="Styles/NavigationStyles.xaml" />
                 <ResourceDictionary Source="Styles/ScrollBarStyle.xaml" />
                 <ResourceDictionary Source="Styles/SnackbarStyle.xaml" />
+                <ResourceDictionary Source="Styles/TabItemStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <!--#region Data providers for enums on the settings page-->
@@ -78,6 +79,14 @@
 
             <DataTemplate DataType="{x:Type viewmodels:EnvVarViewModel}">
                 <views:EnvVarPage DataContext="{Binding}" />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:DriveInfoViewModel}">
+                <views:DrivesPage DataContext="{Binding}" />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:VideoViewModel}">
+                <views:VideoPage DataContext="{Binding}" />
             </DataTemplate>
             <!--#endregion-->
 

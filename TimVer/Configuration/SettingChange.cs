@@ -11,7 +11,7 @@ public static class SettingChange
     private static readonly Logger _log = LogManager.GetLogger("logTemp");
     #endregion Private fields
 
-    #region Setting change
+    #region User Setting change
     /// <summary>
     /// Handle changes in UserSettings
     /// </summary>
@@ -37,7 +37,33 @@ public static class SettingChange
             case nameof(UserSettings.Setting.UISize):
                 MainWindowUIHelpers.UIScale(UserSettings.Setting.UISize);
                 break;
+
+            case nameof(UserSettings.Setting.KeepHistory):
+                MainWindowHelpers.ToggleHistory();
+                break;
+
+            case nameof(UserSettings.Setting.Use1024):
+                CombinedInfo.PhysicalDrivesList.Clear();
+                CombinedInfo.LogicalDrivesList.Clear();
+                break;
+
+            case nameof(UserSettings.Setting.IncludeNotReady):
+            case nameof(UserSettings.Setting.IncludeRemovable):
+                CombinedInfo.LogicalDrivesList.Clear();
+                break;
         }
     }
-    #endregion Setting change
+    #endregion User Setting change
+
+    #region Temp setting change
+    /// <summary>
+    /// Handle changes in TempSettings
+    /// </summary>
+    internal static void TempSettingChanged(object sender, PropertyChangedEventArgs e)
+    {
+        object newValue = MainWindowHelpers.GetPropertyValue(sender, e);
+        // Write to trace level to avoid unnecessary message in log file
+        _log.Trace($"Temp Setting change: {e.PropertyName} New Value: {newValue}");
+    }
+    #endregion Temp setting change
 }

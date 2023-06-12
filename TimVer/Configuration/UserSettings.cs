@@ -6,14 +6,24 @@ namespace TimVer.Configuration;
 public partial class UserSettings : ConfigManager<UserSettings>
 {
     #region Properties (some with default values)
-    [ObservableProperty]
-    private static bool _appExpanderOpen;
 
     [ObservableProperty]
     private bool _includeDebug = true;
 
     [ObservableProperty]
+    private bool _includeNetwork;
+
+    [ObservableProperty]
+    private bool _includeNotReady;
+
+    [ObservableProperty]
+    private bool _includeRemovable;
+
+    [ObservableProperty]
     private NavPage _initialPage = NavPage.WindowsInfo;
+
+    [ObservableProperty]
+    private bool _keepHistory = true;
 
     [ObservableProperty]
     private bool _keepOnTop;
@@ -25,16 +35,43 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private Spacing _rowSpacing = Spacing.Comfortable;
 
     [ObservableProperty]
-    private bool _showUser;
+    private bool _showBusType = true;
 
     [ObservableProperty]
-    private bool _showDrives;
+    private bool _showDiskType = true;
 
     [ObservableProperty]
-    private bool _showLabels;
+    private bool _showDrives = true;
 
     [ObservableProperty]
-    private static bool _uIExpanderOpen;
+    private bool _showFormat = true;
+
+    [ObservableProperty]
+    private bool _showHealth = true;
+
+    [ObservableProperty]
+    private bool _showInterface = true;
+
+    [ObservableProperty]
+    private bool _showMediaType = true;
+
+    [ObservableProperty]
+    private bool _showModel = true;
+
+    [ObservableProperty]
+    private bool _showName = true;
+
+    [ObservableProperty]
+    private bool _showPartitions = true;
+
+    [ObservableProperty]
+    private bool _showTypeL = true;
+
+    [ObservableProperty]
+    private bool _showUser = true;
+
+    [ObservableProperty]
+    private bool _startCentered = true;
 
     [ObservableProperty]
     private MySize _uISize = MySize.Default;
@@ -43,7 +80,10 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private ThemeType _uITheme = ThemeType.System;
 
     [ObservableProperty]
-    private double _windowHeight = 450;
+    private bool _use1024;
+
+    [ObservableProperty]
+    private double _windowHeight = 500;
 
     [ObservableProperty]
     private double _windowLeft = 100;
@@ -52,14 +92,6 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private double _windowTop = 100;
 
     [ObservableProperty]
-    private double _windowWidth = 850;
-
-    [ObservableProperty]
-    [property:JsonIgnore]
-    private bool _historyOnBoot;
-
-    [ObservableProperty]
-    [property:JsonIgnore]
-    private bool _registryAccessAllowed;
+    private double _windowWidth = 750;
     #endregion Properties (some with default values)
 }

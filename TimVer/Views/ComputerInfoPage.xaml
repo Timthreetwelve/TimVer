@@ -6,20 +6,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:models="clr-namespace:TimVer.Models"
              mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="800"
+             d:DesignHeight="450" d:DesignWidth="600"
              FontFamily="Segoe UI" FontSize="14"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}">
 
     <Grid>
-        <!--#region Text blocks-->
+        <!--#region Text blocks in a ScrollViewer-->
         <ScrollViewer Margin="20,20,20,5"
                       HorizontalScrollBarVisibility="Auto"
                       VerticalScrollBarVisibility="Auto">
-
             <Grid>
                 <!--#region Row & Column definitions-->
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="130" />
+                    <ColumnDefinition Width="160" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -31,7 +30,8 @@
                     <RowDefinition Height="25" />
                     <RowDefinition Height="25" />
                     <RowDefinition Height="25" />
-                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" MaxHeight="25" />
+                    <RowDefinition Height="auto" MaxHeight="25" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <!--#endregion-->
@@ -73,8 +73,11 @@
 
                 <TextBlock Grid.Row="7" Grid.Column="0"
                            Text="Physical Memory" />
-                <TextBlock Grid.Row="7" Grid.Column="1"
-                           Text="{Binding Source={x:Static models:CombinedInfo.TotalMemory}}" />
+                <TextBlock Grid.Row="7" Grid.Column="1">
+                    <Run Text="{Binding Source={x:Static models:CombinedInfo.InstalledMemory}, Mode=OneWay}" />
+                    <Run Text=" " />
+                    <Run Text="{Binding Source={x:Static models:CombinedInfo.TotalMemory}, Mode=OneWay}" />
+                </TextBlock>
 
                 <TextBlock Grid.Row="8" Grid.Column="0"
                            Text="Disk Drives"
@@ -90,6 +93,5 @@
             </Grid>
         </ScrollViewer>
         <!--#endregion-->
-
     </Grid>
 </UserControl>

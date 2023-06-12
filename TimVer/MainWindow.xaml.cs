@@ -14,5 +14,9 @@ public partial class MainWindow : Window
         InitializeComponent();
 
         MainWindowHelpers.TimVerStartUp();
+
+#if DEBUG
+        PresentationTraceSources.DataBindingSource.Switch.Level = SourceLevels.Critical;
+#endif
     }
 }

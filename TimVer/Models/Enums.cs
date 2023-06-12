@@ -9,15 +9,19 @@ namespace TimVer.Models;
 public enum NavPage
 {
     [Description("Windows Info")]
-    WindowsInfo = 0,
-    [Description("Computer Info")]
-    ComputerInfo = 1,
-    Environment = 2,
+    WindowsInfo,
+    [Description("Hardware Info")]
+    ComputerInfo,
+    [Description("Drive Info")]
+    DriveInfo,
+    [Description("Graphics Info")]
+    VideoInfo,
+    Environment,
     [Description("Build History")]
-    History = 3,
-    Settings = 4,
-    About = 5,
-    Exit = 6
+    History,
+    Settings,
+    About,
+    Exit
 }
 #endregion Navigation
 
@@ -80,10 +84,13 @@ public enum AccentColor
     Brown = 16,
     Grey = 17,
     [Description("Blue Gray")]
-    BlueGray = 18
+    BlueGray = 18,
+    Black = 19,
+    White = 20,
 }
 #endregion Accent color
 
+#region Spacing
 /// <summary>
 /// Space between rows in the data grids
 /// </summary>
@@ -91,5 +98,6 @@ public enum Spacing
 {
     Compact = 0,
     Comfortable = 1,
-    Wide = 2
+    Spacious = 2
 }
+#endregion Spacing

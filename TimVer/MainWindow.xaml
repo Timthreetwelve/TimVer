@@ -10,7 +10,7 @@
         xmlns:viewmodels="clr-namespace:TimVer.ViewModels"
         mc:Ignorable="d"
         d:DesignHeight="400" d:DesignWidth="500"
-        MinWidth="400" MinHeight="150"
+        MinWidth="550" MinHeight="350"
         Background="{DynamicResource MaterialDesignPaper}"
         FontSize="12"
         Style="{StaticResource MaterialDesignWindow}"
@@ -101,7 +101,7 @@
                     <Border Padding="3"
                             BorderBrush="{DynamicResource MaterialDesignDivider}"
                             BorderThickness="2">
-                        <Grid Width="150"
+                        <Grid Width="160"
                               Margin="0">
                             <StackPanel Orientation="Vertical">
                                 <Button Height="35"
@@ -109,6 +109,13 @@
                                         Command="{Binding ViewLogFileCommand}"
                                         Content="View Log File"
                                         ToolTip="Open the application log file in the default application." />
+                                <Button Height="35"
+                                        Padding="15,1,0,22"
+                                        Command="{Binding OpenAppFolderCommand}"
+                                        Content="Open the App Folder"
+                                        ToolTip="Open the TimVer folder in File Explorer." />
+                                <Separator Margin="0" Padding="1"
+                                           Background="{DynamicResource MaterialDesignDivider}" />
                                 <Button Height="35"
                                         Padding="15,1,0,22"
                                         Command="{Binding ViewReadMeFileCommand}"
@@ -138,8 +145,6 @@
                  Grid.Row="0" Grid.RowSpan="2"
                  Grid.Column="0"
                  Margin="5,5,5,0"
-                 ItemsSource="{Binding NavigationViewModelTypes,
-                                       Mode=TwoWay}"
                  SelectedItem="{Binding NavItem,
                                         Mode=OneWay,
                                         Converter={StaticResource SelItemConv}}"

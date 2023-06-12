@@ -35,14 +35,20 @@ static class CommandLineHelpers
         if (result?.Value.Hide == true)
         {
             _log.Debug("Argument \"hide\" specified.");
-            _mainWindow.Visibility = Visibility.Hidden;
-            HistoryViewModel.WriteHistory();
-            Application.Current.Shutdown();
+            if (UserSettings.Setting.KeepHistory)
+            {
+                _mainWindow.Visibility = Visibility.Hidden;
+                HistoryViewModel.WriteHistory();
+                Application.Current.Shutdown();
+            }
+            else
+            {
+                _log.Debug("Keep History option is false. ");
+            }
         }
         else
         {
             HistoryViewModel.WriteHistory();
-            SettingsViewModel.ParseInitialPage();
         }
     }
     #endregion Process the command line

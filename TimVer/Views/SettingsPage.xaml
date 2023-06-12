@@ -4,6 +4,7 @@
              xmlns:config="clr-namespace:TimVer.Configuration"
              xmlns:convert="clr-namespace:TimVer.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:helpers="clr-namespace:TimVer.Helpers"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewmodels="clr-namespace:TimVer.ViewModels"
@@ -19,6 +20,7 @@
 
     <UserControl.Resources>
         <convert:EnumDescConverter x:Key="descConv" />
+        <convert:BooleanInverter x:Key="boolInverter" />
     </UserControl.Resources>
     <!--#endregion-->
 
@@ -34,6 +36,8 @@
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="15" />
                     <RowDefinition Height="auto" />
+                    <RowDefinition Height="15" />
+                    <RowDefinition Height="auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <!--#endregion-->
@@ -43,7 +47,7 @@
                                      UniformCornerRadius="5">
                     <Expander materialDesign:ExpanderAssist.HorizontalHeaderPadding="10"
                               IsExpanded="{Binding AppExpanderOpen,
-                                                   Source={x:Static config:UserSettings.Setting}}">
+                                                   Source={x:Static config:TempSettings.Setting}}">
                         <Expander.Header>
                             <Grid>
                                 <!--#region Row definitions-->
@@ -65,10 +69,10 @@
                                                          Kind="Wrench" />
                                 <TextBlock Grid.Row="0" Grid.Column="1"
                                            FontSize="16" FontWeight="SemiBold"
-                                           Text="Application Settings" />
+                                           Text="General Settings" />
                                 <TextBlock Grid.Row="2" Grid.Column="1"
                                            FontSize="12"
-                                           Text="Update history, Show user, Show drives, Keep on top &amp; Log verbosity " />
+                                           Text="Initial page, History options, Show user, Show drives, &amp; Log verbosity " />
                             </Grid>
                         </Expander.Header>
                         <Grid Margin="15,10">
@@ -80,7 +84,7 @@
                                 <RowDefinition Height="31" />
                                 <RowDefinition Height="31" />
                                 <RowDefinition Height="31" />
-                                <RowDefinition Height="31" />
+
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="45" />
@@ -106,32 +110,42 @@
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
                             </StackPanel>
-                            <CheckBox Grid.Row="1" Grid.Column="1"
+                            <CheckBox x:Name="BuildHistory"
+                                      Grid.Row="1" Grid.Column="1"
+                                      Content=" Keep build history"
+                                      IsChecked="{Binding KeepHistory,
+                                                          Source={x:Static config:UserSettings.Setting}}" />
+                            <CheckBox Grid.Row="2" Grid.Column="1"
                                       Checked="HistOnStart_Checked"
                                       Content=" Update build history on Windows startup"
-                                      IsEnabled="{Binding RegistryAccessAllowed ,Source={x:Static config:UserSettings.Setting}}"
                                       IsChecked="{Binding HistoryOnBoot,
-                                                          Source={x:Static config:UserSettings.Setting}}"
-                                      Unchecked="HistOnStart_Unchecked" />
-                            <CheckBox Grid.Row="2" Grid.Column="1"
+                                                          Source={x:Static config:TempSettings.Setting}}"
+                                      Unchecked="HistOnStart_Unchecked">
+                                <CheckBox.Style>
+                                    <Style TargetType="CheckBox" BasedOn="{StaticResource MaterialDesignCheckBox}">
+                                        <Setter Property="IsEnabled" Value="False" />
+                                        <Style.Triggers>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding Path=KeepHistory, Source={x:Static config:UserSettings.Setting}}" Value="True" />
+                                                    <Condition Binding="{Binding Path=RunAccessPermitted, Source={x:Static config:TempSettings.Setting}}" Value="True" />
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="IsEnabled" Value="True" />
+                                            </MultiDataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </CheckBox.Style>
+                            </CheckBox>
+                            <CheckBox Grid.Row="3" Grid.Column="1"
                                       Content=" Display registered user on Windows Information page"
                                       IsChecked="{Binding ShowUser,
                                                           Source={x:Static config:UserSettings.Setting}}" />
-                            <CheckBox Grid.Row="3" Grid.Column="1"
-                                      Content=" Display drive letters on Computer Information page"
+                            <CheckBox Grid.Row="4" Grid.Column="1"
+                                      Content=" Display drive letters on Hardware Information page"
                                       IsChecked="{Binding ShowDrives,
                                                           Source={x:Static config:UserSettings.Setting}}" />
-                            <CheckBox Grid.Row="4" Grid.Column="1"
-                                      Content="Include drive labels"
-                                      IsChecked="{Binding ShowLabels,
-                                                          Source={x:Static config:UserSettings.Setting}}"
-                                      IsEnabled="{Binding ShowDrives,
-                                                          Source={x:Static config:UserSettings.Setting}}" />
+
                             <CheckBox Grid.Row="5" Grid.Column="1"
-                                      Content="Keep TimVer on top of other windows"
-                                      IsChecked="{Binding KeepOnTop,
-                                                          Source={x:Static config:UserSettings.Setting}}" />
-                            <CheckBox Grid.Row="6" Grid.Column="1"
                                       Content="Include debug level messages in application log file"
                                       IsChecked="{Binding IncludeDebug,
                                                           Source={x:Static config:UserSettings.Setting}}" />
@@ -140,12 +154,180 @@
                 </materialDesign:Card>
                 <!--#endregion-->
 
-                <!--#region UI Settings-->
+                <!--#region Drive Settings-->
                 <materialDesign:Card Grid.Row="2"
                                      UniformCornerRadius="5">
                     <Expander materialDesign:ExpanderAssist.HorizontalHeaderPadding="10"
+                              IsExpanded="{Binding DriveExpanderOpen,
+                                                   Source={x:Static config:TempSettings.Setting}}">
+                        <Expander.Header>
+                            <Grid>
+                                <!--#region Row definitions-->
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition Height="5" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="55" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <!--#endregion-->
+                                <materialDesign:PackIcon Grid.RowSpan="3"
+                                                         Width="28" Height="28"
+                                                         Margin="0,5,0,0"
+                                                         VerticalAlignment="Center"
+                                                         Foreground="{DynamicResource PrimaryHueMidBrush}"
+                                                         Kind="Harddisk" />
+                                <TextBlock Grid.Row="0" Grid.Column="1"
+                                           FontSize="16" FontWeight="SemiBold"
+                                           Text="Disk Drive Settings" />
+                                <TextBlock Grid.Row="2" Grid.Column="1"
+                                           FontSize="12"
+                                           Text="Use GB or GiB, Include drives by status &amp; Choose columns" />
+                            </Grid>
+                        </Expander.Header>
+                        <Grid Margin="15,10">
+                            <!--#region Row & Column definitions-->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="31" />
+                                <RowDefinition Height="31" />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="45" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <!--#endregion-->
+
+                            <CheckBox Grid.Row="0" Grid.Column="1"
+                                      Content=" Use GiB (1024^3 bytes) for capacity calculations"
+                                      IsChecked="{Binding Use1024,
+                                                          Source={x:Static config:UserSettings.Setting}}" />
+                            <CheckBox Grid.Row="1" Grid.Column="1"
+                                      Content=" Use GB (1000^3 bytes) for capacity calculations"
+                                      IsChecked="{Binding Use1024,
+                                                          Source={x:Static config:UserSettings.Setting},
+                                                          Converter={StaticResource boolInverter}}" />
+
+                            <Expander Grid.Row="3" Grid.Column="1"
+                                      Margin="2,10,45,10"
+                                      materialDesign:ExpanderAssist.HeaderBackground="{DynamicResource MaterialDesignCardBackground}"
+                                      materialDesign:ExpanderAssist.HeaderFontSize="16"
+                                      materialDesign:ExpanderAssist.HorizontalHeaderPadding="15,10,20,15"
+                                      BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                      BorderThickness="1"
+                                      Header="Logical Drive Options"
+                                      IsExpanded="{Binding LogicalExpanderOpen,
+                                                           Source={x:Static config:TempSettings.Setting}}">
+
+                                <Grid Background="{DynamicResource MaterialDesignCardBackground}">
+                                    <Grid Margin="15,0,15,15">
+                                        <!--#region Row definitions -->
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30" />
+                                            <RowDefinition Height="30" />
+                                            <RowDefinition Height="30" />
+                                            <RowDefinition Height="30" />
+                                            <RowDefinition Height="30" />
+                                        </Grid.RowDefinitions>
+                                        <!--#endregion-->
+                                        <CheckBox Grid.Row="0"
+                                                  Content=" Only show drives in &quot;Ready&quot; status"
+                                                  IsChecked="{Binding IncludeNotReady,
+                                                                      Converter={StaticResource boolInverter},
+                                                                      Source={x:Static config:UserSettings.Setting}}" />
+                                        <CheckBox Grid.Row="1"
+                                                  Content=" Include removable drives"
+                                                  IsChecked="{Binding IncludeRemovable,
+                                                                      Source={x:Static config:UserSettings.Setting}}" />
+                                        <CheckBox Grid.Row="2"
+                                                  Content=" Include network drives"
+                                                  IsChecked="{Binding IncludeNetwork,
+                                                                      Source={x:Static config:UserSettings.Setting}}" />
+                                        <CheckBox Grid.Row="3"
+                                                  Content=" Show Type column"
+                                                  IsChecked="{Binding ShowTypeL,
+                                                                      Source={x:Static config:UserSettings.Setting}}" />
+                                        <CheckBox Grid.Row="4"
+                                                  Content=" Show Format column"
+                                                  IsChecked="{Binding ShowFormat,
+                                                                      Source={x:Static config:UserSettings.Setting}}" />
+                                    </Grid>
+                                </Grid>
+                            </Expander>
+
+                            <Expander Grid.Row="4" Grid.Column="1"
+                                      Margin="2,10,45,10"
+                                      materialDesign:ExpanderAssist.HeaderBackground="{DynamicResource MaterialDesignCardBackground}"
+                                      materialDesign:ExpanderAssist.HeaderFontSize="16"
+                                      materialDesign:ExpanderAssist.HorizontalHeaderPadding="15,10,20,15"
+                                      BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                      BorderThickness="1"
+                                      Header="Physical Drive Options"
+                                      IsExpanded="{Binding PhysicalExpanderOpen,
+                                                           Source={x:Static config:TempSettings.Setting}}">
+                                <Grid Background="{DynamicResource MaterialDesignCardBackground}">
+                                    <Grid Margin="15,0,15,15">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30" />
+                                            <RowDefinition Height="30" />
+                                            <RowDefinition Height="30" />
+                                            <RowDefinition Height="30" />
+                                            <RowDefinition Height="30" />
+                                            <RowDefinition Height="30" />
+                                            <RowDefinition Height="30" />
+                                            <RowDefinition Height="30" />
+                                        </Grid.RowDefinitions>
+                                        <CheckBox Grid.Row="0"
+                                                  Content=" Show Partitions column"
+                                                  IsChecked="{Binding ShowPartitions,
+                                                                      Source={x:Static config:UserSettings.Setting}}" />
+                                        <CheckBox Grid.Row="1"
+                                                  Content=" Show Disk Type column"
+                                                  IsChecked="{Binding ShowDiskType,
+                                                                      Source={x:Static config:UserSettings.Setting}}" />
+                                        <CheckBox Grid.Row="2"
+                                                  Content=" Show Media Type column"
+                                                  IsChecked="{Binding ShowMediaType,
+                                                                      Source={x:Static config:UserSettings.Setting}}" />
+                                        <CheckBox Grid.Row="3"
+                                                  Content=" Show Interface column"
+                                                  IsChecked="{Binding ShowInterface,
+                                                                      Source={x:Static config:UserSettings.Setting}}" />
+                                        <CheckBox Grid.Row="4"
+                                                  Content=" Show Bus Type column"
+                                                  IsChecked="{Binding ShowBusType,
+                                                                      Source={x:Static config:UserSettings.Setting}}" />
+                                        <CheckBox Grid.Row="5"
+                                                  Content=" Show Health column"
+                                                  IsChecked="{Binding ShowHealth,
+                                                                      Source={x:Static config:UserSettings.Setting}}" />
+                                        <CheckBox Grid.Row="6"
+                                                  Content=" Show Name column "
+                                                  IsChecked="{Binding ShowName,
+                                                                      Source={x:Static config:UserSettings.Setting}}" />
+                                        <CheckBox Grid.Row="7"
+                                                  Content=" Show Model column"
+                                                  IsChecked="{Binding ShowModel,
+                                                                      Source={x:Static config:UserSettings.Setting}}" />
+                                    </Grid>
+                                </Grid>
+
+                            </Expander>
+                        </Grid>
+                    </Expander>
+                </materialDesign:Card>
+                <!--#endregion-->
+
+                <!--#region UI Settings-->
+                <materialDesign:Card Grid.Row="4"
+                                     UniformCornerRadius="5">
+                    <Expander materialDesign:ExpanderAssist.HorizontalHeaderPadding="10"
                               IsExpanded="{Binding UIExpanderOpen,
-                                                   Source={x:Static config:UserSettings.Setting}}">
+                                                   Source={x:Static config:TempSettings.Setting}}">
                         <Expander.Header>
                             <Grid>
                                 <!--#region Row definitions-->
@@ -170,7 +352,7 @@
                                            Text="UI Settings" />
                                 <TextBlock Grid.Row="2" Grid.Column="1"
                                            FontSize="12"
-                                           Text="UI Size, Accent Color, Theme and Row Height" />
+                                           Text="UI Size, Accent Color, Theme, Row Height, Start Position &amp; Keep On Top" />
                             </Grid>
                         </Expander.Header>
 
@@ -181,13 +363,14 @@
                                 <RowDefinition Height="40" />
                                 <RowDefinition Height="40" />
                                 <RowDefinition Height="40" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="31" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="45" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <!--#endregion-->
-
 
                             <StackPanel Grid.Row="0" Grid.Column="1"
                                         Orientation="Horizontal">
@@ -257,7 +440,22 @@
                                           SelectedItem="{Binding RowSpacing,
                                                                  Source={x:Static config:UserSettings.Setting}}"
                                           Style="{StaticResource MaterialDesignComboBox}" />
+                                <TextBlock Margin="15,12,0,0"
+                                           ToolTip="This setting applies to the row height on the Drives, Environment and History pages."
+                                           ToolTipService.InitialShowDelay="300"
+                                           ToolTipService.Placement="Top">
+                                    <materialDesign:PackIcon Width="20" Height="20"
+                                                             Kind="InfoOutline" />
+                                </TextBlock>
                             </StackPanel>
+                            <CheckBox Grid.Row="4" Grid.Column="1"
+                                      Content=" Start with window centered on screen"
+                                      IsChecked="{Binding StartCentered,
+                                                          Source={x:Static config:UserSettings.Setting}}" />
+                            <CheckBox Grid.Row="5" Grid.Column="1"
+                                      Content="Keep TimVer on top of other windows"
+                                      IsChecked="{Binding KeepOnTop,
+                                                          Source={x:Static config:UserSettings.Setting}}" />
                         </Grid>
                     </Expander>
                 </materialDesign:Card>

@@ -13,7 +13,7 @@
     </Style>
     <!--#endregion-->
 
-    <!--#region Row style-->
+    <!--#region Row styles-->
     <Style TargetType="DataGridRow"
            x:Key="HistoryRows"
            BasedOn="{StaticResource {x:Type DataGridRow}}">
@@ -23,6 +23,50 @@
                 <Setter Property="FontWeight" Value="Bold" />
             </DataTrigger>
         </Style.Triggers>
+    </Style>
+
+    <Style TargetType="DataGridRow"
+           x:Key="LogicalDriveRows"
+           BasedOn="{StaticResource {x:Type DataGridRow}}">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Label}"
+                         Value="Not Ready">
+                <Setter Property="Foreground" Value="Gray" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region  Style to alight datagrid column headers right  -->
+    <Style TargetType="DataGridColumnHeader"
+           x:Key="alignHeaderRight"
+           BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
+        <Setter Property="HorizontalContentAlignment" Value="Right" />
+    </Style>
+    <!--#endregion-->
+
+    <!--#region  Style to align datagrid column headers left  -->
+    <Style TargetType="DataGridColumnHeader"
+           x:Key="alignHeaderLeft"
+           BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="Padding" Value="15,0,0,0" />
+    </Style>
+    <!--#endregion-->
+
+    <!--#region  Style to alight text boxes in a datagrid right  -->
+    <Style TargetType="TextBlock"
+           x:Key="alignRight"
+           BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="HorizontalAlignment" Value="Right" />
+    </Style>
+    <!--#endregion-->
+
+    <!--#region Style to alight text boxes in a datagrid center  -->
+    <Style TargetType="TextBlock"
+           x:Key="alignCenter"
+           BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="HorizontalAlignment" Value="Center" />
     </Style>
     <!--#endregion-->
 
