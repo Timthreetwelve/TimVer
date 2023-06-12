@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Configuration;
 
@@ -36,6 +36,15 @@ public static class SettingChange
 
             case nameof(UserSettings.Setting.UISize):
                 MainWindowUIHelpers.UIScale(UserSettings.Setting.UISize);
+                break;
+            case nameof(UserSettings.Setting.Use1024):
+                CombinedInfo.PhysicalDrivesList.Clear();
+                CombinedInfo.LogicalDrivesList.Clear();
+                break;
+
+            case nameof(UserSettings.Setting.IncludeNotReady):
+            case nameof(UserSettings.Setting.IncludeRemovable):
+                CombinedInfo.LogicalDrivesList.Clear();
                 break;
         }
     }

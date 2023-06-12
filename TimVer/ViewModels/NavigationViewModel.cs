@@ -43,11 +43,27 @@ internal partial class NavigationViewModel : ObservableObject
                 },
                 new NavigationItem
                 {
-                    Name="Computer Info",
+                    Name="Hardware Info",
                     NavPage = NavPage.ComputerInfo,
                     ViewModelType= typeof(ComputerInfoViewModel),
                     IconKind=PackIconKind.ComputerClassic,
-                    PageTitle="Computer Information"
+                    PageTitle="Hardware Information"
+                },
+                new NavigationItem
+                {
+                    Name="Drive Info",
+                    NavPage = NavPage.DriveInfo,
+                    ViewModelType= typeof(DriveInfoViewModel),
+                    IconKind=PackIconKind.Harddisk,
+                    PageTitle="Disk Drive Information"
+                },
+                new NavigationItem
+                {
+                    Name="Graphics Info",
+                    NavPage = NavPage.VideoInfo,
+                    ViewModelType= typeof(VideoViewModel),
+                    IconKind=PackIconKind.Monitor,
+                    PageTitle="Graphics Information"
                 },
                 new NavigationItem
                 {
@@ -90,6 +106,19 @@ internal partial class NavigationViewModel : ObservableObject
             }
         );
     #endregion List of navigation items
+
+    #region List of navigation items without History
+    public static List<NavigationItem> NavigationListNoHistory { get; set; } = new List<NavigationItem>();
+
+    public static void PopulateNoHistoryList()
+    {
+        if (NavigationListNoHistory.Count == 0)
+        {
+            NavigationListNoHistory.AddRange(NavigationViewModelTypes);
+            _ = NavigationListNoHistory.Remove(NavigationViewModelTypes.Find(n => n.Name == "History"));
+        }
+    }
+    #endregion List of navigation items without History
 
     #region Navigation Methods
     public void NavigateToPage(NavPage page)
@@ -166,7 +195,7 @@ internal partial class NavigationViewModel : ObservableObject
                         _ = builder.Append("Disk Drives     = ").AppendLine(CombinedInfo.DiskDrives);
                     }
                     Clipboard.SetText(builder.ToString());
-                    SnackbarMsg.ClearAndQueueMessage("Computer information copied to the clipboard");
+                    SnackbarMsg.ClearAndQueueMessage("Hardware information copied to the clipboard");
                     break;
                 }
 
@@ -174,7 +203,7 @@ internal partial class NavigationViewModel : ObservableObject
                 {
                     StringBuilder builder = new();
                     _ = builder.AppendLine("ENVIRONMENT VARIABLES");
-                    foreach (EnvVariable item in CombinedInfo.EnvVariableList)
+                    foreach (EnvVariable item in EnvVariable.EnvVariableList)
                     {
                         _ = builder.Append(item.Variable);
                         _ = builder.Append(" = ");
@@ -225,6 +254,18 @@ internal partial class NavigationViewModel : ObservableObject
         TextFileViewer.ViewTextFile(Path.Combine(AppInfo.AppDirectory, "readme.txt"));
     }
     #endregion View readme file command
+
+    #region Open the application folder
+    [RelayCommand]
+    public static void OpenAppFolder()
+    {
+        using Process process = new();
+        process.StartInfo.UseShellExecute = false;
+        process.StartInfo.FileName = "Explorer.exe";
+        process.StartInfo.Arguments = AppInfo.AppDirectory;
+        _ = process.Start();
+    }
+    #endregion Open the application folder
 
     #region Key down events
     /// <summary>
@@ -302,7 +343,7 @@ internal partial class NavigationViewModel : ObservableObject
             }
             if (e.Key == Key.C)
             {
-                if (UserSettings.Setting.PrimaryColor >= AccentColor.BlueGray)
+                if (UserSettings.Setting.PrimaryColor >= AccentColor.White)
                 {
                     UserSettings.Setting.PrimaryColor = AccentColor.Red;
                 }

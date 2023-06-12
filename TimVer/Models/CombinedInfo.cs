@@ -1,11 +1,11 @@
-// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Models;
 
 /// <summary>
 /// Class that works the TimVer magic
 /// </summary>
-internal static class CombinedInfo
+public static class CombinedInfo
 {
     #region NLog Instance
     private static readonly Logger _log = LogManager.GetCurrentClassLogger();
@@ -62,57 +62,37 @@ internal static class CombinedInfo
     #endregion Build branch
 
     #region Disk drives
-    private static string _driveInfo;
-    private static string _driveInfoLab;
-
+    /// <summary>
+    /// The disk drives on the hardware info page
+    /// </summary>
+    private static string _diskDrives;
     public static string DiskDrives
     {
         get
         {
-            if (UserSettings.Setting.ShowDrives && !UserSettings.Setting.ShowLabels)
+            if (_diskDrives != null)
             {
-                return _driveInfo ?? GetDrives();
+                return _diskDrives;
             }
-            else if (UserSettings.Setting.ShowDrives && UserSettings.Setting.ShowLabels)
+            if (UserSettings.Setting.ShowDrives)
             {
-                return _driveInfoLab ?? GetDrivesAndLabels();
+                StringBuilder sb = new();
+                foreach (DriveInfo drive in DriveInfo.GetDrives())
+                {
+                    if (drive.IsReady)
+                    {
+                        _ = sb.Append(drive.Name.Replace("\\", " "));
+                    }
+                }
+                _log.Debug($"Disk Drives: {sb}");
+                _diskDrives = sb.ToString();
             }
             else
             {
-                return string.Empty;
+                _diskDrives = null;
             }
+            return _diskDrives;
         }
-    }
-
-    private static string GetDrivesAndLabels()
-    {
-        StringBuilder sb = new();
-        foreach (DriveInfo drive in DriveInfo.GetDrives())
-        {
-            if (drive.IsReady)
-            {
-                _ = sb.Append(drive.Name.Replace("\\", " "));
-                _ = sb.Append('[').Append(drive.VolumeLabel).Append("]  ");
-            }
-        }
-        _log.Debug($"Disk Drives: {sb}");
-        _driveInfoLab = sb.ToString();
-        return _driveInfoLab;
-    }
-
-    private static string GetDrives()
-    {
-        StringBuilder sb = new();
-        foreach (DriveInfo drive in DriveInfo.GetDrives())
-        {
-            if (drive.IsReady)
-            {
-                _ = sb.Append(drive.Name.Replace("\\", " "));
-            }
-        }
-        _log.Debug($"Disk Drives: {sb}");
-        _driveInfo = sb.ToString();
-        return _driveInfo;
     }
     #endregion Disk drives
 
@@ -165,18 +145,18 @@ internal static class CombinedInfo
     #endregion Last boot up time
 
     #region Machine name
-    private static string _machName;
+    private static string _machineName;
     public static string MachName
     {
         get
         {
-            if (_machName != null)
+            if (_machineName != null)
             {
-                return _machName;
+                return _machineName;
             }
 
-            _machName = GetInfo.CimQuerySys("Name");
-            return _machName;
+            _machineName = GetInfo.CimQuerySys("Name");
+            return _machineName;
         }
     }
     #endregion Machine name
@@ -240,9 +220,8 @@ internal static class CombinedInfo
             {
                 return _procCores;
             }
-            string pcores = GetInfo.CimQueryProc("NumberOfCores");
-            string lcores = GetInfo.CimQueryProc("NumberOfLogicalProcessors");
-            _procCores = string.Format($"{pcores} Cores - {lcores} Threads");
+            _procCores = string.Format($"{GetInfo.CimQueryProc("NumberOfCores")} " +
+                $"Cores - {GetInfo.CimQueryProc("NumberOfLogicalProcessors")} Threads");
             return _procCores;
         }
     }
@@ -319,7 +298,7 @@ internal static class CombinedInfo
     }
     #endregion Temp folder
 
-    #region Total memory
+    #region Total usable memory
     private static string _totalMemory;
     public static string TotalMemory
     {
@@ -331,12 +310,29 @@ internal static class CombinedInfo
             }
 
             string result = GetInfo.CimQuerySys("TotalPhysicalMemory");
-            double GB = Math.Round(Convert.ToDouble(result) / Math.Pow(1024, 3), 1);
-            _totalMemory = string.Format($"{GB} GB (usable)");
+            double GB = Math.Round(Convert.ToDouble(result) / Math.Pow(1024, 3), 2);
+            _totalMemory = string.Format($"({GB:N2} GB usable)");
             return _totalMemory;
         }
     }
-    #endregion Total memory
+    #endregion Total usable memory
+
+    #region Total installed memory
+    private static string _installedMemory;
+    public static string InstalledMemory
+    {
+        get
+        {
+            if (_installedMemory != null)
+            {
+                return _installedMemory;
+            }
+
+            _installedMemory = MemoryHelpers.GetInstalledRam();
+            return _installedMemory;
+        }
+    }
+    #endregion Total installed memory
 
     #region Version
     private static string _version;
@@ -374,14 +370,52 @@ internal static class CombinedInfo
         }
     }
     #endregion Windows folder
-    #region Environment variables
-    private static List<EnvVariable> _envVariableList;
-    public static List<EnvVariable> EnvVariableList
+
+    #region Logical disk drives
+    private static ObservableCollection<LogicalDrives> _logicalDrivesList;
+    public static ObservableCollection<LogicalDrives> LogicalDrivesList
     {
         get
         {
-            return _envVariableList ??= GetInfo.GetEnvironmentVariables();
+            if (_logicalDrivesList?.Count > 0)
+            {
+                return _logicalDrivesList;
+            }
+            _logicalDrivesList = new ObservableCollection<LogicalDrives>(DiskDriveHelpers.GetLogicalDriveInfo());
+            return _logicalDrivesList;
         }
     }
-    #endregion Environment variables
+    #endregion Logical disk drives
+
+    #region Physical disk drives
+    private static ObservableCollection<PhysicalDrives> _physicalDrivesList;
+    public static ObservableCollection<PhysicalDrives> PhysicalDrivesList
+    {
+        get
+        {
+            if (_physicalDrivesList?.Count > 0)
+            {
+                return _physicalDrivesList;
+            }
+            _physicalDrivesList = new ObservableCollection<PhysicalDrives>(DiskDriveHelpers.GetPhysicalDriveInfo());
+            return _physicalDrivesList;
+        }
+    }
+    #endregion Physical disk drives
+
+    #region Video info
+    private static ObservableCollection<GpuInfo> _gpuList;
+    public static ObservableCollection<GpuInfo> GpuList
+    {
+        get
+        {
+            if (_gpuList?.Count > 0)
+            {
+                return _gpuList;
+            }
+            _gpuList = new ObservableCollection<GpuInfo>((IEnumerable<GpuInfo>)VideoHelpers.GetGpuInfo());
+            return _gpuList;
+        }
+    }
+    #endregion Video info
 }

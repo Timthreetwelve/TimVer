@@ -1,0 +1,181 @@
+﻿<UserControl x:Class="TimVer.Views.DrivesPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:config="clr-namespace:TimVer.Configuration"
+             xmlns:convert="clr-namespace:TimVer.Converters"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:TimVer.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:models="clr-namespace:TimVer.Models"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="700"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="Segoe UI"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}">
+
+    <!--#region DataContext & Resources-->
+    <UserControl.Resources>
+        <convert:SpacingConverter x:Key="Spacing" />
+        <convert:BoolToStringConverter x:Key="BoolToString" />
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+    </UserControl.Resources>
+    <!--#endregion-->
+
+    <Grid>
+        <TabControl x:Name="TabControl1"
+                    HorizontalContentAlignment="Left"
+                    materialDesign:ColorZoneAssist.Mode="PrimaryMid"
+                    SelectionChanged="TabControl1_SelectionChanged"
+                    TabStripPlacement="Top">
+            <!--#region Logical Drives Tab-->
+            <TabItem MinWidth="150"
+                     Margin="10,0"
+                     HorizontalAlignment="Center"
+                     Style="{StaticResource TabItem}">
+                <TabItem.Header>
+                    <TextBlock Style="{StaticResource TabItemHeader}"
+                               Text="Logical Drives" />
+                </TabItem.Header>
+                <DataGrid x:Name="LDrivesDataGrid"
+                          Margin="0" HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch"
+                          d:ItemsSource="{d:SampleData ItemCount=5}"
+                          materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
+                          materialDesign:ThemeAssist.Theme="Inherit"
+                          AutoGenerateColumns="False"
+                          Background="{DynamicResource MaterialDesignCardBackground}"
+                          CanUserSortColumns="True"
+                          CellStyle="{StaticResource DisplayOnly}"
+                          FontSize="14" HeadersVisibility="Column"
+                          IsReadOnly="True"
+                          ItemsSource="{x:Static models:CombinedInfo.LogicalDrivesList}"
+                          RowStyle="{StaticResource LogicalDriveRows}">
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Name}"
+                                            ElementStyle="{StaticResource alignCenter}"
+                                            Header="Name" />
+                        <DataGridTextColumn Binding="{Binding Label}"
+                                            MinWidth="110"
+                                            Header="Label"
+                                            HeaderStyle="{StaticResource alignHeaderLeft}" />
+                        <DataGridTextColumn Binding="{Binding DriveType}"
+                                            Header="Type"
+                                            Visibility="{Binding ShowTypeL,
+                                                                 Source={x:Static config:UserSettings.Setting},
+                                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+                        <DataGridTextColumn Binding="{Binding Format}"
+                                            Header="Format"
+                                            HeaderStyle="{StaticResource alignHeaderLeft}"
+                                            Visibility="{Binding ShowFormat,
+                                                                 Source={x:Static config:UserSettings.Setting},
+                                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+                        <DataGridTextColumn x:Name="colSize" Binding="{Binding TotalSize, StringFormat=N2}"
+                                            ElementStyle="{StaticResource alignRight}"
+                                            Header="{Binding Use1024,
+                                                             Source={x:Static config:UserSettings.Setting},
+                                                             Converter={StaticResource BoolToString},
+                                                             ConverterParameter=Size}"
+                                            HeaderStyle="{StaticResource alignHeaderRight}" />
+                        <DataGridTextColumn x:Name="colFree" Binding="{Binding GBFree, StringFormat=N2}"
+                                            ElementStyle="{StaticResource alignRight}"
+                                            Header="{Binding Use1024,
+                                                             Source={x:Static config:UserSettings.Setting},
+                                                             Converter={StaticResource BoolToString},
+                                                             ConverterParameter=Free}"
+                                            HeaderStyle="{StaticResource alignHeaderRight}" />
+                        <DataGridTextColumn Binding="{Binding PercentFree, StringFormat=P1}"
+                                            ElementStyle="{StaticResource alignRight}"
+                                            Header="Free %"
+                                            HeaderStyle="{StaticResource alignHeaderRight}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <!--#endregion-->
+
+            <!--#region Physical Drives Tab-->
+            <TabItem MinWidth="150"
+                     Margin="10,0"
+                     HorizontalAlignment="Center"
+                     Style="{StaticResource TabItem}">
+                <TabItem.Header>
+                    <TextBlock Style="{StaticResource TabItemHeader}"
+                               Text="Physical Drives" />
+                </TabItem.Header>
+
+                <DataGrid x:Name="PDisksDataGrid"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch"
+                          d:ItemsSource="{d:SampleData ItemCount=3}"
+                          materialDesign:ThemeAssist.Theme="Inherit"
+                          AutoGenerateColumns="False"
+                          Background="{DynamicResource MaterialDesignCardBackground}"
+                          CanUserResizeRows="False"
+                          CanUserSortColumns="True"
+                          CellStyle="{StaticResource DisplayOnly}"
+                          FontSize="14" HeadersVisibility="Column"
+                          IsReadOnly="True"
+                          ItemsSource="{x:Static models:CombinedInfo.PhysicalDrivesList}"
+                          SelectionMode="Single"
+                          SelectionUnit="FullRow">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Index}"
+                                            ElementStyle="{StaticResource alignCenter}"
+                                            Header="Device ID" />
+                        <DataGridTextColumn x:Name="colPSize" Binding="{Binding Size}"
+                                            ElementStyle="{StaticResource alignRight}"
+                                            Header="{Binding Use1024,
+                                                             Source={x:Static config:UserSettings.Setting},
+                                                             Converter={StaticResource BoolToString},
+                                                             ConverterParameter=Size}" />
+                        <DataGridTextColumn Binding="{Binding Partitions}"
+                                            ElementStyle="{StaticResource alignCenter}"
+                                            Header="Partitions"
+                                            Visibility="{Binding ShowPartitions,
+                                                                 Source={x:Static config:UserSettings.Setting},
+                                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
+                        <DataGridTextColumn Binding="{Binding DiskType}"
+                                            Header="Disk Type"
+                                            Visibility="{Binding ShowDiskType,
+                                                                 Source={x:Static config:UserSettings.Setting},
+                                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
+                        <DataGridTextColumn Binding="{Binding MediaType}"
+                                            Header="Media Type"
+                                            Visibility="{Binding ShowMediaType,
+                                                                 Source={x:Static config:UserSettings.Setting},
+                                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
+                        <DataGridTextColumn Binding="{Binding Interface}"
+                                            Header="Interface"
+                                            Visibility="{Binding ShowInterface,
+                                                                 Source={x:Static config:UserSettings.Setting},
+                                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
+                        <DataGridTextColumn Binding="{Binding BusType}"
+                                            Header="Bus Type"
+                                            Visibility="{Binding ShowBusType,
+                                                                 Source={x:Static config:UserSettings.Setting},
+                                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
+                        <DataGridTextColumn Binding="{Binding Health}"
+                                            Header="Health"
+                                            Visibility="{Binding ShowHealth,
+                                                                 Source={x:Static config:UserSettings.Setting},
+                                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
+                        <DataGridTextColumn Binding="{Binding Name}"
+                                            Header="Name"
+                                            Visibility="{Binding ShowName,
+                                                                 Source={x:Static config:UserSettings.Setting},
+                                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
+                        <DataGridTextColumn Binding="{Binding Model}"
+                                            Header="Model"
+                                            Visibility="{Binding ShowModel,
+                                                                 Source={x:Static config:UserSettings.Setting},
+                                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <!--#endregion-->
+        </TabControl>
+    </Grid>
+</UserControl>
