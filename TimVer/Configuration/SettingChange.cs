@@ -51,6 +51,10 @@ public static class SettingChange
             case nameof(UserSettings.Setting.IncludeRemovable):
                 CombinedInfo.LogicalDrivesList.Clear();
                 break;
+
+            case nameof(UserSettings.Setting.GetPhysicalDrives):
+                CombinedInfo.PhysicalDrivesList.Clear();
+                break;
         }
     }
     #endregion User Setting change

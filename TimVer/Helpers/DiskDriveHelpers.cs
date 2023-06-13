@@ -179,37 +179,52 @@ public static class DiskDriveHelpers
     /// </summary>
     public static List<PhysicalDrives> GetPhysicalDriveInfo()
     {
-        Stopwatch watch = Stopwatch.StartNew();
-        List<PhysicalDrives> physicalDrives = new();
-        const string query = "SELECT InterfaceType, MediaType, Model, Name, Status, Index, Partitions, Size FROM Win32_DiskDrive";
-        using (CimSession cimSession = CimSession.Create(null))
+        if (UserSettings.Setting.GetPhysicalDrives)
         {
-            IEnumerable<CimInstance> win32Drives = cimSession.QueryInstances("root/CIMV2", "WQL", query);
-            int gbPref = UserSettings.Setting.Use1024 ? 1024 : 1000;
-            foreach (var drive in win32Drives)
+            MainWindowUIHelpers.MainWindowWaitPointer();
+            Stopwatch watch = Stopwatch.StartNew();
+            List<PhysicalDrives> physicalDrives = new();
+            const string query = "SELECT InterfaceType, MediaType, Model, Name, Status, Index, Partitions, Size FROM Win32_DiskDrive";
+            using (CimSession cimSession = CimSession.Create(null))
             {
-                PhysicalDrives pDisk = new()
+                IEnumerable<CimInstance> win32Drives = cimSession.QueryInstances("root/CIMV2", "WQL", query);
+                int gbPref = UserSettings.Setting.Use1024 ? 1024 : 1000;
+                foreach (var drive in win32Drives)
                 {
-                    Interface = CimStringProp(drive, "InterfaceType"),
-                    MediaType = CimStringProp(drive, "MediaType").Replace("media", "", StringComparison.OrdinalIgnoreCase),
-                    Model = CimStringProp(drive, "Model"),
-                    Name = CimStringProp(drive, "Name"),
-                    Status = CimStringProp(drive, "Status"),
-                    Index = (uint)drive.CimInstanceProperties["Index"].Value,
-                    Partitions = (uint)drive.CimInstanceProperties["Partitions"].Value,
-                    Size = Math.Round(Convert.ToDouble(drive.CimInstanceProperties["Size"].Value) / Math.Pow(gbPref, 3), 2)
-                };
-                Dictionary<string, string> win32DiskDrive = GetWin32DiskDrive(pDisk.Index);
-                pDisk.BusType = win32DiskDrive["BusType"];
-                pDisk.DiskType = win32DiskDrive["MediaType"];
-                pDisk.Health = win32DiskDrive["Health"];
-                physicalDrives.Add(pDisk);
+                    PhysicalDrives pDisk = new()
+                    {
+                        Interface = CimStringProp(drive, "InterfaceType"),
+                        MediaType = CimStringProp(drive, "MediaType").Replace("media", "", StringComparison.OrdinalIgnoreCase),
+                        Model = CimStringProp(drive, "Model"),
+                        Name = CimStringProp(drive, "Name"),
+                        Status = CimStringProp(drive, "Status"),
+                        Index = (uint)drive.CimInstanceProperties["Index"].Value,
+                        Partitions = (uint)drive.CimInstanceProperties["Partitions"].Value,
+                        Size = Math.Round(Convert.ToDouble(drive.CimInstanceProperties["Size"].Value) / Math.Pow(gbPref, 3), 2)
+                    };
+                    Dictionary<string, string> win32DiskDrive = GetWin32DiskDrive(pDisk.Index);
+                    pDisk.BusType = win32DiskDrive["BusType"];
+                    pDisk.DiskType = win32DiskDrive["MediaType"];
+                    pDisk.Health = win32DiskDrive["Health"];
+                    physicalDrives.Add(pDisk);
+                }
             }
+            watch.Stop();
+            string drv = physicalDrives.Count != 1 ? "drives" : "drive";
+            _log.Debug($"Found {physicalDrives.Count} physical {drv} in {watch.Elapsed.TotalMilliseconds:N2} ms");
+            MainWindowUIHelpers.MainWindowNormalPointer();
+            return physicalDrives.OrderBy(i => i.Index).ToList();
         }
-        watch.Stop();
-        string drv = physicalDrives.Count != 1 ? "drives" : "drive";
-        _log.Debug($"Found {physicalDrives.Count} physical {drv} in {watch.Elapsed.TotalMilliseconds:N2} ms");
-        return physicalDrives.OrderBy(i => i.Index).ToList();
+        else
+        {
+            List<PhysicalDrives> physicalDrives = new();
+            PhysicalDrives emptyList = new()
+            {
+                DiskType = "Collection of Physical Drive information is disabled in Settings"
+            };
+            physicalDrives.Add(emptyList);
+            return physicalDrives;
+        }
     }
 
     private static string CimStringProp(CimInstance instance, string name)

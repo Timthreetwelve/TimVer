@@ -122,7 +122,8 @@
                                                           Source={x:Static config:TempSettings.Setting}}"
                                       Unchecked="HistOnStart_Unchecked">
                                 <CheckBox.Style>
-                                    <Style TargetType="CheckBox" BasedOn="{StaticResource MaterialDesignCheckBox}">
+                                    <Style TargetType="CheckBox"
+                                           BasedOn="{StaticResource MaterialDesignCheckBox}">
                                         <Setter Property="IsEnabled" Value="False" />
                                         <Style.Triggers>
                                             <MultiDataTrigger>
@@ -192,6 +193,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="31" />
                                 <RowDefinition Height="31" />
+                                <RowDefinition Height="31" />
                                 <RowDefinition Height="5" />
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
@@ -211,8 +213,22 @@
                                       IsChecked="{Binding Use1024,
                                                           Source={x:Static config:UserSettings.Setting},
                                                           Converter={StaticResource boolInverter}}" />
+                            <StackPanel Grid.Row="2" Grid.Column="1"
+                                        Orientation="Horizontal">
 
-                            <Expander Grid.Row="3" Grid.Column="1"
+                                <CheckBox Content=" Enable collection of Physical Drive information"
+                                          IsChecked="{Binding GetPhysicalDrives,
+                                                              Source={x:Static config:UserSettings.Setting}}" />
+                                <TextBlock Margin="10,7,0,0"
+                                           ToolTip="Enabling collection of Physical Drive information will take some time, especially on slower devices. "
+                                           ToolTipService.InitialShowDelay="300"
+                                           ToolTipService.Placement="Top">
+                                    <materialDesign:PackIcon Width="18" Height="18"
+                                                             Kind="InfoOutline" />
+                                </TextBlock>
+                            </StackPanel>
+
+                            <Expander Grid.Row="4" Grid.Column="1"
                                       Margin="2,10,45,10"
                                       materialDesign:ExpanderAssist.HeaderBackground="{DynamicResource MaterialDesignCardBackground}"
                                       materialDesign:ExpanderAssist.HeaderFontSize="16"
@@ -225,7 +241,7 @@
 
                                 <Grid Background="{DynamicResource MaterialDesignCardBackground}">
                                     <Grid Margin="15,0,15,15">
-                                        <!--#region Row definitions -->
+                                        <!--#region Row definitions-->
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="30" />
                                             <RowDefinition Height="30" />
@@ -259,7 +275,7 @@
                                 </Grid>
                             </Expander>
 
-                            <Expander Grid.Row="4" Grid.Column="1"
+                            <Expander Grid.Row="5" Grid.Column="1"
                                       Margin="2,10,45,10"
                                       materialDesign:ExpanderAssist.HeaderBackground="{DynamicResource MaterialDesignCardBackground}"
                                       materialDesign:ExpanderAssist.HeaderFontSize="16"

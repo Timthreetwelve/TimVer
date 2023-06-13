@@ -6,6 +6,8 @@ namespace TimVer.Configuration;
 public partial class UserSettings : ConfigManager<UserSettings>
 {
     #region Properties (some with default values)
+    [ObservableProperty]
+    private bool _getPhysicalDrives = false;
 
     [ObservableProperty]
     private bool _includeDebug = true;

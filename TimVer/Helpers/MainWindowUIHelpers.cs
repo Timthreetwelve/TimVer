@@ -181,4 +181,22 @@ internal static class MainWindowUIHelpers
         UIScale(UserSettings.Setting.UISize);
     }
     #endregion Apply UI settings
+
+    #region Change mouse pointer
+    /// <summary>
+    /// Change to the wait mouse cursor.
+    /// </summary>
+    public static void MainWindowWaitPointer()
+    {
+        _mainWindow.Cursor = Cursors.Wait;
+    }
+
+    /// <summary>
+    /// Change to the normal mouse cursor.
+    /// </summary>
+    public static void MainWindowNormalPointer()
+    {
+        _mainWindow.Cursor = Cursors.Arrow;
+    }
+    #endregion Change mouse pointer
 }
