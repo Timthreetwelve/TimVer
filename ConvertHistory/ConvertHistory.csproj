@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>disable</Nullable>
+    <UseWPF>true</UseWPF>
+      <Description>TimVer history conversion</Description>
+      <Copyright>Copyright © $([System.DateTime]::UtcNow.Year) Tim Kennedy</Copyright>
+      <Authors>Tim Kennedy</Authors>
+      <Company>T_K</Company>
+      <Product>TimVer</Product>
+      <ApplicationIcon>TV.ico</ApplicationIcon>
+      <AssemblyVersion>0.0.1</AssemblyVersion>
+      <BaseOutputPath>D:\Visual Studio\Source\Prod\TimVer\TimVer\bin</BaseOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="TV.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
+    <PackageReference Include="NLog" Version="5.2.0" />
+  </ItemGroup>
+
+</Project>
