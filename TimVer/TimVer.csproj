@@ -46,8 +46,23 @@
   </ItemGroup>
 
   <Target Name="BuildInfo" AfterTargets="UpdateAssemblyInfo">
+    <PropertyGroup>
+      <PowerShellScript>-File &quot;$(ProjectDir)Powershell\GenBuildInfo.ps1&quot;</PowerShellScript>
+      <Name>-assemblyName $(AssemblyName)</Name>
+      <Version>-assemblyVersion $(AssemblyVersion)</Version>
+    </PropertyGroup>
     <Message Importance="high" Text="Beginning GenBuildInfo for $(AssemblyName). Version is $(AssemblyVersion)" />
-    <Exec Command="powershell -NoProfile -File &quot;$(ProjectDir)Powershell\GenBuildInfo.ps1&quot; -assemblyName $(AssemblyName) -assemblyVersion $(AssemblyVersion)" />
+    <Exec Command="pwsh -NoProfile $(PowerShellScript) $(Name) $(Version)" />
+  </Target>
+
+  <Target Name="PublishZip" AfterTargets="Publish" >
+    <PropertyGroup>
+      <PowerShellScript>-File &quot;D:\Visual Studio\Source\PowerShell\PublishZip\PubZip.ps1&quot;</PowerShellScript>
+      <Name>-name $(AssemblyName)</Name>
+      <Version>-version $(AssemblyVersion)</Version>
+      <Path>-path &quot;$(ProjectDir)&quot;</Path>
+    </PropertyGroup>
+    <Exec Command="pwsh -NoProfile $(PowerShellScript) $(Name) $(Version) $(Path)" />
   </Target>
 
 </Project>
