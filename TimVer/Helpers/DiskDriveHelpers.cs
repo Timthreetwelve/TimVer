@@ -220,7 +220,7 @@ public static class DiskDriveHelpers
             List<PhysicalDrives> physicalDrives = new();
             PhysicalDrives emptyList = new()
             {
-                DiskType = "Collection of Physical Drive information is disabled in Settings"
+                Message = "Collection of Physical Drive information is disabled in Settings"
             };
             physicalDrives.Add(emptyList);
             return physicalDrives;

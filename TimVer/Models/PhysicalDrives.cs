@@ -48,4 +48,7 @@ public partial class PhysicalDrives : ObservableObject
 
     [ObservableProperty]
     private string _location;
+
+    [ObservableProperty]
+    private string _message;
 }
