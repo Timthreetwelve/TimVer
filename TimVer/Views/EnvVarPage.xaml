@@ -20,7 +20,7 @@
     </UserControl.Resources>
     <!--#endregion-->
 
-    <Grid>
+    <Grid Background="{DynamicResource MaterialDesignCardBackground}">
         <!--#region Row definitions-->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

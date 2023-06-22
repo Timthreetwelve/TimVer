@@ -1,4 +1,4 @@
-<UserControl x:Class="TimVer.Views.DrivesPage"
+﻿<UserControl x:Class="TimVer.Views.DrivesPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:config="clr-namespace:TimVer.Configuration"
@@ -23,7 +23,7 @@
     </UserControl.Resources>
     <!--#endregion-->
 
-    <Grid>
+    <Grid Background="{DynamicResource MaterialDesignCardBackground}">
         <TabControl x:Name="TabControl1"
                     HorizontalContentAlignment="Left"
                     materialDesign:ColorZoneAssist.Mode="PrimaryMid"
@@ -123,6 +123,11 @@
                           SelectionMode="Single"
                           SelectionUnit="FullRow">
                     <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Message}"
+                                            Header="Message"
+                                            Visibility="{Binding GetPhysicalDrives,
+                                                                 Source={x:Static config:UserSettings.Setting},
+                                                                 Converter={StaticResource BoolToVisInverter}}" />
                         <DataGridTextColumn Binding="{Binding Index}"
                                             ElementStyle="{StaticResource alignCenter}"
                                             Header="Device ID" />
