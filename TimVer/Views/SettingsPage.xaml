@@ -110,33 +110,68 @@
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
                             </StackPanel>
-                            <CheckBox x:Name="BuildHistory"
-                                      Grid.Row="1" Grid.Column="1"
-                                      Content=" Keep build history"
-                                      IsChecked="{Binding KeepHistory,
-                                                          Source={x:Static config:UserSettings.Setting}}" />
-                            <CheckBox Grid.Row="2" Grid.Column="1"
-                                      Checked="HistOnStart_Checked"
-                                      Content=" Update build history on Windows startup"
-                                      IsChecked="{Binding HistoryOnBoot,
-                                                          Source={x:Static config:TempSettings.Setting}}"
-                                      Unchecked="HistOnStart_Unchecked">
-                                <CheckBox.Style>
-                                    <Style TargetType="CheckBox"
-                                           BasedOn="{StaticResource MaterialDesignCheckBox}">
-                                        <Setter Property="IsEnabled" Value="False" />
-                                        <Style.Triggers>
-                                            <MultiDataTrigger>
-                                                <MultiDataTrigger.Conditions>
-                                                    <Condition Binding="{Binding Path=KeepHistory, Source={x:Static config:UserSettings.Setting}}" Value="True" />
-                                                    <Condition Binding="{Binding Path=RunAccessPermitted, Source={x:Static config:TempSettings.Setting}}" Value="True" />
-                                                </MultiDataTrigger.Conditions>
-                                                <Setter Property="IsEnabled" Value="True" />
-                                            </MultiDataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </CheckBox.Style>
-                            </CheckBox>
+                            <StackPanel Grid.Row="1" Grid.Column="1"
+                                        Orientation="Horizontal">
+                                <CheckBox x:Name="BuildHistory"
+                                          Content=" Keep build history"
+                                          IsChecked="{Binding KeepHistory,
+                                                              Source={x:Static config:UserSettings.Setting}}" />
+                                <TextBlock Margin="10,7,0,0"
+                                           ToolTipService.InitialShowDelay="300"
+                                           ToolTipService.Placement="Top">
+                                    <materialDesign:PackIcon Width="18" Height="18"
+                                                             Kind="InfoOutline" />
+                                    <TextBlock.ToolTip>
+                                        <TextBlock LineHeight="18">
+                                            <Run Text="Enabling this option will tell TimVer to keep a log of when the build number changes." />
+                                            <LineBreak />
+                                            <Run Text="Disabling this option will remove the History item from the navigation bar." />
+                                            <LineBreak />
+                                            <Run Text="See the ReadMe file for more infomation." />
+                                        </TextBlock>
+                                    </TextBlock.ToolTip>
+                                </TextBlock>
+                            </StackPanel>
+                            <StackPanel Grid.Row="2" Grid.Column="1"
+                                        Orientation="Horizontal">
+                                <CheckBox Checked="HistOnStart_Checked"
+                                          Content=" Update build history on Windows startup"
+                                          IsChecked="{Binding HistoryOnBoot,
+                                                              Source={x:Static config:TempSettings.Setting}}"
+                                          Unchecked="HistOnStart_Unchecked">
+                                    <CheckBox.Style>
+                                        <Style TargetType="CheckBox"
+                                               BasedOn="{StaticResource MaterialDesignCheckBox}">
+                                            <Setter Property="IsEnabled" Value="False" />
+                                            <Style.Triggers>
+                                                <MultiDataTrigger>
+                                                    <MultiDataTrigger.Conditions>
+                                                        <Condition Binding="{Binding Path=KeepHistory, Source={x:Static config:UserSettings.Setting}}" Value="True" />
+                                                        <Condition Binding="{Binding Path=RunAccessPermitted, Source={x:Static config:TempSettings.Setting}}" Value="True" />
+                                                    </MultiDataTrigger.Conditions>
+                                                    <Setter Property="IsEnabled" Value="True" />
+                                                </MultiDataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </CheckBox.Style>
+                                </CheckBox>
+                                <TextBlock Margin="10,7,0,0"
+                                           ToolTipService.InitialShowDelay="300"
+                                           ToolTipService.Placement="Top">
+                                    <materialDesign:PackIcon Width="18" Height="18"
+                                                             Kind="InfoOutline" />
+                                    <TextBlock.ToolTip>
+                                        <TextBlock LineHeight="18">
+                                            <Run Text="Enabling this option will add TimVer to Windows startup." />
+                                            <LineBreak />
+                                            <Run Text="This option is not available when running TimVer from a removeable drive." />
+                                            <LineBreak />
+                                            <Run Text="See the ReadMe file for more infomation." />
+
+                                        </TextBlock>
+                                    </TextBlock.ToolTip>
+                                </TextBlock>
+                            </StackPanel>
                             <CheckBox Grid.Row="3" Grid.Column="1"
                                       Content=" Display registered user on Windows Information page"
                                       IsChecked="{Binding ShowUser,
@@ -220,11 +255,17 @@
                                           IsChecked="{Binding GetPhysicalDrives,
                                                               Source={x:Static config:UserSettings.Setting}}" />
                                 <TextBlock Margin="10,7,0,0"
-                                           ToolTip="Enabling collection of Physical Drive information will take some time, especially on slower devices. "
                                            ToolTipService.InitialShowDelay="300"
                                            ToolTipService.Placement="Top">
                                     <materialDesign:PackIcon Width="18" Height="18"
                                                              Kind="InfoOutline" />
+                                    <TextBlock.ToolTip>
+                                        <TextBlock LineHeight="18">
+                                            <Run Text="Collecting phyical drive information can take a significant amout of time." />
+                                            <LineBreak />
+                                            <Run Text="This is especially true on slower devices." />
+                                        </TextBlock>
+                                    </TextBlock.ToolTip>
                                 </TextBlock>
                             </StackPanel>
 
