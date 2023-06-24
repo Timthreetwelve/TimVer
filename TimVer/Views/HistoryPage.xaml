@@ -51,6 +51,18 @@
         </DataGrid>
         <!--#endregion-->
 
+        <!--#region Item counter-->
+        <TextBlock Grid.Row="0"
+                   Width="auto"
+                   VerticalAlignment="Top"
+                   Margin="0,0,15,0"
+                   HorizontalAlignment="Right"
+                   FontWeight="SemiBold"
+                   FontSize="14">
+            <Run Text="{Binding Items.Count, ElementName=HistoryGrid, Mode=OneWay}" />
+            <Run Text="records" />
+        </TextBlock>
+        <!--#endregion-->
 
     </Grid>
 </UserControl>
