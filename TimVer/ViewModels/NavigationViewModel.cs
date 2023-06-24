@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.ViewModels;
 
@@ -267,6 +267,27 @@ internal partial class NavigationViewModel : ObservableObject
     }
     #endregion Open the application folder
 
+    #region Refresh command
+    [RelayCommand]
+    public void Refresh()
+    {
+        switch (CurrentViewModel)
+        {
+            case DriveInfoViewModel:
+                CombinedInfo.LogicalDrivesList.Clear();
+                DrivesPage.Instance.LDrivesDataGrid.ItemsSource = CombinedInfo.LogicalDrivesList;
+
+                if (UserSettings.Setting.GetPhysicalDrives)
+                {
+                    CombinedInfo.PhysicalDrivesList.Clear();
+                    DrivesPage.Instance.PDisksDataGrid.ItemsSource = CombinedInfo.PhysicalDrivesList;
+                }
+                SnackbarMsg.ClearAndQueueMessage("Disk drive info refreshed.");
+                break;
+
+            default:
+                SnackbarMsg.ClearAndQueueMessage("Refresh is not available on this page.");
+                break;
     #region Key down events
     /// <summary>
     /// Keyboard events

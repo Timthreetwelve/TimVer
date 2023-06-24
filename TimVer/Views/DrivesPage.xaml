@@ -4,17 +4,17 @@
              xmlns:config="clr-namespace:TimVer.Configuration"
              xmlns:convert="clr-namespace:TimVer.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:TimVer.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:models="clr-namespace:TimVer.Models"
+             xmlns:viewmodels="clr-namespace:TimVer.ViewModels"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="700"
              Background="{DynamicResource MaterialDesignPaper}"
              FontFamily="Segoe UI"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}">
 
-    <!--#region DataContext & Resources-->
+    <!--#region Resources-->
     <UserControl.Resources>
         <convert:SpacingConverter x:Key="Spacing" />
         <convert:BoolToStringConverter x:Key="BoolToString" />
@@ -24,6 +24,19 @@
     <!--#endregion-->
 
     <Grid Background="{DynamicResource MaterialDesignCardBackground}">
+        <!--#region Refresh button-->
+        <Button Grid.Column="0"
+                Margin="0,5,5,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top" Panel.ZIndex="1"
+                Command="{Binding RefreshCommand}"
+                Style="{StaticResource RefreshButton}">
+            <Button.DataContext>
+                <viewmodels:NavigationViewModel />
+            </Button.DataContext>
+        </Button>
+        <!--#endregion-->
+
         <TabControl x:Name="TabControl1"
                     HorizontalContentAlignment="Left"
                     materialDesign:ColorZoneAssist.Mode="PrimaryMid"

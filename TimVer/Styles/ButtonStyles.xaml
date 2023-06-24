@@ -22,22 +22,23 @@
     </Style>
     <!--#endregion-->
 
-    <!--#region Refresh button style -->
+    <!--#region Refresh button style-->
     <Style TargetType="Button"
            x:Key="RefreshButton"
            BasedOn="{StaticResource MaterialDesignOutlinedButton}">
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="Content">
             <Setter.Value>
-                <materialDesign:PackIcon Width="30" Height="30"
+                <materialDesign:PackIcon Width="24" Height="24"
                                          Kind="Refresh" />
             </Setter.Value>
         </Setter>
         <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}" />
-        <Setter Property="Height" Value="35" />
+        <Setter Property="Height" Value="30" />
         <Setter Property="Padding" Value="0" />
-        <Setter Property="ToolTip" Value="Refresh" />
-        <Setter Property="Width" Value="40" />
+        <Setter Property="ToolTip" Value="Refresh drive info" />
+        <Setter Property="ToolTipService.Placement" Value="Left" />
+        <Setter Property="Width" Value="30" />
         <Setter Property="materialDesign:RippleAssist.Feedback" Value="{DynamicResource MaterialDesignBody}" />
     </Style>
     <!--#endregion-->

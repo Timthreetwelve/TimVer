@@ -6,10 +6,11 @@ namespace TimVer.Views;
 /// </summary>
 public partial class DrivesPage : UserControl
 {
+    public static DrivesPage Instance { get; set; }
     public DrivesPage()
     {
         InitializeComponent();
-
+        Instance = this;
         TabControl1.SelectedIndex = TempSettings.Setting.DriveSelectedTab;
     }
 
