@@ -17,7 +17,6 @@ global using System.Runtime.Versioning;
 global using System.Security.Principal;
 global using System.Text;
 global using System.Text.Json;
-global using System.Text.Json.Serialization;  //needed for JsonIgnore
 global using System.Threading.Tasks;
 global using System.Windows;
 global using System.Windows.Controls;
@@ -48,3 +47,4 @@ global using TimVer.Dialogs;
 global using TimVer.Helpers;
 global using TimVer.Models;
 global using TimVer.ViewModels;
+global using TimVer.Views;
