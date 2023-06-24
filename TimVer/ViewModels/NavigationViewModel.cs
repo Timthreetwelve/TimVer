@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.ViewModels;
 
@@ -163,6 +163,7 @@ internal partial class NavigationViewModel : ObservableObject
                 {
                     StringBuilder builder = new();
                     _ = builder.AppendLine("WINDOWS INFORMATION");
+                    _ = builder.AppendLine("-------------------");
                     _ = builder.Append("Product Name   = ").AppendLine(CombinedInfo.ProdName);
                     _ = builder.Append("Version        = ").AppendLine(CombinedInfo.Version);
                     _ = builder.Append("Build          = ").AppendLine(CombinedInfo.Build);
@@ -174,7 +175,6 @@ internal partial class NavigationViewModel : ObservableObject
                     _ = builder.Append("Temp Folder    = ").AppendLine(CombinedInfo.TempFolder);
                     Clipboard.SetText(builder.ToString());
                     SnackbarMsg.ClearAndQueueMessage("Windows information copied to the clipboard");
-
                     break;
                 }
 
@@ -182,6 +182,7 @@ internal partial class NavigationViewModel : ObservableObject
                 {
                     StringBuilder builder = new();
                     _ = builder.AppendLine("COMPUTER INFORMATION");
+                    _ = builder.AppendLine("--------------------");
                     _ = builder.Append("Manufacturer    = ").AppendLine(CombinedInfo.Manufacturer);
                     _ = builder.Append("Model           = ").AppendLine(CombinedInfo.Model);
                     _ = builder.Append("Machine Name    = ").AppendLine(CombinedInfo.MachName);
@@ -203,6 +204,7 @@ internal partial class NavigationViewModel : ObservableObject
                 {
                     StringBuilder builder = new();
                     _ = builder.AppendLine("ENVIRONMENT VARIABLES");
+                    _ = builder.AppendLine("---------------------");
                     foreach (EnvVariable item in EnvVariable.EnvVariableList)
                     {
                         _ = builder.Append(item.Variable);
@@ -217,7 +219,8 @@ internal partial class NavigationViewModel : ObservableObject
             case HistoryViewModel:
                 {
                     StringBuilder builder = new();
-                    _ = builder.AppendLine("HISTORY");
+                    _ = builder.AppendLine("BUILD HISTORY");
+                    _ = builder.AppendLine("-------------");
                     foreach (History item in History.HistoryList)
                     {
                         _ = builder.AppendFormat("{0,-18}", item.HDate);
@@ -228,6 +231,83 @@ internal partial class NavigationViewModel : ObservableObject
                     Clipboard.SetText(builder.ToString());
                     SnackbarMsg.ClearAndQueueMessage("History copied to the clipboard");
 
+                    break;
+                }
+
+            case DriveInfoViewModel:
+                {
+                    StringBuilder builder = new();
+                    if (TempSettings.Setting.DriveSelectedTab == 0)
+                    {
+                        _ = builder.AppendLine("LOGICAL DISK DRIVES");
+                        _ = builder.AppendLine("-------------------");
+                        foreach (LogicalDrives item in CombinedInfo.LogicalDrivesList)
+                        {
+                            _ = builder.Append("Name         = ").AppendLine(item.Name);
+                            _ = builder.Append("Label        = ").AppendLine(item.Label);
+                            _ = builder.Append("Drive type   = ").AppendLine(item.DriveType);
+                            _ = builder.Append("Format       = ").AppendLine(item.Format);
+                            _ = builder.Append("Total size   = ").AppendFormat("{0:N2} GB", item.TotalSize).AppendLine();
+                            _ = builder.Append("Free space   = ").AppendFormat("{0:N2} GB", item.GBFree).AppendLine();
+                            _ = builder.Append("Percent free = ").AppendFormat("{0:N2} %", item.PercentFree * 100).AppendLine();
+                            _ = builder.AppendLine();
+                        }
+                        SnackbarMsg.ClearAndQueueMessage("Logical drive information copied to the clipboard");
+                    }
+                    else
+                    {
+                        _ = builder.AppendLine("PHSYICAL DISK DRIVES");
+                        _ = builder.AppendLine("--------------------");
+                        foreach (PhysicalDrives item in CombinedInfo.PhysicalDrivesList)
+                        {
+                            if (UserSettings.Setting.GetPhysicalDrives)
+                            {
+                                _ = builder.Append("Device ID   = ").AppendLine(item.Index.ToString());
+                                _ = builder.Append("Size        = ").AppendFormat("{0:N2} GB", item.Size).AppendLine();
+                                _ = builder.Append("Partitions  = ").AppendLine(item.Partitions.ToString());
+                                _ = builder.Append("Disk type   = ").AppendLine(item.DiskType);
+                                _ = builder.Append("Media type  = ").AppendLine(item.MediaType);
+                                _ = builder.Append("Interface   = ").AppendLine(item.Interface);
+                                _ = builder.Append("Bus type    = ").AppendLine(item.BusType);
+                                _ = builder.Append("Health      = ").AppendLine(item.Health);
+                                _ = builder.Append("Name        = ").AppendLine(item.Name);
+                                _ = builder.Append("Model       = ").AppendLine(item.Model);
+                                _ = builder.AppendLine();
+                            }
+                            else
+                            {
+                                _ = builder.AppendLine("Collection of Physical Drive information is disabled in Settings");
+                            }
+                        }
+                        SnackbarMsg.ClearAndQueueMessage("Physical drive information copied to the clipboard");
+                    }
+                    Clipboard.SetText(builder.ToString());
+                    break;
+                }
+
+            case VideoViewModel:
+                {
+                    StringBuilder builder = new();
+                    _ = builder.AppendLine("GRAPHICS ADAPTERS");
+                    _ = builder.AppendLine("-----------------");
+                    foreach (GpuInfo item in CombinedInfo.GpuList)
+                    {
+                        _ = builder.Append("Name                  = ").AppendLine(item.GpuName);
+                        _ = builder.Append("Adapter type          = ").AppendLine(item.GpuVideoProcessor);
+                        _ = builder.Append("Description           = ").AppendLine(item.GpuDescription);
+                        _ = builder.Append("Device ID             = ").AppendLine(item.GpuDeviceID);
+                        _ = builder.Append("Horizontal resolution = ").AppendLine(item.GpuHorizontalResolution);
+                        _ = builder.Append("Vertical resolution   = ").AppendLine(item.GpuVerticalResolution);
+                        _ = builder.Append("Current refresh rate  = ").Append(item.GpuCurrentRefresh).AppendLine(" Hz");
+                        _ = builder.Append("Max refresh rate      = ").Append(item.GpuMaxRefresh).AppendLine(" Hz");
+                        _ = builder.Append("Min refresh rate      = ").Append(item.GpuMinRefresh).AppendLine(" Hz");
+                        _ = builder.Append("Bits per pixel        = ").AppendLine(item.GpuBitsPerPixel);
+                        _ = builder.Append("Adapter RAM           = ").AppendLine(item.GpuAdapterRam);
+                        _ = builder.Append("Number of colors      = ").AppendLine(item.GpuNumberOfColors);
+                        _ = builder.AppendLine("");
+                    }
+                    Clipboard.SetText(builder.ToString());
+                    SnackbarMsg.ClearAndQueueMessage("Graphics adapters copied to the clipboard");
                     break;
                 }
 
@@ -288,6 +368,10 @@ internal partial class NavigationViewModel : ObservableObject
             default:
                 SnackbarMsg.ClearAndQueueMessage("Refresh is not available on this page.");
                 break;
+        }
+    }
+    #endregion Refresh command
+
     #region Key down events
     /// <summary>
     /// Keyboard events
