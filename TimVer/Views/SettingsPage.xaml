@@ -4,7 +4,6 @@
              xmlns:config="clr-namespace:TimVer.Configuration"
              xmlns:convert="clr-namespace:TimVer.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:helpers="clr-namespace:TimVer.Helpers"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewmodels="clr-namespace:TimVer.ViewModels"
@@ -84,7 +83,6 @@
                                 <RowDefinition Height="31" />
                                 <RowDefinition Height="31" />
                                 <RowDefinition Height="31" />
-
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="45" />
@@ -167,7 +165,6 @@
                                             <Run Text="This option is not available when running TimVer from a removeable drive." />
                                             <LineBreak />
                                             <Run Text="See the ReadMe file for more infomation." />
-
                                         </TextBlock>
                                     </TextBlock.ToolTip>
                                 </TextBlock>
@@ -328,6 +325,7 @@
                                                            Source={x:Static config:TempSettings.Setting}}">
                                 <Grid Background="{DynamicResource MaterialDesignCardBackground}">
                                     <Grid Margin="15,0,15,15">
+                                        <!--#region Row definitions -->
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="30" />
                                             <RowDefinition Height="30" />
@@ -338,6 +336,7 @@
                                             <RowDefinition Height="30" />
                                             <RowDefinition Height="30" />
                                         </Grid.RowDefinitions>
+                                        <!--#endregion-->
                                         <CheckBox Grid.Row="0"
                                                   Content=" Show Partitions column"
                                                   IsChecked="{Binding ShowPartitions,
@@ -498,7 +497,7 @@
                                                                  Source={x:Static config:UserSettings.Setting}}"
                                           Style="{StaticResource MaterialDesignComboBox}" />
                                 <TextBlock Margin="15,12,0,0"
-                                           ToolTip="This setting applies to the row height on the Drives, Environment and History pages."
+                                           ToolTip="This setting applies to the row height on the Drive Info, Environment and History pages."
                                            ToolTipService.InitialShowDelay="300"
                                            ToolTipService.Placement="Top">
                                     <materialDesign:PackIcon Width="20" Height="20"

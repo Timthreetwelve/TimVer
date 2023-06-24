@@ -74,7 +74,7 @@
                 <DataGridTextColumn Binding="{Binding Value}"
                                     Header="Value" />
             </DataGrid.Columns>
-            <!--#endregion-->
         </DataGrid>
+        <!--#endregion-->
     </Grid>
 </UserControl>
