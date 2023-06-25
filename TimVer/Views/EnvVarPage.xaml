@@ -23,7 +23,7 @@
     <Grid Background="{DynamicResource MaterialDesignCardBackground}">
         <!--#region Row definitions-->
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
         <!--#endregion-->
@@ -31,10 +31,14 @@
         <!--#region-->
         <TextBox Grid.Row="0"
                  Width="280" Height="35"
-                 Margin="20,10,0,0" Padding="10,8"
+                 Margin="15,10,0,0" Padding="10,5"
                  HorizontalAlignment="Left"
                  VerticalContentAlignment="Top"
                  materialDesign:HintAssist.Hint="Filter"
+                 materialDesign:HintAssist.IsFloating="True"
+                 materialDesign:HintAssist.Foreground="{DynamicResource MaterialDesignBody}"
+                 materialDesign:HintAssist.FloatingHintHorizontalAlignment="Center"
+                 materialDesign:HintAssist.FloatingScale="0.85"
                  materialDesign:TextFieldAssist.HasClearButton="True"
                  FontSize="14" IsTabStop="True"
                  Style="{StaticResource MaterialDesignOutlinedTextBox}"
@@ -58,7 +62,7 @@
         <!--#region DataGrid-->
         <DataGrid x:Name="EnvDataGrid"
                   Grid.Row="1"
-                  Margin="0,10,5,5"
+                  Margin="0,5,5,5"
                   materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
                   AutoGenerateColumns="False"
                   Background="{DynamicResource MaterialDesignCardBackground}"
