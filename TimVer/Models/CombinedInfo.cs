@@ -282,6 +282,29 @@ public static class CombinedInfo
     }
     #endregion Registered user
 
+    #region Registered organization
+    private static string _regOrg;
+    public static string RegOrganization
+    {
+        get
+        {
+            if (_regOrg != null)
+            {
+                return _regOrg;
+            }
+            if (UserSettings.Setting.ShowUser)
+            {
+                _regOrg = GetInfo.GetRegistryInfo("RegisteredOrganization");
+            }
+            else
+            {
+                _regOrg = null;
+            }
+            return _regOrg;
+        }
+    }
+    #endregion Registered organization
+
     #region Temp folder
     private static string _tempFolder;
     public static string TempFolder

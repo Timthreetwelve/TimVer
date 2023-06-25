@@ -18,10 +18,11 @@
             <Grid>
                 <!--#region Row & column definitions-->
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="160" />
+                    <ColumnDefinition Width="170" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="25" />
                     <RowDefinition Height="25" />
                     <RowDefinition Height="25" />
                     <RowDefinition Height="25" />
@@ -88,6 +89,17 @@
                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
                 <TextBlock Grid.Row="9" Grid.Column="1"
                            Text="{Binding Source={x:Static models:CombinedInfo.RegUser}}"
+                           Visibility="{Binding ShowUser,
+                                                Source={x:Static config:UserSettings.Setting},
+                                                Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+                <TextBlock Grid.Row="10" Grid.Column="0"
+                           Text="Registered Organization"
+                           Visibility="{Binding ShowUser,
+                                                Source={x:Static config:UserSettings.Setting},
+                                                Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <TextBlock Grid.Row="10" Grid.Column="1"
+                           Text="{Binding Source={x:Static models:CombinedInfo.RegOrganization}}"
                            Visibility="{Binding ShowUser,
                                                 Source={x:Static config:UserSettings.Setting},
                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />

@@ -170,7 +170,7 @@
                                 </TextBlock>
                             </StackPanel>
                             <CheckBox Grid.Row="3" Grid.Column="1"
-                                      Content=" Display registered user on Windows Information page"
+                                      Content=" Display registered user and organization on Windows Information page"
                                       IsChecked="{Binding ShowUser,
                                                           Source={x:Static config:UserSettings.Setting}}" />
                             <CheckBox Grid.Row="4" Grid.Column="1"
