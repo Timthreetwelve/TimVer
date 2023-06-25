@@ -75,7 +75,7 @@ internal partial class NavigationViewModel : ObservableObject
                 },
                 new NavigationItem
                 {
-                    Name="History",
+                    Name="Build History",
                     NavPage = NavPage.History,
                     ViewModelType= typeof(HistoryViewModel),
                     IconKind=PackIconKind.History,
@@ -347,30 +347,21 @@ internal partial class NavigationViewModel : ObservableObject
     }
     #endregion Open the application folder
 
-    #region Refresh command
+    #region Refresh drives command
     [RelayCommand]
-    public void Refresh()
+    public static void RefreshDrives()
     {
-        switch (CurrentViewModel)
+        CombinedInfo.LogicalDrivesList.Clear();
+        DrivesPage.Instance.LDrivesDataGrid.ItemsSource = CombinedInfo.LogicalDrivesList;
+
+        if (UserSettings.Setting.GetPhysicalDrives)
         {
-            case DriveInfoViewModel:
-                CombinedInfo.LogicalDrivesList.Clear();
-                DrivesPage.Instance.LDrivesDataGrid.ItemsSource = CombinedInfo.LogicalDrivesList;
-
-                if (UserSettings.Setting.GetPhysicalDrives)
-                {
-                    CombinedInfo.PhysicalDrivesList.Clear();
-                    DrivesPage.Instance.PDisksDataGrid.ItemsSource = CombinedInfo.PhysicalDrivesList;
-                }
-                SnackbarMsg.ClearAndQueueMessage("Disk drive info refreshed.");
-                break;
-
-            default:
-                SnackbarMsg.ClearAndQueueMessage("Refresh is not available on this page.");
-                break;
+            CombinedInfo.PhysicalDrivesList.Clear();
+            DrivesPage.Instance.PDisksDataGrid.ItemsSource = CombinedInfo.PhysicalDrivesList;
         }
+        SnackbarMsg.ClearAndQueueMessage("Disk drive info refreshed.");
     }
-    #endregion Refresh command
+    #endregion Refresh drives command
 
     #region Key down events
     /// <summary>

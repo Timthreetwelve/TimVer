@@ -14,13 +14,17 @@
              FontFamily="Segoe UI"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}">
 
-    <!--#region Resources-->
+    <!--#region Resources & DataContext-->
     <UserControl.Resources>
         <convert:SpacingConverter x:Key="Spacing" />
         <convert:BoolToStringConverter x:Key="BoolToString" />
         <convert:BoolToVisibilityInverter x:Key="BoolToVisInverter" />
         <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
     </UserControl.Resources>
+
+    <UserControl.DataContext>
+        <viewmodels:NavigationViewModel />
+    </UserControl.DataContext>
     <!--#endregion-->
 
     <Grid Background="{DynamicResource MaterialDesignCardBackground}">
@@ -29,11 +33,16 @@
                 Margin="0,5,5,0"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top" Panel.ZIndex="1"
-                Command="{Binding RefreshCommand}"
-                Style="{StaticResource RefreshButton}">
-            <Button.DataContext>
-                <viewmodels:NavigationViewModel />
-            </Button.DataContext>
+                Command="{Binding RefreshDrivesCommand}"
+                Style="{StaticResource RefreshButton}"
+                ToolTipService.Placement="Left">
+            <Button.ToolTip>
+                <TextBlock LineHeight="18">
+                    <Run Text="Refresh drive info. Will refresh both" />
+                    <LineBreak />
+                    <Run Text="Logical and Physical drives (if enabled)." />
+                </TextBlock>
+            </Button.ToolTip>
         </Button>
         <!--#endregion-->
 
@@ -143,7 +152,7 @@
                                                                  Converter={StaticResource BoolToVisInverter}}" />
                         <DataGridTextColumn Binding="{Binding Index}"
                                             ElementStyle="{StaticResource alignCenter}"
-                                            Header="Device ID" />
+                                            Header="Index" />
                         <DataGridTextColumn x:Name="colPSize" Binding="{Binding Size}"
                                             ElementStyle="{StaticResource alignRight}"
                                             Header="{Binding Use1024,

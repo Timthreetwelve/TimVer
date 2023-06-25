@@ -36,8 +36,6 @@
         <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}" />
         <Setter Property="Height" Value="30" />
         <Setter Property="Padding" Value="0" />
-        <Setter Property="ToolTip" Value="Refresh drive info" />
-        <Setter Property="ToolTipService.Placement" Value="Left" />
         <Setter Property="Width" Value="30" />
         <Setter Property="materialDesign:RippleAssist.Feedback" Value="{DynamicResource MaterialDesignBody}" />
     </Style>
