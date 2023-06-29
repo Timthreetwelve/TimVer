@@ -271,7 +271,7 @@ public static class CombinedInfo
             }
             if (UserSettings.Setting.ShowUser)
             {
-                _regUser = GetInfo.CimQueryOS("RegisteredUser");
+                _regUser = GetInfo.GetRegistryInfo("RegisteredOwner");
             }
             else
             {
