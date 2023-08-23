@@ -81,6 +81,7 @@ public static class DiskDriveHelpers
         List<LogicalDrives> logicalDrives = new();
         if (GetLogicalDrives() != null)
         {
+            MainWindowUIHelpers.MainWindowWaitPointer();
             Stopwatch watch = Stopwatch.StartNew();
             foreach (DriveInfo drive in GetLogicalDrives())
             {
@@ -109,6 +110,7 @@ public static class DiskDriveHelpers
                 }
             }
             watch.Stop();
+            MainWindowUIHelpers.MainWindowNormalPointer();
             string drv = count != 1 ? "drives" : "drive";
             string msg = $"Found {count} logical {drv} in {watch.Elapsed.TotalMilliseconds:N2} ms";
             _log.Debug(msg);
