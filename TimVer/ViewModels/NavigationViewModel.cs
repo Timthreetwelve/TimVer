@@ -35,71 +35,71 @@ internal partial class NavigationViewModel : ObservableObject
             {
                 new NavigationItem
                 {
-                    Name="Windows Info",
+                    Name=GetStringResource("NavItem_WindowsInfo"),
                     NavPage = NavPage.WindowsInfo,
                     ViewModelType= typeof(WindowsInfoViewModel),
                     IconKind=PackIconKind.Microsoft,
-                    PageTitle="Windows Information"
+                    PageTitle=GetStringResource("NavTitle_WindowsInfo")
                 },
                 new NavigationItem
                 {
-                    Name="Hardware Info",
+                    Name=GetStringResource("NavItem_HardwareInfo"),
                     NavPage = NavPage.ComputerInfo,
                     ViewModelType= typeof(ComputerInfoViewModel),
                     IconKind=PackIconKind.ComputerClassic,
-                    PageTitle="Hardware Information"
+                    PageTitle=GetStringResource("NavTitle_HardwareInfo")
                 },
                 new NavigationItem
                 {
-                    Name="Drive Info",
+                    Name=GetStringResource("NavItem_DriveInfo"),
                     NavPage = NavPage.DriveInfo,
                     ViewModelType= typeof(DriveInfoViewModel),
                     IconKind=PackIconKind.Harddisk,
-                    PageTitle="Disk Drive Information"
+                    PageTitle=GetStringResource("NavTitle_DriveInfo")
                 },
                 new NavigationItem
                 {
-                    Name="Graphics Info",
+                   Name=GetStringResource("NavItem_GraphicsInfo"),
                     NavPage = NavPage.VideoInfo,
                     ViewModelType= typeof(VideoViewModel),
                     IconKind=PackIconKind.Monitor,
-                    PageTitle="Graphics Information"
+                   PageTitle=GetStringResource("NavTitle_GraphicsInfo")
                 },
                 new NavigationItem
                 {
-                    Name="Environment",
+                    Name=GetStringResource("NavItem_Environment"),
                     NavPage = NavPage.Environment,
                     ViewModelType= typeof(EnvVarViewModel),
                     IconKind=PackIconKind.ListBoxOutline,
-                    PageTitle="Environment Variables"
+                    PageTitle=GetStringResource("NavTitle_Environment")
                 },
                 new NavigationItem
                 {
-                    Name="Build History",
+                    Name=GetStringResource("NavItem_BuildHistory"),
                     NavPage = NavPage.History,
                     ViewModelType= typeof(HistoryViewModel),
                     IconKind=PackIconKind.History,
-                    PageTitle="Build History"
+                    PageTitle=GetStringResource("NavTitle_BuildHistory")
                 },
                 new NavigationItem
                 {
-                    Name="Settings",
+                    Name = GetStringResource("NavItem_Settings"),
                     NavPage=NavPage.Settings,
                     ViewModelType= typeof(SettingsViewModel),
                     IconKind=PackIconKind.SettingsOutline,
-                    PageTitle = "Settings"
+                     PageTitle = GetStringResource("NavTitle_Settings")
                 },
                 new NavigationItem
                 {
-                    Name="About",
+                    Name = GetStringResource("NavItem_About"),
                     NavPage=NavPage.About,
                     ViewModelType= typeof(AboutViewModel),
                     IconKind=PackIconKind.AboutCircleOutline,
-                    PageTitle = "About TimVer"
+                    PageTitle = GetStringResource("NavTitle_About")
                 },
                 new NavigationItem
                 {
-                    Name="Exit",
+                    Name = GetStringResource("NavItem_Exit"),
                     IconKind=PackIconKind.ExitToApp,
                     IsExit=true
                 }
@@ -157,11 +157,13 @@ internal partial class NavigationViewModel : ObservableObject
     [RelayCommand]
     public void CopyToClipboard()
     {
+        StringBuilder builder = new();
+        Clipboard.Clear();
+
         switch (CurrentViewModel)
         {
             case WindowsInfoViewModel:
                 {
-                    StringBuilder builder = new();
                     _ = builder.AppendLine("WINDOWS INFORMATION");
                     _ = builder.AppendLine("-------------------");
                     _ = builder.Append("Product Name   = ").AppendLine(CombinedInfo.ProdName);
@@ -173,14 +175,11 @@ internal partial class NavigationViewModel : ObservableObject
                     _ = builder.Append("Installed on   = ").AppendLine(CombinedInfo.InstallDate);
                     _ = builder.Append("Windows Folder = ").AppendLine(CombinedInfo.WindowsFolder);
                     _ = builder.Append("Temp Folder    = ").AppendLine(CombinedInfo.TempFolder);
-                    Clipboard.SetText(builder.ToString());
-                    SnackbarMsg.ClearAndQueueMessage("Windows information copied to the clipboard");
                     break;
                 }
 
             case ComputerInfoViewModel:
                 {
-                    StringBuilder builder = new();
                     _ = builder.AppendLine("COMPUTER INFORMATION");
                     _ = builder.AppendLine("--------------------");
                     _ = builder.Append("Manufacturer    = ").AppendLine(CombinedInfo.Manufacturer);
@@ -195,14 +194,11 @@ internal partial class NavigationViewModel : ObservableObject
                     {
                         _ = builder.Append("Disk Drives     = ").AppendLine(CombinedInfo.DiskDrives);
                     }
-                    Clipboard.SetText(builder.ToString());
-                    SnackbarMsg.ClearAndQueueMessage("Hardware information copied to the clipboard");
                     break;
                 }
 
             case EnvVarViewModel:
                 {
-                    StringBuilder builder = new();
                     _ = builder.AppendLine("ENVIRONMENT VARIABLES");
                     _ = builder.AppendLine("---------------------");
                     foreach (EnvVariable item in EnvVariable.EnvVariableList)
@@ -211,14 +207,11 @@ internal partial class NavigationViewModel : ObservableObject
                         _ = builder.Append(" = ");
                         _ = builder.AppendLine(item.Value);
                     }
-                    Clipboard.SetText(builder.ToString());
-                    SnackbarMsg.ClearAndQueueMessage("Environment variables copied to the clipboard");
                     break;
                 }
 
             case HistoryViewModel:
                 {
-                    StringBuilder builder = new();
                     _ = builder.AppendLine("BUILD HISTORY");
                     _ = builder.AppendLine("-------------");
                     foreach (History item in History.HistoryList)
@@ -228,15 +221,11 @@ internal partial class NavigationViewModel : ObservableObject
                         _ = builder.AppendFormat("{0,-6}", item.HVersion);
                         _ = builder.AppendLine(item.HBranch);
                     }
-                    Clipboard.SetText(builder.ToString());
-                    SnackbarMsg.ClearAndQueueMessage("History copied to the clipboard");
-
                     break;
                 }
 
             case DriveInfoViewModel:
                 {
-                    StringBuilder builder = new();
                     if (TempSettings.Setting.DriveSelectedTab == 0)
                     {
                         _ = builder.AppendLine("LOGICAL DISK DRIVES");
@@ -252,7 +241,6 @@ internal partial class NavigationViewModel : ObservableObject
                             _ = builder.Append("Percent free = ").AppendFormat("{0:N2} %", item.PercentFree * 100).AppendLine();
                             _ = builder.AppendLine();
                         }
-                        SnackbarMsg.ClearAndQueueMessage("Logical drive information copied to the clipboard");
                     }
                     else
                     {
@@ -279,15 +267,12 @@ internal partial class NavigationViewModel : ObservableObject
                                 _ = builder.AppendLine("Collection of Physical Drive information is disabled in Settings");
                             }
                         }
-                        SnackbarMsg.ClearAndQueueMessage("Physical drive information copied to the clipboard");
                     }
-                    Clipboard.SetText(builder.ToString());
                     break;
                 }
 
             case VideoViewModel:
                 {
-                    StringBuilder builder = new();
                     _ = builder.AppendLine("GRAPHICS ADAPTERS");
                     _ = builder.AppendLine("-----------------");
                     foreach (GpuInfo item in CombinedInfo.GpuList)
@@ -306,8 +291,6 @@ internal partial class NavigationViewModel : ObservableObject
                         _ = builder.Append("Number of colors      = ").AppendLine(item.GpuNumberOfColors);
                         _ = builder.AppendLine("");
                     }
-                    Clipboard.SetText(builder.ToString());
-                    SnackbarMsg.ClearAndQueueMessage("Graphics adapters copied to the clipboard");
                     break;
                 }
 
@@ -315,6 +298,14 @@ internal partial class NavigationViewModel : ObservableObject
                 SnackbarMsg.ClearAndQueueMessage("Copy to clipboard is not valid on this page");
                 SystemSounds.Exclamation.Play();
                 break;
+        }
+        // Don't merge with following if statement
+        if (builder.Length > 0)
+        {
+            if (ClipboardHelper.CopyTextToClipboard(builder.ToString()))
+            {
+                SnackbarMsg.ClearAndQueueMessage("Current page was copied to the clipboard");
+            }
         }
     }
     #endregion Copy to clipboard command
@@ -389,7 +380,6 @@ internal partial class NavigationViewModel : ObservableObject
             {
                 case Key.OemComma:
                     {
-                        //NavigateToPage(NavPage.Settings);
                         _mainWindow.NavigationListBox.SelectedValue = FindNavPage(NavPage.Settings);
                         break;
                     }
@@ -401,13 +391,17 @@ internal partial class NavigationViewModel : ObservableObject
                 case Key.Add:
                     {
                         MainWindowUIHelpers.EverythingLarger();
-                        SnackbarMsg.ClearAndQueueMessage($"Size set to {UserSettings.Setting.UISize}");
+                        string size = EnumDescConverter.GetEnumDescription(UserSettings.Setting.UISize);
+                        string message = string.Format(GetStringResource("MsgText_UISizeSet"), size);
+                        SnackbarMsg.ClearAndQueueMessage(message, 2000);
                         break;
                     }
                 case Key.Subtract:
                     {
                         MainWindowUIHelpers.EverythingSmaller();
-                        SnackbarMsg.ClearAndQueueMessage($"Size set to {UserSettings.Setting.UISize}");
+                        string size = EnumDescConverter.GetEnumDescription(UserSettings.Setting.UISize);
+                        string message = string.Format(GetStringResource("MsgText_UISizeSet"), size);
+                        SnackbarMsg.ClearAndQueueMessage(message, 2000);
                         break;
                     }
             }
@@ -434,8 +428,9 @@ internal partial class NavigationViewModel : ObservableObject
                         UserSettings.Setting.UITheme = ThemeType.Light;
                         break;
                 }
-                string theme = Converters.EnumDescConverter.GetEnumDescription(UserSettings.Setting.UITheme);
-                SnackbarMsg.ClearAndQueueMessage($"Theme set to {theme}", 2000);
+                string theme = EnumDescConverter.GetEnumDescription(UserSettings.Setting.UITheme);
+                string message = string.Format(GetStringResource("MsgText_UIThemeSet"), theme);
+                SnackbarMsg.ClearAndQueueMessage(message, 2000);
             }
             if (e.Key == Key.C)
             {
@@ -447,13 +442,13 @@ internal partial class NavigationViewModel : ObservableObject
                 {
                     UserSettings.Setting.PrimaryColor++;
                 }
-                string color = Converters.EnumDescConverter.GetEnumDescription(UserSettings.Setting.PrimaryColor);
-                SnackbarMsg.ClearAndQueueMessage($"Accent color set to {color}");
+                string color = EnumDescConverter.GetEnumDescription(UserSettings.Setting.PrimaryColor);
+                string message = string.Format(GetStringResource("MsgText_UIColorSet"), color);
+                SnackbarMsg.ClearAndQueueMessage(message, 2000);
             }
             if (e.Key == Key.S)
             {
                 TextFileViewer.ViewTextFile(ConfigHelpers.SettingsFileName);
-                SnackbarMsg.ClearAndQueueMessage("Opening settings file", 2000);
             }
         }
         #endregion

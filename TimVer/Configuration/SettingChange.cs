@@ -55,6 +55,10 @@ public static class SettingChange
             case nameof(UserSettings.Setting.GetPhysicalDrives):
                 CombinedInfo.PhysicalDrivesList.Clear();
                 break;
+
+            case nameof(UserSettings.Setting.UILanguage):
+                LocalizationHelpers.SaveAndRestart();
+                break;
         }
     }
     #endregion User Setting change

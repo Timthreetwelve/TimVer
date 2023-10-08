@@ -25,6 +25,7 @@ global using System.Windows.Input;
 global using System.Windows.Media;
 global using System.Windows.Navigation;
 global using System.Windows.Threading;
+global using System.Windows.Markup;
 
 global using CommandLine;
 
@@ -43,8 +44,12 @@ global using NLog.Targets;
 
 global using TimVer.Configuration;
 global using TimVer.Constants;
+global using TimVer.Converters;
 global using TimVer.Dialogs;
 global using TimVer.Helpers;
 global using TimVer.Models;
 global using TimVer.ViewModels;
 global using TimVer.Views;
+
+global using static TimVer.Helpers.NLogHelpers;
+global using static TimVer.Helpers.ResourceHelpers;

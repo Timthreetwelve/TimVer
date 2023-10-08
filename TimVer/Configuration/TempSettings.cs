@@ -27,6 +27,9 @@ internal partial class TempSettings : ConfigManager<TempSettings>
     private bool _historyOnBoot;
 
     [ObservableProperty]
+    private static bool _langExpanderOpen;
+
+    [ObservableProperty]
     private static bool _uIExpanderOpen;
 
     [ObservableProperty]

@@ -26,6 +26,7 @@
         <viewmodels:NavigationViewModel />
     </Window.DataContext>
     <Window.Resources>
+        <config:UserSettings x:Key="config" />
         <convert:SelectedItemConverter x:Key="SelItemConv" />
     </Window.Resources>
     <!--#endregion-->
@@ -57,7 +58,8 @@
             <!--#region Column definitions for the title row-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="40" />
             </Grid.ColumnDefinitions>
             <!--#endregion-->
 
@@ -77,13 +79,24 @@
                                      VerticalAlignment="Top"
                                      Background="{DynamicResource MaterialDesignPaper}"
                                      Foreground="{DynamicResource MaterialDesignBody}"
+                                     IsTabStop="False"
                                      MessageQueue="{materialDesign:MessageQueue}" />
             <!--#endregion-->
 
             <!--#region PopupBox in button-->
             <Button Grid.Column="1"
-                    Width="45"
-                    Padding="0" HorizontalAlignment="Right"
+                    Width="40"
+                    Margin="0,0,5,0" Padding="0"
+                    HorizontalAlignment="Center"
+                    Command="{Binding CopyToClipboardCommand}"
+                    IsDefault="False" IsTabStop="False"
+                    Style="{StaticResource CopyToClipboardButton}"
+                    ToolTip="{DynamicResource Button_CopyToClipboardToolTip}" />
+
+            <Button Grid.Column="2"
+                    Width="40"
+                    Margin="0,0,5,0" Padding="0"
+                    HorizontalAlignment="Right"
                     Foreground="{DynamicResource MaterialDesignBody}"
                     IsDefault="False" IsTabStop="False"
                     Style="{StaticResource MaterialDesignFlatButton}">
@@ -91,7 +104,7 @@
                                          Focusable="False"
                                          PlacementMode="LeftAndAlignTopEdges"
                                          Style="{DynamicResource MaterialDesignPopupBox}"
-                                         ToolTip="Additional Actions">
+                                         ToolTip="{DynamicResource Button_ThreeDotToolTip}">
                     <materialDesign:PopupBox.ToggleContent>
                         <materialDesign:PackIcon Width="45" Height="28"
                                                  Foreground="{Binding ElementName=PageTitle,
@@ -101,42 +114,36 @@
                     <Border Padding="3"
                             BorderBrush="{DynamicResource MaterialDesignDivider}"
                             BorderThickness="2">
-                        <Grid Width="160"
-                              Margin="0">
+                        <Grid Width="auto">
                             <StackPanel Orientation="Vertical">
                                 <Button Height="35"
-                                        Padding="15,1,0,22"
+                                        Padding="15,1,15,22"
                                         Command="{Binding ViewLogFileCommand}"
-                                        Content="View Log File"
-                                        ToolTip="Open the application log file in the default application." />
+                                        Content="{DynamicResource Button_OpenLogFile}"
+                                        ToolTip="{DynamicResource Button_OpenLogFileToolTip}" />
                                 <Button Height="35"
-                                        Padding="15,1,0,22"
+                                        Padding="15,1,15,22"
                                         Command="{Binding OpenAppFolderCommand}"
-                                        Content="Open the App Folder"
-                                        ToolTip="Open the TimVer folder in File Explorer." />
+                                        Content="{DynamicResource Button_OpenFolder}"
+                                        ToolTip="{DynamicResource Button_OpenFolderToolTip}" />
                                 <Separator Margin="0" Padding="1"
                                            Background="{DynamicResource MaterialDesignDivider}" />
                                 <Button Height="35"
-                                        Padding="15,1,0,22"
+                                        Padding="15,1,15,22"
                                         Command="{Binding ViewReadMeFileCommand}"
-                                        Content="View ReadMe File"
-                                        ToolTip="Open the ReadMe file in the default application." />
+                                        Content="{DynamicResource About_DocumentationText}"
+                                        ToolTip="{DynamicResource About_DocumentationToolTip}" />
                                 <Separator Margin="0" Padding="1"
                                            Background="{DynamicResource MaterialDesignDivider}" />
                                 <Button Height="35"
-                                        Padding="15,1,0,22"
-                                        Command="{Binding CopyToClipboardCommand}"
-                                        Content="Copy to Clipboard"
-                                        ToolTip="Copy this page to the clipboard" />
-                                <Button Content="Cancel" />
-
+                                        Padding="15,1,15,22"
+                                        Content="{DynamicResource Button_Cancel}" />
                             </StackPanel>
                         </Grid>
                     </Border>
                 </materialDesign:PopupBox>
             </Button>
             <!--#endregion-->
-
         </Grid>
         <!--#endregion-->
 
@@ -162,6 +169,20 @@
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem"
+                       BasedOn="{StaticResource MaterialDesignListBoxItem}">
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsExit}" Value="True" />
+                                <Condition Binding="{Binding Source={x:Static config:UserSettings.Setting}, Path=ShowExitInNav}" Value="False" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ListBox.ItemContainerStyle>
             <bh:Interaction.Triggers>
                 <bh:EventTrigger EventName="SelectionChanged">
                     <bh:InvokeCommandAction Command="{Binding NavigateCommand}"

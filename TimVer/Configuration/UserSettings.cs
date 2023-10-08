@@ -46,6 +46,9 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private bool _showDrives = true;
 
     [ObservableProperty]
+    private bool _showExitInNav = true;
+
+    [ObservableProperty]
     private bool _showFormat = true;
 
     [ObservableProperty]
@@ -76,6 +79,9 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private bool _startCentered = true;
 
     [ObservableProperty]
+    private string _uILanguage = "en-US";
+
+    [ObservableProperty]
     private MySize _uISize = MySize.Default;
 
     [ObservableProperty]
@@ -83,6 +89,9 @@ public partial class UserSettings : ConfigManager<UserSettings>
 
     [ObservableProperty]
     private bool _use1024;
+
+    [ObservableProperty]
+    private bool _useOSLanguage;
 
     [ObservableProperty]
     private double _windowHeight = 500;
