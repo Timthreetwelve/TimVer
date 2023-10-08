@@ -41,4 +41,23 @@
     </Style>
     <!--#endregion-->
 
+    <!--#region Copy to clipboard button style-->
+    <Style TargetType="Button"
+           x:Key="CopyToClipboardButton"
+           BasedOn="{StaticResource MaterialDesignOutlinedButton}">
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Content">
+            <Setter.Value>
+                <materialDesign:PackIcon Width="24" Height="24"
+                                         Kind="ClipboardOutline" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Width" Value="30" />
+        <Setter Property="materialDesign:RippleAssist.Feedback" Value="{DynamicResource MaterialDesignBody}" />
+    </Style>
+    <!--#endregion-->
+
 </ResourceDictionary>
