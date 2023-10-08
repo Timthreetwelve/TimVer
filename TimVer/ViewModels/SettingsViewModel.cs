@@ -8,12 +8,6 @@ public partial class SettingsViewModel : ObservableObject
 
     public static void ParseInitialPage()
     {
-        foreach (NavPage page in Enum.GetValues<NavPage>())
-        {
-            if (!page.Equals(NavPage.Exit))
-            {
-                NavPages.Add(page);
-            }
-        }
+        NavPages.AddRange(Enum.GetValues<NavPage>());
     }
 }
