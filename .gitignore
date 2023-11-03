@@ -343,3 +343,4 @@ healthchecksdb
 /TimVer/CurrentCommit.txt
 **/.vshistory
 /TimVer/BuildInfo.cs
+/TimVer/Inno_Setup/TimVer.~is
