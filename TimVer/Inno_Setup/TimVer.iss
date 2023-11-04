@@ -2,41 +2,68 @@
 ; TimVer
 ; -----------------------------------------------------
 
-#define MyAppName "TimVer"
-#define MyAppVersion GetStringFileInfo("D:\Visual Studio\Source\Prod\TimVer\TimVer\bin\Publish\TimVer.exe", "FileVersion")
-#define MyAppExeName "TimVer.exe"
-#define MySourceDir "D:\Visual Studio\Source\Prod\TimVer\TimVer\bin\Publish"
-#define MySetupIcon "D:\Visual Studio\Source\Prod\TimVer\TimVer\Images\TV.ico"
-#define MyCompanyName "T_K"
-#define MyPublisherName "Tim Kennedy"
-#define MyCopyright "Copyright (C) 2023 Tim Kennedy"
-#define MyLicFile "D:\Visual Studio\Resources\License.rtf"
-#define MyOutputDir "D:\InnoSetup\Output"
-#define MyLargeImage "D:\InnoSetup\Images\WizardImage.bmp"
-#define MySmallImage "D:\InnoSetup\Images\WizardSmallImage.bmp"
-#define MyDateTimeString GetDateTimeString('yyyy/mm/dd hh:nn:ss', '/', ':')
-#define MyAppNameNoSpaces StringChange(MyAppName, " ", "")
-#define MyInstallerFilename MyAppNameNoSpaces + "_" + MyAppVersion + "_Setup"
-#define RunRegKey "Software\Microsoft\Windows\CurrentVersion\Run" 
+#define MyAppName            "TimVer"
+#define MyAppVersion         GetStringFileInfo("D:\Visual Studio\Source\Prod\TimVer\TimVer\bin\Publish\TimVer.exe", "FileVersion")
+#define MyAppExeName         "TimVer.exe"
+#define MySourceDir          "D:\Visual Studio\Source\Prod\TimVer\TimVer\bin\Publish"
+#define MySetupIcon          "D:\Visual Studio\Source\Prod\TimVer\TimVer\Images\TV.ico"
+#define MyCompanyName        "T_K"
+#define MyPublisherName      "Tim Kennedy"
+#define CurrentYear          GetDateTimeString('yyyy', '/', ':')
+#define MyCopyright          "(C) " + CurrentYear + " Tim Kennedy"
+#define MyLicFile            "D:\Visual Studio\Resources\License.rtf"
+#define MyOutputDir          "D:\InnoSetup\Output"
+#define MyLargeImage         "D:\InnoSetup\Images\WizardImage.bmp"
+#define MySmallImage         "D:\InnoSetup\Images\WizardSmallImage.bmp"
+#define MyDateTimeString     GetDateTimeString('yyyy/mm/dd hh:nn:ss', '/', ':')
+#define MyAppNameNoSpaces    StringChange(MyAppName, " ", "")
+#define MyInstallerFilename  MyAppNameNoSpaces + "_" + MyAppVersion + "_Setup"
+#define RunRegKey            "Software\Microsoft\Windows\CurrentVersion\Run" 
  
+#define MyAppID              "{4D2F6A12-7661-4E5B-983A-11F2194C81CA}"
+#define MyAppSupportURL      "https://github.com/Timthreetwelve/TimVer"
+
+; -----------------------------------------------------
+; Include the localization file. Thanks bovirus!
+; -----------------------------------------------------
+#include "TimVerLocalization.iss"
+
 [Setup]
-; NOTE: The value of AppId uniquely identifies this application. 
+; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 ;---------------------------------------------
-AppId={{4D2F6A12-7661-4E5B-983A-11F2194C81CA}
+AppId={{#MyAppID}
+
 ;---------------------------------------------
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ; Installs in %localappdata%\Programs\ instead of \Program Files(x86)
 ;---------------------------------------------
 PrivilegesRequired=lowest
 ;---------------------------------------------
-AllowNoIcons=yes
-AppCopyright={#MyCopyright}
+
 AppName={#MyAppName}
-AppPublisher={#MyPublisherName}
-AppVerName={#MyAppName} {#MyAppVersion}
 AppVersion={#MyAppVersion}
+AppVerName={#MyAppName} {#MyAppVersion}
+
+AppCopyright={#MyCopyright}
+AppPublisherURL={#MyAppSupportURL}
+AppSupportURL={#MyAppSupportURL}
+AppUpdatesURL={#MyAppSupportURL}
+
+VersionInfoDescription={#MyAppName} installer
+VersionInfoProductName={#MyAppName}
+VersionInfoVersion={#MyAppVersion}
+
+UninstallDisplayName={#MyAppName}
+UninstallDisplayIcon={app}\{#MyAppExeName}
+AppPublisher={#MyPublisherName}
+
+ShowLanguageDialog=yes
+UsePreviousLanguage=no
+WizardStyle=modern
+
+AllowNoIcons=yes
 Compression=lzma
 DefaultDirName={autopf}\{#MyCompanyName}\{#MyAppName}
 DefaultGroupName={#MyAppName}
@@ -45,7 +72,6 @@ DisableProgramGroupPage=yes
 DisableReadyMemo=yes
 DisableStartupPrompt=yes
 DisableWelcomePage=no
-;LicenseFile={#MyLicFile}
 OutputBaseFilename={#MyInstallerFilename}
 OutputDir={#MyOutputDir}
 OutputManifestFile={#MyAppName}_{#MyAppVersion}_FileList.txt
@@ -53,30 +79,8 @@ SetupIconFile={#MySetupIcon}
 SetupLogging=yes
 SolidCompression=yes
 SourceDir={#MySourceDir}
-UninstallDisplayIcon={app}\{#MyAppExeName}
-VersionInfoVersion={#MyAppVersion}
 WizardImageFile={#MyLargeImage}
-;WizardSmallImageFile={#MySmallImage}
-WizardStyle=modern
 WizardSizePercent=100,100
-AppSupportURL=https://github.com/Timthreetwelve/TimVer
-;InfoBeforeFile="D:\InnoSetup\Timver_Before.rtf"
-
-[Languages]
-Name: "english"; MessagesFile: "compiler:Default.isl"
-
-[LangOptions]
-DialogFontSize=9
-DialogFontName="Segoe UI"
-WelcomeFontSize=12
-WelcomeFontName="Verdana"
-
-[Messages]
-WelcomeLabel1=Welcome to [name] Setup
-WelcomeLabel2=This will install [name/ver] on your computer. \
-%n%nIt is recommended that you close all other applications before continuing. \
-%n%n%nNote that [name] requires .NET 6.%n
-FinishedHeadingLabel=Completing [name] Setup
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
@@ -121,8 +125,7 @@ Filename: "{app}\ReadMe.txt"; Description: "{cm:ViewReadme}"; Flags: nowait post
       usPostUninstall:
         // Remove settings & history files. Also remove from windows startup.
         begin
-          mres := MsgBox('Do you want to remove the settings and history files and registry entries? '#13#13' Select ''No'' if you plan on reinstalling. ', \
-            mbConfirmation, MB_YESNO or MB_DEFBUTTON2)
+          mres := MsgBox({cm:ClearSettings}, mbConfirmation, MB_YESNO or MB_DEFBUTTON2)
           if mres = IDYES then
           begin
             DelTree(ExpandConstant('{app}\*.json'), False, True, False);
