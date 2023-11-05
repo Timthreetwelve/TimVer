@@ -3,25 +3,303 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!--
-        Refer to the "Contribute a Translation" topic in the Wiki: https://github.com/Timthreetwelve/TimVer/wiki/Contribute-a-Translation
-        =================================================================================================================================
+        Refer to the "Contribute a Translation" topic in the Wiki:
 
-        Language name here: English (en-GB)
+        https://github.com/Timthreetwelve/TimVer/wiki/Contribute-a-Translation
 
-        Translation contributed by: Timthreetwelve
+        ======================================================================
 
-        ==================================================================================================================================
+        Application name:            TimVer
+
+        Language name:
+
+        Translation contributed by:
+
+        Date last update:
+
+        ======================================================================
+
     -->
 
+    <!--  About Page  -->
+    <sys:String x:Key="About_BuildDate">Build Date</sys:String>
+    <sys:String x:Key="About_CommitID">Commit ID</sys:String>
+    <sys:String x:Key="About_CommitIDToolTip">Full Commit ID:</sys:String>
+    <sys:String x:Key="About_Copyright">Copyright</sys:String>
+    <sys:String x:Key="About_CreatedBy">Created by</sys:String>
+    <sys:String x:Key="About_CreatedByToolTip">See Tim's other work at https://github.com/Timthreetwelve</sys:String>
+    <sys:String x:Key="About_Description">All the info that Winver provides and more!</sys:String>
+    <sys:String x:Key="About_Documentation">Documentation</sys:String>
+    <sys:String x:Key="About_DocumentationText">Open the ReadMe file</sys:String>
+    <sys:String x:Key="About_DocumentationToolTip">View the ReadMe file</sys:String>
+    <sys:String x:Key="About_GitHubToolTip">Visit the TimVer page on GitHub</sys:String>
+    <sys:String x:Key="About_License">License</sys:String>
+    <sys:String x:Key="About_LicenseText">This project is licensed under the terms of the MIT license.</sys:String>
+    <sys:String x:Key="About_LicenseToolTip">View the license document</sys:String>
+    <sys:String x:Key="About_Translations">Translations</sys:String>
+    <sys:String x:Key="About_Update">Update TimVer</sys:String>
+    <sys:String x:Key="About_UpdateText">Check for new release of TimVer</sys:String>
+    <sys:String x:Key="About_UpdateToolTip">Check GitHub for a newer release</sys:String>
+    <sys:String x:Key="About_Version">Version</sys:String>
+    <!--  Build History Page  -->
+    <sys:String x:Key="BuildHistory_Branch">Branch</sys:String>
+    <sys:String x:Key="BuildHistory_Build">Build</sys:String>
+    <sys:String x:Key="BuildHistory_Date">Date</sys:String>
+    <sys:String x:Key="BuildHistory_Records">records</sys:String>
+    <sys:String x:Key="BuildHistory_Version">Version</sys:String>
+    <!--  Button Text  -->
+    <sys:String x:Key="Button_Cancel">Cancel</sys:String>
+    <sys:String x:Key="Button_CopyToClipboardToolTip">Copy this page to the clipboard</sys:String>
+    <sys:String x:Key="Button_No">No</sys:String>
+    <sys:String x:Key="Button_OK">OK</sys:String>
+    <sys:String x:Key="Button_OpenFolder">Open the App Folder</sys:String>
+    <sys:String x:Key="Button_OpenFolderToolTip">Open the TimVer folder in file explorer</sys:String>
+    <sys:String x:Key="Button_OpenLogFile">View Log File</sys:String>
+    <sys:String x:Key="Button_OpenLogFileToolTip">Open the log file in the default application.</sys:String>
+    <sys:String x:Key="Button_ThreeDotToolTip">Additional Actions</sys:String>
+    <sys:String x:Key="Button_Yes">Yes</sys:String>
+    <!--  Disk Drive Information Page  -->
+    <sys:String x:Key="DriveInfo_BusType">Bus Type</sys:String>
+    <sys:String x:Key="DriveInfo_BusType_FiberChannel">Fiber Channel</sys:String>
+    <sys:String x:Key="DriveInfo_BusType_FileBackedVirtual">File-Backed Virtual</sys:String>
+    <sys:String x:Key="DriveInfo_BusType_MMC">Multimedia Card (MMC)</sys:String>
+    <sys:String x:Key="DriveInfo_BusType_Reserved">Reserved</sys:String>
+    <sys:String x:Key="DriveInfo_BusType_SAS">Serial Attached SCSI (SAS)</sys:String>
+    <sys:String x:Key="DriveInfo_BusType_SATA">Serial ATA (SATA)</sys:String>
+    <sys:String x:Key="DriveInfo_BusType_SD">Secure Digital (SD)</sys:String>
+    <sys:String x:Key="DriveInfo_BusType_StorageSpaces">Storage Spaces</sys:String>
+    <sys:String x:Key="DriveInfo_BusType_Unknown">Unknown</sys:String>
+    <sys:String x:Key="DriveInfo_DiskType">Disk Type</sys:String>
+    <sys:String x:Key="DriveInfo_Error">DriveInfo Error</sys:String>
+    <sys:String x:Key="DriveInfo_ErrorSeeLog">Error - See log file</sys:String>
+    <sys:String x:Key="DriveInfo_ErrorProcessingDrive">Error processing drive</sys:String>
+    <sys:String x:Key="DriveInfo_Format">Format</sys:String>
+    <sys:String x:Key="DriveInfo_Free">Free</sys:String>
+    <sys:String x:Key="DriveInfo_FreePercent">% Free</sys:String>
+    <sys:String x:Key="DriveInfo_Health">Health</sys:String>
+    <sys:String x:Key="DriveInfo_Health_Healthy">Healthy</sys:String>
+    <sys:String x:Key="DriveInfo_Health_Unhealthy">Unhealthy</sys:String>
+    <sys:String x:Key="DriveInfo_Health_Unknown">Unknown</sys:String>
+    <sys:String x:Key="DriveInfo_Health_Warning">Warning</sys:String>
+    <sys:String x:Key="DriveInfo_IOError">I/O Error</sys:String>
+    <sys:String x:Key="DriveInfo_Index">Index</sys:String>
+    <sys:String x:Key="DriveInfo_Interface">Interface</sys:String>
+    <sys:String x:Key="DriveInfo_Label">Label</sys:String>
+    <sys:String x:Key="DriveInfo_LogicalDrives">Logical Drives</sys:String>
+    <sys:String x:Key="DriveInfo_MediaType">Media Type</sys:String>
+    <sys:String x:Key="DriveInfo_MediaType_Unspecified">Unspecified</sys:String>
+    <sys:String x:Key="DriveInfo_Message">Message</sys:String>
+    <sys:String x:Key="DriveInfo_Model">Model</sys:String>
+    <sys:String x:Key="DriveInfo_Name">Name</sys:String>
+    <sys:String x:Key="DriveInfo_NotReady">Not Ready</sys:String>
+    <sys:String x:Key="DriveInfo_Partitions">Partitions</sys:String>
+    <sys:String x:Key="DriveInfo_PhysicalDisabled">Collection of Physical Drive information is disabled in Settings.</sys:String>
+    <sys:String x:Key="DriveInfo_PhysicalDrives">Physical Drives</sys:String>
+    <sys:String x:Key="DriveInfo_RefreshToolTipLine1">Refresh drive info will refresh both</sys:String>
+    <sys:String x:Key="DriveInfo_RefreshToolTipLine2">Logical and Physical drives (if enabled).</sys:String>
+    <sys:String x:Key="DriveInfo_Size">Size</sys:String>
+    <sys:String x:Key="DriveInfo_Type">Type</sys:String>
+    <sys:String x:Key="DriveInfo_UnauthorizedAccess">Unauthorized Access</sys:String>
+    <sys:String x:Key="DriveInfo_UnknownError">Unknown Error</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_CDRom">CD-ROM</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Fixed">Fixed</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Network">Network</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_NoRootDirectory">No Root Directory</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Ram">RAM Drive</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Removable">Removable</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Unknown">Unknown</sys:String>
+
+
+    <!--  Environment Variables Page  -->
+    <sys:String x:Key="EnvironmentInfo_Filter">Filter</sys:String>
+    <sys:String x:Key="EnvironmentInfo_Value">Value</sys:String>
+    <sys:String x:Key="EnvironmentInfo_Variable">Variable</sys:String>
+    <!--  Graphics Information Page  -->
+    <sys:String x:Key="GraphicsInfo_AdapterType">Adapter Type</sys:String>
+    <sys:String x:Key="GraphicsInfo_AdpaterRAM">Adapter RAM</sys:String>
+    <sys:String x:Key="GraphicsInfo_BitsPerPixel">Bits per Pixel</sys:String>
+    <sys:String x:Key="GraphicsInfo_CurrentRefreshRate">Current Refresh Rate</sys:String>
+    <sys:String x:Key="GraphicsInfo_CurrentResolution">Current Resolution</sys:String>
+    <sys:String x:Key="GraphicsInfo_Description">Description</sys:String>
+    <sys:String x:Key="GraphicsInfo_DeviceID">Device ID</sys:String>
+    <sys:String x:Key="GraphicsInfo_GraphicsAdapter">Graphics Adapter</sys:String>
+    <sys:String x:Key="GraphicsInfo_NumberOfColors">Number of Colors</sys:String>
+    <sys:String x:Key="GraphicsInfo_SelectAdapter">Select Adapter</sys:String>
+    <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine1">If there is more than one video adapter installed</sys:String>
+    <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine2">use the dropdown to select the adapter to display.</sys:String>
+    <!--  Hardware Information Page  -->
+    <sys:String x:Key="HardwareInfo_BiosManufacturer">BIOS Manufacturer</sys:String>
+    <sys:String x:Key="HardwareInfo_BiosVersion">BIOS Version and Date</sys:String>
+    <sys:String x:Key="HardwareInfo_Cores">Cores</sys:String>
+    <sys:String x:Key="HardwareInfo_Installed">Installed</sys:String>
+    <sys:String x:Key="HardwareInfo_LastBoot">Last Reboot</sys:String>
+    <sys:String x:Key="HardwareInfo_MachineName">Machine Name</sys:String>
+    <sys:String x:Key="HardwareInfo_Manufacturer">Manufacturer</sys:String>
+    <sys:String x:Key="HardwareInfo_Model">Model</sys:String>
+    <sys:String x:Key="HardwareInfo_PhysicalMemory">Physical Memory</sys:String>
+    <sys:String x:Key="HardwareInfo_Processor">Processor</sys:String>
+    <sys:String x:Key="HardwareInfo_ProcessorArch">Processor Architecture</sys:String>
+    <sys:String x:Key="HardwareInfo_ProcessorCores">Processor Cores</sys:String>
+    <sys:String x:Key="HardwareInfo_Threads">Threads</sys:String>
+    <sys:String x:Key="HardwareInfo_Usable">Usable</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
+    <sys:String x:Key="MsgText_AddedToStartup">TimVer was added to Windows startup</sys:String>
+    <sys:String x:Key="MsgText_AddToStartupFailed">Failed to add TimVer to Windows startup. See log file for additional info.</sys:String>
+    <sys:String x:Key="MsgText_ApplicationShutdown">is shutting down</sys:String>
+    <sys:String x:Key="MsgText_ApplicationStarting">is starting up</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateCheckFailed">Check for update failed. See the log for more information.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateChecking">Checking for update.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateGoToRelease">Do you want to go to the release page?</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateNewerFound">A newer release ({0}) has been found.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateNoneFound">No newer releases were found.</sys:String>
+    <sys:String x:Key="MsgText_CopiedToClipboard">Current page was copied to the clipboard</sys:String>
+    <sys:String x:Key="MsgText_CopyToClipboardInvalid">Copy to clipboard is not valid on this page</sys:String>
+    <sys:String x:Key="MsgText_DriveInfoRefreshed">Disk drive info refreshed</sys:String>
+    <sys:String x:Key="MsgText_ElapsedTime">Elapsed time</sys:String>
+    <sys:String x:Key="MsgText_FilterOneRowShown">1 row shown</sys:String>
+    <sys:String x:Key="MsgText_FilterRowsShown">{0} rows shown</sys:String>
+    <sys:String x:Key="MsgText_HideButNoHistory">The commandline option "hide" was specified, but the option to keep history is false. Exiting.</sys:String>
+    <sys:String x:Key="MsgText_Million">million</sys:String>
+    <sys:String x:Key="MsgText_NotAvailable">Not Available</sys:String>
+    <sys:String x:Key="MsgText_Opening">Opening</sys:String>
+    <sys:String x:Key="MsgText_OpeningLogFile">Opening the log file</sys:String>
+    <sys:String x:Key="MsgText_OpeningReadMeFile">Opening the ReadMe file</sys:String>
+    <sys:String x:Key="MsgText_RemovedFromStartup">TimVer was removed from Windows startup</sys:String>
+    <sys:String x:Key="MsgText_RemoveFromStartupFailed">Failed to remove TimVer from Windows startup. See log file for additional info.</sys:String>
+    <sys:String x:Key="MsgText_Thousand">thousand</sys:String>
+    <sys:String x:Key="MsgText_Translated">translated</sys:String>
     <sys:String x:Key="MsgText_UIColorSet">Accent colour set to {0}</sys:String>
-    <!--  Settings Page Expander Headings  -->
-    <sys:String x:Key="SettingsSubHead_UISettings">Theme, Accent Colour, UI Size, Row Height, Start Position and more</sys:String>
+    <sys:String x:Key="MsgText_UISizeSet">Size set to {0}</sys:String>
+    <sys:String x:Key="MsgText_UIThemeSet">Theme set to {0}</sys:String>
+    <sys:String x:Key="MsgText_WindowTitleAdministrator">Administrator</sys:String>
+    <!--  Navigation Items and Titles  -->
+    <sys:String x:Key="NavItem_About">About</sys:String>
+    <sys:String x:Key="NavItem_BuildHistory">Build History</sys:String>
+    <sys:String x:Key="NavItem_DriveInfo">Drive Info</sys:String>
+    <sys:String x:Key="NavItem_Environment">Environment</sys:String>
+    <sys:String x:Key="NavItem_Exit">Exit</sys:String>
+    <sys:String x:Key="NavItem_GraphicsInfo">Graphics Info</sys:String>
+    <sys:String x:Key="NavItem_HardwareInfo">Hardware Info</sys:String>
+    <sys:String x:Key="NavItem_Settings">Settings</sys:String>
+    <sys:String x:Key="NavItem_WindowsInfo">Windows Info</sys:String>
+    <sys:String x:Key="NavTitle_About">About TimVer</sys:String>
+    <sys:String x:Key="NavTitle_BuildHistory">Build History</sys:String>
+    <sys:String x:Key="NavTitle_DriveInfo">Disk Drive Information</sys:String>
+    <sys:String x:Key="NavTitle_Environment">Environment Variables</sys:String>
+    <sys:String x:Key="NavTitle_GraphicsInfo">Graphics (Video) Information</sys:String>
+    <sys:String x:Key="NavTitle_HardwareInfo">Hardware Information</sys:String>
+    <sys:String x:Key="NavTitle_Settings">Settings</sys:String>
+    <sys:String x:Key="NavTitle_WindowsInfo">Windows Information</sys:String>
+    <!--  Enums for Combo Boxes on the Settings Page  -->
+    <sys:String x:Key="SettingsEnum_AccentColor_Amber">Amber</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Black">Black</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Blue">Blue</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_BlueGray">Blue Grey</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Brown">Brown</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Cyan">Cyan</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_DeepOrange">Deep Orange</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_DeepPurple">Deep Purple</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Gray">Grey</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Green">Green</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Indigo">Indigo</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_LightBlue">Light Blue</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_LightGreen">Light Green</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Lime">Lime</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Orange">Orange</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Pink">Pink</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Purple">Purple</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Red">Red</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Teal">Teal</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_White">White</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Yellow">Yellow</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_About">About</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_DriveInfo">Drive Info</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_Environment">Environment</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_GraphicsInfo">Graphics Info</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_HardwareInfo">Hardware Info</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_History">History</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_Settings">Settings</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_WindowsInfo">Windows Info</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Default">100%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Large">105%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Larger">110%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Largest">120%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Small">95%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Smaller">90%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Smallest">80%</sys:String>
+    <sys:String x:Key="SettingsEnum_Spacing_Comfortable">Comfortable</sys:String>
+    <sys:String x:Key="SettingsEnum_Spacing_Compact">Compact</sys:String>
+    <sys:String x:Key="SettingsEnum_Spacing_Wide">Wide</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_Dark">Material Dark</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_Darker">Darker</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_Light">Light</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_System">System</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Accent Colour</sys:String>
+    <sys:String x:Key="SettingsItem_BuildHistory">Keep build history</sys:String>
+    <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine1">Enabling this option will tell TimVer to keep a log of when the build number changes.</sys:String>
+    <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine2">Disabling this option will remove the History item from the navigation bar.</sys:String>
+    <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine3">See the ReadMe file for more infomation.</sys:String>
+    <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Changing Language will cause application to restart!</sys:String>
+    <sys:String x:Key="SettingsItem_DateFormat">Grid Date Format</sys:String>
+    <sys:String x:Key="SettingsItem_DisplayUser">Display registered user and organization on Windows Information page</sys:String>
+    <sys:String x:Key="SettingsItem_EditExcludeToolTip">Shift-Click to open file with default application</sys:String>
+    <sys:String x:Key="SettingsItem_HistoryOnBoot">Update build history on Windows startup</sys:String>
+    <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine1">Enabling this option will add TimVer to Windows startup for the purpose of updating a Build History file.</sys:String>
+    <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine2">This option is not available when running TimVer from a removeable drive.</sys:String>
+    <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine3">See the ReadMe file for more infomation.</sys:String>
+    <sys:String x:Key="SettingsItem_IncludeDebug">Include debug level messages in log file</sys:String>
+    <sys:String x:Key="SettingsItem_InitialPage">Initial Page Displayed</sys:String>
+    <sys:String x:Key="SettingsItem_KeepOnTop">Keep TimVer on top of other windows</sys:String>
+    <sys:String x:Key="SettingsItem_Language">Language</sys:String>
+    <sys:String x:Key="SettingsItem_LogicalDriveOptions">Logical Drive Options</sys:String>
+    <sys:String x:Key="SettingsItem_PhysicalDriveCollection">Enable collection of Physical Drive information</sys:String>
+    <sys:String x:Key="SettingsItem_PhysicalDriveCollectionTooltip">Collecting phyical drive information can take a significant amout of time.</sys:String>
+    <sys:String x:Key="SettingsItem_PhysicalDriveOptions">Physical Drive Options</sys:String>
+    <sys:String x:Key="SettingsItem_RowHeight">Row Height</sys:String>
+    <sys:String x:Key="SettingsItem_RowHeightToolTip">This setting applies to the row height on the Drive Info, Environment and History pages.</sys:String>
+    <sys:String x:Key="SettingsItem_ShowBusTypeColumn">Show Bus Type column</sys:String>
+    <sys:String x:Key="SettingsItem_ShowDiskTypeColumn">Show Disk Type column</sys:String>
+    <sys:String x:Key="SettingsItem_ShowExit">Show Exit in Navigation bar</sys:String>
+    <sys:String x:Key="SettingsItem_ShowFormatColumn">Show Format column</sys:String>
+    <sys:String x:Key="SettingsItem_ShowHealthColumn">Show Health column</sys:String>
+    <sys:String x:Key="SettingsItem_ShowInterfaceColumn">Show Interface column</sys:String>
+    <sys:String x:Key="SettingsItem_ShowMediaTypeColumn">Show Media Type column</sys:String>
+    <sys:String x:Key="SettingsItem_ShowModelColumn">Show Model column</sys:String>
+    <sys:String x:Key="SettingsItem_ShowNameColumn">Show Name column</sys:String>
+    <sys:String x:Key="SettingsItem_ShowNetworkDrives">Include network drives</sys:String>
+    <sys:String x:Key="SettingsItem_ShowPartitionsColumn">Show Partitions column</sys:String>
+    <sys:String x:Key="SettingsItem_ShowReadyDrives">Only show drives in "Ready" status</sys:String>
+    <sys:String x:Key="SettingsItem_ShowRemovableDrives">Include removable drives</sys:String>
+    <sys:String x:Key="SettingsItem_ShowTypeColumn">Show Type column</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">Start with window centred on screen</sys:String>
-    <!--  Enums for Combo Boxes on the Settings Page  -->
-    <sys:String x:Key="SettingsEnum_AccentColor_BlueGray">Blue Grey</sys:String>
-    <sys:String x:Key="SettingsEnum_AccentColor_Gray">Grey</sys:String>
+    <sys:String x:Key="SettingsItem_Theme">Theme</sys:String>
+    <sys:String x:Key="SettingsItem_UISize">UI Size</sys:String>
+    <sys:String x:Key="SettingsItem_UseGB">Use GB (1024^3 bytes) for capacity calculations</sys:String>
+    <sys:String x:Key="SettingsItem_UseGiB">Use GiB (1024^3 bytes) for capacity calculations</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Use Windows display language</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">When this option is selected, the language specified in the Windows settings will</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">be used if a translation is available, otherwise English (en-US) will be used.</sys:String>
+    <!--  Settings Page Expander Headings and Sub Headings -->
+    <sys:String x:Key="SettingsSection_AppSettings">Application Settings</sys:String>
+    <sys:String x:Key="SettingsSection_DriveSettings">Disk Drive Settings</sys:String>
+    <sys:String x:Key="SettingsSection_Language">Language</sys:String>
+    <sys:String x:Key="SettingsSection_UISettings">UI Settings</sys:String>
+    <sys:String x:Key="SettingsSubHead_AppSettings">Initial page, History options, Show user, and Log verbosity</sys:String>
+    <sys:String x:Key="SettingsSubHead_DriveSettings">Use GB or GiB, Include drives by status and more</sys:String>
+    <sys:String x:Key="SettingsSubHead_Language">Language Settings (Work in Progress)</sys:String>
+    <sys:String x:Key="SettingsSubHead_UISettings">Theme, Accent Color, UI Size, Row Height, Start Position and more</sys:String>
+    <!--  Windows Information Page  -->
+    <sys:String x:Key="WindowsInfo_Architecture">Architecture</sys:String>
+    <sys:String x:Key="WindowsInfo_BuildBranch">Build Branch</sys:String>
+    <sys:String x:Key="WindowsInfo_BuildNumber">Build Number</sys:String>
+    <sys:String x:Key="WindowsInfo_EditionID">Edition ID</sys:String>
+    <sys:String x:Key="WindowsInfo_Installed">Installed on</sys:String>
+    <sys:String x:Key="WindowsInfo_OSEdition">OS Edition</sys:String>
+    <sys:String x:Key="WindowsInfo_OSVersion">Version</sys:String>
+    <sys:String x:Key="WindowsInfo_RegisteredOrg">Registered Organization</sys:String>
+    <sys:String x:Key="WindowsInfo_RegisteredUser">Registered to</sys:String>
+    <sys:String x:Key="WindowsInfo_TempFolder">Temp Folder</sys:String>
+    <sys:String x:Key="WindowsInfo_WindowsFolder">Windows Folder</sys:String>
 
 </ResourceDictionary>
