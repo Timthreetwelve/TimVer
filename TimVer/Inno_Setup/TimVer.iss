@@ -1,27 +1,31 @@
-; -----------------------------------------------------
+﻿; -----------------------------------------------------
 ; TimVer
 ; -----------------------------------------------------
 
-#define MyAppName            "TimVer"
-#define MyAppVersion         GetStringFileInfo("D:\Visual Studio\Source\Prod\TimVer\TimVer\bin\Publish\TimVer.exe", "FileVersion")
-#define MyAppExeName         "TimVer.exe"
-#define MySourceDir          "D:\Visual Studio\Source\Prod\TimVer\TimVer\bin\Publish"
-#define MySetupIcon          "D:\Visual Studio\Source\Prod\TimVer\TimVer\Images\TV.ico"
-#define MyCompanyName        "T_K"
-#define MyPublisherName      "Tim Kennedy"
-#define CurrentYear          GetDateTimeString('yyyy', '/', ':')
-#define MyCopyright          "(C) " + CurrentYear + " Tim Kennedy"
-#define MyLicFile            "D:\Visual Studio\Resources\License.rtf"
+#define BaseDir              "D:\Visual Studio\Source\Prod\TimVer\TimVer"
+#define MySourceDir          BaseDir + "\bin\Publish"
+#define MySetupIcon          BaseDir + "\Images\TV.ico"
 #define MyOutputDir          "D:\InnoSetup\Output"
 #define MyLargeImage         "D:\InnoSetup\Images\WizardImage.bmp"
+
+#define MyAppID              "{4D2F6A12-7661-4E5B-983A-11F2194C81CA}"
+#define MyAppName            "TimVer"
+#define MyAppNameNoSpaces    StringChange(MyAppName, " ", "")
+#define MyAppExeName         "TimVer.exe"
+#define MyAppVersion         GetVersionNumbersString(MySourceDir + "\" + MyAppExeName) 
+#define MyInstallerFilename  MyAppNameNoSpaces + "_" + MyAppVersion + "_Setup"
+
+#define MyCompanyName        "T_K"
+#define MyPublisherName      "Tim Kennedy"
+#define StartCopyrightYear   "2019"
+#define CurrentYear          GetDateTimeString('yyyy', '/', ':')
+#define MyCopyright          "(c) " + StartCopyrightYear + "-" + CurrentYear + " Tim Kennedy"
+#define MyLicFile            "D:\Visual Studio\Resources\License.rtf"
 #define MySmallImage         "D:\InnoSetup\Images\WizardSmallImage.bmp"
 #define MyDateTimeString     GetDateTimeString('yyyy/mm/dd hh:nn:ss', '/', ':')
-#define MyAppNameNoSpaces    StringChange(MyAppName, " ", "")
-#define MyInstallerFilename  MyAppNameNoSpaces + "_" + MyAppVersion + "_Setup"
-#define RunRegKey            "Software\Microsoft\Windows\CurrentVersion\Run" 
- 
-#define MyAppID              "{4D2F6A12-7661-4E5B-983A-11F2194C81CA}"
 #define MyAppSupportURL      "https://github.com/Timthreetwelve/TimVer"
+
+#define RunRegKey            "Software\Microsoft\Windows\CurrentVersion\Run" 
 
 ; -----------------------------------------------------
 ; Include the localization file. Thanks bovirus!
@@ -62,6 +66,9 @@ AppPublisher={#MyPublisherName}
 ShowLanguageDialog=yes
 UsePreviousLanguage=no
 WizardStyle=modern
+WizardSizePercent=100,100
+WizardImageFile={#MyLargeImage}
+WizardSmallImageFile={#MySmallImage}
 
 AllowNoIcons=yes
 Compression=lzma
@@ -69,7 +76,7 @@ DefaultDirName={autopf}\{#MyCompanyName}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 DisableDirPage=yes
 DisableProgramGroupPage=yes
-DisableReadyMemo=yes
+DisableReadyMemo=no
 DisableStartupPrompt=yes
 DisableWelcomePage=no
 OutputBaseFilename={#MyInstallerFilename}
@@ -77,16 +84,15 @@ OutputDir={#MyOutputDir}
 OutputManifestFile={#MyAppName}_{#MyAppVersion}_FileList.txt
 SetupIconFile={#MySetupIcon}
 SetupLogging=yes
-SolidCompression=yes
+SolidCompression=no
 SourceDir={#MySourceDir}
-WizardImageFile={#MyLargeImage}
-WizardSizePercent=100,100
+
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "{#MySourceDir}\TimVer.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#MySourceDir}\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#MySourceDir}\*.dll"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
 Source: "{#MySourceDir}\*.json"; Excludes: "usersettings.json"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#MySourceDir}\ReadMe.txt"; DestDir: "{app}"; Flags: ignoreversion isreadme
