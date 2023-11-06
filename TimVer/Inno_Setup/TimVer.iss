@@ -62,6 +62,9 @@ AppPublisher={#MyPublisherName}
 ShowLanguageDialog=yes
 UsePreviousLanguage=no
 WizardStyle=modern
+WizardSizePercent=100,100
+WizardImageFile={#MyLargeImage}
+WizardSmallImageFile={#MySmallImage}
 
 AllowNoIcons=yes
 Compression=lzma
@@ -79,8 +82,7 @@ SetupIconFile={#MySetupIcon}
 SetupLogging=yes
 SolidCompression=yes
 SourceDir={#MySourceDir}
-WizardImageFile={#MyLargeImage}
-WizardSizePercent=100,100
+
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
