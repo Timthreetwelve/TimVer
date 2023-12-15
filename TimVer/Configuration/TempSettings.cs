@@ -21,10 +21,10 @@ internal partial class TempSettings : ConfigManager<TempSettings>
     private static bool _physicalExpanderOpen;
 
     [ObservableProperty]
-    private static int _driveSelectedTab = 0;
+    private static int _driveSelectedTab;
 
     [ObservableProperty]
-    private bool _historyOnBoot;
+    private bool _historyOnBoot = RegistryHelpers.RegRunEntry("TimVer");
 
     [ObservableProperty]
     private static bool _langExpanderOpen;
@@ -33,5 +33,5 @@ internal partial class TempSettings : ConfigManager<TempSettings>
     private static bool _uIExpanderOpen;
 
     [ObservableProperty]
-    private static bool _runAccessPermitted = RegistryHelpers.RegRunAccessPermitted();
+    private static bool _runAccessPermitted;
 }

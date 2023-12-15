@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Helpers;
 
@@ -9,6 +9,7 @@ public static class RegistryHelpers
 {
     #region Constant registry path
     private const string _regPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
+    #endregion Constant registry path
 
     #region Verify access to CurrentVersion\Run
     /// <summary>

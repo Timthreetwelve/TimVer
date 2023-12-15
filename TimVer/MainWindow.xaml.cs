@@ -9,14 +9,8 @@ public partial class MainWindow : Window
 {
     public MainWindow()
     {
-        ConfigHelpers.InitializeSettings();
-
         InitializeComponent();
 
         MainWindowHelpers.TimVerStartUp();
-
-#if DEBUG
-        PresentationTraceSources.DataBindingSource.Switch.Level = SourceLevels.Critical;
-#endif
     }
 }

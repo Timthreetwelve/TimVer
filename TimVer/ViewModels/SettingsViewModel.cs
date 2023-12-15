@@ -2,12 +2,6 @@
 
 namespace TimVer.ViewModels;
 
-public partial class SettingsViewModel : ObservableObject
+public class SettingsViewModel
 {
-    public static List<NavPage> NavPages { get; } = new();
-
-    public static void ParseInitialPage()
-    {
-        NavPages.AddRange(Enum.GetValues<NavPage>());
-    }
 }

@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.ViewModels;
 
@@ -79,7 +79,7 @@ public partial class HistoryViewModel : ObservableObject
     /// <summary>
     /// Gets the history file.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>Path to history file as string.</returns>
     private static string DefaultHistoryFile()
     {
         return Path.Combine(AppInfo.AppDirectory, "history.json");

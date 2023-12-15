@@ -43,9 +43,6 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private bool _showDiskType = true;
 
     [ObservableProperty]
-    private bool _showDrives = true;
-
-    [ObservableProperty]
     private bool _showExitInNav = true;
 
     [ObservableProperty]
