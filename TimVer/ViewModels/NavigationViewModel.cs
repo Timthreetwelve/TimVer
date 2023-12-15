@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.ViewModels;
 
@@ -366,7 +366,6 @@ internal partial class NavigationViewModel : ObservableObject
         {
             case Key.F1:
                 {
-                    //NavigateToPage(NavPage.About);
                     _mainWindow.NavigationListBox.SelectedValue = FindNavPage(NavPage.About);
                     break;
                 }
@@ -446,12 +445,20 @@ internal partial class NavigationViewModel : ObservableObject
                 string message = string.Format(GetStringResource("MsgText_UIColorSet"), color);
                 SnackbarMsg.ClearAndQueueMessage(message, 2000);
             }
+            if (e.Key == Key.F)
+            {
+                using Process p = new();
+                p.StartInfo.FileName = AppInfo.AppDirectory;
+                p.StartInfo.UseShellExecute = true;
+                p.StartInfo.ErrorDialog = false;
+                _ = p.Start();
+            }
             if (e.Key == Key.S)
             {
                 TextFileViewer.ViewTextFile(ConfigHelpers.SettingsFileName);
             }
         }
-        #endregion
+        #endregion Keys with Ctrl and Shift
     }
     #endregion Key down events
 }
