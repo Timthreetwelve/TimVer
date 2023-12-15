@@ -1,7 +1,5 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-using System.Threading;
-
 namespace TimVer;
 /// <summary>
 /// Interaction logic for App.xaml
@@ -25,6 +23,11 @@ public partial class App : Application
     /// UI Culture at startup
     /// </summary>
     public static CultureInfo StartupUICulture { get; set; }
+
+    /// <summary>
+    /// Number of language strings in the default resource dictionary
+    /// </summary>
+    public static int DefaultLanguageStrings { get; set; }
     #endregion Properties
 
     /// <summary>
@@ -46,6 +49,8 @@ public partial class App : Application
 
         try
         {
+            DefaultLanguageStrings = GetTotalDefaultLanguageCount();
+
             string currentLanguage = Thread.CurrentThread.CurrentCulture.Name;
 
             // If option to use OS language is true and it exists in the list of defined languages, use it but do not change current culture.
@@ -68,6 +73,11 @@ public partial class App : Application
                 Thread.CurrentThread.CurrentCulture = new CultureInfo(UserSettings.Setting.UILanguage);
                 Thread.CurrentThread.CurrentUICulture = new CultureInfo(UserSettings.Setting.UILanguage);
                 resDict.Source = new Uri($"Languages/Strings.{UserSettings.Setting.UILanguage}.xaml", UriKind.RelativeOrAbsolute);
+            }
+            else
+            {
+                resDict.Source = new Uri("Languages/Strings.en-US.xaml", UriKind.RelativeOrAbsolute);
+                UserSettings.Setting.UILanguage = "en-US";
             }
         }
         // If the above fails, set culture and language to en-US.
