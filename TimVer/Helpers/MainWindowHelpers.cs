@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Helpers;
 
@@ -37,10 +37,6 @@ internal static class MainWindowHelpers
         }
     }
     #endregion Startup
-
-    #region NLog Instance
-    private static readonly Logger _log = LogManager.GetLogger("logTemp");
-    #endregion NLog Instance
 
     #region MainWindow Instance
     private static readonly MainWindow _mainWindow = Application.Current.MainWindow as MainWindow;
@@ -137,13 +133,14 @@ internal static class MainWindowHelpers
 
         // Stop the _stopwatch and record elapsed time
         _stopwatch.Stop();
-        _log.Info($"{AppInfo.AppName} is shutting down.  Elapsed time: {_stopwatch.Elapsed:h\\:mm\\:ss\\.ff}");
+        _log.Info($"{AppInfo.AppName} {GetStringResource("MsgText_ApplicationShutdown")}.  " +
+                         $"{GetStringResource("MsgText_ElapsedTime")}: {_stopwatch.Elapsed:h\\:mm\\:ss\\.ff}");
 
         // Shut down NLog
         LogManager.Shutdown();
 
         // Save settings
-        MainWindowHelpers.SaveWindowPosition();
+        SaveWindowPosition();
         ConfigHelpers.SaveSettings();
     }
     #endregion Window Events
@@ -194,7 +191,7 @@ internal static class MainWindowHelpers
     internal static void LogStartup()
     {
         // Set NLog configuration
-        NLogHelpers.NLogConfig(false);
+        NLogConfig(false);
 
         // Log the version, build date and commit id
         _log.Info($"{AppInfo.AppName} ({AppInfo.AppProduct}) {AppInfo.AppVersion} {GetStringResource("MsgText_ApplicationStarting")}");
@@ -219,6 +216,10 @@ internal static class MainWindowHelpers
         if (!App.LanguageFile.Equals("defaulted", StringComparison.OrdinalIgnoreCase))
         {
             _log.Debug($"{App.LanguageStrings} strings loaded from {App.LanguageFile}");
+            if (App.LanguageStrings < App.DefaultLanguageStrings)
+            {
+                _log.Debug($"{App.DefaultLanguageStrings - App.LanguageStrings} strings from Strings.en-US.xaml will be used");
+            }
         }
         else
         {
@@ -241,11 +242,13 @@ internal static class MainWindowHelpers
             NavigationViewModel.PopulateNoHistoryList();
             _mainWindow.NavigationListBox.ItemsSource = NavigationViewModel.NavigationListNoHistory;
             _mainWindow.NavigationListBox.Items.Refresh();
+            _log.Debug("Keep History option is false.");
         }
         else
         {
             _mainWindow.NavigationListBox.ItemsSource = NavigationViewModel.NavigationViewModelTypes;
             _mainWindow.NavigationListBox.Items.Refresh();
+            HistoryViewModel.WriteHistory();
         }
     }
     #endregion Toggle History item in navigation list
