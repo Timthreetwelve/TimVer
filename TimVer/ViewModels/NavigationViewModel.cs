@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.ViewModels;
 
@@ -115,7 +115,7 @@ internal partial class NavigationViewModel : ObservableObject
         if (NavigationListNoHistory.Count == 0)
         {
             NavigationListNoHistory.AddRange(NavigationViewModelTypes);
-            _ = NavigationListNoHistory.Remove(NavigationViewModelTypes.Find(n => n.Name == "History"));
+            _ = NavigationListNoHistory.Remove(NavigationViewModelTypes.Find(n => n.NavPage.ToString() == "History"));
         }
     }
     #endregion List of navigation items without History
@@ -172,7 +172,7 @@ internal partial class NavigationViewModel : ObservableObject
                     _ = builder.Append("Architecture   = ").AppendLine(CombinedInfo.Arch);
                     _ = builder.Append("Build Branch   = ").AppendLine(CombinedInfo.BuildBranch);
                     _ = builder.Append("Edition ID     = ").AppendLine(CombinedInfo.EditionID);
-                    _ = builder.Append("Installed on   = ").AppendLine(CombinedInfo.InstallDate);
+                    _ = builder.Append("Installed on   = ").AppendLine(CombinedInfo.InstallDate.ToString("f"));
                     _ = builder.Append("Windows Folder = ").AppendLine(CombinedInfo.WindowsFolder);
                     _ = builder.Append("Temp Folder    = ").AppendLine(CombinedInfo.TempFolder);
                     break;
@@ -185,15 +185,11 @@ internal partial class NavigationViewModel : ObservableObject
                     _ = builder.Append("Manufacturer    = ").AppendLine(CombinedInfo.Manufacturer);
                     _ = builder.Append("Model           = ").AppendLine(CombinedInfo.Model);
                     _ = builder.Append("Machine Name    = ").AppendLine(CombinedInfo.MachName);
-                    _ = builder.Append("Last Rebooted   = ").AppendLine(CombinedInfo.LastBoot);
+                    _ = builder.Append("Last Rebooted   = ").AppendLine(CombinedInfo.LastBoot.ToString("f"));
                     _ = builder.Append("CPU             = ").AppendLine(CombinedInfo.ProcName);
                     _ = builder.Append("Total Cores     = ").AppendLine(CombinedInfo.ProcCores);
                     _ = builder.Append("Architecture    = ").AppendLine(CombinedInfo.ProcArch);
                     _ = builder.Append("Physical Memory = ").AppendLine(CombinedInfo.TotalMemory);
-                    if (UserSettings.Setting.ShowDrives)
-                    {
-                        _ = builder.Append("Disk Drives     = ").AppendLine(CombinedInfo.DiskDrives);
-                    }
                     break;
                 }
 
@@ -295,7 +291,7 @@ internal partial class NavigationViewModel : ObservableObject
                 }
 
             default:
-                SnackbarMsg.ClearAndQueueMessage("Copy to clipboard is not valid on this page");
+                SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopyToClipboardInvalid"));
                 SystemSounds.Exclamation.Play();
                 break;
         }
@@ -304,11 +300,72 @@ internal partial class NavigationViewModel : ObservableObject
         {
             if (ClipboardHelper.CopyTextToClipboard(builder.ToString()))
             {
-                SnackbarMsg.ClearAndQueueMessage("Current page was copied to the clipboard");
+                SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopiedToClipboard"));
             }
         }
     }
     #endregion Copy to clipboard command
+
+    #region Add and remove from startup in registry
+    /// <summary>
+    /// Adds history collection to registry
+    /// </summary>
+    [RelayCommand]
+    private static void HistoryOnStartup(RoutedEventArgs e)
+    {
+        CheckBox box = e.OriginalSource as CheckBox;
+        string result;
+        switch (box.IsChecked)
+        {
+            case true:
+                if (!RegistryHelpers.RegRunEntry("TimVer"))
+                {
+                    result = RegistryHelpers.AddRegEntry("TimVer", AppInfo.AppPath + " --hide");
+                    if (result == "OK")
+                    {
+                        _log.Debug(@"TimVer added to HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
+                        SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_AddedToStartup"));
+                    }
+                    else
+                    {
+                        _log.Info($"TimVer add to startup failed: {result}");
+                        _ = new MDCustMsgBox(
+                            GetStringResource("MsgText_AddToStartupFailed"),
+                            "TimVer",
+                            ButtonType.Ok,
+                            true,
+                            true,
+                            Application.Current.MainWindow,
+                            true).ShowDialog();
+                    }
+                }
+                break;
+
+            case false:
+                result = RegistryHelpers.RemoveRegEntry("TimVer");
+                if (result == "OK")
+                {
+                    _log.Info(@"TimVer removed from HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
+                    SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_RemovedFromStartup"));
+                }
+                else
+                {
+                    _log.Info($"Attempt to remove startup entry failed: {result}");
+                    _ = new MDCustMsgBox(
+                        GetStringResource("MsgText_RemoveFromStartupFailed"),
+                        "TimVer",
+                        ButtonType.Ok,
+                        true,
+                        true,
+                        Application.Current.MainWindow,
+                        true).ShowDialog();
+                }
+                break;
+        }
+
+    }
+
+    #endregion Add and remove from startup in registry
 
     #region View log file command
     [RelayCommand]
