@@ -1,4 +1,4 @@
-// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Models;
 
@@ -19,7 +19,7 @@ public static class GetInfo
         {
             using RegistryKey key = Registry.LocalMachine.OpenSubKey(@"Software\Microsoft\Windows NT\CurrentVersion");
             string regVal = key.GetValue(value) != null ? key.GetValue(value).ToString() : "no data";
-            _log.Debug($"Registry: {value} = {regVal}");
+            //_log.Debug($"Registry: {value} = {regVal}");
             return regVal;
         }
         catch (Exception ex)
@@ -43,7 +43,7 @@ public static class GetInfo
             CimSession cim = CimSession.Create(null);
             string cimVal = cim.QueryInstances("root/CIMV2", "WQL", $"SELECT {value} From Win32_OperatingSystem")
                 .FirstOrDefault()?.CimInstanceProperties[value].Value.ToString();
-            _log.Debug($"Win32_OperatingSystem: {value} = {cimVal}");
+            //_log.Debug($"Win32_OperatingSystem: {value} = {cimVal}");
             return cimVal;
         }
         catch (Exception ex)
@@ -84,7 +84,7 @@ public static class GetInfo
             CimSession cim = CimSession.Create(null);
             string cimVal = cim.QueryInstances("root/CIMV2", "WQL", $"SELECT {value} From Win32_ComputerSystem")
                 .FirstOrDefault()?.CimInstanceProperties[value].Value.ToString();
-            _log.Debug($"Win32_ComputerSystem: {value} = {cimVal}");
+            //_log.Debug($"Win32_ComputerSystem: {value} = {cimVal}");
             return cimVal;
         }
         catch (Exception ex)
@@ -108,7 +108,7 @@ public static class GetInfo
             CimSession cim = CimSession.Create(null);
             string cimVal = cim.QueryInstances("root/CIMV2", "WQL", $"SELECT {value} From Win32_Processor")
                 .FirstOrDefault()?.CimInstanceProperties[value].Value.ToString();
-            _log.Debug($"Win32_Processor: {value} = {cimVal}");
+            //_log.Debug($"Win32_Processor: {value} = {cimVal}");
             return cimVal;
         }
         catch (Exception ex)
@@ -128,7 +128,7 @@ public static class GetInfo
     public static string GetSpecialFolder(Environment.SpecialFolder value)
     {
         string cimVal = Environment.GetFolderPath(value);
-        _log.Debug($"Environment: {value} folder = {cimVal}");
+        //_log.Debug($"Environment: {value} folder = {cimVal}");
         return cimVal;
     }
     #endregion Get special folder
@@ -143,8 +143,7 @@ public static class GetInfo
         {
             Stopwatch watch = Stopwatch.StartNew();
             List<EnvVariable> envList = new();
-            IDictionary env = Environment.GetEnvironmentVariables();
-            foreach (DictionaryEntry entry in env)
+            foreach (DictionaryEntry entry in Environment.GetEnvironmentVariables())
             {
                 EnvVariable envVariable = new()
                 {
@@ -154,7 +153,7 @@ public static class GetInfo
                 envList.Add(envVariable);
             }
             watch.Stop();
-            _log.Debug($"Found {env.Count} environment variables in {watch.Elapsed.TotalMilliseconds:N2} ms");
+            //_log.Debug($"Found {env.Count} environment variables in {watch.Elapsed.TotalMilliseconds:N2} ms");
             return envList.OrderBy(envVariable => envVariable.Variable).ToList();
         }
         catch (Exception ex)
