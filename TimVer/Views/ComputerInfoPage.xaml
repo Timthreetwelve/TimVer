@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="TimVer.Views.ComputerInfoPage"
+<UserControl x:Class="TimVer.Views.ComputerInfoPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:config="clr-namespace:TimVer.Configuration"
@@ -71,6 +71,19 @@
                 <TextBlock Grid.Row="6" Grid.Column="1"
                            Text="{Binding Source={x:Static models:CombinedInfo.ProcArch}}" />
 
+
+                <TextBlock Grid.Row="7" Grid.Column="0"
+                           Text="{DynamicResource HardwareInfo_BiosManufacturer}" />
+                <TextBlock Grid.Row="7" Grid.Column="2"
+                           Text="{Binding Source={x:Static models:CombinedInfo.BiosManufacturer}}" />
+
+                <TextBlock Grid.Row="8" Grid.Column="0"
+                           Text="{DynamicResource HardwareInfo_BiosVersion}" />
+                <TextBlock Grid.Row="8" Grid.Column="2">
+                    <Run Text="{Binding Source={x:Static models:CombinedInfo.BiosName}, Mode=OneWay}" />
+                    <Run Text="-" />
+                    <Run Text="{Binding Source={x:Static models:CombinedInfo.BiosDate}, StringFormat=d, ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}, Mode=OneWay}" />
+                </TextBlock>
                 <TextBlock Grid.Row="7" Grid.Column="0"
                            Text="Physical Memory" />
                 <TextBlock Grid.Row="7" Grid.Column="1">

@@ -441,4 +441,48 @@ public static class CombinedInfo
         }
     }
     #endregion Video info
+
+    #region BIOS Information
+    private static string _biosManufacturer;
+    public static string BiosManufacturer
+    {
+        get
+        {
+            if (_biosManufacturer != null)
+            {
+                return _biosManufacturer;
+            }
+            _biosManufacturer = BiosHelpers.GetBiosManufacturer();
+            return _biosManufacturer;
+        }
+    }
+
+    private static string _biosName;
+    public static string BiosName
+    {
+        get
+        {
+            if (_biosName != null)
+            {
+                return _biosName;
+            }
+            _biosName = BiosHelpers.GetBiosVersion();
+            return _biosName;
+        }
+    }
+
+    private static DateTime _biosDate;
+    public static DateTime BiosDate
+    {
+        get
+        {
+            if (_biosDate != default)
+            {
+                return _biosDate;
+            }
+            _biosDate = BiosHelpers.GetBiosDate();
+            return _biosDate;
+        }
+    }
+    #endregion BIOS Information
 }
