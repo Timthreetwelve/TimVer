@@ -324,9 +324,7 @@ public static class CombinedInfo
                 return _totalMemory;
             }
 
-            string result = GetInfo.CimQuerySys("TotalPhysicalMemory");
-            double GB = Math.Round(Convert.ToDouble(result) / Math.Pow(1024, 3), 2);
-            _totalMemory = string.Format($"({GB:N2} GB usable)");
+            _totalMemory = MemoryHelpers.GetUsableRam();
             return _totalMemory;
         }
     }
