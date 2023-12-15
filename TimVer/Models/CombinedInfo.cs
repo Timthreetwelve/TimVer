@@ -57,41 +57,6 @@ public static class CombinedInfo
     }
     #endregion Build branch
 
-    #region Disk drives
-    /// <summary>
-    /// The disk drives on the hardware info page
-    /// </summary>
-    private static string _diskDrives;
-    public static string DiskDrives
-    {
-        get
-        {
-            if (_diskDrives != null)
-            {
-                return _diskDrives;
-            }
-            if (UserSettings.Setting.ShowDrives)
-            {
-                StringBuilder sb = new();
-                foreach (DriveInfo drive in DriveInfo.GetDrives())
-                {
-                    if (drive.IsReady)
-                    {
-                        _ = sb.Append(drive.Name.Replace("\\", " "));
-                    }
-                }
-                _log.Debug($"Disk Drives: {sb}");
-                _diskDrives = sb.ToString();
-            }
-            else
-            {
-                _diskDrives = null;
-            }
-            return _diskDrives;
-        }
-    }
-    #endregion Disk drives
-
     #region Edition
     private static string _editionID;
     public static string EditionID
