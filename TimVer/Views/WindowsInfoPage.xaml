@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:config="clr-namespace:TimVer.Configuration"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:global="clr-namespace:System.Globalization;assembly=mscorlib"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:models="clr-namespace:TimVer.Models"
              mc:Ignorable="d"
@@ -18,7 +19,8 @@
             <Grid>
                 <!--#region Row & column definitions-->
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="170" />
+                    <ColumnDefinition Width="Auto" MinWidth="160" />
+                    <ColumnDefinition Width="20" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -38,67 +40,69 @@
                 <!--#endregion-->
 
                 <TextBlock Grid.Row="0"
-                           Text="OS Edition" />
-                <TextBlock Grid.Row="0" Grid.Column="1"
+                           Text="{DynamicResource WindowsInfo_OSEdition}" />
+                <TextBlock Grid.Row="0" Grid.Column="2"
                            Text="{Binding Source={x:Static models:CombinedInfo.ProdName}}" />
 
                 <TextBlock Grid.Row="1" Grid.Column="0"
-                           Text="Version" />
-                <TextBlock Grid.Row="1" Grid.Column="1"
+                           Text="{DynamicResource WindowsInfo_OSVersion}" />
+                <TextBlock Grid.Row="1" Grid.Column="2"
                            Text="{Binding Source={x:Static models:CombinedInfo.Version}}" />
 
                 <TextBlock Grid.Row="2" Grid.Column="0"
-                           Text="Build" />
-                <TextBlock Grid.Row="2" Grid.Column="1"
+                           Text="{DynamicResource WindowsInfo_BuildNumber}" />
+                <TextBlock Grid.Row="2" Grid.Column="2"
                            Text="{Binding Source={x:Static models:CombinedInfo.Build}}" />
 
                 <TextBlock Grid.Row="3" Grid.Column="0"
-                           Text="Build Branch" />
-                <TextBlock Grid.Row="3" Grid.Column="1"
+                           Text="{DynamicResource WindowsInfo_BuildBranch}" />
+                <TextBlock Grid.Row="3" Grid.Column="2"
                            Text="{Binding Source={x:Static models:CombinedInfo.BuildBranch}}" />
 
                 <TextBlock Grid.Row="4" Grid.Column="0"
-                           Text="Architecture" />
-                <TextBlock Grid.Row="4" Grid.Column="1"
+                           Text="{DynamicResource WindowsInfo_Architecture}" />
+                <TextBlock Grid.Row="4" Grid.Column="2"
                            Text="{Binding Source={x:Static models:CombinedInfo.Arch}}" />
 
                 <TextBlock Grid.Row="5" Grid.Column="0"
-                           Text="Edition ID" />
-                <TextBlock Grid.Row="5" Grid.Column="1"
+                           Text="{DynamicResource WindowsInfo_EditionID}" />
+                <TextBlock Grid.Row="5" Grid.Column="2"
                            Text="{Binding Source={x:Static models:CombinedInfo.EditionID}}" />
 
                 <TextBlock Grid.Row="6" Grid.Column="0"
-                           Text="Installed on" />
-                <TextBlock Grid.Row="6" Grid.Column="1"
-                           Text="{Binding Source={x:Static models:CombinedInfo.InstallDate}}" />
+                           Text="{DynamicResource WindowsInfo_Installed}" />
+                <TextBlock Grid.Row="6" Grid.Column="2"
+                           Text="{Binding Source={x:Static models:CombinedInfo.InstallDate},
+                                          StringFormat=f,
+                                          ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}}" />
 
                 <TextBlock Grid.Row="7" Grid.Column="0"
-                           Text="Windows Folder" />
-                <TextBlock Grid.Row="7" Grid.Column="1"
+                           Text="{DynamicResource WindowsInfo_WindowsFolder}" />
+                <TextBlock Grid.Row="7" Grid.Column="2"
                            Text="{Binding Source={x:Static models:CombinedInfo.WindowsFolder}}" />
 
                 <TextBlock Grid.Row="8" Grid.Column="0"
-                           Text="Temp Folder" />
-                <TextBlock Grid.Row="8" Grid.Column="1"
+                           Text="{DynamicResource WindowsInfo_TempFolder}" />
+                <TextBlock Grid.Row="8" Grid.Column="2"
                            Text="{Binding Source={x:Static models:CombinedInfo.TempFolder}}" />
 
                 <TextBlock Grid.Row="9" Grid.Column="0"
-                           Text="Registered to"
+                           Text="{DynamicResource WindowsInfo_RegisteredUser}"
                            Visibility="{Binding ShowUser,
                                                 Source={x:Static config:UserSettings.Setting},
                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
-                <TextBlock Grid.Row="9" Grid.Column="1"
+                <TextBlock Grid.Row="9" Grid.Column="2"
                            Text="{Binding Source={x:Static models:CombinedInfo.RegUser}}"
                            Visibility="{Binding ShowUser,
                                                 Source={x:Static config:UserSettings.Setting},
                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
 
                 <TextBlock Grid.Row="10" Grid.Column="0"
-                           Text="Registered Organization"
+                           Text="{DynamicResource WindowsInfo_RegisteredOrg}"
                            Visibility="{Binding ShowUser,
                                                 Source={x:Static config:UserSettings.Setting},
                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
-                <TextBlock Grid.Row="10" Grid.Column="1"
+                <TextBlock Grid.Row="10" Grid.Column="2"
                            Text="{Binding Source={x:Static models:CombinedInfo.RegOrganization}}"
                            Visibility="{Binding ShowUser,
                                                 Source={x:Static config:UserSettings.Setting},

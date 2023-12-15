@@ -350,7 +350,7 @@ internal partial class NavigationViewModel : ObservableObject
             CombinedInfo.PhysicalDrivesList.Clear();
             DrivesPage.Instance.PDisksDataGrid.ItemsSource = CombinedInfo.PhysicalDrivesList;
         }
-        SnackbarMsg.ClearAndQueueMessage("Disk drive info refreshed.");
+        SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_DriveInfoRefreshed"));
     }
     #endregion Refresh drives command
 

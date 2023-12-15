@@ -39,13 +39,13 @@
             <!--#region Columns-->
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding HDate}"
-                                    Header="Date" />
+                                    Header="{DynamicResource BuildHistory_Date}" />
                 <DataGridTextColumn Binding="{Binding HBuild}"
-                                    Header="Build" />
+                                    Header="{DynamicResource BuildHistory_Build}" />
                 <DataGridTextColumn Binding="{Binding HVersion}"
-                                    Header="Version" />
+                                    Header="{DynamicResource BuildHistory_Version}" />
                 <DataGridTextColumn Binding="{Binding HBranch}"
-                                    Header="Branch" />
+                                    Header="{DynamicResource BuildHistory_Branch}" />
             </DataGrid.Columns>
             <!--#endregion-->
         </DataGrid>
@@ -60,7 +60,7 @@
                    FontWeight="SemiBold"
                    FontSize="14">
             <Run Text="{Binding Items.Count, ElementName=HistoryGrid, Mode=OneWay}" />
-            <Run Text="records" />
+            <Run Text="{DynamicResource BuildHistory_Records}" />
         </TextBlock>
         <!--#endregion-->
 

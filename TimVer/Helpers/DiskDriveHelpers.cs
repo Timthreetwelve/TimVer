@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Helpers;
 
@@ -42,27 +42,30 @@ public static class DiskDriveHelpers
         catch (IOException ex)
         {
             _log.Error(ex, "I/O error");
+            string msg = GetStringResource("DriveInfo_IOError");
             _ = Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() =>
-            _ = MessageBox.Show($"I/O error\n{ex.Message}",
-                                "DriveInfo Error",
+            _ = MessageBox.Show($"{msg}\n{ex.Message}",
+                                GetStringResource("DriveInfo_Error"),
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error)));
         }
         catch (UnauthorizedAccessException ex)
         {
             _log.Error(ex, "Unauthorized Access");
+            string msg = GetStringResource("DriveInfo_UnauthorizedAccess");
             _ = Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() =>
-            _ = MessageBox.Show($"Unauthorized Access\n{ex.Message}",
-                                "DriveInfo Error",
+            _ = MessageBox.Show($"{msg}\n{ex.Message}",
+                                GetStringResource("DriveInfo_Error"),
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error)));
         }
         catch (Exception ex)
         {
             _log.Error(ex, "Unknown error");
+            string msg = GetStringResource("DriveInfo_UnknownError");
             _ = Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() =>
             _ = MessageBox.Show($"Unknown error\n{ex.Message}",
-                                "DriveInfo Error",
+                                GetStringResource("DriveInfo_Error"),
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error)));
         }
@@ -92,15 +95,16 @@ public static class DiskDriveHelpers
                 catch (Exception ex)
                 {
                     _log.Error(ex, $"Error processing drive {drive}");
+                    string errorMsg = GetStringResource("DriveInfo_ErrorProcessingDrive");
                     _ = Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() =>
-                    _ = MessageBox.Show($"Error processing drive {drive}\n{ex.Message}",
-                        "DriveInfo Error",
+                    _ = MessageBox.Show($"{errorMsg} {drive}\n{ex.Message}",
+                        GetStringResource("DriveInfo_Error"),
                         MessageBoxButton.OK,
                         MessageBoxImage.Error)));
                     LogicalDrives error = new()
                     {
                         Name = drive.Name,
-                        Label = "Error - See log file"
+                        Label = GetStringResource("DriveInfo_ErrorSeeLog")
                     };
                     logicalDrives.Add(error);
                 }
@@ -117,13 +121,15 @@ public static class DiskDriveHelpers
             LogicalDrives error = new()
             {
                 Name = "n/a",
-                Label = "Error - See log file"
+                Label = GetStringResource("DriveInfo_ErrorSeeLog")
             };
             logicalDrives.Add(error);
             return logicalDrives;
         }
     }
     #endregion Get logical drive information
+
+
 
     #region Get details for an individual drive
     private static LogicalDrives GetDriveDetails(DriveInfo d)
@@ -149,7 +155,7 @@ public static class DiskDriveHelpers
             return new()
             {
                 Name = d.Name,
-                DriveType = d.DriveType.ToString(),
+                DriveType = ConvertDriveType(d.DriveType),
                 Format = d.DriveFormat,
                 Label = d.VolumeLabel,
                 TotalSize = Math.Round(d.TotalSize / Math.Pow(GBPref, 3), 2),
@@ -164,7 +170,7 @@ public static class DiskDriveHelpers
             {
                 Name = d.Name,
                 DriveType = d.DriveType.ToString(),
-                Label = "Not Ready"
+                Label = GetStringResource("DriveInfo_NotReady")
             };
         }
         return null;
@@ -204,6 +210,8 @@ public static class DiskDriveHelpers
                     pDisk.BusType = win32DiskDrive["BusType"];
                     pDisk.DiskType = win32DiskDrive["MediaType"];
                     pDisk.Health = win32DiskDrive["Health"];
+                    pDisk.PartitionStyle = win32DiskDrive["PartitionStyle"];
+                    pDisk.IsBoot = win32DiskDrive["IsBoot"];
                     physicalDrives.Add(pDisk);
                 }
             }
@@ -218,7 +226,7 @@ public static class DiskDriveHelpers
             List<PhysicalDrives> physicalDrives = new();
             PhysicalDrives emptyList = new()
             {
-                Message = "Collection of Physical Drive information is disabled in Settings"
+                Message = GetStringResource("DriveInfo_PhysicalDisabled")
             };
             physicalDrives.Add(emptyList);
             return physicalDrives;
@@ -231,6 +239,26 @@ public static class DiskDriveHelpers
     }
     #endregion Get Physical disk info from WMI
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    private static Dictionary<string, string> GetMSFTDisk(uint number)
+    {
+        Dictionary<string, string> driveInfo = new();
+
+        const string scope = @"\\.\root\Microsoft\Windows\Storage";
+        string query = $"SELECT IsBoot, IsSystem, PartitionStyle, Model FROM MSFT_Disk WHERE Number = {number}";
+
+        using ManagementObjectSearcher searcher = new(scope, query);
+        foreach (ManagementBaseObject drive in searcher.Get())
+        {
+            driveInfo.Add("IsBoot", drive["IsBoot"].ToString());
+            driveInfo.Add("IsSystem", drive["IsSystem"].ToString());
+            driveInfo.Add("PartitionStyle", drive["PartitionStyle"].ToString());
+        }
+        return driveInfo;
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+
+
     #region Get additional info from MSFT_PhysicalDisk
     /// <summary>
     /// Gets MSFT_PhysicalDisk info for the specified device.
@@ -242,10 +270,13 @@ public static class DiskDriveHelpers
         Dictionary<string, string> driveInfo = new();
 
         const string scope = @"\\.\root\Microsoft\Windows\Storage";
-        string query = $"SELECT MediaType, HealthStatus, BusType FROM MSFT_PhysicalDisk WHERE DeviceID = {device}";
-        string health = "Not Available";
-        string mediaType = "Not Available";
-        string busType = "Not Available";
+        string query = $"SELECT MediaType, HealthStatus, BusType, SerialNumber, FriendlyName FROM MSFT_PhysicalDisk WHERE DeviceID = {device}";
+        string health = GetStringResource("MsgText_NotAvailable");
+        string mediaType = GetStringResource("MsgText_NotAvailable");
+        string busType = GetStringResource("MsgText_NotAvailable");
+        string isBoot = GetStringResource("MsgText_NotAvailable");
+        string isSystem = GetStringResource("MsgText_NotAvailable");
+        string partitionStyle = GetStringResource("MsgText_NotAvailable");
 
         try
         {
@@ -266,7 +297,7 @@ public static class DiskDriveHelpers
                             mediaType = "SCM";
                             break;
                         default:
-                            mediaType = "Unspecified";
+                            mediaType = GetStringResource("DriveInfo_MediaType_Unspecified");
                             break;
                     }
                 }
@@ -275,16 +306,16 @@ public static class DiskDriveHelpers
                     switch (drive["HealthStatus"].ToString())
                     {
                         case "0":
-                            health = "Healthy";
+                            health = GetStringResource("DriveInfo_Health_Healthy");
                             break;
                         case "1":
-                            health = "Warning";
+                            health = GetStringResource("DriveInfo_Health_Warning");
                             break;
                         case "2":
-                            health = "Unhealthy";
+                            health = GetStringResource("DriveInfo_Health_Unhealthy");
                             break;
                         default:
-                            health = "Unknown";
+                            health = GetStringResource("DriveInfo_Health_Unknown");
                             break;
                     }
                 }
@@ -308,7 +339,7 @@ public static class DiskDriveHelpers
                             busType = "SSA";
                             break;
                         case "6":
-                            busType = "Fiber Channel";
+                            busType = GetStringResource("DriveInfo_BusType_FiberChannel");
                             break;
                         case "7":
                             busType = "USB";
@@ -320,34 +351,50 @@ public static class DiskDriveHelpers
                             busType = "iSCSI";
                             break;
                         case "10":
-                            busType = "Serial Attached SCSI (SAS)";
+                            busType = GetStringResource("DriveInfo_BusType_SAS");
                             break;
                         case "11":
-                            busType = "Serial ATA (SATA)";
+                            busType = GetStringResource("DriveInfo_BusType_SATA");
                             break;
                         case "12":
-                            busType = "Secure Digital (SD)";
+                            busType = GetStringResource("DriveInfo_BusType_SD");
                             break;
                         case "13":
-                            busType = "Multimedia Card (MMC)";
+                            busType = GetStringResource("DriveInfo_BusType_MMC");
                             break;
                         case "15":
-                            busType = "File-Backed Virtual";
+                            busType = GetStringResource("DriveInfo_BusType_FileBackedVirtual");
                             break;
                         case "16":
-                            busType = "Storage Spaces";
+                            busType = GetStringResource("DriveInfo_BusType_StorageSpaces");
                             break;
                         case "17":
                             busType = "NVMe";
                             break;
                         case "14":
                         case "18":
-                            busType = "Reserved";
+                            busType = GetStringResource("Reserved");
                             break;
                         default:
-                            busType = "Unknown";
+                            busType = GetStringResource("DriveInfo_BusType_Unknown");
                             break;
                     }
+                }
+                Dictionary<string, string> msftDisk = GetMSFTDisk(device);
+                isBoot = msftDisk["IsBoot"];
+                isSystem = msftDisk["IsSystem"];
+                partitionStyle = msftDisk["PartitionStyle"];
+                switch (partitionStyle)
+                {
+                    case "1":
+                        partitionStyle = "MBR";
+                        break;
+                    case "2":
+                        partitionStyle = "GPT";
+                        break;
+                    default:
+                        partitionStyle = "unknown";
+                        break;
                 }
             }
         }
@@ -360,8 +407,32 @@ public static class DiskDriveHelpers
             driveInfo.Add("MediaType", mediaType);
             driveInfo.Add("Health", health);
             driveInfo.Add("BusType", busType);
+            driveInfo.Add("IsBoot", isBoot);
+            driveInfo.Add("IsSystem", isSystem);
+            driveInfo.Add("PartitionStyle", partitionStyle);
         }
         return driveInfo;
     }
     #endregion Get additional info from MSFT_PhysicalDisk
+
+    private static string ConvertDriveType(DriveType driveType)
+    {
+        switch (driveType)
+        {
+            case DriveType.NoRootDirectory:
+                return GetStringResource("DriveInfo_DriveType_NoRootDirectory");
+            case DriveType.Fixed:
+                return GetStringResource("DriveInfo_DriveType_Fixed");
+            case DriveType.Network:
+                return GetStringResource("DriveInfo_DriveType_Network");
+            case DriveType.Removable:
+                return GetStringResource("DriveInfo_DriveType_Removable");
+            case DriveType.Ram:
+                return GetStringResource("DriveInfo_DriveType_Ram");
+            case DriveType.CDRom:
+                return GetStringResource("DriveInfo_DriveType_CDRom");
+            default:
+                return GetStringResource("DriveInfo_DriveType_Unknown");
+        }
+    }
 }

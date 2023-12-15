@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:TimVer"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:viewmodels="clr-namespace:TimVer.ViewModels"
              xmlns:models="clr-namespace:TimVer.Models"
+             xmlns:viewmodels="clr-namespace:TimVer.ViewModels"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800"
              FontSize="14"
@@ -90,7 +90,7 @@
                 </TextBlock>
 
                 <TextBlock Grid.Row="3" Grid.Column="0"
-                            Text="{DynamicResource About_Copyright}" />
+                           Text="{DynamicResource About_Copyright}" />
                 <TextBlock Grid.Row="3" Grid.Column="2"
                            Text="{x:Static helpers:AppInfo.AppCopyright}" />
 
@@ -99,7 +99,7 @@
                 <TextBlock Grid.Row="4" Grid.Column="2">
                     <Hyperlink Command="{Binding ViewLicenseCommand}"
                                Foreground="{DynamicResource MaterialDesignBody}"
-                                ToolTip="{DynamicResource About_LicenseToolTip}">
+                               ToolTip="{DynamicResource About_LicenseToolTip}">
                         <TextBlock Text="{DynamicResource About_LicenseText}" />
                     </Hyperlink>
                 </TextBlock>
@@ -145,15 +145,26 @@
 
                 <TextBlock Grid.Row="8" Grid.Column="0"
                            Text="{DynamicResource About_Documentation}" />
-                <TextBlock Grid.Row="8" Grid.Column="2">
-                    <Hyperlink Command="{Binding ViewReadMeCommand}"
-                               Foreground="{DynamicResource MaterialDesignBody}"
-                               ToolTip="{DynamicResource About_DocumentationToolTip}"
-                               ToolTipService.Placement="Top">
-                        <TextBlock Text="{DynamicResource About_DocumentationText}" />
-                    </Hyperlink>
-                </TextBlock>
-
+                <StackPanel Grid.Row="8" Grid.Column="2"
+                            Orientation="Horizontal">
+                    <TextBlock>
+                        <Hyperlink Command="{Binding ViewReadMeCommand}"
+                                   Foreground="{DynamicResource MaterialDesignBody}"
+                                   ToolTip="{DynamicResource About_DocumentationToolTip}"
+                                   ToolTipService.Placement="Top">
+                            <TextBlock Text="{DynamicResource About_DocumentationText}" />
+                        </Hyperlink>
+                    </TextBlock>
+                    <TextBlock Margin="20,0">
+                        <Hyperlink Command="{Binding GoToGitHubCommand}"
+                                   CommandParameter="https://github.com/Timthreetwelve/TimVer/wiki"
+                                   Foreground="{DynamicResource MaterialDesignBody}"
+                                   ToolTip="https://github.com/Timthreetwelve/TimVer/wiki"
+                                   ToolTipService.Placement="Top">
+                            <TextBlock Text="TimVer Wiki" />
+                        </Hyperlink>
+                    </TextBlock>
+                </StackPanel>
                 <TextBlock Grid.Row="9" Grid.Column="0"
                            Text="{DynamicResource About_Update}" />
                 <TextBlock Grid.Row="9" Grid.Column="2">
@@ -167,8 +178,9 @@
                 <!--#endregion-->
 
                 <!--#region Translations-->
-                <TextBlock Grid.Row="11" Grid.Column="0" HorizontalAlignment="Left"
-                       Text="{DynamicResource About_Translations}" />
+                <TextBlock Grid.Row="11" Grid.Column="0"
+                           HorizontalAlignment="Left"
+                           Text="{DynamicResource About_Translations}" />
 
                 <Border Grid.Row="11" Grid.Column="2"
                         Width="auto"

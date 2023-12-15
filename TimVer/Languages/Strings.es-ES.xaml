@@ -1,0 +1,290 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--
+        Refer to the "Contribute a Translation" topic in the Wiki: https://github.com/Timthreetwelve/TimVer/wiki/Contribute-a-Translation
+        =================================================================================================================================
+
+        Language name here: Español (es-ES)
+
+        Translation contributed by:
+
+        Date:
+        ==================================================================================================================================
+    -->
+
+    <!--  About Page  -->
+    <sys:String x:Key="About_BuildDate">Fecha de construcción</sys:String>
+    <sys:String x:Key="About_CommitID">ID de compromiso</sys:String>
+    <sys:String x:Key="About_CommitIDToolTip">Identificación de compromiso total:</sys:String>
+    <sys:String x:Key="About_Copyright">Copyright</sys:String>
+    <sys:String x:Key="About_CreatedBy">Creado por</sys:String>
+    <sys:String x:Key="About_CreatedByToolTip">Consultar otras obras de Tim en https://github.com/Timthreetwelve</sys:String>
+    <sys:String x:Key="About_Description">Toda la información que ofrece Winver y mucho más</sys:String>
+    <sys:String x:Key="About_Documentation">Documentación</sys:String>
+    <sys:String x:Key="About_DocumentationText">Abrir el archivo Léame</sys:String>
+    <sys:String x:Key="About_DocumentationToolTip">Ver el archivo Léame</sys:String>
+    <sys:String x:Key="About_GitHubToolTip">Visitar la página de TimVer en GitHub</sys:String>
+    <sys:String x:Key="About_License">Licencia</sys:String>
+    <sys:String x:Key="About_LicenseText">Este proyecto está de acuerdo con los términos de la licencia MIT.</sys:String>
+    <sys:String x:Key="About_LicenseToolTip">Ver el documento de licencia</sys:String>
+    <sys:String x:Key="About_Translations">Traducciones</sys:String>
+    <sys:String x:Key="About_Update">Actualizar TimVer</sys:String>
+    <sys:String x:Key="About_UpdateText">Comprobar la versión de TimVer</sys:String>
+    <sys:String x:Key="About_UpdateToolTip">Consultar GitHub para una versión más reciente</sys:String>
+    <sys:String x:Key="About_Version">Versión</sys:String>
+    <!--  Build History Page  -->
+    <sys:String x:Key="BuildHistory_Branch">Sucursal</sys:String>
+    <sys:String x:Key="BuildHistory_Build">Construir</sys:String>
+    <sys:String x:Key="BuildHistory_Date">Fecha</sys:String>
+    <sys:String x:Key="BuildHistory_Records">registros</sys:String>
+    <sys:String x:Key="BuildHistory_Version">Versión</sys:String>
+    <!--  Button Text  -->
+    <sys:String x:Key="Button_Cancel">Cancelar</sys:String>
+    <sys:String x:Key="Button_CopyToClipboardToolTip">Copiar esta página en el portapapeles</sys:String>
+    <sys:String x:Key="Button_No">No</sys:String>
+    <sys:String x:Key="Button_OK">OK</sys:String>
+    <sys:String x:Key="Button_OpenFolder">Abrir la carpeta de aplicaciones</sys:String>
+    <sys:String x:Key="Button_OpenFolderToolTip">Abra la carpeta TimVer en el explorador de archivos</sys:String>
+    <sys:String x:Key="Button_OpenLogFile">Ver archivo de registro</sys:String>
+    <sys:String x:Key="Button_OpenLogFileToolTip">Abrir el archivo de registro en la aplicación por defecto</sys:String>
+    <sys:String x:Key="Button_ThreeDotToolTip">Acciones adicionales</sys:String>
+    <sys:String x:Key="Button_Yes">Sí</sys:String>
+    <!--  Disk Drive Information Page  -->
+    <sys:String x:Key="DriveInfo_BusType">Tipo de bus</sys:String>
+    <sys:String x:Key="DriveInfo_BusType_FiberChannel">Canal de fibra</sys:String>
+    <sys:String x:Key="DriveInfo_BusType_FileBackedVirtual">Virtual respaldado por archivos</sys:String>
+    <sys:String x:Key="DriveInfo_BusType_MMC">Tarjeta multimedia (MMC)</sys:String>
+    <sys:String x:Key="DriveInfo_BusType_Reserved">Reservado</sys:String>
+    <sys:String x:Key="DriveInfo_BusType_SAS">SCSI conectado en serie (SAS)</sys:String>
+    <sys:String x:Key="DriveInfo_BusType_SATA">ATA serie (SATA)</sys:String>
+    <sys:String x:Key="DriveInfo_BusType_SD">Digital seguro (SD)</sys:String>
+    <sys:String x:Key="DriveInfo_BusType_StorageSpaces">Espacios de almacenamiento</sys:String>
+    <sys:String x:Key="DriveInfo_BusType_Unknown">Desconocido</sys:String>
+    <sys:String x:Key="DriveInfo_DiskType">Tipo de disco</sys:String>
+    <sys:String x:Key="DriveInfo_Format">Formato</sys:String>
+    <sys:String x:Key="DriveInfo_Free">Libre</sys:String>
+    <sys:String x:Key="DriveInfo_FreePercent">% Libre</sys:String>
+    <sys:String x:Key="DriveInfo_Health">Salud</sys:String>
+    <sys:String x:Key="DriveInfo_Health_Healthy">Saludable</sys:String>
+    <sys:String x:Key="DriveInfo_Health_Unhealthy">Insalubre</sys:String>
+    <sys:String x:Key="DriveInfo_Health_Unknown">Desconocido</sys:String>
+    <sys:String x:Key="DriveInfo_Health_Warning">Advertencia</sys:String>
+    <sys:String x:Key="DriveInfo_Index">Índice</sys:String>
+    <sys:String x:Key="DriveInfo_Interface">Interfaz</sys:String>
+    <sys:String x:Key="DriveInfo_Label">Etiqueta</sys:String>
+    <sys:String x:Key="DriveInfo_LogicalDrives">Unidades lógicas</sys:String>
+    <sys:String x:Key="DriveInfo_MediaType">Tipo de medio</sys:String>
+    <sys:String x:Key="DriveInfo_MediaType_Unspecified">No especificado</sys:String>
+    <sys:String x:Key="DriveInfo_Message">Mensaje</sys:String>
+    <sys:String x:Key="DriveInfo_Model">Modelo</sys:String>
+    <sys:String x:Key="DriveInfo_Name">Nombre</sys:String>
+    <sys:String x:Key="DriveInfo_NotReady">No listo</sys:String>
+    <sys:String x:Key="DriveInfo_Partitions">Particiones</sys:String>
+    <sys:String x:Key="DriveInfo_PhysicalDisabled">La recopilación de información de la unidad física está deshabilitada en Configuración.</sys:String>
+    <sys:String x:Key="DriveInfo_PhysicalDrives">Unidades físicas</sys:String>
+    <sys:String x:Key="DriveInfo_RefreshToolTipLine1">Actualizar la información de la unidad actualizará ambos</sys:String>
+    <sys:String x:Key="DriveInfo_RefreshToolTipLine2">Unidades lógicas y físicas (si están habilitadas).</sys:String>
+    <sys:String x:Key="DriveInfo_Size">Tamaño</sys:String>
+    <sys:String x:Key="DriveInfo_Type">Tipo</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_CDRom">CD-ROM</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Fixed">Fijo</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Network">Red</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_NoRootDirectory">Sin directorio raíz</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Ram">Unidad de RAM</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Removable">Extraíble</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Unknown">Desconocido</sys:String>
+    <!--  Environment Variables Page  -->
+    <sys:String x:Key="EnvironmentInfo_Filter">Filtrar</sys:String>
+    <sys:String x:Key="EnvironmentInfo_Value">Valor</sys:String>
+    <sys:String x:Key="EnvironmentInfo_Variable">Variable</sys:String>
+    <!--  Graphics Information Page  -->
+    <sys:String x:Key="GraphicsInfo_AdapterType">Tipo de adaptador</sys:String>
+    <sys:String x:Key="GraphicsInfo_AdpaterRAM">RAM del adaptador</sys:String>
+    <sys:String x:Key="GraphicsInfo_BitsPerPixel">Bits por píxel</sys:String>
+    <sys:String x:Key="GraphicsInfo_CurrentRefreshRate">Frecuencia de actualización actual</sys:String>
+    <sys:String x:Key="GraphicsInfo_CurrentResolution">Resolución actual</sys:String>
+    <sys:String x:Key="GraphicsInfo_Description">Descripción</sys:String>
+    <sys:String x:Key="GraphicsInfo_DeviceID">ID del dispositivo</sys:String>
+    <sys:String x:Key="GraphicsInfo_GraphicsAdapter">Adaptador gráfico</sys:String>
+    <sys:String x:Key="GraphicsInfo_NumberOfColors">Número de colores</sys:String>
+    <sys:String x:Key="GraphicsInfo_SelectAdapter">Seleccionar adaptador</sys:String>
+    <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine1">Si hay más de un adaptador de vídeo instalado</sys:String>
+    <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine2">utilice el menú desplegable para seleccionar el adaptador que desea mostrar.</sys:String>
+    <!--  Hardware Information Page  -->
+    <sys:String x:Key="HardwareInfo_BiosManufacturer">Fabricante de BIOS</sys:String>
+    <sys:String x:Key="HardwareInfo_BiosVersion">Versión y fecha del BIOS</sys:String>
+    <sys:String x:Key="HardwareInfo_Cores">Núcleos</sys:String>
+    <sys:String x:Key="HardwareInfo_Installed">Instalado</sys:String>
+    <sys:String x:Key="HardwareInfo_LastBoot">Último reinicio</sys:String>
+    <sys:String x:Key="HardwareInfo_MachineName">Nombre del dispositivo</sys:String>
+    <sys:String x:Key="HardwareInfo_Manufacturer">Fabricante</sys:String>
+    <sys:String x:Key="HardwareInfo_Model">Modelo</sys:String>
+    <sys:String x:Key="HardwareInfo_PhysicalMemory">Memoria física</sys:String>
+    <sys:String x:Key="HardwareInfo_Processor">Procesador</sys:String>
+    <sys:String x:Key="HardwareInfo_ProcessorArch">Arquitectura del procesador</sys:String>
+    <sys:String x:Key="HardwareInfo_ProcessorCores">Núcleos del procesador</sys:String>
+    <sys:String x:Key="HardwareInfo_Threads">Hilos</sys:String>
+    <sys:String x:Key="HardwareInfo_Usable">Utilizable</sys:String>
+    <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
+    <sys:String x:Key="MsgText_AddedToStartup">TimVer se agregó al inicio de Windows</sys:String>
+    <sys:String x:Key="MsgText_AddToStartupFailed">No se pudo agregar TimVer al inicio de Windows.</sys:String>
+    <sys:String x:Key="MsgText_ApplicationShutdown">se esta cerrando</sys:String>
+    <sys:String x:Key="MsgText_ApplicationStarting">esta empezando</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateCheckFailed">Error en la búsqueda de actualizaciones.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateChecking">Comprobación de actualización.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateGoToRelease">¿Quieres ir a la página de lanzamiento?</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateNewerFound">Se ha encontrado una versión más reciente ({0}).</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateNoneFound">No se encontraron versiones más recientes.</sys:String>
+    <sys:String x:Key="MsgText_CopiedToClipboard">La página actual se copió en el portapapeles.</sys:String>
+    <sys:String x:Key="MsgText_CopyToClipboardInvalid">Copiar al portapapeles no es válido en esta página</sys:String>
+    <sys:String x:Key="MsgText_DriveInfoRefreshed">Información de la unidad de disco actualizada</sys:String>
+    <sys:String x:Key="MsgText_ElapsedTime">Tiempo transcurrido</sys:String>
+    <sys:String x:Key="MsgText_FilterOneRowShown">1 fila mostrada</sys:String>
+    <sys:String x:Key="MsgText_FilterRowsShown">{0} filas mostradas</sys:String>
+    <sys:String x:Key="MsgText_HideButNoHistory">Se especificó la opción de línea de comando "ocultar", pero la opción de mantener el historial es falsa.</sys:String>
+    <sys:String x:Key="MsgText_Million">Millones</sys:String>
+    <sys:String x:Key="MsgText_NotAvailable">No disponible</sys:String>
+    <sys:String x:Key="MsgText_Opening">Apertura</sys:String>
+    <sys:String x:Key="MsgText_OpeningLogFile">Abrir el archivo de registro</sys:String>
+    <sys:String x:Key="MsgText_OpeningReadMeFile">Abrir el archivo Léame</sys:String>
+    <sys:String x:Key="MsgText_RemovedFromStartup">TimVer fue eliminado del inicio de Windows</sys:String>
+    <sys:String x:Key="MsgText_RemoveFromStartupFailed">No se pudo eliminar TimVer del inicio de Windows.</sys:String>
+    <sys:String x:Key="MsgText_Thousand">Mil</sys:String>
+    <sys:String x:Key="MsgText_Translated">traducido</sys:String>
+    <sys:String x:Key="MsgText_UIColorSet">Color de énfasis establecido en {0}</sys:String>
+    <sys:String x:Key="MsgText_UISizeSet">Tamaño establecido en {0}</sys:String>
+    <sys:String x:Key="MsgText_UIThemeSet">Tema establecido en {0}</sys:String>
+    <sys:String x:Key="MsgText_WindowTitleAdministrator">Administrador</sys:String>
+    <!--  Navigation Items and Titles  -->
+    <sys:String x:Key="NavItem_About">Información</sys:String>
+    <sys:String x:Key="NavItem_BuildHistory">Historial de compilación de Windows</sys:String>
+    <sys:String x:Key="NavItem_DriveInfo">Especificaciones de la unidad de disco</sys:String>
+    <sys:String x:Key="NavItem_Environment">Variables de entorno</sys:String>
+    <sys:String x:Key="NavItem_Exit">Salir</sys:String>
+    <sys:String x:Key="NavItem_GraphicsInfo">Especificaciones de vídeo</sys:String>
+    <sys:String x:Key="NavItem_HardwareInfo">Especificaciones de hardware</sys:String>
+    <sys:String x:Key="NavItem_Settings">Configuración</sys:String>
+    <sys:String x:Key="NavItem_WindowsInfo">Especificaciones de Windows</sys:String>
+    <sys:String x:Key="NavTitle_About">Información</sys:String>
+    <sys:String x:Key="NavTitle_BuildHistory">Historial de compilación de Windows</sys:String>
+    <sys:String x:Key="NavTitle_DriveInfo">Especificaciones de la unidad de disco</sys:String>
+    <sys:String x:Key="NavTitle_Environment">Variables de entorno</sys:String>
+    <sys:String x:Key="NavTitle_GraphicsInfo">Especificaciones de vídeo</sys:String>
+    <sys:String x:Key="NavTitle_HardwareInfo">Especificaciones de hardware</sys:String>
+    <sys:String x:Key="NavTitle_Settings">Configuración</sys:String>
+    <sys:String x:Key="NavTitle_WindowsInfo">Especificaciones de Windows</sys:String>
+    <!--  Enums for Combo Boxes on the Settings Page  -->
+    <sys:String x:Key="SettingsEnum_AccentColor_Amber">Ámbar</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Black">Negro</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Blue">Azul</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_BlueGray">Azul Gris</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Brown">Marrón</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Cyan">Cian</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_DeepOrange">Naranja oscura</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_DeepPurple">Morado oscuro</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Gray">Gris</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Green">Verde</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Indigo">Añil</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_LightBlue">Azul claro</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_LightGreen">Verde claro</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Lime">Lima</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Orange">Naranja</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Pink">Rosa</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Purple">Morado</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Red">Rojo</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Teal">Verde azulado</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_White">Blanco</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Yellow">Amarillo</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_About">Información</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_DriveInfo">Información de la unidad</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_Environment">Variables de entorno</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_GraphicsInfo">Información de gráficos</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_HardwareInfo">Información de hardware</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_History">Historia</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_Settings">Configuración</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_WindowsInfo">Información de Windows</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Default">100%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Large">105%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Larger">110%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Largest">120%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Small">95%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Smaller">90%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Smallest">80%</sys:String>
+    <sys:String x:Key="SettingsEnum_Spacing_Comfortable">Normal</sys:String>
+    <sys:String x:Key="SettingsEnum_Spacing_Compact">Pequeño</sys:String>
+    <sys:String x:Key="SettingsEnum_Spacing_Wide">Grande</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_Dark">Oscuro</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_Darker">Más Oscuro</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_Light">Claro</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_System">Sistema</sys:String>
+    <!--  Settings Page Items  -->
+    <sys:String x:Key="SettingsItem_AccentColor">Acentuar el color</sys:String>
+    <sys:String x:Key="SettingsItem_BuildHistory">Mantener el historial de compilación</sys:String>
+    <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine1">Habilitar esta opción le indicará a TimVer que mantenga un registro de cuándo cambia el número de compilación.</sys:String>
+    <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine2">Al desactivar esta opción se eliminará el elemento Historial de la barra de navegación.</sys:String>
+    <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine3">Consulte el archivo Léame para obtener más información.</sys:String>
+    <sys:String x:Key="SettingsItem_ChangingLanguageWarning">¡Cambiar el idioma hará que la aplicación se reinicie!</sys:String>
+    <sys:String x:Key="SettingsItem_DateFormat">Formato de fecha de cuadrícula</sys:String>
+    <sys:String x:Key="SettingsItem_DisplayUser">Mostrar el usuario registrado y la organización en la página de información de Windows</sys:String>
+    <sys:String x:Key="SettingsItem_EditExcludeToolTip">Mayús y clic para abrir el archivo con la aplicación predeterminada</sys:String>
+    <sys:String x:Key="SettingsItem_HistoryOnBoot">Actualizar el historial de compilación al iniciar Windows</sys:String>
+    <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine1">Al habilitar esta opción se agregará TimVer al inicio de Windows con el fin de actualizar un archivo del historial de compilación.</sys:String>
+    <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine2">Esta opción no está disponible cuando se ejecuta TimVer desde una unidad extraíble.</sys:String>
+    <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine3">Consulte el archivo Léame para obtener más información.</sys:String>
+    <sys:String x:Key="SettingsItem_IncludeDebug">Incluir mensajes de nivel de depuración en el archivo de registro</sys:String>
+    <sys:String x:Key="SettingsItem_InitialPage">Página inicial mostrada</sys:String>
+    <sys:String x:Key="SettingsItem_KeepOnTop">Mantenga TimVer encima de otras ventanas</sys:String>
+    <sys:String x:Key="SettingsItem_Language">Idioma</sys:String>
+    <sys:String x:Key="SettingsItem_LogicalDriveOptions">Opciones de unidad lógica</sys:String>
+    <sys:String x:Key="SettingsItem_PhysicalDriveCollection">Habilitar la recopilación de información de la unidad física</sys:String>
+    <sys:String x:Key="SettingsItem_PhysicalDriveCollectionTooltip">La recopilación de información del disco físico puede llevar una cantidad significativa de tiempo.</sys:String>
+    <sys:String x:Key="SettingsItem_PhysicalDriveOptions">Opciones de unidad física</sys:String>
+    <sys:String x:Key="SettingsItem_RowHeight">Altura de la fila</sys:String>
+    <sys:String x:Key="SettingsItem_RowHeightToolTip">Esta configuración se aplica a la altura de la fila en las páginas Información de la unidad, Entorno e Historial.</sys:String>
+    <sys:String x:Key="SettingsItem_ShowBusTypeColumn">Mostrar columna Tipo de bus</sys:String>
+    <sys:String x:Key="SettingsItem_ShowDiskTypeColumn">Mostrar columna Tipo de disco</sys:String>
+    <sys:String x:Key="SettingsItem_ShowExit">Mostrar Salir en la barra de navegación</sys:String>
+    <sys:String x:Key="SettingsItem_ShowFormatColumn">Mostrar columna de formato</sys:String>
+    <sys:String x:Key="SettingsItem_ShowHealthColumn">Mostrar columna de salud</sys:String>
+    <sys:String x:Key="SettingsItem_ShowInterfaceColumn">Mostrar columna de interfaz</sys:String>
+    <sys:String x:Key="SettingsItem_ShowMediaTypeColumn">Mostrar columna Tipo de medio</sys:String>
+    <sys:String x:Key="SettingsItem_ShowModelColumn">Mostrar columna Modelo</sys:String>
+    <sys:String x:Key="SettingsItem_ShowNameColumn">Mostrar columna de nombre</sys:String>
+    <sys:String x:Key="SettingsItem_ShowNetworkDrives">Incluir unidades de red</sys:String>
+    <sys:String x:Key="SettingsItem_ShowPartitionsColumn">Mostrar columna Particiones</sys:String>
+    <sys:String x:Key="SettingsItem_ShowReadyDrives">Mostrar solo unidades en estado "Listo"</sys:String>
+    <sys:String x:Key="SettingsItem_ShowRemovableDrives">Incluir unidades extraíbles</sys:String>
+    <sys:String x:Key="SettingsItem_ShowTypeColumn">Mostrar columna Tipo</sys:String>
+    <sys:String x:Key="SettingsItem_StartCentered">Comience con la ventana centrada en la pantalla</sys:String>
+    <sys:String x:Key="SettingsItem_Theme">Tema</sys:String>
+    <sys:String x:Key="SettingsItem_UISize">Tamaño de la interfaz de usuario</sys:String>
+    <sys:String x:Key="SettingsItem_UseGB">Utilice GB (1024^3 bytes) para cálculos de capacidad</sys:String>
+    <sys:String x:Key="SettingsItem_UseGiB">Utilice GiB (1024^3 bytes) para cálculos de capacidad</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Usar el idioma de visualización de Windows</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">Cuando se selecciona esta opción, el idioma especificado en la configuración de Windows</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">se utilizará si hay una traducción disponible; de ​​lo contrario, se utilizará el inglés (en-US).</sys:String>
+    <!--  Settings Page Expander Headings  -->
+    <sys:String x:Key="SettingsSection_AppSettings">Configuración de la aplicación</sys:String>
+    <sys:String x:Key="SettingsSection_DriveSettings">Configuración de la unidad de disco</sys:String>
+    <sys:String x:Key="SettingsSection_Language">Idioma</sys:String>
+    <sys:String x:Key="SettingsSection_UISettings">Configuración de la interfaz de usuario</sys:String>
+    <sys:String x:Key="SettingsSubHead_AppSettings">Página inicial, Opciones de historial, Mostrar usuario y Registrar detalle</sys:String>
+    <sys:String x:Key="SettingsSubHead_DriveSettings">Utilice GB o GiB, incluya unidades por estado y más</sys:String>
+    <sys:String x:Key="SettingsSubHead_Language">Configuración de idioma (trabajo en progreso)</sys:String>
+    <sys:String x:Key="SettingsSubHead_UISettings">Tema, color de acento, tamaño de la interfaz de usuario, altura de fila, posición inicial y más</sys:String>
+    <!--  Windows Information Page  -->
+    <sys:String x:Key="WindowsInfo_Architecture">Arquitectura del sistema operativo</sys:String>
+    <sys:String x:Key="WindowsInfo_BuildBranch">Construir sucursal</sys:String>
+    <sys:String x:Key="WindowsInfo_BuildNumber">Número de compilación de Windows</sys:String>
+    <sys:String x:Key="WindowsInfo_EditionID">ID de edición</sys:String>
+    <sys:String x:Key="WindowsInfo_Installed">Instalado en</sys:String>
+    <sys:String x:Key="WindowsInfo_OSEdition">Edición del sistema operativo</sys:String>
+    <sys:String x:Key="WindowsInfo_OSVersion">Versión de Windows</sys:String>
+    <sys:String x:Key="WindowsInfo_RegisteredOrg">Organización registrada</sys:String>
+    <sys:String x:Key="WindowsInfo_RegisteredUser">Registrado a</sys:String>
+    <sys:String x:Key="WindowsInfo_TempFolder">Carpeta temporal</sys:String>
+    <sys:String x:Key="WindowsInfo_WindowsFolder">Carpeta de Windows</sys:String>
+
+</ResourceDictionary>

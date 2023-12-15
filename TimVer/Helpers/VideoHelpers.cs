@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Helpers;
 
@@ -123,19 +123,19 @@ public static class VideoHelpers
         if (ci.CimInstanceProperties["CurrentNumberOfColors"] == null)
         {
             _log.Debug("Value for CurrentNumberOfColors was null");
-            return "Not Available";
+            return GetStringResource("MsgText_NotAvailable");
         }
 
         ulong colors = Convert.ToUInt64(ci.CimInstanceProperties["CurrentNumberOfColors"].Value);
         if (colors >= (ulong)Math.Pow(1024, 2))
         {
             colors /= (ulong)Math.Pow(1024, 3);
-            return string.Format(CultureInfo.CurrentCulture, $"{colors:N2} million");
+            return string.Format(CultureInfo.CurrentCulture, $"{colors:N2} {GetStringResource("MsgText_Million")}");
         }
         else if (colors >= (ulong)Math.Pow(1024, 1))
         {
             colors /= (ulong)Math.Pow(1024, 2);
-            return string.Format(CultureInfo.CurrentCulture, $"{colors:N2} thousand");
+            return string.Format(CultureInfo.CurrentCulture, $"{colors:N2} {GetStringResource("MsgText_Thousand")}");
         }
         else
         {

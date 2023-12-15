@@ -30,65 +30,66 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="160" />
+                    <ColumnDefinition Width="auto" MinWidth="160" />
+                    <ColumnDefinition Width="20" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <!--#endregion-->
 
                 <TextBlock Grid.Row="0" Grid.Column="0"
-                           Text="Graphics Adapter" />
-                <TextBlock Grid.Row="0" Grid.Column="1"
+                           Text="{DynamicResource GraphicsInfo_GraphicsAdapter}" />
+                <TextBlock Grid.Row="0" Grid.Column="2"
                            Text="{Binding GpuName}" />
 
                 <TextBlock Grid.Row="1" Grid.Column="0"
-                           Text="Adapter Type" />
-                <TextBlock Grid.Row="1" Grid.Column="1"
+                           Text="{DynamicResource GraphicsInfo_AdapterType}" />
+                <TextBlock Grid.Row="1" Grid.Column="2"
                            Text="{Binding GpuVideoProcessor}" />
 
                 <TextBlock Grid.Row="3" Grid.Column="0"
-                           Text="Device ID" />
-                <TextBlock Grid.Row="3" Grid.Column="1"
+                           Text="{DynamicResource GraphicsInfo_DeviceID}" />
+                <TextBlock Grid.Row="3" Grid.Column="2"
                            Text="{Binding GpuDeviceID}" />
 
                 <TextBlock Grid.Row="2" Grid.Column="0"
-                           Text="Description" />
-                <TextBlock Grid.Row="2" Grid.Column="1"
+                           Text="{DynamicResource GraphicsInfo_Description}" />
+                <TextBlock Grid.Row="2" Grid.Column="2"
                            Text="{Binding GpuDescription}" />
 
                 <TextBlock Grid.Row="4" Grid.Column="0"
-                           Text="Current Resolution" />
-                <TextBlock Grid.Row="4" Grid.Column="1">
+                           Text="{DynamicResource GraphicsInfo_CurrentResolution}" />
+                <TextBlock Grid.Row="4" Grid.Column="2">
                     <Run Text="{Binding GpuHorizontalResolution}" />
                     <Run Text=" x " />
                     <Run Text="{Binding GpuVerticalResolution}" />
                 </TextBlock>
 
                 <TextBlock Grid.Row="5" Grid.Column="0"
-                           Text="Current Refresh Rate" />
-                <TextBlock Grid.Row="5" Grid.Column="1">
+                           Text="{DynamicResource GraphicsInfo_CurrentRefreshRate}" />
+                <TextBlock Grid.Row="5" Grid.Column="2">
                     <Run Text="{Binding GpuCurrentRefresh}" />
                     <Run Text="Hz" />
                 </TextBlock>
 
                 <TextBlock Grid.Row="6" Grid.Column="0"
-                           Text="Adapter RAM" />
-                <TextBlock Grid.Row="6" Grid.Column="1"
+                           Text="{DynamicResource GraphicsInfo_AdpaterRAM}" />
+                <TextBlock Grid.Row="6" Grid.Column="2"
                            Text="{Binding GpuAdapterRam}" />
 
                 <TextBlock Grid.Row="7" Grid.Column="0"
-                           Text="Bits per Pixel" />
-                <TextBlock Grid.Row="7" Grid.Column="1"
+                           Text="{DynamicResource GraphicsInfo_BitsPerPixel}" />
+                <TextBlock Grid.Row="7" Grid.Column="2"
                            Text="{Binding GpuBitsPerPixel}" />
 
                 <TextBlock Grid.Row="8" Grid.Column="0"
-                           Text="Number of Colors" />
-                <TextBlock Grid.Row="8" Grid.Column="1"
+                           Text="{DynamicResource GraphicsInfo_NumberOfColors}" />
+                <TextBlock Grid.Row="8" Grid.Column="2"
                            Text="{Binding GpuNumberOfColors}" />
 
                 <StackPanel Grid.Row="10"
                             Orientation="Horizontal">
                     <TextBlock Margin="0,2"
-                               Text="Select Adapter" />
+                               Text="{DynamicResource GraphicsInfo_SelectAdapter}" />
                     <TextBlock Margin="7,3"
                                ToolTipService.InitialShowDelay="300"
                                ToolTipService.Placement="Top">
@@ -96,16 +97,16 @@
                                                  Kind="InfoOutline" />
                         <TextBlock.ToolTip>
                             <TextBlock LineHeight="18">
-                                <Run Text="If there is more than one video adapter use" />
+                                <Run Text="{DynamicResource GraphicsInfo_SelectAdapterToolTipLine1}" />
                                 <LineBreak />
-                                <Run Text="the dropdown to select the adapter to display." />
+                                <Run Text="{DynamicResource GraphicsInfo_SelectAdapterToolTipLine2}" />
                             </TextBlock>
                         </TextBlock.ToolTip>
                     </TextBlock>
                 </StackPanel>
 
                 <ComboBox x:Name="GpuListComboBox"
-                          Grid.Row="10" Grid.Column="1"
+                          Grid.Row="10" Grid.Column="2"
                           Width="140"
                           HorizontalAlignment="Left"
                           VerticalAlignment="Top"

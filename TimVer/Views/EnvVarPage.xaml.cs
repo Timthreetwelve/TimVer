@@ -50,11 +50,12 @@ public partial class EnvVarPage : UserControl
 
         if (EnvDataGrid.Items.Count == 1)
         {
-            SnackbarMsg.ClearAndQueueMessage("1 row shown", 2000);
+            SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_FilterOneRowShown"), 2000);
         }
         else
         {
-            SnackbarMsg.ClearAndQueueMessage($"{EnvDataGrid.Items.Count} rows shown", 2000);
+            SnackbarMsg.ClearAndQueueMessage(string.Format(
+                GetStringResource("MsgText_FilterRowsShown"), EnvDataGrid.Items.Count), 2000);
         }
     }
     #endregion Filter the datagrid

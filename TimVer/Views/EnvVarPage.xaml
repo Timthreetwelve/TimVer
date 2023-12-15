@@ -28,13 +28,13 @@
         </Grid.RowDefinitions>
         <!--#endregion-->
 
-        <!--#region-->
+        <!--#region Filter-->
         <TextBox Grid.Row="0"
                  Width="280" Height="35"
                  Margin="15,10,0,0" Padding="10,5"
                  HorizontalAlignment="Left"
                  VerticalContentAlignment="Top"
-                 materialDesign:HintAssist.Hint="Filter"
+                 materialDesign:HintAssist.Hint="{DynamicResource EnvironmentInfo_Filter}"
                  materialDesign:HintAssist.IsFloating="True"
                  materialDesign:HintAssist.Foreground="{DynamicResource MaterialDesignBody}"
                  materialDesign:HintAssist.FloatingHintHorizontalAlignment="Center"
@@ -74,9 +74,9 @@
                   ItemsSource="{Binding Source={x:Static models:EnvVariable.EnvVariableList}}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Variable}"
-                                    Header="Variable" />
+                                    Header="{DynamicResource EnvironmentInfo_Variable}" />
                 <DataGridTextColumn Binding="{Binding Value}"
-                                    Header="Value" />
+                                    Header="{DynamicResource EnvironmentInfo_Value}" />
             </DataGrid.Columns>
         </DataGrid>
         <!--#endregion-->
