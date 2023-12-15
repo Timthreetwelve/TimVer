@@ -181,12 +181,27 @@ public static class CombinedInfo
             {
                 return _procCores;
             }
-            _procCores = string.Format($"{GetInfo.CimQueryProc("NumberOfCores")} " +
-                $"Cores - {GetInfo.CimQueryProc("NumberOfLogicalProcessors")} Threads");
+            _procCores = GetInfo.CimQueryProc("NumberOfCores");
             return _procCores;
         }
     }
     #endregion Processor cores
+
+    #region Processor threads
+    private static string _procThreads;
+    public static string ProcThreads
+    {
+        get
+        {
+            if (_procThreads != null)
+            {
+                return _procThreads;
+            }
+            _procThreads = GetInfo.CimQueryProc("NumberOfLogicalProcessors");
+            return _procThreads;
+        }
+    }
+    #endregion Processor threads
 
     #region Processor name
     private static string _procName;
