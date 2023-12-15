@@ -51,4 +51,10 @@ public partial class PhysicalDrives : ObservableObject
 
     [ObservableProperty]
     private string _message;
+
+    [ObservableProperty]
+    private string _partitionStyle;
+
+    [ObservableProperty]
+    private string _isBoot;
 }
