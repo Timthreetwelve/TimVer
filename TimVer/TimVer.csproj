@@ -7,7 +7,7 @@
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Images\TV.ico</ApplicationIcon>
     <Description>It's like Winver only more</Description>
-    <Copyright>Copyright © $([System.DateTime]::UtcNow.Year) Tim Kennedy</Copyright>
+    <Copyright>© 2019 - $([System.DateTime]::UtcNow.Year) Tim Kennedy</Copyright>
     <Authors>Tim Kennedy</Authors>
     <Company>T_K</Company>
     <Product>TimVer</Product>
