@@ -4,7 +4,7 @@ namespace TimVer.Models;
 
 #region Navigation
 /// <summary>
-/// Navigation Page
+/// Navigation Page enumeration used by the Initial page ComboBox in Settings
 /// </summary>
 /// <remarks>
 /// THe "Exit" nav page is not listed here
