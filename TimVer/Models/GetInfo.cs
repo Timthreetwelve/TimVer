@@ -52,6 +52,23 @@ public static class GetInfo
             return ex.Message;
         }
     }
+
+    public static DateTime CimQueryOSDateTime(string value)
+    {
+        try
+        {
+            CimSession cim = CimSession.Create(null);
+            DateTime cimVal = (DateTime)(cim.QueryInstances("root/CIMV2", "WQL", $"SELECT {value} From Win32_OperatingSystem")
+                .FirstOrDefault()?.CimInstanceProperties[value].Value);
+            return cimVal;
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, "Win32_OperatingSystem call failed.");
+            return DateTime.MinValue;
+        }
+    }
+
     #endregion Get OS information
 
     #region Get System Information

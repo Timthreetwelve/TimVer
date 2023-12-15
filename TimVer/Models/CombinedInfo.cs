@@ -109,32 +109,32 @@ public static class CombinedInfo
     #endregion Edition
 
     #region Install date
-    private static string _installDate;
-    public static string InstallDate
+    private static DateTime _installDate;
+    public static DateTime InstallDate
     {
         get
         {
-            if (_installDate != null)
+            if (_installDate != default)
             {
                 return _installDate;
             }
-            _installDate = GetInfo.CimQueryOS("InstallDate");
+            _installDate = GetInfo.CimQueryOSDateTime("InstallDate");
             return _installDate;
         }
     }
     #endregion Install date
 
     #region Last boot up time
-    private static string _lastBoot;
-    public static string LastBoot
+    private static DateTime _lastBoot;
+    public static DateTime LastBoot
     {
         get
         {
-            if (_lastBoot != null)
+            if (_lastBoot != default)
             {
                 return _lastBoot;
             }
-            _lastBoot = GetInfo.CimQueryOS("LastBootUpTime");
+            _lastBoot = GetInfo.CimQueryOSDateTime("LastBootUpTime");
             return _lastBoot;
         }
     }
