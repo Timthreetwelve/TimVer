@@ -1,0 +1,305 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--
+        Refer to the "Contribute a Translation" topic in the Wiki:
+
+        https://github.com/Timthreetwelve/TimVer/wiki/Contribute-a-Translation
+
+        ======================================================================
+
+        Application name:            TimVer
+
+        Language name: Dutch
+	
+        Translation contributed by: TiM
+
+        Date last update: 2023-11-07
+
+        ======================================================================
+
+    -->
+
+    <!--  About Page  -->
+    <sys:String x:Key="About_BuildDate">Build datum</sys:String>
+    <sys:String x:Key="About_CommitID">Project ID</sys:String>
+    <sys:String x:Key="About_CommitIDToolTip">Volledit project ID:</sys:String>
+    <sys:String x:Key="About_Copyright">Copyright</sys:String>
+    <sys:String x:Key="About_CreatedBy">Ontworpen door</sys:String>
+    <sys:String x:Key="About_CreatedByToolTip">Bekijk Tim zijn werk op https://github.com/Timthreetwelve</sys:String>
+    <sys:String x:Key="About_Description">Alle informatie dat Winver levert en meer!</sys:String>
+    <sys:String x:Key="About_Documentation">Documentatie</sys:String>
+    <sys:String x:Key="About_DocumentationText">Open het leesmij bestand</sys:String>
+    <sys:String x:Key="About_DocumentationToolTip">Bekijk het leesmij bestand</sys:String>
+    <sys:String x:Key="About_GitHubToolTip">Bezoek de pagina van TimVer op GitHub</sys:String>
+    <sys:String x:Key="About_License">Licentie</sys:String>
+    <sys:String x:Key="About_LicenseText">Dit project is gelicensieerd onder de voorwaarden van het MIT.</sys:String>
+    <sys:String x:Key="About_LicenseToolTip">Bekijk het licentie bestand</sys:String>
+    <sys:String x:Key="About_Translations">Vertalingen</sys:String>
+    <sys:String x:Key="About_Update">Update TimVer</sys:String>
+    <sys:String x:Key="About_UpdateText">Controleer op nieuwe versies van TimVer</sys:String>
+    <sys:String x:Key="About_UpdateToolTip">Controleer GitHub voor een nieuwe versie</sys:String>
+    <sys:String x:Key="About_Version">Versie</sys:String>
+    <!--  Build History Page  -->
+    <sys:String x:Key="BuildHistory_Branch">Branch</sys:String>
+    <sys:String x:Key="BuildHistory_Build">Build</sys:String>
+    <sys:String x:Key="BuildHistory_Date">Datum</sys:String>
+    <sys:String x:Key="BuildHistory_Records">records</sys:String>
+    <sys:String x:Key="BuildHistory_Version">Versie</sys:String>
+    <!--  Button Text  -->
+    <sys:String x:Key="Button_Cancel">Annuleren</sys:String>
+    <sys:String x:Key="Button_CopyToClipboardToolTip">Kopieer deze pagina naar het klembord</sys:String>
+    <sys:String x:Key="Button_No">Nee</sys:String>
+    <sys:String x:Key="Button_OK">OK</sys:String>
+    <sys:String x:Key="Button_OpenFolder">Open programma locatie</sys:String>
+    <sys:String x:Key="Button_OpenFolderToolTip">Open de map TimVer in verkenner</sys:String>
+    <sys:String x:Key="Button_OpenLogFile">Bekijk het logbestand</sys:String>
+    <sys:String x:Key="Button_OpenLogFileToolTip">Open het logbestand in standaard applicatie.</sys:String>
+    <sys:String x:Key="Button_ThreeDotToolTip">Aanvulende acties</sys:String>
+    <sys:String x:Key="Button_Yes">Ja</sys:String>
+    <!--  Disk Drive Information Page  -->
+    <sys:String x:Key="DriveInfo_BusType">Bus Type</sys:String>
+    <sys:String x:Key="DriveInfo_BusType_FiberChannel">Fiber Channel</sys:String>
+    <sys:String x:Key="DriveInfo_BusType_FileBackedVirtual">File-Backed Virtual</sys:String>
+    <sys:String x:Key="DriveInfo_BusType_MMC">Multimedia Card (MMC)</sys:String>
+    <sys:String x:Key="DriveInfo_BusType_Reserved">Gereserveerd</sys:String>
+    <sys:String x:Key="DriveInfo_BusType_SAS">Serial Attached SCSI (SAS)</sys:String>
+    <sys:String x:Key="DriveInfo_BusType_SATA">Serial ATA (SATA)</sys:String>
+    <sys:String x:Key="DriveInfo_BusType_SD">Secure Digital (SD)</sys:String>
+    <sys:String x:Key="DriveInfo_BusType_StorageSpaces">Opslag</sys:String>
+    <sys:String x:Key="DriveInfo_BusType_Unknown">Unknown</sys:String>
+    <sys:String x:Key="DriveInfo_DiskType">Disk Type</sys:String>
+    <sys:String x:Key="DriveInfo_Error">DriveInfo fout</sys:String>
+    <sys:String x:Key="DriveInfo_ErrorSeeLog">Fout - raadpleeg het logbestand</sys:String>
+    <sys:String x:Key="DriveInfo_ErrorProcessingDrive">Fout bij verwerken station</sys:String>
+    <sys:String x:Key="DriveInfo_Format">Formaat</sys:String>
+    <sys:String x:Key="DriveInfo_Free">Beschikbaar</sys:String>
+    <sys:String x:Key="DriveInfo_FreePercent">% beschikbaar</sys:String>
+    <sys:String x:Key="DriveInfo_Health">Health</sys:String>
+    <sys:String x:Key="DriveInfo_Health_Healthy">Healthy</sys:String>
+    <sys:String x:Key="DriveInfo_Health_Unhealthy">Unhealthy</sys:String>
+    <sys:String x:Key="DriveInfo_Health_Unknown">Onekend</sys:String>
+    <sys:String x:Key="DriveInfo_Health_Warning">Waarschuwing</sys:String>
+    <sys:String x:Key="DriveInfo_IOError">I/O fout</sys:String>
+    <sys:String x:Key="DriveInfo_Index">Index</sys:String>
+    <sys:String x:Key="DriveInfo_Interface">Interface</sys:String>
+    <sys:String x:Key="DriveInfo_Label">Label</sys:String>
+    <sys:String x:Key="DriveInfo_LogicalDrives">Logisch station</sys:String>
+    <sys:String x:Key="DriveInfo_MediaType">Media Type</sys:String>
+    <sys:String x:Key="DriveInfo_MediaType_Unspecified">Ongedefineerd</sys:String>
+    <sys:String x:Key="DriveInfo_Message">Bericht</sys:String>
+    <sys:String x:Key="DriveInfo_Model">Model</sys:String>
+    <sys:String x:Key="DriveInfo_Name">Naam</sys:String>
+    <sys:String x:Key="DriveInfo_NotReady">Niet beschikbaar</sys:String>
+    <sys:String x:Key="DriveInfo_Partitions">Partities</sys:String>
+    <sys:String x:Key="DriveInfo_PhysicalDisabled">Verzameleng van schijfinformatie is uitgeschakeld bij instellingen.</sys:String>
+    <sys:String x:Key="DriveInfo_PhysicalDrives">Schijfstations</sys:String>
+    <sys:String x:Key="DriveInfo_RefreshToolTipLine1">Verversen schijf details zal alles verversen</sys:String>
+    <sys:String x:Key="DriveInfo_RefreshToolTipLine2">Vaste en tijdelijke stations (indien ingeschakeld).</sys:String>
+    <sys:String x:Key="DriveInfo_Size">Grootte</sys:String>
+    <sys:String x:Key="DriveInfo_Type">Type</sys:String>
+    <sys:String x:Key="DriveInfo_UnauthorizedAccess">Unauthorized toegang</sys:String>
+    <sys:String x:Key="DriveInfo_UnknownError">Onbekende fout</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_CDRom">CD-ROM</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Fixed">Fixed</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Network">Network</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_NoRootDirectory">Geen Root Directory</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Ram">RAM Drive</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Removable">portable</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Unknown">Onbekend</sys:String>
+
+
+    <!--  Environment Variables Page  -->
+    <sys:String x:Key="EnvironmentInfo_Filter">Filter</sys:String>
+    <sys:String x:Key="EnvironmentInfo_Value">Waarde</sys:String>
+    <sys:String x:Key="EnvironmentInfo_Variable">Variabel</sys:String>
+    <!--  Graphics Information Page  -->
+    <sys:String x:Key="GraphicsInfo_AdapterType">Adapter Type</sys:String>
+    <sys:String x:Key="GraphicsInfo_AdpaterRAM">Adapter RAM</sys:String>
+    <sys:String x:Key="GraphicsInfo_BitsPerPixel">Bits per Pixel</sys:String>
+    <sys:String x:Key="GraphicsInfo_CurrentRefreshRate">Huigige verversings snelheid</sys:String>
+    <sys:String x:Key="GraphicsInfo_CurrentResolution">Huidige resolutie</sys:String>
+    <sys:String x:Key="GraphicsInfo_Description">Omschrijving</sys:String>
+    <sys:String x:Key="GraphicsInfo_DeviceID">Apparaat ID</sys:String>
+    <sys:String x:Key="GraphicsInfo_GraphicsAdapter">Graphics Adapter</sys:String>
+    <sys:String x:Key="GraphicsInfo_NumberOfColors">Aantal kleuren</sys:String>
+    <sys:String x:Key="GraphicsInfo_SelectAdapter">Kies Adapter</sys:String>
+    <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine1">Als er meer dan 1 videokaart is geinstalleerd</sys:String>
+    <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine2">kies een kaart om weer te geven.</sys:String>
+    <!--  Hardware Information Page  -->
+    <sys:String x:Key="HardwareInfo_BiosManufacturer">BIOS producent</sys:String>
+    <sys:String x:Key="HardwareInfo_BiosVersion">BIOS Versie en datum</sys:String>
+    <sys:String x:Key="HardwareInfo_Cores">Cores</sys:String>
+    <sys:String x:Key="HardwareInfo_Installed">Geinstalleerd</sys:String>
+    <sys:String x:Key="HardwareInfo_LastBoot">Laatste herstart</sys:String>
+    <sys:String x:Key="HardwareInfo_MachineName">Computernaam</sys:String>
+    <sys:String x:Key="HardwareInfo_Manufacturer">Producentr</sys:String>
+    <sys:String x:Key="HardwareInfo_Model">Model</sys:String>
+    <sys:String x:Key="HardwareInfo_PhysicalMemory">Geheugen</sys:String>
+    <sys:String x:Key="HardwareInfo_Processor">Processor</sys:String>
+    <sys:String x:Key="HardwareInfo_ProcessorArch">Processor Architecture</sys:String>
+    <sys:String x:Key="HardwareInfo_ProcessorCores">Processor Cores</sys:String>
+    <sys:String x:Key="HardwareInfo_Threads">Threads</sys:String>
+    <sys:String x:Key="HardwareInfo_Usable">Bruikbaar</sys:String>
+    <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
+    <sys:String x:Key="MsgText_AddedToStartup">TimVer start automatisch met Windows</sys:String>
+    <sys:String x:Key="MsgText_AddToStartupFailed">Fout bij toevoegen TimVer aan het opstart proces. Bekijk het logbestand voor meer informatie.</sys:String>
+    <sys:String x:Key="MsgText_ApplicationShutdown">sluit af</sys:String>
+    <sys:String x:Key="MsgText_ApplicationStarting">is aan het opstarten</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateCheckFailed">Controleren op updates is niet gelukt. Controleer het logbestand voor meer informatie.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateChecking">Controleren op updates.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateGoToRelease">Wil je naar de update pagina?</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateNewerFound">Er is een nieuwe versie ({0}) gevonden.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateNoneFound">Er is geen nieuwe versie gevonden.</sys:String>
+    <sys:String x:Key="MsgText_CopiedToClipboard">Huidige pagina is gekopieerd naar het klembord</sys:String>
+    <sys:String x:Key="MsgText_CopyToClipboardInvalid">Het is niet mogelijk deze inhoud te kopieren naar het klembord</sys:String>
+    <sys:String x:Key="MsgText_DriveInfoRefreshed">Disk drive informatie ververst</sys:String>
+    <sys:String x:Key="MsgText_ElapsedTime">Verstreken tijd</sys:String>
+    <sys:String x:Key="MsgText_FilterOneRowShown">1 rij weergeven</sys:String>
+    <sys:String x:Key="MsgText_FilterRowsShown">{0} rijen weergeven</sys:String>
+    <sys:String x:Key="MsgText_HideButNoHistory">Command line commando HIDE is gespecificeerd, maar de optie om de geschiedenis te bewaren is fout. Aflsuiten.</sys:String>
+    <sys:String x:Key="MsgText_Million">miljoen</sys:String>
+    <sys:String x:Key="MsgText_NotAvailable">Niet beschikbaar</sys:String>
+    <sys:String x:Key="MsgText_Opening">Openen</sys:String>
+    <sys:String x:Key="MsgText_OpeningLogFile">Openen logbestand</sys:String>
+    <sys:String x:Key="MsgText_OpeningReadMeFile">Openen leesmij bestand</sys:String>
+    <sys:String x:Key="MsgText_RemovedFromStartup">TimVer wordt niet meer automatisch opgestart met windows</sys:String>
+    <sys:String x:Key="MsgText_RemoveFromStartupFailed">Het is niet gelukt om het automatsich starten van TimVer ongedaan te maken. Lees het logbestand voor meer informatie.</sys:String>
+    <sys:String x:Key="MsgText_Thousand">duizend</sys:String>
+    <sys:String x:Key="MsgText_Translated">vertaald</sys:String>
+    <sys:String x:Key="MsgText_UIColorSet">Accentkleur ingesteld op {0}</sys:String>
+    <sys:String x:Key="MsgText_UISizeSet">Grootte ingesteld op {0}</sys:String>
+    <sys:String x:Key="MsgText_UIThemeSet">Thema ingesteld op {0}</sys:String>
+    <sys:String x:Key="MsgText_WindowTitleAdministrator">Administrator</sys:String>
+    <!--  Navigation Items and Titles  -->
+    <sys:String x:Key="NavItem_About">Over</sys:String>
+    <sys:String x:Key="NavItem_BuildHistory">Build geschiedenis</sys:String>
+    <sys:String x:Key="NavItem_DriveInfo">Schijf informatie</sys:String>
+    <sys:String x:Key="NavItem_Environment">Omgeving</sys:String>
+    <sys:String x:Key="NavItem_Exit">Afsluiten</sys:String>
+    <sys:String x:Key="NavItem_GraphicsInfo">Video informatie</sys:String>
+    <sys:String x:Key="NavItem_HardwareInfo">Hardware informatie</sys:String>
+    <sys:String x:Key="NavItem_Settings">Instellingen</sys:String>
+    <sys:String x:Key="NavItem_WindowsInfo">Windows informatie</sys:String>
+    <sys:String x:Key="NavTitle_About">OVer TimVer</sys:String>
+    <sys:String x:Key="NavTitle_BuildHistory">Build geschiedenis</sys:String>
+    <sys:String x:Key="NavTitle_DriveInfo">HD informatie</sys:String>
+    <sys:String x:Key="NavTitle_Environment">Omgevings variabelen</sys:String>
+    <sys:String x:Key="NavTitle_GraphicsInfo">Graphics (Video) informatie</sys:String>
+    <sys:String x:Key="NavTitle_HardwareInfo">Hardware informatie</sys:String>
+    <sys:String x:Key="NavTitle_Settings">Instellingen</sys:String>
+    <sys:String x:Key="NavTitle_WindowsInfo">Windows Information</sys:String>
+    <!--  Enums for Combo Boxes on the Settings Page  -->
+    <sys:String x:Key="SettingsEnum_AccentColor_Amber">Amber</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Black">Zwart</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Blue">Blauw</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_BlueGray">Blauw grijs</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Brown">Brown</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Cyan">Cyaan</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_DeepOrange">Donker oranje</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_DeepPurple">Donker paars</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Gray">Gijsy</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Green">Groen</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Indigo">Indigo</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_LightBlue">Licht blauw</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_LightGreen">Licht groen</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Lime">Lime</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Orange">Oranje</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Pink">Roze</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Purple">Paars</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Red">Rood</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Teal">Blauw groen</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_White">Wit</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Yellow">Geel</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_About">Over</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_DriveInfo">Drive informatie</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_Environment">Omgeving</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_GraphicsInfo">Graphics informatie</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_HardwareInfo">Hardware informatie</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_History">Geschiedenis</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_Settings">Instellingen</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_WindowsInfo">Windows informatie</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Default">100%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Large">105%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Larger">110%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Largest">120%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Small">95%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Smaller">90%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Smallest">80%</sys:String>
+    <sys:String x:Key="SettingsEnum_Spacing_Comfortable">Comfortabel</sys:String>
+    <sys:String x:Key="SettingsEnum_Spacing_Compact">Compact</sys:String>
+    <sys:String x:Key="SettingsEnum_Spacing_Wide">Breedte</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_Dark">Materiaal Donker</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_Darker">Donkerder</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_Light">Licht</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_System">Systeem</sys:String>
+    <!--  Settings Page Items  -->
+    <sys:String x:Key="SettingsItem_AccentColor">Accent kleur</sys:String>
+    <sys:String x:Key="SettingsItem_BuildHistory">Bewaar geschiedenis</sys:String>
+    <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine1">Bewaren van versie historie en veranderingen.</sys:String>
+    <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine2">Verwijder versie historie van de navigatiebalk.</sys:String>
+    <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine3">Raadpleeg het logbestand voor meer informatie.</sys:String>
+    <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Het programma zal opnieuw worden opgestart als de taal wordt veranderd!</sys:String>
+    <sys:String x:Key="SettingsItem_DateFormat">Tabel Datum Formaat</sys:String>
+    <sys:String x:Key="SettingsItem_DisplayUser">Laat gebruikers- en organisatieinformatie gegevens zien op de Windows Informatie Pagina</sys:String>
+    <sys:String x:Key="SettingsItem_EditExcludeToolTip">Shift klik om het met het standaard programma te openen</sys:String>
+    <sys:String x:Key="SettingsItem_HistoryOnBoot">Werk de versie informatie bij tijdens het opstarten</sys:String>
+    <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine1">Als u deze optie inschakelt, wordt TimVer toegevoegd aan het opstarten van Windows met als doel het bijwerken van een geschiedenis bestand.</sys:String>
+    <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine2">Deze optie is niet beschikbaar als Timver vanaf een verwisselbare schijf wordt uitgevoerd.</sys:String>
+    <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine3">Bekijk het leesmij bestand voor meer informatie</sys:String>
+    <sys:String x:Key="SettingsItem_IncludeDebug">Voeg berichten op foutopsporingsniveau toe aan het logbestand</sys:String>
+    <sys:String x:Key="SettingsItem_InitialPage">Eerste pagina weergegeven</sys:String>
+    <sys:String x:Key="SettingsItem_KeepOnTop">Houd TimVer boven het andere vensters</sys:String>
+    <sys:String x:Key="SettingsItem_Language">Taal</sys:String>
+    <sys:String x:Key="SettingsItem_LogicalDriveOptions">Logische schijfopties</sys:String>
+    <sys:String x:Key="SettingsItem_PhysicalDriveCollection">Schakel het verzamelen van gegevens over fysieke schijven in</sys:String>
+    <sys:String x:Key="SettingsItem_PhysicalDriveCollectionTooltip">Het verzamelen van gegevens over fysieke schijven inschakelen. Het verzamelen van gegevens over fysieke schijven kan aanzienlijke tijd in beslag nemen.</sys:String>
+    <sys:String x:Key="SettingsItem_PhysicalDriveOptions">Fysieke schijfopties</sys:String>
+    <sys:String x:Key="SettingsItem_RowHeight">Rijhoogte</sys:String>
+    <sys:String x:Key="SettingsItem_RowHeightToolTip">Deze instelling is van toepassing op de rijhoogte op de pagina's Drive Info, Omgeving en Geschiedenis.</sys:String>
+    <sys:String x:Key="SettingsItem_ShowBusTypeColumn">Toon de kolom Bustype</sys:String>
+    <sys:String x:Key="SettingsItem_ShowDiskTypeColumn">Toon disk type kolom</sys:String>
+    <sys:String x:Key="SettingsItem_ShowExit">Toon afsluiten in de taakbalk</sys:String>
+    <sys:String x:Key="SettingsItem_ShowFormatColumn">Kolom Formaat weergeven</sys:String>
+    <sys:String x:Key="SettingsItem_ShowHealthColumn">Kolom Gezondheid weergeven</sys:String>
+    <sys:String x:Key="SettingsItem_ShowInterfaceColumn">Toon Interface-kolom</sys:String>
+    <sys:String x:Key="SettingsItem_ShowMediaTypeColumn">Kolom Mediatype weergeven</sys:String>
+    <sys:String x:Key="SettingsItem_ShowModelColumn">Toon Modelkolom</sys:String>
+    <sys:String x:Key="SettingsItem_ShowNameColumn">Kolom Naam weergeven</sys:String>
+    <sys:String x:Key="SettingsItem_ShowNetworkDrives">Voeg netwerkschijven toe</sys:String>
+    <sys:String x:Key="SettingsItem_ShowPartitionsColumn">Kolom Partities weergeven</sys:String>
+    <sys:String x:Key="SettingsItem_ShowReadyDrives">Toon alleen schijven in de status "Gereed".</sys:String>
+    <sys:String x:Key="SettingsItem_ShowRemovableDrives">Inclusief verwisselbare schijven</sys:String>
+    <sys:String x:Key="SettingsItem_ShowTypeColumn">Kolom Type weergeven</sys:String>
+    <sys:String x:Key="SettingsItem_StartCentered">Begin met het venster gecentreerd op het scherm</sys:String>
+    <sys:String x:Key="SettingsItem_Theme">Thema</sys:String>
+    <sys:String x:Key="SettingsItem_UISize">UI-grootte</sys:String>
+    <sys:String x:Key="SettingsItem_UseGB">Gebruik GB (1024^3 bytes) voor capaciteitsberekeningen</sys:String>
+    <sys:String x:Key="SettingsItem_UseGiB">Gebruik GiB (1024^3 bytes) voor capaciteitsberekeningen</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Gebruik de Windows-weergavetaal</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">Wanneer deze optie is geselecteerd, wordt de taal weergegeven die is opgegeven in de Windows-instellingen</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">worden gebruikt als er een vertaling beschikbaar is, anders wordt Engels (en-US) gebruikt.</sys:String>
+    <!--  Settings Page Expander Headings and Sub Headings -->
+    <sys:String x:Key="SettingsSection_AppSettings">Programma instellingen</sys:String>
+    <sys:String x:Key="SettingsSection_DriveSettings">Schijf instellingen</sys:String>
+    <sys:String x:Key="SettingsSection_Language">Taal</sys:String>
+    <sys:String x:Key="SettingsSection_UISettings">UI instellingen</sys:String>
+    <sys:String x:Key="SettingsSubHead_AppSettings">Beginpagina, Geschiedenisopties, Gebruiker weergeven en Uitgebreidheid in logboek</sys:String>
+    <sys:String x:Key="SettingsSubHead_DriveSettings">Gebruik GB of GiB, neem schijven op status op en meer</sys:String>
+    <sys:String x:Key="SettingsSubHead_Language">Taalinstellingen (werk in uitvoering)</sys:String>
+    <sys:String x:Key="SettingsSubHead_UISettings">Thema, accentkleur, UI-grootte, rijhoogte, startpositie en meer</sys:String>
+    <!--  Windows Information Page  -->
+    <sys:String x:Key="WindowsInfo_Architecture">Architectuur</sys:String>
+    <sys:String x:Key="WindowsInfo_BuildBranch">Build Branch</sys:String>
+    <sys:String x:Key="WindowsInfo_BuildNumber">Build Number</sys:String>
+    <sys:String x:Key="WindowsInfo_EditionID">Edition ID</sys:String>
+    <sys:String x:Key="WindowsInfo_Installed">Geinstalleerd op</sys:String>
+    <sys:String x:Key="WindowsInfo_OSEdition">OS Editie</sys:String>
+    <sys:String x:Key="WindowsInfo_OSVersion">Versie</sys:String>
+    <sys:String x:Key="WindowsInfo_RegisteredOrg">Organisatie</sys:String>
+    <sys:String x:Key="WindowsInfo_RegisteredUser">Geregistreerd door</sys:String>
+    <sys:String x:Key="WindowsInfo_TempFolder">Tijdelijke map</sys:String>
+    <sys:String x:Key="WindowsInfo_WindowsFolder">Windows map</sys:String>
+
+</ResourceDictionary>
