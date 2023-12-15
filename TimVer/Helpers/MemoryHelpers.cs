@@ -1,13 +1,9 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Helpers;
 
 public static class MemoryHelpers
 {
-    #region NLog Instance
-    private static readonly Logger _log = LogManager.GetLogger("logTemp");
-    #endregion NLog Instance
-
     /// <summary>
     /// Gets the total amount of installed ram.
     /// </summary>

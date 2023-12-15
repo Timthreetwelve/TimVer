@@ -1,13 +1,9 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.ViewModels;
 
 public partial class HistoryViewModel : ObservableObject
 {
-    #region NLog Instance
-    private static readonly Logger _log = LogManager.GetCurrentClassLogger();
-    #endregion NLog Instance
-
     #region Read history file
     /// <summary>
     /// Reads the history file.

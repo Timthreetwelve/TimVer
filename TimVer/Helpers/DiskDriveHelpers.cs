@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Helpers;
 
@@ -7,10 +7,6 @@ namespace TimVer.Helpers;
 /// </summary>
 public static class DiskDriveHelpers
 {
-    #region NLog Instance
-    private static readonly Logger _log = LogManager.GetLogger("logTemp");
-    #endregion NLog Instance
-
     #region Determine if drive is fixed
     /// <summary>
     /// Determines whether the specified drive is Fixed.

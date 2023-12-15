@@ -1,6 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
-
-using NLog.Fluent;
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Helpers;
 
@@ -9,10 +7,7 @@ namespace TimVer.Helpers;
 /// </summary>
 public static class RegistryHelpers
 {
-    #region NLog Instance
-    private static readonly Logger _log = LogManager.GetLogger("logTemp");
-    #endregion NLog Instance
-
+    #region Constant registry path
     private const string _regPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
 
     #region Verify access to CurrentVersion\Run

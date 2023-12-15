@@ -7,10 +7,6 @@ namespace TimVer.Models;
 /// </summary>
 public static class CombinedInfo
 {
-    #region NLog Instance
-    private static readonly Logger _log = LogManager.GetCurrentClassLogger();
-    #endregion NLog Instance
-
     #region OS Architecture
     private static string _arch;
     public static string Arch

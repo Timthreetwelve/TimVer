@@ -1,4 +1,4 @@
-﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Models;
 
@@ -7,10 +7,6 @@ namespace TimVer.Models;
 /// </summary>
 public static class GetInfo
 {
-    #region NLog Instance
-    private static readonly Logger _log = LogManager.GetCurrentClassLogger();
-    #endregion NLog Instance
-
     #region Get registry information
     /// <summary>
     /// Gets a value from HKLM\Software\Microsoft\Windows NT\CurrentVersion
