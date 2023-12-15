@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Helpers;
 
@@ -16,11 +16,25 @@ internal static class MainWindowHelpers
 
         MainWindowUIHelpers.ApplyUISettings();
 
-        CommandLineHelpers.ProcessCommandLine();
+        if (CommandLineHelpers.ProcessCommandLine())
+        {
+            _mainWindow.Visibility = Visibility.Hidden;
+            if (UserSettings.Setting.KeepHistory)
+            {
+                HistoryViewModel.WriteHistory();
+            }
+            else
+            {
+                _log.Warn(GetStringResource("MsgText_HideButNoHistory"));
+            }
+            Application.Current.Shutdown();
+        }
+        else
+        {
+            ToggleHistory();
 
-        ToggleHistory();
-
-        SettingsViewModel.ParseInitialPage();
+            TempSettings.Setting.RunAccessPermitted = RegistryHelpers.RegRunAccessPermitted();
+        }
     }
     #endregion Startup
 

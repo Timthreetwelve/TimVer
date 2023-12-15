@@ -1,17 +1,14 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Helpers;
 
 static class CommandLineHelpers
 {
-    private static readonly MainWindow _mainWindow = Application.Current.MainWindow as MainWindow;
-    #endregion MainWindow Instance
-
     #region Process the command line
     /// <summary>
     /// Parse any command line options
     /// </summary>
-    public static void ProcessCommandLine()
+    public static bool ProcessCommandLine()
     {
         // Since this is not a console app, get the command line args
         string[] args = Environment.GetCommandLineArgs();
@@ -30,21 +27,9 @@ static class CommandLineHelpers
         if (result?.Value.Hide == true)
         {
             _log.Debug("Argument \"hide\" specified.");
-            if (UserSettings.Setting.KeepHistory)
-            {
-                _mainWindow.Visibility = Visibility.Hidden;
-                HistoryViewModel.WriteHistory();
-                Application.Current.Shutdown();
-            }
-            else
-            {
-                _log.Debug("Keep History option is false. ");
-            }
+            return true;
         }
-        else
-        {
-            HistoryViewModel.WriteHistory();
-        }
+        return false;
     }
     #endregion Process the command line
 }
