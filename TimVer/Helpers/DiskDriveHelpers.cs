@@ -129,8 +129,6 @@ public static class DiskDriveHelpers
     }
     #endregion Get logical drive information
 
-
-
     #region Get details for an individual drive
     private static LogicalDrives GetDriveDetails(DriveInfo d)
     {
@@ -257,7 +255,6 @@ public static class DiskDriveHelpers
         return driveInfo;
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////
-
 
     #region Get additional info from MSFT_PhysicalDisk
     /// <summary>

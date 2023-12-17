@@ -407,10 +407,15 @@
                                               Padding="10,0"
                                               Content="{DynamicResource SettingsItem_ShowHealthColumn}"
                                               IsChecked="{Binding ShowHealth,
-                                                                  Source={x:Static config:UserSettings.Setting}}" />
-                                    <CheckBox Grid.Row="6"
-                                              Padding="10,0"
-                                              Content="{DynamicResource SettingsItem_ShowNameColumn}"
+                                    <CheckBox
+                                        Grid.Row="6" Padding="10,0"
+                                        Content="{DynamicResource SettingsItem_ShowPartitionStyleColumn}"
+                                        IsChecked="{Binding ShowPartitionStyle, Source={x:Static config:UserSettings.Setting}}" />
+                                    <CheckBox
+                                        Grid.Row="7" Padding="10,0"
+                                        Content="{DynamicResource SettingsItem_ShowBootDriveColumn}"
+                                        IsChecked="{Binding ShowBootDrive, Source={x:Static config:UserSettings.Setting}}" />
+                                    <CheckBox
                                               IsChecked="{Binding ShowName,
                                                                   Source={x:Static config:UserSettings.Setting}}" />
                                     <CheckBox Grid.Row="7"

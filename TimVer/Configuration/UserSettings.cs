@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Configuration;
 
@@ -40,6 +40,9 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private Spacing _rowSpacing = Spacing.Comfortable;
 
     [ObservableProperty]
+    private bool _showBootDrive = true;
+
+    [ObservableProperty]
     private bool _showBusType = true;
 
     [ObservableProperty]
@@ -68,6 +71,9 @@ public partial class UserSettings : ConfigManager<UserSettings>
 
     [ObservableProperty]
     private bool _showPartitions = true;
+
+    [ObservableProperty]
+    private bool _showPartitionStyle = true;
 
     [ObservableProperty]
     private bool _showTypeL = true;
