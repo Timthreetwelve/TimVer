@@ -25,6 +25,8 @@
     <sys:String x:Key="About_BuildDate">Build Date</sys:String>
     <sys:String x:Key="About_CommitID">Commit ID</sys:String>
     <sys:String x:Key="About_CommitIDToolTip">Full Commit ID:</sys:String>
+    <sys:String x:Key="About_Contribute">Contribute a Translation</sys:String>
+    <sys:String x:Key="About_ContributeToolTip">How to contribute a translation</sys:String>
     <sys:String x:Key="About_Copyright">Copyright</sys:String>
     <sys:String x:Key="About_CreatedBy">Created by</sys:String>
     <sys:String x:Key="About_CreatedByToolTip">See Tim's other work at https://github.com/Timthreetwelve</sys:String>
@@ -331,4 +333,11 @@
     <!-- A | SettingsItem_ShowPartitionStyleColumn -->
     <!-- A | SettingsItem_ShowBootDriveColumn -->
     <!-- End changes on 2023/12/17 @ 01:30 UTC-->
+
+    <!-- Begin changes on 2023/12/17 @ 20:30 UTC-->
+    <!-- A | About_Contribute -->
+    <!-- A | About_ContributeToolTip  -->
+    <!-- A |   -->
+
+    <!-- End changes on 2023/12/17 @ 20:30 UTC-->
 </ResourceDictionary>
