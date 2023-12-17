@@ -111,7 +111,7 @@
                           HorizontalAlignment="Left"
                           VerticalAlignment="Top"
                           DisplayMemberPath="GpuDeviceID"
-                          ItemsSource="{Binding Source={x:Static models:CombinedInfo.GpuList}}"
+                          ItemsSource="{Binding Source={x:Static models:CombinedInfo.GPUList}}"
                           SelectedIndex="0" />
             </Grid>
         </ScrollViewer>

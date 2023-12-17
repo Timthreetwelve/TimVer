@@ -418,7 +418,7 @@ public static class CombinedInfo
 
     #region Video info
     private static ObservableCollection<GpuInfo> _gpuList;
-    public static ObservableCollection<GpuInfo> GpuList
+    public static ObservableCollection<GpuInfo> GPUList
     {
         get
         {

@@ -271,7 +271,7 @@ internal partial class NavigationViewModel : ObservableObject
                 {
                     _ = builder.AppendLine("GRAPHICS ADAPTERS");
                     _ = builder.AppendLine("-----------------");
-                    foreach (GpuInfo item in CombinedInfo.GpuList)
+                    foreach (GpuInfo item in CombinedInfo.GPUList)
                     {
                         _ = builder.Append("Name                  = ").AppendLine(item.GpuName);
                         _ = builder.Append("Adapter type          = ").AppendLine(item.GpuVideoProcessor);
