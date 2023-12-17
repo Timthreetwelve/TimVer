@@ -2,6 +2,7 @@
     x:Class="TimVer.Views.AboutPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:convert="clr-namespace:TimVer.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helpers="clr-namespace:TimVer.Helpers"
     xmlns:local="clr-namespace:TimVer"
@@ -18,6 +19,10 @@
     <UserControl.DataContext>
         <viewmodels:AboutViewModel />
     </UserControl.DataContext>
+
+    <UserControl.Resources>
+        <convert:SpacingConverter x:Key="Spacing" />
+    </UserControl.Resources>
     <!--#endregion-->
 
     <Grid Background="{DynamicResource MaterialDesignCardBackground}">
@@ -235,45 +240,28 @@
                 <Border
                     Grid.Row="11" Grid.Column="2"
                     Width="auto" Margin="0,0,20,0"
-                    BorderBrush="{DynamicResource MaterialDesignTextBoxBorder}"
+                    HorizontalAlignment="Left"
+                    BorderBrush="{DynamicResource MaterialDesignDivider}"
                     BorderThickness="1">
-                    <ListView
-                        Width="auto" MaxHeight="148"
-                        Margin="0,-1"
-                        materialDesign:ListViewAssist.ListViewItemPadding="10,5"
-                        ItemsSource="{x:Static models:UILanguage.DefinedLanguages}"
-                        PreviewMouseDown="ListView_PreviewMouseDown"
-                        ScrollViewer.HorizontalScrollBarVisibility="auto"
-                        ScrollViewer.VerticalScrollBarVisibility="auto">
-                        <ListView.Resources>
-                            <Style TargetType="GridViewColumnHeader">
-                                <Setter Property="Template" Value="{x:Null}" />
-                            </Style>
-                        </ListView.Resources>
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn>
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock
-                                                MinWidth="80"
-                                                Text="{Binding LanguageNative}" />
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn>
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock
-                                                MinWidth="70"
-                                                Text="{Binding LanguageCode}" />
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding Contributor}" />
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
+                    <DataGrid
+                        MinWidth="350" MaxHeight="143"
+                        materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
+                        AutoGenerateColumns="False"
+                        Background="{StaticResource MaterialDesignCardBackground}"
+                        CellStyle="{StaticResource DisplayOnly}"
+                        HeadersVisibility="None"
+                        IsReadOnly="True"
+                        ItemsSource="{x:Static models:UILanguage.DefinedLanguages}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                                MinWidth="80"
+                                Binding="{Binding LanguageNative}" />
+                            <DataGridTextColumn
+                                MinWidth="70"
+                                Binding="{Binding LanguageCode}" />
+                            <DataGridTextColumn Binding="{Binding Contributor}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Border>
                 <!--#endregion-->
             </Grid>
