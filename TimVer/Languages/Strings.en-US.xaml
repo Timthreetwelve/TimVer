@@ -1,9 +1,9 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!--
-        Refer to the "Contribute a Translation" topic in the Wiki:
+        BEFORE UPDATING, refer to the "Contribute a Translation" topic in the Wiki:
 
         https://github.com/Timthreetwelve/TimVer/wiki/Contribute-a-Translation
 
@@ -53,12 +53,14 @@
     <sys:String x:Key="Button_No">No</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
     <sys:String x:Key="Button_OpenFolder">Open the App Folder</sys:String>
+    <sys:String x:Key="Button_OpenAppFolder">Open App Folder</sys:String>
     <sys:String x:Key="Button_OpenFolderToolTip">Open the TimVer folder in file explorer</sys:String>
     <sys:String x:Key="Button_OpenLogFile">View Log File</sys:String>
     <sys:String x:Key="Button_OpenLogFileToolTip">Open the log file in the default application.</sys:String>
     <sys:String x:Key="Button_ThreeDotToolTip">Additional Actions</sys:String>
     <sys:String x:Key="Button_Yes">Yes</sys:String>
     <!--  Disk Drive Information Page  -->
+    <sys:String x:Key="DriveInfo_BootDrive">Boot Drive</sys:String>
     <sys:String x:Key="DriveInfo_BusType">Bus Type</sys:String>
     <sys:String x:Key="DriveInfo_BusType_FiberChannel">Fiber Channel</sys:String>
     <sys:String x:Key="DriveInfo_BusType_FileBackedVirtual">File-Backed Virtual</sys:String>
@@ -70,9 +72,16 @@
     <sys:String x:Key="DriveInfo_BusType_StorageSpaces">Storage Spaces</sys:String>
     <sys:String x:Key="DriveInfo_BusType_Unknown">Unknown</sys:String>
     <sys:String x:Key="DriveInfo_DiskType">Disk Type</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_CDRom">CD-ROM</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Fixed">Fixed</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Network">Network</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_NoRootDirectory">No Root Directory</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Ram">RAM Drive</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Removable">Removable</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Unknown">Unknown</sys:String>
     <sys:String x:Key="DriveInfo_Error">DriveInfo Error</sys:String>
-    <sys:String x:Key="DriveInfo_ErrorSeeLog">Error - See log file</sys:String>
     <sys:String x:Key="DriveInfo_ErrorProcessingDrive">Error processing drive</sys:String>
+    <sys:String x:Key="DriveInfo_ErrorSeeLog">Error - See log file</sys:String>
     <sys:String x:Key="DriveInfo_Format">Format</sys:String>
     <sys:String x:Key="DriveInfo_Free">Free</sys:String>
     <sys:String x:Key="DriveInfo_FreePercent">% Free</sys:String>
@@ -81,9 +90,9 @@
     <sys:String x:Key="DriveInfo_Health_Unhealthy">Unhealthy</sys:String>
     <sys:String x:Key="DriveInfo_Health_Unknown">Unknown</sys:String>
     <sys:String x:Key="DriveInfo_Health_Warning">Warning</sys:String>
-    <sys:String x:Key="DriveInfo_IOError">I/O Error</sys:String>
     <sys:String x:Key="DriveInfo_Index">Index</sys:String>
     <sys:String x:Key="DriveInfo_Interface">Interface</sys:String>
+    <sys:String x:Key="DriveInfo_IOError">I/O Error</sys:String>
     <sys:String x:Key="DriveInfo_Label">Label</sys:String>
     <sys:String x:Key="DriveInfo_LogicalDrives">Logical Drives</sys:String>
     <sys:String x:Key="DriveInfo_MediaType">Media Type</sys:String>
@@ -93,6 +102,7 @@
     <sys:String x:Key="DriveInfo_Name">Name</sys:String>
     <sys:String x:Key="DriveInfo_NotReady">Not Ready</sys:String>
     <sys:String x:Key="DriveInfo_Partitions">Partitions</sys:String>
+    <sys:String x:Key="DriveInfo_PartitionStyle">Partition Style</sys:String>
     <sys:String x:Key="DriveInfo_PhysicalDisabled">Collection of Physical Drive information is disabled in Settings.</sys:String>
     <sys:String x:Key="DriveInfo_PhysicalDrives">Physical Drives</sys:String>
     <sys:String x:Key="DriveInfo_RefreshToolTipLine1">Refresh drive info will refresh both</sys:String>
@@ -100,16 +110,6 @@
     <sys:String x:Key="DriveInfo_Size">Size</sys:String>
     <sys:String x:Key="DriveInfo_Type">Type</sys:String>
     <sys:String x:Key="DriveInfo_UnauthorizedAccess">Unauthorized Access</sys:String>
-    <sys:String x:Key="DriveInfo_UnknownError">Unknown Error</sys:String>
-    <sys:String x:Key="DriveInfo_DriveType_CDRom">CD-ROM</sys:String>
-    <sys:String x:Key="DriveInfo_DriveType_Fixed">Fixed</sys:String>
-    <sys:String x:Key="DriveInfo_DriveType_Network">Network</sys:String>
-    <sys:String x:Key="DriveInfo_DriveType_NoRootDirectory">No Root Directory</sys:String>
-    <sys:String x:Key="DriveInfo_DriveType_Ram">RAM Drive</sys:String>
-    <sys:String x:Key="DriveInfo_DriveType_Removable">Removable</sys:String>
-    <sys:String x:Key="DriveInfo_DriveType_Unknown">Unknown</sys:String>
-
-
     <!--  Environment Variables Page  -->
     <sys:String x:Key="EnvironmentInfo_Filter">Filter</sys:String>
     <sys:String x:Key="EnvironmentInfo_Value">Value</sys:String>
@@ -140,6 +140,7 @@
     <sys:String x:Key="HardwareInfo_Processor">Processor</sys:String>
     <sys:String x:Key="HardwareInfo_ProcessorArch">Processor Architecture</sys:String>
     <sys:String x:Key="HardwareInfo_ProcessorCores">Processor Cores</sys:String>
+    <sys:String x:Key="HardwareInfo_ProcessorDescription">Processor Description</sys:String>
     <sys:String x:Key="HardwareInfo_Threads">Threads</sys:String>
     <sys:String x:Key="HardwareInfo_Usable">Usable</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
@@ -158,7 +159,7 @@
     <sys:String x:Key="MsgText_ElapsedTime">Elapsed time</sys:String>
     <sys:String x:Key="MsgText_FilterOneRowShown">1 row shown</sys:String>
     <sys:String x:Key="MsgText_FilterRowsShown">{0} rows shown</sys:String>
-    <sys:String x:Key="MsgText_HideButNoHistory">The commandline option "hide" was specified, but the option to keep history is false. Exiting.</sys:String>
+    <sys:String x:Key="MsgText_HideButNoHistory">The command line option "hide" was specified, but the option to keep history is false. Exiting.</sys:String>
     <sys:String x:Key="MsgText_Million">million</sys:String>
     <sys:String x:Key="MsgText_NotAvailable">Not Available</sys:String>
     <sys:String x:Key="MsgText_Opening">Opening</sys:String>
@@ -239,7 +240,7 @@
     <sys:String x:Key="SettingsItem_BuildHistory">Keep build history</sys:String>
     <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine1">Enabling this option will tell TimVer to keep a log of when the build number changes.</sys:String>
     <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine2">Disabling this option will remove the History item from the navigation bar.</sys:String>
-    <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine3">See the ReadMe file for more infomation.</sys:String>
+    <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine3">See the ReadMe file for more information.</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Changing Language will cause application to restart!</sys:String>
     <sys:String x:Key="SettingsItem_DateFormat">Grid Date Format</sys:String>
     <sys:String x:Key="SettingsItem_DisplayUser">Display registered user and organization on Windows Information page</sys:String>
@@ -247,18 +248,19 @@
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Enable language testing</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBoot">Update build history on Windows startup</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine1">Enabling this option will add TimVer to Windows startup for the purpose of updating a Build History file.</sys:String>
-    <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine2">This option is not available when running TimVer from a removeable drive.</sys:String>
-    <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine3">See the ReadMe file for more infomation.</sys:String>
+    <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine2">This option is not available when running TimVer from a removable drive.</sys:String>
+    <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine3">See the ReadMe file for more information.</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Include debug level messages in log file</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Initial Page Displayed</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Keep TimVer on top of other windows</sys:String>
     <sys:String x:Key="SettingsItem_Language">Language</sys:String>
     <sys:String x:Key="SettingsItem_LogicalDriveOptions">Logical Drive Options</sys:String>
     <sys:String x:Key="SettingsItem_PhysicalDriveCollection">Enable collection of Physical Drive information</sys:String>
-    <sys:String x:Key="SettingsItem_PhysicalDriveCollectionTooltip">Collecting phyical drive information can take a significant amout of time.</sys:String>
+    <sys:String x:Key="SettingsItem_PhysicalDriveCollectionTooltip">Collecting physical drive information can take a significant amount of time.</sys:String>
     <sys:String x:Key="SettingsItem_PhysicalDriveOptions">Physical Drive Options</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Row Height</sys:String>
     <sys:String x:Key="SettingsItem_RowHeightToolTip">This setting applies to the row height on the Drive Info, Environment and History pages.</sys:String>
+    <sys:String x:Key="SettingsItem_ShowBootDriveColumn">Show Boot Drive column</sys:String>
     <sys:String x:Key="SettingsItem_ShowBusTypeColumn">Show Bus Type column</sys:String>
     <sys:String x:Key="SettingsItem_ShowDiskTypeColumn">Show Disk Type column</sys:String>
     <sys:String x:Key="SettingsItem_ShowExit">Show Exit in Navigation bar</sys:String>
@@ -270,6 +272,7 @@
     <sys:String x:Key="SettingsItem_ShowNameColumn">Show Name column</sys:String>
     <sys:String x:Key="SettingsItem_ShowNetworkDrives">Include network drives</sys:String>
     <sys:String x:Key="SettingsItem_ShowPartitionsColumn">Show Partitions column</sys:String>
+    <sys:String x:Key="SettingsItem_ShowPartitionStyleColumn">Show Partition Style column</sys:String>
     <sys:String x:Key="SettingsItem_ShowReadyDrives">Only show drives in "Ready" status</sys:String>
     <sys:String x:Key="SettingsItem_ShowRemovableDrives">Include removable drives</sys:String>
     <sys:String x:Key="SettingsItem_ShowTypeColumn">Show Type column</sys:String>
@@ -303,4 +306,29 @@
     <sys:String x:Key="WindowsInfo_TempFolder">Temp Folder</sys:String>
     <sys:String x:Key="WindowsInfo_WindowsFolder">Windows Folder</sys:String>
 
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    LANGUAGE FILE UPDATES
+
+    Additions, Deletions and Updates will be made in the appropriate sections above. Each change will
+    be associated with a comment made below this block.
+
+    Comment Format:
+       There will be a header indicating when the change was made (date yyyy/mm/dd and UTC time).
+       Modified lines will follow, one comment line per line changed.
+       Comment lines use this syntax:  Change Type | Key Name
+
+     Change type:
+       A = Added
+       D = Deleted
+       U = Updated
+       * = Comment not related to a single line
+     - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <!-- Begin changes on 2023/12/17 @ 01:30 UTC-->
+    <!-- A | DriveInfo_PartitionStyle -->
+    <!-- A | DriveInfo_BootDrive -->
+    <!-- A | HardwareInfo_ProcessorDescription -->
+    <!-- A | SettingsItem_ShowPartitionStyleColumn -->
+    <!-- A | SettingsItem_ShowBootDriveColumn -->
+    <!-- End changes on 2023/12/17 @ 01:30 UTC-->
 </ResourceDictionary>
