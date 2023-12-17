@@ -52,6 +52,7 @@ public static class SettingChange
                 CombinedInfo.PhysicalDrivesList.Clear();
                 break;
 
+            case nameof(UserSettings.Setting.LanguageTesting):
             case nameof(UserSettings.Setting.UILanguage):
                 LocalizationHelpers.SaveAndRestart();
                 break;

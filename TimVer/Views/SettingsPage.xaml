@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="TimVer.Views.SettingsPage"
+<UserControl x:Class="TimVer.Views.SettingsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:bh="http://schemas.microsoft.com/xaml/behaviors"
@@ -703,10 +703,31 @@
                             </TextBlock>
                         </Grid>
 
-                        <Label Grid.Row="2" Grid.Column="1"
-                               VerticalAlignment="Center"
-                               Content="{DynamicResource SettingsItem_ChangingLanguageWarning}"
-                               Foreground="OrangeRed" />
+                        <Label
+                            Grid.Row="2" Grid.Column="1"
+                            VerticalAlignment="Center"
+                            Content="{DynamicResource SettingsItem_ChangingLanguageWarning}"
+                            Foreground="OrangeRed" />
+
+                        <StackPanel
+                            Grid.Row="3" Grid.Column="1"
+                            Orientation="Horizontal">
+                            <StackPanel.DataContext>
+                                <viewmodels:SettingsViewModel />
+                            </StackPanel.DataContext>
+                            <CheckBox
+                                Grid.Row="0" Grid.Column="1"
+                                Padding="10,0"
+                                VerticalContentAlignment="Center"
+                                Content="{DynamicResource SettingsItem_EnableLanguageTesting}"
+                                IsChecked="{Binding LanguageTesting, Source={x:Static config:UserSettings.Setting}}" />
+                            <Button
+                                Width="auto" Margin="20,0"
+                                Padding="20,0"
+                                Command="{Binding OpenAppFolderCommand}"
+                                Content="{DynamicResource Button_OpenAppFolder}"
+                                Style="{StaticResource PlainOutlinedButton}" />
+                        </StackPanel>
                     </Grid>
                 </Expander>
                 <!--#endregion-->

@@ -1,4 +1,4 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
@@ -244,6 +244,7 @@
     <sys:String x:Key="SettingsItem_DateFormat">Grid Date Format</sys:String>
     <sys:String x:Key="SettingsItem_DisplayUser">Display registered user and organization on Windows Information page</sys:String>
     <sys:String x:Key="SettingsItem_EditExcludeToolTip">Shift-Click to open file with default application</sys:String>
+    <sys:String x:Key="SettingsItem_EnableLanguageTesting">Enable language testing</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBoot">Update build history on Windows startup</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine1">Enabling this option will add TimVer to Windows startup for the purpose of updating a Build History file.</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine2">This option is not available when running TimVer from a removeable drive.</sys:String>

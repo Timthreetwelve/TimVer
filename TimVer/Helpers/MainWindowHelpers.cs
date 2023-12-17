@@ -10,8 +10,6 @@ internal static class MainWindowHelpers
     #region Startup
     internal static void TimVerStartUp()
     {
-        LogStartup();
-
         EventHandlers();
 
         MainWindowUIHelpers.ApplyUISettings();
@@ -208,23 +206,23 @@ internal static class MainWindowHelpers
         _log.Debug($"Operating System version: {AppInfo.OsPlatform}");
         _log.Debug($".NET version: {AppInfo.RuntimeVersion.Replace(".NET", "")}");
 
-        // Log the startup & current culture
-        _log.Debug($"Startup culture: {App.StartupCulture.Name}  UI: {App.StartupUICulture.Name}");
-        _log.Debug($"Current culture: {LocalizationHelpers.GetCurrentCulture()}  UI: {LocalizationHelpers.GetCurrentUICulture()}");
+        //// Log the startup & current culture
+        //_log.Debug($"Startup culture: {App.StartupCulture.Name}  UI: {App.StartupUICulture.Name}");
+        //_log.Debug($"Current culture: {LocalizationHelpers.GetCurrentCulture()}  UI: {LocalizationHelpers.GetCurrentUICulture()}");
 
-        // Log the language file and number of strings loaded
-        if (!App.LanguageFile.Equals("defaulted", StringComparison.OrdinalIgnoreCase))
-        {
-            _log.Debug($"{App.LanguageStrings} strings loaded from {App.LanguageFile}");
-            if (App.LanguageStrings < App.DefaultLanguageStrings)
-            {
-                _log.Debug($"{App.DefaultLanguageStrings - App.LanguageStrings} strings from Strings.en-US.xaml will be used");
-            }
-        }
-        else
-        {
-            _log.Warn($"Language has defaulted to en-US. {App.LanguageStrings} string loaded.");
-        }
+        //// Log the language file and number of strings loaded
+        //if (!App.LanguageFile.Equals("defaulted", StringComparison.OrdinalIgnoreCase))
+        //{
+        //    _log.Debug($"{App.LanguageStrings} strings loaded from {App.LanguageFile}");
+        //    if (App.LanguageStrings < App.DefaultLanguageStrings)
+        //    {
+        //        _log.Debug($"{App.DefaultLanguageStrings - App.LanguageStrings} strings from Strings.en-US.xaml will be used");
+        //    }
+        //}
+        //else
+        //{
+        //    _log.Warn($"Language has defaulted to en-US. {App.LanguageStrings} string loaded.");
+        //}
     }
     #endregion Write startup messages to the log
 
