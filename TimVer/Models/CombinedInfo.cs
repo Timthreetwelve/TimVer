@@ -219,18 +219,18 @@ public static class CombinedInfo
     }
     #endregion Processor name
 
-    #region Processor speed
-    private static string _procMaxSpeed;
-    public static string ProcMaxSpeed
+    #region Processor description
+    private static string _procDescription;
+    public static string ProcDescription
     {
         get
         {
-            if (_procMaxSpeed != null)
+            if (_procDescription != null)
             {
-                return _procMaxSpeed;
+                return _procDescription;
             }
-            _procMaxSpeed = GetInfo.CimQueryProc("Caption");
-            return _procMaxSpeed;
+            _procDescription = GetInfo.CimQueryProc("Description");
+            return _procDescription;
         }
     }
     #endregion Processor speed

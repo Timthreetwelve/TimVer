@@ -67,8 +67,13 @@
                            Text="{Binding Source={x:Static models:CombinedInfo.ProcName}}" />
 
                 <TextBlock Grid.Row="5" Grid.Column="0"
+                           Text="{DynamicResource HardwareInfo_ProcessorDescription}" />
+                <TextBlock Grid.Row="5" Grid.Column="2"
+                           Text="{Binding Source={x:Static models:CombinedInfo.ProcDescription}}" />
+
+                <TextBlock Grid.Row="6" Grid.Column="0"
                            Text="{DynamicResource HardwareInfo_ProcessorCores}" />
-                <TextBlock Grid.Row="5" Grid.Column="2">
+                <TextBlock Grid.Row="6" Grid.Column="2">
                     <Run Text="{Binding Source={x:Static models:CombinedInfo.ProcCores}, Mode=OneWay}" />
                     <Run Text="{DynamicResource HardwareInfo_Cores}" />
                     <Run Text="-" />
@@ -76,28 +81,28 @@
                     <Run Text="{DynamicResource HardwareInfo_Threads}" />
                 </TextBlock>
 
-                <TextBlock Grid.Row="6" Grid.Column="0"
+                <TextBlock Grid.Row="7" Grid.Column="0"
                            Text="{DynamicResource HardwareInfo_ProcessorArch}" />
-                <TextBlock Grid.Row="6" Grid.Column="2"
+                <TextBlock Grid.Row="7" Grid.Column="2"
                            Text="{Binding Source={x:Static models:CombinedInfo.ProcArch}}" />
 
 
-                <TextBlock Grid.Row="7" Grid.Column="0"
+                <TextBlock Grid.Row="8" Grid.Column="0"
                            Text="{DynamicResource HardwareInfo_BiosManufacturer}" />
-                <TextBlock Grid.Row="7" Grid.Column="2"
+                <TextBlock Grid.Row="8" Grid.Column="2"
                            Text="{Binding Source={x:Static models:CombinedInfo.BiosManufacturer}}" />
 
-                <TextBlock Grid.Row="8" Grid.Column="0"
+                <TextBlock Grid.Row="9" Grid.Column="0"
                            Text="{DynamicResource HardwareInfo_BiosVersion}" />
-                <TextBlock Grid.Row="8" Grid.Column="2">
+                <TextBlock Grid.Row="9" Grid.Column="2">
                     <Run Text="{Binding Source={x:Static models:CombinedInfo.BiosName}, Mode=OneWay}" />
                     <Run Text="-" />
                     <Run Text="{Binding Source={x:Static models:CombinedInfo.BiosDate}, StringFormat=d, ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}, Mode=OneWay}" />
                 </TextBlock>
 
-                <TextBlock Grid.Row="9" Grid.Column="0"
+                <TextBlock Grid.Row="10" Grid.Column="0"
                            Text="{DynamicResource HardwareInfo_PhysicalMemory}" />
-                <TextBlock Grid.Row="9" Grid.Column="2">
+                <TextBlock Grid.Row="10" Grid.Column="2">
                     <Run Text="{Binding Source={x:Static models:CombinedInfo.InstalledMemory}, Mode=OneWay}" />
                     <Run Text="{DynamicResource HardwareInfo_Installed}" />
                     <Run Text="-" />
@@ -105,10 +110,7 @@
                     <Run Text="{DynamicResource HardwareInfo_Usable}" />
                 </TextBlock>
 
-                <TextBlock Grid.Row="10" Grid.Column="0"
-                           Text="New Thing" />
-                <TextBlock Grid.Row="10" Grid.Column="2"
-                           Text="{Binding Source={x:Static models:CombinedInfo.ProcMaxSpeed}}" />
+
             </Grid>
         </ScrollViewer>
         <!--#endregion-->
