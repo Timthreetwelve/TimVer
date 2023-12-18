@@ -112,6 +112,7 @@
     <sys:String x:Key="DriveInfo_Size">Size</sys:String>
     <sys:String x:Key="DriveInfo_Type">Type</sys:String>
     <sys:String x:Key="DriveInfo_UnauthorizedAccess">Unauthorized Access</sys:String>
+    <sys:String x:Key="DriveInfo_UnknownError">Unknown Error</sys:String>
     <!--  Environment Variables Page  -->
     <sys:String x:Key="EnvironmentInfo_Filter">Filter</sys:String>
     <sys:String x:Key="EnvironmentInfo_Value">Value</sys:String>
@@ -128,7 +129,7 @@
     <sys:String x:Key="GraphicsInfo_NumberOfColors">Number of Colors</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapter">Select Adapter</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine1">If there is more than one video adapter installed</sys:String>
-    <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine2">use the dropdown to select the adapter to display.</sys:String>
+    <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine2">use the drop-down to select the adapter to display.</sys:String>
     <!--  Hardware Information Page  -->
     <sys:String x:Key="HardwareInfo_BiosManufacturer">BIOS Manufacturer</sys:String>
     <sys:String x:Key="HardwareInfo_BiosVersion">BIOS Version and Date</sys:String>
