@@ -293,7 +293,7 @@
     <sys:String x:Key="SettingsSection_UISettings">UI Settings</sys:String>
     <sys:String x:Key="SettingsSubHead_AppSettings">Initial page, History options, Show user, and Log verbosity</sys:String>
     <sys:String x:Key="SettingsSubHead_DriveSettings">Use GB or GiB, Include drives by status and more</sys:String>
-    <sys:String x:Key="SettingsSubHead_Language">Language Settings (Work in Progress)</sys:String>
+    <sys:String x:Key="SettingsSubHead_Language">Language Settings and Testing</sys:String>
     <sys:String x:Key="SettingsSubHead_UISettings">Theme, Accent Color, UI Size, Row Height, Start Position and more</sys:String>
     <!--  Windows Information Page  -->
     <sys:String x:Key="WindowsInfo_Architecture">Architecture</sys:String>
@@ -334,10 +334,10 @@
     <!-- A | SettingsItem_ShowBootDriveColumn -->
     <!-- End changes on 2023/12/17 @ 01:30 UTC-->
 
-    <!-- Begin changes on 2023/12/17 @ 20:30 UTC-->
+    <!-- Begin changes on 2023/12/18 @ 03:30 UTC-->
     <!-- A | About_Contribute -->
     <!-- A | About_ContributeToolTip  -->
-    <!-- A |   -->
+    <!-- U | SettingsSubHead_Language  -->
 
-    <!-- End changes on 2023/12/17 @ 20:30 UTC-->
+    <!-- End changes on 2023/12/18 @ 03:30 UTC-->
 </ResourceDictionary>
