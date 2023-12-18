@@ -170,4 +170,16 @@ public static class GetInfo
         }
     }
     #endregion Get environment variables
+
+    #region Get Uptime
+    /// <summary>
+    /// Get time since last boot up
+    /// </summary>
+    /// <returns>Time as TimeSpan</returns>
+    public static TimeSpan GetUptime()
+    {
+        long tickCountMs = Environment.TickCount64;
+        return TimeSpan.FromMilliseconds(tickCountMs);
+    }
+    #endregion Get Uptime
 }

@@ -105,6 +105,19 @@ public static class CombinedInfo
     }
     #endregion Last boot up time
 
+    #region Uptime
+    private static TimeSpan _uptime;
+    public static TimeSpan Uptime
+    {
+        get
+        {
+            // Don't cache uptime
+            _uptime = GetInfo.GetUptime();
+            return _uptime;
+        }
+    }
+    #endregion Uptime
+
     #region Machine name
     private static string _machineName;
     public static string MachName

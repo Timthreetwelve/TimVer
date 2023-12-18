@@ -144,6 +144,8 @@
     <sys:String x:Key="HardwareInfo_ProcessorCores">Processor Cores</sys:String>
     <sys:String x:Key="HardwareInfo_ProcessorDescription">Processor Description</sys:String>
     <sys:String x:Key="HardwareInfo_Threads">Threads</sys:String>
+    <sys:String x:Key="HardwareInfo_Uptime">Uptime</sys:String>
+    <sys:String x:Key="HardwareInfo_UptimeString">{0} days, {1} hours, {2} minutes, {3} seconds</sys:String>
     <sys:String x:Key="HardwareInfo_Usable">Usable</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
     <sys:String x:Key="MsgText_AddedToStartup">TimVer was added to Windows startup</sys:String>
@@ -338,6 +340,11 @@
     <!-- A | About_Contribute -->
     <!-- A | About_ContributeToolTip  -->
     <!-- U | SettingsSubHead_Language  -->
-
     <!-- End changes on 2023/12/18 @ 03:30 UTC-->
+
+    <!-- Begin changes on 2023/12/18 @ 13:45 UTC-->
+    <!-- A | HardwareInfo_Uptime -->
+    <!-- A | HardwareInfo_UptimeString -->
+    <!-- End changes on 2023/12/18 @ 13:45 UTC-->
+
 </ResourceDictionary>
