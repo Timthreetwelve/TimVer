@@ -1,6 +1,6 @@
 ﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-namespace TimVer.Models;
+namespace TimVer.Helpers;
 
 /// <summary>
 /// Gets information from the registry, CIM or the Environment
