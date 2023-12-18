@@ -112,6 +112,7 @@
     <sys:String x:Key="DriveInfo_Size">Size</sys:String>
     <sys:String x:Key="DriveInfo_Type">Type</sys:String>
     <sys:String x:Key="DriveInfo_UnauthorizedAccess">Unauthorized Access</sys:String>
+    <sys:String x:Key="DriveInfo_UnknownError">Unknown Error</sys:String>
     <!--  Environment Variables Page  -->
     <sys:String x:Key="EnvironmentInfo_Filter">Filter</sys:String>
     <sys:String x:Key="EnvironmentInfo_Value">Value</sys:String>
