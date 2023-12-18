@@ -10,7 +10,7 @@
         xmlns:viewmodels="clr-namespace:TimVer.ViewModels"
         mc:Ignorable="d"
         d:DesignHeight="400" d:DesignWidth="500"
-        MinWidth="550" MinHeight="350"
+        MinWidth="770" MinHeight="350"
         Background="{DynamicResource MaterialDesignPaper}"
         FontSize="12"
         Style="{StaticResource MaterialDesignWindow}"
