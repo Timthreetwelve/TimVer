@@ -46,15 +46,15 @@
                 <TextBlock Grid.Row="1" Grid.Column="2"
                            Text="{Binding GpuVideoProcessor}" />
 
-                <TextBlock Grid.Row="3" Grid.Column="0"
-                           Text="{DynamicResource GraphicsInfo_DeviceID}" />
-                <TextBlock Grid.Row="3" Grid.Column="2"
-                           Text="{Binding GpuDeviceID}" />
-
                 <TextBlock Grid.Row="2" Grid.Column="0"
                            Text="{DynamicResource GraphicsInfo_Description}" />
                 <TextBlock Grid.Row="2" Grid.Column="2"
                            Text="{Binding GpuDescription}" />
+
+                <TextBlock Grid.Row="3" Grid.Column="0"
+                           Text="{DynamicResource GraphicsInfo_DeviceID}" />
+                <TextBlock Grid.Row="3" Grid.Column="2"
+                           Text="{Binding GpuDeviceID}" />
 
                 <TextBlock Grid.Row="4" Grid.Column="0"
                            Text="{DynamicResource GraphicsInfo_CurrentResolution}" />
@@ -72,7 +72,7 @@
                 </TextBlock>
 
                 <TextBlock Grid.Row="6" Grid.Column="0"
-                           Text="{DynamicResource GraphicsInfo_AdpaterRAM}" />
+                           Text="{DynamicResource GraphicsInfo_AdapterRAM}" />
                 <TextBlock Grid.Row="6" Grid.Column="2"
                            Text="{Binding GpuAdapterRam}" />
 
