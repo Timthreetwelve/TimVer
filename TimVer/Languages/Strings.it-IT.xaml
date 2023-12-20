@@ -3,19 +3,19 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!--
-        Refer to the "Contribute a Translation" topic in the Wiki:
+        BEFORE UPDATING, refer to the "Contribute a Translation" topic in the Wiki:
 
         https://github.com/Timthreetwelve/TimVer/wiki/Contribute-a-Translation
 
         ======================================================================
 
-        Application name:            Timver
+        Application name:            TimVer
 
         Language name:               Italian
 
         Translation contributed by:  RB
 
-        Date last update:            17.11.2023
+        Date last update:            20.11.2023
 
         ======================================================================
 
@@ -25,6 +25,8 @@
     <sys:String x:Key="About_BuildDate">Data build</sys:String>
     <sys:String x:Key="About_CommitID">ID commit</sys:String>
     <sys:String x:Key="About_CommitIDToolTip">ID commit completo:</sys:String>
+    <sys:String x:Key="About_Contribute">Contribuisci alla traduzione</sys:String>
+    <sys:String x:Key="About_ContributeToolTip">Come contribuire ad una traduzione</sys:String>
     <sys:String x:Key="About_Copyright">Copyright</sys:String>
     <sys:String x:Key="About_CreatedBy">Creato da</sys:String>
     <sys:String x:Key="About_CreatedByToolTip">Guarda gli altri lavori di Tim su https://github.com/Timthreetwelve</sys:String>
@@ -110,6 +112,7 @@
     <sys:String x:Key="DriveInfo_Size">Dimensione</sys:String>
     <sys:String x:Key="DriveInfo_Type">Tipo</sys:String>
     <sys:String x:Key="DriveInfo_UnauthorizedAccess">Accesso non autorizzato</sys:String>
+    <sys:String x:Key="DriveInfo_UnknownError">Errore sconosciuto</sys:String>
     <!--  Environment Variables Page  -->
     <sys:String x:Key="EnvironmentInfo_Filter">Filtro</sys:String>
     <sys:String x:Key="EnvironmentInfo_Value">Valore</sys:String>
@@ -142,6 +145,8 @@
     <sys:String x:Key="HardwareInfo_ProcessorCores">Core CPU</sys:String>
     <sys:String x:Key="HardwareInfo_ProcessorDescription">Descrizione processore</sys:String>
     <sys:String x:Key="HardwareInfo_Threads">Thread</sys:String>
+    <sys:String x:Key="HardwareInfo_Usable">Usabili</sys:String>
+    <sys:String x:Key="HardwareInfo_UptimeString">{0} giorni, {1} ore, {2} minuti, {3} secondi</sys:String>
     <sys:String x:Key="HardwareInfo_Usable">Usabili</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
     <sys:String x:Key="MsgText_AddedToStartup">TimVerè stato aggiunto all'avvio di Windows</sys:String>
@@ -331,4 +336,16 @@
     <!-- A | SettingsItem_ShowPartitionStyleColumn -->
     <!-- A | SettingsItem_ShowBootDriveColumn -->
     <!-- End changes on 2023/12/17 @ 01:30 UTC-->
+
+    <!-- Begin changes on 2023/12/18 @ 03:30 UTC-->
+    <!-- A | About_Contribute -->
+    <!-- A | About_ContributeToolTip  -->
+    <!-- U | SettingsSubHead_Language  -->
+    <!-- End changes on 2023/12/18 @ 03:30 UTC-->
+
+    <!-- Begin changes on 2023/12/18 @ 13:45 UTC-->
+    <!-- A | HardwareInfo_Uptime -->
+    <!-- A | HardwareInfo_UptimeString -->
+    <!-- End changes on 2023/12/18 @ 13:45 UTC-->
+
 </ResourceDictionary>
