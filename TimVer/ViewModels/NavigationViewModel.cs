@@ -164,103 +164,211 @@ internal partial class NavigationViewModel : ObservableObject
         {
             case WindowsInfoViewModel:
                 {
-                    _ = builder.AppendLine("WINDOWS INFORMATION");
-                    _ = builder.AppendLine("-------------------");
-                    _ = builder.Append("Product Name   = ").AppendLine(CombinedInfo.ProdName);
-                    _ = builder.Append("Version        = ").AppendLine(CombinedInfo.Version);
-                    _ = builder.Append("Build          = ").AppendLine(CombinedInfo.Build);
-                    _ = builder.Append("Architecture   = ").AppendLine(CombinedInfo.Arch);
-                    _ = builder.Append("Build Branch   = ").AppendLine(CombinedInfo.BuildBranch);
-                    _ = builder.Append("Edition ID     = ").AppendLine(CombinedInfo.EditionID);
-                    _ = builder.Append("Installed on   = ").AppendLine(CombinedInfo.InstallDate.ToString("f"));
-                    _ = builder.Append("Windows Folder = ").AppendLine(CombinedInfo.WindowsFolder);
-                    _ = builder.Append("Temp Folder    = ").AppendLine(CombinedInfo.TempFolder);
+                    _ = builder.AppendLine(GetStringResource("NavTitle_WindowsInfo"));
+                    _ = builder.AppendLine(new string('-', builder.Length - 2));
+                    _ = builder.Append(GetStringResource("WindowsInfo_OSEdition"))
+                               .Append(" = ")
+                               .AppendLine(CombinedInfo.ProdName);
+                    _ = builder.Append(GetStringResource("WindowsInfo_OSVersion"))
+                               .Append(" = ")
+                               .AppendLine(CombinedInfo.Version);
+                    _ = builder.Append(GetStringResource("WindowsInfo_BuildNumber"))
+                               .Append(" = ")
+                               .AppendLine(CombinedInfo.Build);
+                    _ = builder.Append(GetStringResource("WindowsInfo_Architecture"))
+                               .Append(" = ")
+                               .AppendLine(CombinedInfo.Arch);
+                    _ = builder.Append(GetStringResource("WindowsInfo_BuildBranch"))
+                               .Append(" = ")
+                               .AppendLine(CombinedInfo.BuildBranch);
+                    _ = builder.Append(GetStringResource("WindowsInfo_EditionID"))
+                               .Append(" = ")
+                               .AppendLine(CombinedInfo.EditionID);
+                    _ = builder.Append(GetStringResource("WindowsInfo_Installed"))
+                               .Append(" = ")
+                               .AppendLine(CombinedInfo.InstallDate.ToString("f"));
+                    _ = builder.Append(GetStringResource("WindowsInfo_WindowsFolder"))
+                               .Append(" = ")
+                               .AppendLine(CombinedInfo.WindowsFolder);
+                    _ = builder.Append(GetStringResource("WindowsInfo_TempFolder"))
+                               .Append(" = ")
+                               .AppendLine(CombinedInfo.TempFolder);
                     break;
                 }
 
             case ComputerInfoViewModel:
                 {
-                    _ = builder.AppendLine("COMPUTER INFORMATION");
-                    _ = builder.AppendLine("--------------------");
-                    _ = builder.Append("Manufacturer    = ").AppendLine(CombinedInfo.Manufacturer);
-                    _ = builder.Append("Model           = ").AppendLine(CombinedInfo.Model);
-                    _ = builder.Append("Machine Name    = ").AppendLine(CombinedInfo.MachName);
-                    _ = builder.Append("Last Rebooted   = ").AppendLine(CombinedInfo.LastBoot.ToString("f"));
-                    _ = builder.Append("CPU             = ").AppendLine(CombinedInfo.ProcName);
-                    _ = builder.Append("Total Cores     = ").AppendLine(CombinedInfo.ProcCores);
-                    _ = builder.Append("Architecture    = ").AppendLine(CombinedInfo.ProcArch);
-                    _ = builder.Append("Physical Memory = ").AppendLine(CombinedInfo.TotalMemory);
+                    _ = builder.AppendLine(GetStringResource("NavTitle_HardwareInfo"));
+                    _ = builder.AppendLine(new string('-', builder.Length - 2));
+                    _ = builder.Append(GetStringResource("HardwareInfo_Manufacturer"))
+                               .Append(" = ")
+                               .AppendLine(CombinedInfo.Manufacturer);
+                    _ = builder.Append(GetStringResource("HardwareInfo_Model"))
+                               .Append(" = ")
+                               .AppendLine(CombinedInfo.Model);
+                    _ = builder.Append(GetStringResource("HardwareInfo_MachineName"))
+                               .Append(" = ")
+                               .AppendLine(CombinedInfo.MachName);
+                    _ = builder.Append(GetStringResource("HardwareInfo_LastBoot"))
+                               .Append(" = ")
+                               .AppendLine(CombinedInfo.LastBoot.ToString("f"));
+                    _ = builder.Append(GetStringResource("HardwareInfo_Processor"))
+                               .Append(" = ")
+                               .AppendLine(CombinedInfo.ProcName);
+                    _ = builder.Append(GetStringResource("HardwareInfo_ProcessorDescription"))
+                               .Append(" = ")
+                               .AppendLine(CombinedInfo.ProcDescription);
+                    _ = builder.Append(GetStringResource("HardwareInfo_ProcessorCores"))
+                               .Append(" = ")
+                               .Append(CombinedInfo.ProcCores)
+                               .Append(' ')
+                               .Append(GetStringResource("HardwareInfo_Threads"))
+                               .Append(" = ")
+                               .AppendLine(CombinedInfo.ProcThreads);
+                    _ = builder.Append(GetStringResource("HardwareInfo_ProcessorArch"))
+                               .Append(" = ")
+                               .AppendLine(CombinedInfo.ProcArch);
+                    _ = builder.Append(GetStringResource("HardwareInfo_BiosManufacturer"))
+                               .Append(" = ")
+                               .AppendLine(CombinedInfo.BiosManufacturer);
+                    _ = builder.Append(GetStringResource("HardwareInfo_BiosVersion"))
+                               .Append(" = ")
+                               .Append(CombinedInfo.BiosName)
+                               .Append(" - ")
+                               .AppendLine(CombinedInfo.BiosDate.ToString("f"));
+                    _ = builder.Append(GetStringResource("HardwareInfo_PhysicalMemory"))
+                               .Append(" = ")
+                               .Append(CombinedInfo.InstalledMemory)
+                               .Append(' ')
+                               .Append(GetStringResource("HardwareInfo_Installed"))
+                               .Append(" - ")
+                               .Append(CombinedInfo.TotalMemory)
+                               .Append(' ')
+                               .AppendLine(GetStringResource("HardwareInfo_Usable"));
                     break;
                 }
 
             case EnvVarViewModel:
                 {
-                    _ = builder.AppendLine("ENVIRONMENT VARIABLES");
-                    _ = builder.AppendLine("---------------------");
+                    _ = builder.AppendLine(GetStringResource("NavTitle_Environment"));
+                    _ = builder.AppendLine(new string('-', builder.Length - 2));
                     foreach (EnvVariable item in EnvVariable.EnvVariableList)
                     {
-                        _ = builder.Append(item.Variable);
-                        _ = builder.Append(" = ");
-                        _ = builder.AppendLine(item.Value);
+                        _ = builder.Append(item.Variable)
+                                   .Append(" = ")
+                                   .AppendLine(item.Value);
                     }
                     break;
                 }
 
             case HistoryViewModel:
                 {
-                    _ = builder.AppendLine("BUILD HISTORY");
-                    _ = builder.AppendLine("-------------");
+                    _ = builder.AppendLine(GetStringResource("NavTitle_BuildHistory"));
+                    _ = builder.AppendLine(new string('-', builder.Length - 2));
                     foreach (History item in History.HistoryList)
                     {
-                        _ = builder.AppendFormat("{0,-18}", item.HDate);
-                        _ = builder.AppendFormat("{0,-12}", item.HBuild);
-                        _ = builder.AppendFormat("{0,-6}", item.HVersion);
-                        _ = builder.AppendLine(item.HBranch);
+                        _ = builder.AppendFormat("{0,-18}", item.HDate)
+                                   .AppendFormat("{0,-12}", item.HBuild)
+                                   .AppendFormat("{0,-6}", item.HVersion)
+                                   .AppendLine(item.HBranch);
                     }
                     break;
                 }
 
             case DriveInfoViewModel:
                 {
+                    string giga = UserSettings.Setting.Use1024 ? "GiB" : "GB";
                     if (TempSettings.Setting.DriveSelectedTab == 0)
                     {
-                        _ = builder.AppendLine("LOGICAL DISK DRIVES");
-                        _ = builder.AppendLine("-------------------");
+                        _ = builder.Append(GetStringResource("NavTitle_DriveInfo"))
+                                   .Append(" - ")
+                                   .AppendLine(GetStringResource("DriveInfo_LogicalDrives"));
+
+                        _ = builder.AppendLine(new string('-', builder.Length - 2));
                         foreach (LogicalDrives item in CombinedInfo.LogicalDrivesList)
                         {
-                            _ = builder.Append("Name         = ").AppendLine(item.Name);
-                            _ = builder.Append("Label        = ").AppendLine(item.Label);
-                            _ = builder.Append("Drive type   = ").AppendLine(item.DriveType);
-                            _ = builder.Append("Format       = ").AppendLine(item.Format);
-                            _ = builder.Append("Total size   = ").AppendFormat("{0:N2} GB", item.TotalSize).AppendLine();
-                            _ = builder.Append("Free space   = ").AppendFormat("{0:N2} GB", item.GBFree).AppendLine();
-                            _ = builder.Append("Percent free = ").AppendFormat("{0:N2} %", item.PercentFree * 100).AppendLine();
+                            _ = builder.Append(GetStringResource("DriveInfo_Name"))
+                                       .Append(" = ")
+                                       .AppendLine(item.Name);
+                            _ = builder.Append(GetStringResource("DriveInfo_Label"))
+                                       .Append(" = ")
+                                       .AppendLine(item.Label);
+                            _ = builder.Append(GetStringResource("DriveInfo_Type"))
+                                       .Append(" = ")
+                                       .AppendLine(item.DriveType);
+                            _ = builder.Append(GetStringResource("DriveInfo_Format"))
+                                       .Append(" = ")
+                                       .AppendLine(item.Format);
+                            _ = builder.Append(GetStringResource("DriveInfo_Size"))
+                                       .Append(" = ")
+                                       .AppendFormat("{0:N2} ", item.TotalSize)
+                                       .Append(giga)
+                                       .AppendLine();
+                            _ = builder.Append(GetStringResource("DriveInfo_Free"))
+                                       .Append(" = ")
+                                       .AppendFormat("{0:N2} ", item.GBFree)
+                                       .Append(giga)
+                                       .AppendLine();
+                            _ = builder.Append(GetStringResource("DriveInfo_FreePercent"))
+                                       .Append(" = ")
+                                       .AppendFormat("{0:N2} %", item.PercentFree * 100)
+                                       .AppendLine();
                             _ = builder.AppendLine();
                         }
                     }
                     else
                     {
-                        _ = builder.AppendLine("PHSYICAL DISK DRIVES");
-                        _ = builder.AppendLine("--------------------");
+                        _ = builder.Append(GetStringResource("NavTitle_DriveInfo"))
+                                   .Append(" - ")
+                                   .AppendLine(GetStringResource("DriveInfo_PhysicalDrives"));
+                        _ = builder.AppendLine(new string('-', builder.Length - 2));
                         foreach (PhysicalDrives item in CombinedInfo.PhysicalDrivesList)
                         {
                             if (UserSettings.Setting.GetPhysicalDrives)
                             {
-                                _ = builder.Append("Device ID   = ").AppendLine(item.Index.ToString());
-                                _ = builder.Append("Size        = ").AppendFormat("{0:N2} GB", item.Size).AppendLine();
-                                _ = builder.Append("Partitions  = ").AppendLine(item.Partitions.ToString());
-                                _ = builder.Append("Disk type   = ").AppendLine(item.DiskType);
-                                _ = builder.Append("Media type  = ").AppendLine(item.MediaType);
-                                _ = builder.Append("Interface   = ").AppendLine(item.Interface);
-                                _ = builder.Append("Bus type    = ").AppendLine(item.BusType);
-                                _ = builder.Append("Health      = ").AppendLine(item.Health);
-                                _ = builder.Append("Name        = ").AppendLine(item.Name);
-                                _ = builder.Append("Model       = ").AppendLine(item.Model);
+                                _ = builder.Append(GetStringResource("DriveInfo_Index"))
+                                           .Append(" = ")
+                                           .AppendLine(item.Index.ToString());
+                                _ = builder.Append(GetStringResource("DriveInfo_Size"))
+                                           .Append(" = ")
+                                           .AppendFormat("{0:N2} ", item.Size)
+                                           .Append(giga)
+                                           .AppendLine();
+                                _ = builder.Append(GetStringResource("DriveInfo_Partitions"))
+                                           .Append(" = ")
+                                           .AppendLine(item.Partitions.ToString());
+                                _ = builder.Append(GetStringResource("DriveInfo_DiskType"))
+                                           .Append(" = ")
+                                           .AppendLine(item.DiskType);
+                                _ = builder.Append(GetStringResource("DriveInfo_MediaType"))
+                                           .Append(" = ")
+                                           .AppendLine(item.MediaType);
+                                _ = builder.Append(GetStringResource("DriveInfo_Interface"))
+                                           .Append(" = ")
+                                           .AppendLine(item.Interface);
+                                _ = builder.Append(GetStringResource("DriveInfo_BusType"))
+                                           .Append(" = ")
+                                           .AppendLine(item.BusType);
+                                _ = builder.Append(GetStringResource("DriveInfo_Health"))
+                                           .Append(" = ")
+                                           .AppendLine(item.Health);
+                                _ = builder.Append(GetStringResource("DriveInfo_PartitionStyle"))
+                                           .Append(" = ")
+                                           .AppendLine(item.PartitionStyle);
+                                _ = builder.Append(GetStringResource("DriveInfo_BootDrive"))
+                                           .Append(" = ")
+                                           .AppendLine(item.IsBoot);
+                                _ = builder.Append(GetStringResource("DriveInfo_Name"))
+                                           .Append(" = ")
+                                           .AppendLine(item.Name);
+                                _ = builder.Append(GetStringResource("DriveInfo_Model"))
+                                           .Append(" = ")
+                                           .AppendLine(item.Model);
                                 _ = builder.AppendLine();
                             }
                             else
                             {
-                                _ = builder.AppendLine("Collection of Physical Drive information is disabled in Settings");
+                                _ = builder.AppendLine(GetStringResource("DriveInfo_PhysicalDisabled"));
                             }
                         }
                     }
@@ -269,22 +377,40 @@ internal partial class NavigationViewModel : ObservableObject
 
             case VideoViewModel:
                 {
-                    _ = builder.AppendLine("GRAPHICS ADAPTERS");
-                    _ = builder.AppendLine("-----------------");
+                    _ = builder.AppendLine(GetStringResource("NavTitle_GraphicsInfo"));
+                    _ = builder.AppendLine(new string('-', builder.Length - 2));
                     foreach (GpuInfo item in CombinedInfo.GPUList)
                     {
-                        _ = builder.Append("Name                  = ").AppendLine(item.GpuName);
-                        _ = builder.Append("Adapter type          = ").AppendLine(item.GpuVideoProcessor);
-                        _ = builder.Append("Description           = ").AppendLine(item.GpuDescription);
-                        _ = builder.Append("Device ID             = ").AppendLine(item.GpuDeviceID);
-                        _ = builder.Append("Horizontal resolution = ").AppendLine(item.GpuHorizontalResolution);
-                        _ = builder.Append("Vertical resolution   = ").AppendLine(item.GpuVerticalResolution);
-                        _ = builder.Append("Current refresh rate  = ").Append(item.GpuCurrentRefresh).AppendLine(" Hz");
-                        _ = builder.Append("Max refresh rate      = ").Append(item.GpuMaxRefresh).AppendLine(" Hz");
-                        _ = builder.Append("Min refresh rate      = ").Append(item.GpuMinRefresh).AppendLine(" Hz");
-                        _ = builder.Append("Bits per pixel        = ").AppendLine(item.GpuBitsPerPixel);
-                        _ = builder.Append("Adapter RAM           = ").AppendLine(item.GpuAdapterRam);
-                        _ = builder.Append("Number of colors      = ").AppendLine(item.GpuNumberOfColors);
+                        _ = builder.Append(GetStringResource("GraphicsInfo_GraphicsAdapter"))
+                                   .Append(" = ")
+                                   .AppendLine(item.GpuName);
+                        _ = builder.Append(GetStringResource("GraphicsInfo_AdapterType"))
+                                   .Append(" = ")
+                                   .AppendLine(item.GpuVideoProcessor);
+                        _ = builder.Append(GetStringResource("GraphicsInfo_Description"))
+                                   .Append(" = ")
+                                   .AppendLine(item.GpuDescription);
+                        _ = builder.Append(GetStringResource("GraphicsInfo_DeviceID"))
+                                   .Append(" = ")
+                                   .AppendLine(item.GpuDeviceID);
+                        _ = builder.Append(GetStringResource("GraphicsInfo_CurrentResolution"))
+                                   .Append(" = ")
+                                   .Append(item.GpuHorizontalResolution)
+                                   .Append(" x ")
+                                   .AppendLine(item.GpuVerticalResolution);
+                        _ = builder.Append(GetStringResource("GraphicsInfo_CurrentRefreshRate"))
+                                   .Append(" = ")
+                                   .Append(item.GpuCurrentRefresh)
+                                   .AppendLine(" Hz");
+                        _ = builder.Append(GetStringResource("GraphicsInfo_BitsPerPixel"))
+                                   .Append(" = ")
+                                   .AppendLine(item.GpuBitsPerPixel);
+                        _ = builder.Append(GetStringResource("GraphicsInfo_AdapterRAM"))
+                                   .Append(" = ")
+                                   .AppendLine(item.GpuAdapterRam);
+                        _ = builder.Append(GetStringResource("GraphicsInfo_NumberOfColors"))
+                                   .Append(" = ")
+                                   .AppendLine(item.GpuNumberOfColors);
                         _ = builder.AppendLine("");
                     }
                     break;
