@@ -12,7 +12,7 @@
         Application name:            TimVer
 
         Language name: Dutch
-	
+
         Translation contributed by: TiM
 
         Date last update: 2023-11-07
@@ -116,7 +116,7 @@
     <sys:String x:Key="EnvironmentInfo_Variable">Variabel</sys:String>
     <!--  Graphics Information Page  -->
     <sys:String x:Key="GraphicsInfo_AdapterType">Adapter Type</sys:String>
-    <sys:String x:Key="GraphicsInfo_AdpaterRAM">Adapter RAM</sys:String>
+    <sys:String x:Key="GraphicsInfo_AdapterRAM">Adapter RAM</sys:String>
     <sys:String x:Key="GraphicsInfo_BitsPerPixel">Bits per Pixel</sys:String>
     <sys:String x:Key="GraphicsInfo_CurrentRefreshRate">Huigige verversings snelheid</sys:String>
     <sys:String x:Key="GraphicsInfo_CurrentResolution">Huidige resolutie</sys:String>
@@ -301,5 +301,9 @@
     <sys:String x:Key="WindowsInfo_RegisteredUser">Geregistreerd door</sys:String>
     <sys:String x:Key="WindowsInfo_TempFolder">Tijdelijke map</sys:String>
     <sys:String x:Key="WindowsInfo_WindowsFolder">Windows map</sys:String>
+
+    <!-- Begin changes on 2023/12/20 @ 19:40 UTC-->
+    <!-- U | GraphicsInfo_AdapterRAM (corrected spelling)  -->
+    <!-- End changes on 2023/12/20 @ 19:40 UTC-->
 
 </ResourceDictionary>

@@ -3,15 +3,22 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!--
-        Refer to the "Contribute a Translation" topic in the Wiki: https://github.com/Timthreetwelve/TimVer/wiki/Contribute-a-Translation
-        =================================================================================================================================
+        Refer to the "Contribute a Translation" topic in the Wiki:
 
-        Language name here: Español (es-ES)
+        https://github.com/Timthreetwelve/TimVer/wiki/Contribute-a-Translation
 
-        Translation contributed by:
+        ======================================================================
 
-        Date:
-        ==================================================================================================================================
+        Application name:            TimVer
+
+        Language name:               Español (es-ES)
+
+        Translation contributed by:  Timthreetwelve
+
+        Date last update:            2023/12/15
+
+        ======================================================================
+
     -->
 
     <!--  About Page  -->
@@ -63,6 +70,16 @@
     <sys:String x:Key="DriveInfo_BusType_StorageSpaces">Espacios de almacenamiento</sys:String>
     <sys:String x:Key="DriveInfo_BusType_Unknown">Desconocido</sys:String>
     <sys:String x:Key="DriveInfo_DiskType">Tipo de disco</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_CDRom">CD-ROM</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Fixed">Fijo</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Network">Red</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_NoRootDirectory">Sin directorio raíz</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Ram">Unidad de RAM</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Removable">Extraíble</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Unknown">Desconocido</sys:String>
+    <sys:String x:Key="DriveInfo_Error">Error en DriveInfo</sys:String>
+    <sys:String x:Key="DriveInfo_ErrorProcessingDrive">Accionamiento de tratamiento de errores</sys:String>
+    <sys:String x:Key="DriveInfo_ErrorSeeLog">Error - Ver archivo de registro</sys:String>
     <sys:String x:Key="DriveInfo_Format">Formato</sys:String>
     <sys:String x:Key="DriveInfo_Free">Libre</sys:String>
     <sys:String x:Key="DriveInfo_FreePercent">% Libre</sys:String>
@@ -73,6 +90,7 @@
     <sys:String x:Key="DriveInfo_Health_Warning">Advertencia</sys:String>
     <sys:String x:Key="DriveInfo_Index">Índice</sys:String>
     <sys:String x:Key="DriveInfo_Interface">Interfaz</sys:String>
+    <sys:String x:Key="DriveInfo_IOError">Error de E/S</sys:String>
     <sys:String x:Key="DriveInfo_Label">Etiqueta</sys:String>
     <sys:String x:Key="DriveInfo_LogicalDrives">Unidades lógicas</sys:String>
     <sys:String x:Key="DriveInfo_MediaType">Tipo de medio</sys:String>
@@ -88,20 +106,15 @@
     <sys:String x:Key="DriveInfo_RefreshToolTipLine2">Unidades lógicas y físicas (si están habilitadas).</sys:String>
     <sys:String x:Key="DriveInfo_Size">Tamaño</sys:String>
     <sys:String x:Key="DriveInfo_Type">Tipo</sys:String>
-    <sys:String x:Key="DriveInfo_DriveType_CDRom">CD-ROM</sys:String>
-    <sys:String x:Key="DriveInfo_DriveType_Fixed">Fijo</sys:String>
-    <sys:String x:Key="DriveInfo_DriveType_Network">Red</sys:String>
-    <sys:String x:Key="DriveInfo_DriveType_NoRootDirectory">Sin directorio raíz</sys:String>
-    <sys:String x:Key="DriveInfo_DriveType_Ram">Unidad de RAM</sys:String>
-    <sys:String x:Key="DriveInfo_DriveType_Removable">Extraíble</sys:String>
-    <sys:String x:Key="DriveInfo_DriveType_Unknown">Desconocido</sys:String>
+    <sys:String x:Key="DriveInfo_UnauthorizedAccess">Acceso no autorizado</sys:String>
+    <sys:String x:Key="DriveInfo_UnknownError">Error desconocido</sys:String>
     <!--  Environment Variables Page  -->
     <sys:String x:Key="EnvironmentInfo_Filter">Filtrar</sys:String>
     <sys:String x:Key="EnvironmentInfo_Value">Valor</sys:String>
     <sys:String x:Key="EnvironmentInfo_Variable">Variable</sys:String>
     <!--  Graphics Information Page  -->
     <sys:String x:Key="GraphicsInfo_AdapterType">Tipo de adaptador</sys:String>
-    <sys:String x:Key="GraphicsInfo_AdpaterRAM">RAM del adaptador</sys:String>
+    <sys:String x:Key="GraphicsInfo_AdapterRAM">RAM del adaptador</sys:String>
     <sys:String x:Key="GraphicsInfo_BitsPerPixel">Bits por píxel</sys:String>
     <sys:String x:Key="GraphicsInfo_CurrentRefreshRate">Frecuencia de actualización actual</sys:String>
     <sys:String x:Key="GraphicsInfo_CurrentResolution">Resolución actual</sys:String>
