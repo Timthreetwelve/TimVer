@@ -537,6 +537,17 @@ internal partial class NavigationViewModel : ObservableObject
     }
     #endregion Refresh drives command
 
+    #region Right mouse button
+    [RelayCommand]
+    public static void RightMouseUp(MouseButtonEventArgs e)
+    {
+        if (e.OriginalSource is TextBlock text)
+        {
+            _ = ClipboardHelper.CopyTextToClipboard(text.Text);
+        }
+    }
+    #endregion Right mouse button
+
     #region Key down events
     /// <summary>
     /// Keyboard events
