@@ -143,6 +143,7 @@
                           FontSize="14" HeadersVisibility="Column"
                           IsReadOnly="True"
                           ItemsSource="{x:Static models:CombinedInfo.PhysicalDrivesList}"
+                          RowStyle="{StaticResource DisplayOnlyRows}"
                           SelectionMode="Single"
                           SelectionUnit="FullRow">
                     <DataGrid.Columns>
