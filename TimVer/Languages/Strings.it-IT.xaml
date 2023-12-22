@@ -15,7 +15,7 @@
 
         Translation contributed by:  RB
 
-        Date last update:            20.11.2023
+        Date last update:            21.12.2023
 
         ======================================================================
 
@@ -145,6 +145,7 @@
     <sys:String x:Key="HardwareInfo_ProcessorCores">Core CPU</sys:String>
     <sys:String x:Key="HardwareInfo_ProcessorDescription">Descrizione processore</sys:String>
     <sys:String x:Key="HardwareInfo_Threads">Thread</sys:String>
+    <sys:String x:Key="HardwareInfo_Uptime">Tempo accensione</sys:String>
     <sys:String x:Key="HardwareInfo_UptimeString">{0} giorni, {1} ore, {2} minuti, {3} secondi</sys:String>
     <sys:String x:Key="HardwareInfo_Usable">Usabili</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
