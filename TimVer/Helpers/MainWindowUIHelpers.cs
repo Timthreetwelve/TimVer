@@ -199,4 +199,22 @@ internal static class MainWindowUIHelpers
         _mainWindow.Cursor = Cursors.Arrow;
     }
     #endregion Change mouse pointer
+
+    #region Find the parent of a control
+    public static T FindParent<T>(DependencyObject child) where T : DependencyObject
+    {
+        //get parent item
+        DependencyObject parentObject = VisualTreeHelper.GetParent(child);
+
+        //we've reached the end of the tree
+        if (parentObject == null)
+            return null;
+
+        //check if the parent matches the type we're looking for
+        if (parentObject is T parent)
+            return parent;
+        else
+            return FindParent<T>(parentObject);
+    }
+    #endregion Find the parent of a control
 }

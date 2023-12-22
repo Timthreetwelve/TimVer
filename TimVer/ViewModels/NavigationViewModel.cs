@@ -538,12 +538,25 @@ internal partial class NavigationViewModel : ObservableObject
     #endregion Refresh drives command
 
     #region Right mouse button
+    /// <summary>
+    /// Copy (nearly) any text in a TextBlock to the clipboard on right mouse button up.
+    /// </summary>
     [RelayCommand]
     public static void RightMouseUp(MouseButtonEventArgs e)
     {
         if (e.OriginalSource is TextBlock text)
         {
-            _ = ClipboardHelper.CopyTextToClipboard(text.Text);
+            // Skip the navigation menu
+            ListBox lb = MainWindowUIHelpers.FindParent<ListBox>(text);
+            if (lb?.Name == "NavigationListBox")
+            {
+                return;
+            }
+
+            if (ClipboardHelper.CopyTextToClipboard(text.Text))
+            {
+                SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopiedToClipboardItem"));
+            }
         }
     }
     #endregion Right mouse button
