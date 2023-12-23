@@ -12,7 +12,7 @@
       <Product>TimVer</Product>
       <ApplicationIcon>TV.ico</ApplicationIcon>
       <AssemblyVersion>0.0.1</AssemblyVersion>
-      <BaseOutputPath>D:\Visual Studio\Source\Prod\TimVer\TimVer\bin</BaseOutputPath>
+      <BaseOutputPath>D:\Visual Studio\Source\Prod\TimVer\ConvertHistory\bin</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,9 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
-    <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
-    <PackageReference Include="NLog" Version="5.2.0" />
+    <PackageReference Include="NLog" Version="5.2.7" />
   </ItemGroup>
 
 </Project>

@@ -1,19 +1,18 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
+using System.Windows.Media;
+
 namespace ConvertHistory;
-/// <summary>
-/// Interaction logic for MainWindow.xaml
-/// </summary>
+
 public partial class MainWindow : Window
 {
     #region NLog Instance
     private static readonly Logger _log = LogManager.GetLogger("logTemp");
     #endregion NLog Instance
 
-    public static string InputCsv { get; } = Path.Join(AppInfo.AppDirectory, "history.csv");
-    public static string OutputJson { get; } = Path.Join(AppInfo.AppDirectory, "history.json");
+    public static string InputCsv { get; set; }
+    public static string OutputJson { get; set; }
     public static List<string[]> CsvItems { get; set; } = new List<string[]>();
-    public static bool FirstRun { get; set; } = true;
 
     public MainWindow()
     {
@@ -22,64 +21,37 @@ public partial class MainWindow : Window
         InitializeComponent();
 
         ReadSettings();
-
-        CheckInput();
-
-        CheckJson();
     }
 
     #region Check & read the CSV file
-    public void CheckInput()
+    public bool CheckInput()
     {
-        if (CheckCSV())
+        if (File.Exists(InputCsv))
         {
             ReadCSV();
 
             if (InputCsv != null && CsvItems.Count > 0)
             {
-                txt1.Text = $"CSV format history was found. File contains {CsvItems.Count} history records.";
-                BtnConvert.IsEnabled = true;
+                _log.Info($"CSV format history was found. File contains {CsvItems.Count} history records.");
+                return true;
             }
             else
             {
-                txt1.Text = "CSV format history was found but appears to be empty.";
-                txt2.Text = $"There was no history to convert. Feel free to delete {InputCsv}";
-                _log.Warn("CSV format history was found but appears to be empty.");
+                txt1.Text = $"Input file {InputCsv} is not in the correct format.";
+                txt1.Foreground = Brushes.Crimson;
+                _log.Warn("Input file is not in the correct format.");
+                return false;
             }
         }
         else
         {
             txt1.Text = "CSV format history file was not found.";
-            txt2.Text = "Feel free to close this and begin using TimVer.";
+            txt1.Foreground = Brushes.Crimson;
             _log.Warn("CSV format history file was not found.");
+            return false;
         }
     }
     #endregion Check & read the CSV file
-
-    #region Verify CSV file exists
-    public static bool CheckCSV()
-    {
-        return File.Exists(InputCsv);
-    }
-    #endregion Verify CSV file exists
-
-    #region Check to see if a JSON history file exists
-    public void CheckJson()
-    {
-        if (!File.Exists(OutputJson))
-        {
-            return;
-        }
-        if (CheckCSV())
-        {
-            txt2.Text = "A JSON format history file exists. Clicking the Convert button will overwrite this file.";
-        }
-        else
-        {
-            txt2.Text = "A JSON format history file exists.";
-        }
-    }
-    #endregion Check to see if a JSON history file exists
 
     #region Read the CSV history file
     public static void ReadCSV()
@@ -87,7 +59,11 @@ public partial class MainWindow : Window
         CsvItems.Clear();
         foreach (string line in File.ReadAllLines(InputCsv))
         {
-            CsvItems.Add(line.Split(',', StringSplitOptions.None));
+            int count = line.Count(f => f == ',');
+            if (count == 3)
+            {
+                CsvItems.Add(line.Split(',', StringSplitOptions.None));
+            }
         }
         _log.Info($"Read {CsvItems.Count} records from {InputCsv}");
     }
@@ -96,7 +72,6 @@ public partial class MainWindow : Window
     #region Convert the CSV format file to JSON format
     public void ConvertToJson()
     {
-        FirstRun = false;
         List<History> histList = new();
         histList.Clear();
         try
@@ -118,31 +93,64 @@ public partial class MainWindow : Window
                 JsonSerializerOptions opts = new() { WriteIndented = true };
                 string json = JsonSerializer.Serialize(histList, opts);
                 File.WriteAllText(OutputJson, json);
-                txt2.Text = $"Conversion is complete. {histList.Count} history records were written.";
-                txt3.Text = $"Verify history in TimVer then feel free to delete {InputCsv}.";
+                txt1.Text = $"Conversion is complete. {histList.Count} history records were written.";
+                txt2.Text = $"Verify history in TimVer then feel free to delete {InputCsv}.";
                 _log.Info($"{histList.Count} items written to {OutputJson}");
             }
         }
         catch (Exception ex)
         {
-            txt2.Text = $"Sorry, there was an error converting or writing history file {OutputJson}.";
-            txt3.Text = $"Perhaps the file was corrupt. See log file {NLHelpers.GetLogfileName()} for more information.";
+            txt1.Text = $"Sorry, there was an error converting or writing history file {OutputJson}.";
+            txt1.Foreground = Brushes.Crimson;
+            txt2.Text = $"See log file {NLHelpers.GetLogfileName()} for more information.";
             _log.Error(ex, $"Error converting or writing history file {OutputJson}");
         }
     }
     #endregion Convert the CSV format file to JSON format
 
-    #region Convert button click event
+    #region button click events
     private void BtnConvert_Click(object sender, RoutedEventArgs e)
     {
-        if (!FirstRun)
-        {
-            txt1.Text = string.Empty;
-            CheckInput();
-        }
+        txt1.Text = string.Empty;
+        txt1.Foreground = Brushes.Black;
         txt2.Text = string.Empty;
-        txt3.Text = string.Empty;
-        ConvertToJson();
+        txt2.Foreground = Brushes.Black;
+
+        if (CheckInput() && (!string.IsNullOrEmpty(OutputJson)))
+        {
+            ConvertToJson();
+        }
+    }
+
+    private void Button_Input_Click(object sender, RoutedEventArgs e)
+    {
+        OpenFileDialog dlgOpen = new()
+        {
+            Title = "Browse for Input File",
+            CheckFileExists = true,
+            CheckPathExists = true,
+            Filter = "CSV files (*.csv)|*.csv"
+        };
+        if (dlgOpen.ShowDialog() == true)
+        {
+            TbxInput.Text = dlgOpen.FileName;
+        }
+    }
+
+    private void Button_Output_Click(object sender, RoutedEventArgs e)
+    {
+        SaveFileDialog save = new()
+        {
+            Title = "Select Output File",
+            Filter = "JSON File|*.json",
+            FileName = "History.json",
+            InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+        };
+        bool? result = save.ShowDialog();
+        if (result == true)
+        {
+            TbxOutput.Text = save.FileName;
+        }
     }
     #endregion Convert button click event
 
@@ -167,39 +175,15 @@ public partial class MainWindow : Window
         WindowTitleVersionAdmin();
 
         // Log the version, build date and commit id
-        _log.Info($"{AppInfo.AppName} ({AppInfo.AppProduct}) {AppInfo.AppVersion} is starting up");
+        _log.Info($"{AppInfo.AppName} (TimVer History Conversion) {AppInfo.AppVersion} is starting up");
         _log.Info($"{AppInfo.AppName} {AppInfo.AppCopyright}");
 
         // Log the .NET version, app framework and OS platform
         string version = Environment.Version.ToString();
         _log.Debug($".NET version: {AppInfo.RuntimeVersion.Replace(".NET", "")}  ({version})");
         _log.Debug(AppInfo.OsPlatform);
-
-        // Settings change event
-        UserSettings.Setting.PropertyChanged += UserSettingChanged;
-
-        MainWindowUIHelpers.SetBaseTheme((bool)UserSettings.Setting.DarkMode);
     }
     #endregion Settings
-
-    #region Setting change
-    /// <summary>
-    /// My way of handling changes in UserSettings
-    /// </summary>
-    /// <param name="sender"></param>
-    private void UserSettingChanged(object sender, PropertyChangedEventArgs e)
-    {
-        PropertyInfo prop = sender.GetType().GetProperty(e.PropertyName);
-        object newValue = prop?.GetValue(sender, null);
-        _log.Debug($"Setting change: {e.PropertyName} New Value: {newValue}");
-        switch (e.PropertyName)
-        {
-            case nameof(UserSettings.Setting.DarkMode):
-                MainWindowUIHelpers.SetBaseTheme((bool)newValue);
-                break;
-        }
-    }
-    #endregion Setting change
 
     #region Window Events
     private void Window_Closing(object sender, CancelEventArgs e)
@@ -264,4 +248,14 @@ public partial class MainWindow : Window
             MessageBoxImage.Error);
     }
     #endregion Unhandled Exception Handler
+
+    private void TbxInput_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+    {
+        InputCsv = TbxInput.Text.Trim('"');
+    }
+
+    private void TbxOutput_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+    {
+        OutputJson = TbxOutput.Text.Trim('"');
+    }
 }

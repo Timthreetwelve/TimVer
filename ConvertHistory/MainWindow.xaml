@@ -1,94 +1,106 @@
-﻿<Window x:Class="ConvertHistory.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:local="clr-namespace:ConvertHistory"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d"
-        Width="610" Height="400"
-        MinWidth="560" MinHeight="350"
-        Background="{DynamicResource MaterialDesignPaper}"
-        Closing="Window_Closing" FontSize="14"
-        Style="{StaticResource MaterialDesignWindow}"
-        TextElement.FontWeight="Regular"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        TextOptions.TextFormattingMode="Ideal"
-        TextOptions.TextRenderingMode="Auto"
-        WindowStartupLocation="CenterScreen">
+﻿<Window
+    x:Class="ConvertHistory.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ConvertHistory"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Width="770" Height="400"
+    MinWidth="770" MinHeight="350"
+    Closing="Window_Closing" FontSize="14"
+    TextElement.FontWeight="Regular"
+    TextOptions.TextFormattingMode="Ideal"
+    TextOptions.TextRenderingMode="Auto"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
 
     <Grid x:Name="MainGrid">
         <!--#region Row definitions-->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="45" />
+            <RowDefinition Height="45" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <!--#endregion-->
 
         <!--#region Text blocks-->
-        <TextBlock Grid.Row="0"
-                   Height="auto"
-                   Margin="20,20,20,10" VerticalAlignment="Top"
-                   TextWrapping="Wrap"
-                   FontSize="14" LineHeight="20">
+        <TextBlock
+            Grid.Row="0" Height="auto"
+            Margin="20,20,20,10"
+            VerticalAlignment="Top" FontSize="14"
+            LineHeight="20" TextWrapping="Wrap">
             <Run Text="This utility will convert TimVer CSV format history file into JSON format. It only needs" />
             <Run Text=" to be executed" />
-            <Run Text="if" FontWeight="Bold" />
+            <Run
+                FontWeight="Bold" Text="if" />
             <Run Text="a CSV format history file exists" />
-            <Run Text="and" FontWeight="Bold" />
+            <Run
+                FontWeight="Bold" Text="and" />
             <Run Text="you intend to keep a build history." />
         </TextBlock>
+        <!--#endregion-->
 
-        <TextBlock x:Name="txt1"
-                   Grid.Row="1"
-                   Height="Auto"
-                   Margin="20,10"
-                   TextWrapping="Wrap" />
+        <!--#region Input file -->
+        <StackPanel
+            Grid.Row="1" Margin="20,0"
+            Orientation="Horizontal">
+            <Label
+                Width="130" HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Content="Input CSV File" />
+            <TextBox
+                x:Name="TbxInput" Width="500"
+                Height="32" Padding="5"
+                TextChanged="TbxInput_TextChanged"/>
+            <Button
+                Width="32" Height="32"
+                Margin="10,0" Click="Button_Input_Click"
+                Content="..." FontWeight="Bold" />
+        </StackPanel>
+        <!--#endregion-->
 
-        <TextBlock x:Name="txt2"
-                   Grid.Row="2"
-                   Height="Auto"
-                   Margin="20,10"
-                   TextWrapping="Wrap" />
+        <!--#region Output file -->
+        <StackPanel
+            Grid.Row="2" Margin="20,0"
+            Orientation="Horizontal">
+            <Label
+                Width="130" HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Content="Output JSON File" />
+            <TextBox
+                x:Name="TbxOutput" Height="32"
+                TextChanged="TbxOutput_TextChanged"
+                MinWidth="500" Padding="10,6,10,0" />
+            <Button
+                Width="32" Height="32"
+                Margin="10,0"
+                Click="Button_Output_Click"
+                Content="..." FontWeight="SemiBold" />
+        </StackPanel>
+        <!--#endregion-->
 
-        <TextBlock x:Name="txt3"
-                   Grid.Row="3"
-                   Height="Auto"
-                   Margin="20,10"
-                   TextWrapping="Wrap" />
+        <!--#region TextBlocks for messages -->
+        <TextBlock
+            x:Name="txt1" Grid.Row="3"
+            Margin="20,10" TextWrapping="Wrap" />
+
+        <TextBlock
+            x:Name="txt2" Grid.Row="4"
+            Margin="20,10" TextWrapping="Wrap" />
         <!--#endregion-->
 
         <!--#region Convert button-->
-        <Button x:Name="BtnConvert"
-                Grid.Row="4"
-                Width="100" Height="38"
-                Click="BtnConvert_Click"
-                Content="Convert" FontSize="16"
-                IsEnabled="False"
-                Style="{StaticResource MaterialDesignOutlinedButton}" />
-        <!--#endregion-->
-
-        <!--#region Theme switch-->
-        <StackPanel Grid.Row="5"
-                    Margin="10,0,10,10"
-                    VerticalAlignment="Bottom"
-                    Orientation="Horizontal">
-            <materialDesign:PackIcon Width="22" Height="22"
-                                     VerticalAlignment="Center"
-                                     Kind="BulbOnOutline" />
-            <ToggleButton Width="35" Height="15"
-                          Margin="5,0" VerticalAlignment="Center"
-                          IsChecked="{Binding DarkMode,
-                                              Source={x:Static local:UserSettings.Setting}}"
-                          Style="{StaticResource MaterialDesignSwitchToggleButton}" />
-            <materialDesign:PackIcon Width="22" Height="22"
-                                     VerticalAlignment="Center"
-                                     Kind="NightSky" />
-        </StackPanel>
+        <Button
+            x:Name="BtnConvert" Grid.Row="5"
+            Width="120" Height="38" Margin="0,20"
+            VerticalAlignment="Top"
+            Click="BtnConvert_Click"
+            Content="Convert" FontSize="16"
+            FontWeight="SemiBold" />
         <!--#endregion-->
     </Grid>
 </Window>

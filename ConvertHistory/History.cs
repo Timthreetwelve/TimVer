@@ -1,17 +1,14 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace ConvertHistory;
-internal partial class History : ObservableObject
+
+public class History
 {
-    [ObservableProperty]
-    private string _hDate;
+    public string HDate { get; set; }
 
-    [ObservableProperty]
-    private string _hBuild;
+    public string HBuild { get; set; }
 
-    [ObservableProperty]
-    private string _hVersion;
+    public string HVersion { get; set; }
 
-    [ObservableProperty]
-    private string _hBranch;
+    public string HBranch { get; set; }
 }
