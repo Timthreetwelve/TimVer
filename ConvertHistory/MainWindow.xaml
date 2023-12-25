@@ -5,8 +5,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:ConvertHistory"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Width="770" Height="400"
-    MinWidth="770" MinHeight="350"
+    Width="850" Height="400"
+    MinWidth="850" MinHeight="400"
     Closing="Window_Closing" FontSize="14"
     TextElement.FontWeight="Regular"
     TextOptions.TextFormattingMode="Ideal"
@@ -41,10 +41,11 @@
             <Run
                 FontWeight="Bold" Text="and" />
             <Run Text="you intend to keep a build history." />
+            <Run Text="This conversion will only need to be done one time. After a successful conversion, the history.csv file may be deleted. " />
         </TextBlock>
         <!--#endregion-->
 
-        <!--#region Input file -->
+        <!--#region Input file-->
         <StackPanel
             Grid.Row="1" Margin="20,0"
             Orientation="Horizontal">
@@ -53,9 +54,9 @@
                 VerticalAlignment="Center"
                 Content="Input CSV File" />
             <TextBox
-                x:Name="TbxInput" Width="500"
+                x:Name="TbxInput" Width="600"
                 Height="32" Padding="5"
-                TextChanged="TbxInput_TextChanged"/>
+                TextChanged="TbxInput_TextChanged" />
             <Button
                 Width="32" Height="32"
                 Margin="10,0" Click="Button_Input_Click"
@@ -63,7 +64,7 @@
         </StackPanel>
         <!--#endregion-->
 
-        <!--#region Output file -->
+        <!--#region Output file-->
         <StackPanel
             Grid.Row="2" Margin="20,0"
             Orientation="Horizontal">
@@ -73,8 +74,8 @@
                 Content="Output JSON File" />
             <TextBox
                 x:Name="TbxOutput" Height="32"
-                TextChanged="TbxOutput_TextChanged"
-                MinWidth="500" Padding="10,6,10,0" />
+                MinWidth="600" Padding="10,6,10,0"
+                TextChanged="TbxOutput_TextChanged" />
             <Button
                 Width="32" Height="32"
                 Margin="10,0"
@@ -83,7 +84,7 @@
         </StackPanel>
         <!--#endregion-->
 
-        <!--#region TextBlocks for messages -->
+        <!--#region TextBlocks for messages-->
         <TextBlock
             x:Name="txt1" Grid.Row="3"
             Margin="20,10" TextWrapping="Wrap" />
@@ -96,8 +97,8 @@
         <!--#region Convert button-->
         <Button
             x:Name="BtnConvert" Grid.Row="5"
-            Width="120" Height="38" Margin="0,20"
-            VerticalAlignment="Top"
+            Width="120" Height="38"
+            Margin="0,20" VerticalAlignment="Top"
             Click="BtnConvert_Click"
             Content="Convert" FontSize="16"
             FontWeight="SemiBold" />
