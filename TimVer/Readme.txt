@@ -76,8 +76,8 @@ About Page
 Selecting About will display the About dialog which shows information about the app such as the version
 number and has a link to the GitHub repository. There is also a link to this read me file. You can also
 check for new releases of this application by clicking the link at the bottom of the About page. At the
-bottom of the About page there is a scrollable list of the people that contributed a language to help
-make Windows Update Viewer available to more users.
+bottom of the About page there is a scrollable list of the people that contributed a translation to help
+make TimVer available to more users.
 
 
 Three-Dot Menu
@@ -111,6 +111,7 @@ remove the key.
 
 Uninstalling
 ============
+If you have TimVer set to update history on Windows startup, disable that option before uninstalling.
 To uninstall use the regular Windows add/remove programs feature.
 
 
@@ -136,7 +137,16 @@ TimVer uses the following packages:
 
     * OctoKit https://github.com/octokit/octokit.net
 
+    * GitKraken was used for everything Git related. https://www.gitkraken.com/
+
     * Inno Setup was used to create the installer. https://jrsoftware.org/isinfo.php
+
+    * Visual Studio Community was used throughout the development of Get My IP. https://visualstudio.microsoft.com/vs/community/
+
+    * XAML Styler is indispensable when working with XAML. https://github.com/Xavalon/XamlStyler
+
+    * And of course, the essential PowerToys https://github.com/microsoft/PowerToys
+
 
 
 MIT License
