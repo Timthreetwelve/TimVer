@@ -21,6 +21,8 @@ public partial class MainWindow : Window
         InitializeComponent();
 
         ReadSettings();
+
+        DefaultOutputFile();
     }
 
     #region Check & read the CSV file
@@ -116,8 +118,20 @@ public partial class MainWindow : Window
         txt2.Text = string.Empty;
         txt2.Foreground = Brushes.Black;
 
-        if (CheckInput() && (!string.IsNullOrEmpty(OutputJson)))
+        if (CheckInput())
         {
+            if (string.IsNullOrEmpty(OutputJson))
+            {
+                txt1.Text = "Please specify an output file name.";
+                txt1.Foreground = Brushes.Crimson;
+                return;
+            }
+            if (!Path.GetFileName(OutputJson).Equals("history.json", StringComparison.OrdinalIgnoreCase))
+            {
+                txt1.Text = "File name needs to be \"history.json\".";
+                txt1.Foreground = Brushes.Crimson;
+                return;
+            }
             ConvertToJson();
         }
     }
@@ -257,5 +271,13 @@ public partial class MainWindow : Window
     private void TbxOutput_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
     {
         OutputJson = TbxOutput.Text.Trim('"');
+    }
+
+    private void DefaultOutputFile()
+    {
+        string path = AppInfo.AppDirectory;
+        string file = "history.json";
+        TbxOutput.Text = Path.Combine(path, file);
+        OutputJson = TbxOutput.Text;
     }
 }
