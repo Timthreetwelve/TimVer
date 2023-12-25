@@ -25,6 +25,8 @@
     <sys:String x:Key="About_BuildDate">Fecha de construcción</sys:String>
     <sys:String x:Key="About_CommitID">ID de compromiso</sys:String>
     <sys:String x:Key="About_CommitIDToolTip">Identificación de compromiso total:</sys:String>
+    <sys:String x:Key="About_Contribute">Contribuir con una traducción</sys:String>
+    <sys:String x:Key="About_ContributeToolTip">Cómo contribuir con una traducción</sys:String>
     <sys:String x:Key="About_Copyright">Copyright</sys:String>
     <sys:String x:Key="About_CreatedBy">Creado por</sys:String>
     <sys:String x:Key="About_CreatedByToolTip">Consultar otras obras de Tim en https://github.com/Timthreetwelve</sys:String>
@@ -53,12 +55,14 @@
     <sys:String x:Key="Button_No">No</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
     <sys:String x:Key="Button_OpenFolder">Abrir la carpeta de aplicaciones</sys:String>
+    <sys:String x:Key="Button_OpenAppFolder">Abra la carpeta de la aplicación</sys:String>
     <sys:String x:Key="Button_OpenFolderToolTip">Abra la carpeta TimVer en el explorador de archivos</sys:String>
     <sys:String x:Key="Button_OpenLogFile">Ver archivo de registro</sys:String>
     <sys:String x:Key="Button_OpenLogFileToolTip">Abrir el archivo de registro en la aplicación por defecto</sys:String>
     <sys:String x:Key="Button_ThreeDotToolTip">Acciones adicionales</sys:String>
     <sys:String x:Key="Button_Yes">Sí</sys:String>
     <!--  Disk Drive Information Page  -->
+    <sys:String x:Key="DriveInfo_BootDrive">Unidad de arranque</sys:String>
     <sys:String x:Key="DriveInfo_BusType">Tipo de bus</sys:String>
     <sys:String x:Key="DriveInfo_BusType_FiberChannel">Canal de fibra</sys:String>
     <sys:String x:Key="DriveInfo_BusType_FileBackedVirtual">Virtual respaldado por archivos</sys:String>
@@ -100,6 +104,7 @@
     <sys:String x:Key="DriveInfo_Name">Nombre</sys:String>
     <sys:String x:Key="DriveInfo_NotReady">No listo</sys:String>
     <sys:String x:Key="DriveInfo_Partitions">Particiones</sys:String>
+    <sys:String x:Key="DriveInfo_PartitionStyle">Estilo de partición</sys:String>
     <sys:String x:Key="DriveInfo_PhysicalDisabled">La recopilación de información de la unidad física está deshabilitada en Configuración.</sys:String>
     <sys:String x:Key="DriveInfo_PhysicalDrives">Unidades físicas</sys:String>
     <sys:String x:Key="DriveInfo_RefreshToolTipLine1">Actualizar la información de la unidad actualizará ambos</sys:String>
@@ -138,7 +143,10 @@
     <sys:String x:Key="HardwareInfo_Processor">Procesador</sys:String>
     <sys:String x:Key="HardwareInfo_ProcessorArch">Arquitectura del procesador</sys:String>
     <sys:String x:Key="HardwareInfo_ProcessorCores">Núcleos del procesador</sys:String>
+    <sys:String x:Key="HardwareInfo_ProcessorDescription">Descripción del procesador</sys:String>
     <sys:String x:Key="HardwareInfo_Threads">Hilos</sys:String>
+    <sys:String x:Key="HardwareInfo_Uptime">Uptime</sys:String>
+    <sys:String x:Key="HardwareInfo_UptimeString">{0}días, {1}horas, {2}minutos, {3}segundos</sys:String>
     <sys:String x:Key="HardwareInfo_Usable">Utilizable</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
     <sys:String x:Key="MsgText_AddedToStartup">TimVer se agregó al inicio de Windows</sys:String>
@@ -151,6 +159,7 @@
     <sys:String x:Key="MsgText_AppUpdateNewerFound">Se ha encontrado una versión más reciente ({0}).</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNoneFound">No se encontraron versiones más recientes.</sys:String>
     <sys:String x:Key="MsgText_CopiedToClipboard">La página actual se copió en el portapapeles.</sys:String>
+    <sys:String x:Key="MsgText_CopiedToClipboardItem">El elemento se copió en el portapapeles</sys:String>
     <sys:String x:Key="MsgText_CopyToClipboardInvalid">Copiar al portapapeles no es válido en esta página</sys:String>
     <sys:String x:Key="MsgText_DriveInfoRefreshed">Información de la unidad de disco actualizada</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Tiempo transcurrido</sys:String>
@@ -242,6 +251,7 @@
     <sys:String x:Key="SettingsItem_DateFormat">Formato de fecha de cuadrícula</sys:String>
     <sys:String x:Key="SettingsItem_DisplayUser">Mostrar el usuario registrado y la organización en la página de información de Windows</sys:String>
     <sys:String x:Key="SettingsItem_EditExcludeToolTip">Mayús y clic para abrir el archivo con la aplicación predeterminada</sys:String>
+    <sys:String x:Key="SettingsItem_EnableLanguageTesting">Habilitar las pruebas de idioma</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBoot">Actualizar el historial de compilación al iniciar Windows</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine1">Al habilitar esta opción se agregará TimVer al inicio de Windows con el fin de actualizar un archivo del historial de compilación.</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine2">Esta opción no está disponible cuando se ejecuta TimVer desde una unidad extraíble.</sys:String>
@@ -256,6 +266,7 @@
     <sys:String x:Key="SettingsItem_PhysicalDriveOptions">Opciones de unidad física</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Altura de la fila</sys:String>
     <sys:String x:Key="SettingsItem_RowHeightToolTip">Esta configuración se aplica a la altura de la fila en las páginas Información de la unidad, Entorno e Historial.</sys:String>
+    <sys:String x:Key="SettingsItem_ShowBootDriveColumn">Mostrar columna Unidad de arranque</sys:String>
     <sys:String x:Key="SettingsItem_ShowBusTypeColumn">Mostrar columna Tipo de bus</sys:String>
     <sys:String x:Key="SettingsItem_ShowDiskTypeColumn">Mostrar columna Tipo de disco</sys:String>
     <sys:String x:Key="SettingsItem_ShowExit">Mostrar Salir en la barra de navegación</sys:String>
@@ -267,6 +278,7 @@
     <sys:String x:Key="SettingsItem_ShowNameColumn">Mostrar columna de nombre</sys:String>
     <sys:String x:Key="SettingsItem_ShowNetworkDrives">Incluir unidades de red</sys:String>
     <sys:String x:Key="SettingsItem_ShowPartitionsColumn">Mostrar columna Particiones</sys:String>
+    <sys:String x:Key="SettingsItem_ShowPartitionStyleColumn">Mostrar columna Estilo de partición</sys:String>
     <sys:String x:Key="SettingsItem_ShowReadyDrives">Mostrar solo unidades en estado "Listo"</sys:String>
     <sys:String x:Key="SettingsItem_ShowRemovableDrives">Incluir unidades extraíbles</sys:String>
     <sys:String x:Key="SettingsItem_ShowTypeColumn">Mostrar columna Tipo</sys:String>
