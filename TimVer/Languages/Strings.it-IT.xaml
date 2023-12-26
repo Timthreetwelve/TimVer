@@ -15,7 +15,7 @@
 
         Translation contributed by:  RB
 
-        Date last update:            21.12.2023
+        Date last update:            23.12.2023
 
         ======================================================================
 
@@ -159,6 +159,7 @@
     <sys:String x:Key="MsgText_AppUpdateNewerFound">È stata trovata una versione più recente ({0}).</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNoneFound">Questa versione è aggiornata. Non è stata trovata una versione più recente.</sys:String>
     <sys:String x:Key="MsgText_CopiedToClipboard">La pagina attuale è stata copiata negli appunti</sys:String>
+    <sys:String x:Key="MsgText_CopiedToClipboardItem">L'elemento è stato copiato negli appunti</sys:String>
     <sys:String x:Key="MsgText_CopyToClipboardInvalid">La copia negli appunti non è valida in questa pagina</sys:String>
     <sys:String x:Key="MsgText_DriveInfoRefreshed">Info sull'unità disco aggiornate</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Tempo trascorso</sys:String>
