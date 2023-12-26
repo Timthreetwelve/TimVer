@@ -11,7 +11,7 @@
       <Company>T_K</Company>
       <Product>TimVer</Product>
       <ApplicationIcon>TV.ico</ApplicationIcon>
-      <AssemblyVersion>0.0.1</AssemblyVersion>
+      <AssemblyVersion>0.1.0</AssemblyVersion>
       <BaseOutputPath>D:\Visual Studio\Source\Prod\TimVer\ConvertHistory\bin</BaseOutputPath>
   </PropertyGroup>
 
@@ -22,5 +22,15 @@
   <ItemGroup>
     <PackageReference Include="NLog" Version="5.2.7" />
   </ItemGroup>
+
+    <Target Name="PublishZip" AfterTargets="Publish">
+        <PropertyGroup>
+            <PowerShellScript>-File "D:\Visual Studio\Source\PowerShell\PublishZip\PubZip.ps1"</PowerShellScript>
+            <Name>-name $(AssemblyName)</Name>
+            <Version>-version $(AssemblyVersion)</Version>
+            <Path>-path "$(ProjectDir)"</Path>
+        </PropertyGroup>
+        <Exec Command="pwsh -NoProfile $(PowerShellScript) $(Name) $(Version) $(Path)" />
+    </Target>
 
 </Project>
