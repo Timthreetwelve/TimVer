@@ -285,7 +285,7 @@
     <sys:String x:Key="SettingsItem_StartCentered">Start with window centered on screen</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Theme</sys:String>
     <sys:String x:Key="SettingsItem_UISize">UI Size</sys:String>
-    <sys:String x:Key="SettingsItem_UseGB">Use GB (1024^3 bytes) for capacity calculations</sys:String>
+    <sys:String x:Key="SettingsItem_UseGB">Use GB (1000^3 bytes) for capacity calculations</sys:String>
     <sys:String x:Key="SettingsItem_UseGiB">Use GiB (1024^3 bytes) for capacity calculations</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Use Windows display language</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">When this option is selected, the language specified in the Windows settings will</sys:String>

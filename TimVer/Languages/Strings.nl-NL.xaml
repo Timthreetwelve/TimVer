@@ -275,7 +275,7 @@
     <sys:String x:Key="SettingsItem_StartCentered">Begin met het venster gecentreerd op het scherm</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Thema</sys:String>
     <sys:String x:Key="SettingsItem_UISize">UI-grootte</sys:String>
-    <sys:String x:Key="SettingsItem_UseGB">Gebruik GB (1024^3 bytes) voor capaciteitsberekeningen</sys:String>
+    <sys:String x:Key="SettingsItem_UseGB">Gebruik GB (1000^3 bytes) voor capaciteitsberekeningen</sys:String>
     <sys:String x:Key="SettingsItem_UseGiB">Gebruik GiB (1024^3 bytes) voor capaciteitsberekeningen</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Gebruik de Windows-weergavetaal</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">Wanneer deze optie is geselecteerd, wordt de taal weergegeven die is opgegeven in de Windows-instellingen</sys:String>
