@@ -110,6 +110,18 @@ public static class AppInfo
     }
 
     /// <summary>
+    /// Returns the product version from the Assembly info
+    /// </summary>
+    public static string AppProductVersion
+    {
+        get
+        {
+            string info = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).ProductVersion;
+            return !string.IsNullOrWhiteSpace(info) ? info : "missing";
+        }
+    }
+
+    /// <summary>
     /// Returns the Copyright info from the Assembly info
     /// </summary>
     public static string AppCopyright

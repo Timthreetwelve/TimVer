@@ -98,10 +98,10 @@ internal static class MainWindowHelpers
         // Set the windows title
         if (IsAdministrator())
         {
-            return $"{AppInfo.ToolTipVersion} - ({GetStringResource("MsgText_WindowTitleAdministrator")})";
+            return $"{AppInfo.AppProductVersion} - ({GetStringResource("MsgText_WindowTitleAdministrator")})";
         }
 
-        return AppInfo.ToolTipVersion;
+        return AppInfo.AppProductVersion;
     }
     #endregion Window Title
 
@@ -192,7 +192,7 @@ internal static class MainWindowHelpers
         NLogConfig(false);
 
         // Log the version, build date and commit id
-        _log.Info($"{AppInfo.AppName} ({AppInfo.AppProduct}) {AppInfo.AppVersion} {GetStringResource("MsgText_ApplicationStarting")}");
+        _log.Info($"{AppInfo.AppName} ({AppInfo.AppProduct}) {AppInfo.AppProductVersion} {GetStringResource("MsgText_ApplicationStarting")}");
         _log.Info($"{AppInfo.AppName} {AppInfo.AppCopyright}");
         _log.Debug($"{AppInfo.AppName} was started from {AppInfo.AppPath}");
         _log.Debug($"{AppInfo.AppName} Build date: {BuildInfo.BuildDateStringUtc}");
@@ -205,24 +205,6 @@ internal static class MainWindowHelpers
         // Log the .NET version and OS platform
         _log.Debug($"Operating System version: {AppInfo.OsPlatform}");
         _log.Debug($".NET version: {AppInfo.RuntimeVersion.Replace(".NET", "")}");
-
-        //// Log the startup & current culture
-        //_log.Debug($"Startup culture: {App.StartupCulture.Name}  UI: {App.StartupUICulture.Name}");
-        //_log.Debug($"Current culture: {LocalizationHelpers.GetCurrentCulture()}  UI: {LocalizationHelpers.GetCurrentUICulture()}");
-
-        //// Log the language file and number of strings loaded
-        //if (!App.LanguageFile.Equals("defaulted", StringComparison.OrdinalIgnoreCase))
-        //{
-        //    _log.Debug($"{App.LanguageStrings} strings loaded from {App.LanguageFile}");
-        //    if (App.LanguageStrings < App.DefaultLanguageStrings)
-        //    {
-        //        _log.Debug($"{App.DefaultLanguageStrings - App.LanguageStrings} strings from Strings.en-US.xaml will be used");
-        //    }
-        //}
-        //else
-        //{
-        //    _log.Warn($"Language has defaulted to en-US. {App.LanguageStrings} string loaded.");
-        //}
     }
     #endregion Write startup messages to the log
 
