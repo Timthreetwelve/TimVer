@@ -11,6 +11,9 @@
     <Authors>Tim Kennedy</Authors>
     <Company>T_K</Company>
     <Product>TimVer</Product>
+    <GenerateAssemblyFileVersionAttribute>False</GenerateAssemblyFileVersionAttribute>
+    <GenerateAssemblyInformationalVersionAttribute>False</GenerateAssemblyInformationalVersionAttribute>
+    <GenerateAssemblyVersionAttribute>False</GenerateAssemblyVersionAttribute>
   </PropertyGroup>
 
   <ItemGroup>
@@ -40,40 +43,73 @@
     <None Update="LICENSE.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="ConvertHistory.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="Readme.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Include="Strings.test.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
+  <!-- Generate BuildInfo.cs-->
   <Target Name="BuildInfo" AfterTargets="UpdateAssemblyInfo">
-    <PropertyGroup>
-      <PowerShellScript>-File "$(ProjectDir)Powershell\GenBuildInfo.ps1"</PowerShellScript>
-      <Name>-assemblyName $(AssemblyName)</Name>
-      <Version>-assemblyVersion $(AssemblyVersion)</Version>
-    </PropertyGroup>
     <Message Importance="high" Text="Beginning GenBuildInfo for $(AssemblyName). Version is $(AssemblyVersion)" />
-    <Exec Command="pwsh -NoProfile $(PowerShellScript) $(Name) $(Version)" />
+    <Exec Command="powershell -NoProfile -File &quot;$(ProjectDir)Powershell\GenBuildInfo.ps1&quot; -assemblyName $(AssemblyName) -assemblyVersion $(AssemblyVersion)" />
   </Target>
 
+  <!-- Publish to Zip file -->
   <Target Name="PublishZip" AfterTargets="Publish">
-    <PropertyGroup>
-      <PowerShellScript>-File "D:\Visual Studio\Source\PowerShell\PublishZip\PubZip.ps1"</PowerShellScript>
-      <Name>-name $(AssemblyName)</Name>
+    <PropertyGroup >
+      <PowerShellScript>-File "D:\Visual Studio\Source\PowerShell\PublishZip\PubZipEx.ps1"</PowerShellScript>
+      <Name>-name "TimVer"</Name>
       <Version>-version $(AssemblyVersion)</Version>
       <Path>-path "$(ProjectDir)"</Path>
+      <PublishFolder>-pubDir $(PublishDir)</PublishFolder>
     </PropertyGroup>
-    <Exec Command="pwsh -NoProfile $(PowerShellScript) $(Name) $(Version) $(Path)" />
-  </Target>
 
-  <Target Name="CompileSetup" AfterTargets="PublishZip">
-    <PropertyGroup>
-      <PowerShellScript>-File "D:\Visual Studio\Source\PowerShell\PublishInnoSetup\PubSetup.ps1"</PowerShellScript>
-      <ScriptName>-issScript "D:\InnoSetup\TimVer_HistoryConversion.iss"</ScriptName>
+    <!-- This is the framework dependent version -->
+    <PropertyGroup Condition="'$(PublishDir.Contains(`Framework_Dependent`))'">
+        <PubType>-pubType ""</PubType>
     </PropertyGroup>
-    <Exec Command="pwsh -NoProfile $(PowerShellScript) $(ScriptName)" />
-  </Target>
+
+    <!-- This is the x64 self contained version-->
+    <PropertyGroup Condition="'$(PublishDir.Contains(`Self_Contained_x64`))'">
+        <PubType>-pubType SC_x64</PubType>
+    </PropertyGroup>
+
+    <!-- This is the x86 self contained version-->
+    <PropertyGroup Condition="'$(PublishDir.Contains(`Self_Contained_x86`))'">
+        <PubType>-pubType SC_x86</PubType>
+    </PropertyGroup>
+
+    <!-- Execute the PowerShell script -->
+    <Exec Command="pwsh -NoProfile $(PowerShellScript) $(Name) $(Version) $(PubType) $(PublishFolder) $(Path)"/>
+    </Target>
+
+    <!-- Publish to Inno Setup installer-->
+    <Target Name="CompileSetup" AfterTargets="PublishZip">
+        <PropertyGroup>
+            <PowerShellScript>-File "D:\Visual Studio\Source\PowerShell\PublishInnoSetup\PubSetupEx.ps1"</PowerShellScript>
+            <ScriptName>-issScript "$(ProjectDir)Inno_Setup\TimVerEx.iss"</ScriptName>
+        </PropertyGroup>
+
+        <!-- This is the framework dependent version -->
+        <PropertyGroup Condition="'$(PublishDir.Contains(`Framework_Dependent`))'">
+            <PubType>-publishType ""</PubType>
+        </PropertyGroup>
+
+        <!-- This is the x64 self contained version-->
+        <PropertyGroup Condition="'$(PublishDir.Contains(`Self_Contained_x64`))'">
+            <PubType>-publishType SC_x64</PubType>
+        </PropertyGroup>
+
+        <!-- This is the x86 self contained version-->
+        <PropertyGroup Condition="'$(PublishDir.Contains(`Self_Contained_x86`))'">
+            <PubType>-publishType SC_x86</PubType>
+        </PropertyGroup>
+
+        <!-- Execute the PowerShell script -->
+        <Exec Command="pwsh -NoProfile $(PowerShellScript) $(ScriptName) $(PublishDir) $(PubType) " />
+    </Target>
 
 </Project>
