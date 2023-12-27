@@ -339,8 +339,7 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 
-/MigrationBackup/
-/TimVer/CurrentCommit.txt
-**/.vshistory
+# Inno Script Studio backup files
+/TimVer/Inno_Setup/*.~is
+
 /TimVer/BuildInfo.cs
-/TimVer/Inno_Setup/TimVer.~is
