@@ -38,6 +38,14 @@ body:
     validations:
       required: false
   - type: input
+    id: local
+    attributes:
+      label: If this is a contribution, enter the language name as it is spelled locally
+      description: For example, if the language was Spanish enter Español.
+      placeholder: Español
+    validations:
+      required: false
+  - type: input
     id: acknowledge
     attributes:
       label: If you wish to have your contribution acknowledged
