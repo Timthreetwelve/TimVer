@@ -14,7 +14,7 @@ Name: "sk"; MessagesFile: "compiler:Languages\Slovak.isl"
 [Messages]
 en.WelcomeLabel2=This will install [name/ver] On your computer.%n%nIt Is recommended that you close all other applications before continuing.%n%nNote that [name] requires .NET 6.
 es.WelcomeLabel2=Este programa instalará [name/ver] en su sistema.%n%nSe recomienda cerrar todas las demás aplicaciones antes de continuar.%n%nTenga en cuenta que [name] requiere .NET 6.
-it.WelcomeLabel2=[name/ver] sarà installato sul computer.%n%nPrima di procedere chiudi tutte le applicazioni attive.%n%nSi noti che [name] richiede .NET 6.
+it.WelcomeLabel2=[name/ver] sarà installato sul computer.%n%nPrima di procedere chiudi tutte le applicazioni attive.%n%nAttenzione: [name] richiede .NET 6.
 nl.WelcomeLabel2=Hiermee wordt [name/ver] geïnstalleerd op deze computer.%n%nU wordt aanbevolen alle actieve programma's af te sluiten voordat u verder gaat.%n%n[name] nvereist .NET 6.
 sk.WelcomeLabel2=Týmto sa na váš počítač nainštaluje [name/ver].%n%nPred pokračovaním sa odporúča zatvoriť všetky ostatné aplikácie.%n%nVšimnite si, že [name] vyžaduje .NET 6.
 
@@ -28,7 +28,7 @@ es.AppIsRunning=se está ejecutando, por favor ciérrelo para continuar con la i
 es.ClearSettings=¿Desea eliminar la configuración y excluir archivos?%n%nSeleccione 'No' si planea reinstalar.
 
 it.ViewReadme=Visualizza file ReadMe
-it.AppIsRunning=è in esecuzione.%nChiudilo per continuare l'installazione.
+it.AppIsRunning=è in esecuzione.%nChiudilo per poter continuare l'installazione.
 it.ClearSettings=Vuoi rimuovere le impostazioni, i file cronologia e le voci del registro?%n%nSeleziona "No" se hai intenzione di reinstallare il programma.
 
 nl.ViewReadme=Open de ReadMe file
