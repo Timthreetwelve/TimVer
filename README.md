@@ -16,10 +16,10 @@
 TimVer will display the same Windows version related information as the built-in **Winver** command,
 with additional information that Winver doesn't display.
 
-## A NEW version with a new look, additional information, and a multilingual UI is coming soon!
+### A NEW version with a new look, additional information, and a multilingual UI is ~~coming soon!~~ available as a pre-release version.
 
 
-### Screenshots (sneak peek)
+### Screenshots 
 
 ![Windows Info](https://github.com/Timthreetwelve/TimVer/blob/main/Images/TimVer_8_Dark.png)
 
