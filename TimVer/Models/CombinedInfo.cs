@@ -488,4 +488,20 @@ public static class CombinedInfo
         }
     }
     #endregion BIOS Information
+
+    #region .NET info
+    private static string _dotNetVersion;
+    public static string DotNetVersion
+    {
+        get
+        {
+            if (_dotNetVersion != default)
+            {
+                return _dotNetVersion;
+            }
+            _dotNetVersion = AppInfo.RuntimeVersion.Replace(".NET", "");
+            return _dotNetVersion;
+        }
+    }
+    #endregion
 }

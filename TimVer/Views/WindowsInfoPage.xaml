@@ -38,6 +38,7 @@
                     <RowDefinition Height="25" />
                     <RowDefinition Height="25" />
                     <RowDefinition Height="25" />
+                    <RowDefinition Height="25" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <!--#endregion-->
@@ -108,24 +109,31 @@
 
                 <TextBlock Grid.Row="9"
                            Grid.Column="0"
+                           Text="{DynamicResource WindowsInfo_DotNetVersion}" />
+                <TextBlock Grid.Row="9"
+                           Grid.Column="2"
+                           Text="{Binding Source={x:Static models:CombinedInfo.DotNetVersion}}" />
+
+                <TextBlock Grid.Row="10"
+                           Grid.Column="0"
                            Text="{DynamicResource WindowsInfo_RegisteredUser}"
                            Visibility="{Binding ShowUser,
                                                 Source={x:Static config:UserSettings.Setting},
                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
-                <TextBlock Grid.Row="9"
+                <TextBlock Grid.Row="10"
                            Grid.Column="2"
                            Text="{Binding Source={x:Static models:CombinedInfo.RegUser}}"
                            Visibility="{Binding ShowUser,
                                                 Source={x:Static config:UserSettings.Setting},
                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
 
-                <TextBlock Grid.Row="10"
+                <TextBlock Grid.Row="11"
                            Grid.Column="0"
                            Text="{DynamicResource WindowsInfo_RegisteredOrg}"
                            Visibility="{Binding ShowUser,
                                                 Source={x:Static config:UserSettings.Setting},
                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
-                <TextBlock Grid.Row="10"
+                <TextBlock Grid.Row="11"
                            Grid.Column="2"
                            Text="{Binding Source={x:Static models:CombinedInfo.RegOrganization}}"
                            Visibility="{Binding ShowUser,

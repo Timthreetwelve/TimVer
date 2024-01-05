@@ -303,6 +303,7 @@
     <sys:String x:Key="WindowsInfo_Architecture">Architecture</sys:String>
     <sys:String x:Key="WindowsInfo_BuildBranch">Build Branch</sys:String>
     <sys:String x:Key="WindowsInfo_BuildNumber">Build Number</sys:String>
+    <sys:String x:Key="WindowsInfo_DotNetVersion">.NET Version</sys:String>
     <sys:String x:Key="WindowsInfo_EditionID">Edition ID</sys:String>
     <sys:String x:Key="WindowsInfo_Installed">Installed on</sys:String>
     <sys:String x:Key="WindowsInfo_OSEdition">OS Edition</sys:String>
@@ -353,4 +354,7 @@
     <!-- U | GraphicsInfo_AdapterRAM (corrected spelling)  -->
     <!-- End changes on 2023/12/20 @ 19:40 UTC-->
 
+    <!-- Begin changes on 2024/01/05 @ 16:00 UTC-->
+    <!-- A | WindowsInfo_DotNetVersion -->
+    <!-- End changes on 2024/01/05 @ 16:00 UTC-->
 </ResourceDictionary>
