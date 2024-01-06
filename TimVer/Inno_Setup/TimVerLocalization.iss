@@ -12,11 +12,11 @@ Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
 Name: "sk"; MessagesFile: "compiler:Languages\Slovak.isl"
 
 [Messages]
-en.WelcomeLabel2=This will install [name/ver] On your computer.%n%nIt Is recommended that you close all other applications before continuing.%n%nNote that [name] requires .NET 6.
-es.WelcomeLabel2=Este programa instalará [name/ver] en su sistema.%n%nSe recomienda cerrar todas las demás aplicaciones antes de continuar.%n%nTenga en cuenta que [name] requiere .NET 6.
-it.WelcomeLabel2=[name/ver] sarà installato sul computer.%n%nPrima di procedere chiudi tutte le applicazioni attive.%n%nAttenzione: [name] richiede .NET 6.
-nl.WelcomeLabel2=Hiermee wordt [name/ver] geïnstalleerd op deze computer.%n%nU wordt aanbevolen alle actieve programma's af te sluiten voordat u verder gaat.%n%n[name] nvereist .NET 6.
-sk.WelcomeLabel2=Týmto sa na váš počítač nainštaluje [name/ver].%n%nPred pokračovaním sa odporúča zatvoriť všetky ostatné aplikácie.%n%nVšimnite si, že [name] vyžaduje .NET 6.
+en.WelcomeLabel2=This will install [name/ver] On your computer.%n%nIt Is recommended that you close all other applications before continuing.%n%nNote that [name] requires .NET 8.
+es.WelcomeLabel2=Este programa instalará [name/ver] en su sistema.%n%nSe recomienda cerrar todas las demás aplicaciones antes de continuar.%n%nTenga en cuenta que [name] requiere .NET 8.
+it.WelcomeLabel2=[name/ver] sarà installato sul computer.%n%nPrima di procedere chiudi tutte le applicazioni attive.%n%nAttenzione: [name] richiede .NET 8.
+nl.WelcomeLabel2=Hiermee wordt [name/ver] geïnstalleerd op deze computer.%n%nU wordt aanbevolen alle actieve programma's af te sluiten voordat u verder gaat.%n%n[name] nvereist .NET 8.
+sk.WelcomeLabel2=Týmto sa na váš počítač nainštaluje [name/ver].%n%nPred pokračovaním sa odporúča zatvoriť všetky ostatné aplikácie.%n%nVšimnite si, že [name] vyžaduje .NET 8.
 
 [CustomMessages]
 en.ViewReadme=View the ReadMe file
