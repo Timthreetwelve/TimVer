@@ -59,7 +59,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition />
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="25" />
+                                <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="55" />
@@ -249,7 +249,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition />
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="25" />
+                                <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="55" />
@@ -476,7 +476,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition />
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="25" />
+                                <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="55" />
@@ -498,6 +498,7 @@
                                        TextWrapping="Wrap" />
                             <TextBlock Grid.Row="2"
                                        Grid.Column="1"
+                                       VerticalAlignment="Center"
                                        FontSize="12"
                                        Text="{DynamicResource SettingsSubHead_UISettings}"
                                        TextWrapping="Wrap" />
@@ -652,7 +653,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition />
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="25" />
+                                <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="55" />
