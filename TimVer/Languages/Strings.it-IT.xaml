@@ -119,7 +119,7 @@
     <sys:String x:Key="EnvironmentInfo_Variable">Variabile</sys:String>
     <!--  Graphics Information Page  -->
     <sys:String x:Key="GraphicsInfo_AdapterType">tipo scheda</sys:String>
-    <sys:String x:Key="GraphicsInfo_AdapterRAM">RAM scheda</sys:String>
+    <sys:String x:Key="GraphicsInfo_AdapterRAM">RAM scheda grafica</sys:String>
     <sys:String x:Key="GraphicsInfo_BitsPerPixel">Bit per pixel</sys:String>
     <sys:String x:Key="GraphicsInfo_CurrentRefreshRate">Freq. aggiornamento attuale</sys:String>
     <sys:String x:Key="GraphicsInfo_CurrentResolution">Risoluzione attuale</sys:String>
@@ -180,7 +180,7 @@
     <sys:String x:Key="MsgText_UIThemeSet">Tema impostato =  {0}</sys:String>
     <sys:String x:Key="MsgText_WindowTitleAdministrator">Amministratore</sys:String>
     <!--  Navigation Items and Titles  -->
-    <sys:String x:Key="NavItem_About">Info</sys:String>
+    <sys:String x:Key="NavItem_About">Info programma</sys:String>
     <sys:String x:Key="NavItem_BuildHistory">Cronologia build</sys:String>
     <sys:String x:Key="NavItem_DriveInfo">Info unità</sys:String>
     <sys:String x:Key="NavItem_Environment">Ambiente</sys:String>
@@ -304,7 +304,7 @@
     <sys:String x:Key="WindowsInfo_BuildBranch">Branch build</sys:String>
     <sys:String x:Key="WindowsInfo_BuildNumber">Numero build</sys:String>
     <sys:String x:Key="WindowsInfo_EditionID">ID edizione</sys:String>
-    <sys:String x:Key="WindowsInfo_Installed">Installata su</sys:String>
+    <sys:String x:Key="WindowsInfo_Installed">Data installazione</sys:String>
     <sys:String x:Key="WindowsInfo_OSEdition">Edizione S.O.</sys:String>
     <sys:String x:Key="WindowsInfo_OSVersion">Versione</sys:String>
     <sys:String x:Key="WindowsInfo_RegisteredOrg">Organizzazione registrata</sys:String>
