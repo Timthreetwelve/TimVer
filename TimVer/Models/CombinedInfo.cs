@@ -499,7 +499,7 @@ public static class CombinedInfo
             {
                 return _dotNetVersion;
             }
-            _dotNetVersion = AppInfo.RuntimeVersion.Replace(".NET", "");
+            _dotNetVersion = AppInfo.RuntimeVersion.Replace(".NET", "").Trim();
             return _dotNetVersion;
         }
     }
