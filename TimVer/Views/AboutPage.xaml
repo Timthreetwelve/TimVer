@@ -252,7 +252,7 @@
                         BorderBrush="{DynamicResource MaterialDesignDivider}"
                         BorderThickness="1">
                     <DataGrid MinWidth="350"
-                              MaxHeight="218"
+                              MaxHeight="120"
                               materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
                               AutoGenerateColumns="False"
                               Background="{DynamicResource MaterialDesignCardBackground}"
