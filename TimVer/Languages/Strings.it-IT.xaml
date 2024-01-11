@@ -15,7 +15,7 @@
 
         Translation contributed by:  RB
 
-        Date last update:            23.12.2023
+        Date last update:            08.01.2024
 
         ======================================================================
 
@@ -51,6 +51,7 @@
     <sys:String x:Key="BuildHistory_Version">Versione</sys:String>
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">Annulla</sys:String>
+    <sys:String x:Key="Button_Close">Menu chiusura</sys:String>
     <sys:String x:Key="Button_CopyToClipboardToolTip">Copia questa pagina negli appunti</sys:String>
     <sys:String x:Key="Button_No">No</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
@@ -119,7 +120,7 @@
     <sys:String x:Key="EnvironmentInfo_Variable">Variabile</sys:String>
     <!--  Graphics Information Page  -->
     <sys:String x:Key="GraphicsInfo_AdapterType">tipo scheda</sys:String>
-    <sys:String x:Key="GraphicsInfo_AdapterRAM">RAM scheda</sys:String>
+    <sys:String x:Key="GraphicsInfo_AdapterRAM">RAM scheda grafica</sys:String>
     <sys:String x:Key="GraphicsInfo_BitsPerPixel">Bit per pixel</sys:String>
     <sys:String x:Key="GraphicsInfo_CurrentRefreshRate">Freq. aggiornamento attuale</sys:String>
     <sys:String x:Key="GraphicsInfo_CurrentResolution">Risoluzione attuale</sys:String>
@@ -180,7 +181,7 @@
     <sys:String x:Key="MsgText_UIThemeSet">Tema impostato =  {0}</sys:String>
     <sys:String x:Key="MsgText_WindowTitleAdministrator">Amministratore</sys:String>
     <!--  Navigation Items and Titles  -->
-    <sys:String x:Key="NavItem_About">Info</sys:String>
+    <sys:String x:Key="NavItem_About">Info programma</sys:String>
     <sys:String x:Key="NavItem_BuildHistory">Cronologia build</sys:String>
     <sys:String x:Key="NavItem_DriveInfo">Info unità</sys:String>
     <sys:String x:Key="NavItem_Environment">Ambiente</sys:String>
@@ -303,8 +304,9 @@
     <sys:String x:Key="WindowsInfo_Architecture">Architettura</sys:String>
     <sys:String x:Key="WindowsInfo_BuildBranch">Branch build</sys:String>
     <sys:String x:Key="WindowsInfo_BuildNumber">Numero build</sys:String>
+    <sys:String x:Key="WindowsInfo_DotNetVersion">Versione .NET</sys:String>
     <sys:String x:Key="WindowsInfo_EditionID">ID edizione</sys:String>
-    <sys:String x:Key="WindowsInfo_Installed">Installata su</sys:String>
+    <sys:String x:Key="WindowsInfo_Installed">Data installazione</sys:String>
     <sys:String x:Key="WindowsInfo_OSEdition">Edizione S.O.</sys:String>
     <sys:String x:Key="WindowsInfo_OSVersion">Versione</sys:String>
     <sys:String x:Key="WindowsInfo_RegisteredOrg">Organizzazione registrata</sys:String>
@@ -353,4 +355,7 @@
     <!-- U | GraphicsInfo_AdapterRAM (corrected spelling)  -->
     <!-- End changes on 2023/12/20 @ 19:40 UTC-->
 
+    <!-- Begin changes on 2024/01/05 @ 16:00 UTC-->
+    <!-- A | WindowsInfo_DotNetVersion -->
+    <!-- End changes on 2024/01/05 @ 16:00 UTC-->
 </ResourceDictionary>
