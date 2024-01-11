@@ -1,5 +1,5 @@
-[LangOptions]
-DialogFontSize=9
+﻿[LangOptions]
+DialogFontSize=10
 DialogFontName="Segoe UI"
 WelcomeFontSize=12
 WelcomeFontName="Verdana"
@@ -12,13 +12,16 @@ Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
 Name: "sk"; MessagesFile: "compiler:Languages\Slovak.isl"
 
 [Messages]
-en.WelcomeLabel2=This will install [name/ver] On your computer.%n%nIt Is recommended that you close all other applications before continuing.%n%nNote that [name] requires .NET 8.
-es.WelcomeLabel2=Este programa instalará [name/ver] en su sistema.%n%nSe recomienda cerrar todas las demás aplicaciones antes de continuar.%n%nTenga en cuenta que [name] requiere .NET 8.
-it.WelcomeLabel2=[name/ver] sarà installato sul computer.%n%nPrima di procedere chiudi tutte le applicazioni attive.%n%nAttenzione: [name] richiede .NET 8.
-nl.WelcomeLabel2=Hiermee wordt [name/ver] geïnstalleerd op deze computer.%n%nU wordt aanbevolen alle actieve programma's af te sluiten voordat u verder gaat.%n%n[name] nvereist .NET 8.
-sk.WelcomeLabel2=Týmto sa na váš počítač nainštaluje [name/ver].%n%nPred pokračovaním sa odporúča zatvoriť všetky ostatné aplikácie.%n%nVšimnite si, že [name] vyžaduje .NET 8.
+en.SetupWindowTitle = Setup - {#MyAppName} - {#MyAppVersion}
+es.SetupWindowTitle = Instalar - {#MyAppName} - {#MyAppVersion}
+it.SetupWindowTitle = Installazione di {#MyAppName} - {#MyAppVersion}
+nl.SetupWindowTitle = Setup - {#MyAppName} - {#MyAppVersion}
+sk.SetupWindowTitle = Sprievodca inštaláciou - {#MyAppName} - {#MyAppVersion}
 
 [CustomMessages]
+en.NotSelfContained=This will install the standard version of %1 version %2.%n%nThis version requires an existing installation of .NET 8 Desktop Runtime and is compatible with both x64 and x86 systems.%n%nIt Is recommended that you close all other applications before continuing.%n%nClick Next to continue, or Cancel to exit Setup.
+en.SelfContainedx86=This will install the self-contained x86 (32-bit) version of %1 version %2.%n%nIt Is recommended that you close all other applications before continuing.%n%nClick Next to continue, or Cancel to exit Setup.
+en.SelfContainedx64=This will install the self-contained x64 (64-bit) version of %1 version %2.%n%nIt Is recommended that you close all other applications before continuing.%n%nClick Next to continue, or Cancel to exit Setup.
 en.ViewReadme=View the ReadMe file
 en.AppIsRunning=is running, please close it to continue with the installation.
 en.ClearSettings=Do you want to remove the settings and history files and registry entries?%n%nSelect "No" if you plan to reinstall the program.
@@ -26,6 +29,9 @@ en.ClearSettings=Do you want to remove the settings and history files and regist
 es.ViewReadme=Abrir el archivo Léame
 es.AppIsRunning=se está ejecutando, por favor ciérrelo para continuar con la instalación.
 es.ClearSettings=¿Desea eliminar la configuración y excluir archivos?%n%nSeleccione 'No' si planea reinstalar.
+es.NotSelfContained=Esto instalará la versión estándar de la versión %2 de %1.%n%nEsta versión requiere una instalación existente de .NET 8 Desktop Runtime y es compatible con los sistemas x64 y x86.%n%nSe recomienda cerrar todas las demás aplicaciones antes de continuar.%n%nHaga clic en Siguiente para continuar o en Cancelar para salir de la configuración.
+es.SelfContainedx86=Esto instalará la versión x86 (32 bits) independiente de la versión %2 de %1.%n%nSe recomienda cerrar todas las demás aplicaciones antes de continuar.%n%nHaga clic en Siguiente para continuar o en Cancelar para salir de la configuración.
+es.SelfContainedx64=Esto instalará la versión x64 (64 bits) independiente de la versión %2 de %1.%n%nSe recomienda cerrar todas las demás aplicaciones antes de continuar.%n%nHaga clic en Siguiente para continuar o en Cancelar para salir de la configuración.
 
 it.ViewReadme=Visualizza file ReadMe
 it.AppIsRunning=è in esecuzione.%nChiudilo per poter continuare l'installazione.

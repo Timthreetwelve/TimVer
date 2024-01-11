@@ -96,7 +96,6 @@ SetupLogging=yes
 SolidCompression=no
 SourceDir={#MySourceDir}
 
-
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
@@ -141,6 +140,20 @@ Type: files; Name: "{commondesktop}\TimVer.lnk"
 ; Code section follows
 ; -----------------------------------------------------------------------------
 [Code]
+// Change text on welcome page based on installation type
+procedure InitializeWizard;
+var
+  Text: String;
+begin
+  case ExpandConstant('{#InstallType}') of
+    'x64x86': Text := FmtMessage( CustomMessage('NotSelfContained'), [ExpandConstant('{#MyAppName}'), ExpandConstant('{#MyAppVersion}')]); 
+    'SC_x86': Text := FmtMessage( CustomMessage('SelfContainedx86'), [ExpandConstant('{#MyAppName}'), ExpandConstant('{#MyAppVersion}')]); 
+    'SC_x64': Text := FmtMessage( CustomMessage('SelfContainedx64'), [ExpandConstant('{#MyAppName}'), ExpandConstant('{#MyAppVersion}')]);
+  else
+      Text := WizardForm.WelcomeLabel2.Caption;
+  end;
+  WizardForm.WelcomeLabel2.Caption := Text;
+end;
 
 // function used to check if app Is currently running
 Function IsAppRunning(Const FileName : String): Boolean;
