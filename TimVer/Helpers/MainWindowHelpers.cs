@@ -98,10 +98,10 @@ internal static class MainWindowHelpers
         // Set the windows title
         if (IsAdministrator())
         {
-            return $"{AppInfo.AppProductVersion} - ({GetStringResource("MsgText_WindowTitleAdministrator")})";
+            return $"{AppInfo.AppName} {AppInfo.AppProductVersion} - ({GetStringResource("MsgText_WindowTitleAdministrator")})";
         }
 
-        return AppInfo.AppProductVersion;
+        return $"{AppInfo.AppName} {AppInfo.AppProductVersion}";
     }
     #endregion Window Title
 
