@@ -100,7 +100,7 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private bool _useOSLanguage;
 
     [ObservableProperty]
-    private double _windowHeight = 500;
+    private double _windowHeight = 700;
 
     [ObservableProperty]
     private double _windowLeft = 100;
@@ -109,6 +109,6 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private double _windowTop = 100;
 
     [ObservableProperty]
-    private double _windowWidth = 750;
+    private double _windowWidth = 1000;
     #endregion Properties (some with default values)
 }
