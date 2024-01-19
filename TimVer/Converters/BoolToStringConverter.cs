@@ -22,6 +22,10 @@ internal class BoolToStringConverter : IValueConverter
             string size = GetStringResource("DriveInfo_Size");
             return boolValue ? $"{size} (GiB)" : $"{size} (GB)";
         }
+        else if (parm.Equals("G_Only", StringComparison.OrdinalIgnoreCase))
+        {
+            return boolValue ? "GiB" : "GB";
+        }
         return boolValue ? $"{parm} (GiB)" : $"{parm} (GB)";
     }
 

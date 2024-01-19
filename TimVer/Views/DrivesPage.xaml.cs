@@ -20,4 +20,9 @@ public partial class DrivesPage : UserControl
         TempSettings.Setting.DriveSelectedTab = TabControl1.SelectedIndex;
     }
     #endregion Set active tab
+
+    private void DetailsSplitter_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
+    {
+        UserSettings.Setting.DetailsHeight = Math.Floor(DetailsRow.Height.Value);
+    }
 }

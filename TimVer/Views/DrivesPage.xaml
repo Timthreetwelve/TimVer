@@ -10,7 +10,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:models="clr-namespace:TimVer.Models"
              xmlns:viewmodels="clr-namespace:TimVer.ViewModels"
-             d:DesignHeight="450"
+             d:DesignHeight="650"
              d:DesignWidth="700"
              Background="{DynamicResource MaterialDesignPaper}"
              FontFamily="Segoe UI"
@@ -142,97 +142,259 @@
                     <TextBlock Style="{StaticResource TabItemHeader}"
                                Text="{DynamicResource DriveInfo_PhysicalDrives}" />
                 </TabItem.Header>
+                <Grid>
+                    <!--#region Row definitions-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"
+                                       MinHeight="100" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition x:Name="DetailsRow"
+                                       Height="{Binding DetailsHeight,
+                                                        Source={x:Static config:UserSettings.Setting}}" />
 
-                <DataGrid x:Name="PDisksDataGrid"
-                          HorizontalAlignment="Stretch"
-                          VerticalAlignment="Stretch"
-                          d:ItemsSource="{d:SampleData ItemCount=3}"
-                          materialDesign:ThemeAssist.Theme="Inherit"
-                          AutoGenerateColumns="False"
-                          Background="{DynamicResource MaterialDesignCardBackground}"
-                          CanUserResizeRows="False"
-                          CanUserSortColumns="True"
-                          CellStyle="{StaticResource DisplayOnly}"
-                          FontSize="14"
-                          FrozenColumnCount="2"
-                          HeadersVisibility="Column"
-                          IsReadOnly="True"
-                          ItemsSource="{x:Static models:CombinedInfo.PhysicalDrivesList}"
-                          RowStyle="{StaticResource DisplayOnlyRows}"
-                          SelectionMode="Single"
-                          SelectionUnit="FullRow">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Message}"
-                                            Header="{DynamicResource DriveInfo_Message}"
-                                            Visibility="{Binding GetPhysicalDrives,
-                                                                 Source={x:Static config:UserSettings.Setting},
-                                                                 Converter={StaticResource BoolToVisInverter}}" />
-                        <DataGridTextColumn Binding="{Binding Index}"
-                                            ElementStyle="{StaticResource alignCenter}"
-                                            Header="{DynamicResource DriveInfo_Index}" />
-                        <DataGridTextColumn x:Name="colPSize"
-                                            Binding="{Binding Size,
-                                                              StringFormat=N2,
-                                                              ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}}"
-                                            ElementStyle="{StaticResource alignRight}"
-                                            Header="{Binding Use1024,
-                                                             Source={x:Static config:UserSettings.Setting},
-                                                             Converter={StaticResource BoolToString},
-                                                             ConverterParameter=Size}" />
-                        <DataGridTextColumn Binding="{Binding Partitions}"
-                                            ElementStyle="{StaticResource alignCenter}"
-                                            Header="{DynamicResource DriveInfo_Partitions}"
-                                            Visibility="{Binding ShowPartitions,
-                                                                 Source={x:Static config:UserSettings.Setting},
-                                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
-                        <DataGridTextColumn Binding="{Binding DiskType}"
-                                            Header="{DynamicResource DriveInfo_DiskType}"
-                                            Visibility="{Binding ShowDiskType,
-                                                                 Source={x:Static config:UserSettings.Setting},
-                                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
-                        <DataGridTextColumn Binding="{Binding MediaType}"
-                                            Header="{DynamicResource DriveInfo_MediaType}"
-                                            Visibility="{Binding ShowMediaType,
-                                                                 Source={x:Static config:UserSettings.Setting},
-                                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
-                        <DataGridTextColumn Binding="{Binding Interface}"
-                                            Header="{DynamicResource DriveInfo_Interface}"
-                                            Visibility="{Binding ShowInterface,
-                                                                 Source={x:Static config:UserSettings.Setting},
-                                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
-                        <DataGridTextColumn Binding="{Binding BusType}"
-                                            Header="{DynamicResource DriveInfo_BusType}"
-                                            Visibility="{Binding ShowBusType,
-                                                                 Source={x:Static config:UserSettings.Setting},
-                                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
-                        <DataGridTextColumn Binding="{Binding Health}"
-                                            Header="{DynamicResource DriveInfo_Health}"
-                                            Visibility="{Binding ShowHealth,
-                                                                 Source={x:Static config:UserSettings.Setting},
-                                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
-                        <DataGridTextColumn Binding="{Binding PartitionStyle}"
-                                            Header="{DynamicResource DriveInfo_PartitionStyle}"
-                                            Visibility="{Binding ShowPartitionStyle,
-                                                                 Source={x:Static config:UserSettings.Setting},
-                                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
-                        <DataGridTextColumn Binding="{Binding IsBoot}"
-                                            Header="{DynamicResource DriveInfo_BootDrive}"
-                                            Visibility="{Binding ShowBootDrive,
-                                                                 Source={x:Static config:UserSettings.Setting},
-                                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
-                        <DataGridTextColumn Binding="{Binding Model}"
-                                            Header="{DynamicResource DriveInfo_Model}"
-                                            Visibility="{Binding ShowModel,
-                                                                 Source={x:Static config:UserSettings.Setting},
-                                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
-                        <DataGridTextColumn Binding="{Binding Name}"
-                                            Header="{DynamicResource DriveInfo_Name}"
-                                            Visibility="{Binding ShowName,
-                                                                 Source={x:Static config:UserSettings.Setting},
-                                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
+                    </Grid.RowDefinitions>
+                    <!--#endregion-->
 
-                    </DataGrid.Columns>
-                </DataGrid>
+                    <!--#region DataGrid-->
+                    <DataGrid x:Name="PDisksDataGrid"
+                              Grid.Row="0"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch"
+                              d:ItemsSource="{d:SampleData ItemCount=3}"
+                              materialDesign:ThemeAssist.Theme="Inherit"
+                              AutoGenerateColumns="False"
+                              Background="{DynamicResource MaterialDesignCardBackground}"
+                              CanUserResizeRows="False"
+                              CanUserSortColumns="True"
+                              CellStyle="{StaticResource DisplayOnly2}"
+                              FontSize="14"
+                              HeadersVisibility="Column"
+                              IsReadOnly="True"
+                              ItemsSource="{x:Static models:CombinedInfo.PhysicalDrivesList}"
+                              SelectedIndex="0"
+                              SelectionMode="Single"
+                              SelectionUnit="FullRow">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Message}"
+                                                Header="{DynamicResource DriveInfo_Message}"
+                                                Visibility="{Binding GetPhysicalDrives,
+                                                                     Source={x:Static config:UserSettings.Setting},
+                                                                     Converter={StaticResource BoolToVisInverter}}" />
+                            <DataGridTextColumn Binding="{Binding Index}"
+                                                ElementStyle="{StaticResource alignCenter}"
+                                                Header="{DynamicResource DriveInfo_DeviceID}" />
+                            <DataGridTextColumn x:Name="colPSize"
+                                                Binding="{Binding Size,
+                                                                  StringFormat=N2,
+                                                                  ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}}"
+                                                ElementStyle="{StaticResource alignRight}"
+                                                Header="{Binding Use1024,
+                                                                 Source={x:Static config:UserSettings.Setting},
+                                                                 Converter={StaticResource BoolToString},
+                                                                 ConverterParameter=Size}" />
+                            <DataGridTextColumn Binding="{Binding Partitions}"
+                                                ElementStyle="{StaticResource alignCenter}"
+                                                Header="{DynamicResource DriveInfo_Partitions}"
+                                                Visibility="{Binding ShowPartitions,
+                                                                     Source={x:Static config:UserSettings.Setting},
+                                                                     Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            <DataGridTextColumn Binding="{Binding DiskType}"
+                                                Header="{DynamicResource DriveInfo_DiskType}"
+                                                Visibility="{Binding ShowDiskType,
+                                                                     Source={x:Static config:UserSettings.Setting},
+                                                                     Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            <DataGridTextColumn Binding="{Binding MediaType}"
+                                                Header="{DynamicResource DriveInfo_MediaType}"
+                                                Visibility="{Binding ShowMediaType,
+                                                                     Source={x:Static config:UserSettings.Setting},
+                                                                     Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            <DataGridTextColumn Binding="{Binding Interface}"
+                                                Header="{DynamicResource DriveInfo_Interface}"
+                                                Visibility="{Binding ShowInterface,
+                                                                     Source={x:Static config:UserSettings.Setting},
+                                                                     Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            <DataGridTextColumn Binding="{Binding BusType}"
+                                                Header="{DynamicResource DriveInfo_BusType}"
+                                                Visibility="{Binding ShowBusType,
+                                                                     Source={x:Static config:UserSettings.Setting},
+                                                                     Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            <DataGridTextColumn Binding="{Binding Health}"
+                                                Header="{DynamicResource DriveInfo_Health}"
+                                                Visibility="{Binding ShowHealth,
+                                                                     Source={x:Static config:UserSettings.Setting},
+                                                                     Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            <DataGridTextColumn Binding="{Binding PartitionStyle}"
+                                                Header="{DynamicResource DriveInfo_PartitionStyle}"
+                                                Visibility="{Binding ShowPartitionStyle,
+                                                                     Source={x:Static config:UserSettings.Setting},
+                                                                     Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            <DataGridTextColumn Binding="{Binding IsBoot}"
+                                                Header="{DynamicResource DriveInfo_BootDrive}"
+                                                Visibility="{Binding ShowBootDrive,
+                                                                     Source={x:Static config:UserSettings.Setting},
+                                                                     Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            <DataGridTextColumn Binding="{Binding Model}"
+                                                Header="{DynamicResource DriveInfo_Model}"
+                                                Visibility="{Binding ShowModel,
+                                                                     Source={x:Static config:UserSettings.Setting},
+                                                                     Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            <DataGridTextColumn Binding="{Binding Name}"
+                                                Header="{DynamicResource DriveInfo_Name}"
+                                                Visibility="{Binding ShowName,
+                                                                     Source={x:Static config:UserSettings.Setting},
+                                                                     Converter={StaticResource BooleanToVisibilityConverter}}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <!--#endregion-->
+
+                    <!--#region GridSplitter-->
+                    <!--  Grid Splitter can be hidden. See Style Trigger in Row Definition  -->
+                    <GridSplitter x:Name="DetailsSplitter"
+                                  Grid.Row="1"
+                                  Height="4"
+                                  Margin="0,3"
+                                  HorizontalAlignment="Stretch"
+                                  Background="{DynamicResource MaterialDesignBody}"
+                                  DragCompleted="DetailsSplitter_DragCompleted"
+                                  IsTabStop="False"
+                                  ResizeBehavior="PreviousAndNext"
+                                  Style="{DynamicResource MaterialDesignGridSplitter}" />
+                    <!--#endregion-->
+
+                    <!--#region TextBolcks for details-->
+                    <Grid Grid.Row="2">
+                        <ScrollViewer VerticalAlignment="Top"
+                                      DataContext="{Binding SelectedItem,
+                                                            ElementName=PDisksDataGrid}"
+                                      FontSize="14"
+                                      Foreground="{DynamicResource MaterialDesignBody}"
+                                      VerticalScrollBarVisibility="Auto">
+                            <Grid Margin="5,10">
+                                <!--#region Row & Column definitions-->
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="18" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="24" />
+                                    <RowDefinition Height="24" />
+                                    <RowDefinition Height="24" />
+                                    <RowDefinition Height="24" />
+                                    <RowDefinition Height="24" />
+                                    <RowDefinition Height="24" />
+                                    <RowDefinition Height="24" />
+                                    <RowDefinition Height="24" />
+                                    <RowDefinition Height="24" />
+                                    <RowDefinition Height="24" />
+                                    <RowDefinition Height="24" />
+                                    <RowDefinition Height="24" />
+                                </Grid.RowDefinitions>
+                                <!--#endregion-->
+
+                                <TextBlock Grid.Row="0"
+                                           Grid.Column="1"
+                                           VerticalAlignment="Center"
+                                           Text="{DynamicResource DriveInfo_DeviceID}" />
+                                <TextBlock Grid.Row="0"
+                                           Grid.Column="3"
+                                           Text="{Binding Index}" />
+
+                                <TextBlock Grid.Row="1"
+                                           Grid.Column="1"
+                                           VerticalAlignment="Center"
+                                           Text="{DynamicResource DriveInfo_Size}" />
+                                <TextBlock Grid.Row="1"
+                                           Grid.Column="3">
+                                    <Run Text="{Binding Size}" />
+                                    <Run Text="{Binding Use1024, Source={x:Static config:UserSettings.Setting}, Converter={StaticResource BoolToString}, ConverterParameter=G_Only}" />
+                                </TextBlock>
+
+                                <TextBlock Grid.Row="2"
+                                           Grid.Column="1"
+                                           VerticalAlignment="Center"
+                                           Text="{DynamicResource DriveInfo_Partitions}" />
+                                <TextBlock Grid.Row="2"
+                                           Grid.Column="3"
+                                           Text="{Binding Partitions}" />
+
+                                <TextBlock Grid.Row="3"
+                                           Grid.Column="1"
+                                           VerticalAlignment="Center"
+                                           Text="{DynamicResource DriveInfo_MediaType}" />
+                                <TextBlock Grid.Row="3"
+                                           Grid.Column="3"
+                                           Text="{Binding MediaType}" />
+
+                                <TextBlock Grid.Row="4"
+                                           Grid.Column="1"
+                                           VerticalAlignment="Center"
+                                           Text="{DynamicResource DriveInfo_DiskType}" />
+                                <TextBlock Grid.Row="4"
+                                           Grid.Column="3"
+                                           Text="{Binding DiskType}" />
+
+                                <TextBlock Grid.Row="5"
+                                           Grid.Column="1"
+                                           VerticalAlignment="Center"
+                                           Text="{DynamicResource DriveInfo_Interface}" />
+                                <TextBlock Grid.Row="5"
+                                           Grid.Column="3"
+                                           Text="{Binding Interface}" />
+
+                                <TextBlock Grid.Row="6"
+                                           Grid.Column="1"
+                                           VerticalAlignment="Center"
+                                           Text="{DynamicResource DriveInfo_BusType}" />
+                                <TextBlock Grid.Row="6"
+                                           Grid.Column="3"
+                                           Text="{Binding BusType}" />
+
+                                <TextBlock Grid.Row="7"
+                                           Grid.Column="1"
+                                           VerticalAlignment="Center"
+                                           Text="{DynamicResource DriveInfo_Health}" />
+                                <TextBlock Grid.Row="7"
+                                           Grid.Column="3"
+                                           Text="{Binding Health}" />
+
+                                <TextBlock Grid.Row="8"
+                                           Grid.Column="1"
+                                           VerticalAlignment="Center"
+                                           Text="{DynamicResource DriveInfo_PartitionStyle}" />
+                                <TextBlock Grid.Row="8"
+                                           Grid.Column="3"
+                                           Text="{Binding PartitionStyle}" />
+
+                                <TextBlock Grid.Row="9"
+                                           Grid.Column="1"
+                                           VerticalAlignment="Center"
+                                           Text="{DynamicResource DriveInfo_BootDrive}" />
+                                <TextBlock Grid.Row="9"
+                                           Grid.Column="3"
+                                           Text="{Binding IsBoot}" />
+
+                                <TextBlock Grid.Row="10"
+                                           Grid.Column="1"
+                                           VerticalAlignment="Center"
+                                           Text="{DynamicResource DriveInfo_Model}" />
+                                <TextBlock Grid.Row="10"
+                                           Grid.Column="3"
+                                           Text="{Binding Model}" />
+
+                                <TextBlock Grid.Row="11"
+                                           Grid.Column="1"
+                                           VerticalAlignment="Center"
+                                           Text="{DynamicResource DriveInfo_Name}" />
+                                <TextBlock Grid.Row="11"
+                                           Grid.Column="3"
+                                           Text="{Binding Name}" />
+                            </Grid>
+                        </ScrollViewer>
+                    </Grid>
+                    <!--#endregion-->
+                </Grid>
             </TabItem>
             <!--#endregion-->
         </TabControl>

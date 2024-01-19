@@ -7,6 +7,9 @@ public partial class UserSettings : ConfigManager<UserSettings>
 {
     #region Properties (some with default values)
     [ObservableProperty]
+    private double _detailsHeight = 350;
+
+    [ObservableProperty]
     private bool _getPhysicalDrives = false;
 
     [ObservableProperty]
@@ -40,10 +43,10 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private Spacing _rowSpacing = Spacing.Comfortable;
 
     [ObservableProperty]
-    private bool _showBootDrive = true;
+    private bool _showBootDrive;
 
     [ObservableProperty]
-    private bool _showBusType = true;
+    private bool _showBusType;
 
     [ObservableProperty]
     private bool _showDiskType = true;
@@ -55,10 +58,10 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private bool _showFormat = true;
 
     [ObservableProperty]
-    private bool _showHealth = true;
+    private bool _showHealth;
 
     [ObservableProperty]
-    private bool _showInterface = true;
+    private bool _showInterface;
 
     [ObservableProperty]
     private bool _showMediaType = true;
@@ -67,13 +70,13 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private bool _showModel = true;
 
     [ObservableProperty]
-    private bool _showName = true;
+    private bool _showName;
 
     [ObservableProperty]
-    private bool _showPartitions = true;
+    private bool _showPartitions;
 
     [ObservableProperty]
-    private bool _showPartitionStyle = true;
+    private bool _showPartitionStyle;
 
     [ObservableProperty]
     private bool _showTypeL = true;

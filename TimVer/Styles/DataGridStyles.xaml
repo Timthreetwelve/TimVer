@@ -17,6 +17,12 @@
         </Trigger>
             </Style.Triggers>
     </Style>
+
+    <Style TargetType="DataGridCell"
+           x:Key="DisplayOnly2"
+           BasedOn="{StaticResource {x:Type DataGridCell}}">
+        <Setter Property="Focusable" Value="False" />
+    </Style>
     <!--#endregion-->
 
     <!--#region Row styles-->

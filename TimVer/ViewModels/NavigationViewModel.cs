@@ -108,7 +108,7 @@ internal partial class NavigationViewModel : ObservableObject
     #endregion List of navigation items
 
     #region List of navigation items without History
-    public static List<NavigationItem> NavigationListNoHistory { get; set; } = new List<NavigationItem>();
+    public static List<NavigationItem> NavigationListNoHistory { get; set; } = [];
 
     public static void PopulateNoHistoryList()
     {
@@ -302,13 +302,11 @@ internal partial class NavigationViewModel : ObservableObject
                             _ = builder.Append(GetStringResource("DriveInfo_Size"))
                                        .Append(" = ")
                                        .AppendFormat("{0:N2} ", item.TotalSize)
-                                       .Append(giga)
-                                       .AppendLine();
+                                       .AppendLine(giga);
                             _ = builder.Append(GetStringResource("DriveInfo_Free"))
                                        .Append(" = ")
                                        .AppendFormat("{0:N2} ", item.GBFree)
-                                       .Append(giga)
-                                       .AppendLine();
+                                       .AppendLine(giga);
                             _ = builder.Append(GetStringResource("DriveInfo_FreePercent"))
                                        .Append(" = ")
                                        .AppendFormat("{0:N2} %", item.PercentFree * 100)
@@ -332,8 +330,7 @@ internal partial class NavigationViewModel : ObservableObject
                                 _ = builder.Append(GetStringResource("DriveInfo_Size"))
                                            .Append(" = ")
                                            .AppendFormat("{0:N2} ", item.Size)
-                                           .Append(giga)
-                                           .AppendLine();
+                                           .AppendLine(giga);
                                 _ = builder.Append(GetStringResource("DriveInfo_Partitions"))
                                            .Append(" = ")
                                            .AppendLine(item.Partitions.ToString());
@@ -488,7 +485,6 @@ internal partial class NavigationViewModel : ObservableObject
                 }
                 break;
         }
-
     }
 
     #endregion Add and remove from startup in registry
@@ -532,6 +528,7 @@ internal partial class NavigationViewModel : ObservableObject
         {
             CombinedInfo.PhysicalDrivesList.Clear();
             DrivesPage.Instance.PDisksDataGrid.ItemsSource = CombinedInfo.PhysicalDrivesList;
+            DrivesPage.Instance.PDisksDataGrid.SelectedIndex = 0;
         }
         SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_DriveInfoRefreshed"));
     }
