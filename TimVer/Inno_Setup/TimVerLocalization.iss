@@ -19,16 +19,16 @@ nl.SetupWindowTitle = Setup - {#MyAppName} {#MyAppVersion}
 sk.SetupWindowTitle = Sprievodca inštaláciou - {#MyAppName} {#MyAppVersion}
 
 [CustomMessages]
-en.NotSelfContained=This will install the standard version of %1 version %2.%n%nThis version requires an existing installation of .NET 8 Desktop Runtime and is compatible with both x64 and x86 systems.%n%nIt Is recommended that you close all other applications before continuing.%n%nClick Next to continue, or Cancel to exit Setup.
-en.SelfContainedx86=This will install the self-contained x86 (32-bit) version of %1 version %2.%n%nIt Is recommended that you close all other applications before continuing.%n%nClick Next to continue, or Cancel to exit Setup.
-en.SelfContainedx64=This will install the self-contained x64 (64-bit) version of %1 version %2.%n%nIt Is recommended that you close all other applications before continuing.%n%nClick Next to continue, or Cancel to exit Setup.
+en.NotSelfContained=This will install the standard version of %1 version %2.%n%nThis version requires an existing installation of .NET 8 Desktop Runtime and is compatible with both x64 and x86 systems.%n%nIt Is recommended that you close all other applications before continuing.%n%nClick 'Next' to continue, or 'Cancel' to exit Setup.
+en.SelfContainedx86=This will install the self-contained x86 (32-bit) version of %1 version %2.%n%nIt Is recommended that you close all other applications before continuing.%n%nClick 'Next' to continue, or 'Cancel' to exit Setup.
+en.SelfContainedx64=This will install the self-contained x64 (64-bit) version of %1 version %2.%n%nIt Is recommended that you close all other applications before continuing.%n%nClick 'Next' to continue, or 'Cancel' to exit Setup.
 en.ViewReadme=View the ReadMe file
 en.AppIsRunning=is running, please close it to continue with the installation.
-en.ClearSettings=Do you want to remove the settings and history files and registry entries?%n%nSelect "No" if you plan to reinstall the program.
+en.ClearSettings=Do you want to remove the settings and history files and registry entries?%n%nSelect 'No' if you plan to reinstall the program.
 
-es.NotSelfContained=Esto instalará la versión estándar de la versión %2 de %1.%n%nEsta versión requiere una instalación existente de .NET 8 Desktop Runtime y es compatible con los sistemas x64 y x86.%n%nSe recomienda cerrar todas las demás aplicaciones antes de continuar.%n%nHaga clic en Siguiente para continuar o en Cancelar para salir de la configuración.
-es.SelfContainedx86=Esto instalará la versión x86 (32 bits) independiente de la versión %2 de %1.%n%nSe recomienda cerrar todas las demás aplicaciones antes de continuar.%n%nHaga clic en Siguiente para continuar o en Cancelar para salir de la configuración.
-es.SelfContainedx64=Esto instalará la versión x64 (64 bits) independiente de la versión %2 de %1.%n%nSe recomienda cerrar todas las demás aplicaciones antes de continuar.%n%nHaga clic en Siguiente para continuar o en Cancelar para salir de la configuración.
+es.NotSelfContained=Esto instalará la versión estándar de la versión %2 de %1.%n%nEsta versión requiere una instalación existente de .NET 8 Desktop Runtime y es compatible con los sistemas x64 y x86.%n%nSe recomienda cerrar todas las demás aplicaciones antes de continuar.%n%nHaga clic en 'Siguiente' para continuar o en 'Cancelar' para salir de la configuración.
+es.SelfContainedx86=Esto instalará la versión x86 (32 bits) independiente de la versión %2 de %1.%n%nSe recomienda cerrar todas las demás aplicaciones antes de continuar.%n%nHaga clic en 'Siguiente' para continuar o en 'Cancelar' para salir de la configuración.
+es.SelfContainedx64=Esto instalará la versión x64 (64 bits) independiente de la versión %2 de %1.%n%nSe recomienda cerrar todas las demás aplicaciones antes de continuar.%n%nHaga clic en 'Siguiente' para continuar o en 'Cancelar' para salir de la configuración.
 es.ViewReadme=Abrir el archivo Léame
 es.AppIsRunning=se está ejecutando, por favor ciérrelo para continuar con la instalación.
 es.ClearSettings=¿Desea eliminar la configuración y excluir archivos?%n%nSeleccione 'No' si planea reinstalar.
