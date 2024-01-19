@@ -73,6 +73,7 @@
     <sys:String x:Key="DriveInfo_BusType_SD">Digital seguro (SD)</sys:String>
     <sys:String x:Key="DriveInfo_BusType_StorageSpaces">Espacios de almacenamiento</sys:String>
     <sys:String x:Key="DriveInfo_BusType_Unknown">Desconocido</sys:String>
+    <sys:String x:Key="DriveInfo_DeviceID">ID de dispositivo</sys:String>
     <sys:String x:Key="DriveInfo_DiskType">Tipo de disco</sys:String>
     <sys:String x:Key="DriveInfo_DriveType_CDRom">CD-ROM</sys:String>
     <sys:String x:Key="DriveInfo_DriveType_Fixed">Fijo</sys:String>

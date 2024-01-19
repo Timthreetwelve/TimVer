@@ -74,6 +74,7 @@
     <sys:String x:Key="DriveInfo_BusType_SD">Secure Digital (SD)</sys:String>
     <sys:String x:Key="DriveInfo_BusType_StorageSpaces">Storage Spaces</sys:String>
     <sys:String x:Key="DriveInfo_BusType_Unknown">Unknown</sys:String>
+    <sys:String x:Key="DriveInfo_DeviceID">Device ID</sys:String>
     <sys:String x:Key="DriveInfo_DiskType">Disk Type</sys:String>
     <sys:String x:Key="DriveInfo_DriveType_CDRom">CD-ROM</sys:String>
     <sys:String x:Key="DriveInfo_DriveType_Fixed">Fixed</sys:String>
@@ -358,4 +359,8 @@
     <!-- Begin changes on 2024/01/05 @ 16:00 UTC-->
     <!-- A | WindowsInfo_DotNetVersion -->
     <!-- End changes on 2024/01/05 @ 16:00 UTC-->
+
+    <!-- Begin changes on 2024/01/19 @ 23:00 UTC-->
+    <!-- A | DriveInfo_DeviceID -->
+    <!-- End changes on 2024/01/19 @ 23:00 UTC-->
 </ResourceDictionary>
