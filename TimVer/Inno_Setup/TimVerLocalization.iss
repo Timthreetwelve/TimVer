@@ -40,6 +40,9 @@ it.ViewReadme=Visualizza file ReadMe
 it.AppIsRunning=è in esecuzione.%nChiudilo per poter continuare l'installazione.
 it.ClearSettings=Vuoi rimuovere le impostazioni, i file cronologia e le voci del registro?%n%nSeleziona "No" se hai intenzione di reinstallare il programma.
 
+nl.NotSelfContained=Hiermee wordt de standaardversie van %1 versie %2 geïnstalleerd.%n%n%nDeze versie vereist een bestaande installatie van .NET 8 Desktop Runtime en is compatibel met zowel x64- als x86-systemen.%n%nHet wordt aanbevolen om alle andere toepassingen te sluiten voordat u doorgaat.%n%nKlik op 'volgende' om door te gaan of op 'annuleren' om de installatie af te sluiten.
+nl.SelfContainedx86=Hiermee wordt de portable x86 (32-bits) versie van %1 versie %2 geïnstalleerd.%n%n%nHet wordt aanbevolen om alle andere toepassingen te sluiten voordat u doorgaat.%n%nKlik op 'volgende' om door te gaan of op 'annuleren' om de installatie af te sluiten.
+nl.SelfContainedx64= Hiermee wordt de portable x64 (64-bits) versie van %1 versie %2 geïnstalleerd.%n%n%nHet wordt aanbevolen om alle andere toepassingen te sluiten voordat u doorgaat.%n%nKlik op 'volgende' om door te gaan of op 'annuleren' om de installatie af te sluiten.
 nl.ViewReadme=Open de ReadMe file
 nl.AppIsRunning=wordt uitgevoerd, sluit deze dan af om door te gaan met de installatie.
 nl.ClearSettings=Wilt u de instellingen, data bestanden en registerwaarden verwijderen?%n%nKies 'NEE' als u het programma opnieuw wilt installeren.
