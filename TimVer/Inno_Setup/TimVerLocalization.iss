@@ -14,7 +14,7 @@ Name: "sk"; MessagesFile: "compiler:Languages\Slovak.isl"
 [Messages]
 en.SetupWindowTitle = Setup - {#MyAppName} {#MyAppVersion}
 es.SetupWindowTitle = Instalar - {#MyAppName} {#MyAppVersion}
-it.SetupWindowTitle = Installazionedi {#MyAppName} {#MyAppVersion}
+it.SetupWindowTitle = Installazione di {#MyAppName} {#MyAppVersion}
 nl.SetupWindowTitle = Setup - {#MyAppName} {#MyAppVersion}
 sk.SetupWindowTitle = Sprievodca inštaláciou - {#MyAppName} {#MyAppVersion}
 
