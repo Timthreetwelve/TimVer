@@ -52,7 +52,7 @@ public partial class App : Application
         MainWindowHelpers.LogStartup();
 
         // Resource dictionary for language
-        ResourceDictionary resDict = new();
+        ResourceDictionary resDict = [];
 
         // Get culture info at startup
         StartupCulture = CultureInfo.CurrentCulture;
@@ -121,7 +121,7 @@ public partial class App : Application
         if (UserSettings.Setting.LanguageTesting)
         {
             _log.Info("Language testing enabled");
-            ResourceDictionary testDict = new();
+            ResourceDictionary testDict = [];
             string testLanguageFile = Path.Combine(AppInfo.AppDirectory, "Strings.test.xaml");
             if (File.Exists(testLanguageFile))
             {
@@ -140,7 +140,6 @@ public partial class App : Application
                         else
                         {
                             _log.Debug($"{TestLanguageStrings} strings loaded from {TestLanguageFile}");
-
                         }
                     }
                 }

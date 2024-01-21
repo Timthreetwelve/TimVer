@@ -30,7 +30,7 @@ public partial class EnvVarPage : UserControl
         {
             EnvDataGrid.Items.Filter = _ => true;
         }
-        else if (filterText?.StartsWith("!") == true)
+        else if (filterText?.StartsWith('!') == true)
         {
             filterText = filterText[1..].TrimStart(' ');
             EnvDataGrid.Items.Filter = o =>
