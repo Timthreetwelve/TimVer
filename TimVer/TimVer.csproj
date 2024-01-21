@@ -55,7 +55,12 @@
   <!-- Generate BuildInfo.cs-->
   <Target Name="BuildInfo" AfterTargets="UpdateAssemblyInfo">
     <Message Importance="high" Text="Beginning GenBuildInfo for $(AssemblyName). Version is $(AssemblyVersion)" />
-    <Exec Command="powershell -NoProfile -File &quot;$(ProjectDir)Powershell\GenBuildInfo.ps1&quot; -assemblyName $(AssemblyName) -assemblyVersion $(AssemblyVersion)" />
+    <PropertyGroup>
+      <PowerShellScript>-File "$(ProjectDir)PowerShell\GenBuildInfo.ps1"</PowerShellScript>
+      <Name>-assemblyName $(AssemblyName)</Name>
+      <Version>-assemblyVersion $(AssemblyVersion)</Version>
+    </PropertyGroup>
+    <Exec Command="pwsh -NoProfile $(PowerShellScript) $(Name) $(Version)" />
   </Target>
 
   <!-- Publish to Zip file -->
@@ -70,47 +75,47 @@
 
     <!-- This is the framework dependent version -->
     <PropertyGroup Condition="'$(PublishDir.Contains(`Framework_Dependent`))'">
-        <PubType>-pubType x64x86</PubType>
+      <PubType>-pubType x64x86</PubType>
     </PropertyGroup>
 
     <!-- This is the x64 self contained version-->
     <PropertyGroup Condition="'$(PublishDir.Contains(`Self_Contained_x64`))'">
-        <PubType>-pubType SC_x64</PubType>
+      <PubType>-pubType SC_x64</PubType>
     </PropertyGroup>
 
     <!-- This is the x86 self contained version-->
     <PropertyGroup Condition="'$(PublishDir.Contains(`Self_Contained_x86`))'">
-        <PubType>-pubType SC_x86</PubType>
+      <PubType>-pubType SC_x86</PubType>
     </PropertyGroup>
 
     <!-- Execute the PowerShell script -->
     <Exec Command="pwsh -NoProfile $(PowerShellScript) $(Name) $(Version) $(PubType) $(PublishFolder) $(Path)" />
-    </Target>
+  </Target>
 
-    <!-- Publish to Inno Setup installer-->
-    <Target Name="CompileSetup" AfterTargets="PublishZip">
-        <PropertyGroup>
-            <PowerShellScript>-File "D:\Visual Studio\Source\PowerShell\PublishInnoSetup\PubSetupEx.ps1"</PowerShellScript>
-            <ScriptName>-issScript "$(ProjectDir)Inno_Setup\TimVerEx.iss"</ScriptName>
-        </PropertyGroup>
+  <!-- Publish to Inno Setup installer-->
+  <Target Name="CompileSetup" AfterTargets="PublishZip">
+    <PropertyGroup>
+      <PowerShellScript>-File "D:\Visual Studio\Source\PowerShell\PublishInnoSetup\PubSetupEx.ps1"</PowerShellScript>
+      <ScriptName>-issScript "$(ProjectDir)Inno_Setup\TimVerEx.iss"</ScriptName>
+    </PropertyGroup>
 
-        <!-- This is the framework dependent version -->
-        <PropertyGroup Condition="'$(PublishDir.Contains(`Framework_Dependent`))'">
-            <PubType>-publishType x64x86</PubType>
-        </PropertyGroup>
+    <!-- This is the framework dependent version -->
+    <PropertyGroup Condition="'$(PublishDir.Contains(`Framework_Dependent`))'">
+      <PubType>-publishType x64x86</PubType>
+    </PropertyGroup>
 
-        <!-- This is the x64 self contained version-->
-        <PropertyGroup Condition="'$(PublishDir.Contains(`Self_Contained_x64`))'">
-            <PubType>-publishType SC_x64</PubType>
-        </PropertyGroup>
+    <!-- This is the x64 self contained version-->
+    <PropertyGroup Condition="'$(PublishDir.Contains(`Self_Contained_x64`))'">
+      <PubType>-publishType SC_x64</PubType>
+    </PropertyGroup>
 
-        <!-- This is the x86 self contained version-->
-        <PropertyGroup Condition="'$(PublishDir.Contains(`Self_Contained_x86`))'">
-            <PubType>-publishType SC_x86</PubType>
-        </PropertyGroup>
+    <!-- This is the x86 self contained version-->
+    <PropertyGroup Condition="'$(PublishDir.Contains(`Self_Contained_x86`))'">
+      <PubType>-publishType SC_x86</PubType>
+    </PropertyGroup>
 
-        <!-- Execute the PowerShell script -->
-        <Exec Command="pwsh -NoProfile $(PowerShellScript) $(ScriptName) $(PublishDir) $(PubType) " />
-    </Target>
+    <!-- Execute the PowerShell script -->
+    <Exec Command="pwsh -NoProfile $(PowerShellScript) $(ScriptName) $(PublishDir) $(PubType) " />
+  </Target>
 
 </Project>
