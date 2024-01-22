@@ -147,7 +147,7 @@
     <sys:String x:Key="HardwareInfo_ProcessorDescription">Descripción del procesador</sys:String>
     <sys:String x:Key="HardwareInfo_Threads">Hilos</sys:String>
     <sys:String x:Key="HardwareInfo_Uptime">Uptime</sys:String>
-    <sys:String x:Key="HardwareInfo_UptimeString">{0}días, {1}horas, {2}minutos, {3}segundos</sys:String>
+    <sys:String x:Key="HardwareInfo_UptimeString">{0} días, {1} horas, {2} minutos, {3} segundos</sys:String>
     <sys:String x:Key="HardwareInfo_Usable">Utilizable</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
     <sys:String x:Key="MsgText_AddedToStartup">TimVer se agregó al inicio de Windows</sys:String>
