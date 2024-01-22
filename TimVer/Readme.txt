@@ -137,6 +137,8 @@ TimVer uses the following packages:
 
     * OctoKit https://github.com/octokit/octokit.net
 
+    * Vanara https://github.com/dahall/vanara
+
     * GitKraken was used for everything Git related. https://www.gitkraken.com/
 
     * Inno Setup was used to create the installer. https://jrsoftware.org/isinfo.php
