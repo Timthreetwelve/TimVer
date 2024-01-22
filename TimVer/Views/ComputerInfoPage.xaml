@@ -7,6 +7,7 @@
              xmlns:config="clr-namespace:TimVer.Configuration"
              xmlns:converters="clr-namespace:TimVer.Converters"
              xmlns:global="clr-namespace:System.Globalization;assembly=mscorlib"
+             xmlns:helpers="clr-namespace:TimVer.Helpers"
              xmlns:models="clr-namespace:TimVer.Models"
              d:DesignHeight="450"
              d:DesignWidth="600"
@@ -103,13 +104,8 @@
                            Grid.Column="0"
                            Text="{DynamicResource HardwareInfo_ProcessorCores}" />
                 <TextBlock Grid.Row="7"
-                           Grid.Column="2">
-                    <Run Text="{Binding Source={x:Static models:CombinedInfo.ProcCores}, Mode=OneWay}" />
-                    <Run Text="{DynamicResource HardwareInfo_Cores}" />
-                    <Run Text="-" />
-                    <Run Text="{Binding Source={x:Static models:CombinedInfo.ProcThreads}, Mode=OneWay}" />
-                    <Run Text="{DynamicResource HardwareInfo_Threads}" />
-                </TextBlock>
+                           Grid.Column="2"
+                           Text="{Binding Source={x:Static helpers:FormatHelpers.FormattedProcessorCores}}"/>
 
                 <TextBlock Grid.Row="8"
                            Grid.Column="0"
@@ -129,23 +125,16 @@
                            Grid.Column="0"
                            Text="{DynamicResource HardwareInfo_BiosVersion}" />
                 <TextBlock Grid.Row="10"
-                           Grid.Column="2">
-                    <Run Text="{Binding Source={x:Static models:CombinedInfo.BiosName}, Mode=OneWay}" />
-                    <Run Text="-" />
-                    <Run Text="{Binding Source={x:Static models:CombinedInfo.BiosDate}, StringFormat=d, ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}, Mode=OneWay}" />
-                </TextBlock>
+                           Grid.Column="2"
+                           Text="{Binding Source={x:Static helpers:FormatHelpers.FormattedBiosVersionDate}}" />
 
                 <TextBlock Grid.Row="11"
                            Grid.Column="0"
                            Text="{DynamicResource HardwareInfo_PhysicalMemory}" />
                 <TextBlock Grid.Row="11"
-                           Grid.Column="2">
-                    <Run Text="{Binding Source={x:Static models:CombinedInfo.InstalledMemory}, Mode=OneWay}" />
-                    <Run Text="{DynamicResource HardwareInfo_Installed}" />
-                    <Run Text="-" />
-                    <Run Text="{Binding Source={x:Static models:CombinedInfo.TotalMemory}, Mode=OneWay}" />
-                    <Run Text="{DynamicResource HardwareInfo_Usable}" />
-                </TextBlock>
+                           Grid.Column="2"
+                           Text="{Binding Source={x:Static helpers:FormatHelpers.FormattedMemory}}" />
+
 
             </Grid>
         </ScrollViewer>
