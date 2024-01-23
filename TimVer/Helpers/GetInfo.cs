@@ -142,7 +142,7 @@ public static class GetInfo
         try
         {
             Stopwatch watch = Stopwatch.StartNew();
-            List<EnvVariable> envList = new();
+            List<EnvVariable> envList = [];
             foreach (DictionaryEntry entry in Environment.GetEnvironmentVariables())
             {
                 EnvVariable envVariable = new()
@@ -159,7 +159,7 @@ public static class GetInfo
         catch (Exception ex)
         {
             _log.Debug(ex, "Error occurred in GetEnvironmentVariables.");
-            List<EnvVariable> errorList = new();
+            List<EnvVariable> errorList = [];
             EnvVariable envVariable = new()
             {
                 Variable = "An Error has occurred.",

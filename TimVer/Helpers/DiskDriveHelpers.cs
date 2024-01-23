@@ -77,7 +77,7 @@ public static class DiskDriveHelpers
     public static List<LogicalDrives> GetLogicalDriveInfo()
     {
         int count = 0;
-        List<LogicalDrives> logicalDrives = new();
+        List<LogicalDrives> logicalDrives = [];
         if (GetLogicalDrives() != null)
         {
             MainWindowUIHelpers.MainWindowWaitPointer();
@@ -185,7 +185,7 @@ public static class DiskDriveHelpers
         {
             MainWindowUIHelpers.MainWindowWaitPointer();
             Stopwatch watch = Stopwatch.StartNew();
-            List<PhysicalDrives> physicalDrives = new();
+            List<PhysicalDrives> physicalDrives = [];
             const string query = "SELECT InterfaceType, MediaType, Model, Name, Status, Index, Partitions, Size FROM Win32_DiskDrive";
             using (CimSession cimSession = CimSession.Create(null))
             {
@@ -221,7 +221,7 @@ public static class DiskDriveHelpers
         }
         else
         {
-            List<PhysicalDrives> physicalDrives = new();
+            List<PhysicalDrives> physicalDrives = [];
             PhysicalDrives emptyList = new()
             {
                 Message = GetStringResource("DriveInfo_PhysicalDisabled")
@@ -237,10 +237,9 @@ public static class DiskDriveHelpers
     }
     #endregion Get Physical disk info from WMI
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////
     private static Dictionary<string, string> GetMSFTDisk(uint number)
     {
-        Dictionary<string, string> driveInfo = new();
+        Dictionary<string, string> driveInfo = [];
 
         const string scope = @"\\.\root\Microsoft\Windows\Storage";
         string query = $"SELECT IsBoot, IsSystem, PartitionStyle, Model FROM MSFT_Disk WHERE Number = {number}";
@@ -254,7 +253,6 @@ public static class DiskDriveHelpers
         }
         return driveInfo;
     }
-    ///////////////////////////////////////////////////////////////////////////////////////////////
 
     #region Get additional info from MSFT_PhysicalDisk
     /// <summary>
@@ -264,7 +262,7 @@ public static class DiskDriveHelpers
     /// <returns>Dictionary of values.</returns>
     private static Dictionary<string, string> GetWin32DiskDrive(uint device)
     {
-        Dictionary<string, string> driveInfo = new();
+        Dictionary<string, string> driveInfo = [];
 
         const string scope = @"\\.\root\Microsoft\Windows\Storage";
         string query = $"SELECT MediaType, HealthStatus, BusType, SerialNumber, FriendlyName FROM MSFT_PhysicalDisk WHERE DeviceID = {device}";
@@ -377,10 +375,9 @@ public static class DiskDriveHelpers
                             break;
                     }
                 }
-                Dictionary<string, string> msftDisk = GetMSFTDisk(device);
-                isBoot = msftDisk["IsBoot"];
-                isSystem = msftDisk["IsSystem"];
-                partitionStyle = msftDisk["PartitionStyle"];
+                isBoot = GetMSFTDisk(device)["IsBoot"];
+                isSystem = GetMSFTDisk(device)["IsSystem"];
+                partitionStyle = GetMSFTDisk(device)["PartitionStyle"];
                 switch (partitionStyle)
                 {
                     case "1":
