@@ -16,7 +16,6 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/timthreetwelve/TimVer?style=plastic)](https://github.com/Timthreetwelve/TimVer/commits/main)
 [![GitHub commits](https://img.shields.io/github/commit-activity/m/timthreetwelve/TimVer?style=plastic)](https://github.com/Timthreetwelve/TimVer/commits/main)
 [![GitHub Stars](https://img.shields.io/github/stars/timthreetwelve/TimVer?style=plastic&color=goldenrod&logo=github)](https://docs.github.com/en/get-started/exploring-projects-on-github/saving-repositories-with-stars)
-
 [![GitHub all releases](https://img.shields.io/github/downloads/Timthreetwelve/TimVer/total?style=plastic&label=total%20downloads&color=teal)](https://github.com/Timthreetwelve/TimVer/releases) 
 [![GitHub release (by tag)](https://img.shields.io/github/downloads/timthreetwelve/TimVer/latest/total?style=plastic&color=2196F3&label=downloads%20latest%20version)](https://github.com/Timthreetwelve/TimVer/releases/latest)
 [![GitHub Issues](https://img.shields.io/github/issues/timthreetwelve/TimVer?style=plastic&color=orangered)](https://github.com/Timthreetwelve/TimVer/issues)
