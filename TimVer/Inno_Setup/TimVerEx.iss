@@ -1,4 +1,4 @@
-;----------------------------------------------------------------------
+﻿;----------------------------------------------------------------------
 ; Inno Setup Script for TimVer
 ;----------------------------------------------------------------------
 ; The following #include file is created by the PubSetupEx.ps1 script.
@@ -17,7 +17,7 @@
 #define MySourceDir          BaseDir + PublishFolder
 #define MySetupIcon          BaseDir + "\Images\TV.ico"
 #define MyOutputDir          "D:\InnoSetup\Output"
-#define MyLargeImage         "D:\InnoSetup\Images\WizardImage.bmp"
+#define MyLargeImage         "D:\InnoSetup\Images\WizardImageTimVer.bmp"
 #define MySmallImage         "D:\InnoSetup\Images\WizardSmallImage.bmp"
 
 #define MyAppID              "{4D2F6A12-7661-4E5B-983A-11F2194C81CA}"
@@ -78,6 +78,7 @@ WizardStyle=modern
 WizardSizePercent=100,100
 WizardImageFile={#MyLargeImage}
 WizardSmallImageFile={#MySmallImage}
+WizardImageStretch=no
 
 AllowNoIcons=yes
 Compression=lzma
