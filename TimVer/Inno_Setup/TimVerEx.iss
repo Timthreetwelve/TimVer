@@ -1,4 +1,4 @@
-﻿;----------------------------------------------------------------------
+;----------------------------------------------------------------------
 ; Inno Setup Script for TimVer
 ;----------------------------------------------------------------------
 ; The following #include file is created by the PubSetupEx.ps1 script.
@@ -13,7 +13,7 @@
 ;----------------------------------------------------------------------
 #include "D:\Temp\PubSetup.Temp.iss"
 
-#define BaseDir              "D:\Visual Studio\Source\Prod\TimVer\TimVer"
+#define BaseDir              "V:\Source\Repos\TimVer\TimVer"
 #define MySourceDir          BaseDir + PublishFolder
 #define MySetupIcon          BaseDir + "\Images\TV.ico"
 #define MyOutputDir          "D:\InnoSetup\Output"
