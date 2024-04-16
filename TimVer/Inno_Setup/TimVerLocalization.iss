@@ -1,7 +1,7 @@
 ﻿[LangOptions]
-DialogFontSize=10
+DialogFontSize=9
 DialogFontName="Segoe UI"
-WelcomeFontSize=12
+WelcomeFontSize=14
 WelcomeFontName="Verdana"
 
 [Languages]
