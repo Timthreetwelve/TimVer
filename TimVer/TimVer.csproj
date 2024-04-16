@@ -68,7 +68,7 @@
   <Target Name="PublishZip" AfterTargets="Publish">
     <PropertyGroup>
       <PowerShellScript>-File "V:\Source\Repos\PublishZip\PubZipEx.ps1"</PowerShellScript>
-      <Name>-name "TimVer"</Name>
+      <Name>-name $(AssemblyName)</Name>
       <Version>-version $(AssemblyVersion)</Version>
       <Path>-path "$(ProjectDir)"</Path>
       <PublishFolder>-pubDir $(PublishDir)</PublishFolder>
