@@ -119,4 +119,10 @@
     <Exec Command="pwsh -NoProfile $(PowerShellScript) $(ScriptName) $(PublishDir) $(PubType) " />
   </Target>
 
+    <!-- Remove obj folder after Clean -->
+  <Target Name="SpicNSpan" AfterTargets="AfterClean">
+    <Message Importance="high" Text="obj folder deleted." />
+    <RemoveDir Directories="$(BaseIntermediateOutputPath)" />
+  </Target>
+
 </Project>
