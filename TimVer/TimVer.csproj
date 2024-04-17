@@ -19,9 +19,6 @@
 
   <ItemGroup>
     <Content Include="Images\TV.ico" />
-    <Content Include="Strings.test.xaml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Resource Include="Images\TK.png" />
     <Resource Include="Images\TV.png" />
   </ItemGroup>
