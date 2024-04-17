@@ -165,6 +165,9 @@
     <sys:String x:Key="MsgText_CopyToClipboardInvalid">Copy to clipboard is not valid on this page</sys:String>
     <sys:String x:Key="MsgText_DriveInfoRefreshed">Disk drive info refreshed</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Elapsed time</sys:String>
+    <sys:String x:Key="MsgText_ErrorCaption">ERROR</sys:String>
+    <sys:String x:Key="MsgText_ErrorOpeningFile">Error opening {0}</sys:String>
+    <sys:String x:Key="MsgText_ErrorReadingFile">Error reading {0}</sys:String>
     <sys:String x:Key="MsgText_FilterOneRowShown">1 row shown</sys:String>
     <sys:String x:Key="MsgText_FilterRowsShown">{0} rows shown</sys:String>
     <sys:String x:Key="MsgText_HideButNoHistory">The command line option "hide" was specified, but the option to keep history is false. Exiting.</sys:String>

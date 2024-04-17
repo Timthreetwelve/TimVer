@@ -163,6 +163,9 @@
     <sys:String x:Key="MsgText_CopiedToClipboardItem">El elemento se copió en el portapapeles</sys:String>
     <sys:String x:Key="MsgText_CopyToClipboardInvalid">Copiar al portapapeles no es válido en esta página</sys:String>
     <sys:String x:Key="MsgText_DriveInfoRefreshed">Información de la unidad de disco actualizada</sys:String>
+    <sys:String x:Key="MsgText_ErrorCaption">ERROR</sys:String>
+    <sys:String x:Key="MsgText_ErrorOpeningFile">Error al abrir el archivo {0}</sys:String>
+    <sys:String x:Key="MsgText_ErrorReadingFile">Error de lectura del archivo {0}</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Tiempo transcurrido</sys:String>
     <sys:String x:Key="MsgText_FilterOneRowShown">1 fila mostrada</sys:String>
     <sys:String x:Key="MsgText_FilterRowsShown">{0} filas mostradas</sys:String>

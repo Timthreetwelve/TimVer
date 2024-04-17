@@ -165,6 +165,9 @@
     <sys:String x:Key="MsgText_CopyToClipboardInvalid">Impossibile copiare questa pagina negli appunti</sys:String>
     <sys:String x:Key="MsgText_DriveInfoRefreshed">Info sull'unità disco aggiornate</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Tempo trascorso</sys:String>
+    <sys:String x:Key="MsgText_ErrorCaption">ERRORE</sys:String>
+    <sys:String x:Key="MsgText_ErrorOpeningFile">Error in apertura di {0}</sys:String>
+    <sys:String x:Key="MsgText_ErrorReadingFile">Error in lettura di {0}</sys:String>
     <sys:String x:Key="MsgText_FilterOneRowShown">1 riga visualizzata</sys:String>
     <sys:String x:Key="MsgText_FilterRowsShown">{0} righe visualizzate</sys:String>
     <sys:String x:Key="MsgText_HideButNoHistory">È stata specificata l'opzione della riga di comando "hide", ma l'opzione per mantenere la cronologia è disabilitata. Uscita dal programma.</sys:String>
