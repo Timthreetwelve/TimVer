@@ -11,9 +11,9 @@
              xmlns:viewmodels="clr-namespace:TimVer.ViewModels"
              mc:Ignorable="d"
              d:DesignHeight="650" d:DesignWidth="700"
-             Background="{DynamicResource MaterialDesignPaper}"
+             Background="{DynamicResource MaterialDesign.Brush.Background}"
              FontFamily="Segoe UI"
-             TextElement.Foreground="{DynamicResource MaterialDesignBody}">
+             TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
 
     <!--#region Resources & DataContext-->
     <UserControl.Resources>
@@ -28,7 +28,7 @@
     </UserControl.DataContext>
     <!--#endregion-->
 
-    <Grid Background="{DynamicResource MaterialDesignCardBackground}">
+    <Grid Background="{DynamicResource MaterialDesign.Brush.Card.Background}">
         <!--#region Refresh button-->
         <Button Grid.Column="0"
                 Margin="0,5,5,0"
@@ -68,7 +68,7 @@
                           materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
                           materialDesign:ThemeAssist.Theme="Inherit"
                           AutoGenerateColumns="False"
-                          Background="{DynamicResource MaterialDesignCardBackground}"
+                          Background="{DynamicResource MaterialDesign.Brush.Card.Background}"
                           CanUserSortColumns="True"
                           CellStyle="{StaticResource DisplayOnly}"
                           FontSize="14" FrozenColumnCount="1"
@@ -150,7 +150,7 @@
                               d:ItemsSource="{d:SampleData ItemCount=3}"
                               materialDesign:ThemeAssist.Theme="Inherit"
                               AutoGenerateColumns="False"
-                              Background="{DynamicResource MaterialDesignCardBackground}"
+                              Background="{DynamicResource MaterialDesign.Brush.Card.Background}"
                               CanUserResizeRows="False"
                               CanUserSortColumns="True"
                               CellStyle="{StaticResource DisplayOnly2}"
@@ -236,7 +236,7 @@
                                   Height="4"
                                   Margin="0,3"
                                   HorizontalAlignment="Stretch"
-                                  Background="{DynamicResource MaterialDesignBody}"
+                                  Background="{DynamicResource MaterialDesign.Brush.Foreground}"
                                   DragCompleted="DetailsSplitter_DragCompleted"
                                   IsTabStop="False"
                                   ResizeBehavior="PreviousAndNext"
@@ -249,7 +249,7 @@
                                       DataContext="{Binding SelectedItem,
                                                             ElementName=PDisksDataGrid}"
                                       FontSize="14"
-                                      Foreground="{DynamicResource MaterialDesignBody}"
+                                      Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                                       VerticalScrollBarVisibility="Auto">
                             <Grid Margin="5,10">
                                 <!--#region Row & Column definitions-->

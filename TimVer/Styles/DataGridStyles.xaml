@@ -12,8 +12,8 @@
         <Setter Property="Focusable" Value="False" />
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="{DynamicResource MaterialDesignPaper}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource MaterialDesignPaper}" />
+                <Setter Property="Background" Value="{DynamicResource MaterialDesign.Brush.Background}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource MaterialDesign.Brush.Background}" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -31,7 +31,7 @@
            BasedOn="{StaticResource {x:Type DataGridRow}}">
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="{DynamicResource MaterialDesignPaper}" />
+                <Setter Property="Background" Value="{DynamicResource MaterialDesign.Brush.Background}" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -45,7 +45,7 @@
                 <Setter Property="FontWeight" Value="Bold" />
             </DataTrigger>
             <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="{DynamicResource MaterialDesignPaper}" />
+                <Setter Property="Background" Value="{DynamicResource MaterialDesign.Brush.Background}" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -59,7 +59,7 @@
                 <Setter Property="Foreground" Value="Gray" />
             </DataTrigger>
             <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="{DynamicResource MaterialDesignPaper}" />
+                <Setter Property="Background" Value="{DynamicResource MaterialDesign.Brush.Background}" />
             </Trigger>
         </Style.Triggers>
     </Style>

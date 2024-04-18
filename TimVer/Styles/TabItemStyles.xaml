@@ -20,7 +20,7 @@
         <Setter Property="Padding" Value="0,0,0,4" />
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource MaterialDesign.Brush.Primary}" />
             </Trigger>
         </Style.Triggers>
     </Style>

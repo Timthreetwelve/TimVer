@@ -13,7 +13,7 @@
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800"
              FontFamily="Segoe UI" FontSize="14"
-             TextElement.Foreground="{DynamicResource MaterialDesignBody}">
+             TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
 
     <!--#region DataContext-->
     <UserControl.DataContext>
@@ -25,7 +25,7 @@
     </UserControl.Resources>
     <!--#endregion-->
 
-    <Grid Background="{DynamicResource MaterialDesignCardBackground}">
+    <Grid Background="{DynamicResource MaterialDesign.Brush.Card.Background}">
         <ScrollViewer Margin="20,20,20,15"
                       HorizontalScrollBarVisibility="Disabled"
                       VerticalScrollBarVisibility="Auto">
@@ -82,7 +82,7 @@
                            ToolTipService.Placement="Top">
                     <Hyperlink Command="{Binding GoToGitHubCommand}"
                                CommandParameter="https://github.com/Timthreetwelve"
-                               Foreground="{DynamicResource MaterialDesignBody}">
+                               Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
                         <TextBlock Text="Tim Kennedy" TextWrapping="Wrap" />
                     </Hyperlink>
                 </TextBlock>
@@ -97,7 +97,7 @@
                            Text="{DynamicResource About_License}" />
                 <TextBlock Grid.Row="4" Grid.Column="2">
                     <Hyperlink Command="{Binding ViewLicenseCommand}"
-                               Foreground="{DynamicResource MaterialDesignBody}"
+                               Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                                ToolTip="{DynamicResource About_LicenseToolTip}">
                         <TextBlock Text="{DynamicResource About_LicenseText}"
                                    TextWrapping="Wrap" />
@@ -128,18 +128,18 @@
                     </TextBlock.ToolTip>
                 </TextBlock>
 
-                <TextBlock Grid.Row="7" Grid.Column="0"
-                           Text="GitHub" />
-                <Grid Grid.Row="7" Grid.Column="0"
-                      Margin="50,-2,0,0">
+                <StackPanel Grid.Row="7" Grid.Column="0"
+                            Orientation="Horizontal">
+                    <TextBlock Text="{DynamicResource About_GitHub}" />
                     <materialDesign:PackIcon Width="20" Height="20"
+                                             Margin="10,0,0,0"
                                              Kind="Github" />
-                </Grid>
+                </StackPanel>
                 <TextBlock Grid.Row="7" Grid.Column="2">
                     <Hyperlink Command="{Binding GoToGitHubCommand}"
                                CommandParameter="{Binding Path=Text,
                                                           ElementName=tbxGithub}"
-                               Foreground="{DynamicResource MaterialDesignBody}"
+                               Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                                ToolTip="{DynamicResource About_GitHubToolTip}"
                                ToolTipService.Placement="Top">
                         <TextBlock x:Name="tbxGithub"
@@ -154,7 +154,7 @@
                             Orientation="Horizontal">
                     <TextBlock>
                         <Hyperlink Command="{Binding ViewReadMeCommand}"
-                                   Foreground="{DynamicResource MaterialDesignBody}"
+                                   Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                                    ToolTip="{DynamicResource About_DocumentationToolTip}"
                                    ToolTipService.Placement="Top">
                             <TextBlock Text="{DynamicResource About_DocumentationText}"
@@ -164,7 +164,7 @@
                     <TextBlock Margin="20,0">
                         <Hyperlink Command="{Binding GoToGitHubCommand}"
                                    CommandParameter="https://github.com/Timthreetwelve/TimVer/wiki"
-                                   Foreground="{DynamicResource MaterialDesignBody}"
+                                   Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                                    ToolTip="https://github.com/Timthreetwelve/TimVer/wiki"
                                    ToolTipService.Placement="Top">
                             <TextBlock Text="TimVer Wiki" TextWrapping="Wrap" />
@@ -175,7 +175,7 @@
                            Text="{DynamicResource About_Update}" />
                 <TextBlock Grid.Row="9" Grid.Column="2">
                     <Hyperlink Command="{Binding CheckReleaseCommand}"
-                               Foreground="{DynamicResource MaterialDesignBody}"
+                               Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                                ToolTip="{DynamicResource About_UpdateToolTip}"
                                ToolTipService.Placement="Top">
                         <TextBlock Text="{DynamicResource About_UpdateText}"
@@ -198,7 +198,7 @@
                     <TextBlock Grid.Row="1">
                         <Hyperlink Command="{Binding GoToGitHubCommand}"
                                    CommandParameter="https://github.com/Timthreetwelve/TimVer/wiki/Contribute-a-Translation"
-                                   Foreground="{DynamicResource MaterialDesignBody}"
+                                   Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                                    ToolTip="{DynamicResource About_ContributeToolTip}"
                                    ToolTipService.Placement="Top">
                             <TextBlock Text="{DynamicResource About_Contribute}" />
@@ -210,12 +210,12 @@
                         Width="auto"
                         Margin="0,0,20,0"
                         HorizontalAlignment="Left"
-                        BorderBrush="{DynamicResource MaterialDesignDivider}"
+                        BorderBrush="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}"
                         BorderThickness="1">
                     <DataGrid MinWidth="350" MaxHeight="120"
                               materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
                               AutoGenerateColumns="False"
-                              Background="{DynamicResource MaterialDesignCardBackground}"
+                              Background="{DynamicResource MaterialDesign.Brush.Card.Background}"
                               CellStyle="{StaticResource DisplayOnly}"
                               HeadersVisibility="None"
                               IsReadOnly="True"

@@ -13,7 +13,7 @@
              mc:Ignorable="d"
              d:DesignHeight="650" d:DesignWidth="800"
              FontFamily="Segoe UI" FontSize="14"
-             TextElement.Foreground="{DynamicResource MaterialDesignBody}">
+             TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
 
     <!--#region DataContext & Resources-->
     <UserControl.DataContext>
@@ -68,7 +68,7 @@
                                                      Width="28" Height="28"
                                                      Margin="0,5,0,0"
                                                      VerticalAlignment="Center"
-                                                     Foreground="{DynamicResource PrimaryHueMidBrush}"
+                                                     Foreground="{DynamicResource MaterialDesign.Brush.Primary}"
                                                      Kind="Wrench" />
                             <TextBlock Grid.Row="0" Grid.Column="1"
                                        FontSize="16" FontWeight="SemiBold"
@@ -246,7 +246,7 @@
                                                      Width="28" Height="28"
                                                      Margin="0,5,0,0"
                                                      VerticalAlignment="Center"
-                                                     Foreground="{DynamicResource PrimaryHueMidBrush}"
+                                                     Foreground="{DynamicResource MaterialDesign.Brush.Primary}"
                                                      Kind="Harddisk" />
                             <TextBlock Grid.Row="0" Grid.Column="1"
                                        FontSize="16" FontWeight="SemiBold"
@@ -308,16 +308,16 @@
 
                         <Expander Grid.Row="4" Grid.Column="1"
                                   Margin="2,10,45,10"
-                                  materialDesign:ExpanderAssist.HeaderBackground="{DynamicResource MaterialDesignCardBackground}"
+                                  materialDesign:ExpanderAssist.HeaderBackground="{DynamicResource MaterialDesign.Brush.Card.Background}"
                                   materialDesign:ExpanderAssist.HeaderFontSize="16"
                                   materialDesign:ExpanderAssist.HorizontalHeaderPadding="15,10,20,15"
-                                  BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                  BorderBrush="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}"
                                   BorderThickness="1"
                                   Header="{DynamicResource SettingsItem_LogicalDriveOptions}"
                                   IsExpanded="{Binding LogicalExpanderOpen,
                                                        Source={x:Static config:TempSettings.Setting}}">
 
-                            <Grid Background="{DynamicResource MaterialDesignCardBackground}">
+                            <Grid Background="{DynamicResource MaterialDesign.Brush.Card.Background}">
                                 <Grid Margin="15,0,15,15">
                                     <!--#region Row definitions-->
                                     <Grid.RowDefinitions>
@@ -360,15 +360,15 @@
 
                         <Expander Grid.Row="5" Grid.Column="1"
                                   Margin="2,10,45,10"
-                                  materialDesign:ExpanderAssist.HeaderBackground="{DynamicResource MaterialDesignCardBackground}"
+                                  materialDesign:ExpanderAssist.HeaderBackground="{DynamicResource MaterialDesign.Brush.Card.Background}"
                                   materialDesign:ExpanderAssist.HeaderFontSize="16"
                                   materialDesign:ExpanderAssist.HorizontalHeaderPadding="15,10,20,15"
-                                  BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                  BorderBrush="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}"
                                   BorderThickness="1"
                                   Header="{DynamicResource SettingsItem_PhysicalDriveOptions}"
                                   IsExpanded="{Binding PhysicalExpanderOpen,
                                                        Source={x:Static config:TempSettings.Setting}}">
-                            <Grid Background="{DynamicResource MaterialDesignCardBackground}">
+                            <Grid Background="{DynamicResource MaterialDesign.Brush.Card.Background}">
                                 <Grid Margin="15,0,15,15">
                                     <!--#region Row definitions-->
                                     <Grid.RowDefinitions>
@@ -463,7 +463,7 @@
                                                      Width="28" Height="28"
                                                      Margin="0,5,0,0"
                                                      VerticalAlignment="Center"
-                                                     Foreground="{DynamicResource PrimaryHueMidBrush}"
+                                                     Foreground="{DynamicResource MaterialDesign.Brush.Primary}"
                                                      Kind="MonitorEdit" />
                             <TextBlock Grid.Row="0" Grid.Column="1"
                                        FontSize="16" FontWeight="SemiBold"
@@ -616,7 +616,7 @@
                                                      Width="28" Height="28"
                                                      Margin="0,5,0,0"
                                                      VerticalAlignment="Center"
-                                                     Foreground="{DynamicResource PrimaryHueMidBrush}"
+                                                     Foreground="{DynamicResource MaterialDesign.Brush.Primary}"
                                                      Kind="Language" />
                             <TextBlock Grid.Row="0" Grid.Column="1"
                                        FontSize="16" FontWeight="SemiBold"

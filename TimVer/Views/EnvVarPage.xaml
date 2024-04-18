@@ -10,9 +10,9 @@
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800"
              d:DataContext="{d:DesignInstance Type=viewmodels:EnvVarViewModel}"
-             Background="{DynamicResource MaterialDesignPaper}"
+             Background="{DynamicResource MaterialDesign.Brush.Background}"
              FontFamily="Segoe UI"
-             Foreground="{DynamicResource MaterialDesignBody}">
+             Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
 
     <!--#region DataContext & Resources-->
     <UserControl.Resources>
@@ -20,7 +20,7 @@
     </UserControl.Resources>
     <!--#endregion-->
 
-    <Grid Background="{DynamicResource MaterialDesignCardBackground}">
+    <Grid Background="{DynamicResource MaterialDesign.Brush.Card.Background}">
         <!--#region Row definitions-->
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -36,7 +36,7 @@
                  VerticalContentAlignment="Top"
                  materialDesign:HintAssist.FloatingHintHorizontalAlignment="Center"
                  materialDesign:HintAssist.FloatingScale="0.85"
-                 materialDesign:HintAssist.Foreground="{DynamicResource MaterialDesignBody}"
+                 materialDesign:HintAssist.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                  materialDesign:HintAssist.Hint="{DynamicResource EnvironmentInfo_Filter}"
                  materialDesign:HintAssist.IsFloating="True"
                  materialDesign:TextFieldAssist.HasClearButton="True"
@@ -65,7 +65,7 @@
                   Margin="0,5,5,5"
                   materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
                   AutoGenerateColumns="False"
-                  Background="{DynamicResource MaterialDesignCardBackground}"
+                  Background="{DynamicResource MaterialDesign.Brush.Card.Background}"
                   CanUserAddRows="False"
                   CanUserDeleteRows="False"
                   CanUserSortColumns="True"
