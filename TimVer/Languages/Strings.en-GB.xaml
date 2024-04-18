@@ -2,28 +2,28 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <!--
-       Refer to the "Contribute a Translation" topic in the Wiki:
+        Refer to the "Contribute a Translation" topic in the Wiki:
 
-       https://github.com/Timthreetwelve/TimVer/wiki/Contribute-a-Translation
+        https://github.com/Timthreetwelve/TimVer/wiki/Contribute-a-Translation
 
-       =======================================================================
+        =======================================================================
 
-       Application name:            TimVer
+        Application name:            TimVer
 
-       Language name:               English (en-GB)
+        Language name:               English (en-GB)
 
-       Translation contributed by:  Timthreetwelve
+        Translation contributed by:  Timthreetwelve
 
-       Date last updated:           2023/12/15
+        Date last updated:           2023/12/15
 
-       =======================================================================
+        =======================================================================
 
-       This language file (en-GB), is a special case. Since the vast majority
-       of the strings are the same as (en-US), they will not be repeated here.
-       This file should contain strings that contain words that are spelled
-       differently, or phrased differently.
+        This language file (en-GB), is a special case. Since the vast majority
+        of the strings are the same as (en-US), they will not be repeated here.
+        This file should contain strings that contain words that are spelled
+        differently, or phrased differently.
 
-       For example, color vs. colour and gray vs. grey.
+        For example, color vs. colour and gray vs. grey.
    -->
 
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->

@@ -1,17 +1,16 @@
 ﻿<UserControl x:Class="TimVer.Views.DrivesPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
              xmlns:config="clr-namespace:TimVer.Configuration"
              xmlns:convert="clr-namespace:TimVer.Converters"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:global="clr-namespace:System.Globalization;assembly=mscorlib"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:models="clr-namespace:TimVer.Models"
              xmlns:viewmodels="clr-namespace:TimVer.ViewModels"
-             d:DesignHeight="650"
-             d:DesignWidth="700"
+             mc:Ignorable="d"
+             d:DesignHeight="650" d:DesignWidth="700"
              Background="{DynamicResource MaterialDesignPaper}"
              FontFamily="Segoe UI"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}">
@@ -34,8 +33,7 @@
         <Button Grid.Column="0"
                 Margin="0,5,5,0"
                 HorizontalAlignment="Right"
-                VerticalAlignment="Top"
-                Panel.ZIndex="1"
+                VerticalAlignment="Top" Panel.ZIndex="1"
                 Command="{Binding RefreshDrivesCommand}"
                 Style="{StaticResource RefreshButton}"
                 ToolTipService.Placement="Left">
@@ -64,8 +62,7 @@
                                Text="{DynamicResource DriveInfo_LogicalDrives}" />
                 </TabItem.Header>
                 <DataGrid x:Name="LDrivesDataGrid"
-                          Margin="0"
-                          HorizontalAlignment="Stretch"
+                          Margin="0" HorizontalAlignment="Stretch"
                           VerticalAlignment="Stretch"
                           d:ItemsSource="{d:SampleData ItemCount=5}"
                           materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
@@ -74,8 +71,7 @@
                           Background="{DynamicResource MaterialDesignCardBackground}"
                           CanUserSortColumns="True"
                           CellStyle="{StaticResource DisplayOnly}"
-                          FontSize="14"
-                          FrozenColumnCount="1"
+                          FontSize="14" FrozenColumnCount="1"
                           HeadersVisibility="Column"
                           IsReadOnly="True"
                           ItemsSource="{x:Static models:CombinedInfo.LogicalDrivesList}"
@@ -85,8 +81,8 @@
                         <DataGridTextColumn Binding="{Binding Name}"
                                             ElementStyle="{StaticResource alignCenter}"
                                             Header="{DynamicResource DriveInfo_Name}" />
-                        <DataGridTextColumn MinWidth="110"
-                                            Binding="{Binding Label}"
+                        <DataGridTextColumn Binding="{Binding Label}"
+                                            MinWidth="110"
                                             Header="{DynamicResource DriveInfo_Label}"
                                             HeaderStyle="{StaticResource alignHeaderLeft}" />
                         <DataGridTextColumn Binding="{Binding DriveType}"
@@ -102,29 +98,21 @@
                                                                  Source={x:Static config:UserSettings.Setting},
                                                                  Converter={StaticResource BooleanToVisibilityConverter}}" />
 
-                        <DataGridTextColumn x:Name="colSize"
-                                            Binding="{Binding TotalSize,
-                                                              StringFormat=N2,
-                                                              ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}}"
+                        <DataGridTextColumn x:Name="colSize" Binding="{Binding TotalSize, StringFormat=N2, ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}}"
                                             ElementStyle="{StaticResource alignRight}"
                                             Header="{Binding Use1024,
                                                              Source={x:Static config:UserSettings.Setting},
                                                              Converter={StaticResource BoolToString},
                                                              ConverterParameter=Size}"
                                             HeaderStyle="{StaticResource alignHeaderRight}" />
-                        <DataGridTextColumn x:Name="colFree"
-                                            Binding="{Binding GBFree,
-                                                              StringFormat=N2,
-                                                              ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}}"
+                        <DataGridTextColumn x:Name="colFree" Binding="{Binding GBFree, StringFormat=N2, ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}}"
                                             ElementStyle="{StaticResource alignRight}"
                                             Header="{Binding Use1024,
                                                              Source={x:Static config:UserSettings.Setting},
                                                              Converter={StaticResource BoolToString},
                                                              ConverterParameter=Free}"
                                             HeaderStyle="{StaticResource alignHeaderRight}" />
-                        <DataGridTextColumn Binding="{Binding PercentFree,
-                                                              StringFormat=P1,
-                                                              ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}}"
+                        <DataGridTextColumn Binding="{Binding PercentFree, StringFormat=P1, ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}}"
                                             ElementStyle="{StaticResource alignRight}"
                                             Header="{DynamicResource DriveInfo_FreePercent}"
                                             HeaderStyle="{StaticResource alignHeaderRight}" />
@@ -145,8 +133,7 @@
                 <Grid>
                     <!--#region Row definitions-->
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"
-                                       MinHeight="100" />
+                        <RowDefinition Height="*" MinHeight="100" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition x:Name="DetailsRow"
                                        Height="{Binding DetailsHeight,
@@ -167,12 +154,10 @@
                               CanUserResizeRows="False"
                               CanUserSortColumns="True"
                               CellStyle="{StaticResource DisplayOnly2}"
-                              FontSize="14"
-                              HeadersVisibility="Column"
+                              FontSize="14" HeadersVisibility="Column"
                               IsReadOnly="True"
                               ItemsSource="{x:Static models:CombinedInfo.PhysicalDrivesList}"
-                              SelectedIndex="0"
-                              SelectionMode="Single"
+                              SelectedIndex="0" SelectionMode="Single"
                               SelectionUnit="FullRow">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Message}"
@@ -183,10 +168,7 @@
                             <DataGridTextColumn Binding="{Binding Index}"
                                                 ElementStyle="{StaticResource alignCenter}"
                                                 Header="{DynamicResource DriveInfo_DeviceID}" />
-                            <DataGridTextColumn x:Name="colPSize"
-                                                Binding="{Binding Size,
-                                                                  StringFormat=N2,
-                                                                  ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}}"
+                            <DataGridTextColumn x:Name="colPSize" Binding="{Binding Size, StringFormat=N2, ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}}"
                                                 ElementStyle="{StaticResource alignRight}"
                                                 Header="{Binding Use1024,
                                                                  Source={x:Static config:UserSettings.Setting},
@@ -293,102 +275,78 @@
                                 </Grid.RowDefinitions>
                                 <!--#endregion-->
 
-                                <TextBlock Grid.Row="0"
-                                           Grid.Column="1"
+                                <TextBlock Grid.Row="0" Grid.Column="1"
                                            VerticalAlignment="Center"
                                            Text="{DynamicResource DriveInfo_DeviceID}" />
-                                <TextBlock Grid.Row="0"
-                                           Grid.Column="3"
+                                <TextBlock Grid.Row="0" Grid.Column="3"
                                            Text="{Binding Index}" />
 
-                                <TextBlock Grid.Row="1"
-                                           Grid.Column="1"
+                                <TextBlock Grid.Row="1" Grid.Column="1"
                                            VerticalAlignment="Center"
                                            Text="{DynamicResource DriveInfo_Size}" />
-                                <TextBlock Grid.Row="1"
-                                           Grid.Column="3">
+                                <TextBlock Grid.Row="1" Grid.Column="3">
                                     <Run Text="{Binding Size}" />
                                     <Run Text="{Binding Use1024, Source={x:Static config:UserSettings.Setting}, Converter={StaticResource BoolToString}, ConverterParameter=G_Only}" />
                                 </TextBlock>
 
-                                <TextBlock Grid.Row="2"
-                                           Grid.Column="1"
+                                <TextBlock Grid.Row="2" Grid.Column="1"
                                            VerticalAlignment="Center"
                                            Text="{DynamicResource DriveInfo_Partitions}" />
-                                <TextBlock Grid.Row="2"
-                                           Grid.Column="3"
+                                <TextBlock Grid.Row="2" Grid.Column="3"
                                            Text="{Binding Partitions}" />
 
-                                <TextBlock Grid.Row="3"
-                                           Grid.Column="1"
+                                <TextBlock Grid.Row="3" Grid.Column="1"
                                            VerticalAlignment="Center"
                                            Text="{DynamicResource DriveInfo_MediaType}" />
-                                <TextBlock Grid.Row="3"
-                                           Grid.Column="3"
+                                <TextBlock Grid.Row="3" Grid.Column="3"
                                            Text="{Binding MediaType}" />
 
-                                <TextBlock Grid.Row="4"
-                                           Grid.Column="1"
+                                <TextBlock Grid.Row="4" Grid.Column="1"
                                            VerticalAlignment="Center"
                                            Text="{DynamicResource DriveInfo_DiskType}" />
-                                <TextBlock Grid.Row="4"
-                                           Grid.Column="3"
+                                <TextBlock Grid.Row="4" Grid.Column="3"
                                            Text="{Binding DiskType}" />
 
-                                <TextBlock Grid.Row="5"
-                                           Grid.Column="1"
+                                <TextBlock Grid.Row="5" Grid.Column="1"
                                            VerticalAlignment="Center"
                                            Text="{DynamicResource DriveInfo_Interface}" />
-                                <TextBlock Grid.Row="5"
-                                           Grid.Column="3"
+                                <TextBlock Grid.Row="5" Grid.Column="3"
                                            Text="{Binding Interface}" />
 
-                                <TextBlock Grid.Row="6"
-                                           Grid.Column="1"
+                                <TextBlock Grid.Row="6" Grid.Column="1"
                                            VerticalAlignment="Center"
                                            Text="{DynamicResource DriveInfo_BusType}" />
-                                <TextBlock Grid.Row="6"
-                                           Grid.Column="3"
+                                <TextBlock Grid.Row="6" Grid.Column="3"
                                            Text="{Binding BusType}" />
 
-                                <TextBlock Grid.Row="7"
-                                           Grid.Column="1"
+                                <TextBlock Grid.Row="7" Grid.Column="1"
                                            VerticalAlignment="Center"
                                            Text="{DynamicResource DriveInfo_Health}" />
-                                <TextBlock Grid.Row="7"
-                                           Grid.Column="3"
+                                <TextBlock Grid.Row="7" Grid.Column="3"
                                            Text="{Binding Health}" />
 
-                                <TextBlock Grid.Row="8"
-                                           Grid.Column="1"
+                                <TextBlock Grid.Row="8" Grid.Column="1"
                                            VerticalAlignment="Center"
                                            Text="{DynamicResource DriveInfo_PartitionStyle}" />
-                                <TextBlock Grid.Row="8"
-                                           Grid.Column="3"
+                                <TextBlock Grid.Row="8" Grid.Column="3"
                                            Text="{Binding PartitionStyle}" />
 
-                                <TextBlock Grid.Row="9"
-                                           Grid.Column="1"
+                                <TextBlock Grid.Row="9" Grid.Column="1"
                                            VerticalAlignment="Center"
                                            Text="{DynamicResource DriveInfo_BootDrive}" />
-                                <TextBlock Grid.Row="9"
-                                           Grid.Column="3"
+                                <TextBlock Grid.Row="9" Grid.Column="3"
                                            Text="{Binding IsBoot}" />
 
-                                <TextBlock Grid.Row="10"
-                                           Grid.Column="1"
+                                <TextBlock Grid.Row="10" Grid.Column="1"
                                            VerticalAlignment="Center"
                                            Text="{DynamicResource DriveInfo_Model}" />
-                                <TextBlock Grid.Row="10"
-                                           Grid.Column="3"
+                                <TextBlock Grid.Row="10" Grid.Column="3"
                                            Text="{Binding Model}" />
 
-                                <TextBlock Grid.Row="11"
-                                           Grid.Column="1"
+                                <TextBlock Grid.Row="11" Grid.Column="1"
                                            VerticalAlignment="Center"
                                            Text="{DynamicResource DriveInfo_Name}" />
-                                <TextBlock Grid.Row="11"
-                                           Grid.Column="3"
+                                <TextBlock Grid.Row="11" Grid.Column="3"
                                            Text="{Binding Name}" />
                             </Grid>
                         </ScrollViewer>

@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-                    xmlns:convert="clr-namespace:TimVer.Converters">
+                    xmlns:convert="clr-namespace:TimVer.Converters"
+                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
 
     <convert:TodayConverter x:Key="TodayConverter" />
 
@@ -14,8 +14,8 @@
             <Trigger Property="IsSelected" Value="True">
                 <Setter Property="Background" Value="{DynamicResource MaterialDesignPaper}" />
                 <Setter Property="BorderBrush" Value="{DynamicResource MaterialDesignPaper}" />
-        </Trigger>
-            </Style.Triggers>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <Style TargetType="DataGridCell"
@@ -65,7 +65,7 @@
     </Style>
     <!--#endregion-->
 
-    <!--#region  Style to alight datagrid column headers right  -->
+    <!--#region  Style to alight datagrid column headers right-->
     <Style TargetType="DataGridColumnHeader"
            x:Key="alignHeaderRight"
            BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
@@ -73,7 +73,7 @@
     </Style>
     <!--#endregion-->
 
-    <!--#region  Style to align datagrid column headers left  -->
+    <!--#region  Style to align datagrid column headers left-->
     <Style TargetType="DataGridColumnHeader"
            x:Key="alignHeaderLeft"
            BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
@@ -82,7 +82,7 @@
     </Style>
     <!--#endregion-->
 
-    <!--#region  Style to alight text boxes in a datagrid right  -->
+    <!--#region  Style to alight text boxes in a datagrid right-->
     <Style TargetType="TextBlock"
            x:Key="alignRight"
            BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -90,7 +90,7 @@
     </Style>
     <!--#endregion-->
 
-    <!--#region Style to alight text boxes in a datagrid center  -->
+    <!--#region Style to alight text boxes in a datagrid center-->
     <Style TargetType="TextBlock"
            x:Key="alignCenter"
            BasedOn="{StaticResource {x:Type TextBlock}}">

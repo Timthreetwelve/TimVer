@@ -73,8 +73,7 @@
                 <TextBlock x:Name="txtTitle"
                            HorizontalAlignment="Left"
                            VerticalAlignment="Center"
-                           FontSize="16"
-                           FontWeight="SemiBold"
+                           FontSize="16" FontWeight="SemiBold"
                            Style="{DynamicResource MaterialDesignTitleTextBlock}"
                            Text="Title Text"
                            TextTrimming="CharacterEllipsis" />

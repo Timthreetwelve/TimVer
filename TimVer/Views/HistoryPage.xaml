@@ -23,7 +23,8 @@
 
     <Grid>
         <!--#region DataGrid-->
-        <DataGrid Margin="0" x:Name="HistoryGrid"
+        <DataGrid x:Name="HistoryGrid"
+                  Margin="0"
                   materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
                   materialDesign:DataGridAssist.ColumnHeaderPadding="15,0,0,5"
                   AutoGenerateColumns="False"
@@ -54,11 +55,10 @@
         <!--#region Item counter-->
         <TextBlock Grid.Row="0"
                    Width="auto"
-                   VerticalAlignment="Top"
                    Margin="0,0,15,0"
                    HorizontalAlignment="Right"
-                   FontWeight="SemiBold"
-                   FontSize="14">
+                   VerticalAlignment="Top"
+                   FontSize="14" FontWeight="SemiBold">
             <Run Text="{Binding Items.Count, ElementName=HistoryGrid, Mode=OneWay}" />
             <Run Text="{DynamicResource BuildHistory_Records}" />
         </TextBlock>
