@@ -71,8 +71,7 @@
                   CanUserSortColumns="True"
                   CellStyle="{StaticResource DisplayOnly}"
                   IsReadOnly="True"
-                  ItemsSource="{Binding Source={x:Static models:EnvVariable.EnvVariableList}}"
-                  RowStyle="{StaticResource DisplayOnlyRows}">
+                  ItemsSource="{Binding Source={x:Static models:EnvVariable.EnvVariableList}}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Variable}"
                                     Header="{DynamicResource EnvironmentInfo_Variable}" />

@@ -219,8 +219,7 @@
                               CellStyle="{StaticResource DisplayOnly}"
                               HeadersVisibility="None"
                               IsReadOnly="True"
-                              ItemsSource="{x:Static models:UILanguage.DefinedLanguages}"
-                              RowStyle="{StaticResource DisplayOnlyRows}">
+                              ItemsSource="{x:Static models:UILanguage.DefinedLanguages}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding LanguageNative}"
                                                 MinWidth="80" />

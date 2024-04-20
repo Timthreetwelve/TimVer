@@ -10,31 +10,8 @@
            x:Key="DisplayOnly"
            BasedOn="{StaticResource {x:Type DataGridCell}}">
         <Setter Property="Focusable" Value="False" />
-        <Style.Triggers>
-            <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="{DynamicResource MaterialDesign.Brush.Background}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource MaterialDesign.Brush.Background}" />
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-
-    <Style TargetType="DataGridCell"
-           x:Key="DisplayOnly2"
-           BasedOn="{StaticResource {x:Type DataGridCell}}">
-        <Setter Property="Focusable" Value="False" />
     </Style>
     <!--#endregion-->
-
-    <!--#region Row styles-->
-    <Style TargetType="DataGridRow"
-           x:Key="DisplayOnlyRows"
-           BasedOn="{StaticResource {x:Type DataGridRow}}">
-        <Style.Triggers>
-            <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="{DynamicResource MaterialDesign.Brush.Background}" />
-            </Trigger>
-        </Style.Triggers>
-    </Style>
 
     <Style TargetType="DataGridRow"
            x:Key="HistoryRows"
@@ -44,9 +21,6 @@
                          Value="True">
                 <Setter Property="FontWeight" Value="Bold" />
             </DataTrigger>
-            <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="{DynamicResource MaterialDesign.Brush.Background}" />
-            </Trigger>
         </Style.Triggers>
     </Style>
 
@@ -58,9 +32,6 @@
                          Value="Not Ready">
                 <Setter Property="Foreground" Value="Gray" />
             </DataTrigger>
-            <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="{DynamicResource MaterialDesign.Brush.Background}" />
-            </Trigger>
         </Style.Triggers>
     </Style>
     <!--#endregion-->

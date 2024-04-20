@@ -76,7 +76,6 @@
                           IsReadOnly="True"
                           ItemsSource="{x:Static models:CombinedInfo.LogicalDrivesList}"
                           RowStyle="{StaticResource LogicalDriveRows}">
-
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Name}"
                                             ElementStyle="{StaticResource alignCenter}"
@@ -153,7 +152,7 @@
                               Background="{DynamicResource MaterialDesign.Brush.Card.Background}"
                               CanUserResizeRows="False"
                               CanUserSortColumns="True"
-                              CellStyle="{StaticResource DisplayOnly2}"
+                              CellStyle="{StaticResource DisplayOnly}"
                               FontSize="14" HeadersVisibility="Column"
                               IsReadOnly="True"
                               ItemsSource="{x:Static models:CombinedInfo.PhysicalDrivesList}"
