@@ -147,6 +147,7 @@
                               HorizontalAlignment="Stretch"
                               VerticalAlignment="Stretch"
                               d:ItemsSource="{d:SampleData ItemCount=3}"
+                              materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
                               materialDesign:ThemeAssist.Theme="Inherit"
                               AutoGenerateColumns="False"
                               Background="{DynamicResource MaterialDesign.Brush.Card.Background}"
