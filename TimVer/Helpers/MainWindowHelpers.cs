@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Helpers;
 
@@ -27,12 +27,7 @@ internal static class MainWindowHelpers
             }
             Application.Current.Shutdown();
         }
-        else
-        {
-            ToggleHistory();
-
-            TempSettings.Setting.RunAccessPermitted = RegistryHelpers.RegRunAccessPermitted();
-        }
+        TempSettings.Setting.RunAccessPermitted = RegistryHelpers.RegRunAccessPermitted();
     }
     #endregion Startup
 
@@ -82,14 +77,11 @@ internal static class MainWindowHelpers
     public static string WindowTitleVersionAdmin()
     {
         // Set the windows title
-        if (IsAdministrator())
-        {
-            return $"{AppInfo.AppName} {AppInfo.AppProductVersion} - ({GetStringResource("MsgText_WindowTitleAdministrator")})";
-        }
-
-        return $"{AppInfo.AppName} {AppInfo.AppProductVersion}";
+        return AppInfo.IsAdmin
+            ? $"{AppInfo.AppProduct}  {AppInfo.AppProductVersion} - ({GetStringResource("MsgText_WindowTitleAdministrator")})"
+            : $"{AppInfo.AppProduct}  {AppInfo.AppProductVersion}";
     }
-    #endregion Window Title
+    #endregion Window title
 
     #region Event handlers
     /// <summary>
@@ -101,8 +93,16 @@ internal static class MainWindowHelpers
         UserSettings.Setting.PropertyChanged += SettingChange.UserSettingChanged;
         TempSettings.Setting.PropertyChanged += SettingChange.TempSettingChanged;
 
+        // Window initialized event
+        _mainWindow.Loaded += MainWindow_Initialized;
+
         // Window closing event
         _mainWindow.Closing += MainWindow_Closing;
+    }
+
+    private static void MainWindow_Initialized(object sender, EventArgs e)
+    {
+        ToggleHistory();
     }
     #endregion Event handlers
 
@@ -110,7 +110,8 @@ internal static class MainWindowHelpers
     private static void MainWindow_Closing(object sender, CancelEventArgs e)
     {
         // Clear any remaining messages
-        _mainWindow.SnackBar1.MessageQueue.Clear();
+        Snackbar snackbar = MainWindowUIHelpers.FindChild<Snackbar>(Application.Current.MainWindow, "SnackBar1");
+        snackbar.MessageQueue.Clear();
 
         // Stop the _stopwatch and record elapsed time
         _stopwatch.Stop();
@@ -141,7 +142,7 @@ internal static class MainWindowHelpers
         _log.Debug($"{AppInfo.AppName} was started from {AppInfo.AppPath}");
         _log.Debug($"{AppInfo.AppName} Build date: {BuildInfo.BuildDateStringUtc}");
         _log.Debug($"{AppInfo.AppName} Commit ID: {BuildInfo.CommitIDString}");
-        if (IsAdministrator())
+        if (AppInfo.IsAdmin)
         {
             _log.Debug($"{AppInfo.AppName} is running as Administrator");
         }
@@ -161,17 +162,18 @@ internal static class MainWindowHelpers
     /// </remarks>
     public static void ToggleHistory()
     {
+        ListBox NavBox = MainWindowUIHelpers.FindChild<ListBox>(Application.Current.MainWindow, "NavigationListBox");
         if (!UserSettings.Setting.KeepHistory)
         {
             NavigationViewModel.PopulateNoHistoryList();
-            _mainWindow.NavigationListBox.ItemsSource = NavigationViewModel.NavigationListNoHistory;
-            _mainWindow.NavigationListBox.Items.Refresh();
+            NavBox.ItemsSource = NavigationViewModel.NavigationListNoHistory;
+            NavBox.Items.Refresh();
             _log.Debug("Keep History option is false.");
         }
         else
         {
-            _mainWindow.NavigationListBox.ItemsSource = NavigationViewModel.NavigationViewModelTypes;
-            _mainWindow.NavigationListBox.Items.Refresh();
+            NavBox.ItemsSource = NavigationViewModel.NavigationViewModelTypes;
+            NavBox.Items.Refresh();
             HistoryViewModel.WriteHistory();
         }
     }
