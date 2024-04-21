@@ -45,6 +45,9 @@ public partial class App : Application
     {
         base.OnStartup(e);
 
+        // Unhandled exception handler
+        AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
         // Initialize settings here so that saved language can be accessed below.
         ConfigHelpers.InitializeSettings();
 
@@ -147,12 +150,38 @@ public partial class App : Application
                 {
                     _log.Error(ex, $"Error loading test language file {TestLanguageFile}");
                     string msg = string.Format($"{GetStringResource("MsgText_Error_TestLanguage")}\n\n{ex.Message}\n\n{ex.InnerException}");
-                    MessageBox.Show(msg,
-                        "Get My IP ERROR",
+                    _ = MessageBox.Show(msg,
+                        GetStringResource("MsgText_ErrorCaption"),
                         MessageBoxButton.OK,
                         MessageBoxImage.Error);
                 }
             }
         }
     }
+
+    #region Unhandled Exception Handler
+    /// <summary>
+    /// Handles any exceptions that weren't caught by a try-catch statement.
+    /// </summary>
+    /// <remarks>
+    /// This uses default message box.
+    /// </remarks>
+    internal static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs args)
+    {
+        _log.Error("Unhandled Exception");
+        Exception e = (Exception)args.ExceptionObject;
+        _log.Error(e.Message);
+        if (e.InnerException != null)
+        {
+            _log.Error(e.InnerException.ToString());
+        }
+        _log.Error(e.StackTrace);
+
+        string msg = string.Format($"{GetStringResource("MsgText_ErrorGeneral")}\n{e.Message}\n{GetStringResource("MsgText_SeeLogFile")}");
+        _ = MessageBox.Show(msg,
+            GetStringResource("MsgText_ErrorCaption"),
+            MessageBoxButton.OK,
+            MessageBoxImage.Error);
+    }
+    #endregion Unhandled Exception Handler
 }
