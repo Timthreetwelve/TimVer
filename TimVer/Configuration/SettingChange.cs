@@ -1,5 +1,5 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
-
+#nullable enable
 namespace TimVer.Configuration;
 
 /// <summary>
@@ -13,21 +13,21 @@ public static class SettingChange
     /// </summary>
     public static void UserSettingChanged(object sender, PropertyChangedEventArgs e)
     {
-        object newValue = MainWindowHelpers.GetPropertyValue(sender, e);
+        object? newValue = GetPropertyValue(sender, e);
         _log.Debug($"Setting change: {e.PropertyName} New Value: {newValue}");
 
         switch (e.PropertyName)
         {
             case nameof(UserSettings.Setting.IncludeDebug):
-                NLogHelpers.SetLogLevel((bool)newValue);
+                SetLogLevel((bool)newValue!);
                 break;
 
             case nameof(UserSettings.Setting.UITheme):
-                MainWindowUIHelpers.SetBaseTheme((ThemeType)newValue);
+                MainWindowUIHelpers.SetBaseTheme((ThemeType)newValue!);
                 break;
 
             case nameof(UserSettings.Setting.PrimaryColor):
-                MainWindowUIHelpers.SetPrimaryColor((AccentColor)newValue);
+                MainWindowUIHelpers.SetPrimaryColor((AccentColor)newValue!);
                 break;
 
             case nameof(UserSettings.Setting.UISize):
@@ -66,9 +66,22 @@ public static class SettingChange
     /// </summary>
     internal static void TempSettingChanged(object sender, PropertyChangedEventArgs e)
     {
-        object newValue = MainWindowHelpers.GetPropertyValue(sender, e);
+        object? newValue = GetPropertyValue(sender, e);
         // Write to trace level to avoid unnecessary message in log file
         _log.Trace($"Temp Setting change: {e.PropertyName} New Value: {newValue}");
     }
     #endregion Temp setting change
+
+    #region Get property value
+    /// <summary>
+    /// Gets the value of the property
+    /// </summary>
+    /// <returns>An object containing the value of the property</returns>
+    public static object? GetPropertyValue(object sender, PropertyChangedEventArgs e)
+    {
+        PropertyInfo? prop = sender.GetType().GetProperty(e.PropertyName!);
+        return prop?.GetValue(sender, null);
+    }
+
+    #endregion Get property value
 }
