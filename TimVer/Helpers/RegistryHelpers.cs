@@ -17,7 +17,7 @@ public static class RegistryHelpers
     /// </summary>
     /// <remarks>
     ///  This needed so an entry in HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
-    ///  isn't created for a application on a removeable drive.
+    ///  isn't created for a application on a removable drive.
     /// </remarks>
     /// <returns>
     /// true if the drive letter corresponds to a fixed drive; otherwise false.
