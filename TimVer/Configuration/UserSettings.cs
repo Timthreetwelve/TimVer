@@ -58,6 +58,9 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private bool _showFormat = true;
 
     [ObservableProperty]
+    private bool _showFriendlyName = true;
+
+    [ObservableProperty]
     private bool _showHealth;
 
     [ObservableProperty]
@@ -77,6 +80,9 @@ public partial class UserSettings : ConfigManager<UserSettings>
 
     [ObservableProperty]
     private bool _showPartitionStyle;
+
+    [ObservableProperty]
+    private bool _showSerialNumber;
 
     [ObservableProperty]
     private bool _showTypeL = true;
