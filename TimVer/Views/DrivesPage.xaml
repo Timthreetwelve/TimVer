@@ -10,7 +10,7 @@
              xmlns:models="clr-namespace:TimVer.Models"
              xmlns:viewmodels="clr-namespace:TimVer.ViewModels"
              mc:Ignorable="d"
-             d:DesignHeight="650" d:DesignWidth="700"
+             d:DesignHeight="750" d:DesignWidth="700"
              Background="{DynamicResource MaterialDesign.Brush.Background}"
              FontFamily="Segoe UI"
              TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
@@ -225,6 +225,16 @@
                                                 Visibility="{Binding ShowName,
                                                                      Source={x:Static config:UserSettings.Setting},
                                                                      Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            <DataGridTextColumn Binding="{Binding FriendlyName}"
+                                                Header="{DynamicResource DriveInfo_FriendlyName}"
+                                                Visibility="{Binding ShowFriendlyName,
+                                                                     Source={x:Static config:UserSettings.Setting},
+                                                                     Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            <DataGridTextColumn Binding="{Binding SerialNumber}"
+                                                Header="{DynamicResource DriveInfo_SerialNumber}"
+                                                Visibility="{Binding ShowSerialNumber,
+                                                                     Source={x:Static config:UserSettings.Setting},
+                                                                     Converter={StaticResource BooleanToVisibilityConverter}}" />
                         </DataGrid.Columns>
                     </DataGrid>
                     <!--#endregion-->
@@ -260,6 +270,9 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="24" />
+                                    <RowDefinition Height="24" />
+                                    <RowDefinition Height="24" />
                                     <RowDefinition Height="24" />
                                     <RowDefinition Height="24" />
                                     <RowDefinition Height="24" />
@@ -339,15 +352,33 @@
 
                                 <TextBlock Grid.Row="10" Grid.Column="1"
                                            VerticalAlignment="Center"
-                                           Text="{DynamicResource DriveInfo_Model}" />
+                                           Text="{DynamicResource DriveInfo_SystemDrive}" />
                                 <TextBlock Grid.Row="10" Grid.Column="3"
-                                           Text="{Binding Model}" />
+                                           Text="{Binding IsSystem}" />
 
                                 <TextBlock Grid.Row="11" Grid.Column="1"
                                            VerticalAlignment="Center"
-                                           Text="{DynamicResource DriveInfo_Name}" />
+                                           Text="{DynamicResource DriveInfo_Model}" />
                                 <TextBlock Grid.Row="11" Grid.Column="3"
+                                           Text="{Binding Model}" />
+
+                                <TextBlock Grid.Row="12" Grid.Column="1"
+                                           VerticalAlignment="Center"
+                                           Text="{DynamicResource DriveInfo_Name}" />
+                                <TextBlock Grid.Row="12" Grid.Column="3"
                                            Text="{Binding Name}" />
+
+                                <TextBlock Grid.Row="13" Grid.Column="1"
+                                           VerticalAlignment="Center"
+                                           Text="{DynamicResource DriveInfo_FriendlyName}" />
+                                <TextBlock Grid.Row="13" Grid.Column="3"
+                                           Text="{Binding FriendlyName}" />
+
+                                <TextBlock Grid.Row="14" Grid.Column="1"
+                                           VerticalAlignment="Center"
+                                           Text="{DynamicResource DriveInfo_SerialNumber}" />
+                                <TextBlock Grid.Row="14" Grid.Column="3"
+                                           Text="{Binding SerialNumber}" />
                             </Grid>
                         </ScrollViewer>
                     </Grid>

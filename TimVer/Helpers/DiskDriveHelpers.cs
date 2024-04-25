@@ -3,7 +3,7 @@
 namespace TimVer.Helpers;
 
 /// <summary>
-/// Class for gathering information from disk drives.
+/// Class for gathering information about physical and logical disk drives.
 /// </summary>
 public static class DiskDriveHelpers
 {
@@ -21,8 +21,10 @@ public static class DiskDriveHelpers
         {
             return false;
         }
-        foreach (DriveInfo driveInfo in DriveInfo.GetDrives())
+        DriveInfo[] driveArray = DriveInfo.GetDrives();
+        for (int i = 0; i < driveArray.Length; i++)
         {
+            DriveInfo driveInfo = driveArray[i];
             if (driveInfo.Name.StartsWith(drive.ToString(), StringComparison.OrdinalIgnoreCase))
             {
                 return driveInfo.DriveType == DriveType.Fixed;
@@ -64,12 +66,12 @@ public static class DiskDriveHelpers
             _log.Error(ex, "Unknown error");
             string msg = GetStringResource("DriveInfo_UnknownError");
             _ = Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() =>
-            _ = MessageBox.Show($"Unknown error\n{ex.Message}",
+            _ = MessageBox.Show($"{msg}\n{ex.Message}",
                                 GetStringResource("DriveInfo_Error"),
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error)));
         }
-        return null;
+        return [];
     }
     #endregion Get array of logical drives
 
@@ -153,7 +155,16 @@ public static class DiskDriveHelpers
             return new()
             {
                 Name = d.Name,
-                DriveType = ConvertDriveType(d.DriveType),
+                DriveType = d.DriveType switch
+                {
+                    DriveType.Fixed => GetStringResource("DriveInfo_DriveType_Fixed"),
+                    DriveType.Network => GetStringResource("DriveInfo_DriveType_Network"),
+                    DriveType.Removable => GetStringResource("DriveInfo_DriveType_Removable"),
+                    DriveType.CDRom => GetStringResource("DriveInfo_DriveType_CDRom"),
+                    DriveType.Ram => GetStringResource("DriveInfo_DriveType_Ram"),
+                    DriveType.NoRootDirectory => GetStringResource("DriveInfo_DriveType_NoRootDirectory"),
+                    _ => GetStringResource("DriveInfo_DriveType_Unknown")
+                },
                 Format = d.DriveFormat,
                 Label = d.VolumeLabel,
                 TotalSize = Math.Round(d.TotalSize / Math.Pow(GBPref, 3), 2),
@@ -175,258 +186,262 @@ public static class DiskDriveHelpers
     }
     #endregion Get details for an individual drive
 
-    #region Get Physical disk info from WMI
+    #region Assembly the physical disk information
     /// <summary>
-    /// Gets the physical disk information.
+    /// Gathers the physical disk information.
     /// </summary>
+    /// <returns>List of properties and values of type PhysicalDrives</returns>
     public static List<PhysicalDrives> GetPhysicalDriveInfo()
     {
         if (UserSettings.Setting.GetPhysicalDrives)
         {
             MainWindowUIHelpers.MainWindowWaitPointer();
             Stopwatch watch = Stopwatch.StartNew();
+
+            // List of physical drive properties
             List<PhysicalDrives> physicalDrives = [];
-            const string query = "SELECT InterfaceType, MediaType, Model, Name, Status, Index, Partitions, Size FROM Win32_DiskDrive";
-            using (CimSession cimSession = CimSession.Create(null))
+
+            // get a list of drive indexes from WMI
+            List<uint> driveList = GetDriveIndicies();
+
+            foreach (uint index in driveList)
             {
-                IEnumerable<CimInstance> win32Drives = cimSession.QueryInstances("root/CIMV2", "WQL", query);
-                int gbPref = UserSettings.Setting.Use1024 ? 1024 : 1000;
-                foreach (var drive in win32Drives)
-                {
-                    PhysicalDrives pDisk = new()
-                    {
-                        Interface = CimStringProp(drive, "InterfaceType"),
-                        MediaType = CimStringProp(drive, "MediaType").Replace("media", "", StringComparison.OrdinalIgnoreCase),
-                        Model = CimStringProp(drive, "Model"),
-                        Name = CimStringProp(drive, "Name"),
-                        Status = CimStringProp(drive, "Status"),
-                        Index = (uint)drive.CimInstanceProperties["Index"].Value,
-                        Partitions = (uint)drive.CimInstanceProperties["Partitions"].Value,
-                        Size = Math.Round(Convert.ToDouble(drive.CimInstanceProperties["Size"].Value) / Math.Pow(gbPref, 3), 2)
-                    };
-                    Dictionary<string, string> win32DiskDrive = GetWin32DiskDrive(pDisk.Index);
-                    pDisk.BusType = win32DiskDrive["BusType"];
-                    pDisk.DiskType = win32DiskDrive["MediaType"];
-                    pDisk.Health = win32DiskDrive["Health"];
-                    pDisk.PartitionStyle = win32DiskDrive["PartitionStyle"];
-                    pDisk.IsBoot = win32DiskDrive["IsBoot"];
-                    physicalDrives.Add(pDisk);
-                }
+                PhysicalDrives pDisk = new();
+                Dictionary<string, string> results = [];
+
+                results = results.Concat(GetMSFTDisk(index))
+                    .ToDictionary(x => x.Key, x => x.Value);
+
+                results = results.Concat(GetMSFTPhysicalDisk(index))
+                    .ToDictionary(x => x.Key, x => x.Value);
+
+                results = results.Concat(GetWin32DiskDrive(index))
+                    .ToDictionary(x => x.Key, x => x.Value);
+
+                pDisk.BusType = results["BusType"];
+                pDisk.DiskType = results["DiskType"];
+                pDisk.FriendlyName = results["FriendlyName"];
+                pDisk.Health = results["HealthStatus"];
+                pDisk.Index = index;
+                pDisk.Interface = results["Interface"];
+                pDisk.IsBoot = results["IsBoot"];
+                pDisk.IsSystem = results["IsSystem"];
+                pDisk.MediaType = results["MediaType"];
+                pDisk.Model = results["Model"];
+                pDisk.Name = results["Name"];
+                pDisk.Partitions = Convert.ToUInt16(results["Partitions"]);
+                pDisk.PartitionStyle = results["PartitionStyle"];
+                pDisk.SerialNumber = results["SerialNumber"];
+                pDisk.Size = Convert.ToDouble(results["Size"]);
+                physicalDrives.Add(pDisk);
             }
+
             watch.Stop();
-            string drv = physicalDrives.Count != 1 ? "drives" : "drive";
-            _log.Debug($"Found {physicalDrives.Count} physical {drv} in {watch.Elapsed.TotalMilliseconds:N2} ms");
+            string drv = driveList.Count != 1 ? "drives" : "drive";
+            _log.Debug($"Found {driveList.Count} physical {drv} in {watch.Elapsed.TotalMilliseconds:N2} ms");
             MainWindowUIHelpers.MainWindowNormalPointer();
-            return physicalDrives.OrderBy(i => i.Index).ToList();
-        }
-        else
-        {
-            List<PhysicalDrives> physicalDrives = [];
-            PhysicalDrives emptyList = new()
-            {
-                Message = GetStringResource("DriveInfo_PhysicalDisabled")
-            };
-            physicalDrives.Add(emptyList);
             return physicalDrives;
         }
-    }
 
-    private static string CimStringProp(CimInstance instance, string name)
-    {
-        return instance.CimInstanceProperties[name].Value.ToString();
-    }
-    #endregion Get Physical disk info from WMI
-
-    private static Dictionary<string, string> GetMSFTDisk(uint number)
-    {
-        Dictionary<string, string> driveInfo = [];
-
-        const string scope = @"\\.\root\Microsoft\Windows\Storage";
-        string query = $"SELECT IsBoot, IsSystem, PartitionStyle, Model FROM MSFT_Disk WHERE Number = {number}";
-
-        using ManagementObjectSearcher searcher = new(scope, query);
-        foreach (ManagementBaseObject drive in searcher.Get())
+        // Gathering physical drive info is disabled
+        PhysicalDrives drives = new()
         {
-            driveInfo.Add("IsBoot", drive["IsBoot"].ToString());
-            driveInfo.Add("IsSystem", drive["IsSystem"].ToString());
-            driveInfo.Add("PartitionStyle", drive["PartitionStyle"].ToString());
-        }
-        return driveInfo;
+            Message = GetStringResource("DriveInfo_PhysicalDisabled")
+        };
+        return [drives];
     }
+    #endregion Assembly the physical disk information
 
-    #region Get additional info from MSFT_PhysicalDisk
+    #region Get list of drive indexes
     /// <summary>
-    /// Gets MSFT_PhysicalDisk info for the specified device.
+    /// Get list of drive indexes.
     /// </summary>
-    /// <param name="device">The device ID of the disk</param>
-    /// <returns>Dictionary of values.</returns>
-    private static Dictionary<string, string> GetWin32DiskDrive(uint device)
+    /// <remarks>This is needed because we can't depend on drives being consecutive or ordered.</remarks>
+    /// <returns>List of uint.</returns>
+    private static List<uint> GetDriveIndicies()
     {
-        Dictionary<string, string> driveInfo = [];
+        const string scope = @"\\.\root\CIMV2";
+        const string query = "SELECT Index FROM Win32_DiskDrive";
+        using CimSession cimSession = CimSession.Create(null);
+        List<uint> indexes = [];
+        indexes.AddRange(cimSession.QueryInstances(scope, "WQL", query)
+            .Select(drive => (uint)drive.CimInstanceProperties["Index"]?.Value!)
+            .OrderBy(i => i));
+        return indexes;
+    }
+    #endregion Get list of drive indexes
 
-        const string scope = @"\\.\root\Microsoft\Windows\Storage";
-        string query = $"SELECT MediaType, HealthStatus, BusType, SerialNumber, FriendlyName FROM MSFT_PhysicalDisk WHERE DeviceID = {device}";
-        string health = GetStringResource("MsgText_NotAvailable");
-        string mediaType = GetStringResource("MsgText_NotAvailable");
-        string busType = GetStringResource("MsgText_NotAvailable");
-        string isBoot = GetStringResource("MsgText_NotAvailable");
-        string isSystem = GetStringResource("MsgText_NotAvailable");
-        string partitionStyle = GetStringResource("MsgText_NotAvailable");
+    #region Get info from Win32_DiskDrive
+    /// <summary>
+    /// Gets Win32_DiskDrive info for the specified device.
+    /// </summary>
+    /// <param name="index">Index number of the disk.</param>
+    /// <returns>Dictionary of values.</returns>
+    private static Dictionary<string, string> GetWin32DiskDrive(uint index)
+    {
+        const string scope = @"\\.\root\CIMV2";
+        string query = $"SELECT InterfaceType, MediaType, Model, Name, Status, Partitions, Size FROM Win32_DiskDrive WHERE Index = {index}";
 
         try
         {
-            using ManagementObjectSearcher searcher = new(scope, query);
-            foreach (ManagementBaseObject drive in searcher.Get())
+            using CimSession cimSession = CimSession.Create(null);
+            int gbPref = UserSettings.Setting.Use1024 ? 1024 : 1000;
+            IEnumerable<CimInstance> diskInfo = cimSession.QueryInstances(scope, "WQL", query);
+            return diskInfo.Select(drive => new Dictionary<string, string>
             {
-                if (drive["MediaType"] != null)
+                ["Interface"] = CimStringProperty(drive, "InterfaceType"),
+                ["MediaType"] = CimStringProperty(drive, "MediaType").Replace("media", "", StringComparison.OrdinalIgnoreCase),
+                ["Model"] = CimStringProperty(drive, "Model"),
+                ["Name"] = CimStringProperty(drive, "Name"),
+                ["Partitions"] = CimStringProperty(drive, "Partitions"),
+                ["Status"] = CimStringProperty(drive, "Status"),
+                ["Size"] = Math.Round(Convert.ToDouble(drive.CimInstanceProperties["Size"].Value) / Math.Pow(gbPref, 3), 2).ToString()
+            }).FirstOrDefault();
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, $"Error retrieving MSFT_Disk data for device {index}");
+            return new()
+            {
+                { "Interface", ""},
+                { "MediaType", ""},
+                { "Model", ""},
+                { "Name", ""},
+                { "Partitions", ""},
+                { "Status", ""},
+                { "Size", ""}
+            };
+        }
+    }
+    #endregion Get info from Win32_DiskDrive
+
+    #region Get info from MSFT_Disk
+    /// <summary>
+    /// Gets MSFT_Disk info for the specified device.
+    /// </summary>
+    /// <param name="number">The number of the disk.</param>
+    /// <returns>Dictionary of values.</returns>
+    private static Dictionary<string, string> GetMSFTDisk(uint number)
+    {
+        const string scope = @"\\.\root\Microsoft\Windows\Storage";
+        string query = $"SELECT IsBoot, IsSystem, PartitionStyle, Model FROM MSFT_Disk WHERE Number = {number}";
+
+        try
+        {
+            using CimSession cim = CimSession.Create(null);
+            IEnumerable<CimInstance> diskInfo = cim.QueryInstances(scope, "WQL", query);
+            return diskInfo
+                .Select(drive => new Dictionary<string, string>
                 {
-                    switch (drive["MediaType"].ToString())
+                    ["IsBoot"] = CimStringProperty(drive, "IsBoot"),
+                    ["IsSystem"] = CimStringProperty(drive, "IsSystem"),
+                    ["PartitionStyle"] = CimStringProperty(drive, "PartitionStyle") switch
                     {
-                        case "3":
-                            mediaType = "HDD";
-                            break;
-                        case "4":
-                            mediaType = "SSD";
-                            break;
-                        case "5":
-                            mediaType = "SCM";
-                            break;
-                        default:
-                            mediaType = GetStringResource("DriveInfo_MediaType_Unspecified");
-                            break;
+                        "1" => "MBR",
+                        "2" => "GPT",
+                        _ => GetStringResource("DriveInfo_DriveType_Unknown")
                     }
-                }
-                if (drive["HealthStatus"] != null)
+                })
+                .FirstOrDefault();
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, $"Error retrieving MSFT_Disk data for device {number}");
+            return new()
+            {
+                { "IsBoot", ""},
+                { "IsSystem", ""},
+                { "PartitionStyle", ""}
+            };
+        }
+    }
+    #endregion Get info from MSFT_Disk
+
+    #region Get info from MSFT_PhysicalDisk
+    /// <summary>
+    /// Gets MSFT_PhysicalDisk info for the specified device.
+    /// </summary>
+    /// <param name="device">The device ID of the disk.</param>
+    /// <returns>Dictionary of values.</returns>
+    private static Dictionary<string, string> GetMSFTPhysicalDisk(uint device)
+    {
+        const string scope = @"\\.\root\Microsoft\Windows\Storage";
+        string query = $"SELECT MediaType, HealthStatus, BusType, SerialNumber, FriendlyName FROM MSFT_PhysicalDisk WHERE DeviceID = {device}";
+        try
+        {
+            using CimSession cim = CimSession.Create(null);
+            IEnumerable<CimInstance> diskInfo = cim.QueryInstances(scope, "WQL", query);
+            return diskInfo
+                .Select(drive => new Dictionary<string, string>
                 {
-                    switch (drive["HealthStatus"].ToString())
+                    ["SerialNumber"] = CimStringProperty(drive, "SerialNumber"),
+                    ["FriendlyName"] = CimStringProperty(drive, "FriendlyName"),
+                    // Be careful with the next one. There are two MediaType properties
+                    // so we change this one to DiskType
+                    ["DiskType"] = CimStringProperty(drive, "MediaType") switch
                     {
-                        case "0":
-                            health = GetStringResource("DriveInfo_Health_Healthy");
-                            break;
-                        case "1":
-                            health = GetStringResource("DriveInfo_Health_Warning");
-                            break;
-                        case "2":
-                            health = GetStringResource("DriveInfo_Health_Unhealthy");
-                            break;
-                        default:
-                            health = GetStringResource("DriveInfo_Health_Unknown");
-                            break;
-                    }
-                }
-                if (drive["BusType"] != null)
-                {
-                    switch (drive["BusType"].ToString())
+                        "3" => "HDD",
+                        "4" => "SSD",
+                        "5" => "SCM",
+                        _ => GetStringResource("DriveInfo_MediaType_Unspecified")
+                    },
+                    ["HealthStatus"] = CimStringProperty(drive, "HealthStatus") switch
                     {
-                        case "1":
-                            busType = "SCSI";
-                            break;
-                        case "2":
-                            busType = "ATAPI";
-                            break;
-                        case "3":
-                            busType = "ATA";
-                            break;
-                        case "4":
-                            busType = "IEEE 1394";
-                            break;
-                        case "5":
-                            busType = "SSA";
-                            break;
-                        case "6":
-                            busType = GetStringResource("DriveInfo_BusType_FiberChannel");
-                            break;
-                        case "7":
-                            busType = "USB";
-                            break;
-                        case "8":
-                            busType = "RAID";
-                            break;
-                        case "9":
-                            busType = "iSCSI";
-                            break;
-                        case "10":
-                            busType = GetStringResource("DriveInfo_BusType_SAS");
-                            break;
-                        case "11":
-                            busType = GetStringResource("DriveInfo_BusType_SATA");
-                            break;
-                        case "12":
-                            busType = GetStringResource("DriveInfo_BusType_SD");
-                            break;
-                        case "13":
-                            busType = GetStringResource("DriveInfo_BusType_MMC");
-                            break;
-                        case "15":
-                            busType = GetStringResource("DriveInfo_BusType_FileBackedVirtual");
-                            break;
-                        case "16":
-                            busType = GetStringResource("DriveInfo_BusType_StorageSpaces");
-                            break;
-                        case "17":
-                            busType = "NVMe";
-                            break;
-                        case "14":
-                        case "18":
-                            busType = GetStringResource("Reserved");
-                            break;
-                        default:
-                            busType = GetStringResource("DriveInfo_BusType_Unknown");
-                            break;
+                        "0" => GetStringResource("DriveInfo_Health_Healthy"),
+                        "1" => GetStringResource("DriveInfo_Health_Warning"),
+                        "2" => GetStringResource("DriveInfo_Health_Unhealthy"),
+                        _ => GetStringResource("DriveInfo_Health_Unknown")
+                    },
+                    ["BusType"] = CimStringProperty(drive, "BusType") switch
+                    {
+                        "1" => "SCSI",
+                        "2" => "ATAPI",
+                        "3" => "ATA",
+                        "4" => "IEEE 1394",
+                        "5" => "SSA",
+                        "6" => GetStringResource("DriveInfo_BusType_FiberChannel"),
+                        "7" => "USB",
+                        "8" => "RAID",
+                        "9" => "iSCSI",
+                        "10" => GetStringResource("DriveInfo_BusType_SAS"),
+                        "11" => GetStringResource("DriveInfo_BusType_SATA"),
+                        "12" => GetStringResource("DriveInfo_BusType_SD"),
+                        "13" => GetStringResource("DriveInfo_BusType_MMC"),
+                        "14" => GetStringResource("Reserved"),
+                        "15" => GetStringResource("DriveInfo_BusType_FileBackedVirtual"),
+                        "16" => GetStringResource("DriveInfo_BusType_StorageSpaces"),
+                        "17" => "NVMe",
+                        "18" => GetStringResource("Reserved"),
+                        _ => GetStringResource("DriveInfo_BusType_Unknown")
                     }
-                }
-                isBoot = GetMSFTDisk(device)["IsBoot"];
-                isSystem = GetMSFTDisk(device)["IsSystem"];
-                partitionStyle = GetMSFTDisk(device)["PartitionStyle"];
-                switch (partitionStyle)
-                {
-                    case "1":
-                        partitionStyle = "MBR";
-                        break;
-                    case "2":
-                        partitionStyle = "GPT";
-                        break;
-                    default:
-                        partitionStyle = "unknown";
-                        break;
-                }
-            }
+                })
+                .FirstOrDefault();
         }
         catch (Exception ex)
         {
             _log.Error(ex, $"Error retrieving MSFT_PhysicalDisk data for device {device}");
+            return new()
+            {
+                { "SerialNumber", ""},
+                { "FriendlyName", ""},
+                { "MediaType", ""},
+                { "HealthStatus", ""},
+                { "BusType", ""}
+            };
         }
-        finally
-        {
-            driveInfo.Add("MediaType", mediaType);
-            driveInfo.Add("Health", health);
-            driveInfo.Add("BusType", busType);
-            driveInfo.Add("IsBoot", isBoot);
-            driveInfo.Add("IsSystem", isSystem);
-            driveInfo.Add("PartitionStyle", partitionStyle);
-        }
-        return driveInfo;
     }
-    #endregion Get additional info from MSFT_PhysicalDisk
+    #endregion Get info from MSFT_PhysicalDisk
 
-    private static string ConvertDriveType(DriveType driveType)
+    #region Get string value from CimInstance property
+    /// <summary>
+    /// Gets string from CimInstance property.
+    /// </summary>
+    /// <param name="instance">The CimInstance instance.</param>
+    /// <param name="name">Name of the property.</param>
+    /// <returns>A string.</returns>
+    private static string CimStringProperty(CimInstance instance, string name)
     {
-        switch (driveType)
-        {
-            case DriveType.NoRootDirectory:
-                return GetStringResource("DriveInfo_DriveType_NoRootDirectory");
-            case DriveType.Fixed:
-                return GetStringResource("DriveInfo_DriveType_Fixed");
-            case DriveType.Network:
-                return GetStringResource("DriveInfo_DriveType_Network");
-            case DriveType.Removable:
-                return GetStringResource("DriveInfo_DriveType_Removable");
-            case DriveType.Ram:
-                return GetStringResource("DriveInfo_DriveType_Ram");
-            case DriveType.CDRom:
-                return GetStringResource("DriveInfo_DriveType_CDRom");
-            default:
-                return GetStringResource("DriveInfo_DriveType_Unknown");
-        }
+        return instance.CimInstanceProperties[name].Value.ToString();
     }
+    #endregion Get string value from CimInstance property
 }
