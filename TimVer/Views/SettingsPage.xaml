@@ -370,7 +370,7 @@
                                                        Source={x:Static config:TempSettings.Setting}}">
                             <Grid Background="{DynamicResource MaterialDesign.Brush.Card.Background}">
                                 <Grid Margin="15,0,15,15">
-                                    <!--#region Row definitions-->
+                                    <!--#region Row & Column definitions-->
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="30" />
                                         <RowDefinition Height="30" />
@@ -378,13 +378,14 @@
                                         <RowDefinition Height="30" />
                                         <RowDefinition Height="30" />
                                         <RowDefinition Height="30" />
-                                        <RowDefinition Height="30" />
-                                        <RowDefinition Height="30" />
-                                        <RowDefinition Height="30" />
-                                        <RowDefinition Height="30" />
                                     </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
                                     <!--#endregion-->
-                                    <CheckBox Grid.Row="0"
+                                    <CheckBox Grid.Row="0" Grid.Column="0"
                                               Padding="10,0"
                                               Content="{DynamicResource SettingsItem_ShowPartitionsColumn}"
                                               IsChecked="{Binding ShowPartitions,
@@ -414,25 +415,36 @@
                                               Content="{DynamicResource SettingsItem_ShowHealthColumn}"
                                               IsChecked="{Binding ShowHealth,
                                                                   Source={x:Static config:UserSettings.Setting}}" />
-                                    <CheckBox Grid.Row="6"
+
+                                    <CheckBox Grid.Row="0" Grid.Column="2"
                                               Padding="10,0"
                                               Content="{DynamicResource SettingsItem_ShowPartitionStyleColumn}"
                                               IsChecked="{Binding ShowPartitionStyle,
                                                                   Source={x:Static config:UserSettings.Setting}}" />
-                                    <CheckBox Grid.Row="7"
+                                    <CheckBox Grid.Row="1" Grid.Column="2"
                                               Padding="10,0"
                                               Content="{DynamicResource SettingsItem_ShowBootDriveColumn}"
                                               IsChecked="{Binding ShowBootDrive,
                                                                   Source={x:Static config:UserSettings.Setting}}" />
-                                    <CheckBox Grid.Row="8"
+                                    <CheckBox Grid.Row="2" Grid.Column="2"
                                               Padding="10,0"
                                               Content="{DynamicResource SettingsItem_ShowModelColumn}"
                                               IsChecked="{Binding ShowModel,
                                                                   Source={x:Static config:UserSettings.Setting}}" />
-                                    <CheckBox Grid.Row="9"
+                                    <CheckBox Grid.Row="3" Grid.Column="2"
                                               Padding="10,0"
                                               Content="{DynamicResource SettingsItem_ShowNameColumn}"
                                               IsChecked="{Binding ShowName,
+                                                                  Source={x:Static config:UserSettings.Setting}}" />
+                                    <CheckBox Grid.Row="4" Grid.Column="2"
+                                              Padding="10,0"
+                                              Content="{DynamicResource SettingsItem_ShowFriendlyName}"
+                                              IsChecked="{Binding ShowFriendlyName,
+                                                                  Source={x:Static config:UserSettings.Setting}}" />
+                                    <CheckBox Grid.Row="5" Grid.Column="2"
+                                              Padding="10,0"
+                                              Content="{DynamicResource SettingsItem_ShowSerialNumber}"
+                                              IsChecked="{Binding ShowSerialNumber,
                                                                   Source={x:Static config:UserSettings.Setting}}" />
                                 </Grid>
                             </Grid>
