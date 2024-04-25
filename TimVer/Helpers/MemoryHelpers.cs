@@ -10,13 +10,13 @@ public static class MemoryHelpers
     /// <returns>Total GB as a formatted string in the current culture.</returns>
     public static string GetInstalledRam()
     {
+        const string scope = @"\\.\root\CIMV2";
+        const string dialect = "WQL";
+        const string query = "SELECT Capacity From Win32_PhysicalMemory";
         try
         {
             CimSession cim = CimSession.Create(null);
-            IEnumerable<CimInstance> cimVal = cim.QueryInstances(
-                "root/CIMV2",
-                "WQL",
-                "SELECT * From Win32_PhysicalMemory");
+            IEnumerable<CimInstance> cimVal = cim.QueryInstances(scope, dialect, query);
 
             ulong mem = 0;
             foreach (CimInstance val in cimVal)
