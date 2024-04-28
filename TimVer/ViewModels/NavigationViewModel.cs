@@ -9,30 +9,30 @@ internal partial class NavigationViewModel : ObservableObject
     {
         if (CurrentViewModel == null)
         {
-            NavigateToPage(UserSettings.Setting.InitialPage);
+            NavigateToPage(UserSettings.Setting!.InitialPage);
         }
     }
     #endregion Constructor
 
     #region MainWindow Instance
-    private static readonly MainWindow _mainWindow = Application.Current.MainWindow as MainWindow;
+    private static readonly MainWindow? _mainWindow = Application.Current.MainWindow as MainWindow;
     #endregion MainWindow Instance
 
     #region Properties
     [ObservableProperty]
-    private object _currentViewModel;
+    private object? _currentViewModel;
 
     [ObservableProperty]
-    private string _pageTitle;
+    private string? _pageTitle;
 
     [ObservableProperty]
-    private static NavigationItem _navItem;
+    private static NavigationItem? _navItem;
     #endregion Properties
 
     #region List of navigation items
     public static List<NavigationItem> NavigationViewModelTypes { get; set; } = new List<NavigationItem>
-        (new List<NavigationItem>
-            {
+        (
+            [
                 new() {
                     Name=GetStringResource("NavItem_WindowsInfo"),
                     NavPage = NavPage.WindowsInfo,
@@ -94,7 +94,7 @@ internal partial class NavigationViewModel : ObservableObject
                     IconKind=PackIconKind.ExitToApp,
                     IsExit=true
                 }
-            }
+            ]
         );
     #endregion List of navigation items
 
@@ -106,7 +106,7 @@ internal partial class NavigationViewModel : ObservableObject
         if (NavigationListNoHistory.Count == 0)
         {
             NavigationListNoHistory.AddRange(NavigationViewModelTypes);
-            _ = NavigationListNoHistory.Remove(NavigationViewModelTypes.Find(n => n.NavPage.ToString() == "History"));
+            _ = NavigationListNoHistory.Remove(NavigationViewModelTypes.Find(n => n.NavPage.ToString() == "History")!);
         }
     }
     #endregion List of navigation items without History
@@ -119,7 +119,7 @@ internal partial class NavigationViewModel : ObservableObject
 
     private static NavigationItem FindNavPage(NavPage page)
     {
-        return NavigationViewModelTypes.Find(x => x.NavPage == page);
+        return NavigationViewModelTypes.Find(x => x.NavPage == page)!;
     }
     #endregion Navigation Methods
 
@@ -129,7 +129,7 @@ internal partial class NavigationViewModel : ObservableObject
     {
         if (param is NavigationItem item)
         {
-            if (item.IsExit)
+            if (item.IsExit == true)
             {
                 Application.Current.Shutdown();
             }
@@ -148,7 +148,7 @@ internal partial class NavigationViewModel : ObservableObject
     [RelayCommand]
     public void CopyToClipboard()
     {
-        ClipboardHelper.CopyPageToClipboard(CurrentViewModel);
+        ClipboardHelper.CopyPageToClipboard(CurrentViewModel!);
     }
     #endregion Copy to clipboard command
 
@@ -159,9 +159,9 @@ internal partial class NavigationViewModel : ObservableObject
     [RelayCommand]
     private static void HistoryOnStartup(RoutedEventArgs e)
     {
-        CheckBox box = e.OriginalSource as CheckBox;
+        CheckBox? box = e.OriginalSource as CheckBox;
         string result;
-        switch (box.IsChecked)
+        switch (box!.IsChecked)
         {
             case true:
                 if (!RegistryHelpers.RegRunEntry("TimVer"))
@@ -177,7 +177,7 @@ internal partial class NavigationViewModel : ObservableObject
                         _log.Info($"TimVer add to startup failed: {result}");
                         _ = new MDCustMsgBox(
                             GetStringResource("MsgText_AddToStartupFailed"),
-                            "TimVer",
+                            GetStringResource("MsgText_ErrorCaption"),
                             ButtonType.Ok,
                             true,
                             true,
@@ -199,7 +199,7 @@ internal partial class NavigationViewModel : ObservableObject
                     _log.Info($"Attempt to remove startup entry failed: {result}");
                     _ = new MDCustMsgBox(
                         GetStringResource("MsgText_RemoveFromStartupFailed"),
-                        "TimVer",
+                        GetStringResource("MsgText_ErrorCaption"),
                         ButtonType.Ok,
                         true,
                         true,
@@ -245,9 +245,9 @@ internal partial class NavigationViewModel : ObservableObject
     public static void RefreshDrives()
     {
         CombinedInfo.LogicalDrivesList.Clear();
-        DrivesPage.Instance.LDrivesDataGrid.ItemsSource = CombinedInfo.LogicalDrivesList;
+        DrivesPage.Instance!.LDrivesDataGrid.ItemsSource = CombinedInfo.LogicalDrivesList;
 
-        if (UserSettings.Setting.GetPhysicalDrives)
+        if (UserSettings.Setting!.GetPhysicalDrives)
         {
             CombinedInfo.PhysicalDrivesList.Clear();
             DrivesPage.Instance.PDisksDataGrid.ItemsSource = CombinedInfo.PhysicalDrivesList;
@@ -293,7 +293,7 @@ internal partial class NavigationViewModel : ObservableObject
         {
             case Key.F1:
                 {
-                    _mainWindow.NavigationListBox.SelectedValue = FindNavPage(NavPage.About);
+                    _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(NavPage.About);
                     break;
                 }
         }
@@ -306,7 +306,7 @@ internal partial class NavigationViewModel : ObservableObject
             {
                 case Key.OemComma:
                     {
-                        _mainWindow.NavigationListBox.SelectedValue = FindNavPage(NavPage.Settings);
+                        _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(NavPage.Settings);
                         break;
                     }
                 case Key.C:
@@ -317,7 +317,7 @@ internal partial class NavigationViewModel : ObservableObject
                 case Key.Add:
                     {
                         MainWindowUIHelpers.EverythingLarger();
-                        string size = EnumDescConverter.GetEnumDescription(UserSettings.Setting.UISize);
+                        string size = EnumDescConverter.GetEnumDescription(UserSettings.Setting!.UISize);
                         string message = string.Format(GetStringResource("MsgText_UISizeSet"), size);
                         SnackbarMsg.ClearAndQueueMessage(message, 2000);
                         break;
@@ -325,7 +325,7 @@ internal partial class NavigationViewModel : ObservableObject
                 case Key.Subtract:
                     {
                         MainWindowUIHelpers.EverythingSmaller();
-                        string size = EnumDescConverter.GetEnumDescription(UserSettings.Setting.UISize);
+                        string size = EnumDescConverter.GetEnumDescription(UserSettings.Setting!.UISize);
                         string message = string.Format(GetStringResource("MsgText_UISizeSet"), size);
                         SnackbarMsg.ClearAndQueueMessage(message, 2000);
                         break;
@@ -339,7 +339,7 @@ internal partial class NavigationViewModel : ObservableObject
         {
             if (e.Key == Key.T)
             {
-                switch (UserSettings.Setting.UITheme)
+                switch (UserSettings.Setting!.UITheme)
                 {
                     case ThemeType.Light:
                         UserSettings.Setting.UITheme = ThemeType.Dark;
@@ -360,7 +360,7 @@ internal partial class NavigationViewModel : ObservableObject
             }
             if (e.Key == Key.C)
             {
-                if (UserSettings.Setting.PrimaryColor >= AccentColor.White)
+                if (UserSettings.Setting!.PrimaryColor >= AccentColor.White)
                 {
                     UserSettings.Setting.PrimaryColor = AccentColor.Red;
                 }
@@ -382,7 +382,7 @@ internal partial class NavigationViewModel : ObservableObject
             }
             if (e.Key == Key.S)
             {
-                TextFileViewer.ViewTextFile(ConfigHelpers.SettingsFileName);
+                TextFileViewer.ViewTextFile(ConfigHelpers.SettingsFileName!);
             }
         }
         #endregion Keys with Ctrl and Shift

@@ -5,7 +5,7 @@ namespace TimVer.Helpers;
 internal static class MainWindowUIHelpers
 {
     #region MainWindow instance
-    private static readonly MainWindow _mainWindow = Application.Current.MainWindow as MainWindow;
+    private static readonly MainWindow? _mainWindow = Application.Current.MainWindow as MainWindow;
     #endregion MainWindow instance
 
     #region Theme
@@ -16,7 +16,7 @@ internal static class MainWindowUIHelpers
     internal static string GetSystemTheme()
     {
         BaseTheme? sysTheme = Theme.GetSystemTheme();
-        return sysTheme != null ? sysTheme.ToString() : string.Empty;
+        return sysTheme != null ? sysTheme.ToString()! : string.Empty;
     }
 
     /// <summary>
@@ -129,7 +129,7 @@ internal static class MainWindowUIHelpers
             MySize.Largest => 1.2,
             _ => 1.0,
         };
-        _mainWindow.MainGrid.LayoutTransform = new ScaleTransform(newSize, newSize);
+        _mainWindow!.MainGrid.LayoutTransform = new ScaleTransform(newSize, newSize);
     }
 
     /// <summary>
@@ -137,7 +137,7 @@ internal static class MainWindowUIHelpers
     /// </summary>
     public static void EverythingSmaller()
     {
-        MySize size = UserSettings.Setting.UISize;
+        MySize size = UserSettings.Setting!.UISize;
         if (size > 0)
         {
             size--;
@@ -151,7 +151,7 @@ internal static class MainWindowUIHelpers
     /// </summary>
     public static void EverythingLarger()
     {
-        MySize size = UserSettings.Setting.UISize;
+        MySize size = UserSettings.Setting!.UISize;
         if (size < MySize.Largest)
         {
             size++;
@@ -168,13 +168,13 @@ internal static class MainWindowUIHelpers
     public static void ApplyUISettings()
     {
         // Put version number in window title
-        _mainWindow.Title = MainWindowHelpers.WindowTitleVersionAdmin();
+        _mainWindow!.Title = MainWindowHelpers.WindowTitleVersionAdmin();
 
         // Window position
         MainWindowHelpers.SetWindowPosition();
 
         // Light or dark theme
-        SetBaseTheme(UserSettings.Setting.UITheme);
+        SetBaseTheme(UserSettings.Setting!.UITheme);
 
         // Primary accent color
         SetPrimaryColor(UserSettings.Setting.PrimaryColor);
@@ -190,7 +190,7 @@ internal static class MainWindowUIHelpers
     /// </summary>
     public static void MainWindowWaitPointer()
     {
-        _mainWindow.Cursor = Cursors.Wait;
+        _mainWindow!.Cursor = Cursors.Wait;
     }
 
     /// <summary>
@@ -198,7 +198,7 @@ internal static class MainWindowUIHelpers
     /// </summary>
     public static void MainWindowNormalPointer()
     {
-        _mainWindow.Cursor = Cursors.Arrow;
+        _mainWindow!.Cursor = Cursors.Arrow;
     }
     #endregion Change mouse pointer
 
@@ -216,7 +216,7 @@ internal static class MainWindowUIHelpers
 
         //we've reached the end of the tree
         if (parentObject == null)
-            return null;
+            return null!;
 
         //check if the parent matches the type we're looking for
         if (parentObject is T parent)
@@ -239,9 +239,9 @@ internal static class MainWindowUIHelpers
     {
         // Confirm parent and childName are valid. 
         if (parent == null)
-            return null;
+            return null!;
 
-        T foundChild = null;
+        T foundChild = null!;
 
         int childrenCount = VisualTreeHelper.GetChildrenCount(parent);
         for (int i = 0; i < childrenCount; i++)
@@ -275,7 +275,7 @@ internal static class MainWindowUIHelpers
                 break;
             }
         }
-        return foundChild;
+        return foundChild!;
     }
     #endregion Find a child of a control
 }

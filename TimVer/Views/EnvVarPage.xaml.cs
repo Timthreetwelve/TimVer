@@ -7,12 +7,12 @@ namespace TimVer.Views;
 /// </summary>
 public partial class EnvVarPage : UserControl
 {
-    public static EnvVarPage Instance { get; set; }
+    public static EnvVarPage? Instance { get; set; }
     public EnvVarPage()
     {
         InitializeComponent();
         Instance = this;
-        EnvVarViewModel.StaticPropertyChanged += EnvVarViewModel_StaticPropertyChanged;
+        EnvVarViewModel.StaticPropertyChanged += EnvVarViewModel_StaticPropertyChanged!;
     }
 
     private void EnvVarViewModel_StaticPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -35,16 +35,16 @@ public partial class EnvVarPage : UserControl
             filterText = filterText[1..].TrimStart(' ');
             EnvDataGrid.Items.Filter = o =>
             {
-                EnvVariable envVariable = o as EnvVariable;
-                return !envVariable.Variable.Contains(filterText, StringComparison.CurrentCultureIgnoreCase);
+                EnvVariable? envVariable = o as EnvVariable;
+                return !envVariable!.Variable!.Contains(filterText, StringComparison.CurrentCultureIgnoreCase);
             };
         }
         else
         {
             EnvDataGrid.Items.Filter = o =>
             {
-                EnvVariable envVariable = o as EnvVariable;
-                return envVariable.Variable.Contains(filterText, StringComparison.CurrentCultureIgnoreCase);
+                EnvVariable? envVariable = o as EnvVariable;
+                return envVariable!.Variable!.Contains(filterText!, StringComparison.CurrentCultureIgnoreCase);
             };
         }
 

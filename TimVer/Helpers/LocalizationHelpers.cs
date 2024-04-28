@@ -7,6 +7,7 @@ namespace TimVer.Helpers;
 /// </summary>
 internal static class LocalizationHelpers
 {
+    #region Get the current culture
     /// <summary>
     /// Gets the current culture.
     /// </summary>
@@ -15,7 +16,9 @@ internal static class LocalizationHelpers
     {
         return CultureInfo.CurrentCulture.Name;
     }
+    #endregion Get the current culture
 
+    #region Get the UI culture
     /// <summary>
     /// Gets the current UI culture.
     /// </summary>
@@ -24,7 +27,9 @@ internal static class LocalizationHelpers
     {
         return CultureInfo.CurrentUICulture.Name;
     }
+    #endregion Get the UI culture
 
+    #region Save settings and restart application
     /// <summary>
     /// Saves settings and restarts the application. Invoked when language is changed.
     /// </summary>
@@ -38,13 +43,16 @@ internal static class LocalizationHelpers
         _log.Debug("Restarting for language change.");
         Application.Current.Shutdown();
     }
+    #endregion Save settings and restart application
 
+    #region Get the language index
     /// <summary>
     /// Gets the index of the selected language.
     /// </summary>
     /// <returns>The index as int.</returns>
     public static int GetLanguageIndex()
     {
-        return UILanguage.DefinedLanguages.FindIndex(x => x.LanguageCode == UserSettings.Setting.UILanguage);
+        return UILanguage.DefinedLanguages.FindIndex(x => x.LanguageCode == UserSettings.Setting!.UILanguage);
     }
+    #endregion Get the language index
 }

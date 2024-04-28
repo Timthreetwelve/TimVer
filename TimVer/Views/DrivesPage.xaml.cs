@@ -6,12 +6,12 @@ namespace TimVer.Views;
 /// </summary>
 public partial class DrivesPage : UserControl
 {
-    public static DrivesPage Instance { get; set; }
+    public static DrivesPage? Instance { get; set; }
     public DrivesPage()
     {
         InitializeComponent();
         Instance = this;
-        TabControl1.SelectedIndex = TempSettings.Setting.DriveSelectedTab;
+        TabControl1.SelectedIndex = TempSettings.Setting!.DriveSelectedTab;
     }
 
     #region Set active tab
@@ -19,7 +19,7 @@ public partial class DrivesPage : UserControl
     {
         if (TabControl1.SelectedIndex != -1)
         {
-            TempSettings.Setting.DriveSelectedTab = TabControl1.SelectedIndex;
+            TempSettings.Setting!.DriveSelectedTab = TabControl1.SelectedIndex;
         }
     }
     #endregion Set active tab
@@ -27,7 +27,7 @@ public partial class DrivesPage : UserControl
     #region Grid splitter drag completed event
     private void DetailsSplitter_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
     {
-        UserSettings.Setting.DetailsHeight = Math.Floor(DetailsRow.Height.Value);
+        UserSettings.Setting!.DetailsHeight = Math.Floor(DetailsRow.Height.Value);
     }
     #endregion Grid splitter drag completed event
 }

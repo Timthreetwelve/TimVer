@@ -5,16 +5,16 @@ namespace TimVer.Models;
 public partial class LogicalDrives : ObservableObject
 {
     [ObservableProperty]
-    private string _name;
+    private string? _name;
 
     [ObservableProperty]
-    private string _label;
+    private string? _label;
 
     [ObservableProperty]
-    private string _driveType;
+    private string? _driveType;
 
     [ObservableProperty]
-    private string _format;
+    private string? _format;
 
     [ObservableProperty]
     private double? _totalSize;

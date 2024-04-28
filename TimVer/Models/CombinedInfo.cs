@@ -8,7 +8,7 @@ namespace TimVer.Models;
 public static class CombinedInfo
 {
     #region OS Architecture
-    private static string _arch;
+    private static string? _arch;
     public static string Arch
     {
         get
@@ -17,14 +17,14 @@ public static class CombinedInfo
             {
                 return _arch;
             }
-            _arch = GetInfo.CimQueryOS("OSArchitecture");
+            _arch = OperatingSystemHelpers.GetWin32OperatingSystem("OSArchitecture");
             return _arch;
         }
     }
     #endregion OS Architecture
 
     #region Build number
-    private static string _build;
+    private static string? _build;
     public static string Build
     {
         get
@@ -33,8 +33,8 @@ public static class CombinedInfo
             {
                 return _build;
             }
-            string curBuild = GetInfo.GetRegistryInfo("CurrentBuild");
-            string ubr = GetInfo.GetRegistryInfo("UBR");
+            string curBuild = RegistryHelpers.GetRegistryInfo("CurrentBuild");
+            string ubr = RegistryHelpers.GetRegistryInfo("UBR");
             _build = string.Format($"{curBuild}.{ubr}");
             return _build;
         }
@@ -42,7 +42,7 @@ public static class CombinedInfo
     #endregion Build number
 
     #region Build branch
-    private static string _buildBranch;
+    private static string? _buildBranch;
     public static string BuildBranch
     {
         get
@@ -51,14 +51,14 @@ public static class CombinedInfo
             {
                 return _buildBranch;
             }
-            _buildBranch = GetInfo.GetRegistryInfo("BuildBranch");
+            _buildBranch = RegistryHelpers.GetRegistryInfo("BuildBranch");
             return _buildBranch;
         }
     }
     #endregion Build branch
 
     #region Edition
-    private static string _editionID;
+    private static string? _editionID;
     public static string EditionID
     {
         get
@@ -67,7 +67,7 @@ public static class CombinedInfo
             {
                 return _editionID;
             }
-            _editionID = GetInfo.GetRegistryInfo("EditionID");
+            _editionID = RegistryHelpers.GetRegistryInfo("EditionID");
             return _editionID;
         }
     }
@@ -83,7 +83,7 @@ public static class CombinedInfo
             {
                 return _installDate;
             }
-            _installDate = GetInfo.CimQueryOSDateTime("InstallDate");
+            _installDate = OperatingSystemHelpers.CimQueryOSDateTime("InstallDate");
             return _installDate;
         }
     }
@@ -99,18 +99,18 @@ public static class CombinedInfo
             {
                 return _lastBoot;
             }
-            _lastBoot = GetInfo.CimQueryOSDateTime("LastBootUpTime");
+            _lastBoot = OperatingSystemHelpers.CimQueryOSDateTime("LastBootUpTime");
             return _lastBoot;
         }
     }
     #endregion Last boot up time
 
     #region Uptime
-    public static TimeSpan Uptime => GetInfo.GetUptime();
+    public static TimeSpan Uptime => EnvironmentHelpers.GetUptime();
     #endregion Uptime
 
     #region Machine name
-    private static string _machineName;
+    private static string? _machineName;
     public static string MachName
     {
         get
@@ -120,14 +120,14 @@ public static class CombinedInfo
                 return _machineName;
             }
 
-            _machineName = GetInfo.CimQuerySys("Name");
+            _machineName = ComputerSystemHelpers.CimQuerySys("Name");
             return _machineName;
         }
     }
     #endregion Machine name
 
     #region Manufacturer
-    private static string _manufacturer;
+    private static string? _manufacturer;
     public static string Manufacturer
     {
         get
@@ -136,14 +136,14 @@ public static class CombinedInfo
             {
                 return _manufacturer;
             }
-            _manufacturer = GetInfo.CimQuerySys("Manufacturer");
+            _manufacturer = ComputerSystemHelpers.CimQuerySys("Manufacturer");
             return _manufacturer;
         }
     }
     #endregion Manufacturer
 
     #region Computer Model
-    private static string _model;
+    private static string? _model;
     public static string Model
     {
         get
@@ -152,14 +152,14 @@ public static class CombinedInfo
             {
                 return _model;
             }
-            _model = GetInfo.CimQuerySys("Model");
+            _model = ComputerSystemHelpers.CimQuerySys("Model");
             return _model;
         }
     }
     #endregion Computer Model
 
     #region Processor architecture
-    private static string _procArch;
+    private static string? _procArch;
     public static string ProcArch
     {
         get
@@ -168,7 +168,7 @@ public static class CombinedInfo
             {
                 return _procArch;
             }
-            string result = GetInfo.CimQueryProc("AddressWidth");
+            string result = ProcessorHelpers.CimQueryProc("AddressWidth");
             _procArch = string.Format($"{result} bit");
             return _procArch;
         }
@@ -176,7 +176,7 @@ public static class CombinedInfo
     #endregion Processor architecture
 
     #region Processor cores
-    private static string _procCores;
+    private static string? _procCores;
     public static string ProcCores
     {
         get
@@ -185,14 +185,14 @@ public static class CombinedInfo
             {
                 return _procCores;
             }
-            _procCores = GetInfo.CimQueryProc("NumberOfCores");
+            _procCores = ProcessorHelpers.CimQueryProc("NumberOfCores");
             return _procCores;
         }
     }
     #endregion Processor cores
 
     #region Processor threads
-    private static string _procThreads;
+    private static string? _procThreads;
     public static string ProcThreads
     {
         get
@@ -201,14 +201,14 @@ public static class CombinedInfo
             {
                 return _procThreads;
             }
-            _procThreads = GetInfo.CimQueryProc("NumberOfLogicalProcessors");
+            _procThreads = ProcessorHelpers.CimQueryProc("NumberOfLogicalProcessors");
             return _procThreads;
         }
     }
     #endregion Processor threads
 
     #region Processor name
-    private static string _procName;
+    private static string? _procName;
     public static string ProcName
     {
         get
@@ -217,14 +217,14 @@ public static class CombinedInfo
             {
                 return _procName;
             }
-            _procName = GetInfo.CimQueryProc("Name");
+            _procName = ProcessorHelpers.CimQueryProc("Name");
             return _procName;
         }
     }
     #endregion Processor name
 
     #region Processor description
-    private static string _procDescription;
+    private static string? _procDescription;
     public static string ProcDescription
     {
         get
@@ -233,14 +233,14 @@ public static class CombinedInfo
             {
                 return _procDescription;
             }
-            _procDescription = GetInfo.CimQueryProc("Description");
+            _procDescription = ProcessorHelpers.CimQueryProc("Description");
             return _procDescription;
         }
     }
     #endregion Processor speed
 
     #region Product name
-    private static string _prodName;
+    private static string? _prodName;
     public static string ProdName
     {
         get
@@ -249,14 +249,14 @@ public static class CombinedInfo
             {
                 return _prodName;
             }
-            _prodName = GetInfo.CimQueryOS("Caption");
+            _prodName = OperatingSystemHelpers.GetWin32OperatingSystem("Caption");
             return _prodName;
         }
     }
     #endregion Product name
 
     #region Registered user
-    private static string _regUser;
+    private static string? _regUser;
     public static string RegUser
     {
         get
@@ -265,21 +265,21 @@ public static class CombinedInfo
             {
                 return _regUser;
             }
-            if (UserSettings.Setting.ShowUser)
+            if (UserSettings.Setting!.ShowUser)
             {
-                _regUser = GetInfo.GetRegistryInfo("RegisteredOwner");
+                _regUser = RegistryHelpers.GetRegistryInfo("RegisteredOwner");
             }
             else
             {
                 _regUser = null;
             }
-            return _regUser;
+            return _regUser!;
         }
     }
     #endregion Registered user
 
     #region Registered organization
-    private static string _regOrg;
+    private static string? _regOrg;
     public static string RegOrganization
     {
         get
@@ -288,21 +288,21 @@ public static class CombinedInfo
             {
                 return _regOrg;
             }
-            if (UserSettings.Setting.ShowUser)
+            if (UserSettings.Setting!.ShowUser)
             {
-                _regOrg = GetInfo.GetRegistryInfo("RegisteredOrganization");
+                _regOrg = RegistryHelpers.GetRegistryInfo("RegisteredOrganization");
             }
             else
             {
                 _regOrg = null;
             }
-            return _regOrg;
+            return _regOrg!;
         }
     }
     #endregion Registered organization
 
     #region Temp folder
-    private static string _tempFolder;
+    private static string? _tempFolder;
     public static string TempFolder
     {
         get
@@ -318,7 +318,7 @@ public static class CombinedInfo
     #endregion Temp folder
 
     #region Total usable memory
-    private static string _totalMemory;
+    private static string? _totalMemory;
     public static string TotalMemory
     {
         get
@@ -335,7 +335,7 @@ public static class CombinedInfo
     #endregion Total usable memory
 
     #region Total installed memory
-    private static string _installedMemory;
+    private static string? _installedMemory;
     public static string InstalledMemory
     {
         get
@@ -352,7 +352,7 @@ public static class CombinedInfo
     #endregion Total installed memory
 
     #region Version
-    private static string _version;
+    private static string? _version;
     public static string Version
     {
         get
@@ -361,10 +361,10 @@ public static class CombinedInfo
             {
                 return _version;
             }
-            string result = GetInfo.GetRegistryInfo("DisplayVersion");
+            string result = RegistryHelpers.GetRegistryInfo("DisplayVersion");
             if (result == "no data")
             {
-                result = GetInfo.GetRegistryInfo("ReleaseID");
+                result = RegistryHelpers.GetRegistryInfo("ReleaseID");
             }
             _version = result;
             return _version;
@@ -373,7 +373,7 @@ public static class CombinedInfo
     #endregion Version
 
     #region Windows folder
-    private static string _windowsFolder;
+    private static string? _windowsFolder;
     public static string WindowsFolder
     {
         get
@@ -382,14 +382,14 @@ public static class CombinedInfo
             {
                 return _windowsFolder;
             }
-            _windowsFolder = GetInfo.GetSpecialFolder(Environment.SpecialFolder.Windows);
+            _windowsFolder = EnvironmentHelpers.GetSpecialFolder(Environment.SpecialFolder.Windows);
             return _windowsFolder;
         }
     }
     #endregion Windows folder
 
     #region Logical disk drives
-    private static ObservableCollection<LogicalDrives> _logicalDrivesList;
+    private static ObservableCollection<LogicalDrives>? _logicalDrivesList;
     public static ObservableCollection<LogicalDrives> LogicalDrivesList
     {
         get
@@ -405,7 +405,7 @@ public static class CombinedInfo
     #endregion Logical disk drives
 
     #region Physical disk drives
-    private static ObservableCollection<PhysicalDrives> _physicalDrivesList;
+    private static ObservableCollection<PhysicalDrives>? _physicalDrivesList;
     public static ObservableCollection<PhysicalDrives> PhysicalDrivesList
     {
         get
@@ -421,7 +421,7 @@ public static class CombinedInfo
     #endregion Physical disk drives
 
     #region Video info
-    private static ObservableCollection<GpuInfo> _gpuList;
+    private static ObservableCollection<GpuInfo>? _gpuList;
     public static ObservableCollection<GpuInfo> GPUList
     {
         get
@@ -437,7 +437,7 @@ public static class CombinedInfo
     #endregion Video info
 
     #region BIOS Information
-    private static string _biosManufacturer;
+    private static string? _biosManufacturer;
     public static string BiosManufacturer
     {
         get
@@ -451,7 +451,7 @@ public static class CombinedInfo
         }
     }
 
-    private static string _biosName;
+    private static string? _biosName;
     public static string BiosName
     {
         get
@@ -481,7 +481,7 @@ public static class CombinedInfo
     #endregion BIOS Information
 
     #region .NET info
-    private static string _dotNetVersion;
+    private static string? _dotNetVersion;
     public static string DotNetVersion
     {
         get
@@ -495,4 +495,34 @@ public static class CombinedInfo
         }
     }
     #endregion
+
+    #region UEFI
+    private static string? _uefiMode;
+    public static string UefiMode
+    {
+        get
+        {
+            if (_uefiMode != null)
+            {
+                return _uefiMode;
+            }
+            _uefiMode = UefiHelpers.UEFIEnabled();
+            return _uefiMode;
+        }
+    }
+
+    private static string? _uefiSecureBoot;
+    public static string UefiSecureBoot
+    {
+        get
+        {
+            if (_uefiSecureBoot != null)
+            {
+                return _uefiSecureBoot;
+            }
+            _uefiSecureBoot = UefiHelpers.UEFISecureBoot();
+            return _uefiSecureBoot;
+        }
+    }
+    #endregion UEFI
 }

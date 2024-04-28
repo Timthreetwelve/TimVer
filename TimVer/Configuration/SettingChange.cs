@@ -1,5 +1,5 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
-#nullable enable
+
 namespace TimVer.Configuration;
 
 /// <summary>
@@ -31,7 +31,7 @@ public static class SettingChange
                 break;
 
             case nameof(UserSettings.Setting.UISize):
-                MainWindowUIHelpers.UIScale(UserSettings.Setting.UISize);
+                MainWindowUIHelpers.UIScale(UserSettings.Setting!.UISize);
                 break;
 
             case nameof(UserSettings.Setting.KeepHistory):

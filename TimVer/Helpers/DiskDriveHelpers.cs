@@ -136,20 +136,20 @@ public static class DiskDriveHelpers
     {
         // If the drive is network check settings to see if it needs to be included
         if (string.Equals(d.DriveType.ToString(), "network", StringComparison.OrdinalIgnoreCase)
-            && !UserSettings.Setting.IncludeNetwork)
+            && !UserSettings.Setting!.IncludeNetwork)
         {
-            return null;
+            return null!;
         }
         // If the drive is removable check settings to see if it needs to be included
         if (string.Equals(d.DriveType.ToString(), "removable", StringComparison.OrdinalIgnoreCase)
-            && !UserSettings.Setting.IncludeRemovable)
+            && !UserSettings.Setting!.IncludeRemovable)
         {
-            return null;
+            return null!;
         }
         // If the drive is ready
         if (d.IsReady)
         {
-            int GBPref = UserSettings.Setting.Use1024 ? 1024 : 1000;
+            int GBPref = UserSettings.Setting!.Use1024 ? 1024 : 1000;
 
             // Add the information for each drive to the list
             return new()
@@ -173,7 +173,7 @@ public static class DiskDriveHelpers
             };
         }
         // If the drive is not ready
-        else if (UserSettings.Setting.IncludeNotReady)
+        else if (UserSettings.Setting!.IncludeNotReady)
         {
             return new()
             {
@@ -182,18 +182,18 @@ public static class DiskDriveHelpers
                 Label = GetStringResource("DriveInfo_NotReady")
             };
         }
-        return null;
+        return null!;
     }
     #endregion Get details for an individual drive
 
-    #region Assembly the physical disk information
+    #region Assemble the physical disk information
     /// <summary>
     /// Gathers the physical disk information.
     /// </summary>
     /// <returns>List of properties and values of type PhysicalDrives</returns>
     public static List<PhysicalDrives> GetPhysicalDriveInfo()
     {
-        if (UserSettings.Setting.GetPhysicalDrives)
+        if (UserSettings.Setting!.GetPhysicalDrives)
         {
             MainWindowUIHelpers.MainWindowWaitPointer();
             Stopwatch watch = Stopwatch.StartNew();
@@ -250,7 +250,7 @@ public static class DiskDriveHelpers
         };
         return [drives];
     }
-    #endregion Assembly the physical disk information
+    #endregion Assemble the physical disk information
 
     #region Get list of drive indexes
     /// <summary>
@@ -285,7 +285,7 @@ public static class DiskDriveHelpers
         try
         {
             using CimSession cimSession = CimSession.Create(null);
-            int gbPref = UserSettings.Setting.Use1024 ? 1024 : 1000;
+            int gbPref = UserSettings.Setting!.Use1024 ? 1024 : 1000;
             IEnumerable<CimInstance> diskInfo = cimSession.QueryInstances(scope, "WQL", query);
             return diskInfo.Select(drive => new Dictionary<string, string>
             {
@@ -296,7 +296,7 @@ public static class DiskDriveHelpers
                 ["Partitions"] = CimStringProperty(drive, "Partitions"),
                 ["Status"] = CimStringProperty(drive, "Status"),
                 ["Size"] = Math.Round(Convert.ToDouble(drive.CimInstanceProperties["Size"].Value) / Math.Pow(gbPref, 3), 2).ToString()
-            }).FirstOrDefault();
+            }).FirstOrDefault()!;
         }
         catch (Exception ex)
         {
@@ -342,7 +342,7 @@ public static class DiskDriveHelpers
                         _ => GetStringResource("DriveInfo_DriveType_Unknown")
                     }
                 })
-                .FirstOrDefault();
+                .FirstOrDefault()!;
         }
         catch (Exception ex)
         {
@@ -415,7 +415,7 @@ public static class DiskDriveHelpers
                         _ => GetStringResource("DriveInfo_BusType_Unknown")
                     }
                 })
-                .FirstOrDefault();
+                .FirstOrDefault()!;
         }
         catch (Exception ex)
         {
@@ -441,7 +441,7 @@ public static class DiskDriveHelpers
     /// <returns>A string.</returns>
     private static string CimStringProperty(CimInstance instance, string name)
     {
-        return instance.CimInstanceProperties[name].Value.ToString();
+        return instance.CimInstanceProperties[name].Value.ToString()!;
     }
     #endregion Get string value from CimInstance property
 }

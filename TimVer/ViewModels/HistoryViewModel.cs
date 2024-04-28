@@ -2,8 +2,15 @@
 
 namespace TimVer.ViewModels;
 
-public partial class HistoryViewModel : ObservableObject
+public class HistoryViewModel : ObservableObject
 {
+    #region JSON options
+    public static readonly JsonSerializerOptions s_options = new()
+    {
+        WriteIndented = true
+    };
+    #endregion JSON options
+
     #region Read history file
     /// <summary>
     /// Reads the history file.
@@ -13,8 +20,8 @@ public partial class HistoryViewModel : ObservableObject
         try
         {
             string json = File.ReadAllText(DefaultHistoryFile());
-            History.HistoryList = JsonSerializer.Deserialize<List<History>>(json);
-            int count = History.HistoryList.Count;
+            History.HistoryList = JsonSerializer.Deserialize<List<History>>(json)!;
+            int count = History.HistoryList!.Count;
             string entry = string.Empty;
             entry = count == 1 ? "entry" : "entries";
             _log.Debug($"History file has {count} {entry}");
@@ -53,9 +60,8 @@ public partial class HistoryViewModel : ObservableObject
             if (!History.HistoryList.Exists(x => x.HBuild == newHist.HBuild))
             {
                 History.HistoryList.Add(newHist);
-                History.HistoryList = History.HistoryList.OrderByDescending(o => o.HDate).ToList();
-                JsonSerializerOptions opts = new() { WriteIndented = true };
-                string json = JsonSerializer.Serialize(History.HistoryList, opts);
+                History.HistoryList = [.. History.HistoryList.OrderByDescending(o => o.HDate)];
+                string json = JsonSerializer.Serialize(History.HistoryList, s_options);
                 File.WriteAllText(DefaultHistoryFile(), json);
                 _log.Info($"History file was updated with {newHist.HBuild}");
             }
@@ -67,8 +73,7 @@ public partial class HistoryViewModel : ObservableObject
         else
         {
             History.HistoryList.Add(newHist);
-            JsonSerializerOptions opts = new() { WriteIndented = true };
-            string json = JsonSerializer.Serialize(History.HistoryList, opts);
+            string json = JsonSerializer.Serialize(History.HistoryList, s_options);
             File.WriteAllText(DefaultHistoryFile(), json);
             _log.Info($"History file was created with {newHist.HBuild}");
         }

@@ -158,8 +158,8 @@ internal static class ClipboardHelper
 
             case DriveInfoViewModel:
                 {
-                    string giga = UserSettings.Setting.Use1024 ? "GiB" : "GB";
-                    if (TempSettings.Setting.DriveSelectedTab == 0)
+                    string giga = UserSettings.Setting!.Use1024 ? "GiB" : "GB";
+                    if (TempSettings.Setting!.DriveSelectedTab == 0)
                     {
                         _ = builder.Append(GetStringResource("NavTitle_DriveInfo"))
                                    .Append(" - ")

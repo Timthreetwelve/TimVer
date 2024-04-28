@@ -30,7 +30,7 @@ public static class MemoryHelpers
         catch (Exception ex)
         {
             _log.Error(ex, "Win32_PhysicalMemory call failed.");
-            return null;
+            return null!;
         }
     }
 
@@ -42,7 +42,7 @@ public static class MemoryHelpers
     {
         try
         {
-            var gcMemoryInfo = GC.GetGCMemoryInfo();
+            GCMemoryInfo gcMemoryInfo = GC.GetGCMemoryInfo();
             long installedMemory = gcMemoryInfo.TotalAvailableMemoryBytes;
             double GB = Math.Round(Convert.ToDouble(installedMemory) / Math.Pow(1024, 3), 2);
             CultureInfo culture = CultureInfo.CurrentUICulture;
@@ -51,7 +51,7 @@ public static class MemoryHelpers
         catch (Exception ex)
         {
             _log.Error(ex, " GC.GetGCMemoryInfo() call failed.");
-            return null;
+            return null!;
         }
     }
 }

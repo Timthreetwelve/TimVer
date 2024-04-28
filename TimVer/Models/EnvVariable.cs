@@ -7,19 +7,21 @@ namespace TimVer.Models;
 /// </summary>
 public partial class EnvVariable : ObservableObject
 {
+    #region Properties
     [ObservableProperty]
-    private string _variable;
+    private string? _variable;
 
     [ObservableProperty]
-    private string _value;
+    private string? _value;
+    #endregion Properties
 
     #region Environment variables
-    private static List<EnvVariable> _envVariableList;
+    private static List<EnvVariable>? _envVariableList;
     public static List<EnvVariable> EnvVariableList
     {
         get
         {
-            return _envVariableList ??= GetInfo.GetEnvironmentVariables();
+            return _envVariableList ??= EnvironmentHelpers.GetEnvironmentVariables();
         }
     }
     #endregion Environment variables

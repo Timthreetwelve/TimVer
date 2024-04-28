@@ -16,8 +16,8 @@ internal static class MainWindowHelpers
 
         if (CommandLineHelpers.ProcessCommandLine())
         {
-            _mainWindow.Visibility = Visibility.Hidden;
-            if (UserSettings.Setting.KeepHistory)
+            _mainWindow!.Visibility = Visibility.Hidden;
+            if (UserSettings.Setting!.KeepHistory)
             {
                 HistoryViewModel.WriteHistory();
             }
@@ -27,12 +27,12 @@ internal static class MainWindowHelpers
             }
             Application.Current.Shutdown();
         }
-        TempSettings.Setting.RunAccessPermitted = RegistryHelpers.RegRunAccessPermitted();
+        TempSettings.Setting!.RunAccessPermitted = RegistryHelpers.RegRunAccessPermitted();
     }
     #endregion Startup
 
     #region MainWindow Instance
-    private static readonly MainWindow _mainWindow = Application.Current.MainWindow as MainWindow;
+    private static readonly MainWindow? _mainWindow = Application.Current.MainWindow as MainWindow;
     #endregion MainWindow Instance
 
     #region StopWatch
@@ -46,10 +46,10 @@ internal static class MainWindowHelpers
     public static void SetWindowPosition()
     {
         Window mainWindow = Application.Current.MainWindow;
-        mainWindow.Height = UserSettings.Setting.WindowHeight;
-        mainWindow.Left = UserSettings.Setting.WindowLeft;
-        mainWindow.Top = UserSettings.Setting.WindowTop;
-        mainWindow.Width = UserSettings.Setting.WindowWidth;
+        mainWindow.Height = UserSettings.Setting!.WindowHeight;
+        mainWindow.Left = UserSettings.Setting!.WindowLeft;
+        mainWindow.Top = UserSettings.Setting!.WindowTop;
+        mainWindow.Width = UserSettings.Setting!.WindowWidth;
 
         if (UserSettings.Setting.StartCentered)
         {
@@ -63,10 +63,10 @@ internal static class MainWindowHelpers
     public static void SaveWindowPosition()
     {
         Window mainWindow = Application.Current.MainWindow;
-        UserSettings.Setting.WindowHeight = Math.Floor(mainWindow.Height);
-        UserSettings.Setting.WindowLeft = Math.Floor(mainWindow.Left);
-        UserSettings.Setting.WindowTop = Math.Floor(mainWindow.Top);
-        UserSettings.Setting.WindowWidth = Math.Floor(mainWindow.Width);
+        UserSettings.Setting!.WindowHeight = Math.Floor(mainWindow.Height);
+        UserSettings.Setting!.WindowLeft = Math.Floor(mainWindow.Left);
+        UserSettings.Setting!.WindowTop = Math.Floor(mainWindow.Top);
+        UserSettings.Setting!.WindowWidth = Math.Floor(mainWindow.Width);
     }
     #endregion Set and Save MainWindow position and size
 
@@ -90,14 +90,14 @@ internal static class MainWindowHelpers
     internal static void EventHandlers()
     {
         // Settings change events
-        UserSettings.Setting.PropertyChanged += SettingChange.UserSettingChanged;
-        TempSettings.Setting.PropertyChanged += SettingChange.TempSettingChanged;
+        UserSettings.Setting!.PropertyChanged += SettingChange.UserSettingChanged!;
+        TempSettings.Setting!.PropertyChanged += SettingChange.TempSettingChanged!;
 
         // Window initialized event
-        _mainWindow.Loaded += MainWindow_Initialized;
+        _mainWindow!.Loaded += MainWindow_Initialized;
 
         // Window closing event
-        _mainWindow.Closing += MainWindow_Closing;
+        _mainWindow.Closing += MainWindow_Closing!;
     }
 
     private static void MainWindow_Initialized(object sender, EventArgs e)
@@ -111,7 +111,7 @@ internal static class MainWindowHelpers
     {
         // Clear any remaining messages
         Snackbar snackbar = MainWindowUIHelpers.FindChild<Snackbar>(Application.Current.MainWindow, "SnackBar1");
-        snackbar.MessageQueue.Clear();
+        snackbar.MessageQueue!.Clear();
 
         // Stop the _stopwatch and record elapsed time
         _stopwatch.Stop();
@@ -163,7 +163,7 @@ internal static class MainWindowHelpers
     public static void ToggleHistory()
     {
         ListBox NavBox = MainWindowUIHelpers.FindChild<ListBox>(Application.Current.MainWindow, "NavigationListBox");
-        if (!UserSettings.Setting.KeepHistory)
+        if (!UserSettings.Setting!.KeepHistory)
         {
             NavigationViewModel.PopulateNoHistoryList();
             NavBox.ItemsSource = NavigationViewModel.NavigationListNoHistory;

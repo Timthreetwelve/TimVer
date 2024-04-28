@@ -5,9 +5,10 @@ namespace TimVer.ViewModels;
 public partial class SettingsViewModel : ObservableObject
 {
     #region MainWindow Instance
-    private static readonly MainWindow _mainWindow = Application.Current.MainWindow as MainWindow;
+    private static readonly MainWindow? _mainWindow = Application.Current.MainWindow as MainWindow;
     #endregion MainWindow Instance
 
+    #region Relay commands
     [RelayCommand]
     private static void OpenAppFolder()
     {
@@ -32,7 +33,7 @@ public partial class SettingsViewModel : ObservableObject
         {
             _log.Error(ex, $"Error trying to open {filePath}: {ex.Message}");
             _ = new MDCustMsgBox(GetStringResource("MsgText_Error_FileExplorer"),
-                     "Get My IP ERROR",
+                     GetStringResource("MsgText_ErrorCaption"),
                      ButtonType.Ok,
                      false,
                      true,
@@ -40,4 +41,5 @@ public partial class SettingsViewModel : ObservableObject
                      true).ShowDialog();
         }
     }
+    #endregion Relay commands
 }

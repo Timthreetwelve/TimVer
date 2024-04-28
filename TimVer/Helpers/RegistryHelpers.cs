@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Helpers;
 
@@ -42,8 +42,8 @@ public static class RegistryHelpers
     /// <returns>True if entry exists</returns>
     public static bool RegRunEntry(string name)
     {
-        using RegistryKey key = Registry.CurrentUser.OpenSubKey(_regPath, true);
-        return key.GetValue(name) != null;
+        using RegistryKey? key = Registry.CurrentUser.OpenSubKey(_regPath, true);
+        return key!.GetValue(name) != null;
     }
     #endregion Check run value
 
@@ -58,8 +58,8 @@ public static class RegistryHelpers
     {
         try
         {
-            using RegistryKey key = Registry.CurrentUser.OpenSubKey(_regPath, true);
-            key.SetValue(name, data);
+            using RegistryKey? key = Registry.CurrentUser.OpenSubKey(_regPath, true);
+            key!.SetValue(name, data);
 
             return "OK";
         }
@@ -80,8 +80,8 @@ public static class RegistryHelpers
     {
         try
         {
-            using RegistryKey key = Registry.CurrentUser.OpenSubKey(_regPath, true);
-            key.DeleteValue(name, false);
+            using RegistryKey? key = Registry.CurrentUser.OpenSubKey(_regPath, true);
+            key!.DeleteValue(name, false);
 
             return "OK";
         }

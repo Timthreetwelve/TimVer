@@ -67,7 +67,7 @@ internal static class NLogHelpers
         LogManager.Configuration = config;
 
         // Lastly, set the logging level based on setting
-        SetLogLevel(UserSettings.Setting.IncludeDebug);
+        SetLogLevel(UserSettings.Setting!.IncludeDebug);
     }
     #endregion Create the NLog configuration
 
@@ -127,7 +127,7 @@ internal static class NLogHelpers
     {
         LoggingConfiguration config = LogManager.Configuration;
         return (config.FindTargetByName("logfile")
-                as FileTarget)?.FileName.Render(new LogEventInfo { TimeStamp = DateTime.Now });
+                as FileTarget)?.FileName.Render(new LogEventInfo { TimeStamp = DateTime.Now })!;
     }
     #endregion Get the log file name
 }
