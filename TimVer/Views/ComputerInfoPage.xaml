@@ -41,6 +41,8 @@
                     <RowDefinition Height="25" />
                     <RowDefinition Height="25" />
                     <RowDefinition Height="25" />
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="25" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <!--#endregion-->
@@ -104,11 +106,19 @@
                            Text="{Binding Source={x:Static helpers:FormatHelpers.FormattedBiosVersionDate}}" />
 
                 <TextBlock Grid.Row="11" Grid.Column="0"
-                           Text="{DynamicResource HardwareInfo_PhysicalMemory}" />
+                           Text="{DynamicResource HardwareInfo_BIOSmode}" />
                 <TextBlock Grid.Row="11" Grid.Column="2"
+                           Text="{Binding Source={x:Static models:CombinedInfo.UefiMode}}" />
+
+                <TextBlock Grid.Row="12" Grid.Column="0"
+                           Text="{DynamicResource HardwareInfo_SecureBoot}" />
+                <TextBlock Grid.Row="12" Grid.Column="2"
+                           Text="{Binding Source={x:Static models:CombinedInfo.UefiSecureBoot}}" />
+
+                <TextBlock Grid.Row="13" Grid.Column="0"
+                           Text="{DynamicResource HardwareInfo_PhysicalMemory}" />
+                <TextBlock Grid.Row="13" Grid.Column="2"
                            Text="{Binding Source={x:Static helpers:FormatHelpers.FormattedMemory}}" />
-
-
             </Grid>
         </ScrollViewer>
         <!--#endregion-->
