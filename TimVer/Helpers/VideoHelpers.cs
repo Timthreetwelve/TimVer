@@ -2,42 +2,11 @@
 
 namespace TimVer.Helpers;
 
+/// <summary>
+/// Class to get Video information.
+/// </summary>
 public static class VideoHelpers
 {
-    #region Get WMI info for video controller(s)
-    /// <summary>
-    /// Get CIM value from Win32_VideoController
-    /// </summary>
-    /// <returns>IEnumerable or null if there was an exception</returns>
-    private static IEnumerable<CimInstance> CimQueryGPU()
-    {
-        try
-        {
-            Stopwatch sw = Stopwatch.StartNew();
-            CimSession cim = CimSession.Create(null);
-            IEnumerable<CimInstance> cimInst = cim.QueryInstances(
-                "root/CIMV2",
-                "WQL",
-                "SELECT * From Win32_VideoController");
-            sw.Stop();
-            if (cimInst.Count() == 1)
-            {
-                _log.Debug($"Found {cimInst.Count()} video adapter in {sw.Elapsed.TotalMilliseconds:N2} ms");
-            }
-            else
-            {
-                _log.Debug($"Found {cimInst.Count()} video adapters in {sw.Elapsed.TotalMilliseconds:N2} ms");
-            }
-            return cimInst;
-        }
-        catch (Exception ex)
-        {
-            _log.Error(ex, "Win32_VideoController call failed.");
-            return null;
-        }
-    }
-    #endregion Get WMI info for video controller(s)
-
     #region Build list of video info
     /// <summary>
     /// Aggregates video information
@@ -45,69 +14,155 @@ public static class VideoHelpers
     /// <returns>A List of GpuInfo</returns>
     public static List<GpuInfo> GetGpuInfo()
     {
-        List<GpuInfo> gpuInfoList = new();
-        foreach (CimInstance gpu in CimQueryGPU())
+        Stopwatch sw = Stopwatch.StartNew();
+        List<GpuInfo> gpuInfoList = [];
+        foreach (string? gpu in GetGPUList())
         {
-            GpuInfo info = new()
+            Dictionary<string, string> results = GetWin32VideoController(gpu!);
+            GpuInfo gpuInfo = new()
             {
-                GpuDeviceID = GetCimStringInfo(gpu, "DeviceID"),
-                GpuName = GetCimStringInfo(gpu, "Name"),
-                GpuDescription = GetCimStringInfo(gpu, "Description"),
-                GpuHorizontalResolution = GetCimStringInfo(gpu, "CurrentHorizontalResolution"),
-                GpuVerticalResolution = GetCimStringInfo(gpu, "CurrentVerticalResolution"),
-                GpuCurrentRefresh = GetCimStringInfo(gpu, "CurrentRefreshRate"),
-                GpuMinRefresh = GetCimStringInfo(gpu, "MinRefreshRate"),
-                GpuMaxRefresh = GetCimStringInfo(gpu, "MaxRefreshRate"),
-                GpuBitsPerPixel = GetCimStringInfo(gpu, "CurrentBitsPerPixel"),
-                GpuVideoProcessor = GetCimStringInfo(gpu, "VideoProcessor"),
-                GpuVideoDescription = GetCimStringInfo(gpu, "VideoModeDescription"),
-                GpuAdapterRam = GetAdapterRamInfo(gpu),
-                GpuNumberOfColors = GetColorsInfo(gpu)
+                GpuDeviceID = gpu!,
+                GpuName = results["GpuName"],
+                GpuDescription = results["GpuDescription"],
+                GpuHorizontalResolution = results["GpuHorizontalResolution"],
+                GpuVerticalResolution = results["GpuVerticalResolution"],
+                GpuCurrentRefresh = results["GpuCurrentRefresh"],
+                GpuMinRefresh = results["GpuMinRefresh"],
+                GpuMaxRefresh = results["GpuMaxRefresh"],
+                GpuBitsPerPixel = results["GpuBitsPerPixel"],
+                GpuVideoProcessor = results["GpuVideoProcessor"],
+                GpuVideoDescription = results["GpuVideoDescription"],
+                GpuAdapterRam = results["GpuAdapterRam"],
+                GpuNumberOfColors = results["GpuNumberOfColors"]
             };
-            gpuInfoList.Add(info);
+            gpuInfoList.Add(gpuInfo);
         }
+        sw.Stop();
+        Debug.WriteLine($"Video info took {sw.ElapsedMilliseconds} ms");
         return gpuInfoList;
     }
     #endregion Build list of video info
 
-    #region Get WMI infomation formatted as string
-    /// <summary>
-    /// Gets WMI video info as string
-    /// </summary>
-    /// <param name="ci">The CimInstance</param>
-    /// <param name="itemName">CIM Property</param>
-    /// <returns>A string</returns>
-    private static string GetCimStringInfo(CimInstance ci, string itemName)
+    #region Get list of video controllers
+    private static List<string?> GetGPUList()
     {
-        if (ci.CimInstanceProperties[itemName] == null)
+        const string scope = @"\\.\root\CIMV2";
+        const string dialect = "WQL";
+        const string query = "SELECT DeviceID From Win32_VideoController";
+
+        try
         {
-            _log.Debug($"Value for {itemName} was null");
+            List<string?> devices = [];
+            using CimSession cimSession = CimSession.Create(null);
+            devices.AddRange(cimSession.QueryInstances(scope, dialect, query)
+                .Select(drive => drive.CimInstanceProperties["DeviceID"]?.Value!.ToString()));
+            return devices;
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, "Win32_VideoController call failed.");
+            return [];
+        }
+    }
+    #endregion Get list of video controllers
+
+    #region Get WMI info for video controller(s)
+    /// <summary>
+    /// Get CIM value from Win32_VideoController
+    /// </summary>
+    /// <returns>IEnumerable or null if there was an exception</returns>
+    private static Dictionary<string, string> GetWin32VideoController(string controller)
+    {
+        const string scope = @"\\.\root\CIMV2";
+        const string dialect = "WQL";
+        string query = "SELECT DeviceID, Name, Description, CurrentHorizontalResolution, CurrentVerticalResolution, " +
+                       "CurrentRefreshRate, MinRefreshRate, MaxRefreshRate, CurrentBitsPerPixel, VideoProcessor, " +
+                       "VideoModeDescription, AdapterRam, CurrentNumberOfColors " +
+                       $"From Win32_VideoController Where DeviceID = '{controller}'";
+        try
+        {
+            using CimSession cimSession = CimSession.Create(null);
+            IEnumerable<CimInstance> instance = cimSession.QueryInstances(scope, dialect, query);
+            return instance
+                .Select(gpu => new Dictionary<string, string>
+                {
+                    ["GpuDeviceID"] = CimStringProperty(gpu, "DeviceID"),
+                    ["GpuName"] = CimStringProperty(gpu, "Name"),
+                    ["GpuDescription"] = CimStringProperty(gpu, "Description"),
+                    ["GpuHorizontalResolution"] = CimStringProperty(gpu, "CurrentHorizontalResolution"),
+                    ["GpuVerticalResolution"] = CimStringProperty(gpu, "CurrentVerticalResolution"),
+                    ["GpuCurrentRefresh"] = CimStringProperty(gpu, "CurrentRefreshRate"),
+                    ["GpuMinRefresh"] = CimStringProperty(gpu, "MinRefreshRate"),
+                    ["GpuMaxRefresh"] = CimStringProperty(gpu, "MaxRefreshRate"),
+                    ["GpuBitsPerPixel"] = CimStringProperty(gpu, "CurrentBitsPerPixel"),
+                    ["GpuVideoProcessor"] = CimStringProperty(gpu, "VideoProcessor"),
+                    ["GpuVideoDescription"] = CimStringProperty(gpu, "VideoModeDescription"),
+                    ["GpuAdapterRam"] = GetAdapterRamInfo(gpu),
+                    ["GpuNumberOfColors"] = GetColorsInfo(gpu)
+                })
+                .FirstOrDefault()!;
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, "Win32_VideoController call failed.");
+            return new()
+            {
+                { "GpuDeviceID", "" },
+                { "GpuName", "" },
+                { "GpuDescription", "" },
+                { "GpuHorizontalResolution", "" },
+                { "GpuVerticalResolution", "" },
+                { "GpuCurrentRefresh", "" },
+                { "GpuMinRefresh", "" },
+                { "GpuMaxRefresh", "" },
+                { "GpuBitsPerPixel", "" },
+                { "GpuVideoProcessor", "" },
+                { "GpuVideoDescription", "" },
+                { "GpuAdapterRam", "" },
+                { "GpuNumberOfColors", "" },
+            };
+        }
+    }
+    #endregion Get WMI info for video controller(s)
+
+    #region Get WMI information formatted as string
+    /// <summary>
+    /// Gets WMI video info as string.
+    /// </summary>
+    /// <param name="instance">The CimInstance instance.</param>
+    /// <param name="name">The name of the property.</param>
+    /// <returns>A string</returns>
+    private static string CimStringProperty(CimInstance instance, string name)
+    {
+        if (instance.CimInstanceProperties[name] == null)
+        {
+            _log.Debug($"Value for {name} was null");
             return "Not Available";
         }
-        return ci.CimInstanceProperties[itemName].Value.ToString();
+        return instance.CimInstanceProperties[name].Value.ToString()!;
     }
-    #endregion Get WMI infomation formatted as string
+    #endregion Get WMI information formatted as string
 
     #region Adapter Memory
     /// <summary>
     /// Gets video adapter Ram
     /// </summary>
-    /// <param name="ci">The CimInstance</param>
+    /// <param name="instance">The CimInstance</param>
     /// <returns>A formatted string</returns>
-    private static string GetAdapterRamInfo(CimInstance ci)
+    private static string GetAdapterRamInfo(CimInstance instance)
     {
-        if (ci.CimInstanceProperties["AdapterRam"] == null)
+        if (instance.CimInstanceProperties["AdapterRam"] == null)
         {
             _log.Debug("Value for AdapterRam was null");
             return "Not Available";
         }
-        double ram = Convert.ToDouble(ci.CimInstanceProperties["AdapterRam"].Value);
+        double ram = Convert.ToDouble(instance.CimInstanceProperties["AdapterRam"].Value);
         if (ram >= Math.Pow(1024, 3))
         {
-            ram /= (double)Math.Pow(1024, 3);
+            ram /= Math.Pow(1024, 3);
             return string.Format(CultureInfo.CurrentCulture, $"{ram:N2} GB");
         }
-        ram /= (double)Math.Pow(1024, 2);
+        ram /= Math.Pow(1024, 2);
         return string.Format(CultureInfo.CurrentCulture, $"{ram:N2} MB");
     }
     #endregion Adapter Memory
@@ -116,17 +171,17 @@ public static class VideoHelpers
     /// <summary>
     /// Gets to number of colors
     /// </summary>
-    /// <param name="ci">The CimInstance</param>
+    /// <param name="instance">The CimInstance</param>
     /// <returns>A formatted string</returns>
-    private static string GetColorsInfo(CimInstance ci)
+    private static string GetColorsInfo(CimInstance instance)
     {
-        if (ci.CimInstanceProperties["CurrentNumberOfColors"] == null)
+        if (instance.CimInstanceProperties["CurrentNumberOfColors"] == null)
         {
             _log.Debug("Value for CurrentNumberOfColors was null");
             return GetStringResource("MsgText_NotAvailable");
         }
 
-        ulong colors = Convert.ToUInt64(ci.CimInstanceProperties["CurrentNumberOfColors"].Value);
+        ulong colors = Convert.ToUInt64(instance.CimInstanceProperties["CurrentNumberOfColors"].Value);
         if (colors >= (ulong)Math.Pow(1024, 2))
         {
             colors /= (ulong)Math.Pow(1024, 3);
