@@ -9,15 +9,8 @@ namespace TimVer.Converters;
 /// Based on https://brianlagunas.com/localize-enum-descriptions-in-wpf/
 /// </remarks>
 /// <seealso cref="System.ComponentModel.DescriptionAttribute" />
-internal class LocalizedDescriptionAttribute : DescriptionAttribute
+internal class LocalizedDescriptionAttribute(string resourceKey) : DescriptionAttribute
 {
-    readonly string _resourceKey;
-
-    public LocalizedDescriptionAttribute(string resourceKey)
-    {
-        _resourceKey = resourceKey;
-    }
-
     public override string Description
     {
         get
@@ -25,19 +18,19 @@ internal class LocalizedDescriptionAttribute : DescriptionAttribute
             object description;
             try
             {
-                description = Application.Current.TryFindResource(_resourceKey);
+                description = Application.Current.TryFindResource(resourceKey);
             }
             catch (Exception)
             {
-                return $"{_resourceKey} value is null";
+                return $"{resourceKey} value is null";
             }
 
             if (description is null)
             {
-                return $"{_resourceKey} resource not found";
+                return $"{resourceKey} resource not found";
             }
 
-            return description.ToString();
+            return description.ToString()!;
         }
     }
 }
