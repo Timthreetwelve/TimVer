@@ -1,13 +1,33 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
-
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 namespace TimVer.Helpers;
 
-/// <summary>
-/// Class to check, add or remove entries in HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
-/// </summary>
 public static class RegistryHelpers
 {
+    #region Get Registry information
+    /// <summary>
+    /// Gets a value from HKLM\Software\Microsoft\Windows NT\CurrentVersion
+    /// </summary>
+    /// <param name="value">Value to retrieve </param>
+    /// <returns>The value if it exists, "no data" otherwise</returns>
+    public static string GetRegistryInfo(string value)
+    {
+        try
+        {
+            using RegistryKey key = Registry.LocalMachine.OpenSubKey(@"Software\Microsoft\Windows NT\CurrentVersion")!;
+            return key.GetValue(value) != null ? key.GetValue(value)!.ToString()! : "no data";
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, "Registry call failed.");
+            return ex.Message;
+        }
+    }
+    #endregion Get Registry information
+
     #region Constant registry path
+    /// <summary>
+    /// The following methods check, add or remove entries in HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+    /// </summary>
     private const string _regPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
     #endregion Constant registry path
 
