@@ -4,6 +4,7 @@ namespace TimVer.Helpers;
 
 internal static class ResourceHelpers
 {
+    #region Get count of strings in resource dictionary
     /// <summary>
     /// Gets the count of strings in the default resource dictionary.
     /// </summary>
@@ -16,7 +17,9 @@ internal static class ResourceHelpers
         };
         return dictionary.Count;
     }
+    #endregion Get count of strings in resource dictionary
 
+    #region Get a resource string
     /// <summary>
     /// Gets the string resource for the key.
     /// </summary>
@@ -32,18 +35,33 @@ internal static class ResourceHelpers
         {
             description = Application.Current.TryFindResource(key);
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-            _log.Error($"Resource not found: {key}");
-            throw new Exception("Resource not found");
+            if (Debugger.IsAttached)
+            {
+                throw new ArgumentException($"Resource not found: {key}");
+            }
+            else
+            {
+                _log.Error(ex, $"Resource not found: {key}");
+                return $"Resource not found: {key}";
+            }
         }
 
         if (description is null)
         {
-            _log.Error($"Resource not found: {key}");
-            throw new Exception("Resource not found");
+            if (Debugger.IsAttached)
+            {
+                throw new ArgumentNullException($"Resource not found: {key}");
+            }
+            else
+            {
+                _log.Error($"Resource not found: {key}");
+                return $"Resource not found: {key}";
+            }
         }
 
-        return description.ToString();
+        return description.ToString()!;
     }
+    #endregion Get a resource string
 }
