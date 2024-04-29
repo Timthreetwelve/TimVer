@@ -8,7 +8,7 @@ internal class TodayConverter : IValueConverter
     {
         if (value is string date)
         {
-            DateTime dt = DateTime.ParseExact(date, "yyyy/MM/dd HH:mm", null);
+            DateTime dt = DateTime.ParseExact(date, "yyyy/MM/dd HH:mm", CultureInfo.GetCultureInfo("en-US"));
             if (dt.Date == DateTime.Today)
             {
                 return true;
