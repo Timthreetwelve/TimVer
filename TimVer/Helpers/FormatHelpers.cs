@@ -4,6 +4,10 @@ namespace TimVer.Helpers;
 
 internal static class FormatHelpers
 {
+    #region Format processor string
+    /// <summary>
+    /// Combines processor cores and processor threads into a single string.
+    /// </summary>
     public static string FormattedProcessorCores
     {
         get
@@ -13,7 +17,12 @@ internal static class FormatHelpers
             return $"{CombinedInfo.ProcCores} {hCores} - {CombinedInfo.ProcThreads} {hThreads}";
         }
     }
+    #endregion Format processor string
 
+    #region Format memory string
+    /// <summary>
+    /// Combines installed memory and usable memory into a single string.
+    /// </summary>
     public static string FormattedMemory
     {
         get
@@ -23,7 +32,12 @@ internal static class FormatHelpers
             return $"{CombinedInfo.InstalledMemory} {hTotal} - {CombinedInfo.TotalMemory} {hUsable}";
         }
     }
+    #endregion Format memory string
 
+    #region Format BIOS string
+    /// <summary>
+    /// Combines BIOS version and date into a single string.
+    /// </summary>
     public static string FormattedBiosVersionDate
     {
         get
@@ -33,4 +47,5 @@ internal static class FormatHelpers
             return $"{name}   {date}";
         }
     }
+    #endregion Format BIOS string
 }
