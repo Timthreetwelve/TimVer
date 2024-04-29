@@ -2,8 +2,15 @@
 
 namespace TimVer.Helpers;
 
+/// <summary>
+/// Class to get BIOS information.
+/// </summary>
+/// <seealso cref="UefiHelpers"/>
 public static class BiosHelpers
 {
+    private const string _scope = @"\\.\root\CIMV2";
+    private const string _dialect = "WQL";
+
     #region BIOS Manufacturer
     /// <summary>
     /// Gets BIOS manufacturer
@@ -13,17 +20,15 @@ public static class BiosHelpers
     {
         try
         {
-            CimSession cim = CimSession.Create(null);
-            return cim.QueryInstances(
-                "root/CIMV2",
-                "WQL",
-                "SELECT Manufacturer From Win32_BIOS")
-                .FirstOrDefault().CimInstanceProperties["Manufacturer"].Value.ToString();
+            const string query = "SELECT Manufacturer From Win32_BIOS";
+            using CimSession cim = CimSession.Create(null);
+            return cim.QueryInstances(_scope, _dialect, query)
+                .FirstOrDefault()!.CimInstanceProperties["Manufacturer"].Value.ToString()!;
         }
         catch (Exception ex)
         {
             _log.Error(ex, "GetBiosManufacturer call failed.");
-            return null;
+            return ex.Message;
         }
     }
     #endregion BIOS Manufacturer
@@ -37,17 +42,15 @@ public static class BiosHelpers
     {
         try
         {
-            CimSession cim = CimSession.Create(null);
-            return cim.QueryInstances(
-                "root/CIMV2",
-                "WQL",
-                "SELECT Name From Win32_BIOS")
-                .FirstOrDefault().CimInstanceProperties["Name"].Value.ToString();
+            const string query = "SELECT Name From Win32_BIOS";
+            using CimSession cim = CimSession.Create(null);
+            return cim.QueryInstances(_scope, _dialect, query)
+                .FirstOrDefault()!.CimInstanceProperties["Name"].Value.ToString()!;
         }
         catch (Exception ex)
         {
             _log.Error(ex, "GetBiosVersion call failed.");
-            return null;
+            return ex.Message;
         }
     }
     #endregion Get BIOS version
@@ -61,12 +64,10 @@ public static class BiosHelpers
     {
         try
         {
-            CimSession cim = CimSession.Create(null);
-            return (DateTime)cim.QueryInstances(
-                "root/CIMV2",
-                "WQL",
-                "SELECT ReleaseDate From Win32_BIOS")
-                .FirstOrDefault().CimInstanceProperties["ReleaseDate"].Value;
+            const string query = "SELECT ReleaseDate From Win32_BIOS";
+            using CimSession cim = CimSession.Create(null);
+            return (DateTime)cim.QueryInstances(_scope, _dialect, query)
+                .FirstOrDefault()!.CimInstanceProperties["ReleaseDate"].Value;
         }
         catch (Exception ex)
         {
