@@ -50,4 +50,24 @@ internal static class OperatingSystemHelpers
         }
     }
     #endregion Get string value from Win32_OperatingSystem
+
+    #region Get OS Architecture
+    /// <summary>
+    /// Gets the operating system architecture.
+    /// </summary>
+    /// <returns>Architecture as a string.</returns>
+    public static string OsArchitecture()
+    {
+        try
+        {
+            Architecture? architecture = RuntimeInformation.OSArchitecture;
+            return architecture.ToString()!;
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, "RuntimeInformation.OSArchitecture call failed.");
+            return ex.Message;
+        }
+    }
+    #endregion Get OS Architecture
 }

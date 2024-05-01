@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Models;
 
@@ -17,7 +17,7 @@ public static class CombinedInfo
             {
                 return _arch;
             }
-            _arch = OperatingSystemHelpers.GetWin32OperatingSystem("OSArchitecture");
+            _arch = OperatingSystemHelpers.OsArchitecture();
             return _arch;
         }
     }
