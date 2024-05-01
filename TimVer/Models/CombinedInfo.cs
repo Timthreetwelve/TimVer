@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Models;
 
@@ -83,7 +83,7 @@ public static class CombinedInfo
             {
                 return _installDate;
             }
-            _installDate = OperatingSystemHelpers.CimQueryOSDateTime("InstallDate");
+            _installDate = RegistryHelpers.GetInstallDateDate();
             return _installDate;
         }
     }

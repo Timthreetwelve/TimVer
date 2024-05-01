@@ -1,4 +1,5 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+
 namespace TimVer.Helpers;
 
 public static class RegistryHelpers
@@ -24,10 +25,34 @@ public static class RegistryHelpers
     }
     #endregion Get Registry information
 
-    #region Constant registry path
+    #region Get install date
     /// <summary>
-    /// The following methods check, add or remove entries in HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+    /// Gets the Windows installation date from registry.
     /// </summary>
+    /// <returns>The installation date converted to local time as DateTime.</returns>
+    public static DateTime GetInstallDateDate()
+    {
+        try
+        {
+            using RegistryKey key = Registry.LocalMachine.OpenSubKey(@"Software\Microsoft\Windows NT\CurrentVersion")!;
+            if (key != null)
+            {
+                long installDateFromRegistry = Convert.ToInt64(key.GetValue("InstallDate"));
+                DateTime epochDate = DateTime.UnixEpoch;
+                return epochDate.AddSeconds(installDateFromRegistry).ToLocalTime();
+            }
+            return DateTime.MinValue;
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, "Registry call failed.");
+            return DateTime.MinValue;
+        }
+    }
+    #endregion Get install date
+
+    #region The following methods check, add or remove entries in HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+    #region Constant registry path
     private const string _regPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
     #endregion Constant registry path
 
@@ -110,5 +135,6 @@ public static class RegistryHelpers
             return ex.Message;
         }
     }
-    #endregion Remove run value
+    #endregion Remove run value 
+    #endregion The following methods check, add or remove entries in HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
 }
