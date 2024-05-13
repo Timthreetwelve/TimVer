@@ -240,23 +240,6 @@ internal partial class NavigationViewModel : ObservableObject
     }
     #endregion Open the application folder
 
-    #region Refresh drives command
-    [RelayCommand]
-    public static void RefreshDrives()
-    {
-        CombinedInfo.LogicalDrivesList.Clear();
-        DrivesPage.Instance!.LDrivesDataGrid.ItemsSource = CombinedInfo.LogicalDrivesList;
-
-        if (UserSettings.Setting!.GetPhysicalDrives)
-        {
-            CombinedInfo.PhysicalDrivesList.Clear();
-            DrivesPage.Instance.PDisksDataGrid.ItemsSource = CombinedInfo.PhysicalDrivesList;
-            DrivesPage.Instance.PDisksDataGrid.SelectedIndex = 0;
-        }
-        SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_DriveInfoRefreshed"));
-    }
-    #endregion Refresh drives command
-
     #region Right mouse button
     /// <summary>
     /// Copy (nearly) any text in a TextBlock to the clipboard on right mouse button up.
