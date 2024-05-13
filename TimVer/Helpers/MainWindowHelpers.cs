@@ -106,7 +106,6 @@ internal static class MainWindowHelpers
         if (snackbar is not null)
         {
             snackbar.MessageQueue!.Clear();
-
         }
         // Stop the _stopwatch and record elapsed time
         _stopwatch.Stop();
