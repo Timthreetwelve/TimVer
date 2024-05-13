@@ -28,6 +28,8 @@ internal static class ResourceHelpers
     /// <remarks>
     /// Want to throw here so that missing resource doesn't make it into a release.
     /// </remarks>
+    /// <exception cref="ArgumentNullException">Resource description is null.</exception>
+    /// <exception cref="ArgumentException">Resource was not found.</exception>
     public static string GetStringResource(string key)
     {
         object description;
