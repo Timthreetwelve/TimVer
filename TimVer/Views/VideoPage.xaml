@@ -1,119 +1,35 @@
 ﻿<UserControl x:Class="TimVer.Views.VideoPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:convert="clr-namespace:TimVer.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:models="clr-namespace:TimVer.Models"
+             xmlns:viewmodels="clr-namespace:TimVer.ViewModels"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="600"
+             d:DataContext="{d:DesignInstance Type=viewmodels:VideoViewModel}"
              FontFamily="Segoe UI" FontSize="14"
              TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
+
+    <!--#region Resources-->
+    <UserControl.Resources>
+        <convert:SpacingConverter x:Key="Spacing" />
+    </UserControl.Resources>
+    <!--#endregion-->
+
     <Grid>
-        <ScrollViewer Margin="20,20,20,5"
-                      HorizontalScrollBarVisibility="Auto"
-                      VerticalScrollBarVisibility="Auto">
-            <Grid DataContext="{Binding ElementName=GpuListComboBox, Path=SelectedItem}">
-                <!--#region Row & Column definitions-->
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="25" />
-                    <RowDefinition Height="25" />
-                    <RowDefinition Height="25" />
-                    <RowDefinition Height="25" />
-                    <RowDefinition Height="25" />
-                    <RowDefinition Height="25" />
-                    <RowDefinition Height="25" />
-                    <RowDefinition Height="25" />
-                    <RowDefinition Height="25" />
-                    <RowDefinition Height="25" />
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" MinWidth="160" />
-                    <ColumnDefinition Width="20" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <!--#endregion-->
+        <DataGrid Margin="0,0,5,15"
+                  materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
+                  Background="{DynamicResource MaterialDesign.Brush.Card.Background}"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  CanUserSortColumns="True"
+                  CellStyle="{StaticResource DisplayOnly}"
+                  FontFamily="Segoe UI" FontSize="14"
+                  HeadersVisibility="None"
+                  IsReadOnly="True"
+                  ItemsSource="{Binding VideoInfoList}" />
 
-                <TextBlock Grid.Row="0" Grid.Column="0"
-                           Text="{DynamicResource GraphicsInfo_GraphicsAdapter}" />
-                <TextBlock Grid.Row="0" Grid.Column="2"
-                           Text="{Binding GpuName}" />
-
-                <TextBlock Grid.Row="1" Grid.Column="0"
-                           Text="{DynamicResource GraphicsInfo_AdapterType}" />
-                <TextBlock Grid.Row="1" Grid.Column="2"
-                           Text="{Binding GpuVideoProcessor}" />
-
-                <TextBlock Grid.Row="2" Grid.Column="0"
-                           Text="{DynamicResource GraphicsInfo_Description}" />
-                <TextBlock Grid.Row="2" Grid.Column="2"
-                           Text="{Binding GpuDescription}" />
-
-                <TextBlock Grid.Row="3" Grid.Column="0"
-                           Text="{DynamicResource GraphicsInfo_DeviceID}" />
-                <TextBlock Grid.Row="3" Grid.Column="2"
-                           Text="{Binding GpuDeviceID}" />
-
-                <TextBlock Grid.Row="4" Grid.Column="0"
-                           Text="{DynamicResource GraphicsInfo_CurrentResolution}" />
-                <TextBlock Grid.Row="4" Grid.Column="2">
-                    <Run Text="{Binding GpuHorizontalResolution}" />
-                    <Run Text=" x " />
-                    <Run Text="{Binding GpuVerticalResolution}" />
-                </TextBlock>
-
-                <TextBlock Grid.Row="5" Grid.Column="0"
-                           Text="{DynamicResource GraphicsInfo_CurrentRefreshRate}" />
-                <TextBlock Grid.Row="5" Grid.Column="2">
-                    <Run Text="{Binding GpuCurrentRefresh}" />
-                    <Run Text="Hz" />
-                </TextBlock>
-
-                <TextBlock Grid.Row="6" Grid.Column="0"
-                           Text="{DynamicResource GraphicsInfo_AdapterRAM}" />
-                <TextBlock Grid.Row="6" Grid.Column="2"
-                           Text="{Binding GpuAdapterRam}" />
-
-                <TextBlock Grid.Row="7" Grid.Column="0"
-                           Text="{DynamicResource GraphicsInfo_BitsPerPixel}" />
-                <TextBlock Grid.Row="7" Grid.Column="2"
-                           Text="{Binding GpuBitsPerPixel}" />
-
-                <TextBlock Grid.Row="8" Grid.Column="0"
-                           Text="{DynamicResource GraphicsInfo_NumberOfColors}" />
-                <TextBlock Grid.Row="8" Grid.Column="2"
-                           Text="{Binding GpuNumberOfColors}" />
-
-                <StackPanel Grid.Row="10"
-                            Orientation="Horizontal">
-                    <TextBlock Margin="0,2"
-                               Text="{DynamicResource GraphicsInfo_SelectAdapter}" />
-                    <TextBlock Margin="7,3"
-                               ToolTipService.InitialShowDelay="300"
-                               ToolTipService.Placement="Top">
-                        <materialDesign:PackIcon Width="18" Height="18"
-                                                 Kind="InfoOutline" />
-                        <TextBlock.ToolTip>
-                            <TextBlock LineHeight="18">
-                                <Run Text="{DynamicResource GraphicsInfo_SelectAdapterToolTipLine1}" />
-                                <LineBreak />
-                                <Run Text="{DynamicResource GraphicsInfo_SelectAdapterToolTipLine2}" />
-                            </TextBlock>
-                        </TextBlock.ToolTip>
-                    </TextBlock>
-                </StackPanel>
-
-                <ComboBox x:Name="GpuListComboBox"
-                          Grid.Row="10" Grid.Column="2"
-                          Width="140"
-                          HorizontalAlignment="Left"
-                          VerticalAlignment="Top"
-                          DisplayMemberPath="GpuDeviceID"
-                          ItemsSource="{Binding Source={x:Static models:CombinedInfo.GPUList}}"
-                          SelectedIndex="0" />
-            </Grid>
-        </ScrollViewer>
     </Grid>
 </UserControl>

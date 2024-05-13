@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 using static Vanara.PInvoke.User32;
 
@@ -194,7 +194,7 @@ internal static class ClipboardHelper
                 {
                     _ = builder.AppendLine(GetStringResource("NavTitle_GraphicsInfo"));
                     _ = builder.AppendLine(new string('-', builder.Length - 2));
-                    foreach (GpuInfo item in CombinedInfo.GPUList)
+                    foreach (GpuInfo item in VideoViewModel.GPUList!)
                     {
                         _ = builder.Append(GetStringResource("GraphicsInfo_GraphicsAdapter"))
                                    .Append(" = ")
