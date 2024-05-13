@@ -103,8 +103,11 @@ internal static class MainWindowHelpers
     {
         // Clear any remaining messages
         Snackbar snackbar = MainWindowUIHelpers.FindChild<Snackbar>(Application.Current.MainWindow, "SnackBar1");
-        snackbar.MessageQueue!.Clear();
+        if (snackbar is not null)
+        {
+            snackbar.MessageQueue!.Clear();
 
+        }
         // Stop the _stopwatch and record elapsed time
         _stopwatch.Stop();
         _log.Info($"{AppInfo.AppName} {GetStringResource("MsgText_ApplicationShutdown")}.  " +
