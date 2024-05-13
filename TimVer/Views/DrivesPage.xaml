@@ -24,7 +24,7 @@
     </UserControl.Resources>
 
     <UserControl.DataContext>
-        <viewmodels:NavigationViewModel />
+        <viewmodels:DriveInfoViewModel />
     </UserControl.DataContext>
     <!--#endregion-->
 
@@ -74,7 +74,7 @@
                           FontSize="14" FrozenColumnCount="1"
                           HeadersVisibility="Column"
                           IsReadOnly="True"
-                          ItemsSource="{x:Static models:CombinedInfo.LogicalDrivesList}"
+                          ItemsSource="{Binding LogicalDrivesList}"
                           RowStyle="{StaticResource LogicalDriveRows}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Name}"
@@ -156,7 +156,7 @@
                               CellStyle="{StaticResource DisplayOnly}"
                               FontSize="14" HeadersVisibility="Column"
                               IsReadOnly="True"
-                              ItemsSource="{x:Static models:CombinedInfo.PhysicalDrivesList}"
+                              ItemsSource="{x:Static viewmodels:DriveInfoViewModel.PhysicalDrivesList}"
                               SelectedIndex="0" SelectionMode="Single"
                               SelectionUnit="FullRow">
                         <DataGrid.Columns>
@@ -253,7 +253,7 @@
                                   Style="{DynamicResource MaterialDesignGridSplitter}" />
                     <!--#endregion-->
 
-                    <!--#region TextBolcks for details-->
+                    <!--#region TextBlocks for details-->
                     <Grid Grid.Row="2">
                         <ScrollViewer VerticalAlignment="Top"
                                       DataContext="{Binding SelectedItem,

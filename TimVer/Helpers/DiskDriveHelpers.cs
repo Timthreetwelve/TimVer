@@ -113,9 +113,8 @@ public static class DiskDriveHelpers
             }
             watch.Stop();
             MainWindowUIHelpers.MainWindowNormalPointer();
-            string drv = count != 1 ? "drives" : "drive";
-            string msg = $"Found {count} logical {drv} in {watch.Elapsed.TotalMilliseconds:N2} ms";
-            _log.Debug(msg);
+            string suffix = (logicalDrives.Count == 1) ? string.Empty : "s";
+            _log.Debug($"Found {logicalDrives.Count} logical drive{suffix} in {watch.Elapsed.TotalMilliseconds:N2} ms");
             return logicalDrives;
         }
         else
@@ -196,7 +195,7 @@ public static class DiskDriveHelpers
         if (UserSettings.Setting!.GetPhysicalDrives)
         {
             MainWindowUIHelpers.MainWindowWaitPointer();
-            Stopwatch watch = Stopwatch.StartNew();
+            Stopwatch pdWatch = Stopwatch.StartNew();
 
             // List of physical drive properties
             List<PhysicalDrives> physicalDrives = [];
@@ -210,12 +209,10 @@ public static class DiskDriveHelpers
                 Dictionary<string, string> results = [];
 
                 results = results.Concat(GetMSFTDisk(index))
-                    .ToDictionary(x => x.Key, x => x.Value);
-
-                results = results.Concat(GetMSFTPhysicalDisk(index))
-                    .ToDictionary(x => x.Key, x => x.Value);
-
-                results = results.Concat(GetWin32DiskDrive(index))
+                    .ToDictionary(x => x.Key, x => x.Value)
+                    .Concat(GetMSFTPhysicalDisk(index))
+                    .ToDictionary(x => x.Key, x => x.Value)
+                    .Concat(GetWin32DiskDrive(index))
                     .ToDictionary(x => x.Key, x => x.Value);
 
                 pDisk.BusType = results["BusType"];
@@ -236,9 +233,9 @@ public static class DiskDriveHelpers
                 physicalDrives.Add(pDisk);
             }
 
-            watch.Stop();
-            string drv = driveList.Count != 1 ? "drives" : "drive";
-            _log.Debug($"Found {driveList.Count} physical {drv} in {watch.Elapsed.TotalMilliseconds:N2} ms");
+            pdWatch.Stop();
+            string suffix = (physicalDrives.Count == 1) ? string.Empty : "s";
+            _log.Debug($"Found {physicalDrives.Count} physical drive{suffix} in {pdWatch.Elapsed.TotalMilliseconds:N2} ms");
             MainWindowUIHelpers.MainWindowNormalPointer();
             return physicalDrives;
         }

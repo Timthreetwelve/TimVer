@@ -142,7 +142,7 @@ internal static class ClipboardHelper
                                    .AppendLine(GetStringResource("DriveInfo_LogicalDrives"));
 
                         _ = builder.AppendLine(new string('-', builder.Length - 2));
-                        foreach (LogicalDrives item in CombinedInfo.LogicalDrivesList)
+                        foreach (LogicalDrives item in DriveInfoViewModel.LogicalDrivesList)
                         {
                             _ = builder.Append(GetStringResource("DriveInfo_Name"))
                                        .Append(" = ")
@@ -177,7 +177,7 @@ internal static class ClipboardHelper
                                    .Append(" - ")
                                    .AppendLine(GetStringResource("DriveInfo_PhysicalDrives"));
                         _ = builder.AppendLine(new string('-', builder.Length - 2));
-                        foreach (PhysicalDrives item in CombinedInfo.PhysicalDrivesList)
+                        foreach (PhysicalDrives item in DriveInfoViewModel.PhysicalDrivesList)
                         {
                             if (UserSettings.Setting.GetPhysicalDrives)
                             {

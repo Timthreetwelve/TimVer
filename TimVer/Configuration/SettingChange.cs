@@ -52,17 +52,17 @@ public static class SettingChange
                 break;
 
             case nameof(UserSettings.Setting.Use1024):
-                CombinedInfo.PhysicalDrivesList.Clear();
-                CombinedInfo.LogicalDrivesList.Clear();
+                DriveInfoViewModel.PhysicalDrivesList.Clear();
+                DriveInfoViewModel.LogicalDrivesList.Clear();
                 break;
 
             case nameof(UserSettings.Setting.IncludeNotReady):
             case nameof(UserSettings.Setting.IncludeRemovable):
-                CombinedInfo.LogicalDrivesList.Clear();
+                DriveInfoViewModel.LogicalDrivesList.Clear();
                 break;
 
             case nameof(UserSettings.Setting.GetPhysicalDrives):
-                CombinedInfo.PhysicalDrivesList.Clear();
+                DriveInfoViewModel.PhysicalDrivesList.Clear();
                 break;
 
             case nameof(UserSettings.Setting.LanguageTesting):
