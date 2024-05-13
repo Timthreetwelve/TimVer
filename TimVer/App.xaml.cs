@@ -1,43 +1,9 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer;
-/// <summary>
-/// Interaction logic for App.xaml
-/// </summary>
+
 public partial class App : Application
 {
-    #region Properties
-    /// <summary>
-    /// Number of language strings in a resource dictionary
-    /// </summary>
-    public static int LanguageStrings { get; set; }
-    /// <summary>
-    /// Number of language strings in the test resource dictionary
-    /// </summary>
-    public static int TestLanguageStrings { get; set; }
-    /// <summary>
-    /// Uri of the resource dictionary
-    /// </summary>
-    public static string? LanguageFile { get; set; }
-    /// <summary>
-    /// Uri of the test resource dictionary
-    /// </summary>
-    public static string? TestLanguageFile { get; set; }
-    /// <summary>
-    /// Culture at startup
-    /// </summary>
-    public static CultureInfo? StartupCulture { get; set; }
-    /// <summary>
-    /// UI Culture at startup
-    /// </summary>
-    public static CultureInfo? StartupUICulture { get; set; }
-
-    /// <summary>
-    /// Number of language strings in the default resource dictionary
-    /// </summary>
-    public static int DefaultLanguageStrings { get; set; }
-    #endregion Properties
-
     /// <summary>
     /// Override the Startup Event.
     /// </summary>
@@ -48,12 +14,25 @@ public partial class App : Application
         // Unhandled exception handler
         AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
-        // Initialize settings here so that saved language can be accessed below.
+        // Initialize settings so that saved language can be accessed below.
         ConfigHelpers.InitializeSettings();
 
-        // Log startup messages
+        // Set NLog configuration
+        NLogConfig(false);
+
+        // Log startup messages.
         MainWindowHelpers.LogStartup();
 
+        // Change language if needed.
+        SetLanguage();
+
+        // Enable language testing if requested.
+        CheckLanguageTesting();
+    }
+
+    #region Set the language that the UI will use
+    private void SetLanguage()
+    {
         // Resource dictionary for language
         ResourceDictionary resDict = [];
 
@@ -119,8 +98,12 @@ public partial class App : Application
             LanguageFile = "defaulted";
             _log.Warn($"Language has defaulted to en-US. {LanguageStrings} string loaded.");
         }
+    }
+    #endregion Set the language that the UI will use
 
-        // Language testing
+    #region Language testing
+    private void CheckLanguageTesting()
+    {
         if (UserSettings.Setting!.LanguageTesting)
         {
             _log.Info("Language testing enabled");
@@ -158,6 +141,7 @@ public partial class App : Application
             }
         }
     }
+    #endregion Language testing
 
     #region Unhandled Exception Handler
     /// <summary>
@@ -184,4 +168,36 @@ public partial class App : Application
             MessageBoxImage.Error);
     }
     #endregion Unhandled Exception Handler
+
+    #region Properties
+    /// <summary>
+    /// Number of language strings in a resource dictionary
+    /// </summary>
+    public static int LanguageStrings { get; set; }
+    /// <summary>
+    /// Number of language strings in the test resource dictionary
+    /// </summary>
+    public static int TestLanguageStrings { get; set; }
+    /// <summary>
+    /// Uri of the resource dictionary
+    /// </summary>
+    public static string? LanguageFile { get; set; }
+    /// <summary>
+    /// Uri of the test resource dictionary
+    /// </summary>
+    public static string? TestLanguageFile { get; set; }
+    /// <summary>
+    /// Culture at startup
+    /// </summary>
+    public static CultureInfo? StartupCulture { get; set; }
+    /// <summary>
+    /// UI Culture at startup
+    /// </summary>
+    public static CultureInfo? StartupUICulture { get; set; }
+
+    /// <summary>
+    /// Number of language strings in the default resource dictionary
+    /// </summary>
+    public static int DefaultLanguageStrings { get; set; }
+    #endregion Properties
 }
