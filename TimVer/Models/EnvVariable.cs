@@ -3,7 +3,7 @@
 namespace TimVer.Models;
 
 /// <summary>
-/// Environment variables
+/// Environment variables.
 /// </summary>
 public partial class EnvVariable : ObservableObject
 {
@@ -14,15 +14,4 @@ public partial class EnvVariable : ObservableObject
     [ObservableProperty]
     private string? _value;
     #endregion Properties
-
-    #region Environment variables
-    private static List<EnvVariable>? _envVariableList;
-    public static List<EnvVariable> EnvVariableList
-    {
-        get
-        {
-            return _envVariableList ??= EnvironmentHelpers.GetEnvironmentVariables();
-        }
-    }
-    #endregion Environment variables
 }

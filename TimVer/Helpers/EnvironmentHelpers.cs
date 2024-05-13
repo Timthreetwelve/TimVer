@@ -12,6 +12,7 @@ internal static class EnvironmentHelpers
     {
         try
         {
+            Stopwatch sw = Stopwatch.StartNew();
             List<EnvVariable> envList = [];
             foreach (DictionaryEntry entry in Environment.GetEnvironmentVariables())
             {
@@ -22,6 +23,8 @@ internal static class EnvironmentHelpers
                 };
                 envList.Add(envVariable);
             }
+            sw.Stop();
+            _log.Debug($"Found {envList.Count} environment variables in {sw.Elapsed.TotalMilliseconds:N2} ms");
             return [.. envList.OrderBy(envVariable => envVariable.Variable)];
         }
         catch (Exception ex)

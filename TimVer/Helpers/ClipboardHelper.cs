@@ -109,7 +109,7 @@ internal static class ClipboardHelper
                 {
                     _ = builder.AppendLine(GetStringResource("NavTitle_Environment"));
                     _ = builder.AppendLine(new string('-', builder.Length - 2));
-                    foreach (EnvVariable item in EnvVariable.EnvVariableList)
+                    foreach (EnvVariable item in EnvVarViewModel.EnvVariableList)
                     {
                         _ = builder.Append(item.Variable)
                                    .Append(" = ")

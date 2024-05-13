@@ -2,12 +2,34 @@
 
 namespace TimVer.ViewModels;
 
-#pragma warning disable S1118 // Utility classes should not have public constructors
-#pragma warning disable RCS1102 // Make class static
-public class EnvVarViewModel
-#pragma warning restore RCS1102 // Make class static
-#pragma warning restore S1118 // Utility classes should not have public constructors
+public partial class EnvVarViewModel : ObservableObject
 {
+    #region constructor
+    public EnvVarViewModel()
+    {
+        if (EnvVariableList.Count < 1)
+        {
+            LoadData();
+        }
+    }
+    #endregion constructor
+
+    #region Collection of environment variables
+    /// <summary>
+    /// List of environment variables.
+    /// </summary>
+    /// <remarks>A generic list is okay here since a change in the environment won't be detected in the app.</remarks>
+    public static List<EnvVariable> EnvVariableList { get; set; } = [];
+    #endregion Collection of environment variables
+
+    #region Load data
+    private static void LoadData()
+    {
+        EnvVariableList = EnvironmentHelpers.GetEnvironmentVariables();
+    }
+    #endregion Load data
+
+    #region Filter text
     public static event EventHandler<PropertyChangedEventArgs>? StaticPropertyChanged;
 
     private static string? _filterText;
@@ -23,4 +45,5 @@ public class EnvVarViewModel
             }
         }
     }
+    #endregion Filter text
 }

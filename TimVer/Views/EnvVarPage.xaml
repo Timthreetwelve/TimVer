@@ -14,7 +14,7 @@
              FontFamily="Segoe UI"
              Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
 
-    <!--#region DataContext & Resources-->
+    <!--#region Resources-->
     <UserControl.Resources>
         <convert:SpacingConverter x:Key="Spacing" />
     </UserControl.Resources>
@@ -71,7 +71,7 @@
                   CanUserSortColumns="True"
                   CellStyle="{StaticResource DisplayOnly}"
                   IsReadOnly="True"
-                  ItemsSource="{Binding Source={x:Static models:EnvVariable.EnvVariableList}}">
+                  ItemsSource="{Binding EnvVariableList}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Variable}"
                                     Header="{DynamicResource EnvironmentInfo_Variable}" />
