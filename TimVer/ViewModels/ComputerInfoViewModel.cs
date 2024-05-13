@@ -2,10 +2,29 @@
 
 namespace TimVer.ViewModels;
 
-#pragma warning disable S2094 // Classes should not be empty
-class ComputerInfoViewModel
-#pragma warning restore S2094 // Classes should not be empty
-#pragma warning disable RCS1251 // Remove unnecessary braces from record declaration
+internal class ComputerInfoViewModel : ObservableObject
 {
+    #region Constructor
+    public ComputerInfoViewModel()
+    {
+        if (ComputerInfoList is null)
+        {
+            LoadData();
+        }
+    }
+    #endregion Constructor
+
+    #region Collection of computer hardware information
+    public static Dictionary<string, string>? ComputerInfoList { get; set; }
+    #endregion Collection of computer hardware information
+
+    #region Load data
+    /// <summary>
+    /// Get data for all properties.
+    /// </summary>
+    public static void LoadData()
+    {
+        ComputerInfoList = ComputerSystemHelpers.GetComputerInfo();
+    }
+    #endregion Load data
 }
-#pragma warning restore RCS1251 // Remove unnecessary braces from record declaration

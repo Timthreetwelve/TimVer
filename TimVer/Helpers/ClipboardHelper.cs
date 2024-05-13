@@ -57,51 +57,12 @@ internal static class ClipboardHelper
                 {
                     _ = builder.AppendLine(GetStringResource("NavTitle_HardwareInfo"));
                     _ = builder.AppendLine(new string('-', builder.Length - 2));
-                    _ = builder.Append(GetStringResource("HardwareInfo_Manufacturer"))
-                               .Append(" = ")
-                               .AppendLine(CombinedInfo.Manufacturer);
-                    _ = builder.Append(GetStringResource("HardwareInfo_Model"))
-                               .Append(" = ")
-                               .AppendLine(CombinedInfo.Model);
-                    _ = builder.Append(GetStringResource("HardwareInfo_MachineName"))
-                               .Append(" = ")
-                               .AppendLine(CombinedInfo.MachName);
-                    _ = builder.Append(GetStringResource("HardwareInfo_LastBoot"))
-                               .Append(" = ")
-                               .AppendLine(CombinedInfo.LastBoot.ToString("f"));
-                    _ = builder.Append(GetStringResource("HardwareInfo_Processor"))
-                               .Append(" = ")
-                               .AppendLine(CombinedInfo.ProcName);
-                    _ = builder.Append(GetStringResource("HardwareInfo_ProcessorDescription"))
-                               .Append(" = ")
-                               .AppendLine(CombinedInfo.ProcDescription);
-                    _ = builder.Append(GetStringResource("HardwareInfo_ProcessorCores"))
-                               .Append(" = ")
-                               .Append(CombinedInfo.ProcCores)
-                               .Append(' ')
-                               .Append(GetStringResource("HardwareInfo_Threads"))
-                               .Append(" = ")
-                               .AppendLine(CombinedInfo.ProcThreads);
-                    _ = builder.Append(GetStringResource("HardwareInfo_ProcessorArch"))
-                               .Append(" = ")
-                               .AppendLine(CombinedInfo.ProcArch);
-                    _ = builder.Append(GetStringResource("HardwareInfo_BiosManufacturer"))
-                               .Append(" = ")
-                               .AppendLine(CombinedInfo.BiosManufacturer);
-                    _ = builder.Append(GetStringResource("HardwareInfo_BiosVersion"))
-                               .Append(" = ")
-                               .Append(CombinedInfo.BiosName)
-                               .Append(" - ")
-                               .AppendLine(CombinedInfo.BiosDate.ToString("f"));
-                    _ = builder.Append(GetStringResource("HardwareInfo_PhysicalMemory"))
-                               .Append(" = ")
-                               .Append(CombinedInfo.InstalledMemory)
-                               .Append(' ')
-                               .Append(GetStringResource("HardwareInfo_Installed"))
-                               .Append(" - ")
-                               .Append(CombinedInfo.TotalMemory)
-                               .Append(' ')
-                               .AppendLine(GetStringResource("HardwareInfo_Usable"));
+                    foreach (KeyValuePair<string, string> item in ComputerInfoViewModel.ComputerInfoList!)
+                    {
+                        _ = builder.Append(item.Key)
+                                   .Append(" = ")
+                                   .AppendLine(item.Value);
+                    }
                     break;
                 }
 
