@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Helpers;
 
@@ -94,7 +94,7 @@ internal static class MainWindowHelpers
         TempSettings.Setting!.PropertyChanged += SettingChange.TempSettingChanged!;
 
         // Window closing event
-        _mainWindow.Closing += MainWindow_Closing!;
+        _mainWindow!.Closing += MainWindow_Closing!;
     }
     #endregion Event handlers
 
@@ -144,30 +144,4 @@ internal static class MainWindowHelpers
         _log.Debug($".NET version: {AppInfo.RuntimeVersion.Replace(".NET", "")}");
     }
     #endregion Write startup messages to the log
-
-    #region Toggle History item in navigation list
-    /// <summary>
-    /// Toggle the History item in the navigation ListBox.
-    /// </summary>
-    /// <remarks>
-    /// Called during startup and by change to UserSettings.Setting.KeepHistory
-    /// </remarks>
-    public static void ToggleHistory()
-    {
-        ListBox NavBox = MainWindowUIHelpers.FindChild<ListBox>(Application.Current.MainWindow, "NavigationListBox");
-        if (!UserSettings.Setting!.KeepHistory)
-        {
-            NavigationViewModel.PopulateNoHistoryList();
-            NavBox.ItemsSource = NavigationViewModel.NavigationListNoHistory;
-            NavBox.Items.Refresh();
-            _log.Debug("Keep History option is false.");
-        }
-        else
-        {
-            NavBox.ItemsSource = NavigationViewModel.NavigationViewModelTypes;
-            NavBox.Items.Refresh();
-            HistoryViewModel.WriteHistory();
-        }
-    }
-    #endregion Toggle History item in navigation list
 }
