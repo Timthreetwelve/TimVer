@@ -15,11 +15,19 @@ public static class RegistryHelpers
         try
         {
             using RegistryKey key = Registry.LocalMachine.OpenSubKey(@"Software\Microsoft\Windows NT\CurrentVersion")!;
-            return key.GetValue(value) != null ? key.GetValue(value)!.ToString()! : "no data";
+            if (key.GetValue(value) != null)
+            {
+                return key.GetValue(value)!.ToString()!;
+            }
+            else
+            {
+                _log.Warn($"GetRegistryInfo \"{value}\" returned \"no data\"");
+                return "no data";
+            }
         }
         catch (Exception ex)
         {
-            _log.Error(ex, "Registry call failed.");
+            _log.Error(ex, $"GetRegistryInfo {value} failed.");
             return ex.Message;
         }
     }
@@ -30,7 +38,7 @@ public static class RegistryHelpers
     /// Gets the Windows installation date from registry.
     /// </summary>
     /// <returns>The installation date converted to local time as DateTime.</returns>
-    public static DateTime GetInstallDateDate()
+    public static DateTime GetInstallDate()
     {
         try
         {
