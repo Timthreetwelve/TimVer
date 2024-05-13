@@ -1,12 +1,15 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.ViewModels;
 
 internal partial class NavigationViewModel : ObservableObject
 {
+    public static NavigationViewModel? Instance { get; private set; }
     #region Constructor
     public NavigationViewModel()
     {
+        Instance = this;
+
         if (CurrentViewModel == null)
         {
             NavigateToPage(UserSettings.Setting!.InitialPage);
@@ -73,14 +76,15 @@ internal partial class NavigationViewModel : ObservableObject
                     NavPage = NavPage.History,
                     ViewModelType= typeof(HistoryViewModel),
                     IconKind=PackIconKind.History,
-                    PageTitle=GetStringResource("NavTitle_BuildHistory")
+                    PageTitle=GetStringResource("NavTitle_BuildHistory"),
+                    IsHistory = true
                 },
                 new() {
                     Name = GetStringResource("NavItem_Settings"),
                     NavPage=NavPage.Settings,
                     ViewModelType= typeof(SettingsViewModel),
                     IconKind=PackIconKind.SettingsOutline,
-                     PageTitle = GetStringResource("NavTitle_Settings")
+                    PageTitle = GetStringResource("NavTitle_Settings")
                 },
                 new() {
                     Name = GetStringResource("NavItem_About"),
@@ -97,19 +101,6 @@ internal partial class NavigationViewModel : ObservableObject
             ]
         );
     #endregion List of navigation items
-
-    #region List of navigation items without History
-    public static List<NavigationItem> NavigationListNoHistory { get; set; } = [];
-
-    public static void PopulateNoHistoryList()
-    {
-        if (NavigationListNoHistory.Count == 0)
-        {
-            NavigationListNoHistory.AddRange(NavigationViewModelTypes);
-            _ = NavigationListNoHistory.Remove(NavigationViewModelTypes.Find(n => n.NavPage.ToString() == "History")!);
-        }
-    }
-    #endregion List of navigation items without History
 
     #region Navigation Methods
     public void NavigateToPage(NavPage page)
