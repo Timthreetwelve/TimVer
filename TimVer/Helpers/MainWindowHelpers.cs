@@ -125,9 +125,6 @@ internal static class MainWindowHelpers
     /// </summary>
     internal static void LogStartup()
     {
-        // Set NLog configuration
-        NLogConfig(false);
-
         // Log the version, build date and commit id
         _log.Info($"{AppInfo.AppName} ({AppInfo.AppProduct}) {AppInfo.AppProductVersion} {GetStringResource("MsgText_ApplicationStarting")}");
         _log.Info($"{AppInfo.AppName} {AppInfo.AppCopyright}");

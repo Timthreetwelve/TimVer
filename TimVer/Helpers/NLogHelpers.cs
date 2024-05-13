@@ -13,7 +13,7 @@ internal static class NLogHelpers
     /// <remarks>
     /// Used with a "static using" in GlobalUsings.cs to avoid creating an instance in every class.
     /// </remarks>
-    internal static readonly Logger _log = LogManager.GetLogger("logTemp");
+    internal static readonly Logger _log = LogManager.GetLogger("LogFile");
 
     #region Create the NLog configuration
     /// <summary>
@@ -25,8 +25,11 @@ internal static class NLogHelpers
         LoggingConfiguration config = new();
 
         // create _log file Target for NLog
-        FileTarget logfile = new("logfile")
+        FileTarget logfile = new()
         {
+            // Logger name
+            Name = "LogFile",
+
             // new file on startup
             DeleteOldFileOnStartup = newfile,
 
@@ -44,7 +47,7 @@ internal static class NLogHelpers
         config.AddTarget(logfile);
 
         // add the rule for the _log file
-        LoggingRule file = new("*", LogLevel.Debug, logfile)
+        LoggingRule file = new("LogFile", LogLevel.Debug, logfile)
         {
             RuleName = "LogToFile"
         };
