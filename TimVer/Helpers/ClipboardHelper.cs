@@ -44,36 +44,12 @@ internal static class ClipboardHelper
                 {
                     _ = builder.AppendLine(GetStringResource("NavTitle_WindowsInfo"));
                     _ = builder.AppendLine(new string('-', builder.Length - 2));
-                    _ = builder.Append(GetStringResource("WindowsInfo_OSEdition"))
-                               .Append(" = ")
-                               .AppendLine(CombinedInfo.ProdName);
-                    _ = builder.Append(GetStringResource("WindowsInfo_OSVersion"))
-                               .Append(" = ")
-                               .AppendLine(CombinedInfo.Version);
-                    _ = builder.Append(GetStringResource("WindowsInfo_BuildNumber"))
-                               .Append(" = ")
-                               .AppendLine(CombinedInfo.Build);
-                    _ = builder.Append(GetStringResource("WindowsInfo_Architecture"))
-                               .Append(" = ")
-                               .AppendLine(CombinedInfo.Arch);
-                    _ = builder.Append(GetStringResource("WindowsInfo_BuildBranch"))
-                               .Append(" = ")
-                               .AppendLine(CombinedInfo.BuildBranch);
-                    _ = builder.Append(GetStringResource("WindowsInfo_EditionID"))
-                               .Append(" = ")
-                               .AppendLine(CombinedInfo.EditionID);
-                    _ = builder.Append(GetStringResource("WindowsInfo_Installed"))
-                               .Append(" = ")
-                               .AppendLine(CombinedInfo.InstallDate.ToString("f"));
-                    _ = builder.Append(GetStringResource("WindowsInfo_WindowsFolder"))
-                               .Append(" = ")
-                               .AppendLine(CombinedInfo.WindowsFolder);
-                    _ = builder.Append(GetStringResource("WindowsInfo_TempFolder"))
-                               .Append(" = ")
-                               .AppendLine(CombinedInfo.TempFolder);
-                    _ = builder.Append(GetStringResource("WindowsInfo_DotNetVersion"))
-                               .Append(" = ")
-                               .AppendLine(CombinedInfo.DotNetVersion);
+                    foreach (KeyValuePair<string, string> item in WindowsInfoViewModel.WindowsInfoList!)
+                    {
+                        _ = builder.Append(item.Key)
+                                   .Append(" = ")
+                                   .AppendLine(item.Value);
+                    }
                     break;
                 }
 

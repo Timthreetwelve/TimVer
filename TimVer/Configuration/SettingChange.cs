@@ -69,6 +69,11 @@ public static class SettingChange
             case nameof(UserSettings.Setting.UILanguage):
                 LocalizationHelpers.SaveAndRestart();
                 break;
+
+            case nameof(UserSettings.Setting.ShowUser):
+                WindowsInfoViewModel.WindowsInfoList!.Clear();
+                WindowsInfoViewModel.LoadData();
+                break;
         }
     }
     #endregion User Setting change

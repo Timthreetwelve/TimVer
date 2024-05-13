@@ -2,10 +2,29 @@
 
 namespace TimVer.ViewModels;
 
-#pragma warning disable S2094 // Classes should not be empty
-class WindowsInfoViewModel
-#pragma warning restore S2094 // Classes should not be empty
-#pragma warning disable RCS1251 // Remove unnecessary braces from record declaration
+internal class WindowsInfoViewModel : ObservableObject
 {
+    #region Constructor
+    public WindowsInfoViewModel()
+    {
+        if (WindowsInfoList == null)
+        {
+            LoadData();
+        }
+    }
+    #endregion Constructor
+
+    #region Collection of Windows information
+    public static Dictionary<string, string>? WindowsInfoList { get; set; }
+    #endregion Collection of Windows information
+
+    #region Get data for all properties
+    /// <summary>
+    /// Get data for all properties.
+    /// </summary>
+    public static void LoadData()
+    {
+        WindowsInfoList = WindowsInfoHelpers.GetWindowsInfo();
+    }
+    #endregion Get data for all properties
 }
-#pragma warning restore RCS1251 // Remove unnecessary braces from record declaration

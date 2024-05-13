@@ -1,120 +1,33 @@
 ﻿<UserControl x:Class="TimVer.Views.WindowsInfoPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:config="clr-namespace:TimVer.Configuration"
+             xmlns:convert="clr-namespace:TimVer.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:global="clr-namespace:System.Globalization;assembly=mscorlib"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:models="clr-namespace:TimVer.Models"
+             xmlns:viewmodels="clr-namespace:TimVer.ViewModels"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800"
-             FontFamily="Segoe UI" FontSize="14"
+             d:DataContext="{d:DesignInstance Type=viewmodels:WindowsInfoViewModel}"
              TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
 
+    <!--#region Resources-->
+    <UserControl.Resources>
+        <convert:SpacingConverter x:Key="Spacing" />
+    </UserControl.Resources>
+    <!--#endregion-->
+
     <Grid>
-        <!--#region Text blocks-->
-        <ScrollViewer Margin="20,20,20,5"
-                      HorizontalScrollBarVisibility="Auto"
-                      VerticalScrollBarVisibility="Auto">
-            <Grid>
-                <!--#region Row & column definitions-->
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" MinWidth="160" />
-                    <ColumnDefinition Width="20" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="25" />
-                    <RowDefinition Height="25" />
-                    <RowDefinition Height="25" />
-                    <RowDefinition Height="25" />
-                    <RowDefinition Height="25" />
-                    <RowDefinition Height="25" />
-                    <RowDefinition Height="25" />
-                    <RowDefinition Height="25" />
-                    <RowDefinition Height="25" />
-                    <RowDefinition Height="25" />
-                    <RowDefinition Height="25" />
-                    <RowDefinition Height="25" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <!--#endregion-->
-
-                <TextBlock Grid.Row="0"
-                           Text="{DynamicResource WindowsInfo_OSEdition}" />
-                <TextBlock Grid.Row="0" Grid.Column="2"
-                           Text="{Binding Source={x:Static models:CombinedInfo.ProdName}}" />
-
-                <TextBlock Grid.Row="1" Grid.Column="0"
-                           Text="{DynamicResource WindowsInfo_OSVersion}" />
-                <TextBlock Grid.Row="1" Grid.Column="2"
-                           Text="{Binding Source={x:Static models:CombinedInfo.Version}}" />
-
-                <TextBlock Grid.Row="2" Grid.Column="0"
-                           Text="{DynamicResource WindowsInfo_BuildNumber}" />
-                <TextBlock Grid.Row="2" Grid.Column="2"
-                           Text="{Binding Source={x:Static models:CombinedInfo.Build}}" />
-
-                <TextBlock Grid.Row="3" Grid.Column="0"
-                           Text="{DynamicResource WindowsInfo_BuildBranch}" />
-                <TextBlock Grid.Row="3" Grid.Column="2"
-                           Text="{Binding Source={x:Static models:CombinedInfo.BuildBranch}}" />
-
-                <TextBlock Grid.Row="4" Grid.Column="0"
-                           Text="{DynamicResource WindowsInfo_Architecture}" />
-                <TextBlock Grid.Row="4" Grid.Column="2"
-                           Text="{Binding Source={x:Static models:CombinedInfo.Arch}}" />
-
-                <TextBlock Grid.Row="5" Grid.Column="0"
-                           Text="{DynamicResource WindowsInfo_EditionID}" />
-                <TextBlock Grid.Row="5" Grid.Column="2"
-                           Text="{Binding Source={x:Static models:CombinedInfo.EditionID}}" />
-
-                <TextBlock Grid.Row="6" Grid.Column="0"
-                           Text="{DynamicResource WindowsInfo_Installed}" />
-                <TextBlock Grid.Row="6" Grid.Column="2"
-                           Text="{Binding Source={x:Static models:CombinedInfo.InstallDate},
-                                          StringFormat=f,
-                                          ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}}" />
-
-                <TextBlock Grid.Row="7" Grid.Column="0"
-                           Text="{DynamicResource WindowsInfo_WindowsFolder}" />
-                <TextBlock Grid.Row="7" Grid.Column="2"
-                           Text="{Binding Source={x:Static models:CombinedInfo.WindowsFolder}}" />
-
-                <TextBlock Grid.Row="8" Grid.Column="0"
-                           Text="{DynamicResource WindowsInfo_TempFolder}" />
-                <TextBlock Grid.Row="8" Grid.Column="2"
-                           Text="{Binding Source={x:Static models:CombinedInfo.TempFolder}}" />
-
-                <TextBlock Grid.Row="9" Grid.Column="0"
-                           Text="{DynamicResource WindowsInfo_DotNetVersion}" />
-                <TextBlock Grid.Row="9" Grid.Column="2"
-                           Text="{Binding Source={x:Static models:CombinedInfo.DotNetVersion}}" />
-
-                <TextBlock Grid.Row="10" Grid.Column="0"
-                           Text="{DynamicResource WindowsInfo_RegisteredUser}"
-                           Visibility="{Binding ShowUser,
-                                                Source={x:Static config:UserSettings.Setting},
-                                                Converter={StaticResource BooleanToVisibilityConverter}}" />
-                <TextBlock Grid.Row="10" Grid.Column="2"
-                           Text="{Binding Source={x:Static models:CombinedInfo.RegUser}}"
-                           Visibility="{Binding ShowUser,
-                                                Source={x:Static config:UserSettings.Setting},
-                                                Converter={StaticResource BooleanToVisibilityConverter}}" />
-
-                <TextBlock Grid.Row="11" Grid.Column="0"
-                           Text="{DynamicResource WindowsInfo_RegisteredOrg}"
-                           Visibility="{Binding ShowUser,
-                                                Source={x:Static config:UserSettings.Setting},
-                                                Converter={StaticResource BooleanToVisibilityConverter}}" />
-                <TextBlock Grid.Row="11" Grid.Column="2"
-                           Text="{Binding Source={x:Static models:CombinedInfo.RegOrganization}}"
-                           Visibility="{Binding ShowUser,
-                                                Source={x:Static config:UserSettings.Setting},
-                                                Converter={StaticResource BooleanToVisibilityConverter}}" />
-            </Grid>
-        </ScrollViewer>
-        <!--#endregion-->
+        <DataGrid Margin="0,0,5,15"
+                  materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
+                  Background="{DynamicResource MaterialDesign.Brush.Card.Background}"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  CanUserSortColumns="True"
+                  CellStyle="{StaticResource DisplayOnly}"
+                  FontFamily="Segoe UI" FontSize="14"
+                  HeadersVisibility="None"
+                  IsReadOnly="True"
+                  ItemsSource="{Binding WindowsInfoList}" />
     </Grid>
 </UserControl>
