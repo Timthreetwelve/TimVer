@@ -4,90 +4,27 @@ namespace TimVer.ViewModels;
 
 public class HistoryViewModel : ObservableObject
 {
-    #region JSON options
-    public static readonly JsonSerializerOptions s_options = new()
+    #region constructor
+    public HistoryViewModel()
     {
-        WriteIndented = true
-    };
-    #endregion JSON options
-
-    #region Read history file
-    /// <summary>
-    /// Reads the history file.
-    /// </summary>
-    public static void ReadHistory()
-    {
-        try
+        if (HistoryList.Count < 1)
         {
-            string json = File.ReadAllText(DefaultHistoryFile());
-            History.HistoryList = JsonSerializer.Deserialize<List<History>>(json)!;
-            int count = History.HistoryList!.Count;
-            string entry = string.Empty;
-            entry = count == 1 ? "entry" : "entries";
-            _log.Debug($"History file has {count} {entry}");
-        }
-        catch (Exception ex)
-        {
-            _log.Error(ex, "Cannot read the history file.");
-            // This needs to stay a message box since it can occur before the window is loaded
-            _ = MessageBox.Show($"Cannot read the history file. It may be corrupt.\n\nDelete {DefaultHistoryFile()} and retry.",
-                                "TimVer is Unable to Continue",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Error);
-            Environment.Exit(1);
+            LoadData();
         }
     }
-    #endregion Read history file
+    #endregion constructor
 
-    #region Write the history file
+    #region Collection of build history records
+    public static List<History> HistoryList { get; set; } = [];
+    #endregion Collection of build history records
+
+    #region Load data
     /// <summary>
-    /// Writes the history file (json) if needed.
+    /// Get data for all properties.
     /// </summary>
-    public static void WriteHistory()
+    public static void LoadData()
     {
-        History newHist = new()
-        {
-            HBuild = CombinedInfo.Build,
-            HVersion = CombinedInfo.Version,
-            HBranch = CombinedInfo.BuildBranch,
-            HDate = DateTime.Now.ToString("yyyy/MM/dd HH:mm")
-        };
-
-        if (File.Exists(DefaultHistoryFile()))
-        {
-            ReadHistory();
-            // Add to history file if build doesn't exist
-            if (!History.HistoryList.Exists(x => x.HBuild == newHist.HBuild))
-            {
-                History.HistoryList.Add(newHist);
-                History.HistoryList = [.. History.HistoryList.OrderByDescending(o => o.HDate)];
-                string json = JsonSerializer.Serialize(History.HistoryList, s_options);
-                File.WriteAllText(DefaultHistoryFile(), json);
-                _log.Info($"History file was updated with {newHist.HBuild}");
-            }
-            else
-            {
-                _log.Info("History file is up to date.");
-            }
-        }
-        else
-        {
-            History.HistoryList.Add(newHist);
-            string json = JsonSerializer.Serialize(History.HistoryList, s_options);
-            File.WriteAllText(DefaultHistoryFile(), json);
-            _log.Info($"History file was created with {newHist.HBuild}");
-        }
+        HistoryHelpers.WriteHistory();
     }
-    #endregion Write the history file
-
-    #region Get path to history file
-    /// <summary>
-    /// Gets the history file.
-    /// </summary>
-    /// <returns>Path to history file as string.</returns>
-    private static string DefaultHistoryFile()
-    {
-        return Path.Combine(AppInfo.AppDirectory, "history.json");
-    }
-    #endregion Get path to history file
+    #endregion Load data
 }

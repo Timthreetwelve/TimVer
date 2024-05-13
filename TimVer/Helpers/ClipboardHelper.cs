@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 using static Vanara.PInvoke.User32;
 
@@ -146,7 +146,7 @@ internal static class ClipboardHelper
                 {
                     _ = builder.AppendLine(GetStringResource("NavTitle_BuildHistory"));
                     _ = builder.AppendLine(new string('-', builder.Length - 2));
-                    foreach (History item in History.HistoryList)
+                    foreach (History item in HistoryViewModel.HistoryList)
                     {
                         _ = builder.AppendFormat("{0,-18}", item.HDate)
                                    .AppendFormat("{0,-12}", item.HBuild)

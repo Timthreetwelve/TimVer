@@ -1,4 +1,4 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
@@ -176,6 +176,7 @@
     <sys:String x:Key="MsgText_Opening">Opening</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Opening the log file</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Opening the ReadMe file</sys:String>
+    <sys:String x:Key="MsgText_OptionReset">Option has been reset</sys:String>
     <sys:String x:Key="MsgText_RemovedFromStartup">TimVer was removed from Windows startup</sys:String>
     <sys:String x:Key="MsgText_RemoveFromStartupFailed">Failed to remove TimVer from Windows startup. See log file for additional info.</sys:String>
     <sys:String x:Key="MsgText_Thousand">thousand</sys:String>

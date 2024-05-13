@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Configuration;
 
@@ -35,7 +35,20 @@ public static class SettingChange
                 break;
 
             case nameof(UserSettings.Setting.KeepHistory):
-                MainWindowHelpers.ToggleHistory();
+                HistoryHelpers.WriteHistory();
+                if (!(bool)newValue! && UserSettings.Setting!.InitialPage == NavPage.History)
+                {
+                    UserSettings.Setting.InitialPage = NavPage.WindowsInfo;
+                    SnackbarMsg.QueueMessage(GetStringResource("MsgText_OptionReset"));
+                }
+                break;
+
+            case nameof(UserSettings.Setting.InitialPage):
+                if ((NavPage)newValue! == NavPage.History && !UserSettings.Setting!.KeepHistory)
+                {
+                    UserSettings.Setting.KeepHistory = true;
+                    SnackbarMsg.QueueMessage(GetStringResource("MsgText_OptionReset"));
+                }
                 break;
 
             case nameof(UserSettings.Setting.Use1024):

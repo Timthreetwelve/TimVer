@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Helpers;
 
@@ -19,7 +19,7 @@ internal static class MainWindowHelpers
             _mainWindow!.Visibility = Visibility.Hidden;
             if (UserSettings.Setting!.KeepHistory)
             {
-                HistoryViewModel.WriteHistory();
+                HistoryHelpers.WriteHistory();
             }
             else
             {
@@ -93,16 +93,8 @@ internal static class MainWindowHelpers
         UserSettings.Setting!.PropertyChanged += SettingChange.UserSettingChanged!;
         TempSettings.Setting!.PropertyChanged += SettingChange.TempSettingChanged!;
 
-        // Window initialized event
-        _mainWindow!.Loaded += MainWindow_Initialized;
-
         // Window closing event
         _mainWindow.Closing += MainWindow_Closing!;
-    }
-
-    private static void MainWindow_Initialized(object sender, EventArgs e)
-    {
-        ToggleHistory();
     }
     #endregion Event handlers
 

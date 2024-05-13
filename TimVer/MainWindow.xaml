@@ -1,4 +1,4 @@
-﻿<Window x:Class="TimVer.MainWindow"
+<Window x:Class="TimVer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:bh="http://schemas.microsoft.com/xaml/behaviors"
@@ -180,6 +180,13 @@
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding IsExit}" Value="True" />
                                 <Condition Binding="{Binding Source={x:Static config:UserSettings.Setting}, Path=ShowExitInNav}" Value="False" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsHistory}" Value="True" />
+                                <Condition Binding="{Binding Source={x:Static config:UserSettings.Setting}, Path=KeepHistory}" Value="False" />
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" Value="Collapsed" />
                         </MultiDataTrigger>

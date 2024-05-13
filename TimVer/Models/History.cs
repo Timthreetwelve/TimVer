@@ -7,6 +7,7 @@ namespace TimVer.Models;
 /// </summary>
 public partial class History : ObservableObject
 {
+    #region Properties
     [ObservableProperty]
     private string? _hDate;
 
@@ -18,6 +19,5 @@ public partial class History : ObservableObject
 
     [ObservableProperty]
     private string? _hBranch;
-
-    public static List<History> HistoryList { get; set; } = [];
+    #endregion Properties
 }
