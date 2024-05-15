@@ -9,7 +9,7 @@ public static class RegistryHelpers
     /// Gets a value from HKLM\Software\Microsoft\Windows NT\CurrentVersion
     /// </summary>
     /// <param name="value">Value to retrieve </param>
-    /// <returns>The value if it exists, "no data" otherwise</returns>
+    /// <returns>The value if it exists, "not available" (localized) otherwise</returns>
     public static string GetRegistryInfo(string value)
     {
         try
@@ -21,8 +21,8 @@ public static class RegistryHelpers
             }
             else
             {
-                _log.Warn($"GetRegistryInfo \"{value}\" returned \"no data\"");
-                return "no data";
+                _log.Warn($"GetRegistryInfo \"{value}\" returned \"not available\"");
+                return GetStringResource("MsgText_NotAvailable");
             }
         }
         catch (Exception ex)
