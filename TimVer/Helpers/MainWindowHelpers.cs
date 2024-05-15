@@ -123,7 +123,7 @@ internal static class MainWindowHelpers
 
     #region Write startup messages to the log
     /// <summary>
-    /// Initializes NLog and writes startup messages to the log.
+    /// Writes startup messages to the log.
     /// </summary>
     internal static void LogStartup()
     {
