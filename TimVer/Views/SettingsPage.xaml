@@ -57,7 +57,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition />
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="24" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="55" />
@@ -235,7 +235,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition />
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="24" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="55" />
@@ -464,7 +464,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition />
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="24" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="55" />
@@ -617,7 +617,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition />
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="24" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="55" />
