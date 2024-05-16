@@ -91,7 +91,7 @@ internal static class WindowsInfoHelpers
     public static string GetVersion()
     {
         string result = RegistryHelpers.GetRegistryInfo("DisplayVersion");
-        if (result == "no data")
+        if (result == GetStringResource("MsgText_NotAvailable"))
         {
             result = RegistryHelpers.GetRegistryInfo("ReleaseID");
         }
