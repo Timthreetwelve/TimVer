@@ -4,24 +4,43 @@ namespace TimVer.ViewModels;
 
 internal partial class VideoViewModel : ObservableObject
 {
+    #region Constructor
     public VideoViewModel()
     {
-        if (VideoInfoList is null)
+        if (VideoInfoCollection == null)
         {
             LoadData();
         }
     }
+    #endregion Constructor
 
+    #region Load data for video properties
     private static void LoadData()
     {
-        List<string?> gpuList = VideoHelpers.GetGPUList();
-        if ( gpuList.Count == 1)
+        ControllerList = VideoHelpers.GetGPUList()!;
+        VideoInfoCollection = VideoHelpers.GetVideoInfo(ControllerList[0]!);
+    }
+    #endregion Load data for video properties
+
+    #region Relay command
+    /// <summary>
+    /// For the video controller combo box.
+    /// </summary>
+    /// <param name="e">Selection changed event arguments.</param>
+    [RelayCommand]
+    internal static void SelectVideoController(SelectionChangedEventArgs e)
+    {
+        if (e.Source is ComboBox box)
         {
-            VideoInfoList = VideoHelpers.GetVideoInfo(gpuList[0]!);
+            Debug.WriteLine($"Selected index changed to {box.SelectedIndex}");
+            VideoPage.Instance!.VideoGrid.ItemsSource = VideoHelpers.GetVideoInfo(ControllerList![box.SelectedIndex]!);
         }
     }
+    #endregion Relay command
 
-    public static ObservableCollection<GpuInfo>? GPUList { get; set; }
+    #region Collections
+    public static List<string>? ControllerList { get; set; }
 
-    public static Dictionary<string, string>? VideoInfoList { get; set; }
+    public static Dictionary<string, string>? VideoInfoCollection { get; set; }
+    #endregion Collections
 }

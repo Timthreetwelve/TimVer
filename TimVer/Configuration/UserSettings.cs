@@ -91,6 +91,9 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private bool _showUser = true;
 
     [ObservableProperty]
+    private bool _showVideoSelector = true;
+
+    [ObservableProperty]
     private bool _startCentered = true;
 
     [ObservableProperty]

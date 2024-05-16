@@ -4,8 +4,12 @@ namespace TimVer.Views;
 
 public partial class VideoPage : UserControl
 {
+    public static VideoPage? Instance { get; set; }
+
     public VideoPage()
     {
         InitializeComponent();
+
+        Instance = this;
     }
 }

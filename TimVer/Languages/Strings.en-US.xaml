@@ -303,6 +303,7 @@
     <sys:String x:Key="SettingsItem_ShowRemovableDrives">Include removable drives</sys:String>
     <sys:String x:Key="SettingsItem_ShowSerialNumber">Show Serial Number column</sys:String>
     <sys:String x:Key="SettingsItem_ShowTypeColumn">Show Type column</sys:String>
+    <sys:String x:Key="SettingsItem_ShowVideoSelector">Show video adapter selector on Video (Graphics) page</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">Start with window centered on screen</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Theme</sys:String>
     <sys:String x:Key="SettingsItem_UISize">UI Size</sys:String>
@@ -314,7 +315,7 @@
     <!--  Settings Page Expander Headings and Sub Headings -->
     <sys:String x:Key="SettingsSection_AppSettings">Application Settings</sys:String>
     <sys:String x:Key="SettingsSection_DriveSettings">Disk Drive Settings</sys:String>
-    <sys:String x:Key="SettingsSection_Language">Language</sys:String>
+    <sys:String x:Key="SettingsSection_Language">Language Settings</sys:String>
     <sys:String x:Key="SettingsSection_UISettings">UI Settings</sys:String>
     <sys:String x:Key="SettingsSubHead_AppSettings">Initial page, History options, Show user, and Log verbosity</sys:String>
     <sys:String x:Key="SettingsSubHead_DriveSettings">Use GB or GiB, Include drives by status and more</sys:String>
@@ -401,5 +402,8 @@
     <!-- A | SettingsItem_ShowFriendlyName -->
     <!-- A | SettingsItem_ShowSerialNumber -->
     <!-- End of changes on 2024/05/13 @ 22:00 UTC-->
-    
+
+    <!-- Begin changes on 2024/05/16 @ 02:35 UTC-->
+    <!-- A | SettingsItem_ShowVideoSelector -->
+    <!-- End of changes on 2024/05/16 @ 02:35 UTC-->
 </ResourceDictionary>

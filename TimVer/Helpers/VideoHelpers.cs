@@ -69,12 +69,18 @@ public static class VideoHelpers
                 .FirstOrDefault()!;
             sw.Stop();
             _log.Debug($"Getting video controller info took {sw.Elapsed.TotalMilliseconds:N2} ms");
-            return info;
+            return info ?? new Dictionary<string, string>
+            {
+                [GetStringResource("MsgText_NotAvailable")] = string.Empty
+            };
         }
         catch (Exception ex)
         {
             _log.Error(ex, "Win32_VideoController call failed.");
-            return [];
+            return new Dictionary<string, string>
+            {
+                [GetStringResource("MsgText_NotAvailable")] = string.Empty
+            };
         }
     }
     #endregion Get WMI info for video controller(s)

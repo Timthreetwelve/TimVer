@@ -194,39 +194,11 @@ internal static class ClipboardHelper
                 {
                     _ = builder.AppendLine(GetStringResource("NavTitle_GraphicsInfo"));
                     _ = builder.AppendLine(new string('-', builder.Length - 2));
-                    foreach (GpuInfo item in VideoViewModel.GPUList!)
+                    foreach (KeyValuePair<string, string> item in VideoViewModel.VideoInfoCollection!)
                     {
-                        _ = builder.Append(GetStringResource("GraphicsInfo_GraphicsAdapter"))
+                        _ = builder.Append(item.Key)
                                    .Append(" = ")
-                                   .AppendLine(item.GpuName);
-                        _ = builder.Append(GetStringResource("GraphicsInfo_AdapterType"))
-                                   .Append(" = ")
-                                   .AppendLine(item.GpuVideoProcessor);
-                        _ = builder.Append(GetStringResource("GraphicsInfo_Description"))
-                                   .Append(" = ")
-                                   .AppendLine(item.GpuDescription);
-                        _ = builder.Append(GetStringResource("GraphicsInfo_DeviceID"))
-                                   .Append(" = ")
-                                   .AppendLine(item.GpuDeviceID);
-                        _ = builder.Append(GetStringResource("GraphicsInfo_CurrentResolution"))
-                                   .Append(" = ")
-                                   .Append(item.GpuHorizontalResolution)
-                                   .Append(" x ")
-                                   .AppendLine(item.GpuVerticalResolution);
-                        _ = builder.Append(GetStringResource("GraphicsInfo_CurrentRefreshRate"))
-                                   .Append(" = ")
-                                   .Append(item.GpuCurrentRefresh)
-                                   .AppendLine(" Hz");
-                        _ = builder.Append(GetStringResource("GraphicsInfo_BitsPerPixel"))
-                                   .Append(" = ")
-                                   .AppendLine(item.GpuBitsPerPixel);
-                        _ = builder.Append(GetStringResource("GraphicsInfo_AdapterRAM"))
-                                   .Append(" = ")
-                                   .AppendLine(item.GpuAdapterRam);
-                        _ = builder.Append(GetStringResource("GraphicsInfo_NumberOfColors"))
-                                   .Append(" = ")
-                                   .AppendLine(item.GpuNumberOfColors);
-                        _ = builder.AppendLine("");
+                                   .AppendLine(item.Value);
                     }
                     break;
                 }
