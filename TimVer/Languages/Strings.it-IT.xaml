@@ -1,4 +1,4 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
@@ -15,7 +15,7 @@
 
         Translation contributed by:  RB
 
-        Date last update:            22.01.2024
+        Date last update:            16.05.2024
 
         ======================================================================
 
@@ -34,6 +34,7 @@
     <sys:String x:Key="About_Documentation">Documentazione</sys:String>
     <sys:String x:Key="About_DocumentationText">Apri file 'ReadMe'</sys:String>
     <sys:String x:Key="About_DocumentationToolTip">Visualizza file 'ReadMe'</sys:String>
+    <sys:String x:Key="About_GitHub">GitHub</sys:String>
     <sys:String x:Key="About_GitHubToolTip">Visita pagina TimVer su GitHub</sys:String>
     <sys:String x:Key="About_License">Licenza</sys:String>
     <sys:String x:Key="About_LicenseText">Progetto concesso in licenza secondo termini licenza MIT.</sys:String>
@@ -88,6 +89,7 @@
     <sys:String x:Key="DriveInfo_ErrorSeeLog">Errore - vedi file registro eventi</sys:String>
     <sys:String x:Key="DriveInfo_Format">Formato</sys:String>
     <sys:String x:Key="DriveInfo_Free">Liberi</sys:String>
+    <sys:String x:Key="DriveInfo_FriendlyName">Nome descrittivo</sys:String>
     <sys:String x:Key="DriveInfo_FreePercent">% liberi</sys:String>
     <sys:String x:Key="DriveInfo_Health">Stato salute</sys:String>
     <sys:String x:Key="DriveInfo_Health_Healthy">Affidabile</sys:String>
@@ -111,7 +113,9 @@
     <sys:String x:Key="DriveInfo_PhysicalDrives">Unità fisiche</sys:String>
     <sys:String x:Key="DriveInfo_RefreshToolTipLine1">Aggiorna info sull'unità aggiornerà entrambi</sys:String>
     <sys:String x:Key="DriveInfo_RefreshToolTipLine2">Unità logiche e fisiche (se abilitate).</sys:String>
+    <sys:String x:Key="DriveInfo_SerialNumber">Numero di serie</sys:String>
     <sys:String x:Key="DriveInfo_Size">Dimensione</sys:String>
+    <sys:String x:Key="DriveInfo_SystemDrive">Unità di sistema</sys:String>
     <sys:String x:Key="DriveInfo_Type">Tipo</sys:String>
     <sys:String x:Key="DriveInfo_UnauthorizedAccess">Accesso non autorizzato</sys:String>
     <sys:String x:Key="DriveInfo_UnknownError">Errore sconosciuto</sys:String>
@@ -133,7 +137,9 @@
     <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine1">Se è installata più di una scheda video usa il menu</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine2">a discesa per selezionare la scheda da visualizzare.</sys:String>
     <!--  Hardware Information Page  -->
+    <sys:String x:Key="HardwareInfo_BIOS">BIOS</sys:String>
     <sys:String x:Key="HardwareInfo_BiosManufacturer">Produttore BIOS</sys:String>
+    <sys:String x:Key="HardwareInfo_BiosMode">Modo BIOS</sys:String>
     <sys:String x:Key="HardwareInfo_BiosVersion">Versione e data BIOS</sys:String>
     <sys:String x:Key="HardwareInfo_Cores">Core</sys:String>
     <sys:String x:Key="HardwareInfo_Installed">Installati</sys:String>
@@ -146,7 +152,11 @@
     <sys:String x:Key="HardwareInfo_ProcessorArch">Architettura CPU</sys:String>
     <sys:String x:Key="HardwareInfo_ProcessorCores">Core CPU</sys:String>
     <sys:String x:Key="HardwareInfo_ProcessorDescription">Descrizione processore</sys:String>
+    <sys:String x:Key="HardwareInfo_SecureBoot">Boot sicuro</sys:String>
+    <sys:String x:Key="HardwareInfo_SecureBoot_Disabled">Disabilitato</sys:String>
+    <sys:String x:Key="HardwareInfo_SecureBoot_Enabled">Abilitato</sys:String>
     <sys:String x:Key="HardwareInfo_Threads">Thread</sys:String>
+    <sys:String x:Key="HardwareInfo_UEFI">UEFI</sys:String>
     <sys:String x:Key="HardwareInfo_Uptime">Tempo accensione</sys:String>
     <sys:String x:Key="HardwareInfo_UptimeString">{0} giorni, {1} ore, {2} minuti, {3} secondi</sys:String>
     <sys:String x:Key="HardwareInfo_Usable">Usabili</sys:String>
@@ -164,10 +174,12 @@
     <sys:String x:Key="MsgText_CopiedToClipboardItem">L'elemento è stato copiato negli appunti</sys:String>
     <sys:String x:Key="MsgText_CopyToClipboardInvalid">Impossibile copiare questa pagina negli appunti</sys:String>
     <sys:String x:Key="MsgText_DriveInfoRefreshed">Info sull'unità disco aggiornate</sys:String>
+    <sys:String x:Key="MsgText_ErrorGeneral">Si è verificato un errore.</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Tempo trascorso</sys:String>
+    <sys:String x:Key="MsgText_Error_FileExplorer">Errore durante il tentativo di apertura File Explorer.</sys:String>
     <sys:String x:Key="MsgText_ErrorCaption">ERRORE</sys:String>
-    <sys:String x:Key="MsgText_ErrorOpeningFile">Error in apertura di {0}</sys:String>
-    <sys:String x:Key="MsgText_ErrorReadingFile">Error in lettura di {0}</sys:String>
+    <sys:String x:Key="MsgText_ErrorOpeningFile">Errore in apertura di {0}</sys:String>
+    <sys:String x:Key="MsgText_ErrorReadingFile">Errore in lettura di {0}</sys:String>
     <sys:String x:Key="MsgText_FilterOneRowShown">1 riga visualizzata</sys:String>
     <sys:String x:Key="MsgText_FilterRowsShown">{0} righe visualizzate</sys:String>
     <sys:String x:Key="MsgText_HideButNoHistory">È stata specificata l'opzione della riga di comando "hide", ma l'opzione per mantenere la cronologia è disabilitata. Uscita dal programma.</sys:String>
@@ -176,8 +188,10 @@
     <sys:String x:Key="MsgText_Opening">Apertura</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Apertura file registro eventi</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Apertura file ReadMe</sys:String>
+    <sys:String x:Key="MsgText_OptionReset">L'opzione è stata reimpostata</sys:String>
     <sys:String x:Key="MsgText_RemovedFromStartup">TimVer è stato rimosso dall'avvio di Windows</sys:String>
     <sys:String x:Key="MsgText_RemoveFromStartupFailed">Impossibile rimuovere TimVer dall'avvio di Windows. Per ulteriori informazioni consulta il registro eventi.</sys:String>
+    <sys:String x:Key="MsgText_SeeLogFile">Per ulteriori informazioni visualizza il file registro.</sys:String>
     <sys:String x:Key="MsgText_Thousand">migliaia</sys:String>
     <sys:String x:Key="MsgText_Translated">stringhe tradotte</sys:String>
     <sys:String x:Key="MsgText_UIColorSet">Colore evidenziazione = {0}</sys:String>
@@ -276,6 +290,7 @@
     <sys:String x:Key="SettingsItem_ShowDiskTypeColumn">Visualizza colonna 'Tipo disco'</sys:String>
     <sys:String x:Key="SettingsItem_ShowExit">Visualizza 'Esci' nella barra navigazione</sys:String>
     <sys:String x:Key="SettingsItem_ShowFormatColumn">Visualizza colonna 'Formato'</sys:String>
+    <sys:String x:Key="SettingsItem_ShowFriendlyName">Visualizza colonna nome descrittivo</sys:String>
     <sys:String x:Key="SettingsItem_ShowHealthColumn">Visualizza colonna 'Stato di salute'</sys:String>
     <sys:String x:Key="SettingsItem_ShowInterfaceColumn">Visualizza colonna 'Interfaccia'</sys:String>
     <sys:String x:Key="SettingsItem_ShowMediaTypeColumn">Visualizza colonna 'Tipo media'</sys:String>
@@ -286,7 +301,9 @@
     <sys:String x:Key="SettingsItem_ShowPartitionStyleColumn">Visualizza colonna 'Stile partizione'</sys:String>
     <sys:String x:Key="SettingsItem_ShowReadyDrives">Visualizza solo unità in stato 'Pronto'</sys:String>
     <sys:String x:Key="SettingsItem_ShowRemovableDrives">Includi unita rimovibili</sys:String>
+    <sys:String x:Key="SettingsItem_ShowSerialNumber">Visualizza colonna numero di serie</sys:String>
     <sys:String x:Key="SettingsItem_ShowTypeColumn">Visualizza colonna 'Tipo'</sys:String>
+    <sys:String x:Key="SettingsItem_ShowVideoSelector">Visualizza selettore scheda video nella pagina video (grafica).</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">Avvia con la finestra centrata sullo schermo</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Tema</sys:String>
     <sys:String x:Key="SettingsItem_UISize">Dimensione UI</sys:String>
@@ -366,4 +383,28 @@
     <!-- Begin changes on 2024/01/19 @ 23:00 UTC-->
     <!-- A | DriveInfo_DeviceID -->
     <!-- End changes on 2024/01/19 @ 23:00 UTC-->
+    
+    <!-- Begin changes on 2024/05/13 @ 22:00 UTC-->
+    <!-- A | About_GitHub -->
+    <!-- A | DriveInfo_FriendlyName -->
+    <!-- A | DriveInfo_SerialNumber -->
+    <!-- A | DriveInfo_SystemDrive -->
+    <!-- A | HardwareInfo_BIOS -->
+    <!-- A | HardwareInfo_BiosMode -->
+    <!-- A | HardwareInfo_SecureBoot -->
+    <!-- A | HardwareInfo_SecureBoot_Disabled -->
+    <!-- A | HardwareInfo_SecureBoot_Enabled -->
+    <!-- A | HardwareInfo_UEFI -->
+    <!-- A | MsgText_Error_FileExplorer -->
+    <!-- A | MsgText_ErrorGeneral -->
+    <!-- A | MsgText_OptionReset -->
+    <!-- A | MsgText_SeeLogFile -->
+    <!-- A | SettingsItem_ShowFriendlyName -->
+    <!-- A | SettingsItem_ShowSerialNumber -->
+    <!-- End of changes on 2024/05/13 @ 22:00 UTC-->
+
+    <!-- Begin changes on 2024/05/16 @ 02:35 UTC-->
+    <!-- A | SettingsItem_ShowVideoSelector -->
+    <!-- End of changes on 2024/05/16 @ 02:35 UTC-->
+    
 </ResourceDictionary>
