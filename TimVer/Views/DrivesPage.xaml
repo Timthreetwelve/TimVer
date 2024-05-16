@@ -62,7 +62,8 @@
                                Text="{DynamicResource DriveInfo_LogicalDrives}" />
                 </TabItem.Header>
                 <DataGrid x:Name="LDrivesDataGrid"
-                          Margin="0" HorizontalAlignment="Stretch"
+                          Margin="0,0,5,0"
+                          HorizontalAlignment="Stretch"
                           VerticalAlignment="Stretch"
                           d:ItemsSource="{d:SampleData ItemCount=5}"
                           materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
@@ -144,6 +145,7 @@
                     <!--#region DataGrid-->
                     <DataGrid x:Name="PDisksDataGrid"
                               Grid.Row="0"
+                              Margin="0,0,5,0"
                               HorizontalAlignment="Stretch"
                               VerticalAlignment="Stretch"
                               d:ItemsSource="{d:SampleData ItemCount=3}"

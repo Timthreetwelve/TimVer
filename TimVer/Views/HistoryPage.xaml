@@ -9,7 +9,7 @@
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800"
              d:DataContext="{d:DesignInstance Type=viewmodels:HistoryViewModel}"
-             Background="{DynamicResource MaterialDesign.Brush.Background}"
+             
              FontFamily="Segoe UI" FontSize="14"
              TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
 
@@ -22,9 +22,9 @@
     <Grid>
         <!--#region DataGrid-->
         <DataGrid x:Name="HistoryGrid"
-                  Margin="0"
+                  Margin="0,0,5,0"
                   materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
-                  materialDesign:DataGridAssist.ColumnHeaderPadding="15,0,0,5"
+                  materialDesign:DataGridAssist.ColumnHeaderPadding="17,5,0,5"
                   AutoGenerateColumns="False"
                   Background="{DynamicResource MaterialDesign.Brush.Card.Background}"
                   CanUserAddRows="False"
