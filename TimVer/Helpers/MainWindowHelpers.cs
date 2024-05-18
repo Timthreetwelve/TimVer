@@ -51,9 +51,30 @@ internal static class MainWindowHelpers
         mainWindow.Top = UserSettings.Setting!.WindowTop;
         mainWindow.Width = UserSettings.Setting!.WindowWidth;
 
-        if (UserSettings.Setting.StartCentered)
+        if (UserSettings.Setting!.StartCentered)
         {
             mainWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+        }
+
+        // The following will ensure that the window appears on screen
+        if (mainWindow.Top < SystemParameters.VirtualScreenTop)
+        {
+            mainWindow.Top = SystemParameters.VirtualScreenTop;
+        }
+
+        if (mainWindow.Left < SystemParameters.VirtualScreenLeft)
+        {
+            mainWindow.Left = SystemParameters.VirtualScreenLeft;
+        }
+
+        if (mainWindow.Left + mainWindow.Width > SystemParameters.VirtualScreenLeft + SystemParameters.VirtualScreenWidth)
+        {
+            mainWindow.Left = SystemParameters.VirtualScreenWidth + SystemParameters.VirtualScreenLeft - mainWindow.Width;
+        }
+
+        if (mainWindow.Top + mainWindow.Height > SystemParameters.VirtualScreenTop + SystemParameters.VirtualScreenHeight)
+        {
+            mainWindow.Top = SystemParameters.VirtualScreenHeight + SystemParameters.VirtualScreenTop - mainWindow.Height;
         }
     }
 
