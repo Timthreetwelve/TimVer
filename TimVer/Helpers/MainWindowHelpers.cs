@@ -12,8 +12,6 @@ internal static class MainWindowHelpers
     {
         EventHandlers();
 
-        MainWindowUIHelpers.ApplyUISettings();
-
         if (CommandLineHelpers.ProcessCommandLine())
         {
             _mainWindow!.Visibility = Visibility.Hidden;
@@ -27,7 +25,11 @@ internal static class MainWindowHelpers
             }
             Application.Current.Shutdown();
         }
-        TempSettings.Setting!.RunAccessPermitted = RegistryHelpers.RegRunAccessPermitted();
+        else
+        {
+            MainWindowUIHelpers.ApplyUISettings();
+            TempSettings.Setting!.RunAccessPermitted = RegistryHelpers.RegRunAccessPermitted();
+        }
     }
     #endregion Startup
 
@@ -122,12 +124,6 @@ internal static class MainWindowHelpers
     #region Window Events
     private static void MainWindow_Closing(object sender, CancelEventArgs e)
     {
-        // Clear any remaining messages
-        Snackbar snackbar = MainWindowUIHelpers.FindChild<Snackbar>(Application.Current.MainWindow, "SnackBar1");
-        if (snackbar is not null)
-        {
-            snackbar.MessageQueue!.Clear();
-        }
         // Stop the _stopwatch and record elapsed time
         _stopwatch.Stop();
         _log.Info($"{AppInfo.AppName} {GetStringResource("MsgText_ApplicationShutdown")}.  " +
@@ -136,9 +132,19 @@ internal static class MainWindowHelpers
         // Shut down NLog
         LogManager.Shutdown();
 
-        // Save settings
-        SaveWindowPosition();
-        ConfigHelpers.SaveSettings();
+        if (!CommandLineHelpers.UpdateHistoryOnly)
+        {
+            // Clear any remaining messages
+            Snackbar snackbar = MainWindowUIHelpers.FindChild<Snackbar>(Application.Current.MainWindow, "SnackBar1");
+            if (snackbar is not null)
+            {
+                snackbar.MessageQueue!.Clear();
+            }
+
+            // Save settings
+            SaveWindowPosition();
+            ConfigHelpers.SaveSettings();
+        }
     }
     #endregion Window Events
 

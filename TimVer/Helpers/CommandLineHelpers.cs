@@ -26,10 +26,15 @@ static class CommandLineHelpers
         // Check options
         if (result?.Value.Hide == true)
         {
-            _log.Debug("Argument \"hide\" specified.");
+            _log.Debug("Command line argument \"hide\" specified.");
+            UpdateHistoryOnly = true;
             return true;
         }
         return false;
     }
     #endregion Process the command line
+
+    #region Properties
+    public static bool UpdateHistoryOnly { get; set; }
+    #endregion Properties
 }
