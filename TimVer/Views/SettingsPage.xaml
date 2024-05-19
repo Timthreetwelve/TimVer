@@ -557,23 +557,15 @@
                             <Label Grid.Row="3" Grid.Column="0"
                                    VerticalAlignment="Center"
                                    Content="{DynamicResource SettingsItem_RowHeight}" />
-                            <StackPanel Grid.Row="3" Grid.Column="2"
-                                        Orientation="Horizontal">
-                                <ComboBox Width="Auto" MinWidth="200"
-                                          Margin="0,3,0,0" Padding="2,0,0,3"
-                                          HorizontalAlignment="Left"
-                                          ItemsSource="{Binding Source={convert:EnumBindingSource {x:Type models:Spacing}}}"
-                                          SelectedItem="{Binding RowSpacing,
-                                                                 Source={x:Static config:UserSettings.Setting}}"
-                                          Style="{StaticResource MaterialDesignComboBox}" />
-                                <TextBlock Margin="15,8,0,0"
-                                           ToolTip="{DynamicResource SettingsItem_RowHeightToolTip}"
-                                           ToolTipService.InitialShowDelay="300"
-                                           ToolTipService.Placement="Top">
-                                    <materialDesign:PackIcon Width="20" Height="20"
-                                                             Kind="InfoOutline" />
-                                </TextBlock>
-                            </StackPanel>
+
+                            <ComboBox Grid.Row="3" Grid.Column="2"
+                                      Width="Auto" MinWidth="200"
+                                      Margin="0,3,0,0" Padding="2,0,0,3"
+                                      HorizontalAlignment="Left"
+                                      ItemsSource="{Binding Source={convert:EnumBindingSource {x:Type models:Spacing}}}"
+                                      SelectedItem="{Binding RowSpacing,
+                                                             Source={x:Static config:UserSettings.Setting}}"
+                                      Style="{StaticResource MaterialDesignComboBox}" />
                         </Grid>
 
                         <Grid Grid.Row="2" Grid.Column="1">
