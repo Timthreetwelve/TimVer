@@ -303,7 +303,7 @@
     <sys:String x:Key="SettingsItem_ShowRemovableDrives">Include removable drives</sys:String>
     <sys:String x:Key="SettingsItem_ShowSerialNumber">Show Serial Number column</sys:String>
     <sys:String x:Key="SettingsItem_ShowTypeColumn">Show Type column</sys:String>
-    <sys:String x:Key="SettingsItem_ShowVideoSelector">Show video adapter selector on Video (Graphics) page</sys:String>
+    <sys:String x:Key="SettingsItem_ShowVideoSelector">Show video adapter selector on Graphics (Video) page</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">Start with window centered on screen</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Theme</sys:String>
     <sys:String x:Key="SettingsItem_UISize">UI Size</sys:String>
@@ -406,4 +406,8 @@
     <!-- Begin changes on 2024/05/16 @ 02:35 UTC-->
     <!-- A | SettingsItem_ShowVideoSelector -->
     <!-- End of changes on 2024/05/16 @ 02:35 UTC-->
+    
+    <!-- Begin changes on 2024/05/19 @ 20:45 UTC-->
+    <!-- A | SettingsItem_ShowVideoSelector -->
+    <!-- End of changes on 2024/05/19 @ 20:45 UTC-->
 </ResourceDictionary>
