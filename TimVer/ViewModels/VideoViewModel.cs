@@ -32,7 +32,6 @@ internal partial class VideoViewModel : ObservableObject
     {
         if (e.Source is ComboBox box)
         {
-            Debug.WriteLine($"Selected index changed to {box.SelectedIndex}");
             VideoPage.Instance!.VideoGrid.ItemsSource = VideoHelpers.GetVideoInfo(ControllerList![box.SelectedIndex]!);
         }
     }
