@@ -15,7 +15,7 @@
 
         Translation contributed by:  RB
 
-        Date last update:            16.05.2024
+        Date last update:            20.05.2024
 
         ======================================================================
 
@@ -89,8 +89,8 @@
     <sys:String x:Key="DriveInfo_ErrorSeeLog">Errore - vedi file registro eventi</sys:String>
     <sys:String x:Key="DriveInfo_Format">Formato</sys:String>
     <sys:String x:Key="DriveInfo_Free">Liberi</sys:String>
-    <sys:String x:Key="DriveInfo_FriendlyName">Nome descrittivo</sys:String>
     <sys:String x:Key="DriveInfo_FreePercent">% liberi</sys:String>
+    <sys:String x:Key="DriveInfo_FriendlyName">Nome descrittivo</sys:String>
     <sys:String x:Key="DriveInfo_Health">Stato salute</sys:String>
     <sys:String x:Key="DriveInfo_Health_Healthy">Affidabile</sys:String>
     <sys:String x:Key="DriveInfo_Health_Unhealthy">Non affidabile</sys:String>
@@ -174,10 +174,10 @@
     <sys:String x:Key="MsgText_CopiedToClipboardItem">L'elemento è stato copiato negli appunti</sys:String>
     <sys:String x:Key="MsgText_CopyToClipboardInvalid">Impossibile copiare questa pagina negli appunti</sys:String>
     <sys:String x:Key="MsgText_DriveInfoRefreshed">Info sull'unità disco aggiornate</sys:String>
-    <sys:String x:Key="MsgText_ErrorGeneral">Si è verificato un errore.</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Tempo trascorso</sys:String>
     <sys:String x:Key="MsgText_Error_FileExplorer">Errore durante il tentativo di apertura File Explorer.</sys:String>
     <sys:String x:Key="MsgText_ErrorCaption">ERRORE</sys:String>
+    <sys:String x:Key="MsgText_ErrorGeneral">Si è verificato un errore.</sys:String>
     <sys:String x:Key="MsgText_ErrorOpeningFile">Errore in apertura di {0}</sys:String>
     <sys:String x:Key="MsgText_ErrorReadingFile">Errore in lettura di {0}</sys:String>
     <sys:String x:Key="MsgText_FilterOneRowShown">1 riga visualizzata</sys:String>
@@ -407,4 +407,7 @@
     <!-- A | SettingsItem_ShowVideoSelector -->
     <!-- End of changes on 2024/05/16 @ 02:35 UTC-->
     
+    <!-- Begin changes on 2024/05/19 @ 20:45 UTC-->
+    <!-- A | SettingsItem_ShowVideoSelector -->
+    <!-- End of changes on 2024/05/19 @ 20:45 UTC-->
 </ResourceDictionary>
