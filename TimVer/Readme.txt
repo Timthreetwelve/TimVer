@@ -92,8 +92,8 @@ These keyboard shortcuts are available:
 
     Ctrl + Comma = Go to Settings
     Ctrl + C = Copy the current page to the clipboard
-    Ctrl + Numpad Plus = Increase size
-    Ctrl + Numpad Minus = Decrease size
+    Ctrl + Numpad Plus or Ctrl + Plus = Increase size
+    Ctrl + Numpad Minus or Ctrl + Minus = Decrease size
     Ctrl + Shift + C = Change the Accent Color
     Ctrl + Shift + T = Change the Theme
     F1 = Go to the About screen
@@ -129,9 +129,7 @@ TimVer uses the following packages:
 
     * NLog https://nlog-project.org/
 
-    * Microsoft.Management.Infrastructure https://www.nuget.org/packages/Microsoft.Management.Infrastructure/2.0.0
-
-    * System.Management https://www.nuget.org/packages/System.Management/8.0.0
+    * Microsoft.Management.Infrastructure https://www.nuget.org/packages/Microsoft.Management.Infrastructure/3.0.0
 
     * GitVersion https://github.com/GitTools/GitVersion
 
@@ -143,7 +141,7 @@ TimVer uses the following packages:
 
     * Inno Setup was used to create the installer. https://jrsoftware.org/isinfo.php
 
-    * Visual Studio Community was used throughout the development of Get My IP. https://visualstudio.microsoft.com/vs/community/
+    * Visual Studio Community was used throughout the development of TimVer. https://visualstudio.microsoft.com/vs/community/
 
     * XAML Styler is indispensable when working with XAML. https://github.com/Xavalon/XamlStyler
 
