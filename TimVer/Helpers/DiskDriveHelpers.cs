@@ -82,7 +82,7 @@ public static class DiskDriveHelpers
         List<LogicalDrives> logicalDrives = [];
         if (GetLogicalDrives() != null)
         {
-            MainWindowUIHelpers.MainWindowWaitPointer();
+            MainWindowHelpers.MainWindowWaitPointer();
             Stopwatch watch = Stopwatch.StartNew();
             foreach (DriveInfo drive in GetLogicalDrives())
             {
@@ -112,7 +112,7 @@ public static class DiskDriveHelpers
                 }
             }
             watch.Stop();
-            MainWindowUIHelpers.MainWindowNormalPointer();
+            MainWindowHelpers.MainWindowNormalPointer();
             string suffix = (logicalDrives.Count == 1) ? string.Empty : "s";
             _log.Debug($"Found {logicalDrives.Count} logical drive{suffix} in {watch.Elapsed.TotalMilliseconds:N2} ms");
             return logicalDrives;
@@ -194,7 +194,7 @@ public static class DiskDriveHelpers
     {
         if (UserSettings.Setting!.GetPhysicalDrives)
         {
-            MainWindowUIHelpers.MainWindowWaitPointer();
+            MainWindowHelpers.MainWindowWaitPointer();
             Stopwatch pdWatch = Stopwatch.StartNew();
 
             // List of physical drive properties
@@ -236,7 +236,7 @@ public static class DiskDriveHelpers
             pdWatch.Stop();
             string suffix = (physicalDrives.Count == 1) ? string.Empty : "s";
             _log.Debug($"Found {physicalDrives.Count} physical drive{suffix} in {pdWatch.Elapsed.TotalMilliseconds:N2} ms");
-            MainWindowUIHelpers.MainWindowNormalPointer();
+            MainWindowHelpers.MainWindowNormalPointer();
             return physicalDrives;
         }
 
