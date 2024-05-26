@@ -18,7 +18,8 @@
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         Topmost="{Binding KeepOnTop,
-                          Source={x:Static config:UserSettings.Setting}}">
+                          Source={x:Static config:UserSettings.Setting}}"
+        Visibility="Hidden">
 
     <!--#region DataContext & Resources-->
     <Window.DataContext>

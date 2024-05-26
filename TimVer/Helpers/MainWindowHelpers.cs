@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Helpers;
 
@@ -53,6 +53,8 @@ internal static class MainWindowHelpers
     /// </summary>
     public static void ApplyUISettings()
     {
+        // Make the window visible
+        _mainWindow!.Visibility = Visibility.Visible;
 
         // Put version number in window title
         _mainWindow!.Title = MainWindowHelpers.WindowTitleVersionAdmin();
