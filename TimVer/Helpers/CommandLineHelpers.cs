@@ -6,11 +6,12 @@ static class CommandLineHelpers
 {
     #region Process the command line
     /// <summary>
-    /// Parse any command line options
+    /// Parse any command line options.
     /// </summary>
+    /// <returns><c>true</c> if "hide" option was specified.</returns>
     public static bool ProcessCommandLine()
     {
-        // Since this is not a console app, get the command line args
+        // Since this is not a console app, get the command line args from Environment
         string[] args = Environment.GetCommandLineArgs();
 
         // Parser settings
