@@ -78,6 +78,7 @@
                 <TextBlock Grid.Row="2" Grid.Column="0"
                            Text="{DynamicResource About_CreatedBy}" />
                 <TextBlock Grid.Row="2" Grid.Column="2"
+                           HorizontalAlignment="Left"
                            ToolTip="{DynamicResource About_CreatedByToolTip}"
                            ToolTipService.Placement="Top">
                     <Hyperlink Command="{Binding GoToGitHubCommand}"
@@ -98,7 +99,8 @@
                 <TextBlock Grid.Row="4" Grid.Column="2">
                     <Hyperlink Command="{Binding ViewLicenseCommand}"
                                Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
-                               ToolTip="{DynamicResource About_LicenseToolTip}">
+                               ToolTip="{DynamicResource About_LicenseToolTip}"
+                               ToolTipService.Placement="Top">
                         <TextBlock Text="{DynamicResource About_LicenseText}"
                                    TextWrapping="Wrap" />
                     </Hyperlink>
@@ -115,6 +117,7 @@
                 <TextBlock Grid.Row="6" Grid.Column="0"
                            Text="{DynamicResource About_CommitID}" />
                 <TextBlock Grid.Row="6" Grid.Column="2"
+                           HorizontalAlignment="Left"
                            Text="{x:Static local:BuildInfo.CommitIDString}"
                            TextWrapping="Wrap"
                            ToolTipService.Placement="Top">
