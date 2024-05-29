@@ -24,4 +24,25 @@ internal static class SystemMetricsHelper
             return -1;
         }
     }
+
+    /// <summary>
+    /// Gets value that specifies how the system was started.
+    /// </summary>
+    /// <returns>
+    /// 0 if Normal Boot,
+    /// 1 if Safe Mode,
+    /// 2 if Safe Mode with Networking
+    /// </returns>
+    public static int GetCleanBoot()
+    {
+        try
+        {
+            return GetSystemMetrics(SystemMetric.SM_CLEANBOOT);
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, "Call to GetCleanBoot has failed.");
+            return -1;
+        }
+    }
 }
