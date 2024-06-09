@@ -31,8 +31,10 @@
 
 ### Screenshots 
 
-![Windows Info](https://github.com/Timthreetwelve/TimVer/blob/main/Images/TimVer_8_Dark.png)
+![Windows Info](https://github.com/Timthreetwelve/TimVer/blob/main/Images/TimVer_9_W.png)
 
-![Computer Info](https://github.com/Timthreetwelve/TimVer/blob/main/Images/TimVer_8_Light.png)
+![Hardware Info](https://github.com/Timthreetwelve/TimVer/blob/main/Images/TimVer_9_H.png)
 
-![Settings](https://github.com/Timthreetwelve/TimVer/blob/main/Images/TimVer_8_settings.png)
+![Disk Drive Info](https://github.com/Timthreetwelve/TimVer/blob/main/Images/TimVer_9_D.png)
+
+![Graphics Info](https://github.com/Timthreetwelve/TimVer/blob/main/Images/TimVer_9_V.png)
