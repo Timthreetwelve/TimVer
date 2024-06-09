@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <Content Include="Images\TV.ico" />
-    <Resource Include="Images\TK.png" />
     <Resource Include="Images\TV.png" />
   </ItemGroup>
 
