@@ -9,26 +9,47 @@ namespace TimVer.Models;
 internal partial class UILanguage : ObservableObject
 {
     #region Properties
+    /// <summary>
+    /// The name of the contributor. Can be any string chosen by the contributor.
+    /// </summary>
     [ObservableProperty]
     private string? _contributor;
 
+    /// <summary>
+    /// Total number of strings in the language resource dictionary.
+    /// </summary>
     [ObservableProperty]
     private int? _currentLanguageStringCount = App.LanguageStrings;
 
+    /// <summary>
+    /// Total number of strings in the (en-US) language resource dictionary.
+    /// </summary>
     [ObservableProperty]
     private int? _defaultStringCount = App.DefaultLanguageStrings;
 
+    /// <summary>
+    /// English spelling of the language name.
+    /// </summary>
     [ObservableProperty]
     private string? _language;
 
+    /// <summary>
+    /// Language code in the form xx-XX
+    /// </summary>
     [ObservableProperty]
     private string? _languageCode;
 
+    /// <summary>
+    /// Native spelling of the language name.
+    /// </summary>
     [ObservableProperty]
     private string? _languageNative;
 
+    /// <summary>
+    /// Note field. Currently unused.
+    /// </summary>
     [ObservableProperty]
-    private string _note = string.Empty;
+    private string? _note = string.Empty;
     #endregion Properties
 
     #region Override ToString
