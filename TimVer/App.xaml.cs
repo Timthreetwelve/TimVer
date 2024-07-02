@@ -4,6 +4,7 @@ namespace TimVer;
 
 public partial class App : Application
 {
+    #region On Startup
     /// <summary>
     /// Override the Startup Event.
     /// </summary>
@@ -29,6 +30,7 @@ public partial class App : Application
         // Enable language testing if requested.
         CheckLanguageTesting();
     }
+    #endregion On Startup
 
     #region Set the language that the UI will use
     private void SetLanguage()
