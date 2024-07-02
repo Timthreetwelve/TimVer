@@ -57,7 +57,7 @@ internal partial class UILanguage : ObservableObject
         new UILanguage {Language = "English", LanguageCode = "en-GB", LanguageNative = "English",    Contributor = "Timthreetwelve"},
         new UILanguage {Language = "Korean",  LanguageCode = "ko-KR", LanguageNative = "한국어",      Contributor = "VenusGirl💗 (비너스걸)"},
         new UILanguage {Language = "Spanish", LanguageCode = "es-ES", LanguageNative = "Español",    Contributor = "Timthreetwelve"},
-        new UILanguage {Language = "French",  LanguageCode = "fr-FR", LanguageNative = "Français",   Contributor = "Timthreetwelve/Largo"},        
+        new UILanguage {Language = "French",  LanguageCode = "fr-FR", LanguageNative = "Français",   Contributor = "Timthreetwelve/Largo"},
         new UILanguage {Language = "Italian", LanguageCode = "it-IT", LanguageNative = "Italiano",   Contributor = "RB"},
         new UILanguage {Language = "Dutch",   LanguageCode = "nl-NL", LanguageNative = "Nederlands", Contributor = "TiM"},
         new UILanguage {Language = "Slovak",  LanguageCode = "sk-SK", LanguageNative = "Slovak",     Contributor = "VAIO"},
