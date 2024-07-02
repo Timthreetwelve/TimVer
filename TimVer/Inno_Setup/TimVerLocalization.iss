@@ -6,6 +6,7 @@ WelcomeFontName="Verdana"
 
 [Languages]
 Name: "en"; MessagesFile: "compiler:Default.isl"
+Name: "ko"; MessagesFile: "compiler:Languages\Korean.isl"
 Name: "es"; MessagesFile: "compiler:Languages\Spanish.isl"
 Name: "it"; MessagesFile: "compiler:Languages\Italian.isl"
 Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
@@ -15,6 +16,7 @@ Name: "sk"; MessagesFile: "compiler:Languages\Slovak.isl"
 en.SetupWindowTitle = Setup - {#MyAppName} {#MyAppVersion}
 es.SetupWindowTitle = Instalar - {#MyAppName} {#MyAppVersion}
 it.SetupWindowTitle = Installazione di {#MyAppName} {#MyAppVersion}
+ko.SetupWindowTitle = 설치 - {#MyAppName} {#MyAppVersion}
 nl.SetupWindowTitle = Setup - {#MyAppName} {#MyAppVersion}
 sk.SetupWindowTitle = Sprievodca inštaláciou - {#MyAppName} {#MyAppVersion}
 
@@ -25,6 +27,13 @@ en.SelfContainedx64=This will install the self-contained x64 (64-bit) version of
 en.ViewReadme=View the ReadMe file
 en.AppIsRunning=is running, please close it to continue with the installation.
 en.ClearSettings=Do you want to remove the settings and history files and registry entries?%n%nSelect 'No' if you plan to reinstall the program.
+
+ko.NotSelfContained=이렇게 하면 %1 버전 %2의 표준 버전이 설치됩니다.%n%n이 버전은 .NET 8 데스크톱 런타임의 기존 설치가 필요하며 x64 및 x86 시스템과 모두 호환됩니다.%n%n계속하기 전에 다른 모든 응용 프로그램을 닫는 것이 좋습니다.%n%n계속하려면 '다음'을 클릭하거나 설치 프로그램을 종료하려면 '취소'를 클릭합니다.
+ko.SelfContainedx64=이렇게 하면 %1 버전 %2의 독립 실행형 x64 (64비트) 버전이 설치됩니다.%n%n계속하기 전에 다른 모든 응용 프로그램을 닫는 것이 좋습니다.%n%n계속하려면 '다음'을 클릭하거나 설치 프로그램을 종료하려면 '취소'를 클릭합니다.
+ko.SelfContainedx86=이렇게 하면 %1 버전 %2의 독립 실행형 x86 (32비트) 버전이 설치됩니다.%n%n계속하기 전에 다른 모든 응용 프로그램을 닫는 것이 좋습니다.%n%n계속하려면 '다음'을 클릭하거나 설치 프로그램을 종료하려면 '취소'를 클릭합니다.
+ko.ViewReadme=ReadMe 파일 보기
+ko.AppIsRunning=가 실행 중입니다. 설치를 계속하려면 닫으세요.
+ko.DeleteConfigFiles=설정 및 기록 파일과 레지스트리 항목을 제거하시겠습니까?%n%n프로그램을 다시 설치할 계획이면 '아니오'를 선택하세요.
 
 es.NotSelfContained=Esto instalará la versión estándar de la versión %2 de %1.%n%nEsta versión requiere una instalación existente de .NET 8 Desktop Runtime y es compatible con los sistemas x64 y x86.%n%nSe recomienda cerrar todas las demás aplicaciones antes de continuar.%n%nHaga clic en 'Siguiente' para continuar o en 'Cancelar' para salir de la configuración.
 es.SelfContainedx86=Esto instalará la versión x86 (32 bits) independiente de la versión %2 de %1.%n%nSe recomienda cerrar todas las demás aplicaciones antes de continuar.%n%nHaga clic en 'Siguiente' para continuar o en 'Cancelar' para salir de la configuración.
