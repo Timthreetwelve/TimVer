@@ -38,12 +38,24 @@ public enum NavPage
 [TypeConverter(typeof(EnumDescriptionTypeConverter))]
 public enum ThemeType
 {
+    /// <summary>
+    /// Light theme, based on Material Design light theme.
+    /// </summary>
     [LocalizedDescription("SettingsEnum_Theme_Light")]
     Light = 0,
+    /// <summary>
+    /// Dark theme, based on Material Design dark theme.
+    /// </summary>
     [LocalizedDescription("SettingsEnum_Theme_Dark")]
     Dark = 1,
+    /// <summary>
+    /// A theme darker than the Material Design dark theme.
+    /// </summary>
     [LocalizedDescription("SettingsEnum_Theme_Darker")]
     Darker = 2,
+    /// <summary>
+    /// Light or Darker theme based on the System theme.
+    /// </summary>
     [LocalizedDescription("SettingsEnum_Theme_System")]
     System = 3
 }
@@ -132,10 +144,19 @@ public enum AccentColor
 [TypeConverter(typeof(EnumDescriptionTypeConverter))]
 public enum Spacing
 {
+    /// <summary>
+    /// Smallest datagrid row spacing.
+    /// </summary>
     [LocalizedDescription("SettingsEnum_Spacing_Compact")]
     Compact = 0,
+    /// <summary>
+    /// Middle datagrid row spacing.
+    /// </summary>
     [LocalizedDescription("SettingsEnum_Spacing_Comfortable")]
     Comfortable = 1,
+    /// <summary>
+    /// Widest datagrid row spacing.
+    /// </summary>
     [LocalizedDescription("SettingsEnum_Spacing_Wide")]
     Wide = 2
 }
