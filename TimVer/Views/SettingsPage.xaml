@@ -5,7 +5,6 @@
              xmlns:config="clr-namespace:TimVer.Configuration"
              xmlns:convert="clr-namespace:TimVer.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:TimVer"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:models="clr-namespace:TimVer.Models"
@@ -21,10 +20,8 @@
     </UserControl.DataContext>
 
     <UserControl.Resources>
-        <convert:BooleanInverter x:Key="boolInverter" />
-        <convert:EnumDescConverter x:Key="descConv" />
-        <convert:EnumBindingSource x:Key="EnumBindingSource" />
-        <convert:LanguageConverter x:Key="langConverter" />
+        <convert:BooleanInverter x:Key="BoolInverter" />
+        <convert:LanguageConverter x:Key="LangConverter" />
     </UserControl.Resources>
     <!--#endregion-->
 
@@ -129,15 +126,13 @@
                                 <RowDefinition Height="31" />
                                 <RowDefinition Height="31" />
                                 <RowDefinition Height="31" />
-
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                             <!--#endregion-->
 
                             <StackPanel Grid.Row="0"
                                         Orientation="Horizontal">
-                                <CheckBox x:Name="BuildHistory"
-                                          Padding="10,0"
+                                <CheckBox Padding="10,0"
                                           Content="{DynamicResource SettingsItem_BuildHistory}"
                                           IsChecked="{Binding KeepHistory,
                                                               Source={x:Static config:UserSettings.Setting}}" />
@@ -285,7 +280,7 @@
                                   Content="{DynamicResource SettingsItem_UseGB}"
                                   IsChecked="{Binding Use1024,
                                                       Source={x:Static config:UserSettings.Setting},
-                                                      Converter={StaticResource boolInverter}}" />
+                                                      Converter={StaticResource BoolInverter}}" />
                         <StackPanel Grid.Row="2" Grid.Column="1"
                                     Orientation="Horizontal">
 
@@ -332,7 +327,7 @@
                                               Padding="10,0"
                                               Content="{DynamicResource SettingsItem_ShowReadyDrives}"
                                               IsChecked="{Binding IncludeNotReady,
-                                                                  Converter={StaticResource boolInverter},
+                                                                  Converter={StaticResource BoolInverter},
                                                                   Source={x:Static config:UserSettings.Setting}}" />
                                     <CheckBox Grid.Row="1"
                                               Padding="10,0"
@@ -390,27 +385,27 @@
                                               Content="{DynamicResource SettingsItem_ShowPartitionsColumn}"
                                               IsChecked="{Binding ShowPartitions,
                                                                   Source={x:Static config:UserSettings.Setting}}" />
-                                    <CheckBox Grid.Row="1"
+                                    <CheckBox Grid.Row="1" Grid.Column="0"
                                               Padding="10,0"
                                               Content="{DynamicResource SettingsItem_ShowDiskTypeColumn}"
                                               IsChecked="{Binding ShowDiskType,
                                                                   Source={x:Static config:UserSettings.Setting}}" />
-                                    <CheckBox Grid.Row="2"
+                                    <CheckBox Grid.Row="2" Grid.Column="0"
                                               Padding="10,0"
                                               Content="{DynamicResource SettingsItem_ShowMediaTypeColumn}"
                                               IsChecked="{Binding ShowMediaType,
                                                                   Source={x:Static config:UserSettings.Setting}}" />
-                                    <CheckBox Grid.Row="3"
+                                    <CheckBox Grid.Row="3" Grid.Column="0"
                                               Padding="10,0"
                                               Content="{DynamicResource SettingsItem_ShowInterfaceColumn}"
                                               IsChecked="{Binding ShowInterface,
                                                                   Source={x:Static config:UserSettings.Setting}}" />
-                                    <CheckBox Grid.Row="4"
+                                    <CheckBox Grid.Row="4" Grid.Column="0"
                                               Padding="10,0"
                                               Content="{DynamicResource SettingsItem_ShowBusTypeColumn}"
                                               IsChecked="{Binding ShowBusType,
                                                                   Source={x:Static config:UserSettings.Setting}}" />
-                                    <CheckBox Grid.Row="5"
+                                    <CheckBox Grid.Row="5" Grid.Column="0"
                                               Padding="10,0"
                                               Content="{DynamicResource SettingsItem_ShowHealthColumn}"
                                               IsChecked="{Binding ShowHealth,
@@ -601,8 +596,7 @@
                 <!--#endregion-->
 
                 <!--#region Language-->
-                <Expander x:Name="LangExpander"
-                          Grid.Row="6"
+                <Expander Grid.Row="6"
                           materialDesign:ExpanderAssist.HorizontalHeaderPadding="10"
                           IsExpanded="{Binding Setting.LangExpanderOpen,
                                                Source={x:Static config:TempSettings.Setting}}">
@@ -661,8 +655,7 @@
 
                         <StackPanel Grid.Row="0" Grid.Column="1"
                                     Orientation="Horizontal">
-                            <CheckBox Grid.Row="0" Grid.Column="1"
-                                      Padding="10,0"
+                            <CheckBox Padding="10,0"
                                       VerticalContentAlignment="Center"
                                       Content="{DynamicResource SettingsItem_UseOSLanguageCheckBox}"
                                       IsChecked="{Binding UseOSLanguage,
@@ -695,19 +688,19 @@
                                    Content="{DynamicResource SettingsItem_Language}"
                                    ToolTipService.InitialShowDelay="300"
                                    ToolTipService.Placement="Top" />
-                            <ComboBox x:Name="cbxLanguage"
-                                      Grid.Row="1" Grid.Column="2"
+                            <ComboBox x:Name="CbxLanguage"
+                                      Grid.Column="2"
                                       Width="Auto" MinWidth="200"
                                       Margin="0,3,0,0" Padding="2,0,0,3"
                                       HorizontalAlignment="Left"
                                       IsEnabled="{Binding Path=UseOSLanguage,
                                                           Source={x:Static config:UserSettings.Setting},
-                                                          Converter={StaticResource boolInverter}}"
+                                                          Converter={StaticResource BoolInverter}}"
                                       ItemsSource="{Binding DefinedLanguages}"
                                       Loaded="CbxLanguage_Loaded"
                                       SelectedItem="{Binding Path=UILanguage,
                                                              Source={x:Static config:UserSettings.Setting},
-                                                             Converter={StaticResource langConverter}}"
+                                                             Converter={StaticResource LangConverter}}"
                                       Style="{StaticResource MaterialDesignComboBox}">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
@@ -726,7 +719,7 @@
                                     </DataTemplate>
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
-                            <TextBlock Grid.Row="1" Grid.Column="4"
+                            <TextBlock Grid.Column="4"
                                        VerticalAlignment="Center"
                                        FontSize="13" Opacity=".8">
                                 <Run Text="{Binding CurrentLanguageStringCount}" />
@@ -747,8 +740,7 @@
                             <StackPanel.DataContext>
                                 <viewmodels:SettingsViewModel />
                             </StackPanel.DataContext>
-                            <CheckBox Grid.Row="0" Grid.Column="1"
-                                      Padding="10,0"
+                            <CheckBox Padding="10,0"
                                       VerticalContentAlignment="Center"
                                       Content="{DynamicResource SettingsItem_EnableLanguageTesting}"
                                       IsChecked="{Binding LanguageTesting,

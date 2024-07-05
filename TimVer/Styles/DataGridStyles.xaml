@@ -2,8 +2,7 @@
 
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:convert="clr-namespace:TimVer.Converters"
-                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+                    xmlns:convert="clr-namespace:TimVer.Converters">
 
     <convert:TodayConverter x:Key="TodayConverter" />
 
@@ -41,7 +40,7 @@
 
     <!--#region  Style to alight datagrid column headers right-->
     <Style TargetType="DataGridColumnHeader"
-           x:Key="alignHeaderRight"
+           x:Key="AlignHeaderRight"
            BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
         <Setter Property="HorizontalContentAlignment" Value="Right" />
     </Style>
@@ -49,7 +48,7 @@
 
     <!--#region  Style to align datagrid column headers left-->
     <Style TargetType="DataGridColumnHeader"
-           x:Key="alignHeaderLeft"
+           x:Key="AlignHeaderLeft"
            BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="Padding" Value="15,0,0,0" />
@@ -58,7 +57,7 @@
 
     <!--#region  Style to alight text boxes in a datagrid right-->
     <Style TargetType="TextBlock"
-           x:Key="alignRight"
+           x:Key="AlignRight"
            BasedOn="{StaticResource {x:Type TextBlock}}">
         <Setter Property="HorizontalAlignment" Value="Right" />
     </Style>
@@ -66,7 +65,7 @@
 
     <!--#region Style to alight text boxes in a datagrid center-->
     <Style TargetType="TextBlock"
-           x:Key="alignCenter"
+           x:Key="AlignCenter"
            BasedOn="{StaticResource {x:Type TextBlock}}">
         <Setter Property="HorizontalAlignment" Value="Center" />
     </Style>

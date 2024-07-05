@@ -47,8 +47,7 @@
                     </Style.Triggers>
                 </Style>
             </Grid.Style>
-            <ComboBox x:Name="GpuListComboBox"
-                      Grid.Column="0"
+            <ComboBox Grid.Column="0"
                       MinWidth="120"
                       HorizontalAlignment="Left"
                       VerticalAlignment="Top"

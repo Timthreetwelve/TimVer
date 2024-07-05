@@ -7,7 +7,6 @@
              xmlns:global="clr-namespace:System.Globalization;assembly=mscorlib"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:models="clr-namespace:TimVer.Models"
              xmlns:viewmodels="clr-namespace:TimVer.ViewModels"
              mc:Ignorable="d"
              d:DesignHeight="750" d:DesignWidth="700"
@@ -20,7 +19,6 @@
         <convert:SpacingConverter x:Key="Spacing" />
         <convert:BoolToStringConverter x:Key="BoolToString" />
         <convert:BoolToVisibilityInverter x:Key="BoolToVisInverter" />
-        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
     </UserControl.Resources>
 
     <UserControl.DataContext>
@@ -79,12 +77,12 @@
                           RowStyle="{StaticResource LogicalDriveRows}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Name}"
-                                            ElementStyle="{StaticResource alignCenter}"
+                                            ElementStyle="{StaticResource AlignCenter}"
                                             Header="{DynamicResource DriveInfo_Name}" />
                         <DataGridTextColumn Binding="{Binding Label}"
                                             MinWidth="110"
                                             Header="{DynamicResource DriveInfo_Label}"
-                                            HeaderStyle="{StaticResource alignHeaderLeft}" />
+                                            HeaderStyle="{StaticResource AlignHeaderLeft}" />
                         <DataGridTextColumn Binding="{Binding DriveType}"
                                             Header="{DynamicResource DriveInfo_Type}"
                                             Visibility="{Binding ShowTypeL,
@@ -93,29 +91,29 @@
 
                         <DataGridTextColumn Binding="{Binding Format}"
                                             Header="{DynamicResource DriveInfo_Format}"
-                                            HeaderStyle="{StaticResource alignHeaderLeft}"
+                                            HeaderStyle="{StaticResource AlignHeaderLeft}"
                                             Visibility="{Binding ShowFormat,
                                                                  Source={x:Static config:UserSettings.Setting},
                                                                  Converter={StaticResource BooleanToVisibilityConverter}}" />
 
-                        <DataGridTextColumn x:Name="colSize" Binding="{Binding TotalSize, StringFormat=N2, ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}}"
-                                            ElementStyle="{StaticResource alignRight}"
+                        <DataGridTextColumn Binding="{Binding TotalSize, StringFormat=N2, ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}}"
+                                            ElementStyle="{StaticResource AlignRight}"
                                             Header="{Binding Use1024,
                                                              Source={x:Static config:UserSettings.Setting},
                                                              Converter={StaticResource BoolToString},
                                                              ConverterParameter=Size}"
-                                            HeaderStyle="{StaticResource alignHeaderRight}" />
-                        <DataGridTextColumn x:Name="colFree" Binding="{Binding GBFree, StringFormat=N2, ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}}"
-                                            ElementStyle="{StaticResource alignRight}"
+                                            HeaderStyle="{StaticResource AlignHeaderRight}" />
+                        <DataGridTextColumn Binding="{Binding GBFree, StringFormat=N2, ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}}"
+                                            ElementStyle="{StaticResource AlignRight}"
                                             Header="{Binding Use1024,
                                                              Source={x:Static config:UserSettings.Setting},
                                                              Converter={StaticResource BoolToString},
                                                              ConverterParameter=Free}"
-                                            HeaderStyle="{StaticResource alignHeaderRight}" />
+                                            HeaderStyle="{StaticResource AlignHeaderRight}" />
                         <DataGridTextColumn Binding="{Binding PercentFree, StringFormat=P1, ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}}"
-                                            ElementStyle="{StaticResource alignRight}"
+                                            ElementStyle="{StaticResource AlignRight}"
                                             Header="{DynamicResource DriveInfo_FreePercent}"
-                                            HeaderStyle="{StaticResource alignHeaderRight}" />
+                                            HeaderStyle="{StaticResource AlignHeaderRight}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
@@ -168,16 +166,16 @@
                                                                      Source={x:Static config:UserSettings.Setting},
                                                                      Converter={StaticResource BoolToVisInverter}}" />
                             <DataGridTextColumn Binding="{Binding Index}"
-                                                ElementStyle="{StaticResource alignCenter}"
+                                                ElementStyle="{StaticResource AlignCenter}"
                                                 Header="{DynamicResource DriveInfo_DeviceID}" />
-                            <DataGridTextColumn x:Name="colPSize" Binding="{Binding Size, StringFormat=N2, ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}}"
-                                                ElementStyle="{StaticResource alignRight}"
+                            <DataGridTextColumn Binding="{Binding Size, StringFormat=N2, ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}}"
+                                                ElementStyle="{StaticResource AlignRight}"
                                                 Header="{Binding Use1024,
                                                                  Source={x:Static config:UserSettings.Setting},
                                                                  Converter={StaticResource BoolToString},
                                                                  ConverterParameter=Size}" />
                             <DataGridTextColumn Binding="{Binding Partitions}"
-                                                ElementStyle="{StaticResource alignCenter}"
+                                                ElementStyle="{StaticResource AlignCenter}"
                                                 Header="{DynamicResource DriveInfo_Partitions}"
                                                 Visibility="{Binding ShowPartitions,
                                                                      Source={x:Static config:UserSettings.Setting},
@@ -243,8 +241,7 @@
 
                     <!--#region GridSplitter-->
                     <!--  Grid Splitter can be hidden. See Style Trigger in Row Definition  -->
-                    <GridSplitter x:Name="DetailsSplitter"
-                                  Grid.Row="1"
+                    <GridSplitter Grid.Row="1"
                                   Height="4"
                                   Margin="0,3"
                                   HorizontalAlignment="Stretch"
