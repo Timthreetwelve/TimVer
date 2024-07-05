@@ -26,7 +26,6 @@
         <viewmodels:NavigationViewModel />
     </Window.DataContext>
     <Window.Resources>
-        <config:UserSettings x:Key="config" />
         <convert:SelectedItemConverter x:Key="SelItemConv" />
     </Window.Resources>
     <!--#endregion-->
