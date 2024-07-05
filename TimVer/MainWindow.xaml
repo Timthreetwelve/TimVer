@@ -89,7 +89,7 @@
             <!--#region PopupBox in button-->
             <Button Grid.Column="1"
                     Width="40"
-                    Margin="0,0,5,0" Padding="0"
+                    Margin="0,0,5,0"
                     HorizontalAlignment="Center"
                     Command="{Binding CopyToClipboardCommand}"
                     IsDefault="False" IsTabStop="False"
