@@ -7,6 +7,7 @@ namespace TimVer.Helpers;
 /// </summary>
 internal static class NLogHelpers
 {
+    #region Static instance for NLog Logger
     /// <summary>
     /// Static instance for NLog Logger.
     /// </summary>
@@ -14,6 +15,7 @@ internal static class NLogHelpers
     /// Used with a "static using" in GlobalUsings.cs to avoid creating an instance in every class.
     /// </remarks>
     internal static readonly Logger _log = LogManager.GetLogger("LogFile");
+    #endregion Static instance for NLog Logger
 
     #region Create the NLog configuration
     /// <summary>
@@ -80,15 +82,7 @@ internal static class NLogHelpers
         // create filename string
         string myname = AppInfo.AppName;
         string today = DateTime.Now.ToString("yyyyMMdd");
-        string filename;
-        if (Debugger.IsAttached)
-        {
-            filename = $"{myname}.{today}.debug.log";
-        }
-        else
-        {
-            filename = $"{myname}.{today}.log";
-        }
+        string filename = Debugger.IsAttached ? $"{myname}.{today}.debug.log" : $"{myname}.{today}.log";
 
         // combine temp folder with filename
         string tempdir = Path.GetTempPath();
@@ -108,14 +102,8 @@ internal static class NLogHelpers
         LoggingRule rule = config.FindRuleByName("LogToFile");
         if (rule != null)
         {
-            if (debug)
-            {
-                rule.SetLoggingLevels(LogLevel.Debug, LogLevel.Fatal);
-            }
-            else
-            {
-                rule.SetLoggingLevels(LogLevel.Info, LogLevel.Fatal);
-            }
+            LogLevel level = debug ? LogLevel.Debug : LogLevel.Info;
+            rule.SetLoggingLevels(level, LogLevel.Fatal);
             LogManager.ReconfigExistingLoggers();
         }
     }
