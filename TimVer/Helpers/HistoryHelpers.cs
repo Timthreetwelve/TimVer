@@ -61,7 +61,7 @@ internal static class HistoryHelpers
             {
                 HistoryViewModel.HistoryList.Add(newHist);
                 HistoryViewModel.HistoryList = [.. HistoryViewModel.HistoryList.OrderByDescending(o => o.HDate)];
-                string json = JsonSerializer.Serialize(HistoryViewModel.HistoryList, s_options);
+                string json = JsonSerializer.Serialize(HistoryViewModel.HistoryList, _options);
                 File.WriteAllText(DefaultHistoryFile(), json);
                 _log.Info($"History file was updated with {newHist.HBuild}");
             }
@@ -73,7 +73,7 @@ internal static class HistoryHelpers
         else
         {
             HistoryViewModel.HistoryList.Add(newHist);
-            string json = JsonSerializer.Serialize(HistoryViewModel.HistoryList, s_options);
+            string json = JsonSerializer.Serialize(HistoryViewModel.HistoryList, _options);
             File.WriteAllText(DefaultHistoryFile(), json);
             _log.Info($"History file was created with build {newHist.HBuild}");
         }

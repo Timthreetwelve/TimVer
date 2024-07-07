@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Configuration;
 
@@ -67,7 +67,7 @@ public static class ConfigHelpers
     {
         try
         {
-            string json = JsonSerializer.Serialize(UserSettings.Setting, s_options);
+            string json = JsonSerializer.Serialize(UserSettings.Setting, _options);
             File.WriteAllText(SettingsFileName!, json);
         }
         catch (Exception ex)
