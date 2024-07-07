@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 #nullable disable
 namespace TimVer.Converters;
 
@@ -30,8 +30,6 @@ internal class EnumBindingSourceExtension : MarkupExtension
             }
         }
     }
-
-    public EnumBindingSourceExtension() { }
 
     public EnumBindingSourceExtension(Type enumType)
     {
