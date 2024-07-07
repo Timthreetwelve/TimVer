@@ -145,6 +145,8 @@ TimVer uses the following packages:
 
     * XAML Styler is indispensable when working with XAML. https://github.com/Xavalon/XamlStyler
 
+    * JetBrains ReSharper Command Line Tools were used for code analysis. https://www.jetbrains.com/resharper/features/command-line.html
+
     * And of course, the essential PowerToys https://github.com/microsoft/PowerToys
 
 
