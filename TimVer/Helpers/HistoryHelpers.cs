@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Helpers;
 
@@ -22,8 +22,7 @@ internal static class HistoryHelpers
             string json = File.ReadAllText(DefaultHistoryFile());
             HistoryViewModel.HistoryList = JsonSerializer.Deserialize<List<History>>(json)!;
             int count = HistoryViewModel.HistoryList!.Count;
-            string entry = string.Empty;
-            entry = count == 1 ? "entry" : "entries";
+            string entry = count == 1 ? "entry" : "entries";
             _log.Debug($"History file has {count} {entry}");
         }
         catch (Exception ex)
