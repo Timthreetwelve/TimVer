@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Helpers;
 
@@ -21,11 +21,6 @@ public static class AppInfo
     /// Returns the framework description
     /// </summary>
     public static string RuntimeVersion => RuntimeInformation.FrameworkDescription;
-
-    /// <summary>
-    ///  Returns the version number in Major.Minor.Build format
-    /// </summary>
-    public static string TitleVersion => Assembly.GetEntryAssembly()!.GetName().Version!.ToString()!.Remove(Assembly.GetEntryAssembly()!.GetName().Version!.ToString().LastIndexOf('.'));
 
     /// <summary>
     /// Returns the file version
@@ -95,7 +90,7 @@ public static class AppInfo
     /// <summary>
     /// Returns the File Name from the Assembly info
     /// </summary>
-    public static string AppFileName => FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly()!.Location).FileName ?? "missing";
+    public static string AppFileName => FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly()!.Location).FileName;
 
     /// <summary>
     /// Combines the product name with the title version.
@@ -104,6 +99,11 @@ public static class AppInfo
     /// String in the format: AppName - 0.0.1
     /// </value>
     public static string ToolTipVersion => $"{AppProduct} - {TitleVersion}";
+
+    /// <summary>
+    ///  Returns the version number in Major.Minor.Build format
+    /// </summary>
+    private static string TitleVersion => Assembly.GetEntryAssembly()!.GetName().Version!.ToString().Remove(Assembly.GetEntryAssembly()!.GetName().Version!.ToString().LastIndexOf('.'));
 
     /// <summary>
     /// Returns the Process Name
