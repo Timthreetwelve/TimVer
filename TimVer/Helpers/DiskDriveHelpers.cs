@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Helpers;
 
@@ -148,7 +148,7 @@ public static class DiskDriveHelpers
         // If the drive is ready
         if (d.IsReady)
         {
-            int GBPref = UserSettings.Setting!.Use1024 ? 1024 : 1000;
+            int gbPref = UserSettings.Setting!.Use1024 ? 1024 : 1000;
 
             // Add the information for each drive to the list
             return new()
@@ -166,8 +166,8 @@ public static class DiskDriveHelpers
                 },
                 Format = d.DriveFormat,
                 Label = d.VolumeLabel,
-                TotalSize = Math.Round(d.TotalSize / Math.Pow(GBPref, 3), 2),
-                GBFree = Math.Round(d.AvailableFreeSpace / Math.Pow(GBPref, 3), 2),
+                TotalSize = Math.Round(d.TotalSize / Math.Pow(gbPref, 3), 2),
+                GBFree = Math.Round(d.AvailableFreeSpace / Math.Pow(gbPref, 3), 2),
                 PercentFree = (double)d.AvailableFreeSpace / d.TotalSize
             };
         }
@@ -208,9 +208,9 @@ public static class DiskDriveHelpers
                 PhysicalDrives pDisk = new();
                 Dictionary<string, string> results = [];
 
-                results = results.Concat(GetMSFTDisk(index))
+                results = results.Concat(GetMsftDisk(index))
                     .ToDictionary(x => x.Key, x => x.Value)
-                    .Concat(GetMSFTPhysicalDisk(index))
+                    .Concat(GetMsftPhysicalDisk(index))
                     .ToDictionary(x => x.Key, x => x.Value)
                     .Concat(GetWin32DiskDrive(index))
                     .ToDictionary(x => x.Key, x => x.Value);
@@ -318,7 +318,7 @@ public static class DiskDriveHelpers
     /// </summary>
     /// <param name="number">The number of the disk.</param>
     /// <returns>Dictionary of values.</returns>
-    private static Dictionary<string, string> GetMSFTDisk(uint number)
+    private static Dictionary<string, string> GetMsftDisk(uint number)
     {
         const string scope = @"\\.\root\Microsoft\Windows\Storage";
         string query = $"SELECT IsBoot, IsSystem, PartitionStyle, Model FROM MSFT_Disk WHERE Number = {number}";
@@ -360,7 +360,7 @@ public static class DiskDriveHelpers
     /// </summary>
     /// <param name="device">The device ID of the disk.</param>
     /// <returns>Dictionary of values.</returns>
-    private static Dictionary<string, string> GetMSFTPhysicalDisk(uint device)
+    private static Dictionary<string, string> GetMsftPhysicalDisk(uint device)
     {
         const string scope = @"\\.\root\Microsoft\Windows\Storage";
         string query = $"SELECT MediaType, HealthStatus, BusType, SerialNumber, FriendlyName FROM MSFT_PhysicalDisk WHERE DeviceID = {device}";
