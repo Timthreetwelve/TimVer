@@ -31,7 +31,7 @@ internal static class UefiHelpers
     /// Determines if computer is in EUFI mode.
     /// </summary>
     /// <returns>"UEFI mode" if the computer is in UEFI mode. "BIOS mode"if the computer is in BIOS mode.</returns>
-    /// <see cref=">https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-getfirmwareenvironmentvariablea"/>
+    /// <remarks>https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-getfirmwareenvironmentvariablea</remarks>
     public static string UEFIEnabled()
     {
         try
