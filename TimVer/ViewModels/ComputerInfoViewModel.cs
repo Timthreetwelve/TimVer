@@ -15,14 +15,14 @@ internal class ComputerInfoViewModel : ObservableObject
     #endregion Constructor
 
     #region Collection of computer hardware information
-    public static Dictionary<string, string>? ComputerInfoList { get; set; }
+    public static Dictionary<string, string>? ComputerInfoList { get; private set; }
     #endregion Collection of computer hardware information
 
     #region Load data
     /// <summary>
     /// Get data for all properties.
     /// </summary>
-    public static void LoadData()
+    private static void LoadData()
     {
         ComputerInfoList = ComputerSystemHelpers.GetComputerInfo();
     }

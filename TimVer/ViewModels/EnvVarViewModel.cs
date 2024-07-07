@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.ViewModels;
 
@@ -19,7 +19,7 @@ public partial class EnvVarViewModel : ObservableObject
     /// List of environment variables.
     /// </summary>
     /// <remarks>A generic list is okay here since a change in the environment won't be detected in the app.</remarks>
-    public static List<EnvVariable> EnvVariableList { get; set; } = [];
+    public static List<EnvVariable> EnvVariableList { get; private set; } = [];
     #endregion Collection of environment variables
 
     #region Load data

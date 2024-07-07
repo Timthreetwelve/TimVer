@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.ViewModels;
 
@@ -28,7 +28,7 @@ internal partial class VideoViewModel : ObservableObject
     /// </summary>
     /// <param name="e">Selection changed event arguments.</param>
     [RelayCommand]
-    internal static void SelectVideoController(SelectionChangedEventArgs e)
+    private static void SelectVideoController(SelectionChangedEventArgs e)
     {
         if (e.Source is ComboBox box)
         {
@@ -38,7 +38,7 @@ internal partial class VideoViewModel : ObservableObject
     #endregion Relay command
 
     #region Collections
-    public static List<string>? ControllerList { get; set; }
+    public static List<string>? ControllerList { get; private set; }
 
     public static Dictionary<string, string>? VideoInfoCollection { get; set; }
     #endregion Collections

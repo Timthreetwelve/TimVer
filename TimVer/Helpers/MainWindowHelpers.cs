@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Helpers;
 
@@ -44,14 +44,14 @@ internal static class MainWindowHelpers
     #endregion MainWindow Instance
 
     #region StopWatch
-    public static readonly Stopwatch _stopwatch = Stopwatch.StartNew();
+    private static readonly Stopwatch _stopwatch = Stopwatch.StartNew();
     #endregion StopWatch
 
     #region Apply UI settings
     /// <summary>
     /// Single method called during startup to apply UI settings.
     /// </summary>
-    public static void ApplyUISettings()
+    private static void ApplyUISettings()
     {
         // Make the window visible
         _mainWindow!.Visibility = Visibility.Visible;
@@ -77,7 +77,7 @@ internal static class MainWindowHelpers
     /// <summary>
     /// Sets the MainWindow position and size.
     /// </summary>
-    public static void SetWindowPosition()
+    private static void SetWindowPosition()
     {
         Window mainWindow = Application.Current.MainWindow;
         mainWindow.Height = UserSettings.Setting!.WindowHeight;
@@ -115,7 +115,7 @@ internal static class MainWindowHelpers
     /// <summary>
     /// Saves the MainWindow position and size.
     /// </summary>
-    public static void SaveWindowPosition()
+    private static void SaveWindowPosition()
     {
         Window mainWindow = Application.Current.MainWindow;
         UserSettings.Setting!.WindowHeight = Math.Floor(mainWindow.Height);
@@ -129,7 +129,7 @@ internal static class MainWindowHelpers
     /// <summary>
     /// Puts the version number in the title bar as well as Administrator if running elevated
     /// </summary>
-    public static string WindowTitleVersionAdmin()
+    private static string WindowTitleVersionAdmin()
     {
         // Set the windows title
         return AppInfo.IsAdmin
@@ -142,7 +142,7 @@ internal static class MainWindowHelpers
     /// <summary>
     /// Event handlers.
     /// </summary>
-    internal static void EventHandlers()
+    private static void EventHandlers()
     {
         // Settings change events
         UserSettings.Setting!.PropertyChanged += SettingChange.UserSettingChanged!;
@@ -226,7 +226,7 @@ internal static class MainWindowHelpers
     /// Gets the current theme
     /// </summary>
     /// <returns>Dark or Light</returns>
-    internal static string GetSystemTheme()
+    private static string GetSystemTheme()
     {
         BaseTheme? sysTheme = Theme.GetSystemTheme();
         return sysTheme != null ? sysTheme.ToString()! : string.Empty;
@@ -406,7 +406,7 @@ internal static class MainWindowHelpers
     /// <typeparam name="T">The type of the queried item.</typeparam>
     /// <param name="childName">x:Name or Name of child. </param>
     /// <returns>The first child item that matches the submitted type parameter.</returns>
-    public static T FindChild<T>(DependencyObject parent, string childName)
+    private static T FindChild<T>(DependencyObject parent, string childName)
        where T : DependencyObject
     {
         // Confirm parent and childName are valid. 

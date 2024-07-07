@@ -15,7 +15,7 @@ internal class WindowsInfoViewModel : ObservableObject
     #endregion Constructor
 
     #region Collection of Windows information
-    public static Dictionary<string, string>? WindowsInfoList { get; set; }
+    public static Dictionary<string, string>? WindowsInfoList { get; private set; }
     #endregion Collection of Windows information
 
     #region Get data for all properties

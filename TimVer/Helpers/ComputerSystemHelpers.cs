@@ -68,7 +68,7 @@ internal static class ComputerSystemHelpers
     /// </summary>
     /// <param name="value">Value to retrieve</param>
     /// <returns>String for value or exception message</returns>
-    public static string CimQuerySys(string value)
+    private static string CimQuerySys(string value)
     {
         try
         {
@@ -100,7 +100,7 @@ internal static class ComputerSystemHelpers
     /// <summary>
     /// Combines installed memory and usable memory into a single string.
     /// </summary>
-    public static string GetFormattedMemory()
+    private static string GetFormattedMemory()
     {
         string hUsable = GetStringResource("HardwareInfo_Usable");
         string hTotal = GetStringResource("HardwareInfo_Installed");
@@ -112,7 +112,7 @@ internal static class ComputerSystemHelpers
     /// <summary>
     /// Combines BIOS version and date into a single string.
     /// </summary>
-    public static string GetFormattedBiosVersion()
+    private static string GetFormattedBiosVersion()
     {
         string name = BiosHelpers.GetBiosVersion();
         string date = BiosHelpers.GetBiosDate().ToString("d", CultureInfo.CurrentCulture);
@@ -125,7 +125,7 @@ internal static class ComputerSystemHelpers
     /// Get last restart time from Environment.TickCount64.
     /// </summary>
     /// <returns>Restart date and time as DateTime.</returns>
-    public static DateTime GetRestartTime()
+    private static DateTime GetRestartTime()
     {
         TimeSpan t = TimeSpan.FromMilliseconds(Environment.TickCount64);
         return DateTime.Now.Subtract(t);
@@ -137,7 +137,7 @@ internal static class ComputerSystemHelpers
     /// Formats the date to use the current language and date format.
     /// </summary>
     /// <returns>Formatted string.</returns>
-    public static string FormatLastBoot()
+    private static string FormatLastBoot()
     {
         DateTime restartDate = GetRestartTime();
         string datePart = restartDate.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern);
@@ -151,7 +151,7 @@ internal static class ComputerSystemHelpers
     /// Formats uptime in the current language.
     /// </summary>
     /// <returns>Formatted string.</returns>
-    public static string FormatUptime()
+    private static string FormatUptime()
     {
         TimeSpan up = EnvironmentHelpers.GetUptime();
         return string.Format(GetStringResource("HardwareInfo_UptimeString"), up.Days, up.Hours, up.Minutes, up.Seconds);

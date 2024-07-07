@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.ViewModels;
 
@@ -103,7 +103,7 @@ internal partial class NavigationViewModel : ObservableObject
     #endregion List of navigation items
 
     #region Navigation Methods
-    public void NavigateToPage(NavPage page)
+    private void NavigateToPage(NavPage page)
     {
         Navigate(FindNavPage(page));
     }
@@ -116,7 +116,7 @@ internal partial class NavigationViewModel : ObservableObject
 
     #region Navigate Command
     [RelayCommand]
-    internal void Navigate(object param)
+    private void Navigate(object param)
     {
         if (param is NavigationItem item)
         {
@@ -137,7 +137,7 @@ internal partial class NavigationViewModel : ObservableObject
 
     #region Copy to clipboard command
     [RelayCommand]
-    public void CopyToClipboard()
+    private void CopyToClipboard()
     {
         ClipboardHelper.CopyPageToClipboard(CurrentViewModel!);
     }
@@ -205,7 +205,7 @@ internal partial class NavigationViewModel : ObservableObject
 
     #region View log file command
     [RelayCommand]
-    public static void ViewLogFile()
+    private static void ViewLogFile()
     {
         TextFileViewer.ViewTextFile(NLogHelpers.GetLogfileName());
     }
@@ -213,7 +213,7 @@ internal partial class NavigationViewModel : ObservableObject
 
     #region View readme file command
     [RelayCommand]
-    public static void ViewReadMeFile()
+    private static void ViewReadMeFile()
     {
         TextFileViewer.ViewTextFile(Path.Combine(AppInfo.AppDirectory, "readme.txt"));
     }
@@ -221,7 +221,7 @@ internal partial class NavigationViewModel : ObservableObject
 
     #region Open the application folder
     [RelayCommand]
-    public static void OpenAppFolder()
+    private static void OpenAppFolder()
     {
         using Process process = new();
         process.StartInfo.UseShellExecute = false;
@@ -236,7 +236,7 @@ internal partial class NavigationViewModel : ObservableObject
     /// Copy (nearly) any text in a TextBlock to the clipboard on right mouse button up.
     /// </summary>
     [RelayCommand]
-    public static void RightMouseUp(MouseButtonEventArgs e)
+    private static void RightMouseUp(MouseButtonEventArgs e)
     {
         if (e.OriginalSource is TextBlock text)
         {
@@ -260,7 +260,7 @@ internal partial class NavigationViewModel : ObservableObject
     /// Keyboard events
     /// </summary>
     [RelayCommand]
-    public void KeyDown(KeyEventArgs e)
+    private void KeyDown(KeyEventArgs e)
     {
         #region Keys without modifiers
         switch (e.Key)

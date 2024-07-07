@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 using Octokit;
 
 namespace TimVer.Helpers;
@@ -90,7 +90,7 @@ internal static class GitHubHelpers
     /// <param name="repoOwner">The repository owner.</param>
     /// <param name="repoName">Name of the repository.</param>
     /// <returns>Release object</returns>
-    internal static async Task<Release> GetLatestReleaseAsync(string repoOwner, string repoName)
+    private static async Task<Release> GetLatestReleaseAsync(string repoOwner, string repoName)
     {
         GitHubClient client = new(new ProductHeaderValue(repoName));
         _log.Debug("Checking GitHub for latest release.");
@@ -111,7 +111,7 @@ internal static class GitHubHelpers
     /// <summary>
     /// Display a message box stating that the release check failed.
     /// </summary>
-    internal static void CheckFailed()
+    private static void CheckFailed()
     {
         _ = new MDCustMsgBox(GetStringResource("MsgText_AppUpdateCheckFailed"),
             "TimVer",

@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.ViewModels;
 
@@ -47,7 +47,7 @@ internal partial class DriveInfoViewModel : ObservableObject
     /// Relay command for freshing drives collections
     /// </summary>
     [RelayCommand]
-    public static void RefreshDrives()
+    private static void RefreshDrives()
     {
         LogicalDrivesList.Clear();
         DrivesPage.Instance!.LDrivesDataGrid.ItemsSource = LogicalDrivesList;

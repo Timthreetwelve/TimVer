@@ -1,11 +1,11 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Helpers;
 
 internal static class HistoryHelpers
 {
     #region JSON options
-    public static readonly JsonSerializerOptions s_options = new()
+    private static readonly JsonSerializerOptions _options = new()
     {
         WriteIndented = true
     };
@@ -15,7 +15,7 @@ internal static class HistoryHelpers
     /// <summary>
     /// Reads the history file.
     /// </summary>
-    public static void ReadHistory()
+    private static void ReadHistory()
     {
         try
         {

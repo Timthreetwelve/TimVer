@@ -22,7 +22,7 @@ public class HistoryViewModel : ObservableObject
     /// <summary>
     /// Get data for all properties.
     /// </summary>
-    public static void LoadData()
+    private static void LoadData()
     {
         HistoryHelpers.WriteHistory();
     }

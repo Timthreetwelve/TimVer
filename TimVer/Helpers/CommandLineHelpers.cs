@@ -36,6 +36,6 @@ static class CommandLineHelpers
     #endregion Process the command line
 
     #region Properties
-    public static bool UpdateHistoryOnly { get; set; }
+    public static bool UpdateHistoryOnly { get; private set; }
     #endregion Properties
 }

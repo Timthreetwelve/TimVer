@@ -61,7 +61,7 @@ internal static class WindowsInfoHelpers
     /// Formats the installation date to use the current language and date format.
     /// </summary>
     /// <returns>Formatted string.</returns>
-    public static string FormatInstallDate()
+    private static string FormatInstallDate()
     {
         DateTime instDate = RegistryHelpers.GetInstallDate();
         string datePart = instDate.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern);
