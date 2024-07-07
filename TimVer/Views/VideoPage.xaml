@@ -86,7 +86,9 @@
         <DataGrid x:Name="VideoGrid"
                   Grid.Row="1"
                   Margin="0,0,5,5"
-                  materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
+                  materialDesign:DataGridAssist.CellPadding="{Binding RowSpacing,
+                                                                      Source={x:Static config:UserSettings.Setting},
+                                                                      Converter={StaticResource Spacing}}"
                   Background="{DynamicResource MaterialDesign.Brush.Card.Background}"
                   CanUserAddRows="False"
                   CanUserDeleteRows="False"

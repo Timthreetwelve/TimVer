@@ -64,7 +64,9 @@
                           HorizontalAlignment="Stretch"
                           VerticalAlignment="Stretch"
                           d:ItemsSource="{d:SampleData ItemCount=5}"
-                          materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
+                          materialDesign:DataGridAssist.CellPadding="{Binding RowSpacing,
+                                                                              Source={x:Static config:UserSettings.Setting},
+                                                                              Converter={StaticResource Spacing}}"
                           materialDesign:ThemeAssist.Theme="Inherit"
                           AutoGenerateColumns="False"
                           Background="{DynamicResource MaterialDesign.Brush.Card.Background}"
@@ -147,7 +149,9 @@
                               HorizontalAlignment="Stretch"
                               VerticalAlignment="Stretch"
                               d:ItemsSource="{d:SampleData ItemCount=3}"
-                              materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
+                              materialDesign:DataGridAssist.CellPadding="{Binding RowSpacing,
+                                                                                  Source={x:Static config:UserSettings.Setting},
+                                                                                  Converter={StaticResource Spacing}}"
                               materialDesign:ThemeAssist.Theme="Inherit"
                               AutoGenerateColumns="False"
                               Background="{DynamicResource MaterialDesign.Brush.Card.Background}"

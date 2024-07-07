@@ -1,6 +1,7 @@
 ﻿<UserControl x:Class="TimVer.Views.AboutPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:config="clr-namespace:TimVer.Configuration"
              xmlns:convert="clr-namespace:TimVer.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:global="clr-namespace:System.Globalization;assembly=mscorlib"
@@ -216,7 +217,9 @@
                         BorderBrush="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}"
                         BorderThickness="1">
                     <DataGrid MinWidth="350" MaxHeight="120"
-                              materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
+                              materialDesign:DataGridAssist.CellPadding="{Binding RowSpacing,
+                                                                                  Source={x:Static config:UserSettings.Setting},
+                                                                                  Converter={StaticResource Spacing}}"
                               AutoGenerateColumns="False"
                               Background="{DynamicResource MaterialDesign.Brush.Card.Background}"
                               CellStyle="{StaticResource DisplayOnly}"
