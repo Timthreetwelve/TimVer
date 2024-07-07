@@ -57,10 +57,10 @@ internal static class MainWindowHelpers
         _mainWindow!.Visibility = Visibility.Visible;
 
         // Put version number in window title
-        _mainWindow!.Title = MainWindowHelpers.WindowTitleVersionAdmin();
+        _mainWindow.Title = WindowTitleVersionAdmin();
 
         // Window position
-        MainWindowHelpers.SetWindowPosition();
+        SetWindowPosition();
 
         // Light or dark theme
         SetBaseTheme(UserSettings.Setting!.UITheme);
