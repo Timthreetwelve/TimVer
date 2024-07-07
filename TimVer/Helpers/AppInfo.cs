@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Helpers;
 
@@ -65,7 +65,7 @@ public static class AppInfo
     /// <summary>
     /// Returns the app's full name (name, version, culture, etc.)
     /// </summary>
-    public static string AppFullName => Assembly.GetEntryAssembly()!.GetName().FullName ?? "missing";
+    public static string AppFullName => Assembly.GetEntryAssembly()!.GetName().FullName;
 
     /// <summary>
     /// Returns the Company Name from the Assembly info
