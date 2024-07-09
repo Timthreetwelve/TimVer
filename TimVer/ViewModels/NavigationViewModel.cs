@@ -30,73 +30,71 @@ internal partial class NavigationViewModel : ObservableObject
     #endregion Properties
 
     #region List of navigation items
-    public static List<NavigationItem> NavigationViewModelTypes { get; set; } = new List<NavigationItem>
-        (
-            [
-                new() {
-                    Name=GetStringResource("NavItem_WindowsInfo"),
-                    NavPage = NavPage.WindowsInfo,
-                    ViewModelType= typeof(WindowsInfoViewModel),
-                    IconKind=PackIconKind.Microsoft,
-                    PageTitle=GetStringResource("NavTitle_WindowsInfo")
-                },
-                new() {
-                    Name=GetStringResource("NavItem_HardwareInfo"),
-                    NavPage = NavPage.ComputerInfo,
-                    ViewModelType= typeof(ComputerInfoViewModel),
-                    IconKind=PackIconKind.ComputerClassic,
-                    PageTitle=GetStringResource("NavTitle_HardwareInfo")
-                },
-                new() {
-                    Name=GetStringResource("NavItem_DriveInfo"),
-                    NavPage = NavPage.DriveInfo,
-                    ViewModelType= typeof(DriveInfoViewModel),
-                    IconKind=PackIconKind.Harddisk,
-                    PageTitle=GetStringResource("NavTitle_DriveInfo")
-                },
-                new() {
-                   Name=GetStringResource("NavItem_GraphicsInfo"),
-                    NavPage = NavPage.VideoInfo,
-                    ViewModelType= typeof(VideoViewModel),
-                    IconKind=PackIconKind.Monitor,
-                   PageTitle=GetStringResource("NavTitle_GraphicsInfo")
-                },
-                new() {
-                    Name=GetStringResource("NavItem_Environment"),
-                    NavPage = NavPage.Environment,
-                    ViewModelType= typeof(EnvVarViewModel),
-                    IconKind=PackIconKind.ListBoxOutline,
-                    PageTitle=GetStringResource("NavTitle_Environment")
-                },
-                new() {
-                    Name=GetStringResource("NavItem_BuildHistory"),
-                    NavPage = NavPage.History,
-                    ViewModelType= typeof(HistoryViewModel),
-                    IconKind=PackIconKind.History,
-                    PageTitle=GetStringResource("NavTitle_BuildHistory"),
-                    IsHistory = true
-                },
-                new() {
-                    Name = GetStringResource("NavItem_Settings"),
-                    NavPage=NavPage.Settings,
-                    ViewModelType= typeof(SettingsViewModel),
-                    IconKind=PackIconKind.SettingsOutline,
-                    PageTitle = GetStringResource("NavTitle_Settings")
-                },
-                new() {
-                    Name = GetStringResource("NavItem_About"),
-                    NavPage=NavPage.About,
-                    ViewModelType= typeof(AboutViewModel),
-                    IconKind=PackIconKind.AboutCircleOutline,
-                    PageTitle = GetStringResource("NavTitle_About")
-                },
-                new() {
-                    Name = GetStringResource("NavItem_Exit"),
-                    IconKind=PackIconKind.ExitToApp,
-                    IsExit=true
-                }
-            ]
-        );
+    public static List<NavigationItem> NavigationViewModelTypes { get; } =
+    [
+        new() {
+            Name=GetStringResource("NavItem_WindowsInfo"),
+            NavPage = NavPage.WindowsInfo,
+            ViewModelType= typeof(WindowsInfoViewModel),
+            IconKind=PackIconKind.Microsoft,
+            PageTitle=GetStringResource("NavTitle_WindowsInfo")
+        },
+        new() {
+            Name=GetStringResource("NavItem_HardwareInfo"),
+            NavPage = NavPage.ComputerInfo,
+            ViewModelType= typeof(ComputerInfoViewModel),
+            IconKind=PackIconKind.ComputerClassic,
+            PageTitle=GetStringResource("NavTitle_HardwareInfo")
+        },
+        new() {
+            Name=GetStringResource("NavItem_DriveInfo"),
+            NavPage = NavPage.DriveInfo,
+            ViewModelType= typeof(DriveInfoViewModel),
+            IconKind=PackIconKind.Harddisk,
+            PageTitle=GetStringResource("NavTitle_DriveInfo")
+        },
+        new() {
+            Name=GetStringResource("NavItem_GraphicsInfo"),
+            NavPage = NavPage.VideoInfo,
+            ViewModelType= typeof(VideoViewModel),
+            IconKind=PackIconKind.Monitor,
+            PageTitle=GetStringResource("NavTitle_GraphicsInfo")
+        },
+        new() {
+            Name=GetStringResource("NavItem_Environment"),
+            NavPage = NavPage.Environment,
+            ViewModelType= typeof(EnvVarViewModel),
+            IconKind=PackIconKind.ListBoxOutline,
+            PageTitle=GetStringResource("NavTitle_Environment")
+        },
+        new() {
+            Name=GetStringResource("NavItem_BuildHistory"),
+            NavPage = NavPage.History,
+            ViewModelType= typeof(HistoryViewModel),
+            IconKind=PackIconKind.History,
+            PageTitle=GetStringResource("NavTitle_BuildHistory"),
+            IsHistory = true
+        },
+        new() {
+            Name = GetStringResource("NavItem_Settings"),
+            NavPage=NavPage.Settings,
+            ViewModelType= typeof(SettingsViewModel),
+            IconKind=PackIconKind.SettingsOutline,
+            PageTitle = GetStringResource("NavTitle_Settings")
+        },
+        new() {
+            Name = GetStringResource("NavItem_About"),
+            NavPage=NavPage.About,
+            ViewModelType= typeof(AboutViewModel),
+            IconKind=PackIconKind.AboutCircleOutline,
+            PageTitle = GetStringResource("NavTitle_About")
+        },
+        new() {
+            Name = GetStringResource("NavItem_Exit"),
+            IconKind=PackIconKind.ExitToApp,
+            IsExit=true
+        }
+    ];
     #endregion List of navigation items
 
     #region Navigation Methods
