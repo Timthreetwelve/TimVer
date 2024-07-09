@@ -198,10 +198,7 @@ public static class DiskDriveHelpers
             // List of physical drive properties
             List<PhysicalDrives> physicalDrives = [];
 
-            // get a list of drive indexes from WMI
-            List<uint> driveList = GetDriveIndicies();
-
-            foreach (uint index in driveList)
+            foreach (uint index in GetDriveIndicies())
             {
                 PhysicalDrives pDisk = new();
                 Dictionary<string, string> results = [];
