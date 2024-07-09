@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Converters;
 
@@ -10,8 +10,8 @@ internal class BoolToStringConverter : IValueConverter
     /// <remarks>Same converter is used for the Size and Free column headings</remarks>
     public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
-        bool boolValue = value is bool? && (bool)value;
-        string parm = (string)parameter;
+        bool boolValue = value as bool? ?? false;
+        string parm = (string)parameter!;
         if (parm.Equals("Free", StringComparison.OrdinalIgnoreCase))
         {
             string free = GetStringResource("DriveInfo_Free");
