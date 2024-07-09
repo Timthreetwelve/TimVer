@@ -4,12 +4,9 @@ namespace TimVer.ViewModels;
 
 internal partial class NavigationViewModel : ObservableObject
 {
-    public static NavigationViewModel? Instance { get; private set; }
     #region Constructor
     public NavigationViewModel()
     {
-        Instance = this;
-
         if (CurrentViewModel == null)
         {
             NavigateToPage(UserSettings.Setting!.InitialPage);
