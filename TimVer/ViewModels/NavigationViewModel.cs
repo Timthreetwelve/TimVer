@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.ViewModels;
 
@@ -287,7 +287,7 @@ internal partial class NavigationViewModel : ObservableObject
                 case Key.OemPlus:
                     {
                         MainWindowHelpers.EverythingLarger();
-                        string size = EnumDescConverter.GetEnumDescription(UserSettings.Setting!.UISize);
+                        string size = EnumHelpers.GetEnumDescription(UserSettings.Setting!.UISize);
                         string message = string.Format(GetStringResource("MsgText_UISizeSet"), size);
                         SnackbarMsg.ClearAndQueueMessage(message, 2000);
                         break;
@@ -296,7 +296,7 @@ internal partial class NavigationViewModel : ObservableObject
                 case Key.OemMinus:
                     {
                         MainWindowHelpers.EverythingSmaller();
-                        string size = EnumDescConverter.GetEnumDescription(UserSettings.Setting!.UISize);
+                        string size = EnumHelpers.GetEnumDescription(UserSettings.Setting!.UISize);
                         string message = string.Format(GetStringResource("MsgText_UISizeSet"), size);
                         SnackbarMsg.ClearAndQueueMessage(message, 2000);
                         break;
@@ -325,7 +325,7 @@ internal partial class NavigationViewModel : ObservableObject
                         UserSettings.Setting.UITheme = ThemeType.Light;
                         break;
                 }
-                string theme = EnumDescConverter.GetEnumDescription(UserSettings.Setting.UITheme);
+                string theme = EnumHelpers.GetEnumDescription(UserSettings.Setting.UITheme);
                 string message = string.Format(GetStringResource("MsgText_UIThemeSet"), theme);
                 SnackbarMsg.ClearAndQueueMessage(message, 2000);
             }
@@ -339,7 +339,7 @@ internal partial class NavigationViewModel : ObservableObject
                 {
                     UserSettings.Setting.PrimaryColor++;
                 }
-                string color = EnumDescConverter.GetEnumDescription(UserSettings.Setting.PrimaryColor);
+                string color = EnumHelpers.GetEnumDescription(UserSettings.Setting.PrimaryColor);
                 string message = string.Format(GetStringResource("MsgText_UIColorSet"), color);
                 SnackbarMsg.ClearAndQueueMessage(message, 2000);
             }
@@ -350,6 +350,17 @@ internal partial class NavigationViewModel : ObservableObject
                 p.StartInfo.UseShellExecute = true;
                 p.StartInfo.ErrorDialog = false;
                 _ = p.Start();
+            }
+            if (e.Key == Key.R)
+            {
+                if (UserSettings.Setting?.RowSpacing >= Spacing.Wide)
+                {
+                    UserSettings.Setting.RowSpacing = Spacing.Compact;
+                }
+                else
+                {
+                    UserSettings.Setting!.RowSpacing++;
+                }
             }
             if (e.Key == Key.S)
             {
