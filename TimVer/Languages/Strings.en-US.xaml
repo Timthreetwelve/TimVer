@@ -144,6 +144,10 @@
     <sys:String x:Key="HardwareInfo_Cores">Cores</sys:String>
     <sys:String x:Key="HardwareInfo_Installed">Installed</sys:String>
     <sys:String x:Key="HardwareInfo_LastBoot">Last Reboot</sys:String>
+    <sys:String x:Key="HardwareInfo_LastBootNormal">Normal Boot</sys:String>
+    <sys:String x:Key="HardwareInfo_LastBootSafe">Safe Mode</sys:String>
+    <sys:String x:Key="HardwareInfo_LastBootSafeNetwork">Safe Mode with Networking</sys:String>
+    <sys:String x:Key="HardwareInfo_LastBootType">Last Reboot Type</sys:String>
     <sys:String x:Key="HardwareInfo_MachineName">Machine Name</sys:String>
     <sys:String x:Key="HardwareInfo_Manufacturer">Manufacturer</sys:String>
     <sys:String x:Key="HardwareInfo_Model">Model</sys:String>
@@ -410,4 +414,11 @@
     <!-- Begin changes on 2024/05/19 @ 20:45 UTC-->
     <!-- A | SettingsItem_ShowVideoSelector -->
     <!-- End of changes on 2024/05/19 @ 20:45 UTC-->
+
+    <!-- Begin changes on 2024/07/07 @ 20:25 UTC-->
+    <!-- A | HardwareInfo_LastBootType -->
+    <!-- A | HardwareInfo_LastBootNormal -->
+    <!-- A | HardwareInfo_LastBootSafe -->
+    <!-- A | HardwareInfo_LastBootSafeNetwork -->
+    <!-- End of changes on 2024/07/07 @ 20:25 UTC-->
 </ResourceDictionary>

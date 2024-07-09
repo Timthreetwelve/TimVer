@@ -19,6 +19,7 @@ internal static class ComputerSystemHelpers
         {
             BiosManufacturer = BiosHelpers.GetBiosManufacturer(),
             LastBoot = FormatLastBoot(),
+            LastBootType = GetBootType(),
             MachineName = Environment.MachineName,
             Manufacturer = CimQuerySys("Manufacturer"),
             Model = CimQuerySys("Model"),
@@ -43,6 +44,7 @@ internal static class ComputerSystemHelpers
             {GetStringResource("HardwareInfo_Model"), info.Model},
             {GetStringResource("HardwareInfo_MachineName"), info.MachineName},
             {GetStringResource("HardwareInfo_LastBoot"), info.LastBoot},
+            {GetStringResource("HardwareInfo_LastBootType"), info.LastBootType},
             {GetStringResource("HardwareInfo_Uptime"), info.FormattedUptime},
             {GetStringResource("HardwareInfo_Processor"), info.ProcessorName},
             {GetStringResource("HardwareInfo_ProcessorDescription"), info.ProcessorDescription},
@@ -157,4 +159,17 @@ internal static class ComputerSystemHelpers
         return string.Format(GetStringResource("HardwareInfo_UptimeString"), up.Days, up.Hours, up.Minutes, up.Seconds);
     }
     #endregion Format uptime
+
+    #region Format reboot type
+    private static string GetBootType()
+    {
+        return SystemMetricsHelper.GetCleanBoot() switch
+        {
+            0 => GetStringResource("HardwareInfo_LastBootNormal"),
+            1 => GetStringResource("HardwareInfo_LastBootSafe"),
+            2 => GetStringResource("HardwareInfo_LastBootSafeNetwork"),
+            _ => string.Empty,
+        };
+    }
+    #endregion Format reboot type
 }

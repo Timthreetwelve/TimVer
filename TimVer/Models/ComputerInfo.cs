@@ -42,6 +42,12 @@ internal partial class ComputerInfo : ObservableObject
     private string? _lastBoot;
 
     /// <summary>
+    /// Last boot type. Normal, Safe, Safe w/Networking. From GetSystemMetrics.
+    /// </summary>
+    [ObservableProperty]
+    private string? _lastBootType;
+
+    /// <summary>
     /// The amount of time since the last boot. From Environment.TickCount64.
     /// </summary>
     [ObservableProperty]
