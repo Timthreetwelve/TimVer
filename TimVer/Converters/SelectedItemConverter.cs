@@ -8,12 +8,12 @@ namespace TimVer.Converters;
 /// <seealso cref="System.Windows.Data.IValueConverter" />
 internal class SelectedItemConverter : IValueConverter
 {
-    public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
-        return value is NavigationItem navigationItem ? navigationItem : (object)null!;
+        return value as NavigationItem ?? (object)null!;
     }
 
-    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
         return Binding.DoNothing;
     }

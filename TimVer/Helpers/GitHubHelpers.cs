@@ -23,7 +23,7 @@ internal static class GitHubHelpers
     public static async Task CheckRelease()
     {
         SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_AppUpdateChecking"));
-        Release release = await GetLatestReleaseAsync(AppConstString.RepoOwner, AppConstString.RepoName);
+        Release? release = await GetLatestReleaseAsync(AppConstString.RepoOwner, AppConstString.RepoName);
         if (release == null)
         {
             CheckFailed();

@@ -242,7 +242,7 @@ internal partial class NavigationViewModel : ObservableObject
         {
             // Skip the navigation menu
             ListBox lb = MainWindowHelpers.FindParent<ListBox>(text);
-            if (lb?.Name == "NavigationListBox")
+            if (lb.Name == "NavigationListBox")
             {
                 return;
             }

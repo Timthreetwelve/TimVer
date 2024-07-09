@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.ViewModels;
 
@@ -55,8 +55,8 @@ internal partial class DriveInfoViewModel : ObservableObject
         if (UserSettings.Setting!.GetPhysicalDrives)
         {
             PhysicalDrivesList.Clear();
-            DrivesPage.Instance!.PDisksDataGrid.ItemsSource = PhysicalDrivesList;
-            DrivesPage.Instance!.PDisksDataGrid.SelectedIndex = 0;
+            DrivesPage.Instance.PDisksDataGrid.ItemsSource = PhysicalDrivesList;
+            DrivesPage.Instance.PDisksDataGrid.SelectedIndex = 0;
         }
         SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_DriveInfoRefreshed"));
     }

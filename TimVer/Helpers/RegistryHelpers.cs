@@ -42,7 +42,7 @@ public static class RegistryHelpers
     {
         try
         {
-            using RegistryKey key = Registry.LocalMachine.OpenSubKey(@"Software\Microsoft\Windows NT\CurrentVersion")!;
+            using RegistryKey? key = Registry.LocalMachine.OpenSubKey(@"Software\Microsoft\Windows NT\CurrentVersion");
             if (key != null)
             {
                 long installDateFromRegistry = Convert.ToInt64(key.GetValue("InstallDate"));

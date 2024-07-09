@@ -18,7 +18,7 @@ internal partial class VideoViewModel : ObservableObject
     private static void LoadData()
     {
         ControllerList = VideoHelpers.GetGPUList()!;
-        VideoInfoCollection = VideoHelpers.GetVideoInfo(ControllerList[0]!);
+        VideoInfoCollection = VideoHelpers.GetVideoInfo(ControllerList[0]);
     }
     #endregion Load data for video properties
 
@@ -32,7 +32,7 @@ internal partial class VideoViewModel : ObservableObject
     {
         if (e.Source is ComboBox box)
         {
-            VideoPage.Instance!.VideoGrid.ItemsSource = VideoHelpers.GetVideoInfo(ControllerList![box.SelectedIndex]!);
+            VideoPage.Instance!.VideoGrid.ItemsSource = VideoHelpers.GetVideoInfo(ControllerList![box.SelectedIndex]);
         }
     }
     #endregion Relay command

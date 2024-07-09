@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Helpers;
 
@@ -79,13 +79,13 @@ internal static class MainWindowHelpers
     /// </summary>
     private static void SetWindowPosition()
     {
-        Window mainWindow = Application.Current.MainWindow;
-        mainWindow.Height = UserSettings.Setting!.WindowHeight;
-        mainWindow.Left = UserSettings.Setting!.WindowLeft;
-        mainWindow.Top = UserSettings.Setting!.WindowTop;
-        mainWindow.Width = UserSettings.Setting!.WindowWidth;
+        Window? mainWindow = Application.Current.MainWindow;
+        mainWindow!.Height = UserSettings.Setting!.WindowHeight;
+        mainWindow.Left = UserSettings.Setting.WindowLeft;
+        mainWindow.Top = UserSettings.Setting.WindowTop;
+        mainWindow.Width = UserSettings.Setting.WindowWidth;
 
-        if (UserSettings.Setting!.StartCentered)
+        if (UserSettings.Setting.StartCentered)
         {
             mainWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
@@ -117,11 +117,11 @@ internal static class MainWindowHelpers
     /// </summary>
     private static void SaveWindowPosition()
     {
-        Window mainWindow = Application.Current.MainWindow;
-        UserSettings.Setting!.WindowHeight = Math.Floor(mainWindow.Height);
-        UserSettings.Setting!.WindowLeft = Math.Floor(mainWindow.Left);
-        UserSettings.Setting!.WindowTop = Math.Floor(mainWindow.Top);
-        UserSettings.Setting!.WindowWidth = Math.Floor(mainWindow.Width);
+        Window? mainWindow = Application.Current.MainWindow;
+        UserSettings.Setting!.WindowHeight = Math.Floor(mainWindow!.Height);
+        UserSettings.Setting.WindowLeft = Math.Floor(mainWindow.Left);
+        UserSettings.Setting.WindowTop = Math.Floor(mainWindow.Top);
+        UserSettings.Setting.WindowWidth = Math.Floor(mainWindow.Width);
     }
     #endregion Set and Save MainWindow position and size
 
@@ -167,7 +167,7 @@ internal static class MainWindowHelpers
         if (!CommandLineHelpers.UpdateHistoryOnly)
         {
             // Clear any remaining messages
-            Snackbar snackbar = MainWindowHelpers.FindChild<Snackbar>(Application.Current.MainWindow, "SnackBar1");
+            Snackbar snackbar = FindChild<Snackbar>(Application.Current.MainWindow!, "SnackBar1");
             if (snackbar is not null)
             {
                 snackbar.MessageQueue!.Clear();
@@ -384,7 +384,7 @@ internal static class MainWindowHelpers
     public static T FindParent<T>(DependencyObject child) where T : DependencyObject
     {
         //get parent item
-        DependencyObject parentObject = VisualTreeHelper.GetParent(child);
+        DependencyObject? parentObject = VisualTreeHelper.GetParent(child);
 
         //we've reached the end of the tree
         if (parentObject == null)
