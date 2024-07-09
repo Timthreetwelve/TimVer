@@ -235,16 +235,24 @@ internal partial class NavigationViewModel : ObservableObject
     {
         if (e.OriginalSource is TextBlock text)
         {
-            // Skip the navigation menu
-            ListBox lb = MainWindowHelpers.FindParent<ListBox>(text);
-            if (lb.Name == "NavigationListBox")
+            try
             {
-                return;
-            }
+                // Skip the navigation menu
+                ListBox lb = MainWindowHelpers.FindParent<ListBox>(text);
+                if (lb?.Name == "NavigationListBox")
+                {
+                    return;
+                }
 
-            if (ClipboardHelper.CopyTextToClipboard(text.Text))
+                // Copy to clipboard and display message.
+                if (ClipboardHelper.CopyTextToClipboard(text.Text))
+                {
+                    SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopiedToClipboardItem"));
+                }
+            }
+            catch (Exception ex)
             {
-                SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopiedToClipboardItem"));
+                _log.Error(ex, $"Right-click event handler failed. {ex.Message}");
             }
         }
     }
