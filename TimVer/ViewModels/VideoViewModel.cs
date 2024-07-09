@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.ViewModels;
 
@@ -40,6 +40,6 @@ internal partial class VideoViewModel : ObservableObject
     #region Collections
     public static List<string>? ControllerList { get; private set; }
 
-    public static Dictionary<string, string>? VideoInfoCollection { get; set; }
+    public static Dictionary<string, string>? VideoInfoCollection { get; private set; }
     #endregion Collections
 }
