@@ -78,7 +78,6 @@ public static class DiskDriveHelpers
     #region Get logical drive information
     public static List<LogicalDrives> GetLogicalDriveInfo()
     {
-        int count = 0;
         List<LogicalDrives> logicalDrives = [];
         if (GetLogicalDrives() != null)
         {
@@ -91,7 +90,6 @@ public static class DiskDriveHelpers
                     if (drive != null && GetDriveDetails(drive) != null)
                     {
                         logicalDrives.Add(GetDriveDetails(drive));
-                        count++;
                     }
                 }
                 catch (Exception ex)
