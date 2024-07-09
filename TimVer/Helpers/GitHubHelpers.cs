@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 using Octokit;
 
 namespace TimVer.Helpers;
@@ -55,8 +55,7 @@ internal static class GitHubHelpers
                 ButtonType.Ok,
                 false,
                 true,
-                _mainWindow,
-                false).ShowDialog();
+                _mainWindow).ShowDialog();
         }
         else
         {
@@ -67,8 +66,7 @@ internal static class GitHubHelpers
                 ButtonType.YesNo,
                 false,
                 true,
-                _mainWindow,
-                false).ShowDialog();
+                _mainWindow).ShowDialog();
 
             if (MDCustMsgBox.CustResult == CustResultType.Yes)
             {
