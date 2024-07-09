@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Helpers;
 
@@ -87,7 +87,7 @@ public static class DiskDriveHelpers
             {
                 try
                 {
-                    if (drive != null && GetDriveDetails(drive) != null)
+                    if (GetDriveDetails(drive) != null)
                     {
                         logicalDrives.Add(GetDriveDetails(drive));
                     }
