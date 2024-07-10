@@ -15,7 +15,7 @@
 
         Translation contributed by:  RB
 
-        Date last update:            20.05.2024
+        Date last update:            10.07.2024
 
         ======================================================================
 
@@ -144,6 +144,10 @@
     <sys:String x:Key="HardwareInfo_Cores">Core</sys:String>
     <sys:String x:Key="HardwareInfo_Installed">Installati</sys:String>
     <sys:String x:Key="HardwareInfo_LastBoot">Ultimo riavvio</sys:String>
+    <sys:String x:Key="HardwareInfo_LastBootNormal">Avvio normale</sys:String>
+    <sys:String x:Key="HardwareInfo_LastBootSafe">Modalità provvisoria</sys:String>
+    <sys:String x:Key="HardwareInfo_LastBootSafeNetwork">Modalità provvisoria con rete</sys:String>
+    <sys:String x:Key="HardwareInfo_LastBootType">Ultimo tipo riavvio</sys:String>
     <sys:String x:Key="HardwareInfo_MachineName">Nome computer</sys:String>
     <sys:String x:Key="HardwareInfo_Manufacturer">Produttore computer</sys:String>
     <sys:String x:Key="HardwareInfo_Model">Modello computer</sys:String>
@@ -410,4 +414,11 @@
     <!-- Begin changes on 2024/05/19 @ 20:45 UTC-->
     <!-- A | SettingsItem_ShowVideoSelector -->
     <!-- End of changes on 2024/05/19 @ 20:45 UTC-->
+	
+	    <!-- Begin changes on 2024/07/07 @ 20:25 UTC-->
+    <!-- A | HardwareInfo_LastBootType -->
+    <!-- A | HardwareInfo_LastBootNormal -->
+    <!-- A | HardwareInfo_LastBootSafe -->
+    <!-- A | HardwareInfo_LastBootSafeNetwork -->
+    <!-- End of changes on 2024/07/07 @ 20:25 UTC-->
 </ResourceDictionary>
