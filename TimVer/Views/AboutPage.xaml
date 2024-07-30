@@ -107,13 +107,17 @@
                     </Hyperlink>
                 </TextBlock>
 
-                <TextBlock Grid.Row="5" Grid.Column="0"
-                           Text="{DynamicResource About_BuildDate}" />
-                <TextBlock Grid.Row="5" Grid.Column="2"
-                           Text="{Binding Source={x:Static local:BuildInfo.BuildDateUtc},
-                                          StringFormat=f,
-                                          ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}}"
-                           TextWrapping="Wrap" />
+                <StackPanel Grid.Row="5"
+                            Grid.Column="2"
+                            Orientation="Horizontal">
+                    <TextBlock Grid.Row="5"
+                               Grid.Column="2"
+                               Text="{Binding Source={x:Static local:BuildInfo.BuildDateUtc},
+                                              StringFormat=f,
+                                              ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}}" />
+                    <TextBlock Margin="10,0"
+                               Text="(UTC)" />
+                </StackPanel>
 
                 <TextBlock Grid.Row="6" Grid.Column="0"
                            Text="{DynamicResource About_CommitID}" />
