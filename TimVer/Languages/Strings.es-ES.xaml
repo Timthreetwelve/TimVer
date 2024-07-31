@@ -52,6 +52,7 @@
     <sys:String x:Key="BuildHistory_Version">Versión</sys:String>
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">Cancelar</sys:String>
+    <sys:String x:Key="Button_CheckUpdate">Comprobar actualización</sys:String>
     <sys:String x:Key="Button_Close">Cerrar este menú</sys:String>
     <sys:String x:Key="Button_CopyToClipboardToolTip">Copiar esta página en el portapapeles</sys:String>
     <sys:String x:Key="Button_No">No</sys:String>

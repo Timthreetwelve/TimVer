@@ -52,6 +52,7 @@
     <sys:String x:Key="BuildHistory_Version">Version</sys:String>
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">Cancel</sys:String>
+    <sys:String x:Key="Button_CheckUpdate">Check for Update</sys:String>
     <sys:String x:Key="Button_Close">Close Menu</sys:String>
     <sys:String x:Key="Button_CopyToClipboardToolTip">Copy this page to the clipboard</sys:String>
     <sys:String x:Key="Button_No">No</sys:String>
@@ -421,4 +422,8 @@
     <!-- A | HardwareInfo_LastBootSafe -->
     <!-- A | HardwareInfo_LastBootSafeNetwork -->
     <!-- End of changes on 2024/07/07 @ 20:25 UTC-->
+
+    <!-- Begin changes on 2024/07/31 @ 02:40 UTC-->
+    <!-- A | Button_CheckUpdate -->
+    <!-- End of changes on 2024/07/31 @ 02:40 UTC-->
 </ResourceDictionary>
