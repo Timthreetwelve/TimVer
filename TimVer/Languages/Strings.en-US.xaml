@@ -125,8 +125,8 @@
     <sys:String x:Key="EnvironmentInfo_Value">Value</sys:String>
     <sys:String x:Key="EnvironmentInfo_Variable">Variable</sys:String>
     <!--  Graphics Information Page  -->
-    <sys:String x:Key="GraphicsInfo_AdapterType">Adapter Type</sys:String>
     <sys:String x:Key="GraphicsInfo_AdapterRAM">Adapter RAM</sys:String>
+    <sys:String x:Key="GraphicsInfo_AdapterType">Adapter Type</sys:String>
     <sys:String x:Key="GraphicsInfo_BitsPerPixel">Bits per Pixel</sys:String>
     <sys:String x:Key="GraphicsInfo_CurrentRefreshRate">Current Refresh Rate</sys:String>
     <sys:String x:Key="GraphicsInfo_CurrentResolution">Current Resolution</sys:String>
@@ -134,6 +134,7 @@
     <sys:String x:Key="GraphicsInfo_DeviceID">Device ID</sys:String>
     <sys:String x:Key="GraphicsInfo_GraphicsAdapter">Graphics Adapter</sys:String>
     <sys:String x:Key="GraphicsInfo_NumberOfColors">Number of Colors</sys:String>
+    <sys:String x:Key="GraphicsInfo_NumberOfDisplays">Number of Displays</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapter">Select Adapter</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine1">If there is more than one video adapter installed</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine2">use the drop-down to select the adapter to display.</sys:String>

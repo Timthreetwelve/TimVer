@@ -64,7 +64,8 @@ public static class VideoHelpers
                     [GetStringResource("GraphicsInfo_CurrentRefreshRate")] = FormatCurrentRefresh(gpu),
                     [GetStringResource("GraphicsInfo_AdapterRAM")] = FormatAdapterRamInfo(gpu),
                     [GetStringResource("GraphicsInfo_BitsPerPixel")] = CimStringProperty(gpu, "CurrentBitsPerPixel"),
-                    [GetStringResource("GraphicsInfo_NumberOfColors")] = FormatColorsInfo(gpu)
+                    [GetStringResource("GraphicsInfo_NumberOfColors")] = FormatColorsInfo(gpu),
+                    [GetStringResource("GraphicsInfo_NumberOfDisplays")] = SystemMetricsHelper.GetDisplayCount().ToString(),
                 })
                 .FirstOrDefault()!;
             sw.Stop();
