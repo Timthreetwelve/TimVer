@@ -7,11 +7,9 @@ namespace TimVer.Views;
 /// </summary>
 public partial class EnvVarPage : UserControl
 {
-    public static EnvVarPage? Instance { get; set; }
     public EnvVarPage()
     {
         InitializeComponent();
-        Instance = this;
         EnvVarViewModel.StaticPropertyChanged += EnvVarViewModel_StaticPropertyChanged!;
     }
 
