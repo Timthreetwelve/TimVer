@@ -2,7 +2,7 @@
 
 namespace TimVer.ViewModels;
 
-internal class ComputerInfoViewModel : ObservableObject
+internal sealed class ComputerInfoViewModel : ObservableObject
 {
     #region Constructor
     public ComputerInfoViewModel()

@@ -2,7 +2,7 @@
 
 namespace TimVer.Models;
 
-internal partial class ComputerInfo : ObservableObject
+internal sealed partial class ComputerInfo : ObservableObject
 {
     #region Properties
     /// <summary>

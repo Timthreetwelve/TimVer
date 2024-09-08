@@ -6,7 +6,7 @@ namespace TimVer.Converters;
 /// An inverse bool to visibility converter
 /// </summary>
 /// <seealso cref="System.Windows.Data.IValueConverter" />
-internal class BoolToVisibilityInverter : IValueConverter
+internal sealed class BoolToVisibilityInverter : IValueConverter
 {
     public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {

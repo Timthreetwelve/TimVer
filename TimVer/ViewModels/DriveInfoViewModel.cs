@@ -5,7 +5,7 @@ namespace TimVer.ViewModels;
 /// <summary>
 /// Logical drives collection
 /// </summary>
-internal partial class DriveInfoViewModel : ObservableObject
+internal sealed partial class DriveInfoViewModel : ObservableObject
 {
     #region Logical disk drives
     private static ObservableCollection<LogicalDrives>? _logicalDrivesList;

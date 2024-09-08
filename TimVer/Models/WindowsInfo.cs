@@ -2,7 +2,7 @@
 
 namespace TimVer.Models;
 
-internal partial class WindowsInfo : ObservableObject
+internal sealed partial class WindowsInfo : ObservableObject
 {
     #region Properties
     /// <summary>

@@ -2,7 +2,7 @@
 
 namespace TimVer.ViewModels;
 
-internal class WindowsInfoViewModel : ObservableObject
+internal sealed class WindowsInfoViewModel : ObservableObject
 {
     #region Constructor
     public WindowsInfoViewModel()

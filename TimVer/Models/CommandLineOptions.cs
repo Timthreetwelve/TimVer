@@ -2,7 +2,7 @@
 
 namespace TimVer.Models;
 
-internal class CommandLineOptions
+internal sealed class CommandLineOptions
 {
     /// <summary>
     /// Option indicating whether or not to show the main window or record

@@ -2,7 +2,7 @@
 
 namespace TimVer.Converters;
 
-internal class BoolToStringConverter : IValueConverter
+internal sealed class BoolToStringConverter : IValueConverter
 {
     /// <summary>
     /// Converts a boolean value of true to "GiB" and false to "GB".

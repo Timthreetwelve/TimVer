@@ -2,7 +2,7 @@
 
 namespace TimVer.ViewModels;
 
-internal partial class VideoViewModel : ObservableObject
+internal sealed partial class VideoViewModel : ObservableObject
 {
     #region Constructor
     public VideoViewModel()

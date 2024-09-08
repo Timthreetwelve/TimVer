@@ -2,7 +2,7 @@
 
 namespace TimVer.Converters;
 
-internal class TodayConverter : IValueConverter
+internal sealed class TodayConverter : IValueConverter
 {
     public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
