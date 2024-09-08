@@ -81,7 +81,7 @@ internal static class NLogHelpers
     {
         // create filename string
         string myname = AppInfo.AppName;
-        string today = DateTime.Now.ToString("yyyyMMdd");
+        string today = DateTime.Now.ToString("yyyyMMdd", CultureInfo.InvariantCulture);
         string filename = Debugger.IsAttached ? $"{myname}.{today}.debug.log" : $"{myname}.{today}.log";
 
         // combine temp folder with filename
