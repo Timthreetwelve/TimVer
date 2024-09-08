@@ -107,12 +107,11 @@
                     </Hyperlink>
                 </TextBlock>
 
-                <StackPanel Grid.Row="5"
-                            Grid.Column="2"
+                <TextBlock Grid.Row="5" Grid.Column="0"
+                           Text="{DynamicResource About_BuildDate}" />
+                <StackPanel Grid.Row="5" Grid.Column="2"
                             Orientation="Horizontal">
-                    <TextBlock Grid.Row="5"
-                               Grid.Column="2"
-                               Text="{Binding Source={x:Static local:BuildInfo.BuildDateUtc},
+                    <TextBlock Text="{Binding Source={x:Static local:BuildInfo.BuildDateUtc},
                                               StringFormat=f,
                                               ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}}" />
                     <TextBlock Margin="10,0"
