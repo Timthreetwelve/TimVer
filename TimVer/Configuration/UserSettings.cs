@@ -16,7 +16,7 @@ public partial class UserSettings : ConfigManager<UserSettings>
     /// Option to gather info on physical drives. Can be slow.
     /// </summary>
     [ObservableProperty]
-    private bool _getPhysicalDrives = false;
+    private bool _getPhysicalDrives;
 
     /// <summary>
     ///  Used to determine if Debug level messages are included in the application log.
