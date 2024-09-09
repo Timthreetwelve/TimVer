@@ -598,7 +598,7 @@
                 <!--#region Language-->
                 <Expander Grid.Row="6"
                           materialDesign:ExpanderAssist.HorizontalHeaderPadding="10"
-                          IsExpanded="{Binding Setting.LangExpanderOpen,
+                          IsExpanded="{Binding LangExpanderOpen,
                                                Source={x:Static config:TempSettings.Setting}}">
                     <Expander.Header>
                         <Grid>
