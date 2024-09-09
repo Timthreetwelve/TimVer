@@ -1,12 +1,10 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Views;
-/// <summary>
-/// Interaction logic for DrivesPage.xaml
-/// </summary>
+
 public partial class DrivesPage : UserControl
 {
-    public static DrivesPage? Instance { get; set; }
+    public static DrivesPage? Instance { get; private set; }
     public DrivesPage()
     {
         InitializeComponent();

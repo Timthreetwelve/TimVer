@@ -4,7 +4,7 @@ namespace TimVer.Views;
 
 public partial class VideoPage : UserControl
 {
-    public static VideoPage? Instance { get; set; }
+    public static VideoPage? Instance { get; private set; }
 
     public VideoPage()
     {
