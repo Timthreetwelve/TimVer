@@ -15,7 +15,7 @@
 
         Translation contributed by:  RB
 
-        Date last update:            02.08.2024
+        Date last update:            09.09.2024
 
         ======================================================================
 
@@ -134,9 +134,10 @@
     <sys:String x:Key="GraphicsInfo_DeviceID">ID  dispositivo</sys:String>
     <sys:String x:Key="GraphicsInfo_GraphicsAdapter">Scheda grafica</sys:String>
     <sys:String x:Key="GraphicsInfo_NumberOfColors">Numero colori</sys:String>
-    <sys:String x:Key="GraphicsInfo_SelectAdapter">Seleziona scheda</sys:String>
+    <sys:String x:Key="GraphicsInfo_NumberOfDisplays">Numero di display</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine1">Se è installata più di una scheda video usa il menu</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine2">a discesa per selezionare la scheda da visualizzare.</sys:String>
+    <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine2">usa il menu a discesa per selezionare l'adattatore da visualizzare.</sys:String>
     <!--  Hardware Information Page  -->
     <sys:String x:Key="HardwareInfo_BIOS">BIOS</sys:String>
     <sys:String x:Key="HardwareInfo_BiosManufacturer">Produttore BIOS</sys:String>
