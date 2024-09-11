@@ -274,6 +274,7 @@
     <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine3">See the ReadMe file for more information.</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Changing Language will cause application to restart!</sys:String>
     <sys:String x:Key="SettingsItem_DateFormat">Grid Date Format</sys:String>
+    <sys:String x:Key="SettingsItem_DisplayFont">Display Font</sys:String>
     <sys:String x:Key="SettingsItem_DisplayUser">Display registered user and organization on Windows Information page</sys:String>
     <sys:String x:Key="SettingsItem_EditExcludeToolTip">Shift-Click to open file with default application</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Enable language testing</sys:String>
@@ -427,4 +428,8 @@
     <!-- Begin changes on 2024/07/31 @ 02:40 UTC-->
     <!-- A | Button_CheckUpdate -->
     <!-- End of changes on 2024/07/31 @ 02:40 UTC-->
+
+    <!-- Begin changes on 2024/09/11 @ 21:25 UTC-->
+    <!-- A | SettingsItem_DisplayFont -->
+    <!-- End of changes on 2024/09/11 @ 21:25 UTC-->
 </ResourceDictionary>

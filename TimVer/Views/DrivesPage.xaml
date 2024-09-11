@@ -72,6 +72,8 @@
                           Background="{DynamicResource MaterialDesign.Brush.Card.Background}"
                           CanUserSortColumns="True"
                           CellStyle="{StaticResource DisplayOnly}"
+                          FontFamily="{Binding SelectedFont,
+                                               Source={x:Static config:UserSettings.Setting}}"
                           FontSize="14" FrozenColumnCount="1"
                           HeadersVisibility="Column"
                           IsReadOnly="True"
@@ -158,6 +160,8 @@
                               CanUserResizeRows="False"
                               CanUserSortColumns="True"
                               CellStyle="{StaticResource DisplayOnly}"
+                              FontFamily="{Binding SelectedFont,
+                                                   Source={x:Static config:UserSettings.Setting}}"
                               FontSize="14" HeadersVisibility="Column"
                               IsReadOnly="True"
                               ItemsSource="{x:Static viewmodels:DriveInfoViewModel.PhysicalDrivesList}"

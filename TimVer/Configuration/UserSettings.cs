@@ -79,6 +79,12 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private Spacing _rowSpacing = Spacing.Comfortable;
 
     /// <summary>
+    /// Font used in datagrids.
+    /// </summary>
+    [ObservableProperty]
+    private string? _selectedFont = "Segoe UI";
+
+    /// <summary>
     /// Show the Boot Drive column on the Logical Drives page.
     /// </summary>
     [ObservableProperty]

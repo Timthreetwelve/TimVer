@@ -72,6 +72,9 @@
                   CanUserDeleteRows="False"
                   CanUserSortColumns="True"
                   CellStyle="{StaticResource DisplayOnly}"
+                  FontFamily="{Binding SelectedFont,
+                                       Source={x:Static config:UserSettings.Setting}}"
+                  FontSize="14"
                   IsReadOnly="True"
                   ItemsSource="{Binding EnvVariableList}">
             <DataGrid.Columns>

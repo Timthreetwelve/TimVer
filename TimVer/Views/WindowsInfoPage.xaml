@@ -28,8 +28,9 @@
                   CanUserDeleteRows="False"
                   CanUserSortColumns="True"
                   CellStyle="{StaticResource DisplayOnly}"
-                  FontFamily="Segoe UI" FontSize="14"
-                  HeadersVisibility="None"
+                  FontFamily="{Binding SelectedFont,
+                                       Source={x:Static config:UserSettings.Setting}}"
+                  FontSize="14" HeadersVisibility="None"
                   IsReadOnly="True"
                   ItemsSource="{Binding WindowsInfoList}" />
     </Grid>

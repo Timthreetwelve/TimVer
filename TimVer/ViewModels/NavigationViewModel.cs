@@ -11,6 +11,8 @@ internal sealed partial class NavigationViewModel : ObservableObject
         {
             NavigateToPage(UserSettings.Setting!.InitialPage);
         }
+
+        FontList ??= [.. Fonts.SystemFontFamilies.OrderBy(x => x.Source)];
     }
     #endregion Constructor
 
@@ -27,6 +29,8 @@ internal sealed partial class NavigationViewModel : ObservableObject
 
     [ObservableProperty]
     private static NavigationItem? _navItem;
+
+    public static List<FontFamily>? FontList { get; private set; }
     #endregion Properties
 
     #region List of navigation items
