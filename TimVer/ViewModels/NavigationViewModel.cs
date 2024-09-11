@@ -1,7 +1,5 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-using TimVer.Dialogs;
-
 namespace TimVer.ViewModels;
 
 internal sealed partial class NavigationViewModel : ObservableObject
