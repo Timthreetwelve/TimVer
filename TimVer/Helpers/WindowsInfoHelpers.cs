@@ -64,8 +64,8 @@ internal static class WindowsInfoHelpers
     private static string FormatInstallDate()
     {
         DateTime instDate = RegistryHelpers.GetInstallDate();
-        string datePart = instDate.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern);
-        string timePart = instDate.ToString(CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern);
+        string datePart = instDate.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern, CultureInfo.CurrentCulture);
+        string timePart = instDate.ToString(CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern, CultureInfo.CurrentCulture);
         return $"{datePart}  {timePart}";
     }
     #endregion Format the install date
@@ -79,7 +79,7 @@ internal static class WindowsInfoHelpers
     {
         string curBuild = RegistryHelpers.GetRegistryInfo("CurrentBuild");
         string ubr = RegistryHelpers.GetRegistryInfo("UBR");
-        return string.Format($"{curBuild}.{ubr}");
+        return string.Format(CultureInfo.InvariantCulture, $"{curBuild}.{ubr}");
     }
     #endregion
 

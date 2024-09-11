@@ -45,7 +45,7 @@ public static class RegistryHelpers
             using RegistryKey? key = Registry.LocalMachine.OpenSubKey(@"Software\Microsoft\Windows NT\CurrentVersion");
             if (key != null)
             {
-                long installDateFromRegistry = Convert.ToInt64(key.GetValue("InstallDate"));
+                long installDateFromRegistry = Convert.ToInt64(key.GetValue("InstallDate"), CultureInfo.InvariantCulture);
                 DateTime epochDate = DateTime.UnixEpoch;
                 return epochDate.AddSeconds(installDateFromRegistry).ToLocalTime();
             }

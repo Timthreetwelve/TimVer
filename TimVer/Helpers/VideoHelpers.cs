@@ -65,7 +65,8 @@ public static class VideoHelpers
                     [GetStringResource("GraphicsInfo_AdapterRAM")] = FormatAdapterRamInfo(gpu),
                     [GetStringResource("GraphicsInfo_BitsPerPixel")] = CimStringProperty(gpu, "CurrentBitsPerPixel"),
                     [GetStringResource("GraphicsInfo_NumberOfColors")] = FormatColorsInfo(gpu),
-                    [GetStringResource("GraphicsInfo_NumberOfDisplays")] = SystemMetricsHelper.GetDisplayCount().ToString(),
+                    [GetStringResource("GraphicsInfo_NumberOfDisplays")] = SystemMetricsHelper.GetDisplayCount()
+                                                                                   .ToString(CultureInfo.InvariantCulture),
                 })
                 .FirstOrDefault()!;
             sw.Stop();
@@ -144,7 +145,7 @@ public static class VideoHelpers
             _log.Debug("Value for AdapterRam was null");
             return "Not Available";
         }
-        double ram = Convert.ToDouble(instance.CimInstanceProperties["AdapterRam"].Value);
+        double ram = Convert.ToDouble(instance.CimInstanceProperties["AdapterRam"].Value, CultureInfo.InvariantCulture);
         if (ram >= Math.Pow(1024, 3))
         {
             ram /= Math.Pow(1024, 3);
@@ -169,7 +170,7 @@ public static class VideoHelpers
             return GetStringResource("MsgText_NotAvailable");
         }
 
-        ulong colors = Convert.ToUInt64(instance.CimInstanceProperties["CurrentNumberOfColors"].Value);
+        ulong colors = Convert.ToUInt64(instance.CimInstanceProperties["CurrentNumberOfColors"].Value, CultureInfo.InvariantCulture);
         if (colors >= (ulong)Math.Pow(1024, 2))
         {
             colors /= (ulong)Math.Pow(1024, 3);

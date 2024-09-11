@@ -85,9 +85,9 @@ internal static class ClipboardHelper
                     _ = builder.AppendLine(new string('-', builder.Length - 2));
                     foreach (History item in HistoryViewModel.HistoryList)
                     {
-                        _ = builder.AppendFormat("{0,-18}", item.HDate)
-                                   .AppendFormat("{0,-12}", item.HBuild)
-                                   .AppendFormat("{0,-6}", item.HVersion)
+                        _ = builder.AppendFormat(CultureInfo.InvariantCulture, "{0,-18}", item.HDate)
+                                   .AppendFormat(CultureInfo.InvariantCulture,"{0,-12}", item.HBuild)
+                                   .AppendFormat(CultureInfo.InvariantCulture, "{0,-6}", item.HVersion)
                                    .AppendLine(item.HBranch);
                     }
                     break;
@@ -119,15 +119,15 @@ internal static class ClipboardHelper
                                        .AppendLine(item.Format);
                             _ = builder.Append(GetStringResource("DriveInfo_Size"))
                                        .Append(" = ")
-                                       .AppendFormat("{0:N2} ", item.TotalSize)
+                                       .AppendFormat(CultureInfo.InvariantCulture, "{0:N2} ", item.TotalSize)
                                        .AppendLine(giga);
                             _ = builder.Append(GetStringResource("DriveInfo_Free"))
                                        .Append(" = ")
-                                       .AppendFormat("{0:N2} ", item.GBFree)
+                                       .AppendFormat(CultureInfo.InvariantCulture, "{0:N2} ", item.GBFree)
                                        .AppendLine(giga);
                             _ = builder.Append(GetStringResource("DriveInfo_FreePercent"))
                                        .Append(" = ")
-                                       .AppendFormat("{0:N2} %", item.PercentFree * 100)
+                                       .AppendFormat(CultureInfo.InvariantCulture,"{0:N2} %", item.PercentFree * 100)
                                        .AppendLine();
                             _ = builder.AppendLine();
                         }
@@ -144,14 +144,14 @@ internal static class ClipboardHelper
                             {
                                 _ = builder.Append(GetStringResource("DriveInfo_DeviceID"))
                                            .Append(" = ")
-                                           .AppendLine(item.Index.ToString());
+                                           .AppendLine(item.Index.ToString(CultureInfo.InvariantCulture));
                                 _ = builder.Append(GetStringResource("DriveInfo_Size"))
                                            .Append(" = ")
-                                           .AppendFormat("{0:N2} ", item.Size)
+                                           .AppendFormat(CultureInfo.InvariantCulture, "{0:N2} ", item.Size)
                                            .AppendLine(giga);
                                 _ = builder.Append(GetStringResource("DriveInfo_Partitions"))
                                            .Append(" = ")
-                                           .AppendLine(item.Partitions.ToString());
+                                           .AppendLine(item.Partitions.ToString(CultureInfo.InvariantCulture));
                                 _ = builder.Append(GetStringResource("DriveInfo_DiskType"))
                                            .Append(" = ")
                                            .AppendLine(item.DiskType);

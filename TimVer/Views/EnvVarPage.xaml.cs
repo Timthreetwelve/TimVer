@@ -28,7 +28,7 @@ public partial class EnvVarPage : UserControl
         {
             EnvDataGrid.Items.Filter = _ => true;
         }
-        else if (filterText?.StartsWith('!') == true)
+        else if (filterText.StartsWith('!'))
         {
             filterText = filterText[1..].TrimStart(' ');
             EnvDataGrid.Items.Filter = o =>
@@ -52,8 +52,8 @@ public partial class EnvVarPage : UserControl
         }
         else
         {
-            SnackbarMsg.ClearAndQueueMessage(string.Format(
-                GetStringResource("MsgText_FilterRowsShown"), EnvDataGrid.Items.Count), 2000);
+            CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_FilterRowsShown"));
+            SnackbarMsg.ClearAndQueueMessage(string.Format(CultureInfo.InvariantCulture, composite, EnvDataGrid.Items.Count), 2000);
         }
     }
     #endregion Filter the datagrid

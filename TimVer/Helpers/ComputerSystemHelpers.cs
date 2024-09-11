@@ -142,8 +142,8 @@ internal static class ComputerSystemHelpers
     private static string FormatLastBoot()
     {
         DateTime restartDate = GetRestartTime();
-        string datePart = restartDate.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern);
-        string timePart = restartDate.ToString(CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern);
+        string datePart = restartDate.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern, CultureInfo.CurrentCulture);
+        string timePart = restartDate.ToString(CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern, CultureInfo.CurrentCulture);
         return $"{datePart}  {timePart}";
     }
     #endregion Format last boot time
@@ -156,7 +156,8 @@ internal static class ComputerSystemHelpers
     private static string FormatUptime()
     {
         TimeSpan up = EnvironmentHelpers.GetUptime();
-        return string.Format(GetStringResource("HardwareInfo_UptimeString"), up.Days, up.Hours, up.Minutes, up.Seconds);
+        CompositeFormat composite = CompositeFormat.Parse(GetStringResource("HardwareInfo_UptimeString"));
+        return string.Format(CultureInfo.InvariantCulture, composite, up.Days, up.Hours, up.Minutes, up.Seconds);
     }
     #endregion Format uptime
 

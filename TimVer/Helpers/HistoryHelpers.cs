@@ -49,7 +49,7 @@ internal static class HistoryHelpers
             HBuild = WindowsInfoHelpers.GetBuild(),
             HVersion = WindowsInfoHelpers.GetVersion(),
             HBranch = RegistryHelpers.GetRegistryInfo("BuildBranch"),
-            HDate = DateTime.Now.ToString("yyyy/MM/dd HH:mm")
+            HDate = DateTime.Now.ToString("yyyy/MM/dd HH:mm", CultureInfo.InvariantCulture)
         };
 
         if (File.Exists(DefaultHistoryFile()))

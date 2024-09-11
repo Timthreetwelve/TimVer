@@ -221,10 +221,10 @@ public static class DiskDriveHelpers
                 pDisk.MediaType = results["MediaType"];
                 pDisk.Model = results["Model"];
                 pDisk.Name = results["Name"];
-                pDisk.Partitions = Convert.ToUInt16(results["Partitions"]);
+                pDisk.Partitions = Convert.ToUInt16(results["Partitions"], CultureInfo.InvariantCulture);
                 pDisk.PartitionStyle = results["PartitionStyle"];
                 pDisk.SerialNumber = results["SerialNumber"];
-                pDisk.Size = Convert.ToDouble(results["Size"]);
+                pDisk.Size = Convert.ToDouble(results["Size"], CultureInfo.InvariantCulture);
                 physicalDrives.Add(pDisk);
             }
 
@@ -282,12 +282,15 @@ public static class DiskDriveHelpers
             return diskInfo.Select(drive => new Dictionary<string, string>
             {
                 ["Interface"] = CimStringProperty(drive, "InterfaceType"),
-                ["MediaType"] = CimStringProperty(drive, "MediaType").Replace("media", "", StringComparison.OrdinalIgnoreCase),
+                ["MediaType"] = CimStringProperty(drive, "MediaType")
+                                   .Replace("media", "", StringComparison.OrdinalIgnoreCase),
                 ["Model"] = CimStringProperty(drive, "Model"),
                 ["Name"] = CimStringProperty(drive, "Name"),
                 ["Partitions"] = CimStringProperty(drive, "Partitions"),
                 ["Status"] = CimStringProperty(drive, "Status"),
-                ["Size"] = Math.Round(Convert.ToDouble(drive.CimInstanceProperties["Size"].Value) / Math.Pow(gbPref, 3), 2).ToString()
+                ["Size"] = Math.Round(Convert.ToDouble(drive.CimInstanceProperties["Size"]
+                              .Value, CultureInfo.InvariantCulture) / Math.Pow(gbPref, 3), 2)
+                              .ToString(CultureInfo.InvariantCulture)
             }).FirstOrDefault()!;
         }
         catch (Exception ex)

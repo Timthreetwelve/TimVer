@@ -21,7 +21,7 @@ public static class MemoryHelpers
             ulong mem = 0;
             foreach (CimInstance val in cimVal)
             {
-                mem += Convert.ToUInt64(val.CimInstanceProperties["Capacity"].Value);
+                mem += Convert.ToUInt64(val.CimInstanceProperties["Capacity"].Value, CultureInfo.InvariantCulture);
             }
 
             CultureInfo culture = CultureInfo.CurrentUICulture;

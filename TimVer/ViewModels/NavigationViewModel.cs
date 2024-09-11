@@ -1,5 +1,7 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
+using TimVer.Dialogs;
+
 namespace TimVer.ViewModels;
 
 internal sealed partial class NavigationViewModel : ObservableObject
@@ -303,18 +305,14 @@ internal sealed partial class NavigationViewModel : ObservableObject
                 case Key.OemPlus:
                     {
                         MainWindowHelpers.EverythingLarger();
-                        string size = EnumHelpers.GetEnumDescription(UserSettings.Setting!.UISize);
-                        string message = string.Format(GetStringResource("MsgText_UISizeSet"), size);
-                        SnackbarMsg.ClearAndQueueMessage(message, 2000);
+                        ShowUIChangeMessage("size");
                         break;
                     }
                 case Key.Subtract:
                 case Key.OemMinus:
                     {
                         MainWindowHelpers.EverythingSmaller();
-                        string size = EnumHelpers.GetEnumDescription(UserSettings.Setting!.UISize);
-                        string message = string.Format(GetStringResource("MsgText_UISizeSet"), size);
-                        SnackbarMsg.ClearAndQueueMessage(message, 2000);
+                        ShowUIChangeMessage("size");
                         break;
                     }
             }
@@ -341,9 +339,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
                         UserSettings.Setting.UITheme = ThemeType.Light;
                         break;
                 }
-                string theme = EnumHelpers.GetEnumDescription(UserSettings.Setting.UITheme);
-                string message = string.Format(GetStringResource("MsgText_UIThemeSet"), theme);
-                SnackbarMsg.ClearAndQueueMessage(message, 2000);
+                ShowUIChangeMessage("theme");
             }
             if (e.Key == Key.C)
             {
@@ -355,9 +351,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
                 {
                     UserSettings.Setting.PrimaryColor++;
                 }
-                string color = EnumHelpers.GetEnumDescription(UserSettings.Setting.PrimaryColor);
-                string message = string.Format(GetStringResource("MsgText_UIColorSet"), color);
-                SnackbarMsg.ClearAndQueueMessage(message, 2000);
+                ShowUIChangeMessage("color");
             }
             if (e.Key == Key.F)
             {
@@ -386,4 +380,31 @@ internal sealed partial class NavigationViewModel : ObservableObject
         #endregion Keys with Ctrl and Shift
     }
     #endregion Key down events
+
+    #region Show snack bar message for UI changes
+    private static void ShowUIChangeMessage(string messageType)
+    {
+        CompositeFormat? composite = null;
+        string messageVar = string.Empty;
+
+        switch (messageType)
+        {
+            case "size":
+                composite = CompositeFormat.Parse(GetStringResource("MsgText_UISizeSet"));
+                messageVar = EnumHelpers.GetEnumDescription(UserSettings.Setting!.UISize);
+                break;
+            case "theme":
+                composite = CompositeFormat.Parse(GetStringResource("MsgText_UIThemeSet"));
+                messageVar = EnumHelpers.GetEnumDescription(UserSettings.Setting!.UITheme);
+                break;
+            case "color":
+                composite = CompositeFormat.Parse(GetStringResource("MsgText_UIColorSet"));
+                messageVar = EnumHelpers.GetEnumDescription(UserSettings.Setting!.PrimaryColor);
+                break;
+        }
+
+        string message = string.Format(CultureInfo.InvariantCulture, composite!, messageVar);
+        SnackbarMsg.ClearAndQueueMessage(message, 2000);
+    }
+    #endregion Show snack bar message for UI changes
 }
