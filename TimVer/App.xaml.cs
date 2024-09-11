@@ -121,14 +121,8 @@ public partial class App : Application
                         Resources.MergedDictionaries.Add(testDict);
                         TestLanguageStrings = testDict.Count;
                         TestLanguageFile = testDict.Source.OriginalString;
-                        if (TestLanguageStrings == 1)
-                        {
-                            _log.Debug($"{TestLanguageStrings} string loaded from {TestLanguageFile}");
-                        }
-                        else
-                        {
-                            _log.Debug($"{TestLanguageStrings} strings loaded from {TestLanguageFile}");
-                        }
+                        string str = (TestLanguageStrings == 1) ? "string" : "strings";
+                        _log.Debug($"{TestLanguageStrings} {str} loaded from {TestLanguageFile}");
                     }
                 }
                 catch (Exception ex)
