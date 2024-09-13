@@ -15,7 +15,7 @@
 
         Translation contributed by:  RB
 
-        Date last update:            09.09.2024
+        Date last update:            12.09.2024
 
         ======================================================================
 
@@ -135,9 +135,9 @@
     <sys:String x:Key="GraphicsInfo_GraphicsAdapter">Scheda grafica</sys:String>
     <sys:String x:Key="GraphicsInfo_NumberOfColors">Numero colori</sys:String>
     <sys:String x:Key="GraphicsInfo_NumberOfDisplays">Numero di display</sys:String>
-    <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine1">Se è installata più di una scheda video usa il menu</sys:String>
-    <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine2">a discesa per selezionare la scheda da visualizzare.</sys:String>
-    <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine2">usa il menu a discesa per selezionare l'adattatore da visualizzare.</sys:String>
+    <sys:String x:Key="GraphicsInfo_SelectAdapter">Seleziona scheda video</sys:String>
+    <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine1">Se è installata più di una scheda video</sys:String>
+    <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine2">usa il menu a discesa per selezionare la scheda.</sys:String>
     <!--  Hardware Information Page  -->
     <sys:String x:Key="HardwareInfo_BIOS">BIOS</sys:String>
     <sys:String x:Key="HardwareInfo_BiosManufacturer">Produttore BIOS</sys:String>
@@ -274,6 +274,7 @@
     <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine3">Per ulteriori info consulta il file ReadMe.</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">La modifica della lingua GUI causerà il riavvio dell'applicazione!</sys:String>
     <sys:String x:Key="SettingsItem_DateFormat">Formato data griglia</sys:String>
+    <sys:String x:Key="SettingsItem_DisplayFont">Font visualizzazione</sys:String>
     <sys:String x:Key="SettingsItem_DisplayUser">Visualizza l'utente registrato e l'organizzazione nella pagina Informazioni di Windows</sys:String>
     <sys:String x:Key="SettingsItem_EditExcludeToolTip">Maiusc+clic per aprire il file con l'applicazione predefinita</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Abilita test lingua GUI</sys:String>
@@ -427,4 +428,8 @@
     <!-- Begin changes on 2024/07/31 @ 02:40 UTC-->
     <!-- A | Button_CheckUpdate -->
     <!-- End of changes on 2024/07/31 @ 02:40 UTC-->
+
+    <!-- Begin changes on 2024/09/11 @ 21:25 UTC-->
+    <!-- A | SettingsItem_DisplayFont -->
+    <!-- End of changes on 2024/09/11 @ 21:25 UTC-->
 </ResourceDictionary>
