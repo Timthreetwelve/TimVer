@@ -95,6 +95,9 @@ These keyboard shortcuts are available:
     Ctrl + Numpad Plus or Ctrl + Plus = Increase size
     Ctrl + Numpad Minus or Ctrl + Minus = Decrease size
     Ctrl + Shift + C = Change the Accent Color
+    Ctrl + Shift + F = Open File explorer in the application folder
+    Ctrl + Shift + R = Change Row spacing
+    Ctrl + Shift + S = Open the Settings file
     Ctrl + Shift + T = Change the Theme
     F1 = Go to the About screen
 
