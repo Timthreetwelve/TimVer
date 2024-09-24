@@ -188,6 +188,11 @@
                                                 Visibility="{Binding ShowPartitions,
                                                                      Source={x:Static config:UserSettings.Setting},
                                                                      Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            <DataGridTextColumn Binding="{Binding DriveLetters}"
+                                                Header="{DynamicResource DriveInfo_DriveLetters}"
+                                                Visibility="{Binding ShowDriveLetters,
+                                                                     Source={x:Static config:UserSettings.Setting},
+                                                                     Converter={StaticResource BooleanToVisibilityConverter}}" />
                             <DataGridTextColumn Binding="{Binding DiskType}"
                                                 Header="{DynamicResource DriveInfo_DiskType}"
                                                 Visibility="{Binding ShowDiskType,
@@ -292,6 +297,8 @@
                                     <RowDefinition Height="24" />
                                     <RowDefinition Height="24" />
                                     <RowDefinition Height="24" />
+                                    <RowDefinition Height="24" />
+                                    <RowDefinition Height="24" />
                                 </Grid.RowDefinitions>
                                 <!--#endregion-->
 
@@ -317,74 +324,80 @@
 
                                 <TextBlock Grid.Row="3" Grid.Column="1"
                                            VerticalAlignment="Center"
-                                           Text="{DynamicResource DriveInfo_MediaType}" />
+                                           Text="{DynamicResource DriveInfo_DriveLetters}" />
                                 <TextBlock Grid.Row="3" Grid.Column="3"
-                                           Text="{Binding MediaType}" />
+                                           Text="{Binding DriveLetters}" />
 
                                 <TextBlock Grid.Row="4" Grid.Column="1"
                                            VerticalAlignment="Center"
-                                           Text="{DynamicResource DriveInfo_DiskType}" />
+                                           Text="{DynamicResource DriveInfo_MediaType}" />
                                 <TextBlock Grid.Row="4" Grid.Column="3"
-                                           Text="{Binding DiskType}" />
+                                           Text="{Binding MediaType}" />
 
                                 <TextBlock Grid.Row="5" Grid.Column="1"
                                            VerticalAlignment="Center"
-                                           Text="{DynamicResource DriveInfo_Interface}" />
+                                           Text="{DynamicResource DriveInfo_DiskType}" />
                                 <TextBlock Grid.Row="5" Grid.Column="3"
-                                           Text="{Binding Interface}" />
+                                           Text="{Binding DiskType}" />
 
                                 <TextBlock Grid.Row="6" Grid.Column="1"
                                            VerticalAlignment="Center"
-                                           Text="{DynamicResource DriveInfo_BusType}" />
+                                           Text="{DynamicResource DriveInfo_Interface}" />
                                 <TextBlock Grid.Row="6" Grid.Column="3"
-                                           Text="{Binding BusType}" />
+                                           Text="{Binding Interface}" />
 
                                 <TextBlock Grid.Row="7" Grid.Column="1"
                                            VerticalAlignment="Center"
-                                           Text="{DynamicResource DriveInfo_Health}" />
+                                           Text="{DynamicResource DriveInfo_BusType}" />
                                 <TextBlock Grid.Row="7" Grid.Column="3"
-                                           Text="{Binding Health}" />
+                                           Text="{Binding BusType}" />
 
                                 <TextBlock Grid.Row="8" Grid.Column="1"
                                            VerticalAlignment="Center"
-                                           Text="{DynamicResource DriveInfo_PartitionStyle}" />
+                                           Text="{DynamicResource DriveInfo_Health}" />
                                 <TextBlock Grid.Row="8" Grid.Column="3"
-                                           Text="{Binding PartitionStyle}" />
+                                           Text="{Binding Health}" />
 
                                 <TextBlock Grid.Row="9" Grid.Column="1"
                                            VerticalAlignment="Center"
-                                           Text="{DynamicResource DriveInfo_BootDrive}" />
+                                           Text="{DynamicResource DriveInfo_PartitionStyle}" />
                                 <TextBlock Grid.Row="9" Grid.Column="3"
-                                           Text="{Binding IsBoot}" />
+                                           Text="{Binding PartitionStyle}" />
 
                                 <TextBlock Grid.Row="10" Grid.Column="1"
                                            VerticalAlignment="Center"
-                                           Text="{DynamicResource DriveInfo_SystemDrive}" />
+                                           Text="{DynamicResource DriveInfo_BootDrive}" />
                                 <TextBlock Grid.Row="10" Grid.Column="3"
-                                           Text="{Binding IsSystem}" />
+                                           Text="{Binding IsBoot}" />
 
                                 <TextBlock Grid.Row="11" Grid.Column="1"
                                            VerticalAlignment="Center"
-                                           Text="{DynamicResource DriveInfo_Model}" />
+                                           Text="{DynamicResource DriveInfo_SystemDrive}" />
                                 <TextBlock Grid.Row="11" Grid.Column="3"
-                                           Text="{Binding Model}" />
+                                           Text="{Binding IsSystem}" />
 
                                 <TextBlock Grid.Row="12" Grid.Column="1"
                                            VerticalAlignment="Center"
-                                           Text="{DynamicResource DriveInfo_Name}" />
+                                           Text="{DynamicResource DriveInfo_Model}" />
                                 <TextBlock Grid.Row="12" Grid.Column="3"
-                                           Text="{Binding Name}" />
+                                           Text="{Binding Model}" />
 
                                 <TextBlock Grid.Row="13" Grid.Column="1"
                                            VerticalAlignment="Center"
-                                           Text="{DynamicResource DriveInfo_FriendlyName}" />
+                                           Text="{DynamicResource DriveInfo_Name}" />
                                 <TextBlock Grid.Row="13" Grid.Column="3"
-                                           Text="{Binding FriendlyName}" />
+                                           Text="{Binding Name}" />
 
                                 <TextBlock Grid.Row="14" Grid.Column="1"
                                            VerticalAlignment="Center"
-                                           Text="{DynamicResource DriveInfo_SerialNumber}" />
+                                           Text="{DynamicResource DriveInfo_FriendlyName}" />
                                 <TextBlock Grid.Row="14" Grid.Column="3"
+                                           Text="{Binding FriendlyName}" />
+
+                                <TextBlock Grid.Row="15" Grid.Column="1"
+                                           VerticalAlignment="Center"
+                                           Text="{DynamicResource DriveInfo_SerialNumber}" />
+                                <TextBlock Grid.Row="15" Grid.Column="3"
                                            Text="{Binding SerialNumber}" />
                             </Grid>
                         </ScrollViewer>

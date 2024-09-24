@@ -212,6 +212,7 @@ public static class DiskDriveHelpers
 
                 pDisk.BusType = results["BusType"];
                 pDisk.DiskType = results["DiskType"];
+                pDisk.DriveLetters = results["Letters"];
                 pDisk.FriendlyName = results["FriendlyName"];
                 pDisk.Health = results["HealthStatus"];
                 pDisk.Index = index;
@@ -258,7 +259,7 @@ public static class DiskDriveHelpers
         List<uint> indexes = [];
         indexes.AddRange(cimSession.QueryInstances(scope, "WQL", query)
             .Select(drive => (uint)drive.CimInstanceProperties["Index"]?.Value!)
-            .OrderBy(i => i));
+            .Order());
         return indexes;
     }
     #endregion Get list of drive indexes
@@ -272,7 +273,7 @@ public static class DiskDriveHelpers
     private static Dictionary<string, string> GetWin32DiskDrive(uint index)
     {
         const string scope = @"\\.\root\CIMV2";
-        string query = $"SELECT InterfaceType, MediaType, Model, Name, Status, Partitions, Size FROM Win32_DiskDrive WHERE Index = {index}";
+        string query = $"SELECT InterfaceType, MediaType, Model, Name, Status, Partitions, Size, DeviceID FROM Win32_DiskDrive WHERE Index = {index}";
 
         try
         {
@@ -290,7 +291,8 @@ public static class DiskDriveHelpers
                 ["Status"] = CimStringProperty(drive, "Status"),
                 ["Size"] = Math.Round(Convert.ToDouble(drive.CimInstanceProperties["Size"]
                               .Value, CultureInfo.InvariantCulture) / Math.Pow(gbPref, 3), 2)
-                              .ToString(CultureInfo.InvariantCulture)
+                              .ToString(CultureInfo.InvariantCulture),
+                ["Letters"] = GetDriveLetters(CimStringProperty(drive,"DeviceID"))
             }).FirstOrDefault()!;
         }
         catch (Exception ex)
@@ -304,11 +306,37 @@ public static class DiskDriveHelpers
                 { "Name", ""},
                 { "Partitions", ""},
                 { "Status", ""},
-                { "Size", ""}
+                { "Size", ""},
+                { "Letters", ""}
             };
         }
     }
     #endregion Get info from Win32_DiskDrive
+
+    /// <summary>
+    /// Gets the drive letters on the supplied device ID.
+    /// </summary>
+    /// <param name="deviceID">Device ID from Win32_DiskDrive. e.g. \\.\PHYSICALDISK0</param>
+    /// <returns>String of drive letters.</returns>
+    static string GetDriveLetters(string deviceID)
+    {
+        const string scope = @"\\.\root\CIMV2";
+        StringBuilder sb = new();
+
+        CimSession cim = CimSession.Create(null);
+        string query = $"ASSOCIATORS OF {{Win32_DiskDrive.DeviceID='{deviceID}'}} WHERE AssocClass = Win32_DiskDriveToDiskPartition";
+        foreach (CimInstance partitions in cim.QueryInstances(scope, "WQL", query))
+        {
+            string? partition = partitions.CimInstanceProperties["DeviceID"].Value.ToString();
+            query = $"ASSOCIATORS OF {{Win32_DiskPartition.DeviceID='{partition}'}} WHERE AssocClass = Win32_LogicalDiskToPartition";
+            foreach (CimInstance drive in cim.QueryInstances(scope, "WQL", query))
+            {
+                string? name = drive.CimInstanceProperties["Name"].Value.ToString();
+                _ = sb.Append(CultureInfo.InvariantCulture, $"{name}  ");
+            }
+        }
+        return sb.ToString().TrimEnd();
+    }
 
     #region Get info from MSFT_Disk
     /// <summary>

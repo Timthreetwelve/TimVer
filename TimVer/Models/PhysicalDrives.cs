@@ -17,6 +17,12 @@ public partial class PhysicalDrives : ObservableObject
     private string? _diskType;
 
     /// <summary>
+    /// Drive letters assigned.
+    /// </summary>
+    [ObservableProperty]
+    private string? _driveLetters;
+
+    /// <summary>
     /// Firmware revision number.
     /// </summary>
     [ObservableProperty]

@@ -103,6 +103,12 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private bool _showDiskType = true;
 
     /// <summary>
+    /// Show the Drive Letters column on the Physical Drives page.
+    /// </summary>
+    [ObservableProperty]
+    private bool _showDriveLetters = true;
+
+    /// <summary>
     /// Show Exit in the navigation menu.
     /// </summary>
     [ObservableProperty]

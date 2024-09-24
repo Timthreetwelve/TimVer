@@ -373,6 +373,7 @@
                                         <RowDefinition Height="30" />
                                         <RowDefinition Height="30" />
                                         <RowDefinition Height="30" />
+                                        <RowDefinition Height="30" />
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="auto" />
@@ -387,25 +388,30 @@
                                                                   Source={x:Static config:UserSettings.Setting}}" />
                                     <CheckBox Grid.Row="1" Grid.Column="0"
                                               Padding="10,0"
+                                              Content="{DynamicResource SettingsItem_ShowDriveLettersColumn}"
+                                              IsChecked="{Binding ShowDriveLetters,
+                                                                  Source={x:Static config:UserSettings.Setting}}" />
+                                    <CheckBox Grid.Row="2" Grid.Column="0"
+                                              Padding="10,0"
                                               Content="{DynamicResource SettingsItem_ShowDiskTypeColumn}"
                                               IsChecked="{Binding ShowDiskType,
                                                                   Source={x:Static config:UserSettings.Setting}}" />
-                                    <CheckBox Grid.Row="2" Grid.Column="0"
+                                    <CheckBox Grid.Row="3" Grid.Column="0"
                                               Padding="10,0"
                                               Content="{DynamicResource SettingsItem_ShowMediaTypeColumn}"
                                               IsChecked="{Binding ShowMediaType,
                                                                   Source={x:Static config:UserSettings.Setting}}" />
-                                    <CheckBox Grid.Row="3" Grid.Column="0"
+                                    <CheckBox Grid.Row="4" Grid.Column="0"
                                               Padding="10,0"
                                               Content="{DynamicResource SettingsItem_ShowInterfaceColumn}"
                                               IsChecked="{Binding ShowInterface,
                                                                   Source={x:Static config:UserSettings.Setting}}" />
-                                    <CheckBox Grid.Row="4" Grid.Column="0"
+                                    <CheckBox Grid.Row="5" Grid.Column="0"
                                               Padding="10,0"
                                               Content="{DynamicResource SettingsItem_ShowBusTypeColumn}"
                                               IsChecked="{Binding ShowBusType,
                                                                   Source={x:Static config:UserSettings.Setting}}" />
-                                    <CheckBox Grid.Row="5" Grid.Column="0"
+                                    <CheckBox Grid.Row="6" Grid.Column="0"
                                               Padding="10,0"
                                               Content="{DynamicResource SettingsItem_ShowHealthColumn}"
                                               IsChecked="{Binding ShowHealth,

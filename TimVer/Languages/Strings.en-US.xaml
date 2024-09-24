@@ -79,6 +79,7 @@
     <sys:String x:Key="DriveInfo_DeviceID">Device ID</sys:String>
     <sys:String x:Key="DriveInfo_DiskType">Disk Type</sys:String>
     <sys:String x:Key="DriveInfo_DriveType_CDRom">CD-ROM</sys:String>
+    <sys:String x:Key="DriveInfo_DriveLetters">Drive Letters</sys:String>
     <sys:String x:Key="DriveInfo_DriveType_Fixed">Fixed</sys:String>
     <sys:String x:Key="DriveInfo_DriveType_Network">Network</sys:String>
     <sys:String x:Key="DriveInfo_DriveType_NoRootDirectory">No Root Directory</sys:String>
@@ -295,6 +296,7 @@
     <sys:String x:Key="SettingsItem_ShowBootDriveColumn">Show Boot Drive column</sys:String>
     <sys:String x:Key="SettingsItem_ShowBusTypeColumn">Show Bus Type column</sys:String>
     <sys:String x:Key="SettingsItem_ShowDiskTypeColumn">Show Disk Type column</sys:String>
+    <sys:String x:Key="SettingsItem_ShowDriveLettersColumn">Show Drive Letters column</sys:String>
     <sys:String x:Key="SettingsItem_ShowExit">Show Exit in Navigation bar</sys:String>
     <sys:String x:Key="SettingsItem_ShowFormatColumn">Show Format column</sys:String>
     <sys:String x:Key="SettingsItem_ShowFriendlyName">Show Friendly Name column</sys:String>
@@ -432,4 +434,10 @@
     <!-- Begin changes on 2024/09/11 @ 21:25 UTC-->
     <!-- A | SettingsItem_DisplayFont -->
     <!-- End of changes on 2024/09/11 @ 21:25 UTC-->
+
+    <!-- Begin changes on 2024/09/23 @ 20:35 UTC-->
+    <!-- A | DriveInfo_DriveLetters -->
+    <!-- A | SettingsItem_ShowDriveLettersColumn -->
+    <!-- End of changes on 2024/09/23 @ 20:35 UTC-->
+
 </ResourceDictionary>
