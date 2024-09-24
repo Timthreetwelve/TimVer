@@ -15,7 +15,7 @@
 
         Translation contributed by:  RB
 
-        Date last update:            12.09.2024
+        Date last update:            24.09.2024
 
         ======================================================================
 
@@ -79,6 +79,7 @@
     <sys:String x:Key="DriveInfo_DeviceID">ID dispostivo</sys:String>
     <sys:String x:Key="DriveInfo_DiskType">Tipo disco</sys:String>
     <sys:String x:Key="DriveInfo_DriveType_CDRom">CD-ROM</sys:String>
+    <sys:String x:Key="DriveInfo_DriveLetters">Lettere unità</sys:String>
     <sys:String x:Key="DriveInfo_DriveType_Fixed">Disco fisso</sys:String>
     <sys:String x:Key="DriveInfo_DriveType_Network">Rete</sys:String>
     <sys:String x:Key="DriveInfo_DriveType_NoRootDirectory">Nessuna cartella radice</sys:String>
@@ -295,6 +296,7 @@
     <sys:String x:Key="SettingsItem_ShowBootDriveColumn">Visualizza colonna 'Unità di avvio'</sys:String>
     <sys:String x:Key="SettingsItem_ShowBusTypeColumn">Visualizza colonna 'Tipo bus'</sys:String>
     <sys:String x:Key="SettingsItem_ShowDiskTypeColumn">Visualizza colonna 'Tipo disco'</sys:String>
+    <sys:String x:Key="SettingsItem_ShowDriveLettersColumn">Visualizza colonna lettere unità</sys:String>
     <sys:String x:Key="SettingsItem_ShowExit">Visualizza 'Esci' nella barra navigazione</sys:String>
     <sys:String x:Key="SettingsItem_ShowFormatColumn">Visualizza colonna 'Formato'</sys:String>
     <sys:String x:Key="SettingsItem_ShowFriendlyName">Visualizza colonna nome descrittivo</sys:String>
@@ -432,4 +434,10 @@
     <!-- Begin changes on 2024/09/11 @ 21:25 UTC-->
     <!-- A | SettingsItem_DisplayFont -->
     <!-- End of changes on 2024/09/11 @ 21:25 UTC-->
+
+    <!-- Begin changes on 2024/09/23 @ 20:35 UTC-->
+    <!-- A | DriveInfo_DriveLetters -->
+    <!-- A | SettingsItem_ShowDriveLettersColumn -->
+    <!-- End of changes on 2024/09/23 @ 20:35 UTC-->
+
 </ResourceDictionary>
