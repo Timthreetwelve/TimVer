@@ -313,6 +313,7 @@ public static class DiskDriveHelpers
     }
     #endregion Get info from Win32_DiskDrive
 
+    #region Get drive letters
     /// <summary>
     /// Gets the drive letters on the supplied device ID.
     /// </summary>
@@ -337,6 +338,7 @@ public static class DiskDriveHelpers
         }
         return sb.ToString().TrimEnd();
     }
+    #endregion Get drive letters
 
     #region Get info from MSFT_Disk
     /// <summary>
