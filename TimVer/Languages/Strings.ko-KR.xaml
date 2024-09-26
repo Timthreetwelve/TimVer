@@ -1,4 +1,4 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
@@ -53,6 +53,7 @@
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">취소</sys:String>
     <sys:String x:Key="Button_Close">메뉴 닫기</sys:String>
+    <sys:String x:Key="Button_CheckUpdate">업데이트 확인</sys:String>
     <sys:String x:Key="Button_CopyToClipboardToolTip">이 페이지를 클립보드로 복사</sys:String>
     <sys:String x:Key="Button_No">아니오</sys:String>
     <sys:String x:Key="Button_OK">확인</sys:String>
@@ -78,6 +79,7 @@
     <sys:String x:Key="DriveInfo_DeviceID">장치 ID</sys:String>
     <sys:String x:Key="DriveInfo_DiskType">디스크 유형</sys:String>
     <sys:String x:Key="DriveInfo_DriveType_CDRom">CD-ROM</sys:String>
+    <sys:String x:Key="DriveInfo_DriveLetters">드라이브 문자</sys:String>
     <sys:String x:Key="DriveInfo_DriveType_Fixed">고정</sys:String>
     <sys:String x:Key="DriveInfo_DriveType_Network">네트워크</sys:String>
     <sys:String x:Key="DriveInfo_DriveType_NoRootDirectory">루트 디렉터리 아님</sys:String>
@@ -124,14 +126,15 @@
     <sys:String x:Key="EnvironmentInfo_Value">값</sys:String>
     <sys:String x:Key="EnvironmentInfo_Variable">변수</sys:String>
     <!--  Graphics Information Page  -->
-    <sys:String x:Key="GraphicsInfo_AdapterType">어댑터 유형</sys:String>
     <sys:String x:Key="GraphicsInfo_AdapterRAM">어댑터 RAM</sys:String>
+    <sys:String x:Key="GraphicsInfo_AdapterType">어댑터 유형</sys:String>
     <sys:String x:Key="GraphicsInfo_BitsPerPixel">픽셀당 비트 수</sys:String>
     <sys:String x:Key="GraphicsInfo_CurrentRefreshRate">현재 새로 고침 속도</sys:String>
     <sys:String x:Key="GraphicsInfo_CurrentResolution">현재 해상도</sys:String>
     <sys:String x:Key="GraphicsInfo_Description">설명</sys:String>
     <sys:String x:Key="GraphicsInfo_DeviceID">장치 ID</sys:String>
     <sys:String x:Key="GraphicsInfo_GraphicsAdapter">그래픽 어댑터</sys:String>
+    <sys:String x:Key="GraphicsInfo_NumberOfColors">코어 수</sys:String>
     <sys:String x:Key="GraphicsInfo_NumberOfColors">색상수</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapter">어댑터 선택</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine1">비디오 어댑터가 둘 이상 설치된 경우 드롭다운을 사용하여</sys:String>
@@ -144,6 +147,10 @@
     <sys:String x:Key="HardwareInfo_Cores">코어</sys:String>
     <sys:String x:Key="HardwareInfo_Installed">설치됨</sys:String>
     <sys:String x:Key="HardwareInfo_LastBoot">마지막 재부팅</sys:String>
+    <sys:String x:Key="HardwareInfo_LastBootNormal">일반 부팅</sys:String>
+    <sys:String x:Key="HardwareInfo_LastBootSafe">안전 모드</sys:String>
+    <sys:String x:Key="HardwareInfo_LastBootSafeNetwork">네트워킹 안전 모드</sys:String>
+    <sys:String x:Key="HardwareInfo_LastBootType">마지막 재부팅 유형</sys:String>
     <sys:String x:Key="HardwareInfo_MachineName">머신 이름</sys:String>
     <sys:String x:Key="HardwareInfo_Manufacturer">제조업체</sys:String>
     <sys:String x:Key="HardwareInfo_Model">모델</sys:String>
@@ -268,6 +275,7 @@
     <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine3">자세한 내용은 ReadMe 파일을 참조하세요.</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">언어를 변경하면 응용 프로그램이 다시 시작됩니다!</sys:String>
     <sys:String x:Key="SettingsItem_DateFormat">격자 날짜 형식</sys:String>
+    <sys:String x:Key="SettingsItem_DisplayFont">디스플레이 글꼴</sys:String>
     <sys:String x:Key="SettingsItem_DisplayUser">Windows 정보 페이지에 등록된 사용자 및 조직 표시</sys:String>
     <sys:String x:Key="SettingsItem_EditExcludeToolTip">기본 응용 프로그램으로 파일을 열려면 Shift-클릭하세요.</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">언어 테스트 사용</sys:String>
@@ -288,6 +296,7 @@
     <sys:String x:Key="SettingsItem_ShowBootDriveColumn">부팅 드라이브 열 표시</sys:String>
     <sys:String x:Key="SettingsItem_ShowBusTypeColumn">버스 유형 열 표시</sys:String>
     <sys:String x:Key="SettingsItem_ShowDiskTypeColumn">디스크 유형 열 표시</sys:String>
+    <sys:String x:Key="SettingsItem_ShowDriveLettersColumn">드라이브 문자 열 표시</sys:String>
     <sys:String x:Key="SettingsItem_ShowExit">탐색 표시줄에 종료 표시</sys:String>
     <sys:String x:Key="SettingsItem_ShowFormatColumn">형식 열 표시</sys:String>
     <sys:String x:Key="SettingsItem_ShowFriendlyName">제품군 이름 열 표시</sys:String>
@@ -410,4 +419,25 @@
     <!-- Begin changes on 2024/05/19 @ 20:45 UTC-->
     <!-- A | SettingsItem_ShowVideoSelector -->
     <!-- End of changes on 2024/05/19 @ 20:45 UTC-->
+
+    <!-- Begin changes on 2024/07/07 @ 20:25 UTC-->
+    <!-- A | HardwareInfo_LastBootType -->
+    <!-- A | HardwareInfo_LastBootNormal -->
+    <!-- A | HardwareInfo_LastBootSafe -->
+    <!-- A | HardwareInfo_LastBootSafeNetwork -->
+    <!-- End of changes on 2024/07/07 @ 20:25 UTC-->
+
+    <!-- Begin changes on 2024/07/31 @ 02:40 UTC-->
+    <!-- A | Button_CheckUpdate -->
+    <!-- End of changes on 2024/07/31 @ 02:40 UTC-->
+
+    <!-- Begin changes on 2024/09/11 @ 21:25 UTC-->
+    <!-- A | SettingsItem_DisplayFont -->
+    <!-- End of changes on 2024/09/11 @ 21:25 UTC-->
+
+    <!-- Begin changes on 2024/09/23 @ 20:35 UTC-->
+    <!-- A | DriveInfo_DriveLetters -->
+    <!-- A | SettingsItem_ShowDriveLettersColumn -->
+    <!-- End of changes on 2024/09/23 @ 20:35 UTC-->
+
 </ResourceDictionary>
