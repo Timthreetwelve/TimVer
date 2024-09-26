@@ -15,7 +15,7 @@
 
         Translation contributed by:  Timthreetwelve/Largo
 
-        Date last updated:           2024.06.10
+        Date last updated:           2024.09.26
 
         =======================================================================
 
@@ -52,6 +52,7 @@
     <sys:String x:Key="BuildHistory_Version">Version</sys:String>
     <!-- Button Text -->
     <sys:String x:Key="Button_Cancel">Annuler</sys:String>
+    <sys:String x:Key="Button_CheckUpdate">Vérifier mise à jour</sys:String>
     <sys:String x:Key="Button_Close">Fermer le menu</sys:String>
     <sys:String x:Key="Button_CopyToClipboardToolTip">Copiez cette page dans le presse-papiers</sys:String>
     <sys:String x:Key="Button_No">Non</sys:String>
@@ -78,6 +79,7 @@
     <sys:String x:Key="DriveInfo_DeviceID">ID de l’appareil</sys:String>
     <sys:String x:Key="DriveInfo_DiskType">Type de disque</sys:String>
     <sys:String x:Key="DriveInfo_DriveType_CDRom">CD ROM</sys:String>
+    <sys:String x:Key="DriveInfo_DriveLetters">Lettres du lecteur</sys:String>
     <sys:String x:Key="DriveInfo_DriveType_Fixed">Fixé</sys:String>
     <sys:String x:Key="DriveInfo_DriveType_Network">Réseau</sys:String>
     <sys:String x:Key="DriveInfo_DriveType_NoRootDirectory">Pas de répertoire racine</sys:String>
@@ -133,6 +135,7 @@
     <sys:String x:Key="GraphicsInfo_DeviceID">ID de l'appareil</sys:String>
     <sys:String x:Key="GraphicsInfo_GraphicsAdapter">Adaptateur graphique</sys:String>
     <sys:String x:Key="GraphicsInfo_NumberOfColors">Nombre de couleurs</sys:String>
+    <sys:String x:Key="GraphicsInfo_NumberOfDisplays">Nombre d'écrans</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapter">Sélectionner l'adaptateur</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine1">S'il y a plus d'un adaptateur vidéo installé</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine2">Utilisez la liste déroulante pour sélectionner l'adaptateur à afficher.</sys:String>
@@ -144,6 +147,10 @@
     <sys:String x:Key="HardwareInfo_Cores">Cœurs</sys:String>
     <sys:String x:Key="HardwareInfo_Installed">installée</sys:String>
     <sys:String x:Key="HardwareInfo_LastBoot">Dernier redémarrage</sys:String>
+    <sys:String x:Key="HardwareInfo_LastBootNormal">Démarrage normal</sys:String>
+    <sys:String x:Key="HardwareInfo_LastBootSafe">Mode sans échec</sys:String>
+    <sys:String x:Key="HardwareInfo_LastBootSafeNetwork">Mode sans échec avec réseau</sys:String>
+    <sys:String x:Key="HardwareInfo_LastBootType">Dernier type de redémarrage</sys:String>
     <sys:String x:Key="HardwareInfo_MachineName">Nom de la machine</sys:String>
     <sys:String x:Key="HardwareInfo_Manufacturer">Fabricant</sys:String>
     <sys:String x:Key="HardwareInfo_Model">Modèle</sys:String>
@@ -268,6 +275,7 @@
     <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine3">Voir le fichier Lisez-moi pour plus d'infos.</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Changer la langue entraînera le redémarrage de l'application!</sys:String>
     <sys:String x:Key="SettingsItem_DateFormat">Format de date de grille</sys:String>
+    <sys:String x:Key="SettingsItem_DisplayFont">Police d'affichage</sys:String>
     <sys:String x:Key="SettingsItem_DisplayUser">Afficher l'utilisateur et l'organisation enregistrés sur la page d'infos Windows</sys:String>
     <sys:String x:Key="SettingsItem_EditExcludeToolTip">Shift-Click pour ouvrir le fichier avec l'application par défaut</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Activer les tests de langue</sys:String>
@@ -288,6 +296,7 @@
     <sys:String x:Key="SettingsItem_ShowBootDriveColumn">Afficher la colonne du lecteur de démarrage</sys:String>
     <sys:String x:Key="SettingsItem_ShowBusTypeColumn">Afficher la colonne de type bus</sys:String>
     <sys:String x:Key="SettingsItem_ShowDiskTypeColumn">Afficher la colonne de type disque</sys:String>
+    <sys:String x:Key="SettingsItem_ShowDriveLettersColumn">Afficher la colonne Lettres de lecteur</sys:String>
     <sys:String x:Key="SettingsItem_ShowExit">Afficher Quitter dans la barre de navigation</sys:String>
     <sys:String x:Key="SettingsItem_ShowFormatColumn">Afficher la colonne de format</sys:String>
     <sys:String x:Key="SettingsItem_ShowFriendlyName">Afficher la colonne de nom amical</sys:String>
@@ -327,7 +336,7 @@
     <sys:String x:Key="WindowsInfo_BuildNumber">Numéro de la Build</sys:String>
     <sys:String x:Key="WindowsInfo_DotNetVersion">Version .NET</sys:String>
     <sys:String x:Key="WindowsInfo_EditionID">ID de l'édition</sys:String>
-    <sys:String x:Key="WindowsInfo_Installed">Installé sur</sys:String>
+    <sys:String x:Key="WindowsInfo_Installed">Installé le</sys:String>
     <sys:String x:Key="WindowsInfo_OSEdition">Édition OS</sys:String>
     <sys:String x:Key="WindowsInfo_OSVersion">Version</sys:String>
     <sys:String x:Key="WindowsInfo_RegisteredOrg">Organisation enregistrée</sys:String>
@@ -410,4 +419,25 @@
     <!-- Begin changes on 2024/05/19 @ 20:45 UTC-->
     <!-- A | SettingsItem_ShowVideoSelector -->
     <!-- End of changes on 2024/05/19 @ 20:45 UTC-->
+
+    <!-- Begin changes on 2024/07/07 @ 20:25 UTC-->
+    <!-- A | HardwareInfo_LastBootType -->
+    <!-- A | HardwareInfo_LastBootNormal -->
+    <!-- A | HardwareInfo_LastBootSafe -->
+    <!-- A | HardwareInfo_LastBootSafeNetwork -->
+    <!-- End of changes on 2024/07/07 @ 20:25 UTC-->
+
+    <!-- Begin changes on 2024/07/31 @ 02:40 UTC-->
+    <!-- A | Button_CheckUpdate -->
+    <!-- End of changes on 2024/07/31 @ 02:40 UTC-->
+
+    <!-- Begin changes on 2024/09/11 @ 21:25 UTC-->
+    <!-- A | SettingsItem_DisplayFont -->
+    <!-- End of changes on 2024/09/11 @ 21:25 UTC-->
+
+    <!-- Begin changes on 2024/09/23 @ 20:35 UTC-->
+    <!-- A | DriveInfo_DriveLetters -->
+    <!-- A | SettingsItem_ShowDriveLettersColumn -->
+    <!-- End of changes on 2024/09/23 @ 20:35 UTC-->
+
 </ResourceDictionary>
