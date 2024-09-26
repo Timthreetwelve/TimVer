@@ -15,7 +15,7 @@
 
         Translation contributed by:  RB
 
-        Date last update:            24.09.2024
+        Date last update:            26.09.2024
 
         ======================================================================
 
@@ -53,12 +53,12 @@
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">Annulla</sys:String>
     <sys:String x:Key="Button_CheckUpdate">Controlla aggiornamenti</sys:String>
-    <sys:String x:Key="Button_Close">Chiudi</sys:String>
+    <sys:String x:Key="Button_Close">Chiudi menu</sys:String>
     <sys:String x:Key="Button_CopyToClipboardToolTip">Copia questa pagina negli appunti</sys:String>
     <sys:String x:Key="Button_No">No</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
     <sys:String x:Key="Button_OpenFolder">Apri cartella</sys:String>
-    <sys:String x:Key="Button_OpenAppFolder">Apri cartella App</sys:String>
+    <sys:String x:Key="Button_OpenAppFolder">Apri cartella app</sys:String>
     <sys:String x:Key="Button_OpenFolderToolTip">Apri cartella TimVer in Esplora file</sys:String>
     <sys:String x:Key="Button_OpenLogFile">Visualizza file registro eventi</sys:String>
     <sys:String x:Key="Button_OpenLogFileToolTip">Apri file registro eventi nell'applicazione predefinita.</sys:String>
@@ -133,7 +133,7 @@
     <sys:String x:Key="GraphicsInfo_CurrentResolution">Risoluzione attuale</sys:String>
     <sys:String x:Key="GraphicsInfo_Description">Descrizione</sys:String>
     <sys:String x:Key="GraphicsInfo_DeviceID">ID  dispositivo</sys:String>
-    <sys:String x:Key="GraphicsInfo_GraphicsAdapter">Scheda grafica</sys:String>
+    <sys:String x:Key="GraphicsInfo_GraphicsAdapter">Modello scheda</sys:String>
     <sys:String x:Key="GraphicsInfo_NumberOfColors">Numero colori</sys:String>
     <sys:String x:Key="GraphicsInfo_NumberOfDisplays">Numero di display</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapter">Seleziona scheda video</sys:String>
@@ -143,9 +143,9 @@
     <sys:String x:Key="HardwareInfo_BIOS">BIOS</sys:String>
     <sys:String x:Key="HardwareInfo_BiosManufacturer">Produttore BIOS</sys:String>
     <sys:String x:Key="HardwareInfo_BiosMode">Modo BIOS</sys:String>
-    <sys:String x:Key="HardwareInfo_BiosVersion">Versione e data BIOS</sys:String>
-    <sys:String x:Key="HardwareInfo_Cores">Core</sys:String>
-    <sys:String x:Key="HardwareInfo_Installed">Installati</sys:String>
+    <sys:String x:Key="HardwareInfo_BiosVersion">Versione/data BIOS</sys:String>
+    <sys:String x:Key="HardwareInfo_Cores">core</sys:String>
+    <sys:String x:Key="HardwareInfo_Installed">installati</sys:String>
     <sys:String x:Key="HardwareInfo_LastBoot">Ultimo riavvio</sys:String>
     <sys:String x:Key="HardwareInfo_LastBootNormal">Avvio normale</sys:String>
     <sys:String x:Key="HardwareInfo_LastBootSafe">Modalità provvisoria</sys:String>
@@ -155,18 +155,18 @@
     <sys:String x:Key="HardwareInfo_Manufacturer">Produttore computer</sys:String>
     <sys:String x:Key="HardwareInfo_Model">Modello computer</sys:String>
     <sys:String x:Key="HardwareInfo_PhysicalMemory">Memoria fisica</sys:String>
-    <sys:String x:Key="HardwareInfo_Processor">CPU</sys:String>
+    <sys:String x:Key="HardwareInfo_Processor">Modello CPU</sys:String>
     <sys:String x:Key="HardwareInfo_ProcessorArch">Architettura CPU</sys:String>
     <sys:String x:Key="HardwareInfo_ProcessorCores">Core CPU</sys:String>
-    <sys:String x:Key="HardwareInfo_ProcessorDescription">Descrizione processore</sys:String>
+    <sys:String x:Key="HardwareInfo_ProcessorDescription">Descrizione CPU</sys:String>
     <sys:String x:Key="HardwareInfo_SecureBoot">Boot sicuro</sys:String>
     <sys:String x:Key="HardwareInfo_SecureBoot_Disabled">Disabilitato</sys:String>
     <sys:String x:Key="HardwareInfo_SecureBoot_Enabled">Abilitato</sys:String>
-    <sys:String x:Key="HardwareInfo_Threads">Thread</sys:String>
+    <sys:String x:Key="HardwareInfo_Threads">thread</sys:String>
     <sys:String x:Key="HardwareInfo_UEFI">UEFI</sys:String>
     <sys:String x:Key="HardwareInfo_Uptime">Tempo accensione</sys:String>
     <sys:String x:Key="HardwareInfo_UptimeString">{0} giorni, {1} ore, {2} minuti, {3} secondi</sys:String>
-    <sys:String x:Key="HardwareInfo_Usable">Usabili</sys:String>
+    <sys:String x:Key="HardwareInfo_Usable">disponibili</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
     <sys:String x:Key="MsgText_AddedToStartup">TimVer è stato aggiunto all'avvio di Windows</sys:String>
     <sys:String x:Key="MsgText_AddToStartupFailed">Impossibile aggiungere TimVer all'avvio di Windows. Per ulteriori info consulta il registro eventi.</sys:String>
@@ -245,7 +245,7 @@
     <sys:String x:Key="SettingsEnum_AccentColor_Teal">Verde acqua</sys:String>
     <sys:String x:Key="SettingsEnum_AccentColor_White">Bianco</sys:String>
     <sys:String x:Key="SettingsEnum_AccentColor_Yellow">Giallo</sys:String>
-    <sys:String x:Key="SettingsEnum_Navigation_About">Info</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_About">Info programma</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_DriveInfo">Info unità</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Environment">Variabili ambiente</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_GraphicsInfo">Info scheda grafica</sys:String>
@@ -260,7 +260,7 @@
     <sys:String x:Key="SettingsEnum_Size_Small">95%</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Smaller">90%</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Smallest">80%</sys:String>
-    <sys:String x:Key="SettingsEnum_Spacing_Comfortable">Riga Grande</sys:String>
+    <sys:String x:Key="SettingsEnum_Spacing_Comfortable">Riga grande</sys:String>
     <sys:String x:Key="SettingsEnum_Spacing_Compact">Riga compatta</sys:String>
     <sys:String x:Key="SettingsEnum_Spacing_Wide">Riga larga</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Dark">Tema material scuro</sys:String>
@@ -273,10 +273,10 @@
     <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine1">Abilitando questa opzione TimVer conserverà un registro della cronologia delle build.</sys:String>
     <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine2">Disabilitando questa opzione verrà rimosso la voce  Cronologia dalla barra di navigazione.</sys:String>
     <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine3">Per ulteriori info consulta il file ReadMe.</sys:String>
-    <sys:String x:Key="SettingsItem_ChangingLanguageWarning">La modifica della lingua GUI causerà il riavvio dell'applicazione!</sys:String>
+    <sys:String x:Key="SettingsItem_ChangingLanguageWarning">La modifica della lingua della GUI causerà il riavvio dell'applicazione!</sys:String>
     <sys:String x:Key="SettingsItem_DateFormat">Formato data griglia</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFont">Font visualizzazione</sys:String>
-    <sys:String x:Key="SettingsItem_DisplayUser">Visualizza l'utente registrato e l'organizzazione nella pagina Informazioni di Windows</sys:String>
+    <sys:String x:Key="SettingsItem_DisplayUser">Nella pagina Informazioni di Windows visualizza utente loggato e organizzazione </sys:String>
     <sys:String x:Key="SettingsItem_EditExcludeToolTip">Maiusc+clic per aprire il file con l'applicazione predefinita</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Abilita test lingua GUI</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBoot">Aggiorna cronologia build all'avvio di Windows</sys:String>
@@ -316,8 +316,8 @@
     <sys:String x:Key="SettingsItem_StartCentered">Avvia con la finestra centrata sullo schermo</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Tema</sys:String>
     <sys:String x:Key="SettingsItem_UISize">Dimensione UI</sys:String>
-    <sys:String x:Key="SettingsItem_UseGB">Usa GB (1000^3 byte) per calcoli capacità</sys:String>
-    <sys:String x:Key="SettingsItem_UseGiB">Usa GiB (1024^3 byte) per calcoli capacità</sys:String>
+    <sys:String x:Key="SettingsItem_UseGB">Per calcoli capacità Usa GB (1000^3 byte) </sys:String>
+    <sys:String x:Key="SettingsItem_UseGiB">Per calcoli capacità usa GiB (1024^3 byte) </sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Usa lingua di sistema di Windows</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">Quando questa opzione è selezionata, verrà usata la lingua specificata nelle impostazioni di Windows</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">se è disponibile la relativa traduzione del programma, altrimenti verrà usata la lingua inglese (en-US).</sys:String>
@@ -332,7 +332,7 @@
     <sys:String x:Key="SettingsSubHead_UISettings">Tema, colore evidenziazione, dimensione GUI, altezza riga, posizione iniziale e altro ancora</sys:String>
     <!--  Windows Information Page  -->
     <sys:String x:Key="WindowsInfo_Architecture">Architettura</sys:String>
-    <sys:String x:Key="WindowsInfo_BuildBranch">Build branch</sys:String>
+    <sys:String x:Key="WindowsInfo_BuildBranch">Branch build</sys:String>
     <sys:String x:Key="WindowsInfo_BuildNumber">Numero build</sys:String>
     <sys:String x:Key="WindowsInfo_DotNetVersion">Versione .NET</sys:String>
     <sys:String x:Key="WindowsInfo_EditionID">ID edizione</sys:String>
