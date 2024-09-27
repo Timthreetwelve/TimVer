@@ -134,8 +134,8 @@
     <sys:String x:Key="GraphicsInfo_Description">설명</sys:String>
     <sys:String x:Key="GraphicsInfo_DeviceID">장치 ID</sys:String>
     <sys:String x:Key="GraphicsInfo_GraphicsAdapter">그래픽 어댑터</sys:String>
-    <sys:String x:Key="GraphicsInfo_NumberOfColors">코어 수</sys:String>
-    <sys:String x:Key="GraphicsInfo_NumberOfColors">색상수</sys:String>
+    <sys:String x:Key="GraphicsInfo_NumberOfColors">색상 수</sys:String>
+    <sys:String x:Key="GraphicsInfo_NumberOfDisplays">디스플레이 수</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapter">어댑터 선택</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine1">비디오 어댑터가 둘 이상 설치된 경우 드롭다운을 사용하여</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine2">표시할 어댑터를 선택합니다.</sys:String>
