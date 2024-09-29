@@ -78,6 +78,7 @@
     <sys:String x:Key="DriveInfo_BusType_Unknown">Desconocido</sys:String>
     <sys:String x:Key="DriveInfo_DeviceID">ID de dispositivo</sys:String>
     <sys:String x:Key="DriveInfo_DiskType">Tipo de disco</sys:String>
+    <sys:String x:Key="DriveInfo_DriveLetters">Letras de unidad</sys:String>
     <sys:String x:Key="DriveInfo_DriveType_CDRom">CD-ROM</sys:String>
     <sys:String x:Key="DriveInfo_DriveType_Fixed">Fijo</sys:String>
     <sys:String x:Key="DriveInfo_DriveType_Network">Red</sys:String>
@@ -134,6 +135,7 @@
     <sys:String x:Key="GraphicsInfo_DeviceID">ID del dispositivo</sys:String>
     <sys:String x:Key="GraphicsInfo_GraphicsAdapter">Adaptador gráfico</sys:String>
     <sys:String x:Key="GraphicsInfo_NumberOfColors">Número de colores</sys:String>
+    <sys:String x:Key="GraphicsInfo_NumberOfDisplays">Número de pantallas</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapter">Seleccionar adaptador</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine1">Si hay más de un adaptador de vídeo instalado</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine2">utilice el menú desplegable para seleccionar el adaptador que desea mostrar.</sys:String>
@@ -145,6 +147,10 @@
     <sys:String x:Key="HardwareInfo_Cores">Núcleos</sys:String>
     <sys:String x:Key="HardwareInfo_Installed">Instalado</sys:String>
     <sys:String x:Key="HardwareInfo_LastBoot">Último reinicio</sys:String>
+    <sys:String x:Key="HardwareInfo_LastBootNormal">Modo normal</sys:String>
+    <sys:String x:Key="HardwareInfo_LastBootSafe">Modo seguro</sys:String>
+    <sys:String x:Key="HardwareInfo_LastBootSafeNetwork">Modo seguro con funciones de red</sys:String>
+    <sys:String x:Key="HardwareInfo_LastBootType">Último tipo de reinicio</sys:String>
     <sys:String x:Key="HardwareInfo_MachineName">Nombre del dispositivo</sys:String>
     <sys:String x:Key="HardwareInfo_Manufacturer">Fabricante</sys:String>
     <sys:String x:Key="HardwareInfo_Model">Modelo</sys:String>
@@ -269,6 +275,7 @@
     <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine3">Consulte el archivo Léame para obtener más información.</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">¡Cambiar el idioma hará que la aplicación se reinicie!</sys:String>
     <sys:String x:Key="SettingsItem_DateFormat">Formato de fecha de cuadrícula</sys:String>
+    <sys:String x:Key="SettingsItem_DisplayFont">Fuente de visualización</sys:String>
     <sys:String x:Key="SettingsItem_DisplayUser">Mostrar el usuario registrado y la organización en la página de información de Windows</sys:String>
     <sys:String x:Key="SettingsItem_EditExcludeToolTip">Mayús y clic para abrir el archivo con la aplicación predeterminada</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Habilitar las pruebas de idioma</sys:String>
@@ -289,6 +296,7 @@
     <sys:String x:Key="SettingsItem_ShowBootDriveColumn">Mostrar columna Unidad de arranque</sys:String>
     <sys:String x:Key="SettingsItem_ShowBusTypeColumn">Mostrar columna Tipo de bus</sys:String>
     <sys:String x:Key="SettingsItem_ShowDiskTypeColumn">Mostrar columna Tipo de disco</sys:String>
+    <sys:String x:Key="SettingsItem_ShowDriveLettersColumn">Mostrar columna de letra de unidad</sys:String>
     <sys:String x:Key="SettingsItem_ShowExit">Mostrar Salir en la barra de navegación</sys:String>
     <sys:String x:Key="SettingsItem_ShowFormatColumn">Mostrar columna de formato</sys:String>
     <sys:String x:Key="SettingsItem_ShowFriendlyName">Mostrar columna Friendly Name</sys:String>
