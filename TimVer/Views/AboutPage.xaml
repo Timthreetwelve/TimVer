@@ -200,10 +200,12 @@
                 </TextBlock>
                 <!--#endregion-->
 
+                <!--#region Separator-->
                 <Separator Grid.Row="10" Grid.Column="0"
                            Grid.ColumnSpan="3"
                            Margin="0,0,0,7"
                            Background="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}" />
+                <!--#endregion-->
 
                 <!--#region Translations-->
                 <Grid Grid.Row="11" Grid.Column="0">
@@ -214,6 +216,7 @@
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0"
                                HorizontalAlignment="Left"
+                               FontWeight="SemiBold"
                                Text="{DynamicResource About_Translations}" />
 
                     <TextBlock Grid.Row="1">
