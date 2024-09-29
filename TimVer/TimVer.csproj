@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <Content Include="Images\TV.ico" />
+    <Resource Include="Images\InvertedTV.png" />
     <Resource Include="Images\TV.png" />
   </ItemGroup>
 
