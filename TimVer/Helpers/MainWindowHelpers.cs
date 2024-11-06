@@ -16,29 +16,6 @@ internal static class MainWindowHelpers
     }
     #endregion Startup
 
-    #region Check command line
-    private static void CheckCommandLine()
-    {
-        if (CommandLineHelpers.ProcessCommandLine())
-        {
-            if (UserSettings.Setting!.KeepHistory)
-            {
-                HistoryHelpers.WriteHistory();
-            }
-            else
-            {
-                _log.Warn(GetStringResource("MsgText_HideButNoHistory"));
-            }
-            Application.Current.Shutdown();
-        }
-        else
-        {
-            MainWindowHelpers.ApplyUISettings();
-            TempSettings.Setting!.RunAccessPermitted = RegistryHelpers.RegRunAccessPermitted();
-        }
-    }
-    #endregion Check command line
-
     #region MainWindow Instance
     private static readonly MainWindow? _mainWindow = Application.Current.MainWindow as MainWindow;
     #endregion MainWindow Instance
@@ -180,7 +157,7 @@ internal static class MainWindowHelpers
     }
     #endregion Window Events
 
-    #region Write startup messages to the log
+    #region Log Startup messages
     /// <summary>
     /// Writes startup messages to the log.
     /// </summary>
@@ -201,25 +178,7 @@ internal static class MainWindowHelpers
         _log.Debug($"Operating System version: {AppInfo.OsPlatform}");
         _log.Debug($".NET version: {AppInfo.RuntimeVersion.Replace(".NET", "")}");
     }
-    #endregion Write startup messages to the log
-
-    #region Change mouse pointer
-    /// <summary>
-    /// Change to the wait mouse cursor.
-    /// </summary>
-    public static void MainWindowWaitPointer()
-    {
-        _mainWindow!.Cursor = Cursors.Wait;
-    }
-
-    /// <summary>
-    /// Change to the normal mouse cursor.
-    /// </summary>
-    public static void MainWindowNormalPointer()
-    {
-        _mainWindow!.Cursor = Cursors.Arrow;
-    }
-    #endregion Change mouse pointer
+    #endregion Log Startup messages
 
     #region Set theme
     /// <summary>
@@ -323,7 +282,7 @@ internal static class MainWindowHelpers
     }
     #endregion Set accent color
 
-    #region User interface size
+    #region Set UI size
     /// <summary>
     /// Sets the value for UI scaling
     /// </summary>
@@ -372,7 +331,7 @@ internal static class MainWindowHelpers
             UIScale(UserSettings.Setting.UISize);
         }
     }
-    #endregion User interface size
+    #endregion Set UI size
 
     #region Find a parent of a control
     /// <summary>
@@ -450,4 +409,45 @@ internal static class MainWindowHelpers
         return foundChild!;
     }
     #endregion Find a child of a control
+
+    #region Change mouse pointer
+    /// <summary>
+    /// Change to the wait mouse cursor.
+    /// </summary>
+    public static void MainWindowWaitPointer()
+    {
+        _mainWindow!.Cursor = Cursors.Wait;
+    }
+
+    /// <summary>
+    /// Change to the normal mouse cursor.
+    /// </summary>
+    public static void MainWindowNormalPointer()
+    {
+        _mainWindow!.Cursor = Cursors.Arrow;
+    }
+    #endregion Change mouse pointer
+
+    #region Check command line
+    private static void CheckCommandLine()
+    {
+        if (CommandLineHelpers.ProcessCommandLine())
+        {
+            if (UserSettings.Setting!.KeepHistory)
+            {
+                HistoryHelpers.WriteHistory();
+            }
+            else
+            {
+                _log.Warn(GetStringResource("MsgText_HideButNoHistory"));
+            }
+            Application.Current.Shutdown();
+        }
+        else
+        {
+            MainWindowHelpers.ApplyUISettings();
+            TempSettings.Setting!.RunAccessPermitted = RegistryHelpers.RegRunAccessPermitted();
+        }
+    }
+    #endregion Check command line
 }
