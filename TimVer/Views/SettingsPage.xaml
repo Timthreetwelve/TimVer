@@ -14,11 +14,7 @@
              FontFamily="Segoe UI" FontSize="14"
              TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
 
-    <!--#region DataContext & Resources-->
-    <UserControl.DataContext>
-        <viewmodels:NavigationViewModel />
-    </UserControl.DataContext>
-
+    <!--#region Resources-->
     <UserControl.Resources>
         <convert:BooleanInverter x:Key="BoolInverter" />
     </UserControl.Resources>
@@ -620,9 +616,6 @@
                                                Source={x:Static config:TempSettings.Setting}}">
                     <Expander.Header>
                         <Grid>
-                            <Grid.DataContext>
-                                <models:UILanguage />
-                            </Grid.DataContext>
                             <!--#region Row definitions-->
                             <Grid.RowDefinitions>
                                 <RowDefinition />
@@ -715,7 +708,6 @@
                                                           Source={x:Static config:UserSettings.Setting},
                                                           Converter={StaticResource BoolInverter}}"
                                       ItemsSource="{Binding DefinedLanguages}"
-                                      Loaded="CbxLanguage_Loaded"
                                       SelectedValue="{Binding Path=UILanguage,
                                                               Source={x:Static config:UserSettings.Setting}}"
                                       SelectedValuePath="LanguageCode"

@@ -11,8 +11,6 @@ internal sealed partial class NavigationViewModel : ObservableObject
         {
             NavigateToPage(UserSettings.Setting!.InitialPage);
         }
-
-        FontList ??= [.. Fonts.SystemFontFamilies.OrderBy(x => x.Source)];
     }
     #endregion Constructor
 
@@ -29,8 +27,6 @@ internal sealed partial class NavigationViewModel : ObservableObject
 
     [ObservableProperty]
     private static NavigationItem? _navItem;
-
-    public static List<FontFamily>? FontList { get; private set; }
     #endregion Properties
 
     #region List of navigation items
@@ -141,66 +137,6 @@ internal sealed partial class NavigationViewModel : ObservableObject
         ClipboardHelper.CopyPageToClipboard(CurrentViewModel!);
     }
     #endregion Copy to clipboard command
-
-    #region Add and remove from startup in registry
-    /// <summary>
-    /// Adds history collection to registry
-    /// </summary>
-    [RelayCommand]
-    private static void HistoryOnStartup(RoutedEventArgs e)
-    {
-        CheckBox? box = e.OriginalSource as CheckBox;
-        string result;
-        switch (box!.IsChecked)
-        {
-            case true:
-                if (!RegistryHelpers.RegRunEntry("TimVer"))
-                {
-                    result = RegistryHelpers.AddRegEntry("TimVer", AppInfo.AppPath + " --hide");
-                    if (result == "OK")
-                    {
-                        _log.Debug(@"TimVer added to HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
-                        SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_AddedToStartup"));
-                    }
-                    else
-                    {
-                        _log.Info($"TimVer add to startup failed: {result}");
-                        _ = new MDCustMsgBox(
-                            GetStringResource("MsgText_AddToStartupFailed"),
-                            GetStringResource("MsgText_ErrorCaption"),
-                            ButtonType.Ok,
-                            true,
-                            true,
-                            Application.Current.MainWindow,
-                            true).ShowDialog();
-                    }
-                }
-                break;
-
-            case false:
-                result = RegistryHelpers.RemoveRegEntry("TimVer");
-                if (result == "OK")
-                {
-                    _log.Info(@"TimVer removed from HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
-                    SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_RemovedFromStartup"));
-                }
-                else
-                {
-                    _log.Info($"Attempt to remove startup entry failed: {result}");
-                    _ = new MDCustMsgBox(
-                        GetStringResource("MsgText_RemoveFromStartupFailed"),
-                        GetStringResource("MsgText_ErrorCaption"),
-                        ButtonType.Ok,
-                        true,
-                        true,
-                        Application.Current.MainWindow,
-                        true).ShowDialog();
-                }
-                break;
-        }
-    }
-
-    #endregion Add and remove from startup in registry
 
     #region View log file command
     [RelayCommand]
