@@ -162,7 +162,7 @@ public partial class App : Application
         _log.Error(e.StackTrace);
 
         string msg = string.Format(CultureInfo.CurrentCulture,
-                                   $"{GetStringResource("MsgText_Error")}\n{e.Message}\n{GetStringResource("MsgText_Error_SeeLog")}");
+                                   $"{GetStringResource("MsgText_ErrorGeneral")}\n{e.Message}\n{GetStringResource("MsgText_SeeLogFile")}");
         _ = MessageBox.Show(msg,
             GetStringResource("MsgText_ErrorCaption"),
             MessageBoxButton.OK,
