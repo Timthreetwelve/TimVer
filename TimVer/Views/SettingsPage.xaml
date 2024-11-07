@@ -21,7 +21,6 @@
 
     <UserControl.Resources>
         <convert:BooleanInverter x:Key="BoolInverter" />
-        <convert:LanguageConverter x:Key="LangConverter" />
     </UserControl.Resources>
     <!--#endregion-->
 
@@ -717,9 +716,9 @@
                                                           Converter={StaticResource BoolInverter}}"
                                       ItemsSource="{Binding DefinedLanguages}"
                                       Loaded="CbxLanguage_Loaded"
-                                      SelectedItem="{Binding Path=UILanguage,
-                                                             Source={x:Static config:UserSettings.Setting},
-                                                             Converter={StaticResource LangConverter}}"
+                                      SelectedValue="{Binding Path=UILanguage,
+                                                              Source={x:Static config:UserSettings.Setting}}"
+                                      SelectedValuePath="LanguageCode"
                                       Style="{StaticResource MaterialDesignComboBox}">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
