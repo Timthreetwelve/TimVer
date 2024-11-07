@@ -66,4 +66,38 @@ internal static class ResourceHelpers
         return description.ToString()!;
     }
     #endregion Get a resource string
+
+    #region Compute percentage of language strings
+    /// <summary>
+    /// Compute percentage of strings by dividing the number of strings
+    /// for the supplied language by the total of en-US strings.
+    /// </summary>
+    /// <param name="language">Language code</param>
+    /// <returns>The percentage with no decimal places as a string. Includes the "%".</returns>
+    public static string GetLanguagePercent(string language)
+    {
+        ResourceDictionary dictionary = new()
+        {
+            Source = new Uri($"Languages/Strings.{language}.xaml", UriKind.RelativeOrAbsolute)
+        };
+        double percent = (double)dictionary.Count / TotalCount;
+        return percent.ToString("P0", CultureInfo.InvariantCulture);
+    }
+    #endregion Compute percentage of language strings
+
+    #region Properties
+    private static int _totalCount;
+    private static int TotalCount
+    {
+        get
+        {
+            if (_totalCount == 0)
+            {
+                _totalCount = GetTotalDefaultLanguageCount();
+            }
+            return _totalCount;
+        }
+        set => _totalCount = value;
+    }
+    #endregion Properties
 }

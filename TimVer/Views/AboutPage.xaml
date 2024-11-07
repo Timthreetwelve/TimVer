@@ -247,6 +247,9 @@
                                             MinWidth="90" />
                         <DataGridTextColumn Binding="{Binding Contributor}"
                                             MinWidth="185" />
+                        <DataGridTextColumn Binding="{Binding Note}"
+                                            MinWidth="90"
+                                             />
                     </DataGrid.Columns>
                 </DataGrid>
                 <!--#endregion-->
