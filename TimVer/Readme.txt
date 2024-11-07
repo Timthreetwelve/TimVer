@@ -134,7 +134,7 @@ TimVer uses the following packages:
 
     * Microsoft.Management.Infrastructure https://www.nuget.org/packages/Microsoft.Management.Infrastructure/3.0.0
 
-    * GitVersion https://github.com/GitTools/GitVersion
+    * 
 
     * OctoKit https://github.com/octokit/octokit.net
 
