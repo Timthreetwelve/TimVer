@@ -16,11 +16,7 @@
              FontFamily="Segoe UI" FontSize="14"
              TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
 
-    <!--#region DataContext-->
-    <UserControl.DataContext>
-        <viewmodels:AboutViewModel />
-    </UserControl.DataContext>
-
+    <!--#region Resources-->
     <UserControl.Resources>
         <convert:SpacingConverter x:Key="Spacing" />
     </UserControl.Resources>
