@@ -70,7 +70,15 @@ internal static class ResourceHelpers
     #region Get composite format for a resource string
     private static CompositeFormat GetCompositeResource(string key)
     {
-        return CompositeFormat.Parse(GetStringResource(key));
+        try
+        {
+            return CompositeFormat.Parse(GetStringResource(key));
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, $"Error creating composite format for key: {key}");
+            return CompositeFormat.Parse($"Error creating composite format for key: {key}");
+        }
     }
     #endregion Get composite format for a resource string
 
