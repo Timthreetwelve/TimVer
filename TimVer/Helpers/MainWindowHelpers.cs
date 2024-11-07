@@ -173,6 +173,10 @@ internal static class MainWindowHelpers
         {
             _log.Debug($"{AppInfo.AppName} is running as Administrator");
         }
+        if (CommandLineHelpers.CommandLineParserError is not null)
+        {
+            _log.Warn(CommandLineHelpers.CommandLineParserError);
+        }
 
         // Log the .NET version and OS platform
         _log.Debug($"Operating System version: {AppInfo.OsPlatform}");
@@ -443,11 +447,9 @@ internal static class MainWindowHelpers
             }
             Application.Current.Shutdown();
         }
-        else
-        {
-            MainWindowHelpers.ApplyUISettings();
-            TempSettings.Setting!.RunAccessPermitted = RegistryHelpers.RegRunAccessPermitted();
-        }
+
+        ApplyUISettings();
+        TempSettings.Setting!.RunAccessPermitted = RegistryHelpers.RegRunAccessPermitted();
     }
     #endregion Check command line
 }

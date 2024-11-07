@@ -11,21 +11,30 @@ static class CommandLineHelpers
     /// <returns><c>true</c> if "hide" option was specified.</returns>
     public static bool ProcessCommandLine()
     {
-        // Since this is not a console app, get the command line args from Environment
-        string[] args = Environment.GetCommandLineArgs();
+        CommandLineParser.CommandLineParser parser = new();
+        SwitchArgument hideArgument = new('h',
+                                                      "hide",
+                                                      "To hide or not to hide, that is the question.",
+                                                      false);
+        parser.Arguments.Add(hideArgument);
+        parser.AcceptSlash = true;
+        parser.IgnoreCase = true;
 
-        // Parser settings
-        Parser parser = new(s =>
+        try
         {
-            s.CaseSensitive = false;
-            s.IgnoreUnknownArguments = true;
-        });
-
-        // parses the command line. result object will hold the arguments
-        ParserResult<CommandLineOptions> result = parser.ParseArguments<CommandLineOptions>(args);
+            parser.ParseCommandLine(App.Args);
+        }
+        catch (UnknownArgumentException e)
+        {
+            CommandLineParserError = e.Message + e.StackTrace;
+        }
+        catch (Exception e)
+        {
+            CommandLineParserError = e.Message + e.StackTrace;
+        }
 
         // Check options
-        if (result?.Value.Hide == true)
+        if (hideArgument.Value)
         {
             _log.Debug("Command line argument \"hide\" specified.");
             UpdateHistoryOnly = true;
@@ -37,5 +46,10 @@ static class CommandLineHelpers
 
     #region Properties
     public static bool UpdateHistoryOnly { get; private set; }
+
+    /// <summary>
+    /// Holds exception message if there is a parser error.
+    /// </summary>
+    public static string? CommandLineParserError { get; private set; }
     #endregion Properties
 }
