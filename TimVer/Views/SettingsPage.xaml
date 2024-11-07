@@ -699,8 +699,7 @@
                                    Content="{DynamicResource SettingsItem_Language}"
                                    ToolTipService.InitialShowDelay="300"
                                    ToolTipService.Placement="Top" />
-                            <ComboBox x:Name="CbxLanguage"
-                                      Grid.Column="2"
+                            <ComboBox Grid.Column="2"
                                       Width="Auto" MinWidth="200"
                                       Margin="0,3,0,0" Padding="2,0,0,3"
                                       HorizontalAlignment="Left"
