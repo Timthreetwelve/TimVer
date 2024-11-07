@@ -17,10 +17,15 @@
     <GenerateAssemblyFileVersionAttribute>False</GenerateAssemblyFileVersionAttribute>
     <GenerateAssemblyInformationalVersionAttribute>False</GenerateAssemblyInformationalVersionAttribute>
     <GenerateAssemblyVersionAttribute>False</GenerateAssemblyVersionAttribute>
+    <CsWinRTAotOptimizerEnabled>false</CsWinRTAotOptimizerEnabled>
+  </PropertyGroup>
+
+  <!-- Analyzers -->
+  <PropertyGroup>
     <AnalysisMode>Recommended</AnalysisMode>
     <AnalysisLevel>8.0</AnalysisLevel>
   </PropertyGroup>
-
+  
   <ItemGroup>
     <Content Include="Images\TV.ico" />
     <Resource Include="Images\InvertedTV.png" />
