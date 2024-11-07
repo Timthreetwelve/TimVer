@@ -156,8 +156,7 @@ internal static class ComputerSystemHelpers
     private static string FormatUptime()
     {
         TimeSpan up = EnvironmentHelpers.GetUptime();
-        CompositeFormat composite = CompositeFormat.Parse(GetStringResource("HardwareInfo_UptimeString"));
-        return string.Format(CultureInfo.InvariantCulture, composite, up.Days, up.Hours, up.Minutes, up.Seconds);
+        return string.Format(CultureInfo.InvariantCulture, HardwareInfoUptimeString, up.Days, up.Hours, up.Minutes, up.Seconds);
     }
     #endregion Format uptime
 

@@ -52,8 +52,7 @@ public partial class EnvVarPage : UserControl
         }
         else
         {
-            CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_FilterRowsShown"));
-            SnackbarMsg.ClearAndQueueMessage(string.Format(CultureInfo.InvariantCulture, composite, EnvDataGrid.Items.Count), 2000);
+            SnackbarMsg.ClearAndQueueMessage(string.Format(CultureInfo.InvariantCulture, MsgTextFilterRowsShown, EnvDataGrid.Items.Count), 2000);
         }
     }
     #endregion Filter the datagrid

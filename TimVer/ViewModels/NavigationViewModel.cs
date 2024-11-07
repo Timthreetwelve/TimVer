@@ -392,15 +392,15 @@ internal sealed partial class NavigationViewModel : ObservableObject
         switch (messageType)
         {
             case "size":
-                composite = CompositeFormat.Parse(GetStringResource("MsgText_UISizeSet"));
+                composite = MsgTextUISizeSet;
                 messageVar = EnumHelpers.GetEnumDescription(UserSettings.Setting!.UISize);
                 break;
             case "theme":
-                composite = CompositeFormat.Parse(GetStringResource("MsgText_UIThemeSet"));
+                composite = MsgTextUIThemeSet;
                 messageVar = EnumHelpers.GetEnumDescription(UserSettings.Setting!.UITheme);
                 break;
             case "color":
-                composite = CompositeFormat.Parse(GetStringResource("MsgText_UIColorSet"));
+                composite = MsgTextUIColorSet;
                 messageVar = EnumHelpers.GetEnumDescription(UserSettings.Setting!.PrimaryColor);
                 break;
         }

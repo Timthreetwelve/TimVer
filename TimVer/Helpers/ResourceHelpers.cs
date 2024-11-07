@@ -67,6 +67,24 @@ internal static class ResourceHelpers
     }
     #endregion Get a resource string
 
+    #region Get composite format for a resource string
+    private static CompositeFormat GetCompositeResource(string key)
+    {
+        return CompositeFormat.Parse(GetStringResource(key));
+    }
+    #endregion Get composite format for a resource string
+
+    #region Composite format properties
+    internal static CompositeFormat HardwareInfoUptimeString { get; } = GetCompositeResource("HardwareInfo_UptimeString");
+    internal static CompositeFormat MsgTextAppUpdateNewerFound { get; } = GetCompositeResource("MsgText_AppUpdateNewerFound");
+    internal static CompositeFormat MsgTextErrorOpeningFile { get; } = GetCompositeResource("MsgText_ErrorOpeningFile");
+    internal static CompositeFormat MsgTextErrorReadingFile { get; } = GetCompositeResource("MsgText_ErrorReadingFile");
+    internal static CompositeFormat MsgTextFilterRowsShown { get; } = GetCompositeResource("MsgText_FilterRowsShown");
+    internal static CompositeFormat MsgTextUIColorSet { get; } = GetCompositeResource("MsgText_UIColorSet");
+    internal static CompositeFormat MsgTextUISizeSet { get; } = GetCompositeResource("MsgText_UISizeSet");
+    internal static CompositeFormat MsgTextUIThemeSet { get; } = GetCompositeResource("MsgText_UIThemeSet");
+    #endregion Composite format properties
+
     #region Compute percentage of language strings
     /// <summary>
     /// Compute percentage of strings by dividing the number of strings

@@ -1,4 +1,6 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+
+// Leave the Octokit using statement here. It's a problem in GlobalUsings.cs
 using Octokit;
 
 namespace TimVer.Helpers;
@@ -60,8 +62,7 @@ internal static class GitHubHelpers
         else
         {
             _log.Debug($"A newer release ({latestVersion}) has been found.");
-            CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_AppUpdateNewerFound"));
-            string msg = string.Format(CultureInfo.InvariantCulture, composite, latestVersion);
+            string msg = string.Format(CultureInfo.InvariantCulture, MsgTextAppUpdateNewerFound, latestVersion);
             _ = new MDCustMsgBox($"{msg}\n\n{GetStringResource("MsgText_AppUpdateGoToRelease")}\n",
                 "TimVer",
                 ButtonType.YesNo,
