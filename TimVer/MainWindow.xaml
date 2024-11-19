@@ -36,10 +36,6 @@
             <bh:InvokeCommandAction Command="{Binding KeyDownCommand}"
                                     PassEventArgsToCommand="True" />
         </bh:EventTrigger>
-        <bh:EventTrigger EventName="MouseRightButtonUp">
-            <bh:InvokeCommandAction Command="{Binding RightMouseUpCommand}"
-                                    PassEventArgsToCommand="True" />
-        </bh:EventTrigger>
     </bh:Interaction.Triggers>
     <!--#endregion-->
 
@@ -213,6 +209,12 @@
         <Grid Grid.Row="1" Grid.Column="1"
               Background="{DynamicResource MaterialDesign.Brush.Card.Background}">
             <ContentControl Content="{Binding CurrentViewModel}" />
+            <bh:Interaction.Triggers>
+                <bh:EventTrigger EventName="MouseRightButtonUp">
+                    <bh:InvokeCommandAction Command="{Binding RightMouseUpCommand}"
+                                            PassEventArgsToCommand="True" />
+                </bh:EventTrigger>
+            </bh:Interaction.Triggers>
         </Grid>
         <!--#endregion-->
     </Grid>

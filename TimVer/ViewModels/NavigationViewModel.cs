@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.ViewModels;
 
@@ -181,27 +181,27 @@ internal sealed partial class NavigationViewModel : ObservableObject
     [RelayCommand]
     private static void RightMouseUp(MouseButtonEventArgs e)
     {
-        if (e.OriginalSource is TextBlock text)
+        if (e.OriginalSource is not TextBlock text)
         {
-            try
-            {
-                // Skip the navigation menu
-                ListBox lb = MainWindowHelpers.FindParent<ListBox>(text);
-                if (lb?.Name == "NavigationListBox")
-                {
-                    return;
-                }
+            return;
+        }
 
-                // Copy to clipboard and display message.
-                if (ClipboardHelper.CopyTextToClipboard(text.Text))
-                {
-                    SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopiedToClipboardItem"));
-                }
-            }
-            catch (Exception ex)
+        try
+        {
+            if (ClipboardHelper.CopyTextToClipboard(text.Text))
             {
-                _log.Error(ex, $"Right-click event handler failed. {ex.Message}");
+                SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopiedToClipboardItem"));
+                _log.Debug($"{text.Text.Length} bytes copied to the clipboard");
             }
+
+            DataGridRow dgr = MainWindowHelpers.FindParent<DataGridRow>(text);
+            dgr.IsSelected = false;
+            DataGrid dg = MainWindowHelpers.FindParent<DataGrid>(dgr);
+            dg.Items.Refresh();
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, $"Right-click event handler failed. {ex.Message}");
         }
     }
     #endregion Right mouse button
