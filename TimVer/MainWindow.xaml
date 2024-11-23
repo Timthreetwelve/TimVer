@@ -10,6 +10,7 @@
         xmlns:viewmodels="clr-namespace:TimVer.ViewModels"
         mc:Ignorable="d"
         MinWidth="800" MinHeight="455"
+        d:DataContext="{d:DesignInstance Type=viewmodels:NavigationViewModel}"
         Background="{DynamicResource MaterialDesign.Brush.Background}"
         FontSize="12"
         Style="{StaticResource MaterialDesignWindow}"
@@ -21,10 +22,7 @@
                           Source={x:Static config:UserSettings.Setting}}"
         Visibility="Hidden">
 
-    <!--#region DataContext & Resources-->
-    <Window.DataContext>
-        <viewmodels:NavigationViewModel />
-    </Window.DataContext>
+    <!--#region Resources-->
     <Window.Resources>
         <convert:SelectedItemConverter x:Key="SelItemConv" />
     </Window.Resources>

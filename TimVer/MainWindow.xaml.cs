@@ -11,6 +11,8 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
 
+        DataContext = new NavigationViewModel();
+
         MainWindowHelpers.TimVerStartUp();
     }
 }
