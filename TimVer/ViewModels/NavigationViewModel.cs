@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.ViewModels;
 
@@ -140,7 +140,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
 
     #region View log file command
     [RelayCommand]
-    private static void ViewLogFile()
+    public static void ViewLogFile()
     {
         TextFileViewer.ViewTextFile(NLogHelpers.GetLogfileName());
     }
@@ -298,6 +298,12 @@ internal sealed partial class NavigationViewModel : ObservableObject
                 p.StartInfo.UseShellExecute = true;
                 p.StartInfo.ErrorDialog = false;
                 _ = p.Start();
+            }
+            if (e.Key == Key.K)
+            {
+                CompareLanguageDictionaries();
+                ViewLogFile();
+                e.Handled = true;
             }
             if (e.Key == Key.R)
             {
