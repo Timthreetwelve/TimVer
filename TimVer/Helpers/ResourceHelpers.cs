@@ -123,7 +123,6 @@ internal static class ResourceHelpers
             }
             return _totalCount;
         }
-        set => _totalCount = value;
     }
     #endregion Properties
 
