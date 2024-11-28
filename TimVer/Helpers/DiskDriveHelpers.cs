@@ -79,43 +79,10 @@ public static class DiskDriveHelpers
     public static List<LogicalDrives> GetLogicalDriveInfo()
     {
         List<LogicalDrives> logicalDrives = [];
-        if (GetLogicalDrives() != null)
-        {
-            MainWindowHelpers.MainWindowWaitPointer();
-            Stopwatch watch = Stopwatch.StartNew();
-            foreach (DriveInfo drive in GetLogicalDrives())
-            {
-                try
-                {
-                    if (GetDriveDetails(drive) != null)
-                    {
-                        logicalDrives.Add(GetDriveDetails(drive));
-                    }
-                }
-                catch (Exception ex)
-                {
-                    _log.Error(ex, $"Error processing drive {drive}");
-                    string errorMsg = GetStringResource("DriveInfo_ErrorProcessingDrive");
-                    _ = Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() =>
-                    _ = MessageBox.Show($"{errorMsg} {drive}\n{ex.Message}",
-                        GetStringResource("DriveInfo_Error"),
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Error)));
-                    LogicalDrives error = new()
-                    {
-                        Name = drive.Name,
-                        Label = GetStringResource("DriveInfo_ErrorSeeLog")
-                    };
-                    logicalDrives.Add(error);
-                }
-            }
-            watch.Stop();
-            MainWindowHelpers.MainWindowNormalPointer();
-            string suffix = (logicalDrives.Count == 1) ? string.Empty : "s";
-            _log.Debug($"Found {logicalDrives.Count} logical drive{suffix} in {watch.Elapsed.TotalMilliseconds:N2} ms");
-            return logicalDrives;
-        }
-        else
+        MainWindowHelpers.MainWindowWaitPointer();
+        Stopwatch watch = Stopwatch.StartNew();
+        DriveInfo[] drives = GetLogicalDrives();
+        if (drives.Length == 0)
         {
             LogicalDrives error = new()
             {
@@ -123,8 +90,43 @@ public static class DiskDriveHelpers
                 Label = GetStringResource("DriveInfo_ErrorSeeLog")
             };
             logicalDrives.Add(error);
+            watch.Stop();
+            MainWindowHelpers.MainWindowNormalPointer();
+            _log.Warn("No logical drives were found.");
             return logicalDrives;
         }
+        foreach (DriveInfo drive in drives)
+        {
+            try
+            {
+                if (GetDriveDetails(drive) != null)
+                {
+                    logicalDrives.Add(GetDriveDetails(drive));
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex, $"Error processing drive {drive}");
+                string errorMsg = GetStringResource("DriveInfo_ErrorProcessingDrive");
+                _ = Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() =>
+                _ = MessageBox.Show($"{errorMsg} {drive}\n{ex.Message}",
+                    GetStringResource("DriveInfo_Error"),
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error)));
+                LogicalDrives error = new()
+                {
+                    Name = drive.Name,
+                    Label = GetStringResource("DriveInfo_ErrorSeeLog")
+                };
+                logicalDrives.Add(error);
+            }
+        }
+        watch.Stop();
+        MainWindowHelpers.MainWindowNormalPointer();
+        string suffix = (logicalDrives.Count == 1) ? string.Empty : "s";
+        _log.Debug($"Found {logicalDrives.Count} logical drive{suffix} in {watch.Elapsed.TotalMilliseconds:N2} ms");
+        return logicalDrives;
+
     }
     #endregion Get logical drive information
 
@@ -292,7 +294,7 @@ public static class DiskDriveHelpers
                 ["Size"] = Math.Round(Convert.ToDouble(drive.CimInstanceProperties["Size"]
                               .Value, CultureInfo.InvariantCulture) / Math.Pow(gbPref, 3), 2)
                               .ToString(CultureInfo.InvariantCulture),
-                ["Letters"] = GetDriveLetters(CimStringProperty(drive,"DeviceID"))
+                ["Letters"] = GetDriveLetters(CimStringProperty(drive, "DeviceID"))
             }).FirstOrDefault()!;
         }
         catch (Exception ex)
