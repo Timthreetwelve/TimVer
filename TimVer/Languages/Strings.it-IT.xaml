@@ -57,7 +57,7 @@
     <sys:String x:Key="Button_CopyToClipboardToolTip">Copia questa pagina negli appunti</sys:String>
     <sys:String x:Key="Button_ExportSettings">Esportazione impostazioni</sys:String>
     <sys:String x:Key="Button_ExportSettingsToolTip">Esporta impostazioni correnti in un file.</sys:String>
-    <sys:String x:Key="Button_ImportSettings">Imposrta impostazioni</sys:String>
+    <sys:String x:Key="Button_ImportSettings">Importa impostazioni</sys:String>
     <sys:String x:Key="Button_ImportSettingsToolTip">Importa impostazioni da un file.</sys:String>
     <sys:String x:Key="Button_ListSettings">Impostazioni elenco</sys:String>
     <sys:String x:Key="Button_ListSettingsTooltip">Elenca (scrivi) le impostazioni nel file registro.</sys:String>
@@ -84,7 +84,7 @@
     <sys:String x:Key="DriveInfo_BusType_SD">Secure Digital (SD)</sys:String>
     <sys:String x:Key="DriveInfo_BusType_StorageSpaces">Spazio archiviazione</sys:String>
     <sys:String x:Key="DriveInfo_BusType_Unknown">Sconosciuto</sys:String>
-    <sys:String x:Key="DriveInfo_DeviceID">ID dispostivo</sys:String>
+    <sys:String x:Key="DriveInfo_DeviceID">ID dispositivo</sys:String>
     <sys:String x:Key="DriveInfo_DiskType">Tipo disco</sys:String>
     <sys:String x:Key="DriveInfo_DriveType_CDRom">CD-ROM</sys:String>
     <sys:String x:Key="DriveInfo_DriveLetters">Lettere unità</sys:String>
@@ -202,7 +202,7 @@
     <sys:String x:Key="MsgText_FilterOneRowShown">1 riga visualizzata</sys:String>
     <sys:String x:Key="MsgText_FilterRowsShown">{0} righe visualizzate</sys:String>
     <sys:String x:Key="MsgText_HideButNoHistory">È stata specificata l'opzione della riga di comando "hide", ma l'opzione per mantenere la cronologia è disabilitata. Uscita dal programma.</sys:String>
-    <sys:String x:Key="MsgText_ImportSettingsRestart">Per usaare le nuove impostazioni importate riavvia TimVer.</sys:String>
+    <sys:String x:Key="MsgText_ImportSettingsRestart">Per usare le nuove impostazioni importate riavvia TimVer.</sys:String>
     <sys:String x:Key="MsgText_Million">milioni</sys:String>
     <sys:String x:Key="MsgText_NotAvailable">Non disponibile</sys:String>
     <sys:String x:Key="MsgText_Opening">Apertura</sys:String>
@@ -331,7 +331,7 @@
     <sys:String x:Key="SettingsItem_StartCentered">Avvia con la finestra centrata sullo schermo</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Tema</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Rappresenta il numero di stringhe nella lingua attuale rispetto a quella predefinita (en-US).</sys:String>
-    <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Premi Ctrl+Maiusct+K per confrontare i file lingua. I risultati vengono scritti nel file registro.</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Premi Ctrl+Maiusc+K per confrontare i file lingua. I risultati vengono scritti nel file registro.</sys:String>
     <sys:String x:Key="SettingsItem_UISize">Dimensione UI</sys:String>
     <sys:String x:Key="SettingsItem_UseGB">Per calcoli capacità Usa GB (1000^3 byte) </sys:String>
     <sys:String x:Key="SettingsItem_UseGiB">Per calcoli capacità usa GiB (1024^3 byte) </sys:String>
