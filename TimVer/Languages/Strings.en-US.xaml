@@ -1,4 +1,4 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
@@ -55,13 +55,21 @@
     <sys:String x:Key="Button_CheckUpdate">Check for Update</sys:String>
     <sys:String x:Key="Button_Close">Close Menu</sys:String>
     <sys:String x:Key="Button_CopyToClipboardToolTip">Copy this page to the clipboard</sys:String>
+    <sys:String x:Key="Button_ExportSettings">Export Settings</sys:String>
+    <sys:String x:Key="Button_ExportSettingsToolTip">Export current settings to a file.</sys:String>
+    <sys:String x:Key="Button_ImportSettings">Import Settings</sys:String>
+    <sys:String x:Key="Button_ImportSettingsToolTip">Import settings from a file.</sys:String>
+    <sys:String x:Key="Button_ListSettings">List Settings</sys:String>
+    <sys:String x:Key="Button_ListSettingsTooltip">List (write) settings to the log file.</sys:String>
     <sys:String x:Key="Button_No">No</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
-    <sys:String x:Key="Button_OpenFolder">Open the App Folder</sys:String>
     <sys:String x:Key="Button_OpenAppFolder">Open App Folder</sys:String>
+    <sys:String x:Key="Button_OpenFolder">Open the App Folder</sys:String>
     <sys:String x:Key="Button_OpenFolderToolTip">Open the TimVer folder in file explorer</sys:String>
     <sys:String x:Key="Button_OpenLogFile">View Log File</sys:String>
     <sys:String x:Key="Button_OpenLogFileToolTip">Open the log file in the default application.</sys:String>
+    <sys:String x:Key="Button_OpenSettings">Open Settings</sys:String>
+    <sys:String x:Key="Button_OpenSettingsToolTip">Open the Settings file.</sys:String>
     <sys:String x:Key="Button_ThreeDotToolTip">Additional Actions</sys:String>
     <sys:String x:Key="Button_Yes">Yes</sys:String>
     <!--  Disk Drive Information Page  -->
@@ -184,12 +192,17 @@
     <sys:String x:Key="MsgText_ElapsedTime">Elapsed time</sys:String>
     <sys:String x:Key="MsgText_Error_FileExplorer">Error trying to open File Explorer.</sys:String>
     <sys:String x:Key="MsgText_ErrorCaption">ERROR</sys:String>
+    <sys:String x:Key="MsgText_ErrorExportingSettings">Error exporting settings file.</sys:String>
     <sys:String x:Key="MsgText_ErrorGeneral">An error has occurred.</sys:String>
+    <sys:String x:Key="MsgText_ErrorImportingSettings">Error importing settings file.</sys:String>
     <sys:String x:Key="MsgText_ErrorOpeningFile">Error opening {0}</sys:String>
     <sys:String x:Key="MsgText_ErrorReadingFile">Error reading {0}</sys:String>
+    <sys:String x:Key="MsgText_ErrorReadingSettings">Error reading settings file.</sys:String>
+    <sys:String x:Key="MsgText_ErrorSavingSettings">Error saving settings file.</sys:String>
     <sys:String x:Key="MsgText_FilterOneRowShown">1 row shown</sys:String>
     <sys:String x:Key="MsgText_FilterRowsShown">{0} rows shown</sys:String>
     <sys:String x:Key="MsgText_HideButNoHistory">The command line option "hide" was specified, but the option to keep history is false. Exiting.</sys:String>
+    <sys:String x:Key="MsgText_ImportSettingsRestart">Please restart TimVer to use the imported settings.</sys:String>
     <sys:String x:Key="MsgText_Million">million</sys:String>
     <sys:String x:Key="MsgText_NotAvailable">Not Available</sys:String>
     <sys:String x:Key="MsgText_Opening">Opening</sys:String>
@@ -278,11 +291,13 @@
     <sys:String x:Key="SettingsItem_DisplayFont">Display Font</sys:String>
     <sys:String x:Key="SettingsItem_DisplayUser">Display registered user and organization on Windows Information page</sys:String>
     <sys:String x:Key="SettingsItem_EditExcludeToolTip">Shift-Click to open file with default application</sys:String>
+    <sys:String x:Key="SettingsItem_EditSettingsWarning">Any changes made to the settings file while the app is running will be overwritten!</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Enable language testing</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBoot">Update build history on Windows startup</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine1">Enabling this option will add TimVer to Windows startup for the purpose of updating a Build History file.</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine2">This option is not available when running TimVer from a removable drive.</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine3">See the ReadMe file for more information.</sys:String>
+    <sys:String x:Key="SettingsItem_ImportWarning">Importing settings will cause application to restart!</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Include debug level messages in log file</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Initial Page Displayed</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Keep TimVer on top of other windows</sys:String>
@@ -327,10 +342,12 @@
     <sys:String x:Key="SettingsSection_AppSettings">Application Settings</sys:String>
     <sys:String x:Key="SettingsSection_DriveSettings">Disk Drive Settings</sys:String>
     <sys:String x:Key="SettingsSection_Language">Language Settings</sys:String>
+    <sys:String x:Key="SettingsSection_SettingsFile">Settings File</sys:String>
     <sys:String x:Key="SettingsSection_UISettings">UI Settings</sys:String>
     <sys:String x:Key="SettingsSubHead_AppSettings">Initial page, History options, Show user, and Log verbosity</sys:String>
     <sys:String x:Key="SettingsSubHead_DriveSettings">Use GB or GiB, Include drives by status and more</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Language Settings and Testing</sys:String>
+    <sys:String x:Key="SettingsSubHead_SettingsFile">Import, Export, Open, and List application settings</sys:String>
     <sys:String x:Key="SettingsSubHead_UISettings">Theme, Accent Color, UI Size, Row Height, Start Position and more</sys:String>
     <!--  Windows Information Page  -->
     <sys:String x:Key="WindowsInfo_Architecture">Architecture</sys:String>
@@ -441,5 +458,24 @@
     <!-- A | DriveInfo_DriveLetters -->
     <!-- A | SettingsItem_ShowDriveLettersColumn -->
     <!-- End of changes on 2024/09/23 @ 20:35 UTC-->
+
+    <!-- Begin changes on 2024/11/17 @ 22:15 UTC -->
+    <!-- A | Button_ExportSettings -->
+    <!-- A | Button_ExportSettingsToolTip -->
+    <!-- A | Button_ImportSettings -->
+    <!-- A | Button_ImportSettingsToolTip -->
+    <!-- A | Button_ListSettings -->
+    <!-- A | Button_ListSettingsTooltip -->
+    <!-- A | Button_OpenAppFolderToolTip -->
+    <!-- A | Button_OpenSettings -->
+    <!-- A | Button_OpenSettingsToolTip -->
+    <!-- A | MsgText_Error_ExportingSettings -->
+    <!-- A | MsgText_Error_ImportingSettings -->
+    <!-- A | MsgText_Error_SavingSettings -->
+    <!-- A | MsgText_ImportSettingsRestart -->
+    <!-- A | SettingsSection_SettingsFile -->
+    <!-- A | SettingsSubHead_SettingsFile -->
+    <!-- A | SettingsItem_EditSettingsWarning -->
+    <!-- End changes on 2024/11/22 @ 22:25 UTC -->
 
 </ResourceDictionary>

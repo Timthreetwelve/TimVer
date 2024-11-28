@@ -1,4 +1,4 @@
-<UserControl x:Class="TimVer.Views.SettingsPage"
+﻿<UserControl x:Class="TimVer.Views.SettingsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:bh="http://schemas.microsoft.com/xaml/behaviors"
@@ -10,7 +10,7 @@
              xmlns:models="clr-namespace:TimVer.Models"
              xmlns:viewmodels="clr-namespace:TimVer.ViewModels"
              mc:Ignorable="d"
-             d:DesignHeight="650" d:DesignWidth="800"
+             d:DesignHeight="900" d:DesignWidth="800"
              FontFamily="Segoe UI" FontSize="14"
              TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
 
@@ -27,6 +27,8 @@
             <Grid>
                 <!--#region Row definitions-->
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="10" />
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="10" />
                     <RowDefinition Height="auto" />
@@ -770,12 +772,126 @@
                                       Content="{DynamicResource SettingsItem_EnableLanguageTesting}"
                                       IsChecked="{Binding LanguageTesting,
                                                           Source={x:Static config:UserSettings.Setting}}" />
-                            <Button Width="auto"
-                                    Margin="20,0" Padding="20,0"
+                            <Button Width="auto" Height="auto"
+                                    Margin="20,0" Padding="15,0,15,2"
                                     Command="{Binding OpenAppFolderCommand}"
                                     Content="{DynamicResource Button_OpenAppFolder}"
                                     Style="{StaticResource PlainOutlinedButton}" />
                         </StackPanel>
+                    </Grid>
+                </Expander>
+                <!--#endregion-->
+
+                <!--#region Settings backup-->
+                <Expander Grid.Row="8"
+                          materialDesign:ExpanderAssist.HorizontalHeaderPadding="10"
+                          IsExpanded="{Binding BackupExpanderOpen,
+                                               Source={x:Static config:TempSettings.Setting}}">
+                    <Expander.Header>
+                        <Grid>
+                            <!--#region Row definitions-->
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="24" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="55" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <!--#endregion-->
+                            <materialDesign:PackIcon Grid.RowSpan="3"
+                                                     Width="28" Height="28"
+                                                     Margin="0,5,0,0"
+                                                     VerticalAlignment="Center"
+                                                     Foreground="{DynamicResource MaterialDesign.Brush.Primary}"
+                                                     Kind="CogTransferOutline" />
+                            <TextBlock Grid.Row="0" Grid.Column="1"
+                                       FontSize="16" FontWeight="SemiBold"
+                                       Text="{DynamicResource SettingsSection_SettingsFile}"
+                                       TextWrapping="Wrap" />
+
+                            <TextBlock Grid.Row="2" Grid.Column="1"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       FontSize="12"
+                                       Text="{DynamicResource SettingsSubHead_SettingsFile}"
+                                       TextWrapping="Wrap" />
+                        </Grid>
+                    </Expander.Header>
+                    <Grid Margin="30,10,0,20">
+                        <Grid.DataContext>
+                            <viewmodels:SettingsViewModel />
+                        </Grid.DataContext>
+                        <!--#region Row & Column definitions-->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="10" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="45" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <!--#endregion-->
+                        <Grid Grid.Row="0" Grid.Column="1"
+                              Margin="4,0"
+                              Grid.IsSharedSizeScope="True">
+                            <!--#region Row & Column definitions-->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition SharedSizeGroup="A" />
+                                <ColumnDefinition SharedSizeGroup="A" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <!--#endregion-->
+                            <Button Grid.Row="0" Grid.Column="0"
+                                    Width="auto" Height="auto"
+                                    Margin="0,0,20,0" Padding="15,0,15,2"
+                                    Command="{Binding ExportSettingsCommand}"
+                                    Content="{DynamicResource Button_ExportSettings}"
+                                    Style="{StaticResource PlainOutlinedButton}"
+                                    ToolTip="{DynamicResource Button_ExportSettingsToolTip}"
+                                    ToolTipService.InitialShowDelay="200"
+                                    ToolTipService.Placement="Top" />
+                            <Button Grid.Row="0" Grid.Column="1"
+                                    Width="auto" Height="auto"
+                                    Margin="0,0,20,0" Padding="15,0,15,2"
+                                    Command="{Binding ImportSettingsCommand}"
+                                    Content="{DynamicResource Button_ImportSettings}"
+                                    Style="{StaticResource PlainOutlinedButton}"
+                                    ToolTip="{DynamicResource Button_ImportSettingsToolTip}"
+                                    ToolTipService.InitialShowDelay="200"
+                                    ToolTipService.Placement="Top" />
+                            <Button Grid.Row="2" Grid.Column="0"
+                                    Width="auto" Height="auto"
+                                    Margin="0,0,20,0" Padding="15,0,15,2"
+                                    Command="{Binding OpenSettingsCommand}"
+                                    Content="{DynamicResource Button_OpenSettings}"
+                                    Style="{StaticResource PlainOutlinedButton}"
+                                    ToolTip="{DynamicResource Button_OpenSettingsToolTip}"
+                                    ToolTipService.InitialShowDelay="200"
+                                    ToolTipService.Placement="Top" />
+                            <Button Grid.Row="2" Grid.Column="1"
+                                    Width="auto" Height="auto"
+                                    Margin="0,0,20,0" Padding="15,0,15,2"
+                                    Command="{Binding DumpSettingsCommand}"
+                                    Content="{DynamicResource Button_ListSettings}"
+                                    Style="{StaticResource PlainOutlinedButton}"
+                                    ToolTip="{DynamicResource Button_ListSettingsTooltip}"
+                                    ToolTipService.InitialShowDelay="200"
+                                    ToolTipService.Placement="Top" />
+                        </Grid>
+                        <TextBlock Grid.Row="2" Grid.Column="1"
+                                   Margin="4,10,0,0"
+                                   Foreground="OrangeRed"
+                                   Text="{DynamicResource SettingsItem_EditSettingsWarning}"
+                                   TextWrapping="Wrap" />
+
                     </Grid>
                 </Expander>
                 <!--#endregion-->

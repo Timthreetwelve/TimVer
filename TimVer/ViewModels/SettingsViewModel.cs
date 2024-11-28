@@ -20,6 +20,7 @@ public partial class SettingsViewModel : ObservableObject
     #endregion Constructor
 
     #region Relay commands
+    #region Open folder
     [RelayCommand]
     private static void OpenAppFolder()
     {
@@ -52,6 +53,41 @@ public partial class SettingsViewModel : ObservableObject
                      true).ShowDialog();
         }
     }
+    #endregion
+
+    #region Open settings
+    [RelayCommand]
+    private static void OpenSettings()
+    {
+        ConfigHelpers.SaveSettings();
+        TextFileViewer.ViewTextFile(ConfigHelpers.SettingsFileName!);
+    }
+    #endregion Open settings
+
+    #region Export settings
+    [RelayCommand]
+    private static void ExportSettings()
+    {
+        ConfigHelpers.ExportSettings();
+    }
+    #endregion Export settings
+
+    #region Import settings
+    [RelayCommand]
+    private static void ImportSettings()
+    {
+        ConfigHelpers.ImportSettings();
+    }
+    #endregion Import settings
+
+    #region List (dump) settings to log file
+    [RelayCommand]
+    private static void DumpSettings()
+    {
+        ConfigHelpers.DumpSettings();
+        NavigationViewModel.ViewLogFile();
+    }
+    #endregion List (dump) settings to log file
 
     #region Add and remove from startup in registry
     /// <summary>

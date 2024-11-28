@@ -34,4 +34,7 @@ internal sealed partial class TempSettings : ConfigManager<TempSettings>
 
     [ObservableProperty]
     private static bool _runAccessPermitted;
+
+    [ObservableProperty]
+    private static bool _backupExpanderOpen;
 }
