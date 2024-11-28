@@ -42,18 +42,14 @@ public partial class EnvVarPage : UserControl
             EnvDataGrid.Items.Filter = o =>
             {
                 EnvVariable? envVariable = o as EnvVariable;
-                return envVariable!.Variable!.Contains(filterText!, StringComparison.CurrentCultureIgnoreCase);
+                return envVariable!.Variable!.Contains(filterText, StringComparison.CurrentCultureIgnoreCase);
             };
         }
 
-        if (EnvDataGrid.Items.Count == 1)
-        {
-            SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_FilterOneRowShown"), 2000);
-        }
-        else
-        {
-            SnackbarMsg.ClearAndQueueMessage(string.Format(CultureInfo.InvariantCulture, MsgTextFilterRowsShown, EnvDataGrid.Items.Count), 2000);
-        }
+        SnackbarMsg.ClearAndQueueMessage(
+             EnvDataGrid.Items.Count == 1
+                    ? GetStringResource("MsgText_FilterOneRowShown")
+                    : string.Format(CultureInfo.InvariantCulture, MsgTextFilterRowsShown, EnvDataGrid.Items.Count), 2000);
     }
     #endregion Filter the datagrid
 }
