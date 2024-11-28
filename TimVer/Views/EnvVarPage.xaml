@@ -55,7 +55,7 @@
                    FontSize="14">
             <Run Text="{Binding Items.Count, ElementName=EnvDataGrid, Mode=OneWay}" />
             <Run Text=" / " />
-            <Run Text="{Binding ItemsSource.Count, ElementName=EnvDataGrid, Mode=OneWay}" />
+            <Run Text="{Binding EnvVariableList.Count, Mode=OneWay}" />
         </TextBlock>
         <!--#endregion-->
 
