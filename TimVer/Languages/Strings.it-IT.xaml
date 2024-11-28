@@ -15,7 +15,7 @@
 
         Translation contributed by:  RB
 
-        Date last update:            26.09.2024
+        Date last update:            28.11.2024
 
         ======================================================================
 
@@ -55,6 +55,12 @@
     <sys:String x:Key="Button_CheckUpdate">Controlla aggiornamenti</sys:String>
     <sys:String x:Key="Button_Close">Chiudi menu</sys:String>
     <sys:String x:Key="Button_CopyToClipboardToolTip">Copia questa pagina negli appunti</sys:String>
+    <sys:String x:Key="Button_ExportSettings">Esportazione impostazioni</sys:String>
+    <sys:String x:Key="Button_ExportSettingsToolTip">Esporta impostazioni correnti in un file.</sys:String>
+    <sys:String x:Key="Button_ImportSettings">Imposrta impostazioni</sys:String>
+    <sys:String x:Key="Button_ImportSettingsToolTip">Importa impostazioni da un file.</sys:String>
+    <sys:String x:Key="Button_ListSettings">Impostazioni elenco</sys:String>
+    <sys:String x:Key="Button_ListSettingsTooltip">Elenca (scrivi) le impostazioni nel file registro.</sys:String>
     <sys:String x:Key="Button_No">No</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
     <sys:String x:Key="Button_OpenFolder">Apri cartella</sys:String>
@@ -62,6 +68,8 @@
     <sys:String x:Key="Button_OpenFolderToolTip">Apri cartella TimVer in Esplora file</sys:String>
     <sys:String x:Key="Button_OpenLogFile">Visualizza file registro eventi</sys:String>
     <sys:String x:Key="Button_OpenLogFileToolTip">Apri file registro eventi nell'applicazione predefinita.</sys:String>
+    <sys:String x:Key="Button_OpenSettings">Apri impostazioni</sys:String>
+    <sys:String x:Key="Button_OpenSettingsToolTip">Apri il file Impostazioni.</sys:String>
     <sys:String x:Key="Button_ThreeDotToolTip">Azioni aggiuntive</sys:String>
     <sys:String x:Key="Button_Yes">Sì</sys:String>
     <!--  Disk Drive Information Page  -->
@@ -184,12 +192,17 @@
     <sys:String x:Key="MsgText_ElapsedTime">Tempo trascorso</sys:String>
     <sys:String x:Key="MsgText_Error_FileExplorer">Errore durante il tentativo di apertura File Explorer.</sys:String>
     <sys:String x:Key="MsgText_ErrorCaption">ERRORE</sys:String>
+    <sys:String x:Key="MsgText_ErrorExportingSettings">Errore durante l'esportazione del file delle impostazioni.</sys:String>
     <sys:String x:Key="MsgText_ErrorGeneral">Si è verificato un errore.</sys:String>
+    <sys:String x:Key="MsgText_ErrorImportingSettings">Errore durante l'importazione del file delle impostazioni.</sys:String>
     <sys:String x:Key="MsgText_ErrorOpeningFile">Errore in apertura di {0}</sys:String>
     <sys:String x:Key="MsgText_ErrorReadingFile">Errore in lettura di {0}</sys:String>
+    <sys:String x:Key="MsgText_ErrorReadingSettings">Errore durante la lettura del file impostazioni.</sys:String>
+    <sys:String x:Key="MsgText_ErrorSavingSettings">Errore durante il salvataggio del file impostazioni.</sys:String>
     <sys:String x:Key="MsgText_FilterOneRowShown">1 riga visualizzata</sys:String>
     <sys:String x:Key="MsgText_FilterRowsShown">{0} righe visualizzate</sys:String>
     <sys:String x:Key="MsgText_HideButNoHistory">È stata specificata l'opzione della riga di comando "hide", ma l'opzione per mantenere la cronologia è disabilitata. Uscita dal programma.</sys:String>
+    <sys:String x:Key="MsgText_ImportSettingsRestart">Per usaare le nuove impostazioni importate riavvia TimVer.</sys:String>
     <sys:String x:Key="MsgText_Million">milioni</sys:String>
     <sys:String x:Key="MsgText_NotAvailable">Non disponibile</sys:String>
     <sys:String x:Key="MsgText_Opening">Apertura</sys:String>
@@ -278,11 +291,13 @@
     <sys:String x:Key="SettingsItem_DisplayFont">Font visualizzazione</sys:String>
     <sys:String x:Key="SettingsItem_DisplayUser">Nella pagina Informazioni di Windows visualizza utente loggato e organizzazione </sys:String>
     <sys:String x:Key="SettingsItem_EditExcludeToolTip">Maiusc+clic per aprire il file con l'applicazione predefinita</sys:String>
+    <sys:String x:Key="SettingsItem_EditSettingsWarning">Qualsiasi modifica apportata al file delle impostazioni mentre l'app è in esecuzione verrà sovrascritta!</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Abilita test lingua GUI</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBoot">Aggiorna cronologia build all'avvio di Windows</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine1">Abilitando questa opzione si aggiungerà TimVer all'avvio di Windows allo scopo di aggiornare il file cronologia build.</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine2">Questa opzione non è disponibile quando si esegue TimVer da un'unità rimovibile.</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine3">Per ulteriori info consulta il file ReadMe.</sys:String>
+    <sys:String x:Key="SettingsItem_ImportWarning">L'importazione delle impostazioni causerà il riavvio dell'applicazione!</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Includi nel file registro messaggi livello debug</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Pagina iniziale visualizzata</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Mantieni TimVer in primo piano rispetto alle altre finestre</sys:String>
@@ -315,6 +330,8 @@
     <sys:String x:Key="SettingsItem_ShowVideoSelector">Visualizza selettore scheda video nella pagina video (grafica).</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">Avvia con la finestra centrata sullo schermo</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Tema</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Rappresenta il numero di stringhe nella lingua attuale rispetto a quella predefinita (en-US).</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Premi Ctrl+Maiusct+K per confrontare i file lingua. I risultati vengono scritti nel file registro.</sys:String>
     <sys:String x:Key="SettingsItem_UISize">Dimensione UI</sys:String>
     <sys:String x:Key="SettingsItem_UseGB">Per calcoli capacità Usa GB (1000^3 byte) </sys:String>
     <sys:String x:Key="SettingsItem_UseGiB">Per calcoli capacità usa GiB (1024^3 byte) </sys:String>
@@ -325,11 +342,13 @@
     <sys:String x:Key="SettingsSection_AppSettings">Impostazioni applicazione</sys:String>
     <sys:String x:Key="SettingsSection_DriveSettings">Impostazioni unità disco</sys:String>
     <sys:String x:Key="SettingsSection_Language">Lingua GUI</sys:String>
+    <sys:String x:Key="SettingsSection_SettingsFile">File impostazioni</sys:String>
     <sys:String x:Key="SettingsSection_UISettings">Impostazioni GUI</sys:String>
     <sys:String x:Key="SettingsSubHead_AppSettings">Pagina iniziale, opzioni cronologia, visualizza utente e dettagli registro eventi</sys:String>
     <sys:String x:Key="SettingsSubHead_DriveSettings">Usa GB o GiB, includi unità in base allo stato e altro</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Impostazioni lingua GUI (lavori in corso)</sys:String>
     <sys:String x:Key="SettingsSubHead_UISettings">Tema, colore evidenziazione, dimensione GUI, altezza riga, posizione iniziale e altro ancora</sys:String>
+    <sys:String x:Key="SettingsSubHead_UISettings">Tema, evidenziazione, dimensione UI, altezza riga, posizione iniziale e altro ancora</sys:String>
     <!--  Windows Information Page  -->
     <sys:String x:Key="WindowsInfo_Architecture">Architettura</sys:String>
     <sys:String x:Key="WindowsInfo_BuildBranch">Branch build</sys:String>
@@ -439,5 +458,24 @@
     <!-- A | DriveInfo_DriveLetters -->
     <!-- A | SettingsItem_ShowDriveLettersColumn -->
     <!-- End of changes on 2024/09/23 @ 20:35 UTC-->
+
+    <!-- Begin changes on 2024/11/28 @ 03:00 UTC -->
+    <!-- A | Button_ExportSettings -->
+    <!-- A | Button_ExportSettingsToolTip -->
+    <!-- A | Button_ImportSettings -->
+    <!-- A | Button_ImportSettingsToolTip -->
+    <!-- A | Button_ListSettings -->
+    <!-- A | Button_ListSettingsTooltip -->
+    <!-- A | Button_OpenAppFolderToolTip -->
+    <!-- A | Button_OpenSettings -->
+    <!-- A | Button_OpenSettingsToolTip -->
+    <!-- A | MsgText_Error_ExportingSettings -->
+    <!-- A | MsgText_Error_ImportingSettings -->
+    <!-- A | MsgText_Error_SavingSettings -->
+    <!-- A | MsgText_ImportSettingsRestart -->
+    <!-- A | SettingsSection_SettingsFile -->
+    <!-- A | SettingsSubHead_SettingsFile -->
+    <!-- A | SettingsItem_EditSettingsWarning -->
+    <!-- End changes on 2024/11/28 @ 03:00 UTC -->
 
 </ResourceDictionary>
