@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Helpers;
 
@@ -102,29 +102,37 @@ internal static class ResourceHelpers
     /// <returns>The percentage with no decimal places as a string. Includes the "%".</returns>
     public static string GetLanguagePercent(string language)
     {
-        ResourceDictionary dictionary = new()
+        ResourceDictionary dictionary = [];
+        try
         {
-            Source = new Uri($"Languages/Strings.{language}.xaml", UriKind.RelativeOrAbsolute)
-        };
-        double percent = (double)dictionary.Count / TotalCount;
-        return percent.ToString("P0", CultureInfo.InvariantCulture);
-    }
-    #endregion Compute percentage of language strings
-
-    #region Properties
-    private static int _totalCount;
-    private static int TotalCount
-    {
-        get
-        {
-            if (_totalCount == 0)
+            dictionary.Source = new Uri($"Languages/Strings.{language}.xaml", UriKind.RelativeOrAbsolute);
+            int totalCount = GetTotalDefaultLanguageCount();
+            if (totalCount == 0)
             {
-                _totalCount = GetTotalDefaultLanguageCount();
+                _log.Error("GetLanguagePercent totalCount is 0 for default dictionary");
+                return GetStringResource("MsgText_Error_Caption");
             }
-            return _totalCount;
+            if (dictionary.Count == 0)
+            {
+                _log.Error($"GetLanguagePercent Count is 0 for {dictionary.Source}");
+                return GetStringResource("MsgText_Error_Caption");
+            }
+            double percent = (double)dictionary.Count / totalCount;
+            percent = Math.Round(percent, 2, MidpointRounding.ToZero);
+            return percent.ToString("P0", CultureInfo.InvariantCulture);
+        }
+        catch (IOException ex)
+        {
+            _log.Error(ex, $"IO exception in GetLanguagePercent for {dictionary.Source}");
+            return GetStringResource("MsgText_Error_Caption");
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, $"Error in GetLanguagePercent for {dictionary.Source}");
+            return GetStringResource("MsgText_Error_Caption");
         }
     }
-    #endregion Properties
+    #endregion Compute percentage of language strings
 
     #region Compare language dictionaries
     /// <summary>
