@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Helpers;
 
@@ -128,8 +128,14 @@ internal static class ResourceHelpers
         }
         catch (Exception ex)
         {
-            _log.Error(ex, $"Error in GetLanguagePercent for {dictionary.Source}");
-            return GetStringResource("MsgText_Error_Caption");
+            if (ex.InnerException != null)
+            {
+                _log.Error(ex, $"Error in GetLanguagePercent for {dictionary.Source}\n{ex.InnerException}\n");
+            }
+            else
+            {
+                _log.Error(ex, $"Error in GetLanguagePercent for {dictionary.Source}");
+            }
             return GetStringResource("MsgText_ErrorCaption");
         }
     }
