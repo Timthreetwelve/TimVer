@@ -64,6 +64,14 @@
     <sys:String x:Key="Button_OpenLogFileToolTip">Abrir el archivo de registro en la aplicación por defecto</sys:String>
     <sys:String x:Key="Button_ThreeDotToolTip">Acciones adicionales</sys:String>
     <sys:String x:Key="Button_Yes">Sí</sys:String>
+    <sys:String x:Key="Button_ExportSettings">Configuración de exportación</sys:String>
+    <sys:String x:Key="Button_ExportSettingsToolTip">Exportar la configuración actual a un archivo.</sys:String>
+    <sys:String x:Key="Button_ImportSettings">Configuración de importación</sys:String>
+    <sys:String x:Key="Button_ImportSettingsToolTip">Importar la configuración de un archivo.</sys:String>
+    <sys:String x:Key="Button_ListSettings">Enumere la configuración</sys:String>
+    <sys:String x:Key="Button_ListSettingsTooltip">Enumere (escriba) la configuración en el archivo de registro.</sys:String>
+    <sys:String x:Key="Button_OpenSettings">Abrir Configuración</sys:String>
+    <sys:String x:Key="Button_OpenSettingsToolTip">Abra el archivo de configuración.</sys:String>
     <!--  Disk Drive Information Page  -->
     <sys:String x:Key="DriveInfo_BootDrive">Unidad de arranque</sys:String>
     <sys:String x:Key="DriveInfo_BusType">Tipo de bus</sys:String>
@@ -205,6 +213,11 @@
     <sys:String x:Key="MsgText_UISizeSet">Tamaño establecido en {0}</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">Tema establecido en {0}</sys:String>
     <sys:String x:Key="MsgText_WindowTitleAdministrator">Administrador</sys:String>
+    <sys:String x:Key="MsgText_ErrorExportingSettings">Error al exportar el archivo de configuración.</sys:String>
+    <sys:String x:Key="MsgText_ErrorImportingSettings">Error al importar el archivo de configuración.</sys:String>
+    <sys:String x:Key="MsgText_ErrorReadingSettings">Error al leer el archivo de configuración.</sys:String>
+    <sys:String x:Key="MsgText_ErrorSavingSettings">Error al guardar el archivo de configuración.</sys:String>
+    <sys:String x:Key="MsgText_ImportSettingsRestart">Reinicie TimVer para usar la configuración importada.</sys:String>
     <!--  Navigation Items and Titles  -->
     <sys:String x:Key="NavItem_About">Información</sys:String>
     <sys:String x:Key="NavItem_BuildHistory">Historial de compilación de Windows</sys:String>
@@ -321,6 +334,9 @@
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Usar el idioma de visualización de Windows</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">Cuando se selecciona esta opción, el idioma especificado en la configuración de Windows</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">se utilizará si hay una traducción disponible; de ​​lo contrario, se utilizará el inglés (en-US).</sys:String>
+    <sys:String x:Key="SettingsItem_EditSettingsWarning">¡Cualquier cambio realizado en el archivo de configuración mientras se ejecuta la aplicación se sobrescribirá!</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Representa el número de cadenas en el idioma actual en comparación con el valor predeterminado (en-US).</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Presione Ctrl+Shift+K para comparar archivos de idioma. Los resultados se escriben en el archivo de registro.</sys:String>
     <!--  Settings Page Expander Headings  -->
     <sys:String x:Key="SettingsSection_AppSettings">Configuración de la aplicación</sys:String>
     <sys:String x:Key="SettingsSection_DriveSettings">Configuración de la unidad de disco</sys:String>
@@ -330,6 +346,8 @@
     <sys:String x:Key="SettingsSubHead_DriveSettings">Utilice GB o GiB, incluya unidades por estado y más</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Configuración de idioma (trabajo en progreso)</sys:String>
     <sys:String x:Key="SettingsSubHead_UISettings">Tema, color de acento, tamaño de la interfaz de usuario, altura de fila, posición inicial y más</sys:String>
+    <sys:String x:Key="SettingsSection_SettingsFile">Archivo de configuración</sys:String>
+    <sys:String x:Key="SettingsSubHead_SettingsFile">Importar, Exportar, Abrir y Enumerar la configuración de la aplicación</sys:String>
     <!--  Windows Information Page  -->
     <sys:String x:Key="WindowsInfo_Architecture">Arquitectura del sistema operativo</sys:String>
     <sys:String x:Key="WindowsInfo_BuildBranch">Construir sucursal</sys:String>
