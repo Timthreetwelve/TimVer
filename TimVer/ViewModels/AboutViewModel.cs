@@ -52,15 +52,22 @@ public partial class AboutViewModel
     #region Add note to list of languages
     private void AddNote()
     {
-        foreach (UILanguage item in UILanguage.DefinedLanguages)
+        try
         {
-            // en-GB is a special case and therefore should not be listed.
-            // See the comments in Languages\Strings.en-GB.xaml.
-            if (item.LanguageCode is not "en-GB")
+            foreach (UILanguage item in UILanguage.DefinedLanguages)
             {
-                item.Note = GetLanguagePercent(item.LanguageCode!);
-                AnnotatedLanguageList.Add(item);
+                // en-GB is a special case and therefore should not be listed.
+                // See the comments in Languages\Strings.en-GB.xaml.
+                if (item.LanguageCode is not "en-GB")
+                {
+                    item.Note = GetLanguagePercent(item.LanguageCode!);
+                    AnnotatedLanguageList.Add(item);
+                }
             }
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, "Error in AddNote");
         }
     }
     #endregion Add note to list of languages
