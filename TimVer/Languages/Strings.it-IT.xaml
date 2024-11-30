@@ -15,7 +15,7 @@
 
         Translation contributed by:  RB
 
-        Date last update:            28.11.2024
+        Date last update:            29.11.2024
 
         ======================================================================
 
@@ -347,7 +347,7 @@
     <sys:String x:Key="SettingsSubHead_AppSettings">Pagina iniziale, opzioni cronologia, visualizza utente e dettagli registro eventi</sys:String>
     <sys:String x:Key="SettingsSubHead_DriveSettings">Usa GB o GiB, includi unità in base allo stato e altro</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Impostazioni lingua GUI (lavori in corso)</sys:String>
-    <sys:String x:Key="SettingsSubHead_UISettings">Tema, colore evidenziazione, dimensione GUI, altezza riga, posizione iniziale e altro ancora</sys:String>
+    <sys:String x:Key="SettingsSubHead_SettingsFile">Impostazioni applicazione importazione, esportazione, apertura, ed elenco</sys:String>
     <sys:String x:Key="SettingsSubHead_UISettings">Tema, evidenziazione, dimensione UI, altezza riga, posizione iniziale e altro ancora</sys:String>
     <!--  Windows Information Page  -->
     <sys:String x:Key="WindowsInfo_Architecture">Architettura</sys:String>
