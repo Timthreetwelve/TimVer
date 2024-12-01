@@ -128,14 +128,10 @@ internal static class ResourceHelpers
         }
         catch (Exception ex)
         {
-            if (ex.InnerException != null)
-            {
-                _log.Error(ex, $"Error in GetLanguagePercent for {dictionary.Source}\n{ex.InnerException}\n");
-            }
-            else
-            {
-                _log.Error(ex, $"Error in GetLanguagePercent for {dictionary.Source}");
-            }
+            _log.Error(ex,
+                ex.InnerException != null
+                    ? $"Error in GetLanguagePercent for {dictionary.Source}\n{ex.InnerException}\n"
+                    : $"Error in GetLanguagePercent for {dictionary.Source}");
             return GetStringResource("MsgText_ErrorCaption");
         }
     }
