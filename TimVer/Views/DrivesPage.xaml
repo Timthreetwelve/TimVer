@@ -7,6 +7,7 @@
              xmlns:global="clr-namespace:System.Globalization;assembly=mscorlib"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:models="clr-namespace:TimVer.Models"
              xmlns:viewmodels="clr-namespace:TimVer.ViewModels"
              mc:Ignorable="d"
              d:DesignHeight="750" d:DesignWidth="700"
@@ -268,12 +269,14 @@
                     <!--#region TextBlocks for details-->
                     <Grid Grid.Row="2">
                         <ScrollViewer VerticalAlignment="Top"
-                                      DataContext="{Binding SelectedItem,
-                                                            ElementName=PDisksDataGrid}"
                                       FontSize="14"
                                       Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                                       VerticalScrollBarVisibility="Auto">
-                            <Grid Margin="5,10">
+                            <Grid Margin="5,10"
+                                  d:DataContext="{d:DesignInstance models:PhysicalDrives,
+                                                                   IsDesignTimeCreatable=False}"
+                                  DataContext="{Binding SelectedItem,
+                                                        ElementName=PDisksDataGrid}">
                                 <!--#region Row & Column definitions-->
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="18" />
