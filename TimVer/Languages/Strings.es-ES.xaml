@@ -296,6 +296,7 @@
     <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine1">Al habilitar esta opción se agregará TimVer al inicio de Windows con el fin de actualizar un archivo del historial de compilación.</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine2">Esta opción no está disponible cuando se ejecuta TimVer desde una unidad extraíble.</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine3">Consulte el archivo Léame para obtener más información.</sys:String>
+    <sys:String x:Key="SettingsItem_ImportWarning">¡La importación de configuraciones hará que la aplicación se reinicie!</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Incluir mensajes de nivel de depuración en el archivo de registro</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Página inicial mostrada</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Mantenga TimVer encima de otras ventanas</sys:String>
