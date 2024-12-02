@@ -55,6 +55,12 @@
     <sys:String x:Key="Button_Close">메뉴 닫기</sys:String>
     <sys:String x:Key="Button_CheckUpdate">업데이트 확인</sys:String>
     <sys:String x:Key="Button_CopyToClipboardToolTip">이 페이지를 클립보드로 복사</sys:String>
+    <sys:String x:Key="Button_ExportSettings">설정 내보내기</sys:String>
+    <sys:String x:Key="Button_ExportSettingsToolTip">현재 설정을 파일로 내보냅니다.</sys:String>
+    <sys:String x:Key="Button_ImportSettings">설정 가져오기</sys:String>
+    <sys:String x:Key="Button_ImportSettingsToolTip">파일에서 설정을 가져옵니다.</sys:String>
+    <sys:String x:Key="Button_ListSettings">설정 목록</sys:String>
+    <sys:String x:Key="Button_ListSettingsTooltip">로그 파일에 설정을 나열 (쓰기)합니다.</sys:String>
     <sys:String x:Key="Button_No">아니오</sys:String>
     <sys:String x:Key="Button_OK">확인</sys:String>
     <sys:String x:Key="Button_OpenFolder">앱 폴더 열기</sys:String>
@@ -62,6 +68,8 @@
     <sys:String x:Key="Button_OpenFolderToolTip">파일 탐색기에서 TimVer 폴더 열기</sys:String>
     <sys:String x:Key="Button_OpenLogFile">로그 파일 보기</sys:String>
     <sys:String x:Key="Button_OpenLogFileToolTip">기본 응용 프로그램에서 로그 파일을 엽니다.</sys:String>
+    <sys:String x:Key="Button_OpenSettings">설정 열기</sys:String>
+    <sys:String x:Key="Button_OpenSettingsToolTip">설정 파일을 엽니다..</sys:String>
     <sys:String x:Key="Button_ThreeDotToolTip">추가 작업</sys:String>
     <sys:String x:Key="Button_Yes">예</sys:String>
     <!--  Disk Drive Information Page  -->
@@ -182,14 +190,18 @@
     <sys:String x:Key="MsgText_CopyToClipboardInvalid">클립보드로 복사가 이 페이지에서 유효하지 않습니다</sys:String>
     <sys:String x:Key="MsgText_DriveInfoRefreshed">디스크 드라이브 정보 새로 고침</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">경과 시간</sys:String>
+    <sys:String x:Key="MsgText_ErrorExportingSettings">설정 파일을 내보내는 동안 오류가 발생했습니다.</sys:String>
     <sys:String x:Key="MsgText_Error_FileExplorer">파일 탐색기를 여는 중 오류가 발생했습니다.</sys:String>
     <sys:String x:Key="MsgText_ErrorCaption">오류</sys:String>
     <sys:String x:Key="MsgText_ErrorGeneral">오류가 발생했습니다.</sys:String>
+    <sys:String x:Key="MsgText_ErrorImportingSettings">설정 파일을 가져오는 동안 오류가 발생했습니다.</sys:String>
     <sys:String x:Key="MsgText_ErrorOpeningFile">{0}을(를) 여는 중 오류 발생</sys:String>
     <sys:String x:Key="MsgText_ErrorReadingFile">{0}을(를) 읽는 중 오류 발생</sys:String>
+    <sys:String x:Key="MsgText_ErrorSavingSettings">설정 파일을 저장하는 동안 오류가 발생했습니다.</sys:String>
     <sys:String x:Key="MsgText_FilterOneRowShown">1행 표시됨</sys:String>
     <sys:String x:Key="MsgText_FilterRowsShown">{0}행 표시됨</sys:String>
     <sys:String x:Key="MsgText_HideButNoHistory">명령줄 옵션 "숨김"이 지정되었지만 기록을 유지하는 옵션이 거짓입니다. 종료 중입니다.</sys:String>
+    <sys:String x:Key="MsgText_ImportSettingsRestart">가져온 설정을 사용하려면 Get My IP를 다시 시작해 주세요.</sys:String>
     <sys:String x:Key="MsgText_Million">백만</sys:String>
     <sys:String x:Key="MsgText_NotAvailable">사용할 수 없음</sys:String>
     <sys:String x:Key="MsgText_Opening">열기</sys:String>
@@ -278,6 +290,7 @@
     <sys:String x:Key="SettingsItem_DisplayFont">디스플레이 글꼴</sys:String>
     <sys:String x:Key="SettingsItem_DisplayUser">Windows 정보 페이지에 등록된 사용자 및 조직 표시</sys:String>
     <sys:String x:Key="SettingsItem_EditExcludeToolTip">기본 응용 프로그램으로 파일을 열려면 Shift-클릭하세요.</sys:String>
+    <sys:String x:Key="SettingsItem_EditSettingsWarning">앱이 실행되는 동안 설정 파일이 변경되면 덮어쓰기됩니다!</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">언어 테스트 사용</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBoot">Windows 시작 시 빌드 기록 업데이트</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine1">이 옵션을 활성화하면 빌드 기록 파일을 업데이트하기 위해 Windows 시작 시 TimVer가 추가됩니다.</sys:String>
@@ -315,6 +328,8 @@
     <sys:String x:Key="SettingsItem_ShowVideoSelector">그래픽 (비디오) 페이지에 비디오 어댑터 선택기 표시</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">화면 중앙에 창을 두고 시작</sys:String>
     <sys:String x:Key="SettingsItem_Theme">테마</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine1">기본값 (en-US)과 비교하여 현재 언어의 문자열 수를 나타냅니다.</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Ctrl+Shift+K를 눌러 언어 파일을 비교합니다. 결과는 로그 파일에 기록됩니다.</sys:String>
     <sys:String x:Key="SettingsItem_UISize">UI 크기</sys:String>
     <sys:String x:Key="SettingsItem_UseGB">용량 계산에 GB (1000^3바이트) 사용</sys:String>
     <sys:String x:Key="SettingsItem_UseGiB">용량 계산에 GiB (1024^3바이트) 사용</sys:String>
@@ -325,10 +340,12 @@
     <sys:String x:Key="SettingsSection_AppSettings">응용 프로그램 설정</sys:String>
     <sys:String x:Key="SettingsSection_DriveSettings">디스크 드라이브 설정</sys:String>
     <sys:String x:Key="SettingsSection_Language">언어</sys:String>
+    <sys:String x:Key="SettingsSection_SettingsFile">설정 파일</sys:String>
     <sys:String x:Key="SettingsSection_UISettings">UI 설정</sys:String>
     <sys:String x:Key="SettingsSubHead_AppSettings">초기 페이지, 기록 옵션, 사용자 표시 및 로그 상세 내용</sys:String>
     <sys:String x:Key="SettingsSubHead_DriveSettings">GB 또는 GiB 사용, 상태별 드라이브 포함 등</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">언어 설정 및 테스트</sys:String>
+    <sys:String x:Key="SettingsSubHead_SettingsFile">가져오기, 내보내기, 열기 및 응용 프로그램 목록  설정</sys:String>
     <sys:String x:Key="SettingsSubHead_UISettings">테마, 강조 색상, UI 크기, 행 높이, 시작 위치 등</sys:String>
     <!--  Windows Information Page  -->
     <sys:String x:Key="WindowsInfo_Architecture">아키텍쳐</sys:String>
