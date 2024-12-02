@@ -560,6 +560,7 @@
                                       Width="Auto" MinWidth="200"
                                       Margin="0,3,0,0" Padding="3,0,0,3"
                                       HorizontalAlignment="Left"
+                                      d:DataContext="{d:DesignInstance Type=viewmodels:SettingsViewModel}"
                                       ItemsSource="{Binding FontList}"
                                       SelectedValue="{Binding SelectedFont,
                                                               Source={x:Static config:UserSettings.Setting}}"
