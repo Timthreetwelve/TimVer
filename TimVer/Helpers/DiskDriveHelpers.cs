@@ -76,9 +76,9 @@ public static class DiskDriveHelpers
     #endregion Get array of logical drives
 
     #region Get logical drive information
-    public static List<LogicalDrives> GetLogicalDriveInfo()
+    public static List<LogicalDrives?> GetLogicalDriveInfo()
     {
-        List<LogicalDrives> logicalDrives = [];
+        List<LogicalDrives?> logicalDrives = [];
         MainWindowHelpers.MainWindowWaitPointer();
         Stopwatch watch = Stopwatch.StartNew();
         DriveInfo[] drives = GetLogicalDrives();
@@ -126,24 +126,23 @@ public static class DiskDriveHelpers
         string suffix = (logicalDrives.Count == 1) ? string.Empty : "s";
         _log.Debug($"Found {logicalDrives.Count} logical drive{suffix} in {watch.Elapsed.TotalMilliseconds:N2} ms");
         return logicalDrives;
-
     }
     #endregion Get logical drive information
 
     #region Get details for an individual drive
-    private static LogicalDrives GetDriveDetails(DriveInfo d)
+    private static LogicalDrives? GetDriveDetails(DriveInfo d)
     {
         // If the drive is network check settings to see if it needs to be included
         if (string.Equals(d.DriveType.ToString(), "network", StringComparison.OrdinalIgnoreCase)
             && !UserSettings.Setting!.IncludeNetwork)
         {
-            return null!;
+            return null;
         }
         // If the drive is removable check settings to see if it needs to be included
         if (string.Equals(d.DriveType.ToString(), "removable", StringComparison.OrdinalIgnoreCase)
             && !UserSettings.Setting!.IncludeRemovable)
         {
-            return null!;
+            return null;
         }
         // If the drive is ready
         if (d.IsReady)
@@ -181,7 +180,7 @@ public static class DiskDriveHelpers
                 Label = GetStringResource("DriveInfo_NotReady")
             };
         }
-        return null!;
+        return null;
     }
     #endregion Get details for an individual drive
 

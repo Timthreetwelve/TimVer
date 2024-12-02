@@ -17,7 +17,7 @@ internal sealed partial class DriveInfoViewModel : ObservableObject
             {
                 return _logicalDrivesList;
             }
-            _logicalDrivesList = new ObservableCollection<LogicalDrives>(DiskDriveHelpers.GetLogicalDriveInfo());
+            _logicalDrivesList = new ObservableCollection<LogicalDrives>(DiskDriveHelpers.GetLogicalDriveInfo()!);
             return _logicalDrivesList;
         }
     }
