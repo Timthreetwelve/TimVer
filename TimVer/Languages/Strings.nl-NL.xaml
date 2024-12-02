@@ -1,4 +1,4 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
@@ -25,6 +25,8 @@
     <sys:String x:Key="About_BuildDate">Build datum</sys:String>
     <sys:String x:Key="About_CommitID">Project ID</sys:String>
     <sys:String x:Key="About_CommitIDToolTip">Volledit project ID:</sys:String>
+    <sys:String x:Key="About_Contribute">Bijdrage</sys:String>
+    <sys:String x:Key="About_ContributeToolTip">Hoe kan ik een vertaling bijdragen?</sys:String>
     <sys:String x:Key="About_Copyright">Copyright</sys:String>
     <sys:String x:Key="About_CreatedBy">Ontworpen door</sys:String>
     <sys:String x:Key="About_CreatedByToolTip">Bekijk Tim zijn werk op https://github.com/Timthreetwelve</sys:String>
@@ -32,6 +34,7 @@
     <sys:String x:Key="About_Documentation">Documentatie</sys:String>
     <sys:String x:Key="About_DocumentationText">Open het leesmij bestand</sys:String>
     <sys:String x:Key="About_DocumentationToolTip">Bekijk het leesmij bestand</sys:String>
+    <sys:String x:Key="About_GitHub">GitHub</sys:String>
     <sys:String x:Key="About_GitHubToolTip">Bezoek de pagina van TimVer op GitHub</sys:String>
     <sys:String x:Key="About_License">Licentie</sys:String>
     <sys:String x:Key="About_LicenseText">Dit project is gelicensieerd onder de voorwaarden van het MIT.</sys:String>
@@ -49,13 +52,24 @@
     <sys:String x:Key="BuildHistory_Version">Versie</sys:String>
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">Annuleren</sys:String>
+    <sys:String x:Key="Button_CheckUpdate">Controleer op updates</sys:String>
+    <sys:String x:Key="Button_Close">Sluiten</sys:String>
     <sys:String x:Key="Button_CopyToClipboardToolTip">Kopieer deze pagina naar het klembord</sys:String>
+    <sys:String x:Key="Button_ExportSettings">Exporteer instellingen</sys:String>
+    <sys:String x:Key="Button_ExportSettingsToolTip">Exporteer huidige instellingen naar een bestand.</sys:String>
+    <sys:String x:Key="Button_ImportSettings">Importeer instellingen</sys:String>
+    <sys:String x:Key="Button_ImportSettingsToolTip">Importeer instellingen uit bestand.</sys:String>
+    <sys:String x:Key="Button_ListSettings">Toon instellingen (lijst)</sys:String>
+    <sys:String x:Key="Button_ListSettingsTooltip">Schrijf instellingen (lijst) naar log bestand</sys:String>
     <sys:String x:Key="Button_No">Nee</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
+    <sys:String x:Key="Button_OpenAppFolder">Open programma locatie</sys:String>
     <sys:String x:Key="Button_OpenFolder">Open programma locatie</sys:String>
     <sys:String x:Key="Button_OpenFolderToolTip">Open de map TimVer in verkenner</sys:String>
     <sys:String x:Key="Button_OpenLogFile">Bekijk het logbestand</sys:String>
     <sys:String x:Key="Button_OpenLogFileToolTip">Open het logbestand in standaard applicatie.</sys:String>
+    <sys:String x:Key="Button_OpenSettings">Open instellingen</sys:String>
+    <sys:String x:Key="Button_OpenSettingsToolTip">Open het instellingen bestand</sys:String>
     <sys:String x:Key="Button_ThreeDotToolTip">Aanvulende acties</sys:String>
     <sys:String x:Key="Button_Yes">Ja</sys:String>
     <!--  Disk Drive Information Page  -->
@@ -108,8 +122,6 @@
     <sys:String x:Key="DriveInfo_DriveType_Ram">RAM Drive</sys:String>
     <sys:String x:Key="DriveInfo_DriveType_Removable">portable</sys:String>
     <sys:String x:Key="DriveInfo_DriveType_Unknown">Onbekend</sys:String>
-
-
     <!--  Environment Variables Page  -->
     <sys:String x:Key="EnvironmentInfo_Filter">Filter</sys:String>
     <sys:String x:Key="EnvironmentInfo_Value">Waarde</sys:String>
@@ -156,9 +168,18 @@
     <sys:String x:Key="MsgText_CopyToClipboardInvalid">Het is niet mogelijk deze inhoud te kopieren naar het klembord</sys:String>
     <sys:String x:Key="MsgText_DriveInfoRefreshed">Disk drive informatie ververst</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Verstreken tijd</sys:String>
+    <sys:String x:Key="MsgText_Error_FileExplorer">Fout bij openen Windows verkenner.</sys:String>
+    <sys:String x:Key="MsgText_ErrorCaption">FOUT</sys:String>
+    <sys:String x:Key="MsgText_ErrorExportingSettings">Fout bij het wegschrijven van het instellingen bestand.</sys:String>
+    <sys:String x:Key="MsgText_ErrorImportingSettings">Fout bij het importeren van het instellingen bestand.</sys:String>
+    <sys:String x:Key="MsgText_ErrorOpeningFile">Het volgende bestand kon niet worden geopend: {0}</sys:String>
+    <sys:String x:Key="MsgText_ErrorReadingFile">Fout bij het lezen (0)</sys:String>
+    <sys:String x:Key="MsgText_ErrorReadingSettings">Fout bij het lezen van het configuratie bestand.</sys:String>
+    <sys:String x:Key="MsgText_ErrorSavingSettings">Fout bij wegschrijven instellingen bestand.</sys:String>
     <sys:String x:Key="MsgText_FilterOneRowShown">1 rij weergeven</sys:String>
     <sys:String x:Key="MsgText_FilterRowsShown">{0} rijen weergeven</sys:String>
     <sys:String x:Key="MsgText_HideButNoHistory">Command line commando HIDE is gespecificeerd, maar de optie om de geschiedenis te bewaren is fout. Aflsuiten.</sys:String>
+    <sys:String x:Key="MsgText_ImportSettingsRestart">Start Get My IP opnieuw om de geïmporteerde instellingen te gebruiken.</sys:String>
     <sys:String x:Key="MsgText_Million">miljoen</sys:String>
     <sys:String x:Key="MsgText_NotAvailable">Niet beschikbaar</sys:String>
     <sys:String x:Key="MsgText_Opening">Openen</sys:String>
@@ -166,12 +187,14 @@
     <sys:String x:Key="MsgText_OpeningReadMeFile">Openen leesmij bestand</sys:String>
     <sys:String x:Key="MsgText_RemovedFromStartup">TimVer wordt niet meer automatisch opgestart met windows</sys:String>
     <sys:String x:Key="MsgText_RemoveFromStartupFailed">Het is niet gelukt om het automatsich starten van TimVer ongedaan te maken. Lees het logbestand voor meer informatie.</sys:String>
+    <sys:String x:Key="MsgText_SeeLogFile">Raadpleeg het logbestand voor meer informatie.</sys:String>
     <sys:String x:Key="MsgText_Thousand">duizend</sys:String>
     <sys:String x:Key="MsgText_Translated">vertaald</sys:String>
     <sys:String x:Key="MsgText_UIColorSet">Accentkleur ingesteld op {0}</sys:String>
     <sys:String x:Key="MsgText_UISizeSet">Grootte ingesteld op {0}</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">Thema ingesteld op {0}</sys:String>
     <sys:String x:Key="MsgText_WindowTitleAdministrator">Administrator</sys:String>
+
     <!--  Navigation Items and Titles  -->
     <sys:String x:Key="NavItem_About">Over</sys:String>
     <sys:String x:Key="NavItem_BuildHistory">Build geschiedenis</sys:String>
@@ -242,8 +265,11 @@
     <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine3">Raadpleeg het logbestand voor meer informatie.</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Het programma zal opnieuw worden opgestart als de taal wordt veranderd!</sys:String>
     <sys:String x:Key="SettingsItem_DateFormat">Tabel Datum Formaat</sys:String>
+    <sys:String x:Key="SettingsItem_DisplayFont">Font</sys:String>
     <sys:String x:Key="SettingsItem_DisplayUser">Laat gebruikers- en organisatieinformatie gegevens zien op de Windows Informatie Pagina</sys:String>
     <sys:String x:Key="SettingsItem_EditExcludeToolTip">Shift klik om het met het standaard programma te openen</sys:String>
+    <sys:String x:Key="SettingsItem_EditSettingsWarning">Alle wijzigingen die u in het instellingenbestand aanbrengt terwijl de app actief is worden overschreven!</sys:String>
+    <sys:String x:Key="SettingsItem_EnableLanguageTesting">Testen taalbestand ingeschakeld</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBoot">Werk de versie informatie bij tijdens het opstarten</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine1">Als u deze optie inschakelt, wordt TimVer toegevoegd aan het opstarten van Windows met als doel het bijwerken van een geschiedenis bestand.</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine2">Deze optie is niet beschikbaar als Timver vanaf een verwisselbare schijf wordt uitgevoerd.</sys:String>
@@ -274,12 +300,15 @@
     <sys:String x:Key="SettingsItem_ShowTypeColumn">Kolom Type weergeven</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">Begin met het venster gecentreerd op het scherm</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Thema</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Vertegenwoordigt het aantal tekenreeksen in de huidige taal in vergelijking met de standaardtekenreeks (en-US)</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Druk op Ctrl+Shift+K om taalbestanden te vergelijken. Resultaten worden naar het logbestand geschreven.</sys:String>
     <sys:String x:Key="SettingsItem_UISize">UI-grootte</sys:String>
     <sys:String x:Key="SettingsItem_UseGB">Gebruik GB (1000^3 bytes) voor capaciteitsberekeningen</sys:String>
     <sys:String x:Key="SettingsItem_UseGiB">Gebruik GiB (1024^3 bytes) voor capaciteitsberekeningen</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Gebruik de Windows-weergavetaal</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">Wanneer deze optie is geselecteerd, wordt de taal weergegeven die is opgegeven in de Windows-instellingen</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">worden gebruikt als er een vertaling beschikbaar is, anders wordt Engels (en-US) gebruikt.</sys:String>
+
     <!--  Settings Page Expander Headings and Sub Headings -->
     <sys:String x:Key="SettingsSection_AppSettings">Programma instellingen</sys:String>
     <sys:String x:Key="SettingsSection_DriveSettings">Schijf instellingen</sys:String>
@@ -289,6 +318,8 @@
     <sys:String x:Key="SettingsSubHead_DriveSettings">Gebruik GB of GiB, neem schijven op status op en meer</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Taalinstellingen (werk in uitvoering)</sys:String>
     <sys:String x:Key="SettingsSubHead_UISettings">Thema, accentkleur, UI-grootte, rijhoogte, startpositie en meer</sys:String>
+    <sys:String x:Key="SettingsSection_SettingsFile">Instellingen bestand</sys:String>
+    <sys:String x:Key="SettingsSubHead_SettingsFile">Toepassingsinstellingen importeren, exporteren, openen en weergeven</sys:String>
     <!--  Windows Information Page  -->
     <sys:String x:Key="WindowsInfo_Architecture">Architectuur</sys:String>
     <sys:String x:Key="WindowsInfo_BuildBranch">Build Branch</sys:String>
