@@ -297,7 +297,6 @@
     <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine1">Enabling this option will add TimVer to Windows startup for the purpose of updating a Build History file.</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine2">This option is not available when running TimVer from a removable drive.</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine3">See the ReadMe file for more information.</sys:String>
-    <sys:String x:Key="SettingsItem_ImportWarning">Importing settings will cause application to restart!</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Include debug level messages in log file</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Initial Page Displayed</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Keep TimVer on top of other windows</sys:String>
