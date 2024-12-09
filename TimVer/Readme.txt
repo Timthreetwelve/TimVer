@@ -70,6 +70,45 @@ Settings Page
 =============
 The Setting page has options that determine how the application looks and runs.
 
+    Application Settings
+    --------------------
+    There are options to select the initial page shown, build history options, show the registered user on the Windows information page, and control the verbosity of the temp log file.
+
+    Disk Drive Settings
+    -------------------
+    Here there are option for how disk space is displayed (GB or GiB), enabling the collection of physical drive information, drive types to display and columns to be displayed.
+
+    UI settings
+    -----------
+    Here you will find options to set the theme (Light, Material Dark, Darker, or System), the UI size,
+    the accent color, and row spacing. There are also options to start the application centered on the
+    screen and to keep the window on top of other applications. You can choose to show or hide Exit in
+    the navigation bar.
+
+    Language Settings
+    -----------------
+    You can choose the language used for the user interface, provided that a translation has been
+    contributed for that language. Checking the ""Use Windows display language"" check box will tell
+    the app to use the language specified in the Windows settings, which will be used if a translation
+    is available; otherwise, English (en-US) will be used. The drop-down allows you to choose a
+    specific language from the list of defined languages. Changing the language will cause the
+    application to restart.
+
+    Settings File
+    -------------
+    This section includes options to Export, Import, Open and List the application's settings.
+    
+    The Export option saves the current settings to a JSON file in the location of your choice.
+    
+    The Import option will read and apply settings from a previous export file. Using this option
+    will automatically restart Get My IP after importing.
+    
+    The Open option will open the current settings file with the default application associated with
+    JSON files. Note that any modifications to the settings file made while Get My IP is running will
+    be overwritten when the application is shut down,
+
+    The List option will write the current settings to the log file. When making a bug report, choose
+    this option prior to sending the application log.
 
 About Page
 ==========
@@ -83,7 +122,7 @@ make TimVer available to more users.
 Three-Dot Menu
 ==============
 The three-dot menu at the right end of the page header that has options to view the log file, open the
-readme file (this file) and exit the application.
+readme file (this file), open the TimVer folder, check for an updated version of TimVer, and exit the application.
 
 
 Keyboard Shortcuts
@@ -96,6 +135,7 @@ These keyboard shortcuts are available:
     Ctrl + Numpad Minus or Ctrl + Minus = Decrease size
     Ctrl + Shift + C = Change the Accent Color
     Ctrl + Shift + F = Open File explorer in the application folder
+    Ctrl + Shift + K = Compare current language to default (en-US)
     Ctrl + Shift + R = Change Row spacing
     Ctrl + Shift + S = Open the Settings file
     Ctrl + Shift + T = Change the Theme
@@ -126,7 +166,7 @@ TimVer uses the following packages:
 
     * Material Design in XAML Toolkit https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit
 
-    * Command Line Parser https://github.com/commandlineparser/commandline
+    * CommandLineParser https://github.com/j-maly/CommandLineParser
 
     * Community Toolkit MVVM https://github.com/CommunityToolkit/dotnet
 
@@ -134,7 +174,7 @@ TimVer uses the following packages:
 
     * Microsoft.Management.Infrastructure https://www.nuget.org/packages/Microsoft.Management.Infrastructure/3.0.0
 
-    * 
+    * NerdBank.GitVersioning https://github.com/dotnet/Nerdbank.GitVersioning
 
     * OctoKit https://github.com/octokit/octokit.net
 
