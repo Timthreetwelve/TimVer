@@ -23,12 +23,14 @@
     <AnalysisLevel>8.0</AnalysisLevel>
   </PropertyGroup>
   
+  <!-- Images -->
   <ItemGroup>
     <Content Include="Images\TV.ico" />
     <Resource Include="Images\InvertedTV.png" />
     <Resource Include="Images\TV.png" />
   </ItemGroup>
 
+  <!-- Packages -->
   <ItemGroup>
     <PackageReference Include="CommandLineArgumentsParser" Version="3.0.23" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
@@ -40,6 +42,7 @@
     <PackageReference Include="Vanara.PInvoke.User32" Version="4.0.4" />
   </ItemGroup>
 
+  <!-- Files to be copied to the output folder -->
   <ItemGroup>
     <None Update="LICENSE.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
