@@ -26,8 +26,10 @@
 ### TimVer will display the same Windows version related information as the built-in **Winver** command, with additional information that Winver doesn't display.
 
 ### TimVer is now Multilingual!
+Please see [Contribute a Translation](https://github.com/Timthreetwelve/TimVer/wiki/Contribute-a-Translation) topic in the Wiki if you would like to contribute a translation. 
 
 ### TimVer runs on .Net 8.0
+Self-contained versions are available if .NET 8 isn't installed. See the [releases page](https://github.com/Timthreetwelve/TimVer/releases).
 
 ### Screenshots 
 
