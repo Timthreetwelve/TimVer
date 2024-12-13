@@ -15,7 +15,7 @@
 
         Translation contributed by:  TiM
 
-        Date last update:            2023-11-07
+        Date last update:            2023-12-13
 
         ======================================================================
 
@@ -24,7 +24,7 @@
     <!--  About Page  -->
     <sys:String x:Key="About_BuildDate">Build datum</sys:String>
     <sys:String x:Key="About_CommitID">Project ID</sys:String>
-    <sys:String x:Key="About_CommitIDToolTip">Volledit project ID:</sys:String>
+    <sys:String x:Key="About_CommitIDToolTip">Volledig project ID:</sys:String>
     <sys:String x:Key="About_Contribute">Bijdrage</sys:String>
     <sys:String x:Key="About_ContributeToolTip">Hoe kan ik een vertaling bijdragen?</sys:String>
     <sys:String x:Key="About_Copyright">Copyright</sys:String>
@@ -73,6 +73,7 @@
     <sys:String x:Key="Button_ThreeDotToolTip">Aanvulende acties</sys:String>
     <sys:String x:Key="Button_Yes">Ja</sys:String>
     <!--  Disk Drive Information Page  -->
+    <sys:String x:Key="DriveInfo_BootDrive">Opstartschijf</sys:String>
     <sys:String x:Key="DriveInfo_BusType">Bus Type</sys:String>
     <sys:String x:Key="DriveInfo_BusType_FiberChannel">Fiber Channel</sys:String>
     <sys:String x:Key="DriveInfo_BusType_FileBackedVirtual">File-Backed Virtual</sys:String>
@@ -83,21 +84,31 @@
     <sys:String x:Key="DriveInfo_BusType_SD">Secure Digital (SD)</sys:String>
     <sys:String x:Key="DriveInfo_BusType_StorageSpaces">Opslag</sys:String>
     <sys:String x:Key="DriveInfo_BusType_Unknown">Unknown</sys:String>
+    <sys:String x:Key="DriveInfo_DeviceID">Apparaat ID</sys:String>
     <sys:String x:Key="DriveInfo_DiskType">Disk Type</sys:String>
+    <sys:String x:Key="DriveInfo_DriveLetters">Stationletters</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_CDRom">CD-ROM</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Fixed">Fixed</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Network">Network</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_NoRootDirectory">Geen Root Directory</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Ram">RAM Drive</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Removable">portable</sys:String>
+    <sys:String x:Key="DriveInfo_DriveType_Unknown">Onbekend</sys:String>
     <sys:String x:Key="DriveInfo_Error">DriveInfo fout</sys:String>
-    <sys:String x:Key="DriveInfo_ErrorSeeLog">Fout - raadpleeg het logbestand</sys:String>
     <sys:String x:Key="DriveInfo_ErrorProcessingDrive">Fout bij verwerken station</sys:String>
+    <sys:String x:Key="DriveInfo_ErrorSeeLog">Fout - raadpleeg het logbestand</sys:String>
     <sys:String x:Key="DriveInfo_Format">Formaat</sys:String>
     <sys:String x:Key="DriveInfo_Free">Beschikbaar</sys:String>
     <sys:String x:Key="DriveInfo_FreePercent">% beschikbaar</sys:String>
+    <sys:String x:Key="DriveInfo_FriendlyName">Stationsnaam</sys:String>
     <sys:String x:Key="DriveInfo_Health">Health</sys:String>
     <sys:String x:Key="DriveInfo_Health_Healthy">Healthy</sys:String>
     <sys:String x:Key="DriveInfo_Health_Unhealthy">Unhealthy</sys:String>
     <sys:String x:Key="DriveInfo_Health_Unknown">Onekend</sys:String>
     <sys:String x:Key="DriveInfo_Health_Warning">Waarschuwing</sys:String>
-    <sys:String x:Key="DriveInfo_IOError">I/O fout</sys:String>
     <sys:String x:Key="DriveInfo_Index">Index</sys:String>
     <sys:String x:Key="DriveInfo_Interface">Interface</sys:String>
+    <sys:String x:Key="DriveInfo_IOError">I/O fout</sys:String>
     <sys:String x:Key="DriveInfo_Label">Label</sys:String>
     <sys:String x:Key="DriveInfo_LogicalDrives">Logisch station</sys:String>
     <sys:String x:Key="DriveInfo_MediaType">Media Type</sys:String>
@@ -107,21 +118,17 @@
     <sys:String x:Key="DriveInfo_Name">Naam</sys:String>
     <sys:String x:Key="DriveInfo_NotReady">Niet beschikbaar</sys:String>
     <sys:String x:Key="DriveInfo_Partitions">Partities</sys:String>
+    <sys:String x:Key="DriveInfo_PartitionStyle">Partitie opmaak</sys:String>
     <sys:String x:Key="DriveInfo_PhysicalDisabled">Verzameleng van schijfinformatie is uitgeschakeld bij instellingen.</sys:String>
     <sys:String x:Key="DriveInfo_PhysicalDrives">Schijfstations</sys:String>
     <sys:String x:Key="DriveInfo_RefreshToolTipLine1">Verversen schijf details zal alles verversen</sys:String>
     <sys:String x:Key="DriveInfo_RefreshToolTipLine2">Vaste en tijdelijke stations (indien ingeschakeld).</sys:String>
+    <sys:String x:Key="DriveInfo_SerialNumber">Serienummer</sys:String>
     <sys:String x:Key="DriveInfo_Size">Grootte</sys:String>
+    <sys:String x:Key="DriveInfo_SystemDrive">Systeemschijf</sys:String>
     <sys:String x:Key="DriveInfo_Type">Type</sys:String>
     <sys:String x:Key="DriveInfo_UnauthorizedAccess">Unauthorized toegang</sys:String>
     <sys:String x:Key="DriveInfo_UnknownError">Onbekende fout</sys:String>
-    <sys:String x:Key="DriveInfo_DriveType_CDRom">CD-ROM</sys:String>
-    <sys:String x:Key="DriveInfo_DriveType_Fixed">Fixed</sys:String>
-    <sys:String x:Key="DriveInfo_DriveType_Network">Network</sys:String>
-    <sys:String x:Key="DriveInfo_DriveType_NoRootDirectory">Geen Root Directory</sys:String>
-    <sys:String x:Key="DriveInfo_DriveType_Ram">RAM Drive</sys:String>
-    <sys:String x:Key="DriveInfo_DriveType_Removable">portable</sys:String>
-    <sys:String x:Key="DriveInfo_DriveType_Unknown">Onbekend</sys:String>
     <!--  Environment Variables Page  -->
     <sys:String x:Key="EnvironmentInfo_Filter">Filter</sys:String>
     <sys:String x:Key="EnvironmentInfo_Value">Waarde</sys:String>
@@ -136,15 +143,22 @@
     <sys:String x:Key="GraphicsInfo_DeviceID">Apparaat ID</sys:String>
     <sys:String x:Key="GraphicsInfo_GraphicsAdapter">Graphics Adapter</sys:String>
     <sys:String x:Key="GraphicsInfo_NumberOfColors">Aantal kleuren</sys:String>
+    <sys:String x:Key="GraphicsInfo_NumberOfDisplays">Aantal monitoren</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapter">Kies Adapter</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine1">Als er meer dan 1 videokaart is geinstalleerd</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine2">kies een kaart om weer te geven.</sys:String>
     <!--  Hardware Information Page  -->
+    <sys:String x:Key="HardwareInfo_BIOS">BIOS</sys:String>
     <sys:String x:Key="HardwareInfo_BiosManufacturer">BIOS producent</sys:String>
+    <sys:String x:Key="HardwareInfo_BiosMode">Biosmode</sys:String>
     <sys:String x:Key="HardwareInfo_BiosVersion">BIOS Versie en datum</sys:String>
     <sys:String x:Key="HardwareInfo_Cores">Cores</sys:String>
     <sys:String x:Key="HardwareInfo_Installed">Geinstalleerd</sys:String>
     <sys:String x:Key="HardwareInfo_LastBoot">Laatste herstart</sys:String>
+    <sys:String x:Key="HardwareInfo_LastBootNormal">Normale opstart</sys:String>
+    <sys:String x:Key="HardwareInfo_LastBootSafe">Veilige modus</sys:String>
+    <sys:String x:Key="HardwareInfo_LastBootSafeNetwork">Veilige modus met netwerk</sys:String>
+    <sys:String x:Key="HardwareInfo_LastBootType">Laatste reboot type</sys:String>
     <sys:String x:Key="HardwareInfo_MachineName">Computernaam</sys:String>
     <sys:String x:Key="HardwareInfo_Manufacturer">Producentr</sys:String>
     <sys:String x:Key="HardwareInfo_Model">Model</sys:String>
@@ -152,7 +166,14 @@
     <sys:String x:Key="HardwareInfo_Processor">Processor</sys:String>
     <sys:String x:Key="HardwareInfo_ProcessorArch">Processor Architecture</sys:String>
     <sys:String x:Key="HardwareInfo_ProcessorCores">Processor Cores</sys:String>
+    <sys:String x:Key="HardwareInfo_ProcessorDescription">Processor omschrijving</sys:String>
+    <sys:String x:Key="HardwareInfo_SecureBoot">Veilieg opstart</sys:String>
+    <sys:String x:Key="HardwareInfo_SecureBoot_Disabled">Uitgeschakeld</sys:String>
+    <sys:String x:Key="HardwareInfo_SecureBoot_Enabled">Ingeschakeld</sys:String>
     <sys:String x:Key="HardwareInfo_Threads">Threads</sys:String>
+    <sys:String x:Key="HardwareInfo_UEFI">UEFI</sys:String>
+    <sys:String x:Key="HardwareInfo_Uptime">Uptime</sys:String>
+    <sys:String x:Key="HardwareInfo_UptimeString">{0} dag, {1} uren, {2} minuten, {3} seconden</sys:String>
     <sys:String x:Key="HardwareInfo_Usable">Bruikbaar</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
     <sys:String x:Key="MsgText_AddedToStartup">TimVer start automatisch met Windows</sys:String>
@@ -165,12 +186,14 @@
     <sys:String x:Key="MsgText_AppUpdateNewerFound">Er is een nieuwe versie ({0}) gevonden.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNoneFound">Er is geen nieuwe versie gevonden.</sys:String>
     <sys:String x:Key="MsgText_CopiedToClipboard">Huidige pagina is gekopieerd naar het klembord</sys:String>
+    <sys:String x:Key="MsgText_CopiedToClipboardItem">Item gekopieerd naar klembord</sys:String>
     <sys:String x:Key="MsgText_CopyToClipboardInvalid">Het is niet mogelijk deze inhoud te kopieren naar het klembord</sys:String>
     <sys:String x:Key="MsgText_DriveInfoRefreshed">Disk drive informatie ververst</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Verstreken tijd</sys:String>
     <sys:String x:Key="MsgText_Error_FileExplorer">Fout bij openen Windows verkenner.</sys:String>
     <sys:String x:Key="MsgText_ErrorCaption">FOUT</sys:String>
     <sys:String x:Key="MsgText_ErrorExportingSettings">Fout bij het wegschrijven van het instellingen bestand.</sys:String>
+    <sys:String x:Key="MsgText_ErrorGeneral">Er is een fout opgetreden</sys:String>
     <sys:String x:Key="MsgText_ErrorImportingSettings">Fout bij het importeren van het instellingen bestand.</sys:String>
     <sys:String x:Key="MsgText_ErrorOpeningFile">Het volgende bestand kon niet worden geopend: {0}</sys:String>
     <sys:String x:Key="MsgText_ErrorReadingFile">Fout bij het lezen (0)</sys:String>
@@ -185,6 +208,7 @@
     <sys:String x:Key="MsgText_Opening">Openen</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Openen logbestand</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Openen leesmij bestand</sys:String>
+    <sys:String x:Key="MsgText_OptionReset">Optie is hersteld</sys:String>
     <sys:String x:Key="MsgText_RemovedFromStartup">TimVer wordt niet meer automatisch opgestart met windows</sys:String>
     <sys:String x:Key="MsgText_RemoveFromStartupFailed">Het is niet gelukt om het automatsich starten van TimVer ongedaan te maken. Lees het logbestand voor meer informatie.</sys:String>
     <sys:String x:Key="MsgText_SeeLogFile">Raadpleeg het logbestand voor meer informatie.</sys:String>
@@ -194,7 +218,6 @@
     <sys:String x:Key="MsgText_UISizeSet">Grootte ingesteld op {0}</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">Thema ingesteld op {0}</sys:String>
     <sys:String x:Key="MsgText_WindowTitleAdministrator">Administrator</sys:String>
-
     <!--  Navigation Items and Titles  -->
     <sys:String x:Key="NavItem_About">Over</sys:String>
     <sys:String x:Key="NavItem_BuildHistory">Build geschiedenis</sys:String>
@@ -205,7 +228,7 @@
     <sys:String x:Key="NavItem_HardwareInfo">Hardware informatie</sys:String>
     <sys:String x:Key="NavItem_Settings">Instellingen</sys:String>
     <sys:String x:Key="NavItem_WindowsInfo">Windows informatie</sys:String>
-    <sys:String x:Key="NavTitle_About">OVer TimVer</sys:String>
+    <sys:String x:Key="NavTitle_About">Over TimVer</sys:String>
     <sys:String x:Key="NavTitle_BuildHistory">Build geschiedenis</sys:String>
     <sys:String x:Key="NavTitle_DriveInfo">HD informatie</sys:String>
     <sys:String x:Key="NavTitle_Environment">Omgevings variabelen</sys:String>
@@ -284,10 +307,13 @@
     <sys:String x:Key="SettingsItem_PhysicalDriveOptions">Fysieke schijfopties</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Rijhoogte</sys:String>
     <sys:String x:Key="SettingsItem_RowHeightToolTip">Deze instelling is van toepassing op de rijhoogte op de pagina's Drive Info, Omgeving en Geschiedenis.</sys:String>
+    <sys:String x:Key="SettingsItem_ShowBootDriveColumn">Toon opstartschijf kolom</sys:String>
     <sys:String x:Key="SettingsItem_ShowBusTypeColumn">Toon de kolom Bustype</sys:String>
     <sys:String x:Key="SettingsItem_ShowDiskTypeColumn">Toon disk type kolom</sys:String>
+    <sys:String x:Key="SettingsItem_ShowDriveLettersColumn">Toon stationletters</sys:String>
     <sys:String x:Key="SettingsItem_ShowExit">Toon afsluiten in de taakbalk</sys:String>
     <sys:String x:Key="SettingsItem_ShowFormatColumn">Kolom Formaat weergeven</sys:String>
+    <sys:String x:Key="SettingsItem_ShowFriendlyName">Toon stationsnaam kolom</sys:String>
     <sys:String x:Key="SettingsItem_ShowHealthColumn">Kolom Gezondheid weergeven</sys:String>
     <sys:String x:Key="SettingsItem_ShowInterfaceColumn">Toon Interface-kolom</sys:String>
     <sys:String x:Key="SettingsItem_ShowMediaTypeColumn">Kolom Mediatype weergeven</sys:String>
@@ -295,9 +321,12 @@
     <sys:String x:Key="SettingsItem_ShowNameColumn">Kolom Naam weergeven</sys:String>
     <sys:String x:Key="SettingsItem_ShowNetworkDrives">Voeg netwerkschijven toe</sys:String>
     <sys:String x:Key="SettingsItem_ShowPartitionsColumn">Kolom Partities weergeven</sys:String>
+    <sys:String x:Key="SettingsItem_ShowPartitionStyleColumn">Toon partitie opmaak kolom</sys:String>
     <sys:String x:Key="SettingsItem_ShowReadyDrives">Toon alleen schijven in de status "Gereed".</sys:String>
     <sys:String x:Key="SettingsItem_ShowRemovableDrives">Inclusief verwisselbare schijven</sys:String>
+    <sys:String x:Key="SettingsItem_ShowSerialNumber">Toon serinummer kolom</sys:String>
     <sys:String x:Key="SettingsItem_ShowTypeColumn">Kolom Type weergeven</sys:String>
+    <sys:String x:Key="SettingsItem_ShowVideoSelector">Toon videoadapterselector op de grafische (video) pagina</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">Begin met het venster gecentreerd op het scherm</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Thema</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Vertegenwoordigt het aantal tekenreeksen in de huidige taal in vergelijking met de standaardtekenreeks (en-US)</sys:String>
@@ -308,7 +337,6 @@
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Gebruik de Windows-weergavetaal</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">Wanneer deze optie is geselecteerd, wordt de taal weergegeven die is opgegeven in de Windows-instellingen</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">worden gebruikt als er een vertaling beschikbaar is, anders wordt Engels (en-US) gebruikt.</sys:String>
-
     <!--  Settings Page Expander Headings and Sub Headings -->
     <sys:String x:Key="SettingsSection_AppSettings">Programma instellingen</sys:String>
     <sys:String x:Key="SettingsSection_DriveSettings">Schijf instellingen</sys:String>
@@ -324,6 +352,7 @@
     <sys:String x:Key="WindowsInfo_Architecture">Architectuur</sys:String>
     <sys:String x:Key="WindowsInfo_BuildBranch">Build Branch</sys:String>
     <sys:String x:Key="WindowsInfo_BuildNumber">Build Number</sys:String>
+    <sys:String x:Key="WindowsInfo_DotNetVersion">.NET versie</sys:String>
     <sys:String x:Key="WindowsInfo_EditionID">Edition ID</sys:String>
     <sys:String x:Key="WindowsInfo_Installed">Geinstalleerd op</sys:String>
     <sys:String x:Key="WindowsInfo_OSEdition">OS Editie</sys:String>
