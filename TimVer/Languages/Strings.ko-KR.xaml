@@ -201,7 +201,7 @@
     <sys:String x:Key="MsgText_FilterOneRowShown">1행 표시됨</sys:String>
     <sys:String x:Key="MsgText_FilterRowsShown">{0}행 표시됨</sys:String>
     <sys:String x:Key="MsgText_HideButNoHistory">명령줄 옵션 "숨김"이 지정되었지만 기록을 유지하는 옵션이 거짓입니다. 종료 중입니다.</sys:String>
-    <sys:String x:Key="MsgText_ImportSettingsRestart">가져온 설정을 사용하려면 Get My IP를 다시 시작해 주세요.</sys:String>
+    <sys:String x:Key="MsgText_ImportSettingsRestart">가져온 설정을 사용하려면 TimVer를 다시 시작해 주세요.</sys:String>
     <sys:String x:Key="MsgText_Million">백만</sys:String>
     <sys:String x:Key="MsgText_NotAvailable">사용할 수 없음</sys:String>
     <sys:String x:Key="MsgText_Opening">열기</sys:String>
