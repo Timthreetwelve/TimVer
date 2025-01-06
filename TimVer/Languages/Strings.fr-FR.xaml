@@ -15,7 +15,7 @@
 
         Translation contributed by:  Timthreetwelve/Largo
 
-        Date last updated:           2024.09.26
+        Date last updated:           2024.12.14
 
         =======================================================================
 
@@ -58,9 +58,9 @@
     <sys:String x:Key="Button_ExportSettings">Exporter les paramètres</sys:String>
     <sys:String x:Key="Button_ExportSettingsToolTip">Exporter les paramètres actuels vers un fichier.</sys:String>
     <sys:String x:Key="Button_ImportSettings">Importer les paramètres</sys:String>
-    <sys:String x:Key="Button_ImportSettingsToolTip">Importer les paramètres d'un fichier.</sys:String>
+    <sys:String x:Key="Button_ImportSettingsToolTip">Importer les paramètres depuis un fichier.</sys:String>
     <sys:String x:Key="Button_ListSettings">Liste des paramètres</sys:String>
-    <sys:String x:Key="Button_ListSettingsTooltip">Liste (écriture) des paramètres dans fichier journal.</sys:String>
+    <sys:String x:Key="Button_ListSettingsTooltip">Liste (écriture) des paramètres dans le fichier journal.</sys:String>
     <sys:String x:Key="Button_No">Non</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
     <sys:String x:Key="Button_OpenAppFolder">Ouvrir le dossier de l'application</sys:String>
@@ -69,7 +69,7 @@
     <sys:String x:Key="Button_OpenLogFile">Voir le fichier journal</sys:String>
     <sys:String x:Key="Button_OpenLogFileToolTip">Ouvrir le fichier journal dans l'application par défaut.</sys:String>
     <sys:String x:Key="Button_OpenSettings">Ouvrir les paramètres</sys:String>
-    <sys:String x:Key="Button_OpenSettingsToolTip">Ouvrez le fichier Paramètres.</sys:String>
+    <sys:String x:Key="Button_OpenSettingsToolTip">Ouvrir le fichier Paramètres.</sys:String>
     <sys:String x:Key="Button_ThreeDotToolTip">Actions supplémentaires</sys:String>
     <sys:String x:Key="Button_Yes">Oui</sys:String>
     <!-- Disk Drive Information Page -->
@@ -198,11 +198,11 @@
     <sys:String x:Key="MsgText_ErrorOpeningFile">Ouverture d'erreur {0}</sys:String>
     <sys:String x:Key="MsgText_ErrorReadingFile">Erreur de lecture {0}</sys:String>
     <sys:String x:Key="MsgText_ErrorReadingSettings">Erreur de lecture du fichier de paramètres.</sys:String>
-    <sys:String x:Key="MsgText_ErrorSavingSettings">Erreur d’enregistrement du fichier de paramètres.</sys:String>
+    <sys:String x:Key="MsgText_ErrorSavingSettings">Erreur de sauvegarde du fichier de paramètres.</sys:String>
     <sys:String x:Key="MsgText_FilterOneRowShown">1 ligne indiquée</sys:String>
     <sys:String x:Key="MsgText_FilterRowsShown">{0} lignes montrées</sys:String>
     <sys:String x:Key="MsgText_HideButNoHistory">L'option de ligne de commande "masquer" a été spécifiée, mais l'option pour garder l'historique est fausse. Sortant.</sys:String>
-    <sys:String x:Key="MsgText_ImportSettingsRestart">Redémarrez Get My IP pour utiliser les paramètres importés.</sys:String>
+    <sys:String x:Key="MsgText_ImportSettingsRestart">Veuillez redémarrer TimVer pour utiliser les paramètres importés.</sys:String>
     <sys:String x:Key="MsgText_Million">million</sys:String>
     <sys:String x:Key="MsgText_NotAvailable">Pas disponible</sys:String>
     <sys:String x:Key="MsgText_Opening">Ouverture</sys:String>
@@ -291,7 +291,7 @@
     <sys:String x:Key="SettingsItem_DisplayFont">Police d'affichage</sys:String>
     <sys:String x:Key="SettingsItem_DisplayUser">Afficher l'utilisateur et l'organisation enregistrés sur la page d'infos Windows</sys:String>
     <sys:String x:Key="SettingsItem_EditExcludeToolTip">Shift-Click pour ouvrir le fichier avec l'application par défaut</sys:String>
-    <sys:String x:Key="SettingsItem_EditSettingsWarning">Toute modification apportée au fichier de paramètres pendant l'exécution de l'application sera écrasée !</sys:String>
+    <sys:String x:Key="SettingsItem_EditSettingsWarning">Toutes modifs apportées au fichier paramètres pendant l’exécution de l’application seront écrasées !</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Activer les tests de langue</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBoot">Mettre à jour l'historique de la build sur le démarrage de Windows</sys:String>
     <sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine1">L'activation de cette option ajoutera TimVer au démarrage de Windows dans le but de mettre à jour un fichier d'historique de la build.</sys:String>
@@ -329,7 +329,7 @@
     <sys:String x:Key="SettingsItem_ShowVideoSelector">Afficher la page Sélecteur de l'adaptateur vidéo sur graphique (vidéo)</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">Commencez par la fenêtre centrée sur l'écran</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Thème</sys:String>
-    <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Représente le nombre de chaînes dans la langue actuelle par rapport à celle par défaut (en-US).</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Représente le nombre de chaînes dans la langue actuelle par rapport à la valeur par défaut (en-US).</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Appuyez sur Ctrl+Maj+K pour comparer les fichiers de langue. Les résultats sont écrits dans le fichier journal.</sys:String>
     <sys:String x:Key="SettingsItem_UISize">Taille UI</sys:String>
     <sys:String x:Key="SettingsItem_UseGB">Utilisez Go (1000 ^ 3 octets) pour les calculs de capacité</sys:String>
@@ -457,5 +457,24 @@
     <!-- A | DriveInfo_DriveLetters -->
     <!-- A | SettingsItem_ShowDriveLettersColumn -->
     <!-- End of changes on 2024/09/23 @ 20:35 UTC-->
+
+    <!-- Begin changes on 2024/11/28 @ 03:00 UTC -->
+    <!-- A | Button_ExportSettings -->
+    <!-- A | Button_ExportSettingsToolTip -->
+    <!-- A | Button_ImportSettings -->
+    <!-- A | Button_ImportSettingsToolTip -->
+    <!-- A | Button_ListSettings -->
+    <!-- A | Button_ListSettingsTooltip -->
+    <!-- A | Button_OpenAppFolderToolTip -->
+    <!-- A | Button_OpenSettings -->
+    <!-- A | Button_OpenSettingsToolTip -->
+    <!-- A | MsgText_Error_ExportingSettings -->
+    <!-- A | MsgText_Error_ImportingSettings -->
+    <!-- A | MsgText_Error_SavingSettings -->
+    <!-- A | MsgText_ImportSettingsRestart -->
+    <!-- A | SettingsSection_SettingsFile -->
+    <!-- A | SettingsSubHead_SettingsFile -->
+    <!-- A | SettingsItem_EditSettingsWarning -->
+    <!-- End changes on 2024/11/28 @ 03:00 UTC -->
 
 </ResourceDictionary>
