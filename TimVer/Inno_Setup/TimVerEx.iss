@@ -221,6 +221,6 @@ begin
       logfilepathname := ExpandConstant('{log}');
       newfilepathname := ExpandConstant('{app}\') + 'Setup_Log.txt';
       Log('Setup log file copied to: ' + newfilepathname);
-      FileCopy(logfilepathname, newfilepathname, False);
+      CopyFile(logfilepathname, newfilepathname, False);
    end;
 end;
