@@ -9,6 +9,4 @@ updates:
     directory: "/TimVer" # Location of package manifests
     schedule:
       interval: "daily"
-    ignore:
-      - dependency-name: "GitVersion.MsBuild"
     open-pull-requests-limit: 5
