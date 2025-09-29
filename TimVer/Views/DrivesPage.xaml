@@ -20,6 +20,7 @@
         <convert:SpacingConverter x:Key="Spacing" />
         <convert:BoolToStringConverter x:Key="BoolToString" />
         <convert:BoolToVisibilityInverter x:Key="BoolToVisInverter" />
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </UserControl.Resources>
 
     <UserControl.DataContext>
