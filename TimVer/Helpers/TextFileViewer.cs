@@ -19,13 +19,17 @@ public static class TextFileViewer
     ///
     public static void ViewTextFile(string textFile)
     {
+        string fname = string.Empty;
         try
         {
+            fname = PathHelpers.GetCondensedPath(textFile, 2, 2);
+
             using Process p = new();
             p.StartInfo.FileName = textFile;
             p.StartInfo.UseShellExecute = true;
             p.StartInfo.ErrorDialog = false;
             _ = p.Start();
+            _log.Debug($"Opening {fname} in default application");
         }
         catch (Win32Exception ex)
         {
@@ -37,7 +41,7 @@ public static class TextFileViewer
                 p.StartInfo.UseShellExecute = true;
                 p.StartInfo.ErrorDialog = false;
                 _ = p.Start();
-                _log.Debug($"Opening {textFile} in Notepad.exe");
+                _log.Debug($"Opening {fname} in Notepad.exe");
             }
             else
             {
@@ -48,7 +52,7 @@ public static class TextFileViewer
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
 #endif
-                _log.Error(ex, $"Unable to open {textFile}");
+                _log.Error(ex, $"Unable to open {fname}");
             }
         }
         catch (Exception ex)
@@ -60,7 +64,7 @@ public static class TextFileViewer
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 #endif
-            _log.Error(ex, $"Unable to open {textFile}");
+            _log.Error(ex, $"Unable to open {fname}");
         }
     }
     #endregion Text file viewer
