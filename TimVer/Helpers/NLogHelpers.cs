@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Helpers;
 
@@ -39,8 +39,8 @@ internal static class NLogHelpers
             FileName = CreateFilename(),
 
             // message and footer layouts
-            Footer = "${date:format=yyyy/MM/dd HH\\:mm\\:ss}",
-            Layout = "${date:format=yyyy/MM/dd HH\\:mm\\:ss} " +
+            Footer = "${date:format=yyyy/MM/dd HH\\:mm\\:ss.ff}",
+            Layout = "${date:format=yyyy/MM/dd HH\\:mm\\:ss.ff} " +
                          "${pad:padding=-5:inner=${level:uppercase=true}}  " +
                          "${message}${onexception:${newline}${exception:format=tostring}}"
         };
