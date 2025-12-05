@@ -17,8 +17,8 @@
 
   <!-- Analyzers -->
   <PropertyGroup>
-    <AnalysisMode>Recommended</AnalysisMode>
-    <AnalysisLevel>8.0</AnalysisLevel>
+    <AnalysisLevel>latest-recommended</AnalysisLevel>
+    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
   </PropertyGroup>
   
   <!-- Images -->
