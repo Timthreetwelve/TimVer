@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.ViewModels;
 
@@ -9,7 +9,7 @@ public partial class SettingsViewModel : ObservableObject
     #endregion MainWindow Instance
 
     #region Properties
-    public static List<FontFamily>? FontList { get; private set; }
+    public static ReadOnlyCollection<FontFamily>? FontList { get; private set; }
     #endregion Properties
 
     #region Constructor
