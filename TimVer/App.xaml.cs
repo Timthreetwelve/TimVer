@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer;
 
@@ -14,6 +14,9 @@ public partial class App : Application
 
         // Unhandled exception handler
         AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
+        // Listen for session ending events (logoff/shutdown)
+        SessionEnding += SystemEvents_SessionEnding;
 
         // Command line arguments
         Args = e.Args;
@@ -125,7 +128,7 @@ public partial class App : Application
                         TestLanguageStrings = testDict.Count;
                         TestLanguageFile = testDict.Source.OriginalString;
                         string str = (TestLanguageStrings == 1) ? "string" : "strings";
-                        _log.Debug($"{TestLanguageStrings} {str} loaded from {PathHelpers.GetCondensedPath(TestLanguageFile,2,2)}");
+                        _log.Debug($"{TestLanguageStrings} {str} loaded from {PathHelpers.GetCondensedPath(TestLanguageFile, 2, 2)}");
                     }
                 }
                 catch (Exception ex)
@@ -152,23 +155,83 @@ public partial class App : Application
     /// </remarks>
     private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs args)
     {
-        _log.Error("Unhandled Exception");
-        Exception e = (Exception)args.ExceptionObject;
-        _log.Error(e.Message);
-        if (e.InnerException != null)
+        if (args.ExceptionObject is Exception e)
         {
-            _log.Error(e.InnerException.ToString());
-        }
-        _log.Error(e.StackTrace);
+            _log.Error($"Exception message: {e.Message}");
+            if (e.InnerException != null)
+            {
+                _log.Error(e.InnerException, $"Inner Exception: {e.InnerException.Message}");
+            }
+            else
+            {
+                _log.Error("Inner exception not available.");
+            }
 
-        string msg = string.Format(CultureInfo.CurrentCulture,
-                                   $"{GetStringResource("MsgText_ErrorGeneral")}\n{e.Message}\n{GetStringResource("MsgText_SeeLogFile")}");
-        _ = MessageBox.Show(msg,
-            GetStringResource("MsgText_ErrorCaption"),
-            MessageBoxButton.OK,
-            MessageBoxImage.Error);
+            if (e.StackTrace != null)
+            {
+                _log.Error("StackTrace follows:");
+                _log.Error(e.StackTrace);
+            }
+            else
+            {
+                _log.Error("StackTrace not available.");
+            }
+
+            string msg = string.Format(CultureInfo.CurrentCulture,
+                                       $"MsgText_Error\n{e.Message}\nMsgText_Error_SeeLog");
+
+            ShowMessageBox(msg);
+            _log.Fatal("Application cannot continue.");
+        }
+        else
+        {
+            string? t = args.ExceptionObject?.GetType().FullName ?? "null";
+            _log.Error($"Unhandled exception object is not of type Exception. Type: {t}");
+            string msg = string.Format(CultureInfo.CurrentCulture,
+                                       "MsgText_Error\nMsgText_Error_SeeLog");
+            ShowMessageBox(msg);
+        }
     }
     #endregion Unhandled Exception Handler
+
+    #region Session Ending Handler
+    /// <summary>
+    /// Listens for Windows session ending events (logoff/shutdown).
+    /// </summary>
+    private void SystemEvents_SessionEnding(object sender, SessionEndingCancelEventArgs e)
+    {
+        _log.Info($"Windows session ending: {e.ReasonSessionEnding}");
+        SessionEndingFlag = true;
+    }
+    #endregion Session Ending Handler
+
+    #region Show Message Box
+    /// <summary>
+    /// Message box display method that handles dispatcher thread access.
+    /// Message box is not displayed if session is ending.
+    /// </summary>
+    private static void ShowMessageBox(string msg)
+    {
+        if (SessionEndingFlag)
+            return;
+
+        if ((Current.Dispatcher?.CheckAccess()) == true || Current.Dispatcher == null)
+        {
+            _ = MessageBox.Show(msg,
+                "MsgText_Error_Caption",
+                MessageBoxButton.OK,
+                MessageBoxImage.Error);
+        }
+        else
+        {
+            Current.Dispatcher.Invoke(() =>
+                MessageBox.Show(msg,
+                    "MsgText_Error_Caption",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error));
+        }
+    }
+    #endregion Show Message Box
 
     #region Properties
     /// <summary>
@@ -205,5 +268,10 @@ public partial class App : Application
     /// Command line arguments
     /// </summary>
     internal static string[] Args { get; private set; } = [];
+
+    /// <summary>
+    /// Flag indicating if session is ending
+    /// </summary>
+    public static bool SessionEndingFlag { get; set; }
     #endregion Properties
 }
