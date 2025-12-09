@@ -7,6 +7,12 @@ public partial class UserSettings : ConfigManager<UserSettings>
 {
     #region Properties (some with default values)
     /// <summary>
+    /// Check for updates automatically when About page is opened.
+    /// </summary>
+    [ObservableProperty]
+    private bool _autoCheckForUpdates = true;
+
+    /// <summary>
     /// Height of the details pane.
     /// </summary>
     [ObservableProperty]
