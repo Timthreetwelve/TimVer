@@ -2,7 +2,7 @@
 
 namespace TimVer.ViewModels;
 
-public partial class AboutViewModel
+internal sealed partial class AboutViewModel
 {
     #region Constructor
     public AboutViewModel()

@@ -2,7 +2,7 @@
 
 namespace TimVer.ViewModels;
 
-public class EnvVarViewModel : ObservableObject
+internal sealed class EnvVarViewModel : ObservableObject
 {
     #region constructor
     public EnvVarViewModel()

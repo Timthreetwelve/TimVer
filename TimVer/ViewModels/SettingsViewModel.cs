@@ -1,8 +1,8 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.ViewModels;
 
-public partial class SettingsViewModel : ObservableObject
+internal sealed partial class SettingsViewModel : ObservableObject
 {
     #region MainWindow Instance
     private static readonly MainWindow? _mainWindow = Application.Current.MainWindow as MainWindow;

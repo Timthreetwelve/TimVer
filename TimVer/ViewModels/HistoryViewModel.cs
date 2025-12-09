@@ -2,7 +2,7 @@
 
 namespace TimVer.ViewModels;
 
-public class HistoryViewModel : ObservableObject
+internal sealed class HistoryViewModel : ObservableObject
 {
     #region constructor
     public HistoryViewModel()
