@@ -38,7 +38,7 @@
     <PackageReference Include="Nerdbank.GitVersioning" Version="3.9.50" PrivateAssets="all" />
     <PackageReference Include="NLog" Version="6.0.7" />
     <PackageReference Include="Octokit" Version="14.0.0" />
-    <PackageReference Include="Vanara.PInvoke.User32" Version="4.2.1" />
+    <PackageReference Include="Vanara.PInvoke.User32" Version="5.0.0" />
   </ItemGroup>
 
   <!-- Files to be copied to the output folder -->
