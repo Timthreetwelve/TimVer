@@ -283,6 +283,7 @@
     <sys:String x:Key="SettingsEnum_Theme_System">Tema sistema</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Colore evidenziazione</sys:String>
+    <sys:String x:Key="SettingsItem_AutoUpdateCheck">Controllo automatico nuove versioni all'apertura della pagina 'Info programma'</sys:String>
     <sys:String x:Key="SettingsItem_BuildHistory">Conserva cronologia build</sys:String>
     <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine1">Abilitando questa opzione TimVer conserverà un registro della cronologia delle build.</sys:String>
     <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine2">Disabilitando questa opzione verrà rimosso la voce  Cronologia dalla barra di navigazione.</sys:String>
@@ -481,5 +482,4 @@
     <!-- Begin changes on 2026/10/09 @ 01:20 UTC-->
     <!-- A | SettingsEnum_Theme_DarkBlue -->
     <!-- End of changes on 2026/10/09 @ 01:20 UTC-->
-
 </ResourceDictionary>
