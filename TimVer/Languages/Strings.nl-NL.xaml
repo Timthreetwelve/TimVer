@@ -277,6 +277,7 @@
     <sys:String x:Key="SettingsEnum_Spacing_Compact">Compact</sys:String>
     <sys:String x:Key="SettingsEnum_Spacing_Wide">Breedte</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Dark">Materiaal Donker</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_DarkBlue">Middernachtblauw</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Darker">Donkerder</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Light">Licht</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_System">Systeem</sys:String>

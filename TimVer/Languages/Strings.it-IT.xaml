@@ -277,6 +277,7 @@
     <sys:String x:Key="SettingsEnum_Spacing_Compact">Riga compatta</sys:String>
     <sys:String x:Key="SettingsEnum_Spacing_Wide">Riga larga</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Dark">Tema material scuro</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_DarkBlue">Blu mezzanotte</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Darker">Tema scuro</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Light">Tema chiaro</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_System">Tema sistema</sys:String>
@@ -476,5 +477,9 @@
     <!-- A | SettingsSubHead_SettingsFile -->
     <!-- A | SettingsItem_EditSettingsWarning -->
     <!-- End changes on 2024/11/28 @ 03:00 UTC -->
+
+    <!-- Begin changes on 2026/10/09 @ 01:20 UTC-->
+    <!-- A | SettingsEnum_Theme_DarkBlue -->
+    <!-- End of changes on 2026/10/09 @ 01:20 UTC-->
 
 </ResourceDictionary>

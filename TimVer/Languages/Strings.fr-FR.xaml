@@ -277,6 +277,7 @@
     <sys:String x:Key="SettingsEnum_Spacing_Compact">Compact</sys:String>
     <sys:String x:Key="SettingsEnum_Spacing_Wide">Large</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Dark">Sombre</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_DarkBlue">Bleu nuit</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Darker">Plus sombre</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Light">Clair</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_System">Système</sys:String>
@@ -476,5 +477,9 @@
     <!-- A | SettingsSubHead_SettingsFile -->
     <!-- A | SettingsItem_EditSettingsWarning -->
     <!-- End changes on 2024/11/28 @ 03:00 UTC -->
+
+    <!-- Begin changes on 2026/10/09 @ 01:20 UTC-->
+    <!-- A | SettingsEnum_Theme_DarkBlue -->
+    <!-- End of changes on 2026/10/09 @ 01:20 UTC-->
 
 </ResourceDictionary>
