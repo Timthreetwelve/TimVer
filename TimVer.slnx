@@ -1,11 +1,3 @@
 <Solution>
-  <Folder Name="/Solution Items/">
-    <File Path=".github/ISSUE_TEMPLATE/bug_report.yml" />
-    <File Path=".github/ISSUE_TEMPLATE/config.yml" />
-    <File Path=".github/ISSUE_TEMPLATE/enhancement.yml" />
-    <File Path="NewReleaseTemplate.md" />
-    <File Path="README.md" />
-    <File Path="version.json" />
-  </Folder>
   <Project Path="TimVer/TimVer.csproj" />
 </Solution>
