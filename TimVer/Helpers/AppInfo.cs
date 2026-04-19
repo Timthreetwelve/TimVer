@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Helpers;
 
@@ -103,7 +103,7 @@ internal static class AppInfo
     /// <summary>
     ///  Returns the version number in Major.Minor.Build format
     /// </summary>
-    private static string TitleVersion => Assembly.GetEntryAssembly()!.GetName().Version!.ToString().Remove(Assembly.GetEntryAssembly()!.GetName().Version!.ToString().LastIndexOf('.'));
+    private static string TitleVersion => Assembly.GetEntryAssembly()!.GetName().Version!.ToString()[..Assembly.GetEntryAssembly()!.GetName().Version!.ToString().LastIndexOf('.')];
 
     /// <summary>
     /// Returns the Process Name
