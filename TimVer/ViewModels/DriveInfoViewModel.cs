@@ -8,17 +8,16 @@ namespace TimVer.ViewModels;
 internal sealed partial class DriveInfoViewModel : ObservableObject
 {
     #region Logical disk drives
-    private static ObservableCollection<LogicalDrives>? _logicalDrivesList;
     public static ObservableCollection<LogicalDrives> LogicalDrivesList
     {
         get
         {
-            if (_logicalDrivesList?.Count > 0)
+            if (field?.Count > 0)
             {
-                return _logicalDrivesList;
+                return field;
             }
-            _logicalDrivesList = new ObservableCollection<LogicalDrives>(DiskDriveHelpers.GetLogicalDriveInfo()!);
-            return _logicalDrivesList;
+            field = new ObservableCollection<LogicalDrives>(DiskDriveHelpers.GetLogicalDriveInfo()!);
+            return field;
         }
     }
     #endregion Logical disk drives
@@ -27,17 +26,16 @@ internal sealed partial class DriveInfoViewModel : ObservableObject
     /// <summary>
     /// Physical drives collection
     /// </summary>
-    private static ObservableCollection<PhysicalDrives>? _physicalDrivesList;
     public static ObservableCollection<PhysicalDrives> PhysicalDrivesList
     {
         get
         {
-            if (_physicalDrivesList?.Count > 0)
+            if (field?.Count > 0)
             {
-                return _physicalDrivesList;
+                return field;
             }
-            _physicalDrivesList = new ObservableCollection<PhysicalDrives>(DiskDriveHelpers.GetPhysicalDriveInfo());
-            return _physicalDrivesList;
+            field = new ObservableCollection<PhysicalDrives>(DiskDriveHelpers.GetPhysicalDriveInfo());
+            return field;
         }
     }
     #endregion Physical disk drives

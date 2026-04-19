@@ -32,16 +32,15 @@ internal sealed class EnvVarViewModel : ObservableObject
     #region Filter text
     public static event EventHandler<PropertyChangedEventArgs>? StaticPropertyChanged;
 
-    private static string? _filterText;
     public static string FilterText
     {
-        get => _filterText!;
+        get => field!;
         set
         {
-            if (_filterText != value)
+            if (field != value)
             {
-                _filterText = value;
-                StaticPropertyChanged?.Invoke(null, new PropertyChangedEventArgs(FilterText));
+                field = value;
+                StaticPropertyChanged?.Invoke(null, new PropertyChangedEventArgs(nameof(FilterText)));
             }
         }
     }
