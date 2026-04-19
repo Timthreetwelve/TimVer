@@ -1,8 +1,10 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer;
 
+#pragma warning disable CA1515
 public partial class App : Application
+#pragma warning restore CA1515
 {
     #region On Startup
     /// <summary>
