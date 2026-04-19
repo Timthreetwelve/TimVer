@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer;
 
@@ -274,6 +274,6 @@ public partial class App : Application
     /// <summary>
     /// Flag indicating if session is ending
     /// </summary>
-    public static bool SessionEndingFlag { get; set; }
+    private static bool SessionEndingFlag { get; set; }
     #endregion Properties
 }
