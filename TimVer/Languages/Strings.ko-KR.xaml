@@ -41,6 +41,8 @@
     <sys:String x:Key="About_LicenseToolTip">라이선스 문서 보기</sys:String>
     <sys:String x:Key="About_Translations">한국어 번역</sys:String>
     <sys:String x:Key="About_Update">TimVer 업데이트</sys:String>
+    <sys:String x:Key="About_UpdateFound">최신 릴리스를 사용할 수 있습니다</sys:String>
+    <sys:String x:Key="About_UpdateFoundTooltip">GitHub 릴리스 페이지로 이동하려면 클릭</sys:String>
     <sys:String x:Key="About_UpdateText">TimVer의 새 릴리스 확인</sys:String>
     <sys:String x:Key="About_UpdateToolTip">GitHub에서 최신 릴리스 확인</sys:String>
     <sys:String x:Key="About_Version">버전</sys:String>
@@ -479,7 +481,13 @@
     <!-- A | SettingsItem_EditSettingsWarning -->
     <!-- End changes on 2024/11/28 @ 03:00 UTC -->
 
-    <!-- Begin changes on 2026/10/09 @ 01:20 UTC-->
+    <!-- Begin changes on 2026/04/19 @ 01:20 UTC-->
     <!-- A | SettingsEnum_Theme_DarkBlue -->
-    <!-- End of changes on 2026/10/09 @ 01:20 UTC-->
+    <!-- End of changes on 2026/04/19 @ 01:20 UTC-->
+
+    <!-- Begin changes on 2026/04/20 @ 00:15 UTC-->
+    <!-- A | About_UpdateFound -->
+    <!-- A | About_UpdateFoundTooltip -->
+    <!-- A | SettingsItem_AutoUpdateCheck -->
+    <!-- End of changes on 2026/04/20 @ 00:15 UTC-->
 </ResourceDictionary>

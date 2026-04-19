@@ -41,6 +41,8 @@
     <sys:String x:Key="About_LicenseToolTip">Voir le document de licence</sys:String>
     <sys:String x:Key="About_Translations">Traductions</sys:String>
     <sys:String x:Key="About_Update">Mettre à jour TimVer</sys:String>
+    <sys:String x:Key="About_UpdateFound">Une nouvelle version est disponible</sys:String>
+    <sys:String x:Key="About_UpdateFoundTooltip">Cliquez pour aller à la page de publication GitHub</sys:String>
     <sys:String x:Key="About_UpdateText">Vérifiez la nouvelle version de TimVer</sys:String>
     <sys:String x:Key="About_UpdateToolTip">Vérifiez GitHub si version plus récente</sys:String>
     <sys:String x:Key="About_Version">Version</sys:String>
@@ -483,4 +485,9 @@
     <!-- A | SettingsEnum_Theme_DarkBlue -->
     <!-- End of changes on 2026/10/09 @ 01:20 UTC-->
 
+    <!-- Begin changes on 2026/04/20 @ 00:15 UTC-->
+    <!-- A | About_UpdateFound -->
+    <!-- A | About_UpdateFoundTooltip -->
+    <!-- A | SettingsItem_AutoUpdateCheck -->
+    <!-- End of changes on 2026/04/20 @ 00:15 UTC-->
 </ResourceDictionary>

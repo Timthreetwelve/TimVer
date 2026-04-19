@@ -41,6 +41,8 @@
     <sys:String x:Key="About_LicenseToolTip">View the license document</sys:String>
     <sys:String x:Key="About_Translations">Translations</sys:String>
     <sys:String x:Key="About_Update">Update TimVer</sys:String>
+    <sys:String x:Key="About_UpdateFound">A newer release is available</sys:String>
+    <sys:String x:Key="About_UpdateFoundTooltip">Click to go to GitHub release page</sys:String>
     <sys:String x:Key="About_UpdateText">Check for new release of TimVer</sys:String>
     <sys:String x:Key="About_UpdateToolTip">Check GitHub for a newer release</sys:String>
     <sys:String x:Key="About_Version">Version</sys:String>
@@ -484,6 +486,8 @@
     <!-- End of changes on 2026/04/19 @ 01:20 UTC-->
 
     <!-- Begin changes on 2026/04/20 @ 00:15 UTC-->
+    <!-- A | About_UpdateFound -->
+    <!-- A | About_UpdateFoundTooltip -->
     <!-- A | SettingsItem_AutoUpdateCheck -->
     <!-- End of changes on 2026/04/20 @ 00:15 UTC-->
 </ResourceDictionary>

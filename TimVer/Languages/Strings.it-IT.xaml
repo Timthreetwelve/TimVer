@@ -15,7 +15,7 @@
 
         Translation contributed by:  RB
 
-        Date last update:            29.11.2024
+        Date last update:            2026-04-18
 
         ======================================================================
 
@@ -41,6 +41,8 @@
     <sys:String x:Key="About_LicenseToolTip">Visualizza documento licenza</sys:String>
     <sys:String x:Key="About_Translations">Traduzioni</sys:String>
     <sys:String x:Key="About_Update">Aggiornamenti TimVer</sys:String>
+    <sys:String x:Key="About_UpdateFound">È disponibile una nuova versione</sys:String>
+    <sys:String x:Key="About_UpdateFoundTooltip">Fai clic per andare alla pagina relativa su GitHub</sys:String>
     <sys:String x:Key="About_UpdateText">Controlla aggiornamenti TimVer</sys:String>
     <sys:String x:Key="About_UpdateToolTip">Controlla aggiornamenti su GitHub</sys:String>
     <sys:String x:Key="About_Version">Versione</sys:String>
@@ -479,7 +481,13 @@
     <!-- A | SettingsItem_EditSettingsWarning -->
     <!-- End changes on 2024/11/28 @ 03:00 UTC -->
 
-    <!-- Begin changes on 2026/10/09 @ 01:20 UTC-->
+    <!-- Begin changes on 2026/04/19 @ 01:20 UTC-->
     <!-- A | SettingsEnum_Theme_DarkBlue -->
-    <!-- End of changes on 2026/10/09 @ 01:20 UTC-->
+    <!-- End of changes on 2026/04/19 @ 01:20 UTC-->
+
+    <!-- Begin changes on 2026/04/20 @ 00:15 UTC-->
+    <!-- A | About_UpdateFound -->
+    <!-- A | About_UpdateFoundTooltip -->
+    <!-- A | SettingsItem_AutoUpdateCheck -->
+    <!-- End of changes on 2026/04/20 @ 00:15 UTC-->
 </ResourceDictionary>
