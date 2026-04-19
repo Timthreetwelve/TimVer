@@ -15,7 +15,7 @@
 
         Translation contributed by:  TiM
 
-        Date last update:            2023-12-13
+        Date last update:            2026-04-18
 
         ======================================================================
 
@@ -283,6 +283,7 @@
     <sys:String x:Key="SettingsEnum_Theme_System">Systeem</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Accent kleur</sys:String>
+    <sys:String x:Key="SettingsItem_AutoUpdateCheck">Automatisch controleren op nieuwere versie wanneer de About-pagina wordt geopend</sys:String>
     <sys:String x:Key="SettingsItem_BuildHistory">Bewaar geschiedenis</sys:String>
     <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine1">Bewaren van versie historie en veranderingen.</sys:String>
     <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine2">Verwijder versie historie van de navigatiebalk.</sys:String>

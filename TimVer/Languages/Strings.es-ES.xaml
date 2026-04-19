@@ -15,7 +15,7 @@
 
         Translation contributed by:  Timthreetwelve
 
-        Date last update:            2023/12/15
+        Date last update:            2026/04/18
 
         ======================================================================
 
@@ -283,6 +283,7 @@
     <sys:String x:Key="SettingsEnum_Theme_System">Sistema</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Acentuar el color</sys:String>
+    <sys:String x:Key="SettingsItem_AutoUpdateCheck">Comprobar automáticamente si hay una versión más reciente cuando se abra la página Acerca de</sys:String>
     <sys:String x:Key="SettingsItem_BuildHistory">Mantener el historial de compilación</sys:String>
     <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine1">Habilitar esta opción le indicará a TimVer que mantenga un registro de cuándo cambia el número de compilación.</sys:String>
     <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine2">Al desactivar esta opción se eliminará el elemento Historial de la barra de navegación.</sys:String>

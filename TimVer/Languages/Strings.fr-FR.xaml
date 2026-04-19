@@ -15,7 +15,7 @@
 
         Translation contributed by:  Timthreetwelve/Largo
 
-        Date last updated:           2024.12.14
+        Date last updated:           2026.04.18
 
         =======================================================================
 
@@ -283,6 +283,7 @@
     <sys:String x:Key="SettingsEnum_Theme_System">Système</sys:String>
     <!-- Settings Page Items -->
     <sys:String x:Key="SettingsItem_AccentColor">Couleur d'accentuation</sys:String>
+    <sys:String x:Key="SettingsItem_AutoUpdateCheck">Vérification auto des nouvelles versions à l'ouverture de la page À propos de</sys:String>
     <sys:String x:Key="SettingsItem_BuildHistory">Conserver l'historique des builds</sys:String>
     <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine1">L'activation de cette option dira à TimVer de conserver un journal du moment où le nombre de build change.</sys:String>
     <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine2">La désactivation de cette option supprimera l'élément de l'historique de la barre de navigation.</sys:String>
