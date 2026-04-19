@@ -5,7 +5,7 @@ namespace TimVer.Helpers;
 /// <summary>
 /// Class to get Video information.
 /// </summary>
-public static class VideoHelpers
+internal static class VideoHelpers
 {
     #region Get list of video controllers
     /// <summary>

@@ -5,7 +5,7 @@ namespace TimVer.Helpers;
 /// <summary>
 /// Class for gathering information about physical and logical disk drives.
 /// </summary>
-public static class DiskDriveHelpers
+internal static class DiskDriveHelpers
 {
     #region Determine if drive is fixed
     /// <summary>

@@ -1,11 +1,11 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace TimVer.Helpers;
 
 /// <summary>
 /// Class to return information about the current application
 /// </summary>
-public static class AppInfo
+internal static class AppInfo
 {
     /// <summary>
     /// Returns the operating system description e.g. Microsoft Windows 10.0.19044

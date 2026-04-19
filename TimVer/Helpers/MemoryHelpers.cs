@@ -2,7 +2,7 @@
 
 namespace TimVer.Helpers;
 
-public static class MemoryHelpers
+internal static class MemoryHelpers
 {
     /// <summary>
     /// Gets the total amount of installed ram.

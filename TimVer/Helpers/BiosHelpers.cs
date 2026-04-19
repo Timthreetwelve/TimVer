@@ -6,7 +6,7 @@ namespace TimVer.Helpers;
 /// Class to get BIOS information.
 /// </summary>
 /// <seealso cref="UefiHelpers"/>
-public static class BiosHelpers
+internal static class BiosHelpers
 {
     private const string _scope = @"\\.\root\CIMV2";
     private const string _dialect = "WQL";

@@ -2,7 +2,7 @@
 
 namespace TimVer.Helpers;
 
-public static class RegistryHelpers
+internal static class RegistryHelpers
 {
     #region Get Registry information
     /// <summary>
