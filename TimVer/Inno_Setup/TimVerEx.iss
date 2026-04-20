@@ -11,14 +11,16 @@
 ;             PublishFolder:    The output folder from MS Build.
 ;                               Varies depending on the type of build.
 ;----------------------------------------------------------------------
-#include "D:\Temp\PubSetup.Temp.iss"
+#define TempDir              GetEnv("TEMP")
+#define IncludeFile          TempDir + "\PubSetup.Temp.iss"
+#include IncludeFile
 
 #define BaseDir              "V:\Source\Repos\TimVer\TimVer"
 #define MySourceDir          BaseDir + PublishFolder
 #define MySetupIcon          BaseDir + "\Images\TV.ico"
-#define MyOutputDir          "D:\InnoSetup\Output"
-#define MyLargeImage         "D:\InnoSetup\Images\WizardImageTimVer.bmp"
-#define MySmallImage         "D:\InnoSetup\Images\WizardSmallImage.bmp"
+#define MyOutputDir          "V:\InnoSetup\Output"
+#define MyLargeImage         "V:\InnoSetup\Images\WizardImageTimVer.png"
+#define MySmallImage         "V:\InnoSetup\Images\WizardSmallImage.bmp"
 
 #define MyAppID              "{4D2F6A12-7661-4E5B-983A-11F2194C81CA}"
 #define MyAppName            "TimVer"
@@ -58,11 +60,11 @@ PrivilegesRequired=lowest
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 AppVerName={#MyAppName} {#MyAppVersion}
-
 AppCopyright={#MyCopyright}
 AppPublisherURL={#MyAppSupportURL}
 AppSupportURL={#MyAppSupportURL}
 AppUpdatesURL={#MyAppSupportURL}
+AppPublisher={#MyPublisherName}
 
 VersionInfoDescription={#MyAppName} installer
 VersionInfoProductName={#MyAppName}
@@ -70,28 +72,28 @@ VersionInfoVersion={#MyAppVersion}
 
 UninstallDisplayName={#MyAppName}
 UninstallDisplayIcon={app}\{#MyAppExeName}
-AppPublisher={#MyPublisherName}
 
 ShowLanguageDialog=yes
 UsePreviousLanguage=no
-WizardStyle=modern
-WizardSizePercent=100,100
-WizardImageFile={#MyLargeImage}
-WizardSmallImageFile={#MySmallImage}
-WizardImageStretch=no
 
-AllowNoIcons=yes
-Compression=lzma
-DefaultDirName={autopf}\{#MyCompanyName}\{#MyAppName}
-DefaultGroupName={#MyAppName}
+WizardImageFile={#MyLargeImage} 
+WizardImageFileDynamicDark={#MyLargeImage}
+WizardImageStretch=yes
+WizardSizePercent=100,100
+WizardStyle=dynamic includetitlebar
+
 DisableDirPage=yes
 DisableProgramGroupPage=yes
 DisableReadyMemo=no
 DisableStartupPrompt=yes
 DisableWelcomePage=no
+
+AllowNoIcons=yes
+Compression=lzma
+DefaultDirName={autopf}\{#MyCompanyName}\{#MyAppName}
+DefaultGroupName={#MyAppName}
 OutputBaseFilename={#MyInstallerFilename}
 OutputDir={#MyOutputDir}
-;OutputManifestFile={#MyAppName}_{#MyAppVersion}_{#InstallType}_FileList.txt
 SetupIconFile={#MySetupIcon}
 SetupLogging=yes
 SolidCompression=no
@@ -121,10 +123,12 @@ Type: files; Name: "{app}\CsvHelper.dll"
 Root: HKCU; Subkey: "Software\{#MyCompanyName}"; Flags: uninsdeletekeyifempty
 Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; Flags: uninsdeletekey
 Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: String; ValueName: "Copyright"; ValueData: "{#MyCopyright}"; Flags: uninsdeletekey
+Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: String; ValueName: "Executable"; ValueData: "{#MyAppExeName}"; Flags: uninsdeletekey
 Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: String; ValueName: "Install Date"; ValueData: "{#MyDateTimeString}"; Flags: uninsdeletekey
-Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: String; ValueName: "Version"; ValueData: "{#MyAppVersion}"; Flags: uninsdeletekey
 Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: String; ValueName: "Install Folder"; ValueData: "{autopf}\{#MyCompanyName}\{#MyAppName}"; Flags: uninsdeletekey
+Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: String; ValueName: "Install Type"; ValueData: "{#InstallType}"; Flags: uninsdeletekey
 Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: String; ValueName: "Installer Language"; ValueData:"{language}"; Flags: uninsdeletekey
+Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: String; ValueName: "Version"; ValueData: "{#MyAppVersion}"; Flags: uninsdeletekey
 ; Delete this key from previous installs
 Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: none; ValueName: "Edition"; Flags: uninsdeletekey deletevalue
 
