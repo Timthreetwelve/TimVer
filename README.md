@@ -9,7 +9,7 @@
 <div align="center">
 
 [![GitHub](https://img.shields.io/github/license/Timthreetwelve/TimVer?style=plastic&color=seagreen)](https://github.com/Timthreetwelve/TimVer/blob/main/LICENSE)
-[![NET6win](https://img.shields.io/badge/.NET-8.0--Windows-blueviolet?style=plastic)](https://dotnet.microsoft.com/en-us/download) 
+[![NET6win](https://img.shields.io/badge/.NET-10--Windows-blueviolet?style=plastic)](https://dotnet.microsoft.com/en-us/download) 
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/Timthreetwelve/TimVer?style=plastic)](https://github.com/Timthreetwelve/TimVer/releases/latest) 
 [![GitHub Release Date](https://img.shields.io/github/release-date/timthreetwelve/TimVer?style=plastic&color=orange)](https://github.com/Timthreetwelve/TimVer/releases/latest) 
 [![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/timthreetwelve/TimVer/latest?style=plastic)](https://github.com/Timthreetwelve/TimVer/commits/main)
@@ -28,7 +28,7 @@
 ### TimVer is Multilingual!
 Please see [Contribute a Translation](https://github.com/Timthreetwelve/TimVer/wiki/Contribute-a-Translation) topic in the Wiki if you would like to contribute a translation. 
 
-### TimVer now runs on .Net 10.0
+### TimVer now runs on .Net 10
 Self-contained versions are available if .NET 10 isn't installed. See the [releases page](https://github.com/Timthreetwelve/TimVer/releases).
 
 ### Screenshots 
