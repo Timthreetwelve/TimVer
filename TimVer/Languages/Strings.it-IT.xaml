@@ -278,11 +278,11 @@
     <sys:String x:Key="SettingsEnum_Spacing_Comfortable">Riga grande</sys:String>
     <sys:String x:Key="SettingsEnum_Spacing_Compact">Riga compatta</sys:String>
     <sys:String x:Key="SettingsEnum_Spacing_Wide">Riga larga</sys:String>
-    <sys:String x:Key="SettingsEnum_Theme_Dark">Tema material scuro</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_Dark">Material scuro</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_DarkBlue">Blu mezzanotte</sys:String>
-    <sys:String x:Key="SettingsEnum_Theme_Darker">Tema scuro</sys:String>
-    <sys:String x:Key="SettingsEnum_Theme_Light">Tema chiaro</sys:String>
-    <sys:String x:Key="SettingsEnum_Theme_System">Tema sistema</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_Darker">Scuro</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_Light">Chiaro</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_System">Sistema</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Colore evidenziazione</sys:String>
     <sys:String x:Key="SettingsItem_AutoUpdateCheck">All'apertura di 'Info programma' verifica disponibilità nuove vesrioni programma</sys:String>
@@ -338,7 +338,7 @@
     <sys:String x:Key="SettingsItem_UISize">Dimensione UI</sys:String>
     <sys:String x:Key="SettingsItem_UseGB">Per calcoli capacità usa GB (1000^3 byte)</sys:String>
     <sys:String x:Key="SettingsItem_UseGiB">Per calcoli capacità usa GiB (1024^3 byte)</sys:String>
-    <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Usa per l'app la stessa lingua di sistema di Windows</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Usa per TimVer la stesso lingua di sistema di Windows</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">Quando questa opzione è selezionata verrà usata per l'app, se è disponibile la traduzione del programma,</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">la stessa lingua specificata nelle impostazioni di Windows, altrimenti verrà usata la lingua inglese (en-US).</sys:String>
     <!--  Settings Page Expander Headings and Sub Headings -->
