@@ -1,0 +1,493 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--
+        BEFORE UPDATING, refer to the "Contribute a Translation" topic in the Wiki:
+
+        https://github.com/Timthreetwelve/TimVer/wiki/Contribute-a-Translation
+
+        ======================================================================
+
+        Application name:            TimVer
+
+        Language name:
+
+        Translation contributed by:
+
+        Date last update:
+
+        ======================================================================
+
+    -->
+
+    <!--  About Page  -->
+	<sys:String x:Key="About_BuildDate">วันที่สร้าง</sys:String>
+	<sys:String x:Key="About_CommitID">รหัสการคอมมิต</sys:String>
+	<sys:String x:Key="About_CommitIDToolTip">รหัสการคอมมิตแบบเต็ม:</sys:String>
+	<sys:String x:Key="About_Contribute">ร่วมแปล</sys:String>
+	<sys:String x:Key="About_ContributeToolTip">วิธีการร่วมแปล</sys:String>
+	<sys:String x:Key="About_Copyright">ลิขสิทธิ์</sys:String>
+	<sys:String x:Key="About_CreatedBy">สร้างโดย</sys:String>
+	<sys:String x:Key="About_CreatedByToolTip">ดูผลงานอื่นๆ ของ Tim ได้ที่ https://github.com/Timthreetwelve</sys:String>
+	<sys:String x:Key="About_Description">ข้อมูลทั้งหมดที่ Winver มีให้และอื่นๆ อีกมากมาย!</sys:String>
+	<sys:String x:Key="About_Documentation">เอกสารประกอบ</sys:String>
+	<sys:String x:Key="About_DocumentationText">เปิดไฟล์ ReadMe</sys:String>
+	<sys:String x:Key="About_DocumentationToolTip">ดูไฟล์ ReadMe</sys:String>
+	<sys:String x:Key="About_GitHub">GitHub</sys:String>
+	<sys:String x:Key="About_GitHubToolTip">เยี่ยมชมหน้า TimVer บน GitHub</sys:String>
+	<sys:String x:Key="About_License">ใบอนุญาต</sys:String>
+	<sys:String x:Key="About_LicenseText">โครงการนี้ได้รับอนุญาตภายใต้เงื่อนไขของใบอนุญาต MIT</sys:String>
+	<sys:String x:Key="About_LicenseToolTip">ดูเอกสารใบอนุญาต</sys:String>
+	<sys:String x:Key="About_Translations">คำแปล</sys:String>
+	<sys:String x:Key="About_Update">อัปเดต TimVer</sys:String>
+	<sys:String x:Key="About_UpdateFound">มีเวอร์ชันใหม่กว่าให้ใช้งาน</sys:String>
+	<sys:String x:Key="About_UpdateFoundTooltip">คลิกเพื่อไปที่หน้าเผยแพร่บน GitHub</sys:String>
+	<sys:String x:Key="About_UpdateText">ตรวจสอบเวอร์ชันใหม่ของ TimVer</sys:String>
+	<sys:String x:Key="About_UpdateToolTip">ตรวจสอบ GitHub สำหรับเวอร์ชันใหม่กว่า</sys:String>
+	<sys:String x:Key="About_Version">เวอร์ชัน</sys:String>
+    <!--  Build History Page  -->
+	<sys:String x:Key="BuildHistory_Branch">สาขา</sys:String>
+	<sys:String x:Key="BuildHistory_Build">สร้าง</sys:String>
+	<sys:String x:Key="BuildHistory_Date">วันที่</sys:String>
+	<sys:String x:Key="BuildHistory_Records">บันทึก</sys:String>
+	<sys:String x:Key="BuildHistory_Version">เวอร์ชัน</sys:String>
+    <!--  Button Text  -->
+	<sys:String x:Key="Button_Cancel">ยกเลิก</sys:String>
+	<sys:String x:Key="Button_CheckUpdate">ตรวจสอบการอัปเดต</sys:String>
+	<sys:String x:Key="Button_Close">ปิดเมนู</sys:String>
+	<sys:String x:Key="Button_CopyToClipboardToolTip">คัดลอกหน้านี้ไปยังคลิปบอร์ด</sys:String>
+	<sys:String x:Key="Button_ExportSettings">ส่งออกการตั้งค่า</sys:String>
+	<sys:String x:Key="Button_ExportSettingsToolTip">ส่งออกการตั้งค่าปัจจุบันไปยังไฟล์</sys:String>
+	<sys:String x:Key="Button_ImportSettings">นำเข้าการตั้งค่า</sys:String>
+	<sys:String x:Key="Button_ImportSettingsToolTip">นำเข้าการตั้งค่าจากไฟล์</sys:String>
+	<sys:String x:Key="Button_ListSettings">แสดงรายการการตั้งค่า</sys:String>
+	<sys:String x:Key="Button_ListSettingsTooltip">บันทึก (เขียน) การตั้งค่าลงในไฟล์บันทึก</sys:String>
+	<sys:String x:Key="Button_No">ไม่</sys:String>
+	<sys:String x:Key="Button_OK">ตกลง</sys:String>
+	<sys:String x:Key="Button_OpenAppFolder">เปิดโฟลเดอร์แอป</sys:String>
+	<sys:String x:Key="Button_OpenFolder">เปิดโฟลเดอร์แอป</sys:String>
+	<sys:String x:Key="Button_OpenFolderToolTip">เปิดโฟลเดอร์ TimVer ใน File Explorer</sys:String>
+	<sys:String x:Key="Button_OpenLogFile">ดูไฟล์บันทึก</sys:String>
+	<sys:String x:Key="Button_OpenLogFileToolTip">เปิดไฟล์บันทึกในค่าเริ่มต้น</sys:String>
+	<sys:String x:Key="Button_OpenSettings">เปิดการตั้งค่า</sys:String>
+	<sys:String x:Key="Button_OpenSettingsToolTip">เปิดไฟล์การตั้งค่า</sys:String>
+	<sys:String x:Key="Button_ThreeDotToolTip">การดำเนินการเพิ่มเติม</sys:String>
+	<sys:String x:Key="Button_Yes">ใช่</sys:String>
+    <!--  Disk Drive Information Page  -->
+	<sys:String x:Key="DriveInfo_BootDrive">ไดรฟ์บูต</sys:String>
+	<sys:String x:Key="DriveInfo_BusType">ประเภทบัส</sys:String>
+	<sys:String x:Key="DriveInfo_BusType_FiberChannel">ไฟเบอร์แชนเนล</sys:String>
+	<sys:String x:Key="DriveInfo_BusType_FileBackedVirtual">เสมือนแบบไฟล์แบ็ค</sys:String>
+	<sys:String x:Key="DriveInfo_BusType_MMC">การ์ดมัลติมีเดีย (MMC)</sys:String>
+	<sys:String x:Key="DriveInfo_BusType_Reserved">สงวนไว้</sys:String>
+	<sys:String x:Key="DriveInfo_BusType_SAS">ซีเรียลแอนะเดด SCSI (SAS)</sys:String>
+	<sys:String x:Key="DriveInfo_BusType_SATA">อนุกรม ATA (SATA)</sys:String>
+	<sys:String x:Key="DriveInfo_BusType_SD">Secure Digital (SD)</sys:String>
+	<sys:String x:Key="DriveInfo_BusType_StorageSpaces">พื้นที่จัดเก็บข้อมูล</sys:String>
+	<sys:String x:Key="DriveInfo_BusType_Unknown">ไม่ทราบ</sys:String>
+	<sys:String x:Key="DriveInfo_DeviceID">รหัสอุปกรณ์</sys:String>
+	<sys:String x:Key="DriveInfo_DiskType">ประเภทดิสก์</sys:String>
+	<sys:String x:Key="DriveInfo_DriveType_CDRom">CD-ROM</sys:String>
+	<sys:String x:Key="DriveInfo_DriveLetters">อักษรไดรฟ์</sys:String>
+	<sys:String x:Key="DriveInfo_DriveType_Fixed">คงที่</sys:String>
+	<sys:String x:Key="DriveInfo_DriveType_Network">เครือข่าย</sys:String>
+	<sys:String x:Key="DriveInfo_DriveType_NoRootDirectory">ไม่มีไดเร็กทอรีรูท</sys:String>
+	<sys:String x:Key="DriveInfo_DriveType_Ram">ไดรฟ์ RAM</sys:String>
+	<sys:String x:Key="DriveInfo_DriveType_Removable">ถอดได้</sys:String>
+	<sys:String x:Key="DriveInfo_DriveType_Unknown">ไม่ทราบ</sys:String>
+	<sys:String x:Key="DriveInfo_Error">ข้อผิดพลาดข้อมูลไดรฟ์</sys:String>
+	<sys:String x:Key="DriveInfo_ErrorProcessingDrive">ข้อผิดพลาดในการประมวลผลไดรฟ์</sys:String>
+	<sys:String x:Key="DriveInfo_ErrorSeeLog">ข้อผิดพลาด - ดูไฟล์บันทึก</sys:String>
+	<sys:String x:Key="DriveInfo_Format">รูปแบบ</sys:String>
+	<sys:String x:Key="DriveInfo_Free">ว่าง</sys:String>
+	<sys:String x:Key="DriveInfo_FreePercent">% ว่าง</sys:String>
+	<sys:String x:Key="DriveInfo_FriendlyName">ชื่อที่เป็นมิตร</sys:String>
+	<sys:String x:Key="DriveInfo_Health">สุขภาพ</sys:String>
+	<sys:String x:Key="DriveInfo_Health_Healthy">สุขภาพดี</sys:String>
+	<sys:String x:Key="DriveInfo_Health_Unhealthy">ไม่แข็งแรง</sys:String>
+	<sys:String x:Key="DriveInfo_Health_Unknown">ไม่ทราบ</sys:String>
+	<sys:String x:Key="DriveInfo_Health_Warning">คำเตือน</sys:String>
+	<sys:String x:Key="DriveInfo_Index">ดัชนี</sys:String>
+	<sys:String x:Key="DriveInfo_Interface">อินเทอร์เฟซ</sys:String>
+	<sys:String x:Key="DriveInfo_IOError">ข้อผิดพลาด I/O</sys:String>
+	<sys:String x:Key="DriveInfo_Label">ป้ายกำกับ</sys:String>
+	<sys:String x:Key="DriveInfo_LogicalDrives">ไดรฟ์ตรรกะ</sys:String>
+	<sys:String x:Key="DriveInfo_MediaType">ประเภทสื่อ</sys:String>
+	<sys:String x:Key="DriveInfo_MediaType_Unspecified">ไม่ระบุ</sys:String>
+	<sys:String x:Key="DriveInfo_Message">ข้อความ</sys:String>
+	<sys:String x:Key="DriveInfo_Model">รุ่น</sys:String>
+	<sys:String x:Key="DriveInfo_Name">ชื่อ</sys:String>
+	<sys:String x:Key="DriveInfo_NotReady">ไม่พร้อมใช้งาน</sys:String>
+	<sys:String x:Key="DriveInfo_Partitions">พาร์ติชัน</sys:String>
+	<sys:String x:Key="DriveInfo_PartitionStyle">รูปแบบพาร์ติชัน</sys:String>
+	<sys:String x:Key="DriveInfo_PhysicalDisabled">การรวบรวมข้อมูลไดรฟ์ทางกายภาพถูกปิดใช้งานในการตั้งค่า</sys:String>
+	<sys:String x:Key="DriveInfo_PhysicalDrives">ไดรฟ์ทางกายภาพ</sys:String>
+	<sys:String x:Key="DriveInfo_RefreshToolTipLine1">การรีเฟรชข้อมูลไดรฟ์จะรีเฟรชทั้งสอง</sys:String>
+	<sys:String x:Key="DriveInfo_RefreshToolTipLine2">ไดรฟ์ตรรกะและไดรฟ์ทางกายภาพ (หากเปิดใช้งาน)</sys:String>
+	<sys:String x:Key="DriveInfo_SerialNumber">หมายเลขซีเรียล</sys:String>
+	<sys:String x:Key="DriveInfo_Size">ขนาด</sys:String>
+	<sys:String x:Key="DriveInfo_SystemDrive">ไดรฟ์ระบบ</sys:String>
+	<sys:String x:Key="DriveInfo_Type">ประเภท</sys:String>
+	<sys:String x:Key="DriveInfo_UnauthorizedAccess">การเข้าถึงโดยไม่ได้รับอนุญาต</sys:String>
+	<sys:String x:Key="DriveInfo_UnknownError">ข้อผิดพลาดที่ไม่ทราบสาเหตุ</sys:String>
+    <!--  Environment Variables Page  -->
+	<sys:String x:Key="EnvironmentInfo_Filter">ตัวกรอง</sys:String>
+	<sys:String x:Key="EnvironmentInfo_Value">ค่า</sys:String>
+	<sys:String x:Key="EnvironmentInfo_Variable">ตัวแปร</sys:String>
+    <!--  Graphics Information Page  -->
+	<sys:String x:Key="GraphicsInfo_AdapterRAM">หน่วยความจำ RAM ของอะแดปเตอร์</sys:String>
+	<sys:String x:Key="GraphicsInfo_AdapterType">ประเภทอะแดปเตอร์</sys:String>
+	<sys:String x:Key="GraphicsInfo_BitsPerPixel">บิตต่อพิกเซล</sys:String>
+	<sys:String x:Key="GraphicsInfo_CurrentRefreshRate">อัตราการรีเฟรชปัจจุบัน</sys:String>
+	<sys:String x:Key="GraphicsInfo_CurrentResolution">ความละเอียดปัจจุบัน</sys:String>
+	<sys:String x:Key="GraphicsInfo_Description">คำอธิบาย</sys:String>
+	<sys:String x:Key="GraphicsInfo_DeviceID">รหัสอุปกรณ์</sys:String>
+	<sys:String x:Key="GraphicsInfo_GraphicsAdapter">อะแดปเตอร์กราฟิก</sys:String>
+	<sys:String x:Key="GraphicsInfo_NumberOfColors">จำนวนสี</sys:String>
+	<sys:String x:Key="GraphicsInfo_NumberOfDisplays">จำนวนจอแสดงผล</sys:String>
+	<sys:String x:Key="GraphicsInfo_SelectAdapter">เลือกอะแดปเตอร์</sys:String>
+	<sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine1">หากมีการติดตั้งอะแดปเตอร์วิดีโอมากกว่าหนึ่งตัว</sys:String>
+	<sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine2">ใช้เมนูแบบดรอปดาวน์เพื่อเลือกอะแดปเตอร์ที่จะแสดงผล</sys:String>
+    <!--  Hardware Information Page  -->
+    <sys:String x:Key="HardwareInfo_BIOS">BIOS</sys:String>
+	<sys:String x:Key="HardwareInfo_BiosManufacturer">ผู้ผลิต BIOS</sys:String>
+	<sys:String x:Key="HardwareInfo_BiosMode">โหมด BIOS</sys:String>
+	<sys:String x:Key="HardwareInfo_BiosVersion">เวอร์ชันและวันที่ของ BIOS</sys:String>
+	<sys:String x:Key="HardwareInfo_Cores">จำนวนคอร์</sys:String>
+	<sys:String x:Key="HardwareInfo_Installed">ติดตั้งแล้ว</sys:String>
+	<sys:String x:Key="HardwareInfo_LastBoot">การรีบูตครั้งล่าสุด</sys:String>
+	<sys:String x:Key="HardwareInfo_LastBootNormal">การบูตปกติ</sys:String>
+	<sys:String x:Key="HardwareInfo_LastBootSafe">โหมดปลอดภัย</sys:String>
+	<sys:String x:Key="HardwareInfo_LastBootSafeNetwork">โหมดปลอดภัยพร้อมเครือข่าย</sys:String>
+	<sys:String x:Key="HardwareInfo_LastBootType">ประเภทการรีบูตครั้งล่าสุด</sys:String>
+	<sys:String x:Key="HardwareInfo_MachineName">ชื่อเครื่อง</sys:String>
+	<sys:String x:Key="HardwareInfo_Manufacturer">ผู้ผลิต</sys:String>
+	<sys:String x:Key="HardwareInfo_Model">รุ่น</sys:String>
+	<sys:String x:Key="HardwareInfo_PhysicalMemory">หน่วยความจำทางกายภาพ</sys:String>
+	<sys:String x:Key="HardwareInfo_Processor">โปรเซสเซอร์</sys:String>
+	<sys:String x:Key="HardwareInfo_ProcessorArch">สถาปัตยกรรมโปรเซสเซอร์</sys:String>
+	<sys:String x:Key="HardwareInfo_ProcessorCores">คอร์โปรเซสเซอร์</sys:String>
+	<sys:String x:Key="HardwareInfo_ProcessorDescription">รายละเอียดโปรเซสเซอร์</sys:String>
+	<sys:String x:Key="HardwareInfo_SecureBoot">การบูตที่ปลอดภัย</sys:String>
+	<sys:String x:Key="HardwareInfo_SecureBoot_Disabled">ปิดใช้งาน</sys:String>
+	<sys:String x:Key="HardwareInfo_SecureBoot_Enabled">เปิดใช้งาน</sys:String>
+	<sys:String x:Key="HardwareInfo_Threads">Threads</sys:String>
+	<sys:String x:Key="HardwareInfo_UEFI">UEFI</sys:String>
+	<sys:String x:Key="HardwareInfo_Uptime">เวลาใช้งาน</sys:String>
+	<sys:String x:Key="HardwareInfo_UptimeString">{0} วัน, {1} ชั่วโมง, {2} นาที, {3} วินาที</sys:String>
+    <sys:String x:Key="HardwareInfo_Usable">ใช้งานได้</sys:String>
+    <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
+	<sys:String x:Key="MsgText_AddedToStartup">TimVer ถูกเพิ่มลงในการเริ่มต้นระบบของ Windows</sys:String>
+	<sys:String x:Key="MsgText_AddToStartupFailed">ไม่สามารถเพิ่ม TimVer ลงในการเริ่มต้นระบบของ Windows ได้ โปรดดูไฟล์บันทึกสำหรับข้อมูลเพิ่มเติม</sys:String>
+	<sys:String x:Key="MsgText_ApplicationShutdown">กำลังปิดระบบ</sys:String>
+	<sys:String x:Key="MsgText_ApplicationStarting">กำลังเริ่มต้นระบบ</sys:String>
+	<sys:String x:Key="MsgText_AppUpdateCheckFailed">การตรวจสอบการอัปเดตล้มเหลว</sys:String>
+	<sys:String x:Key="MsgText_AppUpdateChecking">กำลังตรวจสอบการอัปเดต</sys:String>
+	<sys:String x:Key="MsgText_AppUpdateGoToRelease">คุณต้องการไปที่หน้าเวอร์ชันใหม่หรือไม่</sys:String>
+	<sys:String x:Key="MsgText_AppUpdateNewerFound">พบเวอร์ชันใหม่กว่า ({0})</sys:String>
+	<sys:String x:Key="MsgText_AppUpdateNoneFound">ไม่พบเวอร์ชันใหม่กว่า</sys:String>
+	<sys:String x:Key="MsgText_CopiedToClipboard">คัดลอกหน้าปัจจุบันไปยังคลิปบอร์ดแล้ว</sys:String>
+	<sys:String x:Key="MsgText_CopiedToClipboardItem">คัดลอกรายการไปยังคลิปบอร์ดแล้ว</sys:String>
+	<sys:String x:Key="MsgText_CopyToClipboardInvalid">การคัดลอกไปยังคลิปบอร์ดไม่ถูกต้องในหน้านี้</sys:String>
+	<sys:String x:Key="MsgText_DriveInfoRefreshed">ข้อมูลไดรฟ์ได้รับการรีเฟรชแล้ว</sys:String>
+	<sys:String x:Key="MsgText_ElapsedTime">เวลาที่ผ่านไป</sys:String>
+	<sys:String x:Key="MsgText_Error_FileExplorer">เกิดข้อผิดพลาดขณะพยายามเปิด File Explorer</sys:String>
+	<sys:String x:Key="MsgText_ErrorCaption">ข้อผิดพลาด</sys:String>
+	<sys:String x:Key="MsgText_ErrorExportingSettings">เกิดข้อผิดพลาดในการส่งออกไฟล์การตั้งค่า</sys:String>
+	<sys:String x:Key="MsgText_ErrorGeneral">เกิดข้อผิดพลาดขึ้น</sys:String>
+	<sys:String x:Key="MsgText_ErrorImportingSettings">เกิดข้อผิดพลาดในการนำเข้าไฟล์การตั้งค่า</sys:String>
+	<sys:String x:Key="MsgText_ErrorOpeningFile">เกิดข้อผิดพลาดในการเปิดไฟล์ {0}</sys:String>
+	<sys:String x:Key="MsgText_ErrorReadingFile">เกิดข้อผิดพลาดในการอ่านไฟล์ {0}</sys:String>
+	<sys:String x:Key="MsgText_ErrorReadingSettings">เกิดข้อผิดพลาดในการอ่านไฟล์การตั้งค่า</sys:String>
+	<sys:String x:Key="MsgText_ErrorSavingSettings">เกิดข้อผิดพลาดในการบันทึกไฟล์การตั้งค่า</sys:String>
+	<sys:String x:Key="MsgText_FilterOneRowShown">แสดง 1 แถว</sys:String>
+	<sys:String x:Key="MsgText_FilterRowsShown">แสดง 0 แถว</sys:String>
+	<sys:String x:Key="MsgText_HideButNoHistory">ตัวเลือกบรรทัดคำสั่ง "ซ่อน" ถูกระบุ แต่ตัวเลือกในการเก็บประวัติเป็นเท็จ กำลังออกจากโปรแกรม</sys:String>
+	<sys:String x:Key="MsgText_ImportSettingsRestart">โปรดรีสตาร์ท TimVer เพื่อใช้การตั้งค่าที่นำเข้า</sys:String>
+	<sys:String x:Key="MsgText_Million">ล้าน</sys:String>
+	<sys:String x:Key="MsgText_NotAvailable">ไม่พร้อมใช้งาน</sys:String>
+	<sys:String x:Key="MsgText_Opening">กำลังเปิด</sys:String>
+	<sys:String x:Key="MsgText_OpeningLogFile">กำลังเปิดไฟล์บันทึก</sys:String>
+	<sys:String x:Key="MsgText_OpeningReadMeFile">กำลังเปิดไฟล์ ReadMe</sys:String>
+	<sys:String x:Key="MsgText_OptionReset">ตัวเลือกถูกรีเซ็ตแล้ว</sys:String>
+	<sys:String x:Key="MsgText_RemovedFromStartup">TimVer ถูกลบออกจากการเริ่มต้นระบบของ Windows</sys:String>
+	<sys:String x:Key="MsgText_RemoveFromStartupFailed">ไม่สามารถลบ TimVer ออกจากการเริ่มต้นระบบของ Windows ได้</sys:String>
+	<sys:String x:Key="MsgText_SeeLogFile">ดูไฟล์บันทึกสำหรับข้อมูลเพิ่มเติม</sys:String>
+	<sys:String x:Key="MsgText_Thousand">พัน</sys:String>
+	<sys:String x:Key="MsgText_Translated">แปลแล้ว</sys:String>
+	<sys:String x:Key="MsgText_UIColorSet">ตั้งค่าสีเน้นเป็น {0}</sys:String>
+	<sys:String x:Key="MsgText_UISizeSet">ตั้งค่าขนาดเป็น {0}</sys:String>
+	<sys:String x:Key="MsgText_UIThemeSet">ตั้งค่าธีมเป็น {0}</sys:String>
+	<sys:String x:Key="MsgText_WindowTitleAdministrator">ผู้ดูแลระบบ</sys:String>
+    <!--  Navigation Items and Titles  -->
+	<sys:String x:Key="NavItem_About">เกี่ยวกับ</sys:String>
+	<sys:String x:Key="NavItem_BuildHistory">ประวัติการสร้าง</sys:String>
+	<sys:String x:Key="NavItem_DriveInfo">ข้อมูลไดรฟ์</sys:String>
+	<sys:String x:Key="NavItem_Environment">สภาพแวดล้อม</sys:String>
+	<sys:String x:Key="NavItem_Exit">ทางออก</sys:String>
+	<sys:String x:Key="NavItem_GraphicsInfo">ข้อมูลกราฟิก</sys:String>
+	<sys:String x:Key="NavItem_HardwareInfo">ข้อมูลฮาร์ดแวร์</sys:String>
+	<sys:String x:Key="NavItem_Settings">การตั้งค่า</sys:String>
+	<sys:String x:Key="NavItem_WindowsInfo">ข้อมูล Windows</sys:String>
+	<sys:String x:Key="NavTitle_About">เกี่ยวกับ TimVer</sys:String>
+	<sys:String x:Key="NavTitle_BuildHistory">ประวัติการสร้าง</sys:String>
+	<sys:String x:Key="NavTitle_DriveInfo">ข้อมูลไดรฟ์</sys:String>
+	<sys:String x:Key="NavTitle_Environment">ตัวแปรสภาพแวดล้อม</sys:String>
+	<sys:String x:Key="NavTitle_GraphicsInfo">ข้อมูลกราฟิก (วิดีโอ)</sys:String>
+	<sys:String x:Key="NavTitle_HardwareInfo">ข้อมูลฮาร์ดแวร์</sys:String>
+	<sys:String x:Key="NavTitle_Settings">การตั้งค่า</sys:String>
+	<sys:String x:Key="NavTitle_WindowsInfo">ข้อมูล Windows</sys:String>
+    <!--  Enums for Combo Boxes on the Settings Page  -->
+	<sys:String x:Key="SettingsEnum_AccentColor_Amber">สีเหลืองอำพัน</sys:String>
+	<sys:String x:Key="SettingsEnum_AccentColor_Black">สีดำ</sys:String>
+	<sys:String x:Key="SettingsEnum_AccentColor_Blue">สีน้ำเงิน</sys:String>
+	<sys:String x:Key="SettingsEnum_AccentColor_BlueGray">สีเทาน้ำเงิน</sys:String>
+	<sys:String x:Key="SettingsEnum_AccentColor_Brown">สีน้ำตาล</sys:String>
+	<sys:String x:Key="SettingsEnum_AccentColor_Cyan">สีฟ้า</sys:String>
+	<sys:String x:Key="SettingsEnum_AccentColor_DeepOrange">สีส้มเข้ม</sys:String>
+	<sys:String x:Key="SettingsEnum_AccentColor_DeepPurple">สีม่วงเข้ม สีม่วง</sys:String>
+	<sys:String x:Key="SettingsEnum_AccentColor_Gray">สีเทา</sys:String>
+	<sys:String x:Key="SettingsEnum_AccentColor_Green">สีเขียว</sys:String>
+	<sys:String x:Key="SettingsEnum_AccentColor_Indigo">สีคราม</sys:String>
+	<sys:String x:Key="SettingsEnum_AccentColor_LightBlue">สีฟ้าอ่อน</sys:String>
+	<sys:String x:Key="SettingsEnum_AccentColor_LightGreen">สีเขียวอ่อน</sys:String>
+	<sys:String x:Key="SettingsEnum_AccentColor_Lime">สีเขียวมะนาว</sys:String>
+	<sys:String x:Key="SettingsEnum_AccentColor_Orange">สีส้ม</sys:String>
+	<sys:String x:Key="SettingsEnum_AccentColor_Pink">สีชมพู</sys:String>
+	<sys:String x:Key="SettingsEnum_AccentColor_Purple">สีม่วง</sys:String>
+	<sys:String x:Key="SettingsEnum_AccentColor_Red">สีแดง</sys:String>
+	<sys:String x:Key="SettingsEnum_AccentColor_Teal">สีฟ้าอมเขียว</sys:String>
+	<sys:String x:Key="SettingsEnum_AccentColor_White">สีขาว</sys:String>
+	<sys:String x:Key="SettingsEnum_AccentColor_Yellow">สีเหลือง</sys:String>
+	<sys:String x:Key="SettingsEnum_Navigation_About">เกี่ยวกับ</sys:String>
+	<sys:String x:Key="SettingsEnum_Navigation_DriveInfo">ข้อมูลการขับขี่</sys:String>
+	<sys:String x:Key="SettingsEnum_Navigation_Environment">สภาพแวดล้อม</sys:String>
+	<sys:String x:Key="SettingsEnum_Navigation_GraphicsInfo">ข้อมูลกราฟิก</sys:String>
+	<sys:String x:Key="SettingsEnum_Navigation_HardwareInfo">ข้อมูลฮาร์ดแวร์</sys:String>
+	<sys:String x:Key="SettingsEnum_Navigation_History">ประวัติ</sys:String>
+	<sys:String x:Key="SettingsEnum_Navigation_Settings">การตั้งค่า</sys:String>
+	<sys:String x:Key="SettingsEnum_Navigation_WindowsInfo">ข้อมูล Windows</sys:String>
+	<sys:String x:Key="SettingsEnum_Size_Default">100%</sys:String>
+	<sys:String x:Key="SettingsEnum_Size_Large">105%</sys:String>
+	<sys:String x:Key="SettingsEnum_Size_Larger">110%</sys:String>
+	<sys:String x:Key="SettingsEnum_Size_Largest">120%</sys:String>
+	<sys:String x:Key="SettingsEnum_Size_Small">95%</sys:String>
+	<sys:String x:Key="SettingsEnum_Size_Smaller">90%</sys:String>
+	<sys:String x:Key="SettingsEnum_Size_Smallest">80%</sys:String>
+	<sys:String x:Key="SettingsEnum_Spacing_Comfortable">สะดวกสบาย</sys:String>
+	<sys:String x:Key="SettingsEnum_Spacing_Compact">กะทัดรัด</sys:String>
+	<sys:String x:Key="SettingsEnum_Spacing_Wide">กว้าง</sys:String>
+	<sys:String x:Key="SettingsEnum_Theme_Dark">ธีมสีเข้ม</sys:String>
+	<sys:String x:Key="SettingsEnum_Theme_Darker">สีเข้มกว่า</sys:String>
+	<sys:String x:Key="SettingsEnum_Theme_DarkBlue">สีน้ำเงินเที่ยงคืน</sys:String>
+	<sys:String x:Key="SettingsEnum_Theme_Light">สีอ่อน</sys:String>
+	<sys:String x:Key="SettingsEnum_Theme_System">ระบบ</sys:String>
+    <!--  Settings Page Items  -->
+	<sys:String x:Key="SettingsItem_AccentColor">สีเน้น</sys:String>
+	<sys:String x:Key="SettingsItem_AutoUpdateCheck">ตรวจสอบเวอร์ชันใหม่กว่าโดยอัตโนมัติเมื่อเปิดหน้าเกี่ยวกับ</sys:String>
+	<sys:String x:Key="SettingsItem_BuildHistory">เก็บประวัติการสร้าง</sys:String>
+	<sys:String x:Key="SettingsItem_BuildHistoryToolTipLine1">การเปิดใช้งานตัวเลือกนี้จะบอกให้ TimVer บันทึกเมื่อหมายเลขเวอร์ชันการสร้างเปลี่ยนแปลง</sys:String>
+	<sys:String x:Key="SettingsItem_BuildHistoryToolTipLine2">การปิดใช้งานตัวเลือกนี้จะลบรายการประวัติออกจากแถบนำทาง</sys:String>
+	<sys:String x:Key="SettingsItem_BuildHistoryToolTipLine3">ดูไฟล์ ReadMe สำหรับข้อมูลเพิ่มเติม</sys:String>
+	<sys:String x:Key="SettingsItem_ChangingLanguageWarning">การเปลี่ยนภาษาจะทำให้แอปพลิเคชันรีสตาร์ท!</sys:String>
+	<sys:String x:Key="SettingsItem_DateFormat">รูปแบบวันที่แบบตาราง</sys:String>
+	<sys:String x:Key="SettingsItem_DisplayFont">แบบอักษรที่แสดง</sys:String>
+	<sys:String x:Key="SettingsItem_DisplayUser">แสดงผู้ใช้และองค์กรที่ลงทะเบียนในหน้าข้อมูล Windows</sys:String>
+	<sys:String x:Key="SettingsItem_EditExcludeToolTip">กด Shift ค้างไว้แล้วคลิกเพื่อเปิดไฟล์ด้วยแอปพลิเคชันเริ่มต้น</sys:String>
+	<sys:String x:Key="SettingsItem_EditSettingsWarning">การเปลี่ยนแปลงใดๆ ที่ทำกับไฟล์การตั้งค่าขณะที่แอปกำลังทำงานจะถูกเขียนทับ!</sys:String>
+	<sys:String x:Key="SettingsItem_EnableLanguageTesting">เปิดใช้งานการทดสอบภาษา</sys:String>
+	<sys:String x:Key="SettingsItem_HistoryOnBoot">อัปเดตประวัติการสร้างเมื่อเริ่มต้น Windows</sys:String>
+	<sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine1">การเปิดใช้งานตัวเลือกนี้จะเพิ่ม TimVer ในการเริ่มต้น Windows เพื่อวัตถุประสงค์ในการอัปเดตไฟล์ประวัติการสร้าง</sys:String>
+	<sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine2">ตัวเลือกนี้ไม่สามารถใช้งานได้เมื่อเรียกใช้ TimVer จากไดรฟ์แบบถอดได้</sys:String>
+	<sys:String x:Key="SettingsItem_HistoryOnBootTooltipLine3">ดูไฟล์ ReadMe สำหรับข้อมูลเพิ่มเติม</sys:String>
+	<sys:String x:Key="SettingsItem_IncludeDebug">รวมข้อความระดับการดีบักในไฟล์บันทึก</sys:String>
+	<sys:String x:Key="SettingsItem_InitialPage">แสดงหน้าเริ่มต้น</sys:String>
+	<sys:String x:Key="SettingsItem_KeepOnTop">แสดง TimVer ไว้ด้านบนสุดของหน้าต่างอื่นๆ</sys:String>
+	<sys:String x:Key="SettingsItem_Language">ภาษา</sys:String>
+	<sys:String x:Key="SettingsItem_LogicalDriveOptions">ตัวเลือกไดรฟ์ตรรกะ</sys:String>
+	<sys:String x:Key="SettingsItem_PhysicalDriveCollection">เปิดใช้งานการรวบรวมข้อมูลไดรฟ์ทางกายภาพ</sys:String>
+	<sys:String x:Key="SettingsItem_PhysicalDriveCollectionTooltip">การรวบรวมข้อมูลไดรฟ์ทางกายภาพอาจใช้เวลานาน</sys:String>
+	<sys:String x:Key="SettingsItem_PhysicalDriveOptions">ไดรฟ์ทางกายภาพ ตัวเลือก</sys:String>
+	<sys:String x:Key="SettingsItem_RowHeight">ความสูงของแถว</sys:String>
+	<sys:String x:Key="SettingsItem_RowHeightToolTip">การตั้งค่านี้ใช้กับความสูงของแถวในหน้าข้อมูลไดรฟ์ สภาพแวดล้อม และประวัติ</sys:String>
+	<sys:String x:Key="SettingsItem_ShowBootDriveColumn">แสดงคอลัมน์ไดรฟ์บูต</sys:String>
+	<sys:String x:Key="SettingsItem_ShowBusTypeColumn">แสดงคอลัมน์ประเภทบัส</sys:String>
+	<sys:String x:Key="SettingsItem_ShowDiskTypeColumn">แสดงคอลัมน์ประเภทดิสก์</sys:String>
+	<sys:String x:Key="SettingsItem_ShowDriveLettersColumn">แสดงคอลัมน์อักษรไดรฟ์</sys:String>
+	<sys:String x:Key="SettingsItem_ShowExit">แสดงทางออกในการนำทาง</sys:String>
+	<sys:String x:Key="SettingsItem_ShowFormatColumn">แสดงคอลัมน์รูปแบบ</sys:String>
+	<sys:String x:Key="SettingsItem_ShowFriendlyName">แสดงคอลัมน์ชื่อที่เป็นมิตร</sys:String>
+	<sys:String x:Key="SettingsItem_ShowHealthColumn">แสดงคอลัมน์สุขภาพ</sys:String>
+	<sys:String x:Key="SettingsItem_ShowInterfaceColumn">แสดงคอลัมน์อินเทอร์เฟซ</sys:String>
+	<sys:String x:Key="SettingsItem_ShowMediaTypeColumn">แสดงคอลัมน์ประเภทสื่อ</sys:String>
+	<sys:String x:Key="SettingsItem_ShowModelColumn">แสดงคอลัมน์รุ่น</sys:String>
+	<sys:String x:Key="SettingsItem_ShowNameColumn">แสดงคอลัมน์ชื่อ</sys:String>
+	<sys:String x:Key="SettingsItem_ShowNetworkDrives">รวมไดรฟ์เครือข่าย</sys:String>
+	<sys:String x:Key="SettingsItem_ShowPartitionsColumn">แสดงคอลัมน์พาร์ติชัน</sys:String>
+	<sys:String x:Key="SettingsItem_ShowPartitionStyleColumn">แสดงคอลัมน์รูปแบบพาร์ติชัน</sys:String>
+	<sys:String x:Key="SettingsItem_ShowReadyDrives">แสดงเฉพาะไดรฟ์ที่มีสถานะ "พร้อมใช้งาน"</sys:String>
+	<sys:String x:Key="SettingsItem_ShowRemovableDrives">รวมไดรฟ์แบบถอดได้</sys:String>
+	<sys:String x:Key="SettingsItem_ShowSerialNumber">แสดงคอลัมน์หมายเลขซีเรียล</sys:String>
+	<sys:String x:Key="SettingsItem_ShowTypeColumn">แสดงคอลัมน์ประเภท</sys:String>
+	<sys:String x:Key="SettingsItem_ShowVideoSelector">แสดงตัวเลือกอะแดปเตอร์วิดีโอในหน้ากราฟิก (วิดีโอ)</sys:String>
+    <sys:String x:Key="SettingsItem_StartCentered">เริ่มต้นโดยจัดตำแหน่งหน้าต่างใ0ห้อยู่ตรงกลางหน้าจอ</sys:String>
+	<sys:String x:Key="SettingsItem_Theme">ธีม</sys:String>
+	<sys:String x:Key="SettingsItem_TranslationToolTipLine1">แสดงจำนวนข้อความในภาษาปัจจุบันเมื่อเทียบกับค่าเริ่มต้น (en-US)</sys:String>
+	<sys:String x:Key="SettingsItem_TranslationToolTipLine2">กด Ctrl+Shift+K เพื่อเปรียบเทียบไฟล์ภาษา</sys:String>
+	<sys:String x:Key="SettingsItem_UISize">ขนาด UI</sys:String>
+	<sys:String x:Key="SettingsItem_UseGB">ใช้ GB (1000^3 ไบต์) สำหรับการคำนวณความจุ</sys:String>
+	<sys:String x:Key="SettingsItem_UseGiB">ใช้ GiB (1024^3 ไบต์) สำหรับการคำนวณความจุ</sys:String>
+	<sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">ใช้ภาษาที่แสดงผลของ Windows</sys:String>
+	<sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">เมื่อเลือกตัวเลือกนี้ ภาษาที่ระบุไว้ในการตั้งค่า Windows จะถูกใช้</sys:String>
+	<sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">หากมีการแปล จะใช้ภาษาที่แปล หากไม่มีจะใช้ภาษาอังกฤษ (en-US)</sys:String>
+    <!--  Settings Page Expander Headings and Sub Headings -->
+	<sys:String x:Key="SettingsSection_AppSettings">การตั้งค่าแอปพลิเคชัน</sys:String>
+	<sys:String x:Key="SettingsSection_DriveSettings">การตั้งค่าไดรฟ์</sys:String>
+	<sys:String x:Key="SettingsSection_Language">การตั้งค่าภาษา</sys:String>
+	<sys:String x:Key="SettingsSection_SettingsFile">ไฟล์การตั้งค่า</sys:String>
+	<sys:String x:Key="SettingsSection_UISettings">การตั้งค่า UI</sys:String>
+	<sys:String x:Key="SettingsSubHead_AppSettings">หน้าเริ่มต้น, ตัวเลือกประวัติ, แสดงผู้ใช้ และระดับความละเอียดของบันทึก</sys:String>
+	<sys:String x:Key="SettingsSubHead_DriveSettings">ใช้ GB หรือ GiB, รวมไดรฟ์ตามสถานะ และอื่นๆ</sys:String>
+	<sys:String x:Key="SettingsSubHead_Language">การตั้งค่าภาษาและการทดสอบ</sys:String>
+	<sys:String x:Key="SettingsSubHead_SettingsFile">นำเข้า ส่งออก เปิด และแสดงรายการการตั้งค่าแอปพลิเคชัน</sys:String>
+	<sys:String x:Key="SettingsSubHead_UISettings">ธีม สีเน้น ขนาด UI ความสูงของแถว ตำแหน่งเริ่มต้น และอื่นๆ</sys:String>
+    <!--  Windows Information Page  -->
+	<sys:String x:Key="WindowsInfo_Architecture">สถาปัตยกรรม</sys:String>
+	<sys:String x:Key="WindowsInfo_BuildBranch">สาขาการสร้าง</sys:String>
+	<sys:String x:Key="WindowsInfo_BuildNumber">หมายเลขการสร้าง</sys:String>
+	<sys:String x:Key="WindowsInfo_DotNetVersion">เวอร์ชัน .NET</sys:String>
+	<sys:String x:Key="WindowsInfo_EditionID">รหัสรุ่น</sys:String>
+	<sys:String x:Key="WindowsInfo_Installed">ติดตั้งบน</sys:String>
+	<sys:String x:Key="WindowsInfo_OSEdition">รุ่นระบบปฏิบัติการ</sys:String>
+	<sys:String x:Key="WindowsInfo_OSVersion">เวอร์ชัน</sys:String>
+	<sys:String x:Key="WindowsInfo_RegisteredOrg">องค์กรที่ลงทะเบียน</sys:String>
+	<sys:String x:Key="WindowsInfo_RegisteredUser">ลงทะเบียนกับ</sys:String>
+	<sys:String x:Key="WindowsInfo_TempFolder">โฟลเดอร์ชั่วคราว</sys:String>
+	<sys:String x:Key="WindowsInfo_WindowsFolder">โฟลเดอร์ Windows</sys:String>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    LANGUAGE FILE UPDATES
+
+    Additions, Deletions and Updates will be made in the appropriate sections above. Each change will
+    be associated with a comment made below this block.
+
+    Comment Format:
+       There will be a header indicating when the change was made (date yyyy/mm/dd and UTC time).
+       Modified lines will follow, one comment line per line changed.
+       Comment lines use this syntax:  Change Type | Key Name
+
+     Change type:
+       A = Added
+       D = Deleted
+       U = Updated
+       * = Comment not related to a single line
+     - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <!-- Begin changes on 2023/12/17 @ 01:30 UTC-->
+    <!-- A | DriveInfo_PartitionStyle -->
+    <!-- A | DriveInfo_BootDrive -->
+    <!-- A | HardwareInfo_ProcessorDescription -->
+    <!-- A | SettingsItem_ShowPartitionStyleColumn -->
+    <!-- A | SettingsItem_ShowBootDriveColumn -->
+    <!-- End changes on 2023/12/17 @ 01:30 UTC-->
+
+    <!-- Begin changes on 2023/12/18 @ 03:30 UTC-->
+    <!-- A | About_Contribute -->
+    <!-- A | About_ContributeToolTip  -->
+    <!-- U | SettingsSubHead_Language  -->
+    <!-- End changes on 2023/12/18 @ 03:30 UTC-->
+
+    <!-- Begin changes on 2023/12/18 @ 13:45 UTC-->
+    <!-- A | HardwareInfo_Uptime -->
+    <!-- A | HardwareInfo_UptimeString -->
+    <!-- End changes on 2023/12/18 @ 13:45 UTC-->
+
+    <!-- Begin changes on 2023/12/20 @ 19:40 UTC-->
+    <!-- U | GraphicsInfo_AdapterRAM (corrected spelling)  -->
+    <!-- End changes on 2023/12/20 @ 19:40 UTC-->
+
+    <!-- Begin changes on 2024/01/05 @ 16:00 UTC-->
+    <!-- A | WindowsInfo_DotNetVersion -->
+    <!-- End changes on 2024/01/05 @ 16:00 UTC-->
+
+    <!-- Begin changes on 2024/01/19 @ 23:00 UTC-->
+    <!-- A | DriveInfo_DeviceID -->
+    <!-- End changes on 2024/01/19 @ 23:00 UTC-->
+    
+    <!-- Begin changes on 2024/05/13 @ 22:00 UTC-->
+    <!-- A | About_GitHub -->
+    <!-- A | DriveInfo_FriendlyName -->
+    <!-- A | DriveInfo_SerialNumber -->
+    <!-- A | DriveInfo_SystemDrive -->
+    <!-- A | HardwareInfo_BIOS -->
+    <!-- A | HardwareInfo_BiosMode -->
+    <!-- A | HardwareInfo_SecureBoot -->
+    <!-- A | HardwareInfo_SecureBoot_Disabled -->
+    <!-- A | HardwareInfo_SecureBoot_Enabled -->
+    <!-- A | HardwareInfo_UEFI -->
+    <!-- A | MsgText_Error_FileExplorer -->
+    <!-- A | MsgText_ErrorGeneral -->
+    <!-- A | MsgText_OptionReset -->
+    <!-- A | MsgText_SeeLogFile -->
+    <!-- A | SettingsItem_ShowFriendlyName -->
+    <!-- A | SettingsItem_ShowSerialNumber -->
+    <!-- End of changes on 2024/05/13 @ 22:00 UTC-->
+
+    <!-- Begin changes on 2024/05/16 @ 02:35 UTC-->
+    <!-- A | SettingsItem_ShowVideoSelector -->
+    <!-- End of changes on 2024/05/16 @ 02:35 UTC-->
+    
+    <!-- Begin changes on 2024/05/19 @ 20:45 UTC-->
+    <!-- A | SettingsItem_ShowVideoSelector -->
+    <!-- End of changes on 2024/05/19 @ 20:45 UTC-->
+
+    <!-- Begin changes on 2024/07/07 @ 20:25 UTC-->
+    <!-- A | HardwareInfo_LastBootType -->
+    <!-- A | HardwareInfo_LastBootNormal -->
+    <!-- A | HardwareInfo_LastBootSafe -->
+    <!-- A | HardwareInfo_LastBootSafeNetwork -->
+    <!-- End of changes on 2024/07/07 @ 20:25 UTC-->
+
+    <!-- Begin changes on 2024/07/31 @ 02:40 UTC-->
+    <!-- A | Button_CheckUpdate -->
+    <!-- End of changes on 2024/07/31 @ 02:40 UTC-->
+
+    <!-- Begin changes on 2024/09/11 @ 21:25 UTC-->
+    <!-- A | SettingsItem_DisplayFont -->
+    <!-- End of changes on 2024/09/11 @ 21:25 UTC-->
+
+    <!-- Begin changes on 2024/09/23 @ 20:35 UTC-->
+    <!-- A | DriveInfo_DriveLetters -->
+    <!-- A | SettingsItem_ShowDriveLettersColumn -->
+    <!-- End of changes on 2024/09/23 @ 20:35 UTC-->
+
+    <!-- Begin changes on 2024/11/28 @ 03:00 UTC -->
+    <!-- A | Button_ExportSettings -->
+    <!-- A | Button_ExportSettingsToolTip -->
+    <!-- A | Button_ImportSettings -->
+    <!-- A | Button_ImportSettingsToolTip -->
+    <!-- A | Button_ListSettings -->
+    <!-- A | Button_ListSettingsTooltip -->
+    <!-- A | Button_OpenAppFolderToolTip -->
+    <!-- A | Button_OpenSettings -->
+    <!-- A | Button_OpenSettingsToolTip -->
+    <!-- A | MsgText_Error_ExportingSettings -->
+    <!-- A | MsgText_Error_ImportingSettings -->
+    <!-- A | MsgText_Error_SavingSettings -->
+    <!-- A | MsgText_ImportSettingsRestart -->
+    <!-- A | SettingsSection_SettingsFile -->
+    <!-- A | SettingsSubHead_SettingsFile -->
+    <!-- A | SettingsItem_EditSettingsWarning -->
+    <!-- End changes on 2024/11/28 @ 03:00 UTC -->
+
+    <!-- Begin changes on 2026/04/19 @ 01:20 UTC-->
+    <!-- A | SettingsEnum_Theme_DarkBlue -->
+    <!-- End of changes on 2026/04/19 @ 01:20 UTC-->
+
+    <!-- Begin changes on 2026/04/20 @ 00:15 UTC-->
+    <!-- A | About_UpdateFound -->
+    <!-- A | About_UpdateFoundTooltip -->
+    <!-- A | SettingsItem_AutoUpdateCheck -->
+    <!-- End of changes on 2026/04/20 @ 00:15 UTC-->
+</ResourceDictionary>
