@@ -40,3 +40,11 @@ Self-contained versions are available if .NET 10 isn't installed. See the [relea
 ![Disk Drive Info](https://github.com/Timthreetwelve/TimVer/blob/main/Images/TimVer_9_D.png)
 
 ![Graphics Info](https://github.com/Timthreetwelve/TimVer/blob/main/Images/TimVer_9_V.png)
+
+### Contributors
+
+<a href="https://github.com/timthreetwelve/timver/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=timthreetwelve/timver" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
