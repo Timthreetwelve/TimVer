@@ -180,7 +180,9 @@ public partial class App : Application
             }
 
             string msg = string.Format(CultureInfo.CurrentCulture,
-                                       $"MsgText_Error\n{e.Message}\nMsgText_Error_SeeLog");
+                                       $"{GetStringResource("MsgText_Error")}\n" +
+                                       $"{e.Message}\n\n" +
+                                       $"{GetStringResource("MsgText_ErrorSeeLog")}");
 
             ShowMessageBox(msg);
             _log.Fatal("Application cannot continue.");
@@ -190,7 +192,7 @@ public partial class App : Application
             string t = args.ExceptionObject.GetType().FullName ?? "null";
             _log.Error($"Unhandled exception object is not of type Exception. Type: {t}");
             string msg = string.Format(CultureInfo.CurrentCulture,
-                                       "MsgText_Error\nMsgText_Error_SeeLog");
+                                       "MsgText_Error\nMsgText_ErrorSeeLog");
             ShowMessageBox(msg);
         }
     }
@@ -220,7 +222,7 @@ public partial class App : Application
         if ((Current.Dispatcher?.CheckAccess()) == true || Current.Dispatcher == null)
         {
             _ = MessageBox.Show(msg,
-                "MsgText_Error_Caption",
+                GetStringResource("MsgText_ErrorCaption"),
                 MessageBoxButton.OK,
                 MessageBoxImage.Error);
         }
@@ -228,7 +230,7 @@ public partial class App : Application
         {
             Current.Dispatcher.Invoke(() =>
                 MessageBox.Show(msg,
-                    "MsgText_Error_Caption",
+                    GetStringResource("MsgText_ErrorCaption"),
                     MessageBoxButton.OK,
                     MessageBoxImage.Error));
         }
