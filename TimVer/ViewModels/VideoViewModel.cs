@@ -32,7 +32,8 @@ internal sealed partial class VideoViewModel : ObservableObject
     {
         if (e.Source is ComboBox box)
         {
-            VideoPage.Instance!.VideoGrid.ItemsSource = VideoHelpers.GetVideoInfo(ControllerList![box.SelectedIndex]);
+            VideoInfoCollection = VideoHelpers.GetVideoInfo(ControllerList![box.SelectedIndex]);
+            VideoPage.Instance!.VideoGrid.ItemsSource = VideoInfoCollection;
         }
     }
     #endregion Relay command
