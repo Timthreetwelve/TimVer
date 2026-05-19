@@ -62,7 +62,7 @@ internal static class VideoHelpers
                     [GetStringResource("GraphicsInfo_DeviceID")] = CimStringProperty(gpu, "DeviceID"),
                     [GetStringResource("GraphicsInfo_CurrentResolution")] = FormatResolution(gpu),
                     [GetStringResource("GraphicsInfo_CurrentRefreshRate")] = FormatCurrentRefresh(gpu),
-                    [GetStringResource("GraphicsInfo_AdapterRAM")] = FormatAdapterRamInfo(gpu),
+                    //[GetStringResource("GraphicsInfo_AdapterRAM")] = FormatAdapterRamInfo(gpu),
                     [GetStringResource("GraphicsInfo_BitsPerPixel")] = CimStringProperty(gpu, "CurrentBitsPerPixel"),
                     [GetStringResource("GraphicsInfo_NumberOfColors")] = FormatColorsInfo(gpu),
                     [GetStringResource("GraphicsInfo_NumberOfDisplays")] = SystemMetricsHelper.GetDisplayCount()
@@ -138,7 +138,10 @@ internal static class VideoHelpers
     /// </summary>
     /// <param name="instance">The CimInstance</param>
     /// <returns>A formatted string.</returns>
+#pragma warning disable RCS1213 // Remove unused member declaration
+    // Leaving this method in place for now as I may add it back in the future. It is currently commented out in the GetVideoInfo method.
     private static string FormatAdapterRamInfo(CimInstance instance)
+#pragma warning restore RCS1213 // Remove unused member declaration
     {
         if (instance.CimInstanceProperties["AdapterRam"] == null)
         {
