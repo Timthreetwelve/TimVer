@@ -18,7 +18,7 @@
 #define BaseDir              "V:\Source\Repos\TimVer\TimVer"
 #define MySourceDir          BaseDir + PublishFolder
 #define MySetupIcon          BaseDir + "\Images\TV.ico"
-#define MyOutputDir          "V:\InnoSetup\Output"
+#define MyOutputDir          "V:\Releases\Installer"
 #define MyLargeImage         "V:\InnoSetup\Images\WizardImageTimVer.png"
 #define MySmallImage         "V:\InnoSetup\Images\WizardSmallImage.bmp"
 
