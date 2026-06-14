@@ -174,7 +174,7 @@ TimVer uses the following packages:
 
     * Microsoft.Management.Infrastructure https://www.nuget.org/packages/Microsoft.Management.Infrastructure/3.0.0
 
-    * NerdBank.GitVersioning https://github.com/dotnet/Nerdbank.GitVersioning
+    * VersionInfoGenerator https://github.com/notpeelz/VersionInfoGenerator
 
     * OctoKit https://github.com/octokit/octokit.net
 
@@ -195,7 +195,7 @@ TimVer uses the following packages:
 
 
 MIT License
-Copyright (c) 2019 - 2025 Tim Kennedy
+Copyright (c) 2019 - 2026 Tim Kennedy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
 associated documentation files (the "Software"), to deal in the Software without restriction, including
