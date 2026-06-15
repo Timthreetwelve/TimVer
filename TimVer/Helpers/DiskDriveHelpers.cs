@@ -164,7 +164,7 @@ internal static class DiskDriveHelpers
                     _ => GetStringResource("DriveInfo_DriveType_Unknown")
                 },
                 Format = d.DriveFormat,
-                Label = d.VolumeLabel,
+                Label = GetDriveLabel(d.VolumeLabel),
                 TotalSize = Math.Round(d.TotalSize / Math.Pow(gbPref, 3), 2),
                 GBFree = Math.Round(d.AvailableFreeSpace / Math.Pow(gbPref, 3), 2),
                 PercentFree = (double)d.AvailableFreeSpace / d.TotalSize
@@ -183,6 +183,22 @@ internal static class DiskDriveHelpers
         return null;
     }
     #endregion Get details for an individual drive
+
+    #region Handle missing drive label
+    /// <summary>
+    /// Substitutes label missing message if the drive label is null or empty.
+    /// </summary>
+    /// <param name="driveLabel">The drive label.</param>
+    /// <returns>A string.</returns>
+    private static string GetDriveLabel(string driveLabel)
+    {
+        if (string.IsNullOrEmpty(driveLabel))
+        {
+            return GetStringResource("DriveInfo_LabelMissing");
+        }
+        return driveLabel;
+    }
+    #endregion Handle missing drive label
 
     #region Assemble the physical disk information
     /// <summary>
