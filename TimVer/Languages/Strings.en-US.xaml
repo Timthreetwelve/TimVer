@@ -3,6 +3,17 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!--
+    
+       _____   _______    ____    _____  
+      / ____| |__   __|  / __ \  |  __ \ 
+     | (___      | |    | |  | | | |__) |
+      \___ \     | |    | |  | | |  ___/ 
+      ____) |    | |    | |__| | | |     
+     |_____/     |_|     \____/  |_|     
+ 
+     Changes are in progress and strings in this file may not be in the final format.
+    
+    
         BEFORE UPDATING, refer to the "Contribute a Translation" topic in the Wiki:
 
         https://github.com/Timthreetwelve/TimVer/wiki/Contribute-a-Translation
@@ -18,7 +29,7 @@
         Date last update:
 
         ======================================================================
-
+    
     -->
 
     <!--  About Page  -->
@@ -112,6 +123,7 @@
     <sys:String x:Key="DriveInfo_Interface">Interface</sys:String>
     <sys:String x:Key="DriveInfo_IOError">I/O Error</sys:String>
     <sys:String x:Key="DriveInfo_Label">Label</sys:String>
+    <sys:String x:Key="DriveInfo_LabelMissing" >Label Missing</sys:String>
     <sys:String x:Key="DriveInfo_LogicalDrives">Logical Drives</sys:String>
     <sys:String x:Key="DriveInfo_MediaType">Media Type</sys:String>
     <sys:String x:Key="DriveInfo_MediaType_Unspecified">Unspecified</sys:String>
@@ -121,7 +133,7 @@
     <sys:String x:Key="DriveInfo_NotReady">Not Ready</sys:String>
     <sys:String x:Key="DriveInfo_Partitions">Partitions</sys:String>
     <sys:String x:Key="DriveInfo_PartitionStyle">Partition Style</sys:String>
-    <sys:String x:Key="DriveInfo_PhysicalDisabled">Collection of Physical Drive information is disabled in Settings.</sys:String>
+    <sys:String x:Key="DriveInfo_PhysicalDisabled" xml:space="preserve">Collection of Physical Drive information is disabled.&#x0a;See Settings > Disk Drive Settings > Enable collection of Physical Drive information.</sys:String>
     <sys:String x:Key="DriveInfo_PhysicalDrives">Physical Drives</sys:String>
     <sys:String x:Key="DriveInfo_RefreshToolTipLine1">Refresh drive info will refresh both</sys:String>
     <sys:String x:Key="DriveInfo_RefreshToolTipLine2">Logical and Physical drives (if enabled).</sys:String>
@@ -265,7 +277,7 @@
     <sys:String x:Key="SettingsEnum_Navigation_Environment">Environment</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_GraphicsInfo">Graphics Info</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_HardwareInfo">Hardware Info</sys:String>
-    <sys:String x:Key="SettingsEnum_Navigation_History">History</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_History">Build History</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Settings</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_WindowsInfo">Windows Info</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Default">100%</sys:String>
@@ -490,4 +502,11 @@
     <!-- A | About_UpdateFoundTooltip -->
     <!-- A | SettingsItem_AutoUpdateCheck -->
     <!-- End of changes on 2026/04/20 @ 00:15 UTC-->
+    
+    <!-- Begin changes on 2026/06/15 @ 18:30 UTC-->
+    <!-- U | DriveInfo_PhysicalDisabled - Due to the updated length of this string, it contains the xml line break character &#x0a;  -->
+    <!--                                - Please use it where the line break is logical in your translation.                         -->
+    <!--                                - There is also a xml:space="preserve" directive that must stay as is.                       -->
+    <!-- U | SettingsEnum_Navigation_History - Change from History to Build History-->
+    <!-- End of changes on 2026/06/15 @ 18:30 UTC-->
 </ResourceDictionary>
