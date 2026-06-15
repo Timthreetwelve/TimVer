@@ -57,6 +57,7 @@
     <sys:String x:Key="Button_Cancel">Cancel</sys:String>
     <sys:String x:Key="Button_CheckUpdate">Check for Update</sys:String>
     <sys:String x:Key="Button_Close">Close Menu</sys:String>
+    <sys:String x:Key="Button_CompareLanguageToolTip" xml:space="preserve">Click to compare current language to the default (en-US).&#x0a;Results are written to the log file.</sys:String>
     <sys:String x:Key="Button_CopyToClipboardToolTip">Copy this page to the clipboard</sys:String>
     <sys:String x:Key="Button_ExportSettings">Export Settings</sys:String>
     <sys:String x:Key="Button_ExportSettingsToolTip">Export current settings to a file.</sys:String>
@@ -502,5 +503,6 @@
     <!-- U | MsgText_RemoveFromStartupFailed      - Added xml:space="preserve" and line break character &#x0a;  -->
     <!-- U | SettingsItem_TranslationToolTipLine2 - Added xml:space="preserve" and line break character &#x0a;  -->
     <!-- U | SettingsEnum_Navigation_History      - Change from History to Build History-->
+    <!-- A | Button_CompareLanguageToolTip        - Note the xml:space="preserve" and line break character &#x0a; -->
     <!-- End of changes on 2026/06/15 @ 18:30 UTC-->
 </ResourceDictionary>

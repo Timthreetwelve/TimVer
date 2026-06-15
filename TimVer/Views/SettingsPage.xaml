@@ -212,10 +212,10 @@
                                       IsChecked="{Binding IncludeDebug,
                                                           Source={x:Static config:UserSettings.Setting}}" />
                             <CheckBox Grid.Row="4"
-                                  Padding="10,0"
-                                  Content="{DynamicResource SettingsItem_AutoUpdateCheck}"
-                                  IsChecked="{Binding AutoCheckForUpdates,
-                                                      Source={x:Static config:UserSettings.Setting}}" />
+                                      Padding="10,0"
+                                      Content="{DynamicResource SettingsItem_AutoUpdateCheck}"
+                                      IsChecked="{Binding AutoCheckForUpdates,
+                                                          Source={x:Static config:UserSettings.Setting}}" />
                         </Grid>
                         <!--#endregion-->
                     </Grid>
@@ -738,31 +738,53 @@
                                     </DataTemplate>
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
-                            <TextBlock Grid.Column="4"
-                                       VerticalAlignment="Center"
-                                       FontSize="13" Opacity=".8">
-                                <Run Text="{Binding CurrentLanguageStringCount}" />
-                                <Run Text="/" />
-                                <Run Text="{Binding DefaultStringCount}" />
+                            <StackPanel Grid.Column="4"
+                                        Orientation="Horizontal"
+                                        ToolTipService.HorizontalOffset="-200"
+                                        ToolTipService.InitialShowDelay="300"
+                                        ToolTipService.Placement="Top">
+                                <TextBlock VerticalAlignment="Center"
+                                           FontSize="13" Opacity=".8">
+                                    <Run Text="{Binding CurrentLanguageStringCount}" />
+                                    <Run Text="/" />
+                                    <Run Text="{Binding DefaultStringCount}" />
 
-                            </TextBlock>
-                            <TextBlock Grid.Column="5"
-                                       Margin="10,8,0,0"
-                                       FontWeight="SemiBold"
-                                       ToolTipService.HorizontalOffset="-200"
-                                       ToolTipService.InitialShowDelay="300"
-                                       ToolTipService.Placement="Top">
-                                <materialDesign:PackIcon Width="20" Height="20"
-                                                         Kind="InfoOutline" />
-                                <TextBlock.ToolTip>
+                                </TextBlock>
+                                <TextBlock Width="24"
+                                           Margin="10,8,0,0"
+                                           FontWeight="SemiBold"
+                                           HorizontalAlignment="Left">
+                                    <materialDesign:PackIcon Width="20" Height="20"
+                                                             Kind="InfoOutline" />
+                                    <TextBlock.ToolTip>
+                                        <TextBlock LineHeight="18">
+                                            <Run Text="{DynamicResource SettingsItem_TranslationToolTipLine1}" />
+                                            <LineBreak />
+                                            <Run Text="{DynamicResource SettingsItem_TranslationToolTipLine2}" />
+                                        </TextBlock>
+                                    </TextBlock.ToolTip>
+                                </TextBlock>
+                                <StackPanel.ToolTip>
                                     <TextBlock LineHeight="18">
                                         <Run Text="{DynamicResource SettingsItem_TranslationToolTipLine1}" />
                                         <LineBreak />
                                         <Run Text="{DynamicResource SettingsItem_TranslationToolTipLine2}" />
                                     </TextBlock>
-                                </TextBlock.ToolTip>
-                            </TextBlock>
+                                </StackPanel.ToolTip>
+                            </StackPanel>
+                            <Grid Grid.Column="5">
+                                <Grid.DataContext>
+                                    <viewmodels:SettingsViewModel />
+                                </Grid.DataContext>
+                                <Button Margin="10,0" HorizontalAlignment="Left"
+                                        Command="{Binding CompareLanguageKeysCommand}"
+                                        Style="{StaticResource CheckButton}"
+                                        ToolTip="{DynamicResource Button_CompareLanguageToolTip}"
+                                        ToolTipService.InitialShowDelay="300"
+                                        ToolTipService.Placement="Top" />
+                            </Grid>
                         </Grid>
+
 
                         <Label Grid.Row="2" Grid.Column="1"
                                VerticalAlignment="Center"
