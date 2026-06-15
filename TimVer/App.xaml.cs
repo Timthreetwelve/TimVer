@@ -130,7 +130,7 @@ public partial class App : Application
                         TestLanguageStrings = testDict.Count;
                         TestLanguageFile = testDict.Source.OriginalString;
                         string str = (TestLanguageStrings == 1) ? "string" : "strings";
-                        _log.Debug($"{TestLanguageStrings} {str} loaded from {PathHelpers.GetCondensedPath(TestLanguageFile, 2, 2)}");
+                        _log.Debug($"{TestLanguageStrings} {str} loaded from {PathHelpers.AnonymizePath(TestLanguageFile)}");
                     }
                 }
                 catch (Exception ex)
