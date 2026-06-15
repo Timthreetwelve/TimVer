@@ -3,17 +3,7 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!--
-    
-       _____   _______    ____    _____  
-      / ____| |__   __|  / __ \  |  __ \ 
-     | (___      | |    | |  | | | |__) |
-      \___ \     | |    | |  | | |  ___/ 
-      ____) |    | |    | |__| | | |     
-     |_____/     |_|     \____/  |_|     
- 
-     Changes are in progress and strings in this file may not be in the final format.
-    
-    
+
         BEFORE UPDATING, refer to the "Contribute a Translation" topic in the Wiki:
 
         https://github.com/Timthreetwelve/TimVer/wiki/Contribute-a-Translation
