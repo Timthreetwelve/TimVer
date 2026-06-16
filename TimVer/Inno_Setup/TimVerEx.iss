@@ -10,6 +10,11 @@
 ;
 ;             PublishFolder:    The output folder from MS Build.
 ;                               Varies depending on the type of build.
+;
+;             MyAppVersion:     The version string. The built-in  
+;                               GetVersionNumbersString function
+;                               returns major, minor, build, revision
+;                               but we want major, minor, build.
 ;----------------------------------------------------------------------
 #define TempDir              GetEnv("TEMP")
 #define IncludeFile          TempDir + "\PubSetup.Temp.iss"
@@ -26,7 +31,7 @@
 #define MyAppName            "TimVer"
 #define MyAppNameNoSpaces    StringChange(MyAppName, " ", "")
 #define MyAppExeName         "TimVer.exe"
-#define MyAppVersion         GetVersionNumbersString(MySourceDir + "\" + MyAppExeName)
+;#define MyAppVersion         GetVersionNumbersString(MySourceDir + "\" + MyAppExeName)
 #define MyInstallerFilename  MyAppNameNoSpaces + "_" + MyAppVersion + "_" + InstallType + "_Setup"
 #define MyCompanyName        "T_K"
 #define MyPublisherName      "Tim Kennedy"
