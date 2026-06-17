@@ -206,7 +206,7 @@
         <!--#region Content control for pages-->
         <Grid Grid.Row="1" Grid.Column="1"
               Background="{DynamicResource MaterialDesign.Brush.Card.Background}">
-            <Border BorderBrush="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}"
+            <Border BorderBrush="{DynamicResource MaterialDesign.Brush.Separator.Background}"
                     BorderThickness="1.5,1,0,0">
                 <ContentControl Content="{Binding CurrentViewModel}" />
                 <bh:Interaction.Triggers>

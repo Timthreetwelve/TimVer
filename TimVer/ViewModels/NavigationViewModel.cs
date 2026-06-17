@@ -19,6 +19,8 @@ internal sealed partial class NavigationViewModel : ObservableObject
     #endregion MainWindow Instance
 
     #region Properties
+#pragma warning disable MVVMTK0042 // Prefer using [ObservableProperty] on partial properties
+    // Suppressing the MVVMTK0042 warning for this class until such time as it no longer requires Preview features.
     [ObservableProperty]
     private object? _currentViewModel;
 
@@ -27,6 +29,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
 
     [ObservableProperty]
     private static NavigationItem? _navItem;
+#pragma warning restore MVVMTK0042
     #endregion Properties
 
     #region List of navigation items
@@ -265,6 +268,9 @@ internal sealed partial class NavigationViewModel : ObservableObject
                 switch (UserSettings.Setting!.UITheme)
                 {
                     case ThemeType.Light:
+                        UserSettings.Setting.UITheme = ThemeType.LightGray;
+                        break;
+                    case ThemeType.LightGray:
                         UserSettings.Setting.UITheme = ThemeType.Dark;
                         break;
                     case ThemeType.Dark:

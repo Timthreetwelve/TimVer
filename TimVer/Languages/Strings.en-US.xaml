@@ -285,6 +285,7 @@
     <sys:String x:Key="SettingsEnum_Theme_Darker">Darker</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_DarkBlue">Midnight Blue</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Light">Light</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_LightGray">Pale Graphite</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_System">System</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Accent Color</sys:String>
@@ -505,4 +506,8 @@
     <!-- U | SettingsEnum_Navigation_History      - Change from History to Build History-->
     <!-- A | Button_CompareLanguageToolTip        - Note the xml:space="preserve" and line break character &#x0a; -->
     <!-- End of changes on 2026/06/15 @ 18:30 UTC-->
+
+    <!-- Begin changes on 2026/06/17 @ 00:00 UTC-->
+    <!-- A | SettingsEnum_Theme_LightGray  -->
+    <!-- End of changes on 2026/06/17 @ 00:00 UTC-->
 </ResourceDictionary>
