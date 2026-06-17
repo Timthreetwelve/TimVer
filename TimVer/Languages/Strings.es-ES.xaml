@@ -56,6 +56,7 @@
     <sys:String x:Key="Button_Cancel">Cancelar</sys:String>
     <sys:String x:Key="Button_CheckUpdate">Comprobar actualización</sys:String>
     <sys:String x:Key="Button_Close">Cerrar este menú</sys:String>
+    <sys:String x:Key="Button_CompareLanguageToolTip" xml:space="preserve">Haga clic para comparar el lenguaje actual con el predeterminado (EN-US).&#x0a;Los resultados se escriben en el archivo de registro.</sys:String>
     <sys:String x:Key="Button_CopyToClipboardToolTip">Copiar esta página en el portapapeles</sys:String>
     <sys:String x:Key="Button_No">No</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
@@ -112,6 +113,7 @@
     <sys:String x:Key="DriveInfo_Interface">Interfaz</sys:String>
     <sys:String x:Key="DriveInfo_IOError">Error de E/S</sys:String>
     <sys:String x:Key="DriveInfo_Label">Etiqueta</sys:String>
+    <sys:String x:Key="DriveInfo_LabelMissing">Falta la etiqueta de la unidad</sys:String>
     <sys:String x:Key="DriveInfo_LogicalDrives">Unidades lógicas</sys:String>
     <sys:String x:Key="DriveInfo_MediaType">Tipo de medio</sys:String>
     <sys:String x:Key="DriveInfo_MediaType_Unspecified">No especificado</sys:String>
@@ -121,7 +123,7 @@
     <sys:String x:Key="DriveInfo_NotReady">No listo</sys:String>
     <sys:String x:Key="DriveInfo_Partitions">Particiones</sys:String>
     <sys:String x:Key="DriveInfo_PartitionStyle">Estilo de partición</sys:String>
-    <sys:String x:Key="DriveInfo_PhysicalDisabled">La recopilación de información de la unidad física está deshabilitada en Configuración.</sys:String>
+    <sys:String x:Key="DriveInfo_PhysicalDisabled" xml:space="preserve">La recopilación de información de la unidad física está desactivada.&#x0a;Consulte Configuración > Configuración de la unidad de disco > Habilitar la recopilación de información de la unidad física.</sys:String>
     <sys:String x:Key="DriveInfo_PhysicalDrives">Unidades físicas</sys:String>
     <sys:String x:Key="DriveInfo_RefreshToolTipLine1">Actualizar la información de la unidad actualizará ambos</sys:String>
     <sys:String x:Key="DriveInfo_RefreshToolTipLine2">Unidades lógicas y físicas (si están habilitadas).</sys:String>
@@ -179,7 +181,7 @@
     <sys:String x:Key="HardwareInfo_Usable">Utilizable</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
     <sys:String x:Key="MsgText_AddedToStartup">TimVer se agregó al inicio de Windows</sys:String>
-    <sys:String x:Key="MsgText_AddToStartupFailed">No se pudo agregar TimVer al inicio de Windows.</sys:String>
+    <sys:String x:Key="MsgText_AddToStartupFailed" xml:space="preserve">No se pudo agregar TimVer al inicio de Windows.&#x0a;Consulte el archivo de registro para obtener información adicional.</sys:String>
     <sys:String x:Key="MsgText_ApplicationShutdown">se esta cerrando</sys:String>
     <sys:String x:Key="MsgText_ApplicationStarting">esta empezando</sys:String>
     <sys:String x:Key="MsgText_AppUpdateCheckFailed">Error en la búsqueda de actualizaciones.</sys:String>
@@ -207,7 +209,7 @@
     <sys:String x:Key="MsgText_OpeningReadMeFile">Abrir el archivo Léame</sys:String>
     <sys:String x:Key="MsgText_OptionReset">La opción se ha restablecido</sys:String>
     <sys:String x:Key="MsgText_RemovedFromStartup">TimVer fue eliminado del inicio de Windows</sys:String>
-    <sys:String x:Key="MsgText_RemoveFromStartupFailed">No se pudo eliminar TimVer del inicio de Windows.</sys:String>
+    <sys:String x:Key="MsgText_RemoveFromStartupFailed" xml:space="preserve">No se pudo eliminar TimVer del inicio de Windows.&#x0a;Consulte el archivo de registro para obtener información adicional.</sys:String>
     <sys:String x:Key="MsgText_SeeLogFile">Consulte el archivo de registro para obtener información adicional.</sys:String>
     <sys:String x:Key="MsgText_Thousand">Mil</sys:String>
     <sys:String x:Key="MsgText_Translated">traducido</sys:String>
@@ -265,7 +267,7 @@
     <sys:String x:Key="SettingsEnum_Navigation_Environment">Variables de entorno</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_GraphicsInfo">Información de gráficos</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_HardwareInfo">Información de hardware</sys:String>
-    <sys:String x:Key="SettingsEnum_Navigation_History">Historia</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_History">Historial de compilación de Windows</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Configuración</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_WindowsInfo">Información de Windows</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Default">100%</sys:String>
