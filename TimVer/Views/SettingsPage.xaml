@@ -525,14 +525,19 @@
                             <Label Grid.Row="0" Grid.Column="0"
                                    VerticalAlignment="Center"
                                    Content="{DynamicResource SettingsItem_Theme}" />
+                            <StackPanel Grid.Column="2" Grid.Row="0">
+                                <StackPanel.DataContext>
+                                    <viewmodels:SettingsViewModel/>
+                                </StackPanel.DataContext>
                             <ComboBox Grid.Row="0" Grid.Column="2"
                                       Width="Auto" MinWidth="200"
                                       Margin="0,3,0,0" Padding="2,0,0,3"
                                       HorizontalAlignment="Left"
-                                      ItemsSource="{Binding Source={convert:EnumBindingSource {x:Type models:ThemeType}}}"
+                                      ItemsSource="{Binding ThemeTypes}"
                                       SelectedItem="{Binding UITheme,
                                                              Source={x:Static config:UserSettings.Setting}}"
                                       Style="{StaticResource MaterialDesignComboBox}" />
+                            </StackPanel>
 
                             <Label Grid.Row="1" Grid.Column="0"
                                    VerticalAlignment="Center"
