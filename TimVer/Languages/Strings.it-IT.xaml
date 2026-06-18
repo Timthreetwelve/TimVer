@@ -1,8 +1,9 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!--
+
         BEFORE UPDATING, refer to the "Contribute a Translation" topic in the Wiki:
 
         https://github.com/Timthreetwelve/TimVer/wiki/Contribute-a-Translation
@@ -15,10 +16,10 @@
 
         Translation contributed by:  RB
 
-        Date last update:            2026-04-21
+        Date last update:            2026-06-18
 
         ======================================================================
-
+    
     -->
 
     <!--  About Page  -->
@@ -56,13 +57,14 @@
     <sys:String x:Key="Button_Cancel">Annulla</sys:String>
     <sys:String x:Key="Button_CheckUpdate">Controlla aggiornamenti</sys:String>
     <sys:String x:Key="Button_Close">Chiudi menu</sys:String>
+    <sys:String x:Key="Button_CompareLanguageToolTip" xml:space="preserve">Fare clic per confrontare la lingua attuale con quella predefinita (en-US).&#x0a;I risultati vengono scritti nel file registro.</sys:String>
     <sys:String x:Key="Button_CopyToClipboardToolTip">Copia questa pagina negli appunti</sys:String>
     <sys:String x:Key="Button_ExportSettings">Esportazione impostazioni</sys:String>
     <sys:String x:Key="Button_ExportSettingsToolTip">Esporta impostazioni correnti in un file.</sys:String>
     <sys:String x:Key="Button_ImportSettings">Importa impostazioni</sys:String>
     <sys:String x:Key="Button_ImportSettingsToolTip">Importa impostazioni da un file.</sys:String>
     <sys:String x:Key="Button_ListSettings">Impostazioni elenco</sys:String>
-    <sys:String x:Key="Button_ListSettingsTooltip">Elenca (scrivi) le impostazioni nel file registro.</sys:String>
+    <sys:String x:Key="Button_ListSettingsTooltip">Salva le impostazioni nel file registro.</sys:String>
     <sys:String x:Key="Button_No">No</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
     <sys:String x:Key="Button_OpenFolder">Apri cartella</sys:String>
@@ -112,6 +114,7 @@
     <sys:String x:Key="DriveInfo_Interface">Interfaccia</sys:String>
     <sys:String x:Key="DriveInfo_IOError">Errore I/O</sys:String>
     <sys:String x:Key="DriveInfo_Label">Etichetta</sys:String>
+    <sys:String x:Key="DriveInfo_LabelMissing" >Etichetta mancante</sys:String>
     <sys:String x:Key="DriveInfo_LogicalDrives">Unità logiche</sys:String>
     <sys:String x:Key="DriveInfo_MediaType">Tipo media</sys:String>
     <sys:String x:Key="DriveInfo_MediaType_Unspecified">Non specificato</sys:String>
@@ -121,7 +124,7 @@
     <sys:String x:Key="DriveInfo_NotReady">Non pronto</sys:String>
     <sys:String x:Key="DriveInfo_Partitions">Partizioni</sys:String>
     <sys:String x:Key="DriveInfo_PartitionStyle">Stile partizione</sys:String>
-    <sys:String x:Key="DriveInfo_PhysicalDisabled">Nelle impostazioni è disabilitata la raccolta delle info sull'unità fisica.</sys:String>
+    <sys:String x:Key="DriveInfo_PhysicalDisabled" xml:space="preserve">La raccolta delle informazioni dell'unità fisica è disabilitata.&#x0a;Vedi Impostazioni > Impostazioni unità disco > Abilita raccolta informazioni sull'unità fisica.</sys:String>
     <sys:String x:Key="DriveInfo_PhysicalDrives">Unità fisiche</sys:String>
     <sys:String x:Key="DriveInfo_RefreshToolTipLine1">Aggiorna info sull'unità aggiornerà entrambi</sys:String>
     <sys:String x:Key="DriveInfo_RefreshToolTipLine2">Unità logiche e fisiche (se abilitate).</sys:String>
@@ -179,10 +182,10 @@
     <sys:String x:Key="HardwareInfo_Usable">disponibili</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
     <sys:String x:Key="MsgText_AddedToStartup">TimVer è stato aggiunto all'avvio di Windows</sys:String>
-    <sys:String x:Key="MsgText_AddToStartupFailed">Impossibile aggiungere TimVer all'avvio di Windows. Per ulteriori info consulta il registro eventi.</sys:String>
+    <sys:String x:Key="MsgText_AddToStartupFailed" xml:space="preserve">Impossibile aggiungere TimVer all'avvio di Windows.&#x0a;Per ulteriori info consulta il registro eventi.</sys:String>
     <sys:String x:Key="MsgText_ApplicationShutdown">è in fase di chiusura</sys:String>
     <sys:String x:Key="MsgText_ApplicationStarting">è in fase di avvio</sys:String>
-    <sys:String x:Key="MsgText_AppUpdateCheckFailed">Verifica aggiornamenti non riuscita. Per ulteriori info consulta il registro eventi.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateCheckFailed" xml:space="preserve">Verifica aggiornamenti non riuscita.&#x0a;Per ulteriori info consulta il registro eventi.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateChecking">Controllo aggiornamenti.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateGoToRelease">Vuoi andare alla pagina web delle versioni?</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNewerFound">È disponibile una versione più recente ({0}).</sys:String>
@@ -212,7 +215,7 @@
     <sys:String x:Key="MsgText_OpeningReadMeFile">Apertura file ReadMe</sys:String>
     <sys:String x:Key="MsgText_OptionReset">L'opzione è stata reimpostata</sys:String>
     <sys:String x:Key="MsgText_RemovedFromStartup">TimVer è stato rimosso dall'avvio di Windows</sys:String>
-    <sys:String x:Key="MsgText_RemoveFromStartupFailed">Impossibile rimuovere TimVer dall'avvio di Windows. Per ulteriori informazioni consulta il registro eventi.</sys:String>
+    <sys:String x:Key="MsgText_RemoveFromStartupFailed" xml:space="preserve">Impossibile rimuovere TimVer dall'avvio di Windows.&#x0a;Per ulteriori informazioni consulta il registro eventi.</sys:String>
     <sys:String x:Key="MsgText_SeeLogFile">Per ulteriori informazioni visualizza il file registro.</sys:String>
     <sys:String x:Key="MsgText_Thousand">migliaia</sys:String>
     <sys:String x:Key="MsgText_Translated">stringhe tradotte</sys:String>
@@ -265,7 +268,7 @@
     <sys:String x:Key="SettingsEnum_Navigation_Environment">Variabili ambiente</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_GraphicsInfo">Info scheda grafica</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_HardwareInfo">Info hardware</sys:String>
-    <sys:String x:Key="SettingsEnum_Navigation_History">Cronologia</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_History">Cronologia build</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Impostazioni</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_WindowsInfo">Info Windows</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Default">100%</sys:String>
@@ -282,6 +285,7 @@
     <sys:String x:Key="SettingsEnum_Theme_DarkBlue">Blu mezzanotte</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Darker">Scuro</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Light">Chiaro</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_LightGray">Grafite pallida</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_System">Sistema</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Colore evidenziazione</sys:String>
@@ -334,7 +338,7 @@
     <sys:String x:Key="SettingsItem_StartCentered">Avvia con la finestra centrata sullo schermo</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Tema</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Rappresenta il numero di stringhe nella lingua attuale rispetto a quella predefinita (en-US).</sys:String>
-    <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Premi Ctrl+Maiusc+K per confrontare i file lingua. I risultati vengono scritti nel file registro.</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine2" xml:space="preserve">Premi Ctrl+Maiusc+K per confrontare i file lingua.&#x0a;I risultati vengono scritti nel file registro.</sys:String>
     <sys:String x:Key="SettingsItem_UISize">Dimensione UI</sys:String>
     <sys:String x:Key="SettingsItem_UseGB">Per calcoli capacità usa GB (1000^3 byte)</sys:String>
     <sys:String x:Key="SettingsItem_UseGiB">Per calcoli capacità usa GiB (1024^3 byte)</sys:String>
@@ -490,4 +494,20 @@
     <!-- A | About_UpdateFoundTooltip -->
     <!-- A | SettingsItem_AutoUpdateCheck -->
     <!-- End of changes on 2026/04/20 @ 00:15 UTC-->
+    
+    <!-- Begin changes on 2026/06/15 @ 18:30 UTC-->
+    <!-- U | DriveInfo_PhysicalDisabled           - Updated the string  -->
+    <!--                                          - Added a line break character. Please use it where the line break is logical in your translation.  -->
+    <!--                                          - Added xml:space="preserve" directive that must be used as is.  -->
+    <!-- U | MsgText_AddToStartupFailed           - Added xml:space="preserve" and line break character &#x0a;  -->
+    <!-- U | MsgText_AppUpdateCheckFailed         - Added xml:space="preserve" and line break character &#x0a;  -->
+    <!-- U | MsgText_RemoveFromStartupFailed      - Added xml:space="preserve" and line break character &#x0a;  -->
+    <!-- U | SettingsItem_TranslationToolTipLine2 - Added xml:space="preserve" and line break character &#x0a;  -->
+    <!-- U | SettingsEnum_Navigation_History      - Change from History to Build History-->
+    <!-- A | Button_CompareLanguageToolTip        - Note the xml:space="preserve" and line break character &#x0a; -->
+    <!-- End of changes on 2026/06/15 @ 18:30 UTC-->
+
+    <!-- Begin changes on 2026/06/17 @ 00:00 UTC-->
+    <!-- A | SettingsEnum_Theme_LightGray  -->
+    <!-- End of changes on 2026/06/17 @ 00:00 UTC-->
 </ResourceDictionary>
