@@ -24,6 +24,7 @@
         <!--#region Row definitions-->
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <!--#endregion-->
@@ -82,9 +83,25 @@
         </Grid>
         <!--#endregion-->
 
+        <!--#region Separator -->
+        <Separator Grid.Row="1"
+                   Background="{DynamicResource MaterialDesignDataGridRowHoverBackground}">
+            <Separator.Style>
+                <Style TargetType="Separator">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=ShowVideoSelector, Source={x:Static config:UserSettings.Setting}}"
+                                     Value="False">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Separator.Style>
+        </Separator>
+        <!--#endregion-->
+
         <!--#region DataGrid-->
         <DataGrid x:Name="VideoGrid"
-                  Grid.Row="1"
+                  Grid.Row="2"
                   Margin="0,0,5,5"
                   materialDesign:DataGridAssist.CellPadding="{Binding RowSpacing,
                                                                       Source={x:Static config:UserSettings.Setting},
