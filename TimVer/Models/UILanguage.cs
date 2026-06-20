@@ -9,6 +9,8 @@ namespace TimVer.Models;
 public partial class UILanguage : ObservableObject
 {
     #region Properties
+#pragma warning disable MVVMTK0042 // Prefer using [ObservableProperty] on partial properties
+    // Suppressing the MVVMTK0042 warning for this class until such time as it no longer requires Preview features.
     /// <summary>
     /// The name of the contributor. Can be any string chosen by the contributor.
     /// </summary>
@@ -50,6 +52,8 @@ public partial class UILanguage : ObservableObject
     /// </summary>
     [ObservableProperty]
     private string? _note = string.Empty;
+#pragma warning restore MVVMTK0042 // Prefer using [ObservableProperty] on partial properties
+
     #endregion Properties
 
     #region Override ToString
@@ -82,8 +86,8 @@ public partial class UILanguage : ObservableObject
         new () {Language = "Spanish",  LanguageCode = "es-ES", LanguageNative = "Español",    Contributor = "Timthreetwelve"},
         new () {Language = "French",   LanguageCode = "fr-FR", LanguageNative = "Français",   Contributor = "Timthreetwelve/Largo"},
         new () {Language = "Italian",  LanguageCode = "it-IT", LanguageNative = "Italiano",   Contributor = "RB"},
-        new () {Language = "Dutch",    LanguageCode = "nl-NL", LanguageNative = "Nederlands", Contributor = "TiM"},
-        new () {Language = "Slovak",   LanguageCode = "sk-SK", LanguageNative = "Slovak",     Contributor = "VAIO"},
+        new () {Language = "Dutch",    LanguageCode = "nl-NL", LanguageNative = "Nederlands", Contributor = "CMTriX"},
+//        new () {Language = "Slovak",   LanguageCode = "sk-SK", LanguageNative = "Slovak",     Contributor = "VAIO"},
         new () {Language = "Korean",   LanguageCode = "ko-KR", LanguageNative = "한국어",      Contributor = "VenusGirl💗 (비너스걸)"},
         new () {Language = "Japanese", LanguageCode = "ja-JP", LanguageNative = "日本語",      Contributor = "coolvitto"},
         new () {Language = "Thai",     LanguageCode = "th-TH", LanguageNative = "ไทย",        Contributor = "VULKAN-X"}
