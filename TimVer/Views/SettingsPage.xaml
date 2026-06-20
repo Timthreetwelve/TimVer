@@ -207,7 +207,6 @@
                                                Source={x:Static config:TempSettings.Setting}}">
                     <Expander.Header>
                         <ItemsControl Style="{StaticResource ExpanderHeaderGrid}">
-                            <!--#region Row definitions-->
                             <materialDesign:PackIcon Kind="Harddisk"
                                                      Style="{StaticResource ExpanderHeaderIcon}" />
                             <TextBlock Style="{StaticResource ExpanderHeaderTitle}"
