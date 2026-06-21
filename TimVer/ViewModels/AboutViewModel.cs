@@ -76,15 +76,12 @@ internal sealed partial class AboutViewModel
     {
         try
         {
-            foreach (UILanguage item in UILanguage.DefinedLanguages)
+            // en-GB is a special case and therefore should not be listed.
+            // See the comments in Languages\Strings.en-GB.xaml.
+            foreach (UILanguage item in UILanguage.DefinedLanguages.Where(item => item.LanguageCode is not "en-GB"))
             {
-                // en-GB is a special case and therefore should not be listed.
-                // See the comments in Languages\Strings.en-GB.xaml.
-                if (item.LanguageCode is not "en-GB")
-                {
-                    item.Note = GetLanguagePercent(item.LanguageCode!);
-                    AnnotatedLanguageList.Add(item);
-                }
+                item.Note = GetLanguagePercent(item.LanguageCode!);
+                AnnotatedLanguageList.Add(item);
             }
         }
         catch (Exception ex)
