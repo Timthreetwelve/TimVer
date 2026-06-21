@@ -3,6 +3,7 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!--
+    
         BEFORE UPDATING, refer to the "Contribute a Translation" topic in the Wiki:
 
         https://github.com/Timthreetwelve/TimVer/wiki/Contribute-a-Translation
@@ -15,7 +16,7 @@
 
         Translation contributed by:  Timthreetwelve/Largo
 
-        Date last updated:           2026.04.18
+        Date last updated:           2026.06.21
 
         =======================================================================
 
@@ -56,6 +57,8 @@
     <sys:String x:Key="Button_Cancel">Annuler</sys:String>
     <sys:String x:Key="Button_CheckUpdate">Vérifier mise à jour</sys:String>
     <sys:String x:Key="Button_Close">Fermer le menu</sys:String>
+    <sys:String x:Key="Button_CompareLanguageToolTip"
+                xml:space="preserve">Cliquez pour comparer la langue actuelle à la langue par défaut (en-US).&#x0a;Les résultats son écrits dans le fichier journal.</sys:String>
     <sys:String x:Key="Button_CopyToClipboardToolTip">Copiez cette page dans le presse-papiers</sys:String>
     <sys:String x:Key="Button_ExportSettings">Exporter les paramètres</sys:String>
     <sys:String x:Key="Button_ExportSettingsToolTip">Exporter les paramètres actuels vers un fichier.</sys:String>
@@ -112,6 +115,7 @@
     <sys:String x:Key="DriveInfo_Interface">Interface</sys:String>
     <sys:String x:Key="DriveInfo_IOError">Erreur d'E/S</sys:String>
     <sys:String x:Key="DriveInfo_Label">Libéllé</sys:String>
+    <sys:String x:Key="DriveInfo_LabelMissing">Étiquette manquante</sys:String>
     <sys:String x:Key="DriveInfo_LogicalDrives">Lecteurs logiques</sys:String>
     <sys:String x:Key="DriveInfo_MediaType">Type de support</sys:String>
     <sys:String x:Key="DriveInfo_MediaType_Unspecified">Non spécifié</sys:String>
@@ -121,7 +125,8 @@
     <sys:String x:Key="DriveInfo_NotReady">Pas prêt</sys:String>
     <sys:String x:Key="DriveInfo_Partitions">Partitions</sys:String>
     <sys:String x:Key="DriveInfo_PartitionStyle">Style de partition</sys:String>
-    <sys:String x:Key="DriveInfo_PhysicalDisabled">La collecte des infos sur le lecteur physique est désactivée dans les paramètres.</sys:String>
+    <sys:String x:Key="DriveInfo_PhysicalDisabled"
+                xml:space="preserve">La collecte d'infos sur les disques physiques est désactivée.&#x0a;Accédez à Paramètres > Paramètres du disque dur > Activer la collecte d'infos sur le disque physique.</sys:String>
     <sys:String x:Key="DriveInfo_PhysicalDrives">Lecteurs physiques</sys:String>
     <sys:String x:Key="DriveInfo_RefreshToolTipLine1">Actualiser les infos sur le lecteur actualisera les deux</sys:String>
     <sys:String x:Key="DriveInfo_RefreshToolTipLine2">Lecteurs logiques et physiques (si activé).</sys:String>
@@ -142,7 +147,7 @@
     <sys:String x:Key="GraphicsInfo_CurrentRefreshRate">Taux d'actualisation actuel</sys:String>
     <sys:String x:Key="GraphicsInfo_CurrentResolution">Résolution actuelle</sys:String>
     <sys:String x:Key="GraphicsInfo_Description">Description</sys:String>
-    <sys:String x:Key="GraphicsInfo_DeviceID">ID de l'appareil</sys:String>
+    <sys:String x:Key="GraphicsInfo_DeviceID">ID du périphérique</sys:String>
     <sys:String x:Key="GraphicsInfo_GraphicsAdapter">Adaptateur graphique</sys:String>
     <sys:String x:Key="GraphicsInfo_NumberOfColors">Nombre de couleurs</sys:String>
     <sys:String x:Key="GraphicsInfo_NumberOfDisplays">Nombre d'écrans</sys:String>
@@ -179,10 +184,12 @@
     <sys:String x:Key="HardwareInfo_Usable">Utilisable</sys:String>
     <!-- Text found in messages (log, message box, status bar, details area, etc. -->
     <sys:String x:Key="MsgText_AddedToStartup">TimVer a été ajouté au démarrage de Windows</sys:String>
-    <sys:String x:Key="MsgText_AddToStartupFailed">Impossible d'ajouter TimVer au démarrage de Windows. Voir le fichier journal pour des infos supplémentaires.</sys:String>
+    <sys:String x:Key="MsgText_AddToStartupFailed"
+                xml:space="preserve">Impossible d'ajouter TimVer au démarrage de Windows.&#x0a;Voir le fichier journal pour davantage d'infos.</sys:String>
     <sys:String x:Key="MsgText_ApplicationShutdown">s'éteint</sys:String>
     <sys:String x:Key="MsgText_ApplicationStarting">ça démarre</sys:String>
-    <sys:String x:Key="MsgText_AppUpdateCheckFailed">Échec de la recherche de mise à jour. Voir le journal pour plus d'infos.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateCheckFailed"
+                xml:space="preserve">Vérification des mises à jour a échoué.&#x0a;Voir le journal pour plus d'infos.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateChecking">Recherche de mise à jour.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateGoToRelease">Voulez-vous aller à la page de publication?</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNewerFound">Une version plus récente ({0}) a été trouvée.</sys:String>
@@ -212,7 +219,8 @@
     <sys:String x:Key="MsgText_OpeningReadMeFile">Ouverture du fichier Lisez-moi</sys:String>
     <sys:String x:Key="MsgText_OptionReset">L'option a été réinitialisée</sys:String>
     <sys:String x:Key="MsgText_RemovedFromStartup">TimVer a été supprimé du démarrage de Windows</sys:String>
-    <sys:String x:Key="MsgText_RemoveFromStartupFailed">Échec de la suppression de TimVer du démarrage de Windows. Voir le fichier journal pour des infos supplémentaires.</sys:String>
+    <sys:String x:Key="MsgText_RemoveFromStartupFailed"
+                xml:space="preserve">Échec de la suppression de TimVer du démarrage de Windows.&#x0a;Voir le fichier journal pour davantage d'infos.</sys:String>
     <sys:String x:Key="MsgText_SeeLogFile">Voir le fichier journal pour plus d'infos.</sys:String>
     <sys:String x:Key="MsgText_Thousand">mille</sys:String>
     <sys:String x:Key="MsgText_Translated">traduit</sys:String>
@@ -278,10 +286,11 @@
     <sys:String x:Key="SettingsEnum_Spacing_Comfortable">Confortable</sys:String>
     <sys:String x:Key="SettingsEnum_Spacing_Compact">Compact</sys:String>
     <sys:String x:Key="SettingsEnum_Spacing_Wide">Large</sys:String>
-    <sys:String x:Key="SettingsEnum_Theme_Dark">Sombre</sys:String>
-    <sys:String x:Key="SettingsEnum_Theme_DarkBlue">Bleu nuit</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_Dark">Matière sombre</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Darker">Plus sombre</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_DarkBlue">Bleu nuit</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Light">Clair</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_LightGray">Graphite pâle</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_System">Système</sys:String>
     <!-- Settings Page Items -->
     <sys:String x:Key="SettingsItem_AccentColor">Couleur d'accentuation</sys:String>
@@ -334,10 +343,11 @@
     <sys:String x:Key="SettingsItem_StartCentered">Commencez par la fenêtre centrée sur l'écran</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Thème</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Représente le nombre de chaînes dans la langue actuelle par rapport à la valeur par défaut (en-US).</sys:String>
-    <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Appuyez sur Ctrl+Maj+K pour comparer les fichiers de langue. Les résultats sont écrits dans le fichier journal.</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine2"
+                xml:space="preserve">Appuyez sur Ctrl+Maj+K pour comparer les fichiers de langue.&#x0a;Les résultats sont écrits dans le fichier journal.</sys:String>
     <sys:String x:Key="SettingsItem_UISize">Taille UI</sys:String>
-    <sys:String x:Key="SettingsItem_UseGB">Utilisez Go (1000 ^ 3 octets) pour les calculs de capacité</sys:String>
-    <sys:String x:Key="SettingsItem_UseGiB">Utilisez GIo (1024 ^ 3 octets) pour les calculs de capacité</sys:String>
+    <sys:String x:Key="SettingsItem_UseGB">Utilisez Go (1000^3 octets) pour les calculs de capacité</sys:String>
+    <sys:String x:Key="SettingsItem_UseGiB">Utilisez GIo (1024^3 octets) pour les calculs de capacité</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Utiliser la langue d'affichage de Windows</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">Lorsque cette option est choisie, la langue spécifiée dans les paramètres Windows sera</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">utilisé si une traduction est disponible, sinon l'anglais (en-US) sera utilisé.</sys:String>
@@ -490,4 +500,20 @@
     <!-- A | About_UpdateFoundTooltip -->
     <!-- A | SettingsItem_AutoUpdateCheck -->
     <!-- End of changes on 2026/04/20 @ 00:15 UTC-->
+
+    <!-- Begin changes on 2026/06/15 @ 18:30 UTC-->
+    <!-- U | DriveInfo_PhysicalDisabled           - Updated the string  -->
+    <!--                                          - Added a line break character. Please use it where the line break is logical in your translation.  -->
+    <!--                                          - Added xml:space="preserve" directive that must be used as is.  -->
+    <!-- U | MsgText_AddToStartupFailed           - Added xml:space="preserve" and line break character &#x0a;  -->
+    <!-- U | MsgText_AppUpdateCheckFailed         - Added xml:space="preserve" and line break character &#x0a;  -->
+    <!-- U | MsgText_RemoveFromStartupFailed      - Added xml:space="preserve" and line break character &#x0a;  -->
+    <!-- U | SettingsItem_TranslationToolTipLine2 - Added xml:space="preserve" and line break character &#x0a;  -->
+    <!-- U | SettingsEnum_Navigation_History      - Change from History to Build History-->
+    <!-- A | Button_CompareLanguageToolTip        - Note the xml:space="preserve" and line break character &#x0a; -->
+    <!-- End of changes on 2026/06/15 @ 18:30 UTC-->
+
+    <!-- Begin changes on 2026/06/17 @ 00:00 UTC-->
+    <!-- A | SettingsEnum_Theme_LightGray  -->
+    <!-- End of changes on 2026/06/17 @ 00:00 UTC-->
 </ResourceDictionary>
