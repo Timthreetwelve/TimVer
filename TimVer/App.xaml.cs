@@ -192,7 +192,8 @@ public partial class App : Application
             string t = args.ExceptionObject.GetType().FullName ?? "null";
             _log.Error($"Unhandled exception object is not of type Exception. Type: {t}");
             string msg = string.Format(CultureInfo.CurrentCulture,
-                                       "MsgText_Error\nMsgText_ErrorSeeLog");
+                                       $"{GetStringResource("MsgText_ErrorGeneral")}\n\n" +
+                                       $"{GetStringResource("MsgText_ErrorSeeLog")}");
             ShowMessageBox(msg);
         }
     }
@@ -202,7 +203,7 @@ public partial class App : Application
     /// <summary>
     /// Listens for Windows session ending events (logoff/shutdown).
     /// </summary>
-    private void SystemEvents_SessionEnding(object sender, SessionEndingCancelEventArgs e)
+    private static void SystemEvents_SessionEnding(object sender, SessionEndingCancelEventArgs e)
     {
         _log.Info($"Windows session ending: {e.ReasonSessionEnding}");
         SessionEndingFlag = true;
