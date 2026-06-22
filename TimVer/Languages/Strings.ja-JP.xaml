@@ -1,8 +1,9 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!--
+
         BEFORE UPDATING, refer to the "Contribute a Translation" topic in the Wiki:
 
         https://github.com/Timthreetwelve/TimVer/wiki/Contribute-a-Translation
@@ -15,7 +16,7 @@
 
         Translation contributed by:  coolvitto
 
-        Date last update:            2026-04-21
+        Date last update:            2026-06-22
 
         ======================================================================
 
@@ -56,6 +57,7 @@
     <sys:String x:Key="Button_Cancel">キャンセル</sys:String>
     <sys:String x:Key="Button_CheckUpdate">更新の確認</sys:String>
     <sys:String x:Key="Button_Close">メニューを閉じる</sys:String>
+    <sys:String x:Key="Button_CompareLanguageToolTip" xml:space="preserve">クリックすると、現在の言語とデフォルト言語（en-US）を比較できます。結果はログファイルに書き込まれます。</sys:String>
     <sys:String x:Key="Button_CopyToClipboardToolTip">このページをクリップボードにコピー</sys:String>
     <sys:String x:Key="Button_ExportSettings">設定のエクスポート</sys:String>
     <sys:String x:Key="Button_ExportSettingsToolTip">現在の設定をファイルにエクスポートします。</sys:String>
@@ -112,6 +114,7 @@
     <sys:String x:Key="DriveInfo_Interface">インターフェース</sys:String>
     <sys:String x:Key="DriveInfo_IOError">I/Oエラー</sys:String>
     <sys:String x:Key="DriveInfo_Label">ラベル</sys:String>
+    <sys:String x:Key="DriveInfo_LabelMissing" >ラベルがありません</sys:String>
     <sys:String x:Key="DriveInfo_LogicalDrives">論理ドライブ</sys:String>
     <sys:String x:Key="DriveInfo_MediaType">メディアタイプ</sys:String>
     <sys:String x:Key="DriveInfo_MediaType_Unspecified">未指定</sys:String>
@@ -121,7 +124,7 @@
     <sys:String x:Key="DriveInfo_NotReady">未準備</sys:String>
     <sys:String x:Key="DriveInfo_Partitions">パーティション数</sys:String>
     <sys:String x:Key="DriveInfo_PartitionStyle">パーティションスタイル</sys:String>
-    <sys:String x:Key="DriveInfo_PhysicalDisabled">物理ドライブ情報の収集は設定で無効になっています。</sys:String>
+    <sys:String x:Key="DriveInfo_PhysicalDisabled" xml:space="preserve">物理ドライブ情報の収集が無効になっています。&#x0a;設定 > ディスク ドライブの設定 > 物理ドライブ情報の収集を有効にする。を参照してください。</sys:String>
     <sys:String x:Key="DriveInfo_PhysicalDrives">物理ドライブ</sys:String>
     <sys:String x:Key="DriveInfo_RefreshToolTipLine1">ドライブ情報の更新では、論理ドライブと</sys:String>
     <sys:String x:Key="DriveInfo_RefreshToolTipLine2">物理ドライブ (有効な場合) の両方が更新されます。</sys:String>
@@ -179,10 +182,10 @@
     <sys:String x:Key="HardwareInfo_Usable">利用可能</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
     <sys:String x:Key="MsgText_AddedToStartup">TimVer がWindowsのスタートアップに追加されました</sys:String>
-    <sys:String x:Key="MsgText_AddToStartupFailed">TimVer をWindowsのスタートアップに追加できませんでした。詳細はログファイルを参照してください。</sys:String>
+    <sys:String x:Key="MsgText_AddToStartupFailed" xml:space="preserve">TimVer をWindowsのスタートアップに追加できませんでした。詳細はログファイルを参照してください。</sys:String>
     <sys:String x:Key="MsgText_ApplicationShutdown">をシャットダウンしています</sys:String>
     <sys:String x:Key="MsgText_ApplicationStarting">を起動しています</sys:String>
-    <sys:String x:Key="MsgText_AppUpdateCheckFailed">更新の確認に失敗しました。詳細はログを参照してください。</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateCheckFailed" xml:space="preserve">更新の確認に失敗しました。詳細はログを参照してください。</sys:String>
     <sys:String x:Key="MsgText_AppUpdateChecking">更新を確認しています。</sys:String>
     <sys:String x:Key="MsgText_AppUpdateGoToRelease">リリースページに移動しますか？</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNewerFound">新しいリリース（{0}）が見つかりました。</sys:String>
@@ -212,7 +215,7 @@
     <sys:String x:Key="MsgText_OpeningReadMeFile">ReadMeファイルを開いています</sys:String>
     <sys:String x:Key="MsgText_OptionReset">オプションをリセットしました</sys:String>
     <sys:String x:Key="MsgText_RemovedFromStartup">TimVer をWindowsのスタートアップから削除しました</sys:String>
-    <sys:String x:Key="MsgText_RemoveFromStartupFailed">TimVer をWindowsのスタートアップから削除できませんでした。詳細はログファイルを参照してください。</sys:String>
+    <sys:String x:Key="MsgText_RemoveFromStartupFailed" xml:space="preserve">TimVer をWindowsのスタートアップから削除できませんでした。詳細はログファイルを参照してください。</sys:String>
     <sys:String x:Key="MsgText_SeeLogFile">詳細はログファイルを参照してください。</sys:String>
     <sys:String x:Key="MsgText_Thousand">千</sys:String>
     <sys:String x:Key="MsgText_Translated">翻訳済み</sys:String>
@@ -282,6 +285,7 @@
     <sys:String x:Key="SettingsEnum_Theme_Darker">ダーカー</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_DarkBlue">ミッドナイトブルー</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Light">ライト</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_LightGray">淡いグラファイト</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_System">システム</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">アクセントカラー</sys:String>
@@ -334,7 +338,7 @@
     <sys:String x:Key="SettingsItem_StartCentered">ウィンドウを画面の中央に配置して起動する</sys:String>
     <sys:String x:Key="SettingsItem_Theme">テーマ</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine1">デフォルト (en-US) と比較した現在の言語の文字列数を表します。</sys:String>
-    <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Ctrl+Shift+Kを押すと言語ファイルを比較します。結果はログファイルに書き出されます。</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine2" xml:space="preserve">Ctrl+Shift+Kを押すと言語ファイルを比較します。結果はログファイルに書き出されます。</sys:String>
     <sys:String x:Key="SettingsItem_UISize">UI サイズ</sys:String>
     <sys:String x:Key="SettingsItem_UseGB">容量計算に GB (1000^3バイト) を使用する</sys:String>
     <sys:String x:Key="SettingsItem_UseGiB">容量計算に GiB (1024^3バイト) を使用する</sys:String>
@@ -490,4 +494,20 @@
     <!-- A | About_UpdateFoundTooltip -->
     <!-- A | SettingsItem_AutoUpdateCheck -->
     <!-- End of changes on 2026/04/20 @ 00:15 UTC-->
+    
+    <!-- Begin changes on 2026/06/15 @ 18:30 UTC-->
+    <!-- U | DriveInfo_PhysicalDisabled           - Updated the string  -->
+    <!--                                          - Added a line break character. Please use it where the line break is logical in your translation.  -->
+    <!--                                          - Added xml:space="preserve" directive that must be used as is.  -->
+    <!-- U | MsgText_AddToStartupFailed           - Added xml:space="preserve" and line break character &#x0a;  -->
+    <!-- U | MsgText_AppUpdateCheckFailed         - Added xml:space="preserve" and line break character &#x0a;  -->
+    <!-- U | MsgText_RemoveFromStartupFailed      - Added xml:space="preserve" and line break character &#x0a;  -->
+    <!-- U | SettingsItem_TranslationToolTipLine2 - Added xml:space="preserve" and line break character &#x0a;  -->
+    <!-- U | SettingsEnum_Navigation_History      - Change from History to Build History-->
+    <!-- A | Button_CompareLanguageToolTip        - Note the xml:space="preserve" and line break character &#x0a; -->
+    <!-- End of changes on 2026/06/15 @ 18:30 UTC-->
+
+    <!-- Begin changes on 2026/06/17 @ 00:00 UTC-->
+    <!-- A | SettingsEnum_Theme_LightGray  -->
+    <!-- End of changes on 2026/06/17 @ 00:00 UTC-->
 </ResourceDictionary>
