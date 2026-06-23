@@ -459,8 +459,7 @@
                                 <StackPanel.DataContext>
                                     <viewmodels:SettingsViewModel />
                                 </StackPanel.DataContext>
-                                <ComboBox Grid.Row="0" Grid.Column="2"
-                                          Width="Auto" MinWidth="200"
+                                <ComboBox Width="Auto" MinWidth="200"
                                           Margin="0,3,0,0" Padding="2,0,0,3"
                                           HorizontalAlignment="Left"
                                           ItemsSource="{Binding ThemeTypes}"
