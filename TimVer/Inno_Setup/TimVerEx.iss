@@ -21,7 +21,7 @@
 #include IncludeFile
 
 #define BaseDir              "V:\Source\Repos\TimVer\TimVer"
-#define MySourceDir          BaseDir + PublishFolder
+#define MySourceDir          PublishFolder
 #define MySetupIcon          BaseDir + "\Images\TV.ico"
 #define MyOutputDir          "V:\Releases\Installer"
 #define MyLargeImage         "V:\InnoSetup\Images\WizardImageTimVer.png"
