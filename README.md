@@ -38,7 +38,7 @@ Self-contained versions are available if .NET 10 isn't installed. See the [relea
 * Copy page to the clipboard.
 * Copy indivdual values to the clipboard by right-clicking.
 * Select display language.
-* Select the accent color, font, and any of four themes.
+* Select the accent color, font, and any of five themes.
 * Export and import application settings.
 
 ### TimVer is Multilingual!
