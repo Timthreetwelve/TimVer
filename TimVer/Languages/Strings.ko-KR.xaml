@@ -1,8 +1,9 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!--
+
         BEFORE UPDATING, refer to the "Contribute a Translation" topic in the Wiki:
 
         https://github.com/Timthreetwelve/TimVer/wiki/Contribute-a-Translation
@@ -56,6 +57,7 @@
     <sys:String x:Key="Button_Cancel">취소</sys:String>
     <sys:String x:Key="Button_CheckUpdate">업데이트 확인</sys:String>
     <sys:String x:Key="Button_Close">메뉴 닫기</sys:String>
+    <sys:String x:Key="Button_CompareLanguageToolTip" xml:space="preserve">현재 언어를 기본값 (en-US)과 비교하려면 클릭하세요.&#x0a;결과는 로그 파일에 기록됩니다.</sys:String>
     <sys:String x:Key="Button_CopyToClipboardToolTip">이 페이지를 클립보드로 복사</sys:String>
     <sys:String x:Key="Button_ExportSettings">설정 내보내기</sys:String>
     <sys:String x:Key="Button_ExportSettingsToolTip">현재 설정을 파일로 내보냅니다.</sys:String>
@@ -112,6 +114,7 @@
     <sys:String x:Key="DriveInfo_Interface">인터페이스</sys:String>
     <sys:String x:Key="DriveInfo_IOError">I/O 오류</sys:String>
     <sys:String x:Key="DriveInfo_Label">레이블</sys:String>
+    <sys:String x:Key="DriveInfo_LabelMissing" >레이블 누락</sys:String>
     <sys:String x:Key="DriveInfo_LogicalDrives">논리적 디스크</sys:String>
     <sys:String x:Key="DriveInfo_MediaType">미디어 유형</sys:String>
     <sys:String x:Key="DriveInfo_MediaType_Unspecified">지정되지 않음</sys:String>
@@ -279,9 +282,10 @@
     <sys:String x:Key="SettingsEnum_Spacing_Compact">촘촘한</sys:String>
     <sys:String x:Key="SettingsEnum_Spacing_Wide">와이드</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Dark">어두운 소재</sys:String>
-    <sys:String x:Key="SettingsEnum_Theme_DarkBlue">미드나잇 블루</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Darker">어두운</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_DarkBlue">미드나잇 블루</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Light">밝은</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_LightGray">옅은 흑연</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_System">시스템</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">강조 색상</sys:String>
@@ -490,4 +494,20 @@
     <!-- A | About_UpdateFoundTooltip -->
     <!-- A | SettingsItem_AutoUpdateCheck -->
     <!-- End of changes on 2026/04/20 @ 00:15 UTC-->
+    
+    <!-- Begin changes on 2026/06/15 @ 18:30 UTC-->
+    <!-- U | DriveInfo_PhysicalDisabled           - Updated the string  -->
+    <!--                                          - Added a line break character. Please use it where the line break is logical in your translation.  -->
+    <!--                                          - Added xml:space="preserve" directive that must be used as is.  -->
+    <!-- U | MsgText_AddToStartupFailed           - Added xml:space="preserve" and line break character &#x0a;  -->
+    <!-- U | MsgText_AppUpdateCheckFailed         - Added xml:space="preserve" and line break character &#x0a;  -->
+    <!-- U | MsgText_RemoveFromStartupFailed      - Added xml:space="preserve" and line break character &#x0a;  -->
+    <!-- U | SettingsItem_TranslationToolTipLine2 - Added xml:space="preserve" and line break character &#x0a;  -->
+    <!-- U | SettingsEnum_Navigation_History      - Change from History to Build History-->
+    <!-- A | Button_CompareLanguageToolTip        - Note the xml:space="preserve" and line break character &#x0a; -->
+    <!-- End of changes on 2026/06/15 @ 18:30 UTC-->
+
+    <!-- Begin changes on 2026/06/17 @ 00:00 UTC-->
+    <!-- A | SettingsEnum_Theme_LightGray  -->
+    <!-- End of changes on 2026/06/17 @ 00:00 UTC-->
 </ResourceDictionary>
