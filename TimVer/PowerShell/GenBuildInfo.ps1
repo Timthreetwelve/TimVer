@@ -30,7 +30,9 @@ internal static class BuildInfo
 
     public static readonly string BuildDateStringUtc = $`"{BuildDateUtc:f}  (UTC)`";
 
-    public static readonly string VersionString = Prerelease == null ? VersionInfo.Version : $`"{VersionInfo.Version}-{Prerelease}`";
+    public static readonly string VersionString = string.IsNullOrWhiteSpace(Prerelease)
+        ? VersionInfo.Version
+        : $"{VersionInfo.Version}-{Prerelease}";
 }"
 
 $outputPath = Join-Path -Path $(Get-Location).Path -ChildPath $outputFile
