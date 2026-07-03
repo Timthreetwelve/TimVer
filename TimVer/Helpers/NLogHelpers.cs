@@ -58,7 +58,7 @@ internal static class NLogHelpers
         // create debugger target
         DebuggerTarget debugger = new("debugger")
         {
-            Layout = "${processtime} >>> ${message} "
+            Layout = "${processtime} » ${message} "
         };
 
         // add the target
