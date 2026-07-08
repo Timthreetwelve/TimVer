@@ -27,4 +27,3 @@ internal static class BuildInfo
         ? VersionInfo.Version
         : $"{VersionInfo.Version}-{Prerelease}";
 }
-
