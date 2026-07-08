@@ -342,8 +342,8 @@ healthchecksdb
 # Inno Script Studio backup files
 /TimVer/Inno_Setup/*.~is
 
-# BuildInfo
-/TimVer/BuildInfo.cs
+# override .gitignore_global 
+!TimVer/BuildInfo.cs
 
 # Error list
 TimVer.el.txt

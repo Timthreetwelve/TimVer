@@ -167,7 +167,7 @@ internal static class MainWindowHelpers
         _log.Info($"{AppInfo.AppName} ({AppInfo.AppProduct}) {BuildInfo.VersionString} {GetStringResource("MsgText_ApplicationStarting")}");
         _log.Info($"{AppInfo.AppName} {AppInfo.AppCopyright}");
         _log.Debug($"{AppInfo.AppName} was started from {PathHelpers.AnonymizePath(AppInfo.AppPath)}");
-        _log.Debug($"{AppInfo.AppName} Build date: {BuildInfo.BuildDateStringUtc}");
+        _log.Debug($"{AppInfo.AppName} Commit date: {BuildInfo.CommitDateStringUtc} - {BuildInfo.CommitDateStringLocal}");
         _log.Debug($"{AppInfo.AppName} Commit ID: {BuildInfo.CommitIDString}");
         _log.Debug($"{AppInfo.AppName} Process ID: {AppInfo.AppProcessID}");
         if (!string.IsNullOrEmpty(BuildInfo.Prerelease))
