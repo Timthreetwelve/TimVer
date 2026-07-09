@@ -16,14 +16,14 @@
 
         Translation contributed by:  RB
 
-        Date last update:            2026-06-18
+        Date last update:            09.07.2026
 
         ======================================================================
     
     -->
 
     <!--  About Page  -->
-    <sys:String x:Key="About_BuildDate">Data build</sys:String>
+    <sys:String x:Key="About_BuildDate">Data commit</sys:String>
     <sys:String x:Key="About_CommitID">ID commit</sys:String>
     <sys:String x:Key="About_CommitIDToolTip">ID commit completo:</sys:String>
     <sys:String x:Key="About_Contribute">Contribuisci alla traduzione</sys:String>
@@ -510,4 +510,8 @@
     <!-- Begin changes on 2026/06/17 @ 00:00 UTC-->
     <!-- A | SettingsEnum_Theme_LightGray  -->
     <!-- End of changes on 2026/06/17 @ 00:00 UTC-->
+
+    <!-- Begin changes on 2026/07/08 @ 19:30 UTC -->
+    <!-- U | About_BuildDate - Changed 'Build' to 'Commit' -->
+    <!-- End of changes on 2026/07/08 @ 19:30 UTC -->
 </ResourceDictionary>
