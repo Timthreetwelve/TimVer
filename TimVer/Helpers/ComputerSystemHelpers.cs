@@ -49,7 +49,7 @@ internal static class ComputerSystemHelpers
             {GetStringResource("HardwareInfo_Processor"), info.ProcessorName},
             {GetStringResource("HardwareInfo_ProcessorDescription"), info.ProcessorDescription},
             {GetStringResource("HardwareInfo_ProcessorArch"), info.ProcessorArchitecture},
-            {GetStringResource("HardwareInfo_Cores"), info.FormattedProcessorCores},
+            {GetStringResource("HardwareInfo_ProcessorCores"), info.FormattedProcessorCores},
             {GetStringResource("HardwareInfo_BiosManufacturer"), info.BiosManufacturer},
             {GetStringResource("HardwareInfo_BiosVersion"), info.FormattedBiosVersion},
             {GetStringResource("HardwareInfo_BiosMode"), info.UefiMode},
@@ -86,7 +86,7 @@ internal static class ComputerSystemHelpers
     }
     #endregion Get System information
 
-    #region Format processor string
+    #region Format processor cores string
     /// <summary>
     /// Combines processor cores and processor threads into a single string.
     /// </summary>
@@ -94,9 +94,9 @@ internal static class ComputerSystemHelpers
     {
         string hCores = GetStringResource("HardwareInfo_Cores");
         string hThreads = GetStringResource("HardwareInfo_Threads");
-        return $"{ProcessorHelpers.CimQueryProc("NumberOfCores")} {hCores} - {ProcessorHelpers.CimQueryProc("NumberOfLogicalProcessors")} {hThreads}";
+        return $"{ProcessorHelpers.CimQueryProc("NumberOfCores")} {hCores} / {ProcessorHelpers.CimQueryProc("NumberOfLogicalProcessors")} {hThreads}";
     }
-    #endregion Format processor string
+    #endregion Format processor cores string
 
     #region Format memory string
     /// <summary>

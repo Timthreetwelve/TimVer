@@ -170,7 +170,7 @@
     <sys:String x:Key="HardwareInfo_PhysicalMemory">Physical Memory</sys:String>
     <sys:String x:Key="HardwareInfo_Processor">Processor</sys:String>
     <sys:String x:Key="HardwareInfo_ProcessorArch">Processor Architecture</sys:String>
-    <sys:String x:Key="HardwareInfo_ProcessorCores">Processor Cores</sys:String>
+    <sys:String x:Key="HardwareInfo_ProcessorCores">Processor Cores / Threads</sys:String>
     <sys:String x:Key="HardwareInfo_ProcessorDescription">Processor Description</sys:String>
     <sys:String x:Key="HardwareInfo_SecureBoot">Secure Boot</sys:String>
     <sys:String x:Key="HardwareInfo_SecureBoot_Disabled">Disabled</sys:String>
@@ -514,4 +514,14 @@
     <!-- Begin changes on 2026/07/08 @ 19:30 UTC -->
     <!-- U | About_BuildDate - Changed 'Build' to 'Commit' -->
     <!-- End of changes on 2026/07/08 @ 19:30 UTC -->
+
+    <!-- Begin changes on 2026/07/13 @ 19:10 UTC -->
+    <!-- U | HardwareInfo_ProcessorCores - Added '/ Threads' to string -->
+    <!-- * | Note to Translators: If the term CPU is preferred over Processor in your language, please use CPU instead of Processor in the translation. -->
+    <!-- * |                      If changing Processor to CPU, please use the same term in these 4 keys for consistency. Thank you. -->
+    <!-- * |                      HardwareInfo_Processor             -->
+    <!-- * |                      HardwareInfo_ProcessorArch         -->
+    <!-- * |                      HardwareInfo_ProcessorCores        -->
+    <!-- * |                      HardwareInfo_ProcessorDescription  -->
+    <!-- End of changes on 2026/07/13 @ 19:10 UTC -->
 </ResourceDictionary>
