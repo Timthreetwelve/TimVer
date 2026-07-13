@@ -16,7 +16,7 @@
 
         Translation contributed by:  RB
 
-        Date last update:            09.07.2026
+        Date last update:            13.07.2026
 
         ======================================================================
     
@@ -59,8 +59,8 @@
     <sys:String x:Key="Button_Close">Chiudi menu</sys:String>
     <sys:String x:Key="Button_CompareLanguageToolTip" xml:space="preserve">Fare clic per confrontare la lingua attuale con quella predefinita (en-US).&#x0a;I risultati vengono scritti nel file registro.</sys:String>
     <sys:String x:Key="Button_CopyToClipboardToolTip">Copia questa pagina negli appunti</sys:String>
-    <sys:String x:Key="Button_ExportSettings">Esportazione impostazioni</sys:String>
-    <sys:String x:Key="Button_ExportSettingsToolTip">Esporta impostazioni correnti in un file.</sys:String>
+    <sys:String x:Key="Button_ExportSettings">Esporta impostazioni</sys:String>
+    <sys:String x:Key="Button_ExportSettingsToolTip">Esporta impostazioni attuali in un file.</sys:String>
     <sys:String x:Key="Button_ImportSettings">Importa impostazioni</sys:String>
     <sys:String x:Key="Button_ImportSettingsToolTip">Importa impostazioni da un file.</sys:String>
     <sys:String x:Key="Button_ListSettings">Impostazioni elenco</sys:String>
@@ -289,7 +289,7 @@
     <sys:String x:Key="SettingsEnum_Theme_System">Sistema</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Colore evidenziazione</sys:String>
-    <sys:String x:Key="SettingsItem_AutoUpdateCheck">All'apertura di 'Info programma' verifica disponibilità nuove vesrioni programma</sys:String>
+    <sys:String x:Key="SettingsItem_AutoUpdateCheck">All'apertura di 'Info programma' verifica disponibilità nuove versioni programma</sys:String>
     <sys:String x:Key="SettingsItem_BuildHistory">Conserva cronologia build</sys:String>
     <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine1">Abilitando questa opzione TimVer conserverà un registro della cronologia delle build.</sys:String>
     <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine2">Disabilitando questa opzione verrà rimosso la voce  Cronologia dalla barra di navigazione.</sys:String>
