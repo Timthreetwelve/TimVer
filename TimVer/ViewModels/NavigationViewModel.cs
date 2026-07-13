@@ -135,9 +135,9 @@ internal sealed partial class NavigationViewModel : ObservableObject
 
     #region Copy to clipboard command
     [RelayCommand]
-    private void CopyToClipboard()
+    private async Task CopyToClipboard()
     {
-        ClipboardHelper.CopyPageToClipboard(CurrentViewModel!);
+        await ClipboardHelper.CopyPageToClipboard(CurrentViewModel!);
     }
     #endregion Copy to clipboard command
 
@@ -182,7 +182,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
     /// Copy (nearly) any text in a TextBlock to the clipboard on right mouse button up.
     /// </summary>
     [RelayCommand]
-    private static void RightMouseUp(MouseButtonEventArgs e)
+    private static async Task RightMouseUp(MouseButtonEventArgs e)
     {
         if (e.OriginalSource is not TextBlock text)
         {
@@ -191,10 +191,15 @@ internal sealed partial class NavigationViewModel : ObservableObject
 
         try
         {
-            if (ClipboardHelper.CopyTextToClipboard(text.Text))
+            if (await ClipboardHelper.CopyTextToClipboardAsync(text.Text))
             {
                 SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopiedToClipboardItem"));
                 _log.Debug($"{text.Text.Length} bytes copied to the clipboard");
+            }
+            else
+            {
+                _log.Error("RightMouseUp clipboard copy failed.");
+                SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopyToClipboardFail"));
             }
 
             DataGridRow dgr = MainWindowHelpers.FindParent<DataGridRow>(text);
@@ -214,7 +219,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
     /// Keyboard events
     /// </summary>
     [RelayCommand]
-    private void KeyDown(KeyEventArgs e)
+    private async Task KeyDown(KeyEventArgs e)
     {
         #region Keys without modifiers
         switch (e.Key)
@@ -239,7 +244,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
                     }
                 case Key.C:
                     {
-                        CopyToClipboard();
+                        await CopyToClipboard();
                         break;
                     }
                 case Key.Add:
