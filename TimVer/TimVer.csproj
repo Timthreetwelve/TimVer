@@ -2,10 +2,10 @@
 
   <PropertyGroup>
     <AssemblyName>TimVer</AssemblyName>
-    <OutputType>WinExe</OutputType>
     <TargetFramework>net10.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
+    <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
     <ApplicationIcon>Images\TV.ico</ApplicationIcon>
     <Description>It's like Winver only more</Description>
     <Copyright>© 2019 - $([System.DateTime]::UtcNow.Year) Tim Kennedy</Copyright>
@@ -15,17 +15,22 @@
     <CsWinRTAotOptimizerEnabled>false</CsWinRTAotOptimizerEnabled>
   </PropertyGroup>
 
+  <!-- Set version and prerelease string (if needed) -->
+  <PropertyGroup>
+    <VersionValidate>true</VersionValidate>
+    <Version>0.13.0</Version>
+    <VersionPrerelease>PreRelease</VersionPrerelease>
+  </PropertyGroup>
+
   <!-- Analyzers -->
   <PropertyGroup>
     <AnalysisLevel>latest-recommended</AnalysisLevel>
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
   </PropertyGroup>
 
-  <!-- Set version and prerelease string (if needed) -->
+  <!-- Disable satellite assemblies except those specified -->
   <PropertyGroup>
-    <VersionValidate>true</VersionValidate>
-    <Version>0.12.0</Version>
-    <VersionPrerelease></VersionPrerelease>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
   </PropertyGroup>
   
   <!-- Images -->
@@ -54,6 +59,7 @@
     <Content Include="Strings.test.xaml" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
+  <!-- Build complete message -->
   <Target Name="VersionMessage" AfterTargets="AfterBuild">
     <Message Importance="high" Text="Assembly Version is $(AssemblyVersion)" />
     <Message Importance="high" Text="Version is $(Version)" />
