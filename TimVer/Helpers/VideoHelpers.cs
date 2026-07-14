@@ -166,9 +166,9 @@ internal static class VideoHelpers
     /// <returns>Count of monitors as int.</returns>
     private static int GetDisplayCount()
     {
-        const string scope = @"\\.\root\wmi";
+        const string scope = @"\\.\root\WMI";
         const string dialect = "WQL";
-        const string query = "SELECT * From WmiMonitorID";
+        const string query = "SELECT InstanceName From WmiMonitorID";
 
         try
         {

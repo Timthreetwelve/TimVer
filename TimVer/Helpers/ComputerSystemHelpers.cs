@@ -166,15 +166,16 @@ internal static class ComputerSystemHelpers
         try
         {
             using CimSession cimSession = CimSession.Create(null);
-            string? bootupState = cimSession.QueryInstances(_scope, _dialect, "SELECT BootupState From Win32_ComputerSystem")
-                .FirstOrDefault()?.CimInstanceProperties["BootupState"].Value.ToString();
+            CimInstance? computerSystem = cimSession.QueryInstances(_scope, _dialect, "SELECT BootupState From Win32_ComputerSystem")
+                .FirstOrDefault();
+            string? bootupState = computerSystem?.CimInstanceProperties["BootupState"]?.Value?.ToString();
 
             return bootupState switch
             {
                 "Normal boot" => GetStringResource("HardwareInfo_LastBootNormal"),
                 "Fail-safe boot" => GetStringResource("HardwareInfo_LastBootSafe"),
                 "Fail-safe with network boot" => GetStringResource("HardwareInfo_LastBootSafeNetwork"),
-                _ => string.Empty,
+                _ => bootupState ?? string.Empty,
             };
         }
         catch (Exception ex)
