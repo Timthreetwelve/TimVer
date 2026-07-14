@@ -148,9 +148,9 @@ internal static class ComputerSystemHelpers
     }
     #endregion Format last boot time
 
-    #region Format uptime
+    #region Format up-time
     /// <summary>
-    /// Formats uptime in the current language.
+    /// Formats up-time in the current language.
     /// </summary>
     /// <returns>Formatted string.</returns>
     private static string FormatUptime()
@@ -158,18 +158,31 @@ internal static class ComputerSystemHelpers
         TimeSpan up = EnvironmentHelpers.GetUptime();
         return string.Format(CultureInfo.InvariantCulture, HardwareInfoUptimeString, up.Days, up.Hours, up.Minutes, up.Seconds);
     }
-    #endregion Format uptime
+    #endregion Format up-time
 
     #region Format reboot type
     private static string GetBootType()
     {
-        return SystemMetricsHelper.GetCleanBoot() switch
+        try
         {
-            0 => GetStringResource("HardwareInfo_LastBootNormal"),
-            1 => GetStringResource("HardwareInfo_LastBootSafe"),
-            2 => GetStringResource("HardwareInfo_LastBootSafeNetwork"),
-            _ => string.Empty,
-        };
+            using CimSession cimSession = CimSession.Create(null);
+            CimInstance? computerSystem = cimSession.QueryInstances(_scope, _dialect, "SELECT BootupState From Win32_ComputerSystem")
+                .FirstOrDefault();
+            string? bootupState = computerSystem?.CimInstanceProperties["BootupState"]?.Value?.ToString();
+
+            return bootupState switch
+            {
+                "Normal boot" => GetStringResource("HardwareInfo_LastBootNormal"),
+                "Fail-safe boot" => GetStringResource("HardwareInfo_LastBootSafe"),
+                "Fail-safe with network boot" => GetStringResource("HardwareInfo_LastBootSafeNetwork"),
+                _ => bootupState ?? string.Empty,
+            };
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, "Win32_ComputerSystem BootupState call failed.");
+            return string.Empty;
+        }
     }
     #endregion Format reboot type
 }

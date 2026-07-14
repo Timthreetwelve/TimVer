@@ -65,7 +65,7 @@ internal static class VideoHelpers
                     //[GetStringResource("GraphicsInfo_AdapterRAM")] = FormatAdapterRamInfo(gpu),
                     [GetStringResource("GraphicsInfo_BitsPerPixel")] = CimStringProperty(gpu, "CurrentBitsPerPixel"),
                     [GetStringResource("GraphicsInfo_NumberOfColors")] = FormatColorsInfo(gpu),
-                    [GetStringResource("GraphicsInfo_NumberOfDisplays")] = SystemMetricsHelper.GetDisplayCount()
+                    [GetStringResource("GraphicsInfo_NumberOfDisplays")] = GetDisplayCount()
                                                                                    .ToString(CultureInfo.InvariantCulture),
                 })
                 .FirstOrDefault()!;
@@ -158,6 +158,30 @@ internal static class VideoHelpers
         return string.Format(CultureInfo.CurrentCulture, $"{ram:N2} MB");
     }
     #endregion Adapter Memory
+
+    #region Get display count
+    /// <summary>
+    /// Gets the count of visible display monitors.
+    /// </summary>
+    /// <returns>Count of monitors as int.</returns>
+    private static int GetDisplayCount()
+    {
+        const string scope = @"\\.\root\WMI";
+        const string dialect = "WQL";
+        const string query = "SELECT InstanceName From WmiMonitorID";
+
+        try
+        {
+            using CimSession cimSession = CimSession.Create(null);
+            return cimSession.QueryInstances(scope, dialect, query).Count();
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, "WmiMonitorID call failed.");
+            return -1;
+        }
+    }
+    #endregion Get display count
 
     #region Total Colors
     /// <summary>
