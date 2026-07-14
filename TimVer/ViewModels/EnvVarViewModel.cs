@@ -34,7 +34,7 @@ internal sealed class EnvVarViewModel : ObservableObject
 
     public static string FilterText
     {
-        get => field!;
+        get;
         set
         {
             if (field != value)
@@ -43,6 +43,6 @@ internal sealed class EnvVarViewModel : ObservableObject
                 StaticPropertyChanged?.Invoke(null, new PropertyChangedEventArgs(nameof(FilterText)));
             }
         }
-    }
+    } = string.Empty;
     #endregion Filter text
 }
