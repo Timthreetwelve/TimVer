@@ -233,6 +233,11 @@ internal static class ClipboardHelper
         {
             SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopiedToClipboard"));
         }
+        else
+        {
+            SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopyToClipboardFail"));
+            SystemSounds.Exclamation.Play();
+        }
     }
     #endregion Copy a page to clipboard
 }
