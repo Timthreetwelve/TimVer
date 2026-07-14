@@ -16,7 +16,7 @@
 
         Translation contributed by:  RB
 
-        Date last update:            13.07.2026
+        Date last update:            14.07.2026
 
         ======================================================================
     
@@ -192,6 +192,7 @@
     <sys:String x:Key="MsgText_AppUpdateNoneFound">Questa versione è aggiornata. Non è disponibile una versione più recente.</sys:String>
     <sys:String x:Key="MsgText_CopiedToClipboard">La pagina attuale è stata copiata negli appunti</sys:String>
     <sys:String x:Key="MsgText_CopiedToClipboardItem">L'elemento è stato copiato negli appunti</sys:String>
+    <sys:String x:Key="MsgText_CopyToClipboardFail">Copia negli appunti non riuscita</sys:String>
     <sys:String x:Key="MsgText_CopyToClipboardInvalid">Impossibile copiare questa pagina negli appunti</sys:String>
     <sys:String x:Key="MsgText_DriveInfoRefreshed">Info sull'unità disco aggiornate</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Tempo trascorso</sys:String>
