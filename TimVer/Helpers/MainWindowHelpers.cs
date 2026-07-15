@@ -143,7 +143,7 @@ internal static class MainWindowHelpers
         // Shut down NLog
         LogManager.Shutdown();
 
-        if (UpdateHistoryOnly)
+        if (!UpdateHistoryOnly)
         {
             // Clear any remaining messages
             Snackbar snackbar = _mainWindow!.SnackBar1;
