@@ -7,6 +7,8 @@ namespace TimVer.Helpers;
 /// </summary>
 internal static class MainWindowHelpers
 {
+    private static bool UpdateHistoryOnly { get; set; }
+
     #region Startup
     internal static void TimVerStartUp()
     {
@@ -141,7 +143,7 @@ internal static class MainWindowHelpers
         // Shut down NLog
         LogManager.Shutdown();
 
-        if (!CommandLineHelpers.UpdateHistoryOnly)
+        if (!UpdateHistoryOnly)
         {
             // Clear any remaining messages
             Snackbar snackbar = _mainWindow!.SnackBar1;
@@ -407,10 +409,13 @@ internal static class MainWindowHelpers
     /// </summary>
     private static void CheckCommandLine()
     {
-        if (CommandLineHelpers.ProcessCommandLine())
+        CommandLineHelpers.CommandLineArgs parsedArgs = CommandLineHelpers.ProcessCommandLine();
+        if (parsedArgs == CommandLineHelpers.CommandLineArgs.Hide)
         {
+            UpdateHistoryOnly = true;
             if (UserSettings.Setting!.KeepHistory)
             {
+                _log.Debug("Command line argument \"hide\" specified. Will update build history log if needed. ");
                 HistoryHelpers.WriteHistory();
             }
             else
