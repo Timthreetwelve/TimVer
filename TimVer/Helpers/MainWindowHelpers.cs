@@ -219,6 +219,12 @@ internal static class MainWindowHelpers
                 ? UserSettings.Setting!.SystemLightTheme
                 : UserSettings.Setting!.SystemDarkTheme;
 
+            // Guard against invalid config values (e.g., System) so we always apply a concrete theme.
+            if (mode == ThemeType.System)
+            {
+                mode = systemTheme.Equals("light", StringComparison.OrdinalIgnoreCase) ? ThemeType.Light : ThemeType.Darker;
+            }
+
 #if DEBUG
             // For testing: log or expose the selected theme for verification
             Debug.WriteLine($"System theme detected: {systemTheme}, applied: {mode}");
