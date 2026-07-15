@@ -25,10 +25,7 @@ internal static class CommandLineOptionsParser
                 continue;
             }
 
-            if (IsSwitchArgument(argument))
-            {
-                return new CommandLineOptions(hide, $"Unknown argument: {rawArgument}");
-            }
+            return new CommandLineOptions(hide, $"Unknown argument: {rawArgument}");
         }
 
         return new CommandLineOptions(hide, null);
@@ -42,9 +39,4 @@ internal static class CommandLineOptionsParser
                normalized.Equals("hide", StringComparison.OrdinalIgnoreCase);
     }
 
-    private static bool IsSwitchArgument(string argument)
-    {
-        return argument.StartsWith('-') ||
-               argument.StartsWith('/');
-    }
 }

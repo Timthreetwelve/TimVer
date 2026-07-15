@@ -366,7 +366,7 @@ internal static class MainWindowHelpers
     /// Finds the Parent of the given item in the visual tree.
     /// </summary>
     /// <typeparam name="T">The type of the queried item.</typeparam>
-    /// <param name="child">parsedArgs:Name or Name of child.</param>
+    /// <param name="child">x:Name or Name of child.</param>
     /// <returns>The parent object.</returns>
     public static T FindParent<T>(DependencyObject child) where T : DependencyObject
     {
