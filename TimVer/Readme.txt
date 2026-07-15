@@ -166,8 +166,6 @@ TimVer uses the following packages:
 
     * Material Design in XAML Toolkit https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit
 
-    * CommandLineParser https://github.com/j-maly/CommandLineParser
-
     * Community Toolkit MVVM https://github.com/CommunityToolkit/dotnet
 
     * NLog https://nlog-project.org/

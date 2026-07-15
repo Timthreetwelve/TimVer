@@ -2,54 +2,36 @@
 
 namespace TimVer.Helpers;
 
-static class CommandLineHelpers
+internal static class CommandLineHelpers
 {
+    #region Properties
+    /// <summary>
+    /// Holds the parser error message when command-line parsing fails.
+    /// </summary>
+    public static string? CommandLineParserError { get; private set; }
+    #endregion Properties
+
     #region Process the command line
     /// <summary>
     /// Parse any command line options.
     /// </summary>
-    /// <returns><c>true</c> if "hide" option was specified.</returns>
-    public static bool ProcessCommandLine()
+    /// <returns>CommandLineArgs.Hide if "hide" was found.</returns>
+    public static CommandLineArgs ProcessCommandLine()
     {
-        CommandLineParser.CommandLineParser parser = new();
-        SwitchArgument hideArgument = new('h',
-                                                      "hide",
-                                                      "To hide or not to hide, that is the question.",
-                                                      false);
-        parser.Arguments.Add(hideArgument);
-        parser.AcceptSlash = true;
-        parser.IgnoreCase = true;
+        CommandLineParserError = null;
 
-        try
-        {
-            parser.ParseCommandLine(App.Args);
-        }
-        catch (UnknownArgumentException e)
-        {
-            CommandLineParserError = e.Message + e.StackTrace;
-        }
-        catch (Exception e)
-        {
-            CommandLineParserError = e.Message + e.StackTrace;
-        }
+        CommandLineOptions options = CommandLineOptionsParser.Parse(App.Args);
+        CommandLineParserError = options.ErrorMessage;
 
-        // Check options
-        if (hideArgument.Value)
-        {
-            _log.Debug("Command line argument \"hide\" specified.");
-            UpdateHistoryOnly = true;
-            return true;
-        }
-        return false;
+        return options.Hide ? CommandLineArgs.Hide : CommandLineArgs.None;
     }
     #endregion Process the command line
 
-    #region Properties
-    public static bool UpdateHistoryOnly { get; private set; }
-
-    /// <summary>
-    /// Holds exception message if there is a parser error.
-    /// </summary>
-    public static string? CommandLineParserError { get; private set; }
-    #endregion Properties
+    #region Enum for command line args
+    public enum CommandLineArgs
+    {
+        None = 0,
+        Hide = 1,
+    }
+    #endregion Enum for command line args
 }
