@@ -74,6 +74,14 @@ public static class SettingChange
                 WindowsInfoViewModel.WindowsInfoList!.Clear();
                 WindowsInfoViewModel.LoadData();
                 break;
+
+            case nameof(UserSettings.Setting.SystemLightTheme):
+            case nameof(UserSettings.Setting.SystemDarkTheme):
+                if (UserSettings.Setting!.UITheme == ThemeType.System)
+                {
+                    MainWindowHelpers.SetBaseTheme(ThemeType.System);
+                }
+                break;
         }
     }
     #endregion User Setting change

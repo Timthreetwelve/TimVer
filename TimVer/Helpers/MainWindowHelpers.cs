@@ -205,7 +205,7 @@ internal static class MainWindowHelpers
     /// <summary>
     /// Sets the theme
     /// </summary>
-    /// <param name="mode">Light, Dark, Darker or System</param>
+    /// <param name="mode">A value in the ThemeType enum</param>
     internal static void SetBaseTheme(ThemeType mode)
     {
         //Retrieve the app's existing theme
@@ -214,7 +214,21 @@ internal static class MainWindowHelpers
 
         if (mode == ThemeType.System)
         {
-            mode = GetSystemTheme().Equals("light", StringComparison.OrdinalIgnoreCase) ? ThemeType.Light : ThemeType.Darker;
+            var systemTheme = GetSystemTheme();
+            mode = systemTheme.Equals("light", StringComparison.OrdinalIgnoreCase)
+                ? UserSettings.Setting!.SystemLightTheme
+                : UserSettings.Setting!.SystemDarkTheme;
+
+            // Guard against invalid config values (e.g., System) so we always apply a concrete theme.
+            if (mode == ThemeType.System)
+            {
+                mode = systemTheme.Equals("light", StringComparison.OrdinalIgnoreCase) ? ThemeType.Light : ThemeType.Darker;
+            }
+
+#if DEBUG
+            // For testing: log or expose the selected theme for verification
+            Debug.WriteLine($"System theme detected: {systemTheme}, applied: {mode}");
+#endif
         }
 
         switch (mode)

@@ -296,6 +296,7 @@
     <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine2">Disabling this option will remove the History item from the navigation bar.</sys:String>
     <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine3">See the ReadMe file for more information.</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Changing Language will cause application to restart!</sys:String>
+    <sys:String x:Key="SettingsItem_DarkModeTheme">Dark Mode Theme</sys:String>
     <sys:String x:Key="SettingsItem_DateFormat">Grid Date Format</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFont">Display Font</sys:String>
     <sys:String x:Key="SettingsItem_DisplayUser">Display registered user and organization on Windows Information page</sys:String>
@@ -310,6 +311,7 @@
     <sys:String x:Key="SettingsItem_InitialPage">Initial Page Displayed</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Keep TimVer on top of other windows</sys:String>
     <sys:String x:Key="SettingsItem_Language">Language</sys:String>
+    <sys:String x:Key="SettingsItem_LightModeTheme">Light Mode Theme</sys:String>
     <sys:String x:Key="SettingsItem_LogicalDriveOptions">Logical Drive Options</sys:String>
     <sys:String x:Key="SettingsItem_PhysicalDriveCollection">Enable collection of Physical Drive information</sys:String>
     <sys:String x:Key="SettingsItem_PhysicalDriveCollectionTooltip">Collecting physical drive information can take a significant amount of time.</sys:String>
@@ -525,4 +527,9 @@
     <!-- * |                      HardwareInfo_ProcessorCores        -->
     <!-- * |                      HardwareInfo_ProcessorDescription  -->
     <!-- End of changes on 2026/07/13 @ 19:10 UTC -->
+
+    <!-- Begin changes on 2026/07/15 @ 15:30 UTC-->
+    <!-- A | SettingsItem_LightModeTheme  -->
+    <!-- A | SettingsItem_DarkModeTheme  -->
+    <!-- End of changes on 2026/07/15 @ 15:30 UTC-->
 </ResourceDictionary>
