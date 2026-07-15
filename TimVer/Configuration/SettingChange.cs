@@ -77,7 +77,10 @@ public static class SettingChange
 
             case nameof(UserSettings.Setting.SystemLightTheme):
             case nameof(UserSettings.Setting.SystemDarkTheme):
-                MainWindowHelpers.SetBaseTheme(ThemeType.System);
+                if (UserSettings.Setting!.UITheme == ThemeType.System)
+                {
+                    MainWindowHelpers.SetBaseTheme(ThemeType.System);
+                }
                 break;
         }
     }
