@@ -123,6 +123,7 @@ Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 Type: filesandordirs; Name: "{group}"
 Type: files; Name: "{app}\Nlog.config"
 Type: files; Name: "{app}\CsvHelper.dll"
+Type: files; Name: "{app}\Vanara.*.dll"
 
 [Registry]
 Root: HKCU; Subkey: "Software\{#MyCompanyName}"; Flags: uninsdeletekeyifempty
