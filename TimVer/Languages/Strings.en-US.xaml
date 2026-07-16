@@ -532,6 +532,6 @@
     <!-- Begin changes on 2026/07/15 @ 23:30 UTC-->
     <!-- A | SettingsItem_LightModeTheme  -->
     <!-- A | SettingsItem_DarkModeTheme  -->
-    <!-- A | SettingsItem_MsgText_UefiUnknown  -->
+    <!-- A | MsgText_UefiUnknown  -->
     <!-- End of changes on 2026/07/15 @ 23:30 UTC-->
 </ResourceDictionary>
