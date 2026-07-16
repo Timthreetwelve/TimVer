@@ -220,6 +220,7 @@
     <sys:String x:Key="MsgText_SeeLogFile">See the log file for additional information.</sys:String>
     <sys:String x:Key="MsgText_Thousand">thousand</sys:String>
     <sys:String x:Key="MsgText_Translated">translated</sys:String>
+    <sys:String x:Key="MsgText_UefiUnknown">Unable to determine UEFI state</sys:String>
     <sys:String x:Key="MsgText_UIColorSet">Accent color set to {0}</sys:String>
     <sys:String x:Key="MsgText_UISizeSet">Size set to {0}</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">Theme set to {0}</sys:String>
@@ -528,8 +529,9 @@
     <!-- * |                      HardwareInfo_ProcessorDescription  -->
     <!-- End of changes on 2026/07/13 @ 19:10 UTC -->
 
-    <!-- Begin changes on 2026/07/15 @ 15:30 UTC-->
+    <!-- Begin changes on 2026/07/15 @ 23:30 UTC-->
     <!-- A | SettingsItem_LightModeTheme  -->
     <!-- A | SettingsItem_DarkModeTheme  -->
-    <!-- End of changes on 2026/07/15 @ 15:30 UTC-->
+    <!-- A | MsgText_UefiUnknown  -->
+    <!-- End of changes on 2026/07/15 @ 23:30 UTC-->
 </ResourceDictionary>

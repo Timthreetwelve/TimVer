@@ -13,6 +13,7 @@
     <Company>T_K</Company>
     <Product>TimVer</Product>
     <CsWinRTAotOptimizerEnabled>false</CsWinRTAotOptimizerEnabled>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <!-- Set version and prerelease string (if needed) -->
@@ -55,7 +56,6 @@
     <PackageReference Include="VersionInfoGenerator" Version="3.2.1" PrivateAssets="all"/>
     <PackageReference Include="NLog" Version="6.1.4" />
     <PackageReference Include="Octokit" Version="14.0.0" />
-    <PackageReference Include="Vanara.PInvoke.Kernel32" Version="5.0.5" />
   </ItemGroup>
 
   <!-- Build complete message -->

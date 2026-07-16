@@ -15,7 +15,7 @@
 
         Translation contributed by:  Timthreetwelve and Google Translate
 
-        Date last update:            2026/07/08
+        Date last update:            2026/07/15
 
         ======================================================================
 
@@ -191,6 +191,7 @@
     <sys:String x:Key="MsgText_AppUpdateNoneFound">No se encontraron versiones más recientes.</sys:String>
     <sys:String x:Key="MsgText_CopiedToClipboard">La página actual se copió en el portapapeles.</sys:String>
     <sys:String x:Key="MsgText_CopiedToClipboardItem">El elemento se copió en el portapapeles</sys:String>
+    <sys:String x:Key="MsgText_CopyToClipboardFail">Error al copiar al portapapeles</sys:String>
     <sys:String x:Key="MsgText_CopyToClipboardInvalid">Copiar al portapapeles no es válido en esta página</sys:String>
     <sys:String x:Key="MsgText_DriveInfoRefreshed">Información de la unidad de disco actualizada</sys:String>
     <sys:String x:Key="MsgText_ErrorCaption">ERROR</sys:String>
@@ -216,6 +217,7 @@
     <sys:String x:Key="MsgText_UIColorSet">Color de énfasis establecido en {0}</sys:String>
     <sys:String x:Key="MsgText_UISizeSet">Tamaño establecido en {0}</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">Tema establecido en {0}</sys:String>
+    <sys:String x:Key="MsgText_UefiUnknown">No se puede determinar el estado de UEFI</sys:String>
     <sys:String x:Key="MsgText_WindowTitleAdministrator">Administrador</sys:String>
     <sys:String x:Key="MsgText_ErrorExportingSettings">Error al exportar el archivo de configuración.</sys:String>
     <sys:String x:Key="MsgText_ErrorImportingSettings">Error al importar el archivo de configuración.</sys:String>
@@ -294,6 +296,7 @@
     <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine2">Al desactivar esta opción se eliminará el elemento Historial de la barra de navegación.</sys:String>
     <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine3">Consulte el archivo Léame para obtener más información.</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">¡Cambiar el idioma hará que la aplicación se reinicie!</sys:String>
+    <sys:String x:Key="SettingsItem_DarkModeTheme">Tema del modo oscuro</sys:String>
     <sys:String x:Key="SettingsItem_DateFormat">Formato de fecha de cuadrícula</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFont">Fuente de visualización</sys:String>
     <sys:String x:Key="SettingsItem_DisplayUser">Mostrar el usuario registrado y la organización en la página de información de Windows</sys:String>
@@ -307,6 +310,7 @@
     <sys:String x:Key="SettingsItem_InitialPage">Página inicial mostrada</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Mantenga TimVer encima de otras ventanas</sys:String>
     <sys:String x:Key="SettingsItem_Language">Idioma</sys:String>
+    <sys:String x:Key="SettingsItem_LightModeTheme">Tema del modo claro</sys:String>
     <sys:String x:Key="SettingsItem_LogicalDriveOptions">Opciones de unidad lógica</sys:String>
     <sys:String x:Key="SettingsItem_PhysicalDriveCollection">Habilitar la recopilación de información de la unidad física</sys:String>
     <sys:String x:Key="SettingsItem_PhysicalDriveCollectionTooltip">La recopilación de información del disco físico puede llevar una cantidad significativa de tiempo.</sys:String>
