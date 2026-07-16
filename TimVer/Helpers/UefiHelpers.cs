@@ -41,7 +41,7 @@ internal static partial class UefiHelpers
     /// Determines if computer is in UEFI mode.
     /// </summary>
     /// <returns>
-    /// Localized string for "UEFI mode" if the computer is in UEFI mode. "BIOS mode"if the computer is in BIOS mode.
+    /// Localized string for "UEFI mode" if the computer is in UEFI mode. "BIOS mode" if the computer is in BIOS mode.
     /// </returns>
     /// <remarks>
     /// https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-getfirmwaretype
