@@ -29,6 +29,9 @@ internal sealed partial class NavigationViewModel : ObservableObject
 
     [ObservableProperty]
     private static NavigationItem? _navItem;
+
+    [ObservableProperty]
+    private bool _showCopyButton = true;
 #pragma warning restore MVVMTK0042
     #endregion Properties
 
@@ -128,6 +131,12 @@ internal sealed partial class NavigationViewModel : ObservableObject
                 CurrentViewModel = null;
                 CurrentViewModel = Activator.CreateInstance((Type)item.ViewModelType);
                 NavItem = item;
+                ShowCopyButton = item.NavPage switch
+                {
+                    NavPage.Settings => false,
+                    NavPage.About => false,
+                    _ => true
+                };
             }
         }
     }

@@ -227,7 +227,7 @@ internal static class ClipboardHelper
             default:
                 SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopyToClipboardInvalid"));
                 SystemSounds.Exclamation.Play();
-                break;
+                return;
         }
         if (await CopyTextToClipboardAsync(builder.ToString()))
         {

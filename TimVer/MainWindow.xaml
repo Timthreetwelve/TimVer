@@ -25,6 +25,7 @@
     <!--#region Resources-->
     <Window.Resources>
         <convert:SelectedItemConverter x:Key="SelItemConv" />
+        <BooleanToVisibilityConverter x:Key="BoolToVisConv" />
     </Window.Resources>
     <!--#endregion-->
 
@@ -87,6 +88,7 @@
                     HorizontalAlignment="Center"
                     Command="{Binding CopyToClipboardCommand}"
                     IsDefault="False" IsTabStop="False"
+                    Visibility="{Binding ShowCopyButton, Converter={StaticResource BoolToVisConv}}"
                     Style="{StaticResource CopyToClipboardButton}"
                     ToolTip="{DynamicResource Button_CopyToClipboardToolTip}" />
 
