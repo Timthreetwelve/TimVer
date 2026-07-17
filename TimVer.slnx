@@ -1,3 +1,8 @@
 <Solution>
-  <Project Path="TimVer/TimVer.csproj" />
+  <Configurations>
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="TimVer/TimVer.csproj">
+    <Platform Project="x64" />
+  </Project>
 </Solution>

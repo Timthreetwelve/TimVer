@@ -15,12 +15,19 @@
     <CsWinRTAotOptimizerEnabled>false</CsWinRTAotOptimizerEnabled>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+  
+  <!-- x64 Only-->
+  <PropertyGroup>
+    <Platforms>x64</Platforms>
+    <PlatformTarget>x64</PlatformTarget>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+  </PropertyGroup>
 
   <!-- Set version and prerelease string (if needed) -->
   <PropertyGroup>
     <VersionValidate>true</VersionValidate>
-    <Version>0.13.0</Version>
-    <VersionPrerelease>PreRelease</VersionPrerelease>
+    <Version>0.14.0</Version>
+    <VersionPrerelease></VersionPrerelease>
   </PropertyGroup>
 
   <!-- Analyzers -->
@@ -53,7 +60,7 @@
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
     <PackageReference Include="MaterialDesignThemes" Version="5.3.2" />
     <PackageReference Include="Microsoft.Management.Infrastructure" Version="3.0.0" />
-    <PackageReference Include="VersionInfoGenerator" Version="3.2.1" PrivateAssets="all"/>
+    <PackageReference Include="VersionInfoGenerator" Version="3.2.1" PrivateAssets="all" />
     <PackageReference Include="NLog" Version="6.1.4" />
     <PackageReference Include="Octokit" Version="14.0.0" />
   </ItemGroup>
