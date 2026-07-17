@@ -16,7 +16,7 @@
 
         Translation contributed by:  RB
 
-        Date last update:            14.07.2026
+        Date last update:            17.07.2026
 
         ======================================================================
     
@@ -220,6 +220,7 @@
     <sys:String x:Key="MsgText_SeeLogFile">Per ulteriori informazioni visualizza il file registro.</sys:String>
     <sys:String x:Key="MsgText_Thousand">migliaia</sys:String>
     <sys:String x:Key="MsgText_Translated">stringhe tradotte</sys:String>
+    <sys:String x:Key="MsgText_UefiUnknown">Impossibile determinare stato UEFI</sys:String>
     <sys:String x:Key="MsgText_UIColorSet">Colore evidenziazione = {0}</sys:String>
     <sys:String x:Key="MsgText_UISizeSet">Dimensione impostata = {0}</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">Tema impostato =  {0}</sys:String>
@@ -296,6 +297,7 @@
     <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine2">Disabilitando questa opzione verrà rimosso la voce  Cronologia dalla barra di navigazione.</sys:String>
     <sys:String x:Key="SettingsItem_BuildHistoryToolTipLine3">Per ulteriori info consulta il file ReadMe.</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">La modifica della lingua della GUI causerà il riavvio dell'applicazione!</sys:String>
+    <sys:String x:Key="SettingsItem_DarkModeTheme">Tema scuro</sys:String>
     <sys:String x:Key="SettingsItem_DateFormat">Formato data griglia</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFont">Font visualizzazione</sys:String>
     <sys:String x:Key="SettingsItem_DisplayUser">Nella pagina Informazioni di Windows visualizza utente loggato e organizzazione</sys:String>
@@ -310,6 +312,7 @@
     <sys:String x:Key="SettingsItem_InitialPage">Pagina iniziale visualizzata</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Mantieni TimVer in primo piano rispetto alle altre finestre</sys:String>
     <sys:String x:Key="SettingsItem_Language">Lingua GUI</sys:String>
+    <sys:String x:Key="SettingsItem_LightModeTheme">Tema chiaro</sys:String>
     <sys:String x:Key="SettingsItem_LogicalDriveOptions">Opzioni unità logiche</sys:String>
     <sys:String x:Key="SettingsItem_PhysicalDriveCollection">Abilita la raccolta di informazioni dell'unità fisica</sys:String>
     <sys:String x:Key="SettingsItem_PhysicalDriveCollectionTooltip">La raccolta delle informazioni dell'unità fisica può richiedere molto tempo.</sys:String>
@@ -525,4 +528,10 @@
     <!-- * |                      HardwareInfo_ProcessorCores        -->
     <!-- * |                      HardwareInfo_ProcessorDescription  -->
     <!-- End of changes on 2026/07/13 @ 19:10 UTC -->
+
+    <!-- Begin changes on 2026/07/15 @ 23:30 UTC-->
+    <!-- A | SettingsItem_LightModeTheme  -->
+    <!-- A | SettingsItem_DarkModeTheme  -->
+    <!-- A | MsgText_UefiUnknown  -->
+    <!-- End of changes on 2026/07/15 @ 23:30 UTC-->
 </ResourceDictionary>
