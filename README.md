@@ -44,7 +44,7 @@ Self-contained versions are available if .NET 10 isn't installed. See the [relea
 ### TimVer is Multilingual!
 Please see [Contribute a Translation](https://github.com/Timthreetwelve/TimVer/wiki/Contribute-a-Translation) topic in the Wiki if you would like to contribute a translation. 
 
-### Download Get My IP
+### Download TimVer
 
 You can download the latest release from the [releases page](https://github.com/Timthreetwelve/TimVer/releases). Note that a "portable" releases are provided as well as the traditional installers.
 
