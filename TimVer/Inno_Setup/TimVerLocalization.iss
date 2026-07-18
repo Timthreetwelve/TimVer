@@ -1,17 +1,15 @@
-﻿[LangOptions]
+[Languages]
+Name: "en"; MessagesFile: "compiler:Default.isl"
+Name: "es"; MessagesFile: "compiler:Languages\Spanish.isl"
+Name: "it"; MessagesFile: "compiler:Languages\Italian.isl"
+Name: "ko"; MessagesFile: "compiler:Languages\Korean.isl"
+Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
+
+[LangOptions]
 DialogFontSize=9
 DialogFontName="Segoe UI"
 WelcomeFontSize=14
 WelcomeFontName="Verdana"
-
-
-[Languages]
-Name: "en"; MessagesFile: "compiler:Default.isl"
-Name: "ko"; MessagesFile: "compiler:Languages\Korean.isl"
-Name: "es"; MessagesFile: "compiler:Languages\Spanish.isl"
-Name: "it"; MessagesFile: "compiler:Languages\Italian.isl"
-Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
-
 
 [Messages]
 en.SetupWindowTitle = Setup - {#MyAppName} {#MyAppVersion}
@@ -20,6 +18,13 @@ it.SetupWindowTitle = Installazione di {#MyAppName} {#MyAppVersion}
 ko.SetupWindowTitle = 설치 - {#MyAppName} {#MyAppVersion}
 nl.SetupWindowTitle = Setup - {#MyAppName} {#MyAppVersion}
 
+
+[Messages]
+en.SetupWindowTitle = Setup - {#MyAppName} {#MyAppVersion}
+es.SetupWindowTitle = Instalar - {#MyAppName} {#MyAppVersion}
+it.SetupWindowTitle = Installazione di {#MyAppName} {#MyAppVersion}
+ko.SetupWindowTitle = 설치 - {#MyAppName} {#MyAppVersion}
+nl.SetupWindowTitle = Setup - {#MyAppName} {#MyAppVersion}
 
 [CustomMessages]
 en.NotSelfContained64=This will install the framework-dependent x64 (64-bit) version of %1 version %2.%n%nThis version requires an existing installation of .NET 10 Desktop Runtime.%n%nIt is recommended that you close all other applications before continuing.%n%nClick 'Next' to continue, or 'Cancel' to exit Setup.
