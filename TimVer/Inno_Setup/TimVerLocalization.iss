@@ -43,10 +43,10 @@ es.AppIsRunning=se está ejecutando, por favor ciérrelo para continuar con la i
 es.ClearSettings=¿Desea eliminar la configuración y los archivos de historial y entradas del registro?%n%nSeleccione 'No' si planea reinstalar el programa.
 ;
 ;
-it.NotSelfContained64=Verrà installata la versione x64 (64 bit) dipendente dal framework %1 versione %2.%n%nQuesta versione richiede che sia già installato .NET 10 Desktop Runtime.%n%nPrima di continuare l'installazione ti consigliamo di chiudere tutte le altre applicazioni.%n%nPer continuare seleziona 'Avanti' o 'Annulla' per uscire dall'installazione.
-it.SelfContainedx64=Verrà installata la versione x64 (64 bit) standalone portatile di %1 versione %2.%n%nPrima di continuare l'installazione ti consigliamo di chiudere tutte le altre applicazioni.%n%nPer continuare seleziona 'Avanti' o 'Annulla' per uscire dall'installazione.
-it.ViewReadme=Visualizza file ReadMe
-it.AppIsRunning=è in esecuzione.%nPer continuare l'installazione chiudi l'applicazione.
+it.NotSelfContained64=Verrà installata la versione x64 (64 bit) dipendente dal framework %1 %2.%n%nQuesta versione richiede che sia già installato .NET 10 Desktop Runtime.%n%nPrima di continuare l'installazione ti consigliamo di chiudere tutte le altre applicazioni.%n%nPer continuare seleziona 'Avanti' o 'Annulla' per uscire dall'installazione.
+it.SelfContainedx64=Verrà installata la versione x64 (64 bit) standalone portatile di %1 %2.%n%nPrima di continuare l'installazione ti consigliamo di chiudere tutte le altre applicazioni.%n%nPer continuare seleziona 'Avanti' o 'Annulla' per uscire dall'installazione.
+it.ViewReadme=Visualizza file 'ReadMe'
+it.AppIsRunning=è in esecuzione, per continuare l'installazione chiudi l'applicazione.
 it.ClearSettings=Vuoi rimuovere le impostazioni, i file cronologia e le voci del registro?%n%nSe hai intenzione di reinstallare il programma seleziona 'No'.
 ;
 ;
