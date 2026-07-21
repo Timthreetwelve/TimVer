@@ -15,6 +15,10 @@
 ;                               GetVersionNumbersString function
 ;                               returns major, minor, build, revision
 ;                               but we want major, minor, build.
+;
+;             MyInfoVersion:    Version string for VersionInfoVersion
+;                               Needed if MyAppVersion is not in the 
+;                               correct format for VersionInfoVersion
 ;----------------------------------------------------------------------
 #define TempDir              GetEnv("TEMP")
 #define IncludeFile          TempDir + "\PubSetup.Temp.iss"
@@ -31,7 +35,6 @@
 #define MyAppName            "TimVer"
 #define MyAppNameNoSpaces    StringChange(MyAppName, " ", "")
 #define MyAppExeName         "TimVer.exe"
-;#define MyAppVersion         GetVersionNumbersString(MySourceDir + "\" + MyAppExeName)
 #define MyInstallerFilename  MyAppNameNoSpaces + "_" + MyAppVersion + "_" + InstallType + "_Setup"
 #define MyCompanyName        "T_K"
 #define MyPublisherName      "Tim Kennedy"
@@ -41,12 +44,10 @@
 #define MyDateTimeString     GetDateTimeString('yyyy/mm/dd hh:nn:ss', '/', ':')
 #define MyAppSupportURL      "https://github.com/Timthreetwelve/TimVer"
 
-#define RunRegKey            "Software\Microsoft\Windows\CurrentVersion\Run"
-
 ; -----------------------------------------------------
 ; Include the localization file. Thanks bovirus!
 ; -----------------------------------------------------
-#include "TimVerLocalization.iss"
+#include "TimVer.localization.iss"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -73,7 +74,7 @@ AppPublisher={#MyPublisherName}
 
 VersionInfoDescription={#MyAppName} installer
 VersionInfoProductName={#MyAppName}
-VersionInfoVersion={#MyAppVersion}
+VersionInfoVersion={#MyInfoVersion}
 
 UninstallDisplayName={#MyAppName} {#MyAppVersion}
 UninstallDisplayIcon={app}\{#MyAppExeName}
@@ -156,9 +157,9 @@ procedure InitializeWizard;
 var
   Text: String;
 begin
-  case ExpandConstant('{#InstallType}') of
-    'FD_x64': Text := FmtMessage( CustomMessage('NotSelfContained64'), [ExpandConstant('{#MyAppName}'), ExpandConstant('{#MyAppVersion}')]); 
-    'SC_x64': Text := FmtMessage( CustomMessage('SelfContainedx64'), [ExpandConstant('{#MyAppName}'), ExpandConstant('{#MyAppVersion}')]);
+  case {#InstallType} of
+    'FD_x64': Text := FmtMessage(CustomMessage('NotSelfContained64'), ['{#MyAppName}', '{#MyAppVersion}']); 
+    'SC_x64': Text := FmtMessage(CustomMessage('SelfContainedx64'), ['{#MyAppName}', '{#MyAppVersion}']);
   else
       Text := WizardForm.WelcomeLabel2.Caption;
   end;
@@ -210,12 +211,11 @@ var
 begin
   if CurUninstallStep = usPostUninstall then
     begin
-      mres := MsgBox(CustomMessage('ClearSettings'), mbConfirmation, MB_YESNO or MB_DEFBUTTON2)
+      mres := MsgBox(CustomMessage('DeleteConfigFiles'), mbConfirmation, MB_YESNO or MB_DEFBUTTON2);
       if mres = IDYES then
         begin
-          DelTree(ExpandConstant('{app}\*.json'), False, True, False);
           DelTree(ExpandConstant('{app}'), True, True, True);
-          RegDeleteValue(HKEY_CURRENT_USER, 'Software\Microsoft\Windows\CurrentVersion\Run', 'TimVer')
+          RegDeleteValue(HKEY_CURRENT_USER, 'Software\Microsoft\Windows\CurrentVersion\Run', 'TimVer');
         end;
     end;
 end;
