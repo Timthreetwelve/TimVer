@@ -15,6 +15,10 @@
 ;                               GetVersionNumbersString function
 ;                               returns major, minor, build, revision
 ;                               but we want major, minor, build.
+;
+;             MyInfoVersion:    Version string for VersionInfoVersion
+;                               Needed if MyAppVersion is not in the 
+;                               correct format for VersionInfoVersion
 ;----------------------------------------------------------------------
 #define TempDir              GetEnv("TEMP")
 #define IncludeFile          TempDir + "\PubSetup.Temp.iss"
@@ -31,7 +35,6 @@
 #define MyAppName            "TimVer"
 #define MyAppNameNoSpaces    StringChange(MyAppName, " ", "")
 #define MyAppExeName         "TimVer.exe"
-;#define MyAppVersion         GetVersionNumbersString(MySourceDir + "\" + MyAppExeName)
 #define MyInstallerFilename  MyAppNameNoSpaces + "_" + MyAppVersion + "_" + InstallType + "_Setup"
 #define MyCompanyName        "T_K"
 #define MyPublisherName      "Tim Kennedy"
@@ -40,8 +43,6 @@
 #define MyCopyright          "(c) " + StartCopyrightYear + "-" + CurrentYear + " Tim Kennedy"
 #define MyDateTimeString     GetDateTimeString('yyyy/mm/dd hh:nn:ss', '/', ':')
 #define MyAppSupportURL      "https://github.com/Timthreetwelve/TimVer"
-
-#define RunRegKey            "Software\Microsoft\Windows\CurrentVersion\Run"
 
 ; -----------------------------------------------------
 ; Include the localization file. Thanks bovirus!
@@ -73,7 +74,7 @@ AppPublisher={#MyPublisherName}
 
 VersionInfoDescription={#MyAppName} installer
 VersionInfoProductName={#MyAppName}
-VersionInfoVersion={#MyAppVersion}
+VersionInfoVersion={#MyInfoVersion}
 
 UninstallDisplayName={#MyAppName} {#MyAppVersion}
 UninstallDisplayIcon={app}\{#MyAppExeName}
