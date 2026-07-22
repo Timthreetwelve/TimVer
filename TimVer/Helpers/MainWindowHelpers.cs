@@ -225,11 +225,6 @@ internal static class MainWindowHelpers
             {
                 mode = systemTheme.Equals("light", StringComparison.OrdinalIgnoreCase) ? ThemeType.Light : ThemeType.Darker;
             }
-
-#if DEBUG
-            // For testing: log or expose the selected theme for verification
-            Debug.WriteLine($"System theme detected: {systemTheme}, applied: {mode}");
-#endif
         }
 
         switch (mode)
