@@ -35,7 +35,7 @@
 #define MyAppName            "TimVer"
 #define MyAppNameNoSpaces    StringChange(MyAppName, " ", "")
 #define MyAppExeName         "TimVer.exe"
-#define MyInstallerFilename  MyAppNameNoSpaces + "_" + MyAppVersion + "_" + InstallType + "_Setup"
+#define MyInstallerFilename  MyAppNameNoSpaces + "_" + MyAppVersion + InstallType + "_Setup"
 #define MyCompanyName        "T_K"
 #define MyPublisherName      "Tim Kennedy"
 #define StartCopyrightYear   "2019"
@@ -157,9 +157,9 @@ procedure InitializeWizard;
 var
   Text: String;
 begin
-  case {#InstallType} of
-    'FD_x64': Text := FmtMessage(CustomMessage('NotSelfContained64'), ['{#MyAppName}', '{#MyAppVersion}']); 
-    'SC_x64': Text := FmtMessage(CustomMessage('SelfContainedx64'), ['{#MyAppName}', '{#MyAppVersion}']);
+  case ExpandConstant('{#InstallType}') of
+    '_x64': Text := FmtMessage(CustomMessage('NotSelfContained64'), ['{#MyAppName}', '{#MyAppVersion}']); 
+    '_SC_x64': Text := FmtMessage(CustomMessage('SelfContainedx64'), ['{#MyAppName}', '{#MyAppVersion}']);
   else
       Text := WizardForm.WelcomeLabel2.Caption;
   end;
