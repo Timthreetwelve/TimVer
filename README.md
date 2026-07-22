@@ -9,7 +9,8 @@
 <div align="center">
 
 [![License](https://img.shields.io/badge/license-MIT-seagreen?style=plastic)](https://github.com/Timthreetwelve/TimVer/blob/main/LICENSE.txt)
-[![NET10](https://img.shields.io/badge/.NET-10--Windows-blueviolet?style=plastic)](https://dotnet.microsoft.com/en-us/download) 
+[![x64](https://img.shields.io/badge/platform-Windows_x64-darkblue?style=plastic)](https://www.microsoft.com/en-us/windows/)
+[![NET10](https://img.shields.io/badge/.NET-10-blueviolet?style=plastic)](https://dotnet.microsoft.com/en-us/download) 
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/Timthreetwelve/TimVer?style=plastic)](https://github.com/Timthreetwelve/TimVer/releases/latest) 
 [![GitHub Release Date](https://img.shields.io/github/release-date/timthreetwelve/TimVer?style=plastic&color=orange)](https://github.com/Timthreetwelve/TimVer/releases/latest) 
 [![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/timthreetwelve/TimVer/latest?style=plastic)](https://github.com/Timthreetwelve/TimVer/commits/main)
@@ -25,7 +26,7 @@
 
 ### TimVer will display the same Windows version related information as the built-in **Winver** command, with additional information that Winver doesn't display.
 
-### Get My IP runs on .NET 10 on Windows.
+### TimVer runs on .NET 10 on Windows.
 Self-contained versions are available if .NET 10 isn't installed. See the [releases page](https://github.com/Timthreetwelve/TimVer/releases).
 
 ### Features
