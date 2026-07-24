@@ -15,7 +15,7 @@
 
         Translation contributed by:  Timthreetwelve and Google Translate
 
-        Date last update:            2026/07/15
+        Date last update:            2026/07/24
 
         ======================================================================
 
@@ -151,6 +151,7 @@
     <sys:String x:Key="GraphicsInfo_SelectAdapter">Seleccionar adaptador</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine1">Si hay más de un adaptador de vídeo instalado</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine2">utilice el menú desplegable para seleccionar el adaptador que desea mostrar.</sys:String>
+    <sys:String x:Key="GraphicsInfo_Unknown">Desconocido</sys:String>
     <!--  Hardware Information Page  -->
     <sys:String x:Key="HardwareInfo_BIOS">BIOS</sys:String>
     <sys:String x:Key="HardwareInfo_BiosManufacturer">Fabricante de BIOS</sys:String>
