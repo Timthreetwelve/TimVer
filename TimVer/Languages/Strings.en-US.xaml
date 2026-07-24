@@ -152,6 +152,7 @@
     <sys:String x:Key="GraphicsInfo_SelectAdapter">Select Adapter</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine1">If there is more than one video adapter installed</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine2">use the drop-down to select the adapter to display.</sys:String>
+    <sys:String x:Key="GraphicsInfo_Unknown">Unknown</sys:String>
     <!--  Hardware Information Page  -->
     <sys:String x:Key="HardwareInfo_BIOS">BIOS</sys:String>
     <sys:String x:Key="HardwareInfo_BiosManufacturer">BIOS Manufacturer</sys:String>
@@ -190,6 +191,7 @@
     <sys:String x:Key="MsgText_AppUpdateGoToRelease">Do you want to go to the release page?</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNewerFound">A newer release ({0}) has been found.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNoneFound">No newer releases were found.</sys:String>
+    <sys:String x:Key="MsgText_Billion">billion</sys:String>
     <sys:String x:Key="MsgText_CopiedToClipboard">Current page was copied to the clipboard</sys:String>
     <sys:String x:Key="MsgText_CopiedToClipboardItem">Item was copied to the clipboard</sys:String>
     <sys:String x:Key="MsgText_CopyToClipboardFail">Copy to clipboard failed</sys:String>

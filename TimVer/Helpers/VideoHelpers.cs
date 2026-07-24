@@ -7,54 +7,32 @@ namespace TimVer.Helpers;
 /// </summary>
 internal static class VideoHelpers
 {
-    #region Get list of video controllers
+    #region Get all video controllers with full info
     /// <summary>
-    /// Gets the DeviceID for each video controller.
+    /// Gets all video controllers with their complete information.
     /// </summary>
-    /// <returns>A List of controller DeviceID's</returns>
-    internal static List<string?> GetGPUList()
+    /// <returns>A list of dictionaries containing video controller information</returns>
+    internal static List<Dictionary<string, string>> GetAllVideoControllers()
     {
         const string scope = @"\\.\root\CIMV2";
         const string dialect = "WQL";
-        const string query = "SELECT DeviceID From Win32_VideoController";
-
+        const string query = "SELECT DeviceID, Name, Description, CurrentHorizontalResolution, CurrentVerticalResolution, " +
+                             "CurrentRefreshRate, CurrentBitsPerPixel, VideoProcessor, " +
+                             "AdapterRam, CurrentNumberOfColors " +
+                             "FROM Win32_VideoController";
         try
         {
-            List<string?> devices = [];
+            List<Dictionary<string, string>> controllers = [];
             using CimSession cimSession = CimSession.Create(null);
-            devices.AddRange(cimSession.QueryInstances(scope, dialect, query)
-                .Select(drive => drive.CimInstanceProperties["DeviceID"]?.Value!.ToString()));
-            return devices;
-        }
-        catch (Exception ex)
-        {
-            _log.Error(ex, "Win32_VideoController call failed.");
-            return [];
-        }
-    }
-    #endregion Get list of video controllers
-
-    #region Get WMI info for video controller(s)
-    /// <summary>
-    /// Get CIM value from Win32_VideoController
-    /// </summary>
-    /// <param name="controller">DeviceID of the controller</param>
-    /// <returns>Video controller information as a Dictionary</returns>
-    public static Dictionary<string, string> GetVideoInfo(string controller)
-    {
-        const string scope = @"\\.\root\CIMV2";
-        const string dialect = "WQL";
-        string query = "SELECT DeviceID, Name, Description, CurrentHorizontalResolution, CurrentVerticalResolution, " +
-                       "CurrentRefreshRate, CurrentBitsPerPixel, VideoProcessor, " +
-                       "AdapterRam, CurrentNumberOfColors " +
-                       $"From Win32_VideoController Where DeviceID = '{controller}'";
-        try
-        {
-            using CimSession cimSession = CimSession.Create(null);
-            IEnumerable<CimInstance> instance = cimSession.QueryInstances(scope, dialect, query);
             Stopwatch sw = Stopwatch.StartNew();
-            Dictionary<string, string> info = instance
-                .Select(gpu => new Dictionary<string, string>
+
+            var instances = cimSession.QueryInstances(scope, dialect, query);
+
+            int displayCount = GetDisplayCount();
+
+            foreach (var gpu in instances)
+            {
+                Dictionary<string, string> controllerInfo = new()
                 {
                     [GetStringResource("GraphicsInfo_GraphicsAdapter")] = CimStringProperty(gpu, "Name"),
                     [GetStringResource("GraphicsInfo_AdapterType")] = CimStringProperty(gpu, "VideoProcessor"),
@@ -65,27 +43,24 @@ internal static class VideoHelpers
                     //[GetStringResource("GraphicsInfo_AdapterRAM")] = FormatAdapterRamInfo(gpu),
                     [GetStringResource("GraphicsInfo_BitsPerPixel")] = CimStringProperty(gpu, "CurrentBitsPerPixel"),
                     [GetStringResource("GraphicsInfo_NumberOfColors")] = FormatColorsInfo(gpu),
-                    [GetStringResource("GraphicsInfo_NumberOfDisplays")] = GetDisplayCount()
-                                                                                   .ToString(CultureInfo.InvariantCulture),
-                })
-                .FirstOrDefault()!;
+                    [GetStringResource("GraphicsInfo_NumberOfDisplays")] = displayCount.ToString(CultureInfo.InvariantCulture),
+                };
+                controllers.Add(controllerInfo);
+                _log.Debug($"Added video controller: {controllerInfo[GetStringResource("GraphicsInfo_GraphicsAdapter")]} Device ID is " +
+                                  $"{controllerInfo[GetStringResource("GraphicsInfo_DeviceID")]}");
+            }
+
             sw.Stop();
-            _log.Debug($"Getting video controller info took {sw.Elapsed.TotalMilliseconds:N2} ms");
-            return info ?? new Dictionary<string, string>
-            {
-                [GetStringResource("MsgText_NotAvailable")] = string.Empty
-            };
+            _log.Debug($"Getting all video controller info took {sw.Elapsed.TotalMilliseconds:N2} ms. Found {controllers.Count} controller(s)");
+            return controllers;
         }
         catch (Exception ex)
         {
             _log.Error(ex, "Win32_VideoController call failed.");
-            return new Dictionary<string, string>
-            {
-                [GetStringResource("MsgText_NotAvailable")] = string.Empty
-            };
+            return [];
         }
     }
-    #endregion Get WMI info for video controller(s)
+    #endregion Get all video controllers with full info
 
     #region Get WMI information formatted as string
     /// <summary>
@@ -99,7 +74,12 @@ internal static class VideoHelpers
         if (instance.CimInstanceProperties[name] == null)
         {
             _log.Debug($"Value for {name} was null");
-            return "Not Available";
+            return GetStringResource("MsgText_NotAvailable");
+        }
+        if (instance.CimInstanceProperties[name].Value == null)
+        {
+            _log.Debug($"Value for {name} was null");
+            return GetStringResource("MsgText_NotAvailable");
         }
         return instance.CimInstanceProperties[name].Value.ToString()!;
     }
@@ -113,8 +93,13 @@ internal static class VideoHelpers
     /// <returns>A formatted string.</returns>
     private static string FormatCurrentRefresh(CimInstance instance)
     {
-        string? rate = instance.CimInstanceProperties["CurrentRefreshRate"].Value.ToString();
-        return $"{rate} Hz";
+        var rateValue = instance.CimInstanceProperties["CurrentRefreshRate"]?.Value;
+        if (rateValue == null)
+        {
+            _log.Debug("CurrentRefreshRate was null");
+            return GetStringResource("MsgText_NotAvailable");
+        }
+        return $"{rateValue} Hz";
     }
     #endregion Get current refresh rate
 
@@ -126,9 +111,15 @@ internal static class VideoHelpers
     /// <returns>A formatted string.</returns>
     private static string FormatResolution(CimInstance instance)
     {
-        string? horz = instance.CimInstanceProperties["CurrentHorizontalResolution"].Value.ToString();
-        string? vert = instance.CimInstanceProperties["CurrentVerticalResolution"].Value.ToString();
-        return $"{horz} x {vert}";
+        object? horzValue = instance.CimInstanceProperties["CurrentHorizontalResolution"]?.Value;
+        object? vertValue = instance.CimInstanceProperties["CurrentVerticalResolution"]?.Value;
+
+        if (horzValue == null || vertValue == null)
+        {
+            _log.Debug("Resolution properties were null");
+            return GetStringResource("MsgText_NotAvailable");
+        }
+        return $"{horzValue} x {vertValue}";
     }
     #endregion Get current resolution
 
@@ -139,14 +130,14 @@ internal static class VideoHelpers
     /// <param name="instance">The CimInstance</param>
     /// <returns>A formatted string.</returns>
 #pragma warning disable RCS1213 // Remove unused member declaration
-    // Leaving this method in place for now as I may add it back in the future. It is currently commented out in the GetVideoInfo method.
+    // Leaving this method in place for now as I may add it back in the future. It is currently commented out in the GetAllVideoControllers method.
     private static string FormatAdapterRamInfo(CimInstance instance)
 #pragma warning restore RCS1213 // Remove unused member declaration
     {
         if (instance.CimInstanceProperties["AdapterRam"] == null)
         {
             _log.Debug("Value for AdapterRam was null");
-            return "Not Available";
+            return GetStringResource("MsgText_NotAvailable");
         }
         double ram = Convert.ToDouble(instance.CimInstanceProperties["AdapterRam"].Value, CultureInfo.InvariantCulture);
         if (ram >= Math.Pow(1024, 3))
@@ -197,20 +188,30 @@ internal static class VideoHelpers
             return GetStringResource("MsgText_NotAvailable");
         }
 
-        ulong colors = Convert.ToUInt64(instance.CimInstanceProperties["CurrentNumberOfColors"].Value, CultureInfo.InvariantCulture);
-        if (colors >= (ulong)Math.Pow(1024, 2))
+        double colors = Convert.ToDouble(instance.CimInstanceProperties["CurrentNumberOfColors"].Value, CultureInfo.InvariantCulture);
+        if (colors == 0)
         {
-            colors /= (ulong)Math.Pow(1024, 3);
-            return string.Format(CultureInfo.CurrentCulture, $"{colors:N2} {GetStringResource("MsgText_Million")}");
+            _log.Debug("Value for CurrentNumberOfColors was 0");
+            return GetStringResource("MsgText_NotAvailable");
         }
-        else if (colors >= (ulong)Math.Pow(1024, 1))
+        else if (colors >= Math.Pow(1024, 3))
+            {
+            colors /= (double)Math.Pow(1024, 3);
+            return $"{colors:N2} {GetStringResource("MsgText_Billion")}";
+        }
+        else if (colors >= Math.Pow(1024, 2))
         {
-            colors /= (ulong)Math.Pow(1024, 2);
-            return string.Format(CultureInfo.CurrentCulture, $"{colors:N2} {GetStringResource("MsgText_Thousand")}");
+            colors /= (double)Math.Pow(1024, 2);
+            return $"{colors:N2} {GetStringResource("MsgText_Million")}";
+        }
+        else if (colors >= Math.Pow(1024, 1))
+        {
+            colors /= (double)Math.Pow(1024, 1);
+            return $"{colors:N2} {GetStringResource("MsgText_Thousand")}";
         }
         else
         {
-            return string.Format(CultureInfo.CurrentCulture, $"{colors:N0}");
+            return $"{colors:N0}";
         }
     }
     #endregion Total Colors

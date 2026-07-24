@@ -7,7 +7,7 @@ internal sealed partial class VideoViewModel : ObservableObject
     #region Constructor
     public VideoViewModel()
     {
-        if (VideoInfoCollection == null)
+        if (AllControllers == null || AllControllers.Count == 0)
         {
             LoadData();
         }
@@ -17,8 +17,10 @@ internal sealed partial class VideoViewModel : ObservableObject
     #region Load data for video properties
     private static void LoadData()
     {
-        ControllerList = VideoHelpers.GetGPUList()!;
-        VideoInfoCollection = VideoHelpers.GetVideoInfo(ControllerList[0]);
+        AllControllers = VideoHelpers.GetAllVideoControllers();
+        ControllerList = [.. AllControllers.Select(c =>
+            c.GetValueOrDefault( GetStringResource("GraphicsInfo_GraphicsAdapter"), GetStringResource("GraphicsInfo_Unknown")))];
+        VideoInfoCollection = AllControllers.FirstOrDefault();
     }
     #endregion Load data for video properties
 
@@ -30,15 +32,19 @@ internal sealed partial class VideoViewModel : ObservableObject
     [RelayCommand]
     private static void SelectVideoController(SelectionChangedEventArgs e)
     {
-        if (e.Source is ComboBox box)
+        if (e.Source is ComboBox box && AllControllers?.Count > 0
+            && box.SelectedIndex >= 0 && box.SelectedIndex < AllControllers.Count)
         {
-            VideoInfoCollection = VideoHelpers.GetVideoInfo(ControllerList![box.SelectedIndex]);
+            VideoInfoCollection = AllControllers[box.SelectedIndex];
             VideoPage.Instance!.VideoGrid.ItemsSource = VideoInfoCollection;
+            _log.Debug($"Selected video controller index: {box.SelectedIndex}");
         }
     }
     #endregion Relay command
 
     #region Collections
+    private static List<Dictionary<string, string>>? AllControllers { get; set; }
+
     public static List<string>? ControllerList { get; private set; }
 
     public static Dictionary<string, string>? VideoInfoCollection { get; private set; }

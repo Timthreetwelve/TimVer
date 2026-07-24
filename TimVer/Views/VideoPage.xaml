@@ -63,9 +63,9 @@
             </ComboBox>
             <StackPanel Grid.Column="2"
                         Orientation="Horizontal">
-                <TextBlock Margin="0,2" VerticalAlignment="Center"
+                <TextBlock Margin="10,2" VerticalAlignment="Center"
                            Text="{DynamicResource GraphicsInfo_SelectAdapter}" />
-                <TextBlock Margin="7,3" VerticalAlignment="Center"
+                <TextBlock Margin="0,2" VerticalAlignment="Center"
                            ToolTipService.InitialShowDelay="300"
                            ToolTipService.Placement="Top">
                     <materialDesign:PackIcon Width="18" Height="18"
