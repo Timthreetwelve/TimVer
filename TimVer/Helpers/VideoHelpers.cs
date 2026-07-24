@@ -40,14 +40,14 @@ internal static class VideoHelpers
                     [GetStringResource("GraphicsInfo_DeviceID")] = CimStringProperty(gpu, "DeviceID"),
                     [GetStringResource("GraphicsInfo_CurrentResolution")] = FormatResolution(gpu),
                     [GetStringResource("GraphicsInfo_CurrentRefreshRate")] = FormatCurrentRefresh(gpu),
-                    //[GetStringResource("GraphicsInfo_AdapterRAM")] = FormatAdapterRamInfo(gpu),
+                    [GetStringResource("GraphicsInfo_AdapterRAM")] = FormatAdapterRamInfo(gpu),
                     [GetStringResource("GraphicsInfo_BitsPerPixel")] = CimStringProperty(gpu, "CurrentBitsPerPixel"),
                     [GetStringResource("GraphicsInfo_NumberOfColors")] = FormatColorsInfo(gpu),
                     [GetStringResource("GraphicsInfo_NumberOfDisplays")] = displayCount.ToString(CultureInfo.InvariantCulture),
                 };
                 controllers.Add(controllerInfo);
-                _log.Debug($"Added video controller: {controllerInfo[GetStringResource("GraphicsInfo_GraphicsAdapter")]} Device ID is " +
-                                  $"{controllerInfo[GetStringResource("GraphicsInfo_DeviceID")]}");
+                _log.Debug($"Found video controller: {controllerInfo[GetStringResource("GraphicsInfo_GraphicsAdapter")]} (Device ID is " +
+                                  $"{controllerInfo[GetStringResource("GraphicsInfo_DeviceID")]})");
             }
 
             sw.Stop();
@@ -56,7 +56,7 @@ internal static class VideoHelpers
         }
         catch (Exception ex)
         {
-            _log.Error(ex, "Win32_VideoController call failed.");
+            _log.Error(ex, $"Win32_VideoController call failed. {ex.Message} - {ex.InnerException}");
             return [];
         }
     }
@@ -179,7 +179,7 @@ internal static class VideoHelpers
     /// Gets to number of colors.
     /// </summary>
     /// <param name="instance">The CimInstance</param>
-    /// <returns>A formatted string.</returns>
+    /// <returns>A string formatted for the current culture.</returns>
     private static string FormatColorsInfo(CimInstance instance)
     {
         if (instance.CimInstanceProperties["CurrentNumberOfColors"] == null)
@@ -188,31 +188,8 @@ internal static class VideoHelpers
             return GetStringResource("MsgText_NotAvailable");
         }
 
-        double colors = Convert.ToDouble(instance.CimInstanceProperties["CurrentNumberOfColors"].Value, CultureInfo.InvariantCulture);
-        if (colors == 0)
-        {
-            _log.Debug("Value for CurrentNumberOfColors was 0");
-            return GetStringResource("MsgText_NotAvailable");
-        }
-        else if (colors >= Math.Pow(1024, 3))
-            {
-            colors /= (double)Math.Pow(1024, 3);
-            return $"{colors:N2} {GetStringResource("MsgText_Billion")}";
-        }
-        else if (colors >= Math.Pow(1024, 2))
-        {
-            colors /= (double)Math.Pow(1024, 2);
-            return $"{colors:N2} {GetStringResource("MsgText_Million")}";
-        }
-        else if (colors >= Math.Pow(1024, 1))
-        {
-            colors /= (double)Math.Pow(1024, 1);
-            return $"{colors:N2} {GetStringResource("MsgText_Thousand")}";
-        }
-        else
-        {
-            return $"{colors:N0}";
-        }
+        ulong colors = Convert.ToUInt64(instance.CimInstanceProperties["CurrentNumberOfColors"].Value, CultureInfo.CurrentCulture);
+        return $"{colors:N0}";
     }
     #endregion Total Colors
 }

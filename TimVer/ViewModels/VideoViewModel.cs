@@ -37,7 +37,6 @@ internal sealed partial class VideoViewModel : ObservableObject
         {
             VideoInfoCollection = AllControllers[box.SelectedIndex];
             VideoPage.Instance!.VideoGrid.ItemsSource = VideoInfoCollection;
-            _log.Debug($"Selected video controller index: {box.SelectedIndex}");
         }
     }
     #endregion Relay command

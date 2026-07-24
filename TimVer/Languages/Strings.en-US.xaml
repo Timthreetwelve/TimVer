@@ -191,7 +191,6 @@
     <sys:String x:Key="MsgText_AppUpdateGoToRelease">Do you want to go to the release page?</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNewerFound">A newer release ({0}) has been found.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNoneFound">No newer releases were found.</sys:String>
-    <sys:String x:Key="MsgText_Billion">billion</sys:String>
     <sys:String x:Key="MsgText_CopiedToClipboard">Current page was copied to the clipboard</sys:String>
     <sys:String x:Key="MsgText_CopiedToClipboardItem">Item was copied to the clipboard</sys:String>
     <sys:String x:Key="MsgText_CopyToClipboardFail">Copy to clipboard failed</sys:String>
@@ -536,4 +535,8 @@
     <!-- A | SettingsItem_DarkModeTheme  -->
     <!-- A | MsgText_UefiUnknown  -->
     <!-- End of changes on 2026/07/15 @ 23:30 UTC-->
+    
+    <!-- Begin changes on 2026/07/24 @ 17:00 UTC-->
+    <!-- A | GraphicsInfo_Unknown  -->
+    <!-- End of changes on 2026/07/24 @ 17:00 UTC-->
 </ResourceDictionary>
