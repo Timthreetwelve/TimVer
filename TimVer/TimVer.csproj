@@ -26,8 +26,8 @@
   <!-- Set version and prerelease string (if needed) -->
   <PropertyGroup>
     <VersionValidate>true</VersionValidate>
-    <Version>0.14.0</Version>
-    <VersionPrerelease></VersionPrerelease>
+    <Version>0.14.1</Version>
+    <VersionPrerelease>Beta</VersionPrerelease>
   </PropertyGroup>
 
   <!-- Analyzers -->
