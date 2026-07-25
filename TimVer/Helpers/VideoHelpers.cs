@@ -17,8 +17,7 @@ internal static class VideoHelpers
         const string scope = @"\\.\root\CIMV2";
         const string dialect = "WQL";
         const string query = "SELECT DeviceID, Name, Description, CurrentHorizontalResolution, CurrentVerticalResolution, " +
-                             "CurrentRefreshRate, CurrentBitsPerPixel, VideoProcessor, " +
-                             "AdapterRam, CurrentNumberOfColors " +
+                             "CurrentRefreshRate, CurrentBitsPerPixel, VideoProcessor, CurrentNumberOfColors " +
                              "FROM Win32_VideoController";
         try
         {
@@ -40,7 +39,6 @@ internal static class VideoHelpers
                     [GetStringResource("GraphicsInfo_DeviceID")] = CimStringProperty(gpu, "DeviceID"),
                     [GetStringResource("GraphicsInfo_CurrentResolution")] = FormatResolution(gpu),
                     [GetStringResource("GraphicsInfo_CurrentRefreshRate")] = FormatCurrentRefresh(gpu),
-                    [GetStringResource("GraphicsInfo_AdapterRAM")] = FormatAdapterRamInfo(gpu),
                     [GetStringResource("GraphicsInfo_BitsPerPixel")] = CimStringProperty(gpu, "CurrentBitsPerPixel"),
                     [GetStringResource("GraphicsInfo_NumberOfColors")] = FormatColorsInfo(gpu),
                     [GetStringResource("GraphicsInfo_NumberOfDisplays")] = displayCount.ToString(CultureInfo.InvariantCulture),
@@ -122,33 +120,6 @@ internal static class VideoHelpers
         return $"{horzValue} x {vertValue}";
     }
     #endregion Get current resolution
-
-    #region Adapter Memory
-    /// <summary>
-    /// Gets video adapter Ram.
-    /// </summary>
-    /// <param name="instance">The CimInstance</param>
-    /// <returns>A formatted string.</returns>
-#pragma warning disable RCS1213 // Remove unused member declaration
-    // Leaving this method in place for now as I may add it back in the future. It is currently commented out in the GetAllVideoControllers method.
-    private static string FormatAdapterRamInfo(CimInstance instance)
-#pragma warning restore RCS1213 // Remove unused member declaration
-    {
-        if (instance.CimInstanceProperties["AdapterRam"] == null)
-        {
-            _log.Debug("Value for AdapterRam was null");
-            return GetStringResource("MsgText_NotAvailable");
-        }
-        double ram = Convert.ToDouble(instance.CimInstanceProperties["AdapterRam"].Value, CultureInfo.InvariantCulture);
-        if (ram >= Math.Pow(1024, 3))
-        {
-            ram /= Math.Pow(1024, 3);
-            return string.Format(CultureInfo.CurrentCulture, $"{ram:N2} GB");
-        }
-        ram /= Math.Pow(1024, 2);
-        return string.Format(CultureInfo.CurrentCulture, $"{ram:N2} MB");
-    }
-    #endregion Adapter Memory
 
     #region Get display count
     /// <summary>
