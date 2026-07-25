@@ -29,7 +29,7 @@ internal static class TextFileViewer
             p.StartInfo.UseShellExecute = true;
             p.StartInfo.ErrorDialog = false;
             _ = p.Start();
-            _log.Debug($"Opening {fname} in default application");
+            _log.Debug($"Opening {fname}");
         }
         catch (Win32Exception ex)
         {
