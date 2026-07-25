@@ -4,7 +4,6 @@
              xmlns:config="clr-namespace:TimVer.Configuration"
              xmlns:convert="clr-namespace:TimVer.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:global="clr-namespace:System.Globalization;assembly=mscorlib"
              xmlns:helpers="clr-namespace:TimVer.Helpers"
              xmlns:local="clr-namespace:TimVer"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
