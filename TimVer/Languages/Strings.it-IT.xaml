@@ -16,7 +16,7 @@
 
         Translation contributed by:  RB
 
-        Date last update:            17.07.2026
+        Date last update:            25.07.2026
 
         ======================================================================
     
@@ -152,6 +152,7 @@
     <sys:String x:Key="GraphicsInfo_SelectAdapter">Seleziona scheda video</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine1">Se è installata più di una scheda video</sys:String>
     <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine2">usa il menu a discesa per selezionare la scheda.</sys:String>
+    <sys:String x:Key="GraphicsInfo_Unknown">Sconosciuta</sys:String>
     <!--  Hardware Information Page  -->
     <sys:String x:Key="HardwareInfo_BIOS">BIOS</sys:String>
     <sys:String x:Key="HardwareInfo_BiosManufacturer">Produttore BIOS</sys:String>
@@ -534,4 +535,8 @@
     <!-- A | SettingsItem_DarkModeTheme  -->
     <!-- A | MsgText_UefiUnknown  -->
     <!-- End of changes on 2026/07/15 @ 23:30 UTC-->
+    
+    <!-- Begin changes on 2026/07/24 @ 17:00 UTC-->
+    <!-- A | GraphicsInfo_Unknown  -->
+    <!-- End of changes on 2026/07/24 @ 17:00 UTC-->
 </ResourceDictionary>
