@@ -76,7 +76,7 @@ VersionInfoDescription={#MyAppName} installer
 VersionInfoProductName={#MyAppName}
 VersionInfoVersion={#MyInfoVersion}
 
-UninstallDisplayName={#MyAppName} {#MyAppVersion}
+UninstallDisplayName={#MyAppName}
 UninstallDisplayIcon={app}\{#MyAppExeName}
 
 ShowLanguageDialog=yes
