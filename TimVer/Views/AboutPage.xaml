@@ -78,11 +78,16 @@
 
                 <TextBlock Grid.Row="1" Grid.Column="0"
                            Text="{DynamicResource About_Version}" />
-                <TextBlock Grid.Row="1" Grid.Column="2"
-                           Text="{x:Static local:BuildInfo.VersionString}"
+                <StackPanel Grid.Row="1" Grid.Column="2"
+                            Orientation="Horizontal">
+                    <TextBlock 
+                           Text="{x:Static helpers:BuildInfo.VersionString}"
                            TextWrapping="Wrap"
                            ToolTip="{x:Static helpers:AppInfo.AppProductVersion}"
                            ToolTipService.Placement="Top" />
+                    <TextBlock Text="{Binding Source={x:Static helpers:AppInfo.Architecture}, StringFormat='({0})'}" Margin="10,0,0,0" />
+                </StackPanel>
+
 
                 <TextBlock Grid.Row="2" Grid.Column="0"
                            Text="{DynamicResource About_CreatedBy}" />
@@ -119,21 +124,21 @@
                            Text="{DynamicResource About_BuildDate}" />
                 <StackPanel Grid.Row="5" Grid.Column="2"
                             Orientation="Horizontal">
-                    <TextBlock Text="{Binding Source={x:Static local:BuildInfo.CommitDateStringUtc}}" />
+                    <TextBlock Text="{Binding Source={x:Static helpers:BuildInfo.CommitDateStringUtc}}" />
                 </StackPanel>
 
                 <TextBlock Grid.Row="6" Grid.Column="0"
                            Text="{DynamicResource About_CommitID}" />
                 <TextBlock Grid.Row="6" Grid.Column="2"
                            HorizontalAlignment="Left"
-                           Text="{x:Static local:BuildInfo.CommitIDString}"
+                           Text="{x:Static helpers:BuildInfo.CommitIDString}"
                            TextWrapping="Wrap"
                            ToolTipService.Placement="Top">
                     <TextBlock.ToolTip>
                         <ToolTip>
                             <TextBlock>
                                 <Run Text="{DynamicResource About_CommitIDToolTip}" />
-                                <Run Text="{x:Static local:BuildInfo.CommitIDFullString}" />
+                                <Run Text="{x:Static helpers:BuildInfo.CommitIDFullString}" />
                             </TextBlock>
                         </ToolTip>
                     </TextBlock.ToolTip>
