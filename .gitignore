@@ -344,6 +344,7 @@ healthchecksdb
 
 # override .gitignore_global 
 !TimVer/BuildInfo.cs
+
 !**/*.pubxml
 
 # Error list
