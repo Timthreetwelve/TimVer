@@ -47,7 +47,7 @@ internal static class WindowsInfoHelpers
             {GetStringResource("WindowsInfo_TempFolder"), info.TempFolder},
             {GetStringResource("WindowsInfo_DotNetVersion"), info.DotNetVersion},
         };
-        if (UserSettings.Setting!.ShowUser)
+        if (UserSettings.Setting.ShowUser)
         {
             windowsInfo.Add(GetStringResource("WindowsInfo_RegisteredUser"), info.RegisteredUser);
             windowsInfo.Add(GetStringResource("WindowsInfo_RegisteredOrg"), info.RegisteredOrg);

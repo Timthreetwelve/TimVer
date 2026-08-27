@@ -42,7 +42,7 @@ internal static class MainWindowHelpers
         SetWindowPosition();
 
         // Light or dark theme
-        SetBaseTheme(UserSettings.Setting!.UITheme);
+        SetBaseTheme(UserSettings.Setting.UITheme);
 
         // Primary accent color
         SetPrimaryColor(UserSettings.Setting.PrimaryColor);
@@ -59,7 +59,7 @@ internal static class MainWindowHelpers
     private static void SetWindowPosition()
     {
         Window? mainWindow = Application.Current.MainWindow;
-        mainWindow!.Height = UserSettings.Setting!.WindowHeight;
+        mainWindow.Height = UserSettings.Setting.WindowHeight;
         mainWindow.Left = UserSettings.Setting.WindowLeft;
         mainWindow.Top = UserSettings.Setting.WindowTop;
         mainWindow.Width = UserSettings.Setting.WindowWidth;
@@ -97,7 +97,7 @@ internal static class MainWindowHelpers
     private static void SaveWindowPosition()
     {
         Window? mainWindow = Application.Current.MainWindow;
-        UserSettings.Setting!.WindowHeight = Math.Floor(mainWindow!.Height);
+        UserSettings.Setting.WindowHeight = Math.Floor(mainWindow.Height);
         UserSettings.Setting.WindowLeft = Math.Floor(mainWindow.Left);
         UserSettings.Setting.WindowTop = Math.Floor(mainWindow.Top);
         UserSettings.Setting.WindowWidth = Math.Floor(mainWindow.Width);
@@ -124,8 +124,8 @@ internal static class MainWindowHelpers
     private static void EventHandlers()
     {
         // Settings change events
-        UserSettings.Setting!.PropertyChanged += SettingChange.UserSettingChanged!;
-        TempSettings.Setting!.PropertyChanged += SettingChange.TempSettingChanged!;
+        UserSettings.Setting.PropertyChanged += SettingChange.UserSettingChanged!;
+        TempSettings.Setting.PropertyChanged += SettingChange.TempSettingChanged!;
 
         // Window closing event
         _mainWindow!.Closing += MainWindow_Closing!;
@@ -217,8 +217,8 @@ internal static class MainWindowHelpers
         {
             var systemTheme = GetSystemTheme();
             mode = systemTheme.Equals("light", StringComparison.OrdinalIgnoreCase)
-                ? UserSettings.Setting!.SystemLightTheme
-                : UserSettings.Setting!.SystemDarkTheme;
+                ? UserSettings.Setting.SystemLightTheme
+                : UserSettings.Setting.SystemDarkTheme;
 
             // Guard against invalid config values (e.g., System) so we always apply a concrete theme.
             if (mode == ThemeType.System)
@@ -347,7 +347,7 @@ internal static class MainWindowHelpers
     /// </summary>
     public static void EverythingSmaller()
     {
-        MySize size = UserSettings.Setting!.UISize;
+        MySize size = UserSettings.Setting.UISize;
         if (size > 0)
         {
             size--;
@@ -361,7 +361,7 @@ internal static class MainWindowHelpers
     /// </summary>
     public static void EverythingLarger()
     {
-        MySize size = UserSettings.Setting!.UISize;
+        MySize size = UserSettings.Setting.UISize;
         if (size < MySize.Largest)
         {
             size++;
@@ -423,7 +423,7 @@ internal static class MainWindowHelpers
         if (parsedArgs == CommandLineHelpers.CommandLineArgs.Hide)
         {
             UpdateHistoryOnly = true;
-            if (UserSettings.Setting!.KeepHistory)
+            if (UserSettings.Setting.KeepHistory)
             {
                 _log.Debug("Command line argument \"hide\" specified. Will update build history log if needed. ");
                 HistoryHelpers.WriteHistory();
@@ -436,7 +436,7 @@ internal static class MainWindowHelpers
         }
 
         ApplyUISettings();
-        TempSettings.Setting!.RunAccessPermitted = RegistryHelpers.RegRunAccessPermitted();
+        TempSettings.Setting.RunAccessPermitted = RegistryHelpers.RegRunAccessPermitted();
     }
     #endregion Check command line
 }

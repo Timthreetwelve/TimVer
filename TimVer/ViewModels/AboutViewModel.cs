@@ -21,11 +21,11 @@ internal sealed partial class AboutViewModel
     /// </summary>
     private static async Task<bool> CheckForNewReleaseOnLoadAsync()
     {
-        if (!UserSettings.Setting!.AutoCheckForUpdates)
+        if (!UserSettings.Setting.AutoCheckForUpdates)
         {
             return true;
         }
-        if (TempSettings.Setting!.CheckedForNewRelease)
+        if (TempSettings.Setting.CheckedForNewRelease)
         {
             return true;
         }

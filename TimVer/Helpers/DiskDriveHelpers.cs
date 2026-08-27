@@ -134,20 +134,20 @@ internal static class DiskDriveHelpers
     {
         // If the drive is network check settings to see if it needs to be included
         if (string.Equals(d.DriveType.ToString(), "network", StringComparison.OrdinalIgnoreCase)
-            && !UserSettings.Setting!.IncludeNetwork)
+            && !UserSettings.Setting.IncludeNetwork)
         {
             return null;
         }
         // If the drive is removable check settings to see if it needs to be included
         if (string.Equals(d.DriveType.ToString(), "removable", StringComparison.OrdinalIgnoreCase)
-            && !UserSettings.Setting!.IncludeRemovable)
+            && !UserSettings.Setting.IncludeRemovable)
         {
             return null;
         }
         // If the drive is ready
         if (d.IsReady)
         {
-            int gbPref = UserSettings.Setting!.Use1024 ? 1024 : 1000;
+            int gbPref = UserSettings.Setting.Use1024 ? 1024 : 1000;
 
             // Add the information for each drive to the list
             return new()
@@ -171,7 +171,7 @@ internal static class DiskDriveHelpers
             };
         }
         // If the drive is not ready
-        else if (UserSettings.Setting!.IncludeNotReady)
+        else if (UserSettings.Setting.IncludeNotReady)
         {
             return new()
             {
@@ -207,7 +207,7 @@ internal static class DiskDriveHelpers
     /// <returns>List of properties and values of type PhysicalDrives</returns>
     public static List<PhysicalDrives> GetPhysicalDriveInfo()
     {
-        if (UserSettings.Setting!.GetPhysicalDrives)
+        if (UserSettings.Setting.GetPhysicalDrives)
         {
             MainWindowHelpers.MainWindowWaitPointer();
             Stopwatch pdWatch = Stopwatch.StartNew();
@@ -295,7 +295,7 @@ internal static class DiskDriveHelpers
         try
         {
             using CimSession cimSession = CimSession.Create(null);
-            int gbPref = UserSettings.Setting!.Use1024 ? 1024 : 1000;
+            int gbPref = UserSettings.Setting.Use1024 ? 1024 : 1000;
             IEnumerable<CimInstance> diskInfo = cimSession.QueryInstances(scope, "WQL", query);
             return diskInfo.Select(drive => new Dictionary<string, string>
             {
