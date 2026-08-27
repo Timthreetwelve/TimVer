@@ -8,5 +8,10 @@ namespace TimVer.Configuration;
 /// <typeparam name="T">Class name of user settings</typeparam>
 public abstract class ConfigManager<T> where T : ConfigManager<T>, new()
 {
-    public static T? Setting { get; set; }
+    public static T Setting
+    {
+        get => field ?? throw new InvalidOperationException($"{typeof(T).Name}.Setting is not initialized.");
+
+        set => field = value ?? throw new ArgumentNullException(nameof(value));
+    }
 }

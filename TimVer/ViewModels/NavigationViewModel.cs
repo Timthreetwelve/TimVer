@@ -9,7 +9,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
     {
         if (CurrentViewModel == null)
         {
-            NavigateToPage(UserSettings.Setting!.InitialPage);
+            NavigateToPage(UserSettings.Setting.InitialPage);
         }
     }
     #endregion Constructor
@@ -322,7 +322,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
     // Hopefully the name of each method is self-explanatory.
     private static void CycleColor()
     {
-        if (UserSettings.Setting!.PrimaryColor >= AccentColor.White)
+        if (UserSettings.Setting.PrimaryColor >= AccentColor.White)
         {
             UserSettings.Setting.PrimaryColor = AccentColor.Red;
         }
@@ -335,19 +335,19 @@ internal sealed partial class NavigationViewModel : ObservableObject
 
     private static void CycleRowSpacing()
     {
-        if (UserSettings.Setting?.RowSpacing >= Spacing.Wide)
+        if (UserSettings.Setting.RowSpacing >= Spacing.Wide)
         {
             UserSettings.Setting.RowSpacing = Spacing.Compact;
         }
         else
         {
-            UserSettings.Setting!.RowSpacing++;
+            UserSettings.Setting.RowSpacing++;
         }
     }
 
     private static void CycleTheme()
     {
-        UserSettings.Setting!.UITheme = UserSettings.Setting.UITheme switch
+        UserSettings.Setting.UITheme = UserSettings.Setting.UITheme switch
         {
             ThemeType.Light => ThemeType.LightGray,
             ThemeType.LightGray => ThemeType.Dark,
@@ -370,15 +370,15 @@ internal sealed partial class NavigationViewModel : ObservableObject
         {
             case "size":
                 composite = MsgTextUISizeSet;
-                messageVar = EnumHelpers.GetEnumDescription(UserSettings.Setting!.UISize);
+                messageVar = EnumHelpers.GetEnumDescription(UserSettings.Setting.UISize);
                 break;
             case "theme":
                 composite = MsgTextUIThemeSet;
-                messageVar = EnumHelpers.GetEnumDescription(UserSettings.Setting!.UITheme);
+                messageVar = EnumHelpers.GetEnumDescription(UserSettings.Setting.UITheme);
                 break;
             case "color":
                 composite = MsgTextUIColorSet;
-                messageVar = EnumHelpers.GetEnumDescription(UserSettings.Setting!.PrimaryColor);
+                messageVar = EnumHelpers.GetEnumDescription(UserSettings.Setting.PrimaryColor);
                 break;
         }
 

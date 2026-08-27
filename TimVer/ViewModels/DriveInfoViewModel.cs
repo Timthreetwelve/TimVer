@@ -42,7 +42,7 @@ internal sealed partial class DriveInfoViewModel : ObservableObject
 
     #region Refresh drives command
     /// <summary>
-    /// Relay command for freshing drives collections
+    /// Relay command for refreshing drives collections
     /// </summary>
     [RelayCommand]
     private static void RefreshDrives()
@@ -50,7 +50,7 @@ internal sealed partial class DriveInfoViewModel : ObservableObject
         LogicalDrivesList.Clear();
         DrivesPage.Instance!.LDrivesDataGrid.ItemsSource = LogicalDrivesList;
 
-        if (UserSettings.Setting!.GetPhysicalDrives)
+        if (UserSettings.Setting.GetPhysicalDrives)
         {
             PhysicalDrivesList.Clear();
             DrivesPage.Instance.PDisksDataGrid.ItemsSource = PhysicalDrivesList;

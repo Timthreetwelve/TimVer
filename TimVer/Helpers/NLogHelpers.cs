@@ -72,7 +72,7 @@ internal static class NLogHelpers
         LogManager.Configuration = config;
 
         // Lastly, set the logging level based on setting
-        SetLogLevel(UserSettings.Setting!.IncludeDebug);
+        SetLogLevel(UserSettings.Setting.IncludeDebug);
     }
     #endregion Create the NLog configuration
 

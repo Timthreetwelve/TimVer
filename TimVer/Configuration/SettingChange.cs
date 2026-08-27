@@ -31,12 +31,12 @@ public static class SettingChange
                 break;
 
             case nameof(UserSettings.Setting.UISize):
-                MainWindowHelpers.UIScale(UserSettings.Setting!.UISize);
+                MainWindowHelpers.UIScale(UserSettings.Setting.UISize);
                 break;
 
             case nameof(UserSettings.Setting.KeepHistory):
                 HistoryHelpers.WriteHistory();
-                if (!(bool)newValue! && UserSettings.Setting!.InitialPage == NavPage.History)
+                if (!(bool)newValue! && UserSettings.Setting.InitialPage == NavPage.History)
                 {
                     UserSettings.Setting.InitialPage = NavPage.WindowsInfo;
                     SnackbarMsg.QueueMessage(GetStringResource("MsgText_OptionReset"));
@@ -44,7 +44,7 @@ public static class SettingChange
                 break;
 
             case nameof(UserSettings.Setting.InitialPage):
-                if ((NavPage)newValue! == NavPage.History && !UserSettings.Setting!.KeepHistory)
+                if ((NavPage)newValue! == NavPage.History && !UserSettings.Setting.KeepHistory)
                 {
                     UserSettings.Setting.KeepHistory = true;
                     SnackbarMsg.QueueMessage(GetStringResource("MsgText_OptionReset"));
@@ -77,7 +77,7 @@ public static class SettingChange
 
             case nameof(UserSettings.Setting.SystemLightTheme):
             case nameof(UserSettings.Setting.SystemDarkTheme):
-                if (UserSettings.Setting!.UITheme == ThemeType.System)
+                if (UserSettings.Setting.UITheme == ThemeType.System)
                 {
                     MainWindowHelpers.SetBaseTheme(ThemeType.System);
                 }

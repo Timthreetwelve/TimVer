@@ -6,8 +6,6 @@ namespace TimVer.Configuration;
 public partial class UserSettings : ConfigManager<UserSettings>
 {
     #region Properties (some with default values)
-#pragma warning disable MVVMTK0042 // Prefer using [ObservableProperty] on partial properties
-    // Suppressing the MVVMTK0042 warning for this class until such time as it no longer requires Preview features.
     /// <summary>
     /// Check for updates automatically when About page is opened.
     /// </summary>
@@ -271,6 +269,5 @@ public partial class UserSettings : ConfigManager<UserSettings>
     /// </summary>
     [ObservableProperty]
     private double _windowWidth = 1000;
-#pragma warning restore MVVMTK0042 // Prefer using [ObservableProperty] on partial properties
     #endregion Properties (some with default values)
 }
