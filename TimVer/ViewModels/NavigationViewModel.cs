@@ -170,9 +170,24 @@ internal sealed partial class NavigationViewModel : ObservableObject
     [RelayCommand]
     private static void OpenAppFolder()
     {
+        string fileName = PathHelpers.FindOnPath("Explorer.exe");
+        if (fileName == string.Empty)
+        {
+            _log.Error("Error trying to open application folder: Explorer.exe not found");
+            string msg = $"{GetStringResource("MsgText_Error_FileExplorer")}" +
+                         $"\n\n{GetStringResource("MsgText_SeeLogFile")}";
+            _ = new MDCustMsgBox(msg,
+                     GetStringResource("MsgText_ErrorCaption"),
+                     ButtonType.Ok,
+                     false,
+                     true,
+                     _mainWindow,
+                     true).ShowDialog();
+            return;
+        }
         using Process process = new();
         process.StartInfo.UseShellExecute = false;
-        process.StartInfo.FileName = "Explorer.exe";
+        process.StartInfo.FileName = fileName;
         process.StartInfo.Arguments = AppInfo.AppDirectory;
         _ = process.Start();
     }

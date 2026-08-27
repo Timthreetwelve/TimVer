@@ -46,7 +46,22 @@ internal sealed partial class SettingsViewModel : ObservableObject
             filePath = Path.Combine(AppInfo.AppDirectory, "Strings.test.xaml");
             if (File.Exists(filePath))
             {
-                _ = Process.Start("explorer.exe", $"/select,\"{filePath}\"");
+                string explorerPath = PathHelpers.FindOnPath("explorer.exe");
+                if (string.IsNullOrEmpty(explorerPath))
+                {
+                    _log.Error($"Error trying to open {filePath}: Explorer.exe not found");
+                    string msg = $"{GetStringResource("MsgText_Error_FileExplorer")}" +
+                                 $"\n\n{GetStringResource("MsgText_SeeLogFile")}";
+                    _ = new MDCustMsgBox(msg,
+                             GetStringResource("MsgText_ErrorCaption"),
+                             ButtonType.Ok,
+                             false,
+                             true,
+                             _mainWindow,
+                             true).ShowDialog();
+                    return;
+                }
+                Process.Start(explorerPath, $"/select,\"{filePath}\"");
             }
             else
             {
@@ -69,7 +84,7 @@ internal sealed partial class SettingsViewModel : ObservableObject
                      true).ShowDialog();
         }
     }
-    #endregion
+    #endregion Open folder
 
     #region Open settings
     [RelayCommand]
