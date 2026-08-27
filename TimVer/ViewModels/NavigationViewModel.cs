@@ -245,123 +245,120 @@ internal sealed partial class NavigationViewModel : ObservableObject
     [RelayCommand]
     private async Task KeyDown(KeyEventArgs e)
     {
-        #region Keys without modifiers
-        switch (e.Key)
+        // The case statements are mostly in order by modifier keys (none, alt, control, control+shift), then key.
+        // The underscore (_) is a discard for the value that is not needed.
+        // The SystemKey is used for Alt key combinations, but is not needed for this application.
+        // The e.Handled = true; statement prevents the key event from being processed further.
+        switch (e.KeyboardDevice.Modifiers, e.Key, e.SystemKey)
         {
-            case Key.F1:
-                {
-                    _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(NavPage.About);
-                    break;
-                }
-        }
-        #endregion Keys without modifiers
+            // No modifiers
+            case (ModifierKeys.None, Key.F1, _):
+                e.Handled = true;
+                _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(NavPage.About);
+                break;
 
-        #region Keys with Ctrl
-        if (e.KeyboardDevice.Modifiers == ModifierKeys.Control)
-        {
-            switch (e.Key)
-            {
-                case Key.OemComma:
-                    {
-                        _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(NavPage.Settings);
-                        break;
-                    }
-                case Key.C:
-                    {
-                        await CopyToClipboard();
-                        break;
-                    }
-                case Key.Add:
-                case Key.OemPlus:
-                    {
-                        MainWindowHelpers.EverythingLarger();
-                        ShowUIChangeMessage("size");
-                        break;
-                    }
-                case Key.Subtract:
-                case Key.OemMinus:
-                    {
-                        MainWindowHelpers.EverythingSmaller();
-                        ShowUIChangeMessage("size");
-                        break;
-                    }
-            }
-        }
-        #endregion Keys with Ctrl
+            // With control
+            case (ModifierKeys.Control, Key.C, _):
+                e.Handled = true;
+                await CopyToClipboard();
+                break;
 
-        #region Keys with Ctrl and Shift
-        if (e.KeyboardDevice.Modifiers == (ModifierKeys.Control | ModifierKeys.Shift))
-        {
-            if (e.Key == Key.T)
-            {
-                switch (UserSettings.Setting!.UITheme)
-                {
-                    case ThemeType.Light:
-                        UserSettings.Setting.UITheme = ThemeType.LightGray;
-                        break;
-                    case ThemeType.LightGray:
-                        UserSettings.Setting.UITheme = ThemeType.Dark;
-                        break;
-                    case ThemeType.Dark:
-                        UserSettings.Setting.UITheme = ThemeType.Darker;
-                        break;
-                    case ThemeType.Darker:
-                        UserSettings.Setting.UITheme = ThemeType.DarkBlue;
-                        break;
-                    case ThemeType.DarkBlue:
-                        UserSettings.Setting.UITheme = ThemeType.System;
-                        break;
-                    case ThemeType.System:
-                        UserSettings.Setting.UITheme = ThemeType.Light;
-                        break;
-                }
-                ShowUIChangeMessage("theme");
-            }
-            if (e.Key == Key.C)
-            {
-                if (UserSettings.Setting!.PrimaryColor >= AccentColor.White)
-                {
-                    UserSettings.Setting.PrimaryColor = AccentColor.Red;
-                }
-                else
-                {
-                    UserSettings.Setting.PrimaryColor++;
-                }
-                ShowUIChangeMessage("color");
-            }
-            if (e.Key == Key.F)
-            {
-                using Process p = new();
-                p.StartInfo.FileName = AppInfo.AppDirectory;
-                p.StartInfo.UseShellExecute = true;
-                p.StartInfo.ErrorDialog = false;
-                _ = p.Start();
-            }
-            if (e.Key == Key.K)
-            {
+            case (ModifierKeys.Control, Key.OemComma, _):
+                e.Handled = true;
+                _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(NavPage.Settings);
+                break;
+
+            case (ModifierKeys.Control, Key.Add, _):
+            case (ModifierKeys.Control, Key.OemPlus, _):
+                e.Handled = true;
+                MainWindowHelpers.EverythingLarger();
+                ShowUIChangeMessage("size");
+                break;
+
+            case (ModifierKeys.Control, Key.Subtract, _):
+            case (ModifierKeys.Control, Key.OemMinus, _):
+                e.Handled = true;
+                MainWindowHelpers.EverythingSmaller();
+                ShowUIChangeMessage("size");
+                break;
+
+            // With control and shift
+            case (ModifierKeys.Control | ModifierKeys.Shift, Key.C, _):
+                e.Handled = true;
+                CycleColor();
+                break;
+
+            case (ModifierKeys.Control | ModifierKeys.Shift, Key.F, _):
+                e.Handled = true;
+                OpenAppFolder();
+                break;
+
+            case (ModifierKeys.Control | ModifierKeys.Shift, Key.K, _):
+                e.Handled = true;
                 CompareLanguageDictionaries();
                 ViewLogFile();
+                break;
+
+            case (ModifierKeys.Control | ModifierKeys.Shift, Key.R, _):
                 e.Handled = true;
-            }
-            if (e.Key == Key.R)
-            {
-                if (UserSettings.Setting?.RowSpacing >= Spacing.Wide)
-                {
-                    UserSettings.Setting.RowSpacing = Spacing.Compact;
-                }
-                else
-                {
-                    UserSettings.Setting!.RowSpacing++;
-                }
-            }
-            if (e.Key == Key.S)
-            {
+                CycleRowSpacing();
+                break;
+
+            case (ModifierKeys.Control | ModifierKeys.Shift, Key.S, _):
+                e.Handled = true;
                 TextFileViewer.ViewTextFile(ConfigHelpers.SettingsFileName!);
-            }
+                break;
+
+            case (ModifierKeys.Control | ModifierKeys.Shift, Key.T, _):
+                e.Handled = true;
+                CycleTheme();
+                break;
         }
-        #endregion Keys with Ctrl and Shift
     }
     #endregion Key down events
+
+    #region Helpers for key down events
+    // The following methods are called by the KeyDown method above. They are separated out for clarity.
+    // Hopefully the name of each method is self-explanatory.
+    private static void CycleColor()
+    {
+        if (UserSettings.Setting!.PrimaryColor >= AccentColor.White)
+        {
+            UserSettings.Setting.PrimaryColor = AccentColor.Red;
+        }
+        else
+        {
+            UserSettings.Setting.PrimaryColor++;
+        }
+        ShowUIChangeMessage("color");
+    }
+
+    private static void CycleRowSpacing()
+    {
+        if (UserSettings.Setting?.RowSpacing >= Spacing.Wide)
+        {
+            UserSettings.Setting.RowSpacing = Spacing.Compact;
+        }
+        else
+        {
+            UserSettings.Setting!.RowSpacing++;
+        }
+    }
+
+    private static void CycleTheme()
+    {
+        UserSettings.Setting!.UITheme = UserSettings.Setting.UITheme switch
+        {
+            ThemeType.Light => ThemeType.LightGray,
+            ThemeType.LightGray => ThemeType.Dark,
+            ThemeType.Dark => ThemeType.Darker,
+            ThemeType.Darker => ThemeType.DarkBlue,
+            ThemeType.DarkBlue => ThemeType.System,
+            _ => ThemeType.Light,
+        };
+        ShowUIChangeMessage("theme");
+    }
+    #endregion Helpers for key down events
 
     #region Show snack bar message for UI changes
     private static void ShowUIChangeMessage(string messageType)
