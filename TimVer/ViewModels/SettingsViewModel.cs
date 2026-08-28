@@ -10,7 +10,7 @@ internal sealed partial class SettingsViewModel : ObservableObject
 
     #region Properties
     public static ReadOnlyCollection<FontFamily>? FontList { get; private set; }
-    public IEnumerable<ThemeType> ThemeTypes { get; private set; }
+    public IEnumerable<ThemeType> ThemeTypes { get; }
 
     public IEnumerable<ThemeType> SystemThemeTypes { get; private set; }
     #endregion Properties

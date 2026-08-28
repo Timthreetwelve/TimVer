@@ -56,7 +56,7 @@ internal static class PathHelpers
         {
             throw new ArgumentException("Filename cannot be null, empty, or contain invalid characters.", nameof(filename));
         }
-        if (Path.GetExtension(filename) == string.Empty)
+        if (Path.GetExtension(filename)?.Length == 0)
         {
             throw new ArgumentException("Filename must have an extension.", nameof(filename));
         }

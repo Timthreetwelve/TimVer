@@ -21,7 +21,7 @@ internal static class HistoryHelpers
         {
             string json = File.ReadAllText(DefaultHistoryFile());
             HistoryViewModel.HistoryList = JsonSerializer.Deserialize<List<History>>(json)!;
-            int count = HistoryViewModel.HistoryList!.Count;
+            int count = HistoryViewModel.HistoryList.Count;
             string entry = count == 1 ? "entry" : "entries";
             _log.Debug($"History file has {count} {entry}");
         }
