@@ -171,7 +171,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
     private static void OpenAppFolder()
     {
         string fileName = PathHelpers.FindOnPath("Explorer.exe");
-        if (fileName == string.Empty)
+        if (fileName?.Length == 0)
         {
             _log.Error("Error trying to open application folder: Explorer.exe not found");
             string msg = $"{GetStringResource("MsgText_Error_FileExplorer")}" +
