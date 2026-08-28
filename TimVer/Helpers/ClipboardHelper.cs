@@ -59,176 +59,24 @@ internal static class ClipboardHelper
     {
         StringBuilder builder = new();
 
-        switch (currentVM)
+        bool isSupportedView = currentVM switch
         {
-            case WindowsInfoViewModel:
-                {
-                    _ = builder.AppendLine(GetStringResource("NavTitle_WindowsInfo"));
-                    _ = builder.AppendLine(new string('-', builder.Length - 2));
-                    foreach (KeyValuePair<string, string> item in WindowsInfoViewModel.WindowsInfoList!)
-                    {
-                        _ = builder.Append(item.Key)
-                                   .Append(" = ")
-                                   .AppendLine(item.Value);
-                    }
-                    break;
-                }
+            WindowsInfoViewModel => BuildWindowsInfoClipboardText(builder),
+            ComputerInfoViewModel => BuildComputerInfoClipboardText(builder),
+            EnvVarViewModel => BuildEnvironmentClipboardText(builder),
+            HistoryViewModel => BuildHistoryClipboardText(builder),
+            DriveInfoViewModel => BuildDriveInfoClipboardText(builder),
+            VideoViewModel => BuildVideoClipboardText(builder),
+            _ => false
+        };
 
-            case ComputerInfoViewModel:
-                {
-                    _ = builder.AppendLine(GetStringResource("NavTitle_HardwareInfo"));
-                    _ = builder.AppendLine(new string('-', builder.Length - 2));
-                    foreach (KeyValuePair<string, string> item in ComputerInfoViewModel.ComputerInfoList!)
-                    {
-                        _ = builder.Append(item.Key)
-                                   .Append(" = ")
-                                   .AppendLine(item.Value);
-                    }
-                    break;
-                }
-
-            case EnvVarViewModel:
-                {
-                    _ = builder.AppendLine(GetStringResource("NavTitle_Environment"));
-                    _ = builder.AppendLine(new string('-', builder.Length - 2));
-                    foreach (EnvVariable item in EnvVarViewModel.EnvVariableList)
-                    {
-                        _ = builder.Append(item.Variable)
-                                   .Append(" = ")
-                                   .AppendLine(item.Value);
-                    }
-                    break;
-                }
-
-            case HistoryViewModel:
-                {
-                    _ = builder.AppendLine(GetStringResource("NavTitle_BuildHistory"));
-                    _ = builder.AppendLine(new string('-', builder.Length - 2));
-                    foreach (History item in HistoryViewModel.HistoryList)
-                    {
-                        _ = builder.AppendFormat(CultureInfo.InvariantCulture, "{0,-18}", item.HDate)
-                                   .AppendFormat(CultureInfo.InvariantCulture,"{0,-12}", item.HBuild)
-                                   .AppendFormat(CultureInfo.InvariantCulture, "{0,-6}", item.HVersion)
-                                   .AppendLine(item.HBranch);
-                    }
-                    break;
-                }
-
-            case DriveInfoViewModel:
-                {
-                    string giga = UserSettings.Setting.Use1024 ? "GiB" : "GB";
-                    if (TempSettings.Setting.DriveSelectedTab == 0)
-                    {
-                        _ = builder.Append(GetStringResource("NavTitle_DriveInfo"))
-                                   .Append(" - ")
-                                   .AppendLine(GetStringResource("DriveInfo_LogicalDrives"));
-
-                        _ = builder.AppendLine(new string('-', builder.Length - 2));
-                        foreach (LogicalDrives item in DriveInfoViewModel.LogicalDrivesList)
-                        {
-                            _ = builder.Append(GetStringResource("DriveInfo_Name"))
-                                       .Append(" = ")
-                                       .AppendLine(item.Name);
-                            _ = builder.Append(GetStringResource("DriveInfo_Label"))
-                                       .Append(" = ")
-                                       .AppendLine(item.Label);
-                            _ = builder.Append(GetStringResource("DriveInfo_Type"))
-                                       .Append(" = ")
-                                       .AppendLine(item.DriveType);
-                            _ = builder.Append(GetStringResource("DriveInfo_Format"))
-                                       .Append(" = ")
-                                       .AppendLine(item.Format);
-                            _ = builder.Append(GetStringResource("DriveInfo_Size"))
-                                       .Append(" = ")
-                                       .AppendFormat(CultureInfo.InvariantCulture, "{0:N2} ", item.TotalSize)
-                                       .AppendLine(giga);
-                            _ = builder.Append(GetStringResource("DriveInfo_Free"))
-                                       .Append(" = ")
-                                       .AppendFormat(CultureInfo.InvariantCulture, "{0:N2} ", item.GBFree)
-                                       .AppendLine(giga);
-                            _ = builder.Append(GetStringResource("DriveInfo_FreePercent"))
-                                       .Append(" = ")
-                                       .AppendFormat(CultureInfo.InvariantCulture,"{0:N2} %", item.PercentFree * 100)
-                                       .AppendLine();
-                            _ = builder.AppendLine();
-                        }
-                    }
-                    else
-                    {
-                        _ = builder.Append(GetStringResource("NavTitle_DriveInfo"))
-                                   .Append(" - ")
-                                   .AppendLine(GetStringResource("DriveInfo_PhysicalDrives"));
-                        _ = builder.AppendLine(new string('-', builder.Length - 2));
-                        foreach (PhysicalDrives item in DriveInfoViewModel.PhysicalDrivesList)
-                        {
-                            if (UserSettings.Setting.GetPhysicalDrives)
-                            {
-                                _ = builder.Append(GetStringResource("DriveInfo_DeviceID"))
-                                           .Append(" = ")
-                                           .AppendLine(item.Index.ToString(CultureInfo.InvariantCulture));
-                                _ = builder.Append(GetStringResource("DriveInfo_Size"))
-                                           .Append(" = ")
-                                           .AppendFormat(CultureInfo.InvariantCulture, "{0:N2} ", item.Size)
-                                           .AppendLine(giga);
-                                _ = builder.Append(GetStringResource("DriveInfo_Partitions"))
-                                           .Append(" = ")
-                                           .AppendLine(item.Partitions.ToString(CultureInfo.InvariantCulture));
-                                _ = builder.Append(GetStringResource("DriveInfo_DiskType"))
-                                           .Append(" = ")
-                                           .AppendLine(item.DiskType);
-                                _ = builder.Append(GetStringResource("DriveInfo_MediaType"))
-                                           .Append(" = ")
-                                           .AppendLine(item.MediaType);
-                                _ = builder.Append(GetStringResource("DriveInfo_Interface"))
-                                           .Append(" = ")
-                                           .AppendLine(item.Interface);
-                                _ = builder.Append(GetStringResource("DriveInfo_BusType"))
-                                           .Append(" = ")
-                                           .AppendLine(item.BusType);
-                                _ = builder.Append(GetStringResource("DriveInfo_Health"))
-                                           .Append(" = ")
-                                           .AppendLine(item.Health);
-                                _ = builder.Append(GetStringResource("DriveInfo_PartitionStyle"))
-                                           .Append(" = ")
-                                           .AppendLine(item.PartitionStyle);
-                                _ = builder.Append(GetStringResource("DriveInfo_BootDrive"))
-                                           .Append(" = ")
-                                           .AppendLine(item.IsBoot);
-                                _ = builder.Append(GetStringResource("DriveInfo_Name"))
-                                           .Append(" = ")
-                                           .AppendLine(item.Name);
-                                _ = builder.Append(GetStringResource("DriveInfo_Model"))
-                                           .Append(" = ")
-                                           .AppendLine(item.Model);
-                                _ = builder.AppendLine();
-                            }
-                            else
-                            {
-                                _ = builder.AppendLine(GetStringResource("DriveInfo_PhysicalDisabled"));
-                            }
-                        }
-                    }
-                    break;
-                }
-
-            case VideoViewModel:
-                {
-                    _ = builder.AppendLine(GetStringResource("NavTitle_GraphicsInfo"));
-                    _ = builder.AppendLine(new string('-', builder.Length - 2));
-                    foreach (KeyValuePair<string, string> item in VideoViewModel.VideoInfoCollection!)
-                    {
-                        _ = builder.Append(item.Key)
-                                   .Append(" = ")
-                                   .AppendLine(item.Value);
-                    }
-                    break;
-                }
-
-            default:
-                SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopyToClipboardInvalid"));
-                SystemSounds.Exclamation.Play();
-                return;
+        if (!isSupportedView)
+        {
+            SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopyToClipboardInvalid"));
+            SystemSounds.Exclamation.Play();
+            return;
         }
+
         if (await CopyTextToClipboardAsync(builder.ToString()))
         {
             SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopiedToClipboard"));
@@ -238,6 +86,154 @@ internal static class ClipboardHelper
             SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopyToClipboardFail"));
             SystemSounds.Exclamation.Play();
         }
+    }
+
+    private static bool BuildWindowsInfoClipboardText(StringBuilder builder)
+    {
+        AppendHeader(builder, GetStringResource("NavTitle_WindowsInfo"));
+        AppendKeyValueCollection(builder, WindowsInfoViewModel.WindowsInfoList);
+        return true;
+    }
+
+    private static bool BuildComputerInfoClipboardText(StringBuilder builder)
+    {
+        AppendHeader(builder, GetStringResource("NavTitle_HardwareInfo"));
+        AppendKeyValueCollection(builder, ComputerInfoViewModel.ComputerInfoList);
+        return true;
+    }
+
+    private static bool BuildEnvironmentClipboardText(StringBuilder builder)
+    {
+        AppendHeader(builder, GetStringResource("NavTitle_Environment"));
+
+        foreach (EnvVariable item in EnvVarViewModel.EnvVariableList)
+        {
+            AppendKeyValueLine(builder, item.Variable!, item.Value);
+        }
+
+        return true;
+    }
+
+    private static bool BuildHistoryClipboardText(StringBuilder builder)
+    {
+        AppendHeader(builder, GetStringResource("NavTitle_BuildHistory"));
+
+        foreach (History item in HistoryViewModel.HistoryList)
+        {
+            _ = builder.AppendFormat(CultureInfo.InvariantCulture, "{0,-18}", item.HDate)
+                       .AppendFormat(CultureInfo.InvariantCulture, "{0,-12}", item.HBuild)
+                       .AppendFormat(CultureInfo.InvariantCulture, "{0,-6}", item.HVersion)
+                       .AppendLine(item.HBranch);
+        }
+
+        return true;
+    }
+
+    private static bool BuildDriveInfoClipboardText(StringBuilder builder)
+    {
+        string giga = UserSettings.Setting.Use1024 ? "GiB" : "GB";
+
+        if (TempSettings.Setting.DriveSelectedTab == 0)
+        {
+            AppendHeader(
+                builder,
+                $"{GetStringResource("NavTitle_DriveInfo")} - {GetStringResource("DriveInfo_LogicalDrives")}");
+
+            foreach (LogicalDrives item in DriveInfoViewModel.LogicalDrivesList)
+            {
+                AppendKeyValueLine(builder, GetStringResource("DriveInfo_Name"), item.Name);
+                AppendKeyValueLine(builder, GetStringResource("DriveInfo_Label"), item.Label);
+                AppendKeyValueLine(builder, GetStringResource("DriveInfo_Type"), item.DriveType);
+                AppendKeyValueLine(builder, GetStringResource("DriveInfo_Format"), item.Format);
+
+                _ = builder.Append(GetStringResource("DriveInfo_Size"))
+                           .Append(" = ")
+                           .AppendFormat(CultureInfo.InvariantCulture, "{0:N2} ", item.TotalSize)
+                           .AppendLine(giga);
+
+                _ = builder.Append(GetStringResource("DriveInfo_Free"))
+                           .Append(" = ")
+                           .AppendFormat(CultureInfo.InvariantCulture, "{0:N2} ", item.GBFree)
+                           .AppendLine(giga);
+
+                _ = builder.Append(GetStringResource("DriveInfo_FreePercent"))
+                           .Append(" = ")
+                           .AppendFormat(CultureInfo.InvariantCulture, "{0:N2} %", item.PercentFree * 100)
+                           .AppendLine();
+
+                _ = builder.AppendLine();
+            }
+
+            return true;
+        }
+
+        AppendHeader(
+            builder,
+            $"{GetStringResource("NavTitle_DriveInfo")} - {GetStringResource("DriveInfo_PhysicalDrives")}");
+
+        foreach (PhysicalDrives item in DriveInfoViewModel.PhysicalDrivesList)
+        {
+            if (UserSettings.Setting.GetPhysicalDrives)
+            {
+                AppendKeyValueLine(builder, GetStringResource("DriveInfo_DeviceID"), item.Index.ToString(CultureInfo.InvariantCulture));
+
+                _ = builder.Append(GetStringResource("DriveInfo_Size"))
+                           .Append(" = ")
+                           .AppendFormat(CultureInfo.InvariantCulture, "{0:N2} ", item.Size)
+                           .AppendLine(giga);
+
+                AppendKeyValueLine(builder, GetStringResource("DriveInfo_Partitions"), item.Partitions.ToString(CultureInfo.InvariantCulture));
+                AppendKeyValueLine(builder, GetStringResource("DriveInfo_DiskType"), item.DiskType);
+                AppendKeyValueLine(builder, GetStringResource("DriveInfo_MediaType"), item.MediaType);
+                AppendKeyValueLine(builder, GetStringResource("DriveInfo_Interface"), item.Interface);
+                AppendKeyValueLine(builder, GetStringResource("DriveInfo_BusType"), item.BusType);
+                AppendKeyValueLine(builder, GetStringResource("DriveInfo_Health"), item.Health);
+                AppendKeyValueLine(builder, GetStringResource("DriveInfo_PartitionStyle"), item.PartitionStyle);
+                AppendKeyValueLine(builder, GetStringResource("DriveInfo_BootDrive"), item.IsBoot);
+                AppendKeyValueLine(builder, GetStringResource("DriveInfo_Name"), item.Name);
+                AppendKeyValueLine(builder, GetStringResource("DriveInfo_Model"), item.Model);
+                _ = builder.AppendLine();
+            }
+            else
+            {
+                _ = builder.AppendLine(GetStringResource("DriveInfo_PhysicalDisabled"));
+            }
+        }
+
+        return true;
+    }
+
+    private static bool BuildVideoClipboardText(StringBuilder builder)
+    {
+        AppendHeader(builder, GetStringResource("NavTitle_GraphicsInfo"));
+        AppendKeyValueCollection(builder, VideoViewModel.VideoInfoCollection);
+        return true;
+    }
+
+    private static void AppendHeader(StringBuilder builder, string title)
+    {
+        _ = builder.AppendLine(title);
+        _ = builder.AppendLine(new string('-', title.Length));
+    }
+
+    private static void AppendKeyValueCollection(StringBuilder builder, IReadOnlyDictionary<string, string>? values)
+    {
+        if (values is null)
+        {
+            return;
+        }
+
+        foreach ((string key, string value) in values)
+        {
+            AppendKeyValueLine(builder, key, value);
+        }
+    }
+
+    private static void AppendKeyValueLine(StringBuilder builder, string key, string? value)
+    {
+        _ = builder.Append(key)
+                   .Append(" = ")
+                   .AppendLine(value);
     }
     #endregion Copy a page to clipboard
 }
