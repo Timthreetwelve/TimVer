@@ -12,16 +12,19 @@ internal sealed partial class TempSettings : ConfigManager<TempSettings>
     private static bool _appExpanderOpen;
 
     [ObservableProperty]
+    private static bool _backupExpanderOpen;
+
+    [ObservableProperty]
+    private static bool _checkedForNewRelease;
+
+    [ObservableProperty]
     private static bool _driveExpanderOpen;
 
     [ObservableProperty]
-    private static bool _logicalExpanderOpen;
-
-    [ObservableProperty]
-    private static bool _physicalExpanderOpen;
-
-    [ObservableProperty]
     private static int _driveSelectedTab;
+
+    [ObservableProperty]
+    private static string _gitHubRelease = string.Empty;
 
     [ObservableProperty]
     private bool _historyOnBoot = RegistryHelpers.RegRunEntry("TimVer");
@@ -30,20 +33,20 @@ internal sealed partial class TempSettings : ConfigManager<TempSettings>
     private static bool _langExpanderOpen;
 
     [ObservableProperty]
-    private static bool _uIExpanderOpen;
-
-    [ObservableProperty]
-    private static bool _runAccessPermitted;
-
-    [ObservableProperty]
-    private static bool _backupExpanderOpen;
-
-    [ObservableProperty]
-    private static bool _checkedForNewRelease;
+    private static bool _logicalExpanderOpen;
 
     [ObservableProperty]
     private static bool _newReleaseAvailable;
 
     [ObservableProperty]
-    private static string _gitHubRelease = string.Empty;
+    private static bool _physicalExpanderOpen;
+
+    [ObservableProperty]
+    private static bool _runAccessPermitted;
+
+    [ObservableProperty]
+    private static bool _translateExpanderOpen;
+
+    [ObservableProperty]
+    private static bool _uIExpanderOpen;
 }
