@@ -71,4 +71,13 @@
     </Style>
     <!--#endregion-->
 
+    <!--#region Right align cell text-->
+    <Style TargetType="DataGridCell"
+           x:Key="AlignCellRight"
+           BasedOn="{StaticResource {x:Type DataGridCell}}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+    </Style>
+    <!--#endregion-->
+
 </ResourceDictionary>
