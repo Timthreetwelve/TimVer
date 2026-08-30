@@ -33,7 +33,6 @@ Self-contained versions are available if .NET 10 isn't installed. See the [relea
 * Shows Windows information such as version, build number, build branch, architecture and installation date.
 * Shows hardware information about the computer such as the computer make, model, name, processor, BIOS, and physical memory.
 * Shows drive information about logical drives and _optionally_ physical drives.
-* Shows information about the graphics adapter _(video card)_ including the adapter name, type, current resolution, and refresh rate.
 * Shows the current environmental variables. Filter the list by variable name.
 * _Optionally_ keep a history of when new Windows builds were installed.
 * Copy page to the clipboard.
@@ -57,7 +56,6 @@ You can download the latest release from the [releases page](https://github.com/
 
 ![Disk Drive Info](https://github.com/Timthreetwelve/TimVer/blob/main/Images/TimVer_9_D.png)
 
-![Graphics Info](https://github.com/Timthreetwelve/TimVer/blob/main/Images/TimVer_9_V.png)
 
 ### Contributors
 
