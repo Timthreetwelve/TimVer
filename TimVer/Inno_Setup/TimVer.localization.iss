@@ -84,6 +84,11 @@ it.DeleteConfigFiles=Vuoi rimuovere le impostazioni, i file cronologia e le voci
 it.NotSelfContained64=Verrà installata la versione x64 (64 bit) dipendente dal framework %1 %2.%n%nQuesta versione richiede che sia già installato .NET 10 Desktop Runtime.%n%nPrima di continuare l'installazione ti consigliamo di chiudere tutte le altre applicazioni.%n%nPer continuare seleziona 'Avanti' o 'Annulla' per uscire dall'installazione.
 it.SelfContainedx64=Verrà installata la versione x64 (64 bit) standalone portatile di %1 %2.%n%nPrima di continuare l'installazione ti consigliamo di chiudere tutte le altre applicazioni.%n%nPer continuare seleziona 'Avanti' o 'Annulla' per uscire dall'installazione.
 it.ViewReadme=Visualizza file 'ReadMe'
+it.NameAndVersion=%1 %2
+it.LaunchProgram=Esegui %1
+it.AdditionalIcons=Collegamenti:
+it.CreateDesktopIcon=Crea collegamento programma sul &desktop
+it.CreateQuickLaunchIcon=Crea collegamento programma nella &barra 'Avvio veloce'
 ;
 ;
 ko.AppIsRunning=가 실행 중입니다. 설치를 계속하려면 닫으세요.
