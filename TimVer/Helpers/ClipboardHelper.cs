@@ -66,7 +66,6 @@ internal static class ClipboardHelper
             EnvVarViewModel => BuildEnvironmentClipboardText(builder),
             HistoryViewModel => BuildHistoryClipboardText(builder),
             DriveInfoViewModel => BuildDriveInfoClipboardText(builder),
-            VideoViewModel => BuildVideoClipboardText(builder),
             _ => false
         };
 
@@ -200,13 +199,6 @@ internal static class ClipboardHelper
             }
         }
 
-        return true;
-    }
-
-    private static bool BuildVideoClipboardText(StringBuilder builder)
-    {
-        AppendHeader(builder, GetStringResource("NavTitle_GraphicsInfo"));
-        AppendKeyValueCollection(builder, VideoViewModel.VideoInfoCollection);
         return true;
     }
 

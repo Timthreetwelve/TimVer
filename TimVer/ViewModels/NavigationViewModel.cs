@@ -60,13 +60,6 @@ internal sealed partial class NavigationViewModel : ObservableObject
             PageTitle=GetStringResource("NavTitle_DriveInfo")
         },
         new() {
-            Name=GetStringResource("NavItem_GraphicsInfo"),
-            NavPage = NavPage.VideoInfo,
-            ViewModelType= typeof(VideoViewModel),
-            IconKind=PackIconKind.Monitor,
-            PageTitle=GetStringResource("NavTitle_GraphicsInfo")
-        },
-        new() {
             Name=GetStringResource("NavItem_Environment"),
             NavPage = NavPage.Environment,
             ViewModelType= typeof(EnvVarViewModel),

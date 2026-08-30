@@ -193,12 +193,6 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private bool _showUser = true;
 
     /// <summary>
-    /// Show the video adapter drop-down on the Graphics page.
-    /// </summary>
-    [ObservableProperty]
-    private bool _showVideoSelector = true;
-
-    /// <summary>
     /// Option start with window centered on screen.
     /// </summary>
     [ObservableProperty]

@@ -138,21 +138,6 @@
     <sys:String x:Key="EnvironmentInfo_Filter">Filter</sys:String>
     <sys:String x:Key="EnvironmentInfo_Value">Value</sys:String>
     <sys:String x:Key="EnvironmentInfo_Variable">Variable</sys:String>
-    <!--  Graphics Information Page  -->
-    <sys:String x:Key="GraphicsInfo_AdapterRAM">Adapter RAM</sys:String>
-    <sys:String x:Key="GraphicsInfo_AdapterType">Adapter Type</sys:String>
-    <sys:String x:Key="GraphicsInfo_BitsPerPixel">Bits per Pixel</sys:String>
-    <sys:String x:Key="GraphicsInfo_CurrentRefreshRate">Current Refresh Rate</sys:String>
-    <sys:String x:Key="GraphicsInfo_CurrentResolution">Current Resolution</sys:String>
-    <sys:String x:Key="GraphicsInfo_Description">Description</sys:String>
-    <sys:String x:Key="GraphicsInfo_DeviceID">Device ID</sys:String>
-    <sys:String x:Key="GraphicsInfo_GraphicsAdapter">Graphics Adapter</sys:String>
-    <sys:String x:Key="GraphicsInfo_NumberOfColors">Number of Colors</sys:String>
-    <sys:String x:Key="GraphicsInfo_NumberOfDisplays">Number of Displays</sys:String>
-    <sys:String x:Key="GraphicsInfo_SelectAdapter">Select Adapter</sys:String>
-    <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine1">If there is more than one video adapter installed</sys:String>
-    <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine2">use the drop-down to select the adapter to display.</sys:String>
-    <sys:String x:Key="GraphicsInfo_Unknown">Unknown</sys:String>
     <!--  Hardware Information Page  -->
     <sys:String x:Key="HardwareInfo_BIOS">BIOS</sys:String>
     <sys:String x:Key="HardwareInfo_BiosManufacturer">BIOS Manufacturer</sys:String>
@@ -232,7 +217,6 @@
     <sys:String x:Key="NavItem_DriveInfo">Drive Info</sys:String>
     <sys:String x:Key="NavItem_Environment">Environment</sys:String>
     <sys:String x:Key="NavItem_Exit">Exit</sys:String>
-    <sys:String x:Key="NavItem_GraphicsInfo">Graphics Info</sys:String>
     <sys:String x:Key="NavItem_HardwareInfo">Hardware Info</sys:String>
     <sys:String x:Key="NavItem_Settings">Settings</sys:String>
     <sys:String x:Key="NavItem_WindowsInfo">Windows Info</sys:String>
@@ -240,7 +224,6 @@
     <sys:String x:Key="NavTitle_BuildHistory">Build History</sys:String>
     <sys:String x:Key="NavTitle_DriveInfo">Disk Drive Information</sys:String>
     <sys:String x:Key="NavTitle_Environment">Environment Variables</sys:String>
-    <sys:String x:Key="NavTitle_GraphicsInfo">Graphics (Video) Information</sys:String>
     <sys:String x:Key="NavTitle_HardwareInfo">Hardware Information</sys:String>
     <sys:String x:Key="NavTitle_Settings">Settings</sys:String>
     <sys:String x:Key="NavTitle_WindowsInfo">Windows Information</sys:String>
@@ -269,7 +252,6 @@
     <sys:String x:Key="SettingsEnum_Navigation_About">About</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_DriveInfo">Drive Info</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Environment">Environment</sys:String>
-    <sys:String x:Key="SettingsEnum_Navigation_GraphicsInfo">Graphics Info</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_HardwareInfo">Hardware Info</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_History">Build History</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Settings</sys:String>
@@ -339,7 +321,6 @@
     <sys:String x:Key="SettingsItem_ShowRemovableDrives">Include removable drives</sys:String>
     <sys:String x:Key="SettingsItem_ShowSerialNumber">Show Serial Number column</sys:String>
     <sys:String x:Key="SettingsItem_ShowTypeColumn">Show Type column</sys:String>
-    <sys:String x:Key="SettingsItem_ShowVideoSelector">Show video adapter selector on Graphics (Video) page</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">Start with window centered on screen</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Theme</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Represents the number of strings in the current language compared to the default (en-US).</sys:String>
@@ -539,4 +520,13 @@
     <!-- Begin changes on 2026/07/24 @ 17:00 UTC-->
     <!-- A | GraphicsInfo_Unknown  -->
     <!-- End of changes on 2026/07/24 @ 17:00 UTC-->
+    
+    <!-- Begin changes on 2026/08/30 @ 19:00 UTC-->
+    <!-- Note to translators: these changes have been made to all current language files. No action is needed on your part. Thank you. -->
+    <!-- D | GraphicsInfo_* - Removed all messages referring to graphics information -->
+    <!-- D | NavItem_GraphicsInfo -->
+    <!-- D | NavTitle_GraphicsInfo -->
+    <!-- D | SettingsEnum_Navigation_GraphicsInfo -->
+    <!-- D | SettingsItem_ShowVideoSelector -->
+    <!-- End of changes on 2026/08/30 @ 19:00 UTC-->
 </ResourceDictionary>

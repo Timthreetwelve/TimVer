@@ -135,20 +135,6 @@
 	<sys:String x:Key="EnvironmentInfo_Filter">ตัวกรอง</sys:String>
 	<sys:String x:Key="EnvironmentInfo_Value">ค่า</sys:String>
 	<sys:String x:Key="EnvironmentInfo_Variable">ตัวแปร</sys:String>
-    <!--  Graphics Information Page  -->
-	<sys:String x:Key="GraphicsInfo_AdapterRAM">หน่วยความจำ RAM ของอะแดปเตอร์</sys:String>
-	<sys:String x:Key="GraphicsInfo_AdapterType">ประเภทอะแดปเตอร์</sys:String>
-	<sys:String x:Key="GraphicsInfo_BitsPerPixel">บิตต่อพิกเซล</sys:String>
-	<sys:String x:Key="GraphicsInfo_CurrentRefreshRate">อัตราการรีเฟรชปัจจุบัน</sys:String>
-	<sys:String x:Key="GraphicsInfo_CurrentResolution">ความละเอียดปัจจุบัน</sys:String>
-	<sys:String x:Key="GraphicsInfo_Description">คำอธิบาย</sys:String>
-	<sys:String x:Key="GraphicsInfo_DeviceID">รหัสอุปกรณ์</sys:String>
-	<sys:String x:Key="GraphicsInfo_GraphicsAdapter">อะแดปเตอร์กราฟิก</sys:String>
-	<sys:String x:Key="GraphicsInfo_NumberOfColors">จำนวนสี</sys:String>
-	<sys:String x:Key="GraphicsInfo_NumberOfDisplays">จำนวนจอแสดงผล</sys:String>
-	<sys:String x:Key="GraphicsInfo_SelectAdapter">เลือกอะแดปเตอร์</sys:String>
-	<sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine1">หากมีการติดตั้งอะแดปเตอร์วิดีโอมากกว่าหนึ่งตัว</sys:String>
-	<sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine2">ใช้เมนูแบบดรอปดาวน์เพื่อเลือกอะแดปเตอร์ที่จะแสดงผล</sys:String>
     <!--  Hardware Information Page  -->
     <sys:String x:Key="HardwareInfo_BIOS">BIOS</sys:String>
 	<sys:String x:Key="HardwareInfo_BiosManufacturer">ผู้ผลิต BIOS</sys:String>
@@ -226,7 +212,6 @@
 	<sys:String x:Key="NavItem_DriveInfo">ข้อมูลไดรฟ์</sys:String>
 	<sys:String x:Key="NavItem_Environment">สภาพแวดล้อม</sys:String>
 	<sys:String x:Key="NavItem_Exit">ทางออก</sys:String>
-	<sys:String x:Key="NavItem_GraphicsInfo">ข้อมูลกราฟิก</sys:String>
 	<sys:String x:Key="NavItem_HardwareInfo">ข้อมูลฮาร์ดแวร์</sys:String>
 	<sys:String x:Key="NavItem_Settings">การตั้งค่า</sys:String>
 	<sys:String x:Key="NavItem_WindowsInfo">ข้อมูล Windows</sys:String>
@@ -234,7 +219,6 @@
 	<sys:String x:Key="NavTitle_BuildHistory">ประวัติการสร้าง</sys:String>
 	<sys:String x:Key="NavTitle_DriveInfo">ข้อมูลไดรฟ์</sys:String>
 	<sys:String x:Key="NavTitle_Environment">ตัวแปรสภาพแวดล้อม</sys:String>
-	<sys:String x:Key="NavTitle_GraphicsInfo">ข้อมูลกราฟิก (วิดีโอ)</sys:String>
 	<sys:String x:Key="NavTitle_HardwareInfo">ข้อมูลฮาร์ดแวร์</sys:String>
 	<sys:String x:Key="NavTitle_Settings">การตั้งค่า</sys:String>
 	<sys:String x:Key="NavTitle_WindowsInfo">ข้อมูล Windows</sys:String>
@@ -263,7 +247,6 @@
 	<sys:String x:Key="SettingsEnum_Navigation_About">เกี่ยวกับ</sys:String>
 	<sys:String x:Key="SettingsEnum_Navigation_DriveInfo">ข้อมูลการขับขี่</sys:String>
 	<sys:String x:Key="SettingsEnum_Navigation_Environment">สภาพแวดล้อม</sys:String>
-	<sys:String x:Key="SettingsEnum_Navigation_GraphicsInfo">ข้อมูลกราฟิก</sys:String>
 	<sys:String x:Key="SettingsEnum_Navigation_HardwareInfo">ข้อมูลฮาร์ดแวร์</sys:String>
 	<sys:String x:Key="SettingsEnum_Navigation_History">ประวัติ</sys:String>
 	<sys:String x:Key="SettingsEnum_Navigation_Settings">การตั้งค่า</sys:String>
@@ -330,7 +313,6 @@
 	<sys:String x:Key="SettingsItem_ShowRemovableDrives">รวมไดรฟ์แบบถอดได้</sys:String>
 	<sys:String x:Key="SettingsItem_ShowSerialNumber">แสดงคอลัมน์หมายเลขซีเรียล</sys:String>
 	<sys:String x:Key="SettingsItem_ShowTypeColumn">แสดงคอลัมน์ประเภท</sys:String>
-	<sys:String x:Key="SettingsItem_ShowVideoSelector">แสดงตัวเลือกอะแดปเตอร์วิดีโอในหน้ากราฟิก (วิดีโอ)</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">เริ่มต้นโดยจัดตำแหน่งหน้าต่างใ0ห้อยู่ตรงกลางหน้าจอ</sys:String>
 	<sys:String x:Key="SettingsItem_Theme">ธีม</sys:String>
 	<sys:String x:Key="SettingsItem_TranslationToolTipLine1">แสดงจำนวนข้อความในภาษาปัจจุบันเมื่อเทียบกับค่าเริ่มต้น (en-US)</sys:String>

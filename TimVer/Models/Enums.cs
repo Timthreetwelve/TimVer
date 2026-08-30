@@ -18,8 +18,6 @@ public enum NavPage
     ComputerInfo,
     [LocalizedDescription("SettingsEnum_Navigation_DriveInfo")]
     DriveInfo,
-    [LocalizedDescription("SettingsEnum_Navigation_GraphicsInfo")]
-    VideoInfo,
     [LocalizedDescription("SettingsEnum_Navigation_Environment")]
     Environment,
     [LocalizedDescription("SettingsEnum_Navigation_History")]
