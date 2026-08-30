@@ -53,10 +53,6 @@
             <DataTemplate DataType="{x:Type viewmodels:DriveInfoViewModel}">
                 <views:DrivesPage DataContext="{Binding}" />
             </DataTemplate>
-
-            <DataTemplate DataType="{x:Type viewmodels:VideoViewModel}">
-                <views:VideoPage DataContext="{Binding}" />
-            </DataTemplate>
             <!--#endregion-->
 
         </ResourceDictionary>

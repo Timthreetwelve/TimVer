@@ -72,7 +72,6 @@
     <sys:String x:Key="NavItem_DriveInfo">Informácie o disku</sys:String>
     <sys:String x:Key="NavItem_Environment">Prostredie</sys:String>
     <sys:String x:Key="NavItem_Exit">Ukončiť</sys:String>
-    <sys:String x:Key="NavItem_GraphicsInfo">Informácie o grafe</sys:String>
     <sys:String x:Key="NavItem_HardwareInfo">Informácie o hardvéri</sys:String>
     <sys:String x:Key="NavItem_Settings">Nastavenia</sys:String>
     <sys:String x:Key="NavItem_WindowsInfo">Informácie o systéme Windows</sys:String>
@@ -80,7 +79,6 @@
     <sys:String x:Key="NavTitle_BuildHistory">História zostavy</sys:String>
     <sys:String x:Key="NavTitle_DriveInfo">Informácie o disku</sys:String>
     <sys:String x:Key="NavTitle_Environment">Premenné prostredia</sys:String>
-    <sys:String x:Key="NavTitle_GraphicsInfo">Informácie o grafe (video)</sys:String>
     <sys:String x:Key="NavTitle_HardwareInfo">Informácie o hardvéri</sys:String>
     <sys:String x:Key="NavTitle_Settings">Nastavenia</sys:String>
     <sys:String x:Key="NavTitle_WindowsInfo">Informácie o systéme Windows</sys:String>
@@ -147,7 +145,6 @@
     <sys:String x:Key="SettingsEnum_Navigation_WindowsInfo">Informácie o systéme Windows</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_HardwareInfo">Informácie o hardvéri</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_DriveInfo">Informácie o disku</sys:String>
-    <sys:String x:Key="SettingsEnum_Navigation_GraphicsInfo">Informácie o grafe</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Environment">Prostredie</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_History">História</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Nastavenia</sys:String>

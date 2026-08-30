@@ -1,4 +1,4 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
@@ -138,20 +138,6 @@
     <sys:String x:Key="EnvironmentInfo_Filter">필터</sys:String>
     <sys:String x:Key="EnvironmentInfo_Value">값</sys:String>
     <sys:String x:Key="EnvironmentInfo_Variable">변수</sys:String>
-    <!--  Graphics Information Page  -->
-    <sys:String x:Key="GraphicsInfo_AdapterRAM">어댑터 RAM</sys:String>
-    <sys:String x:Key="GraphicsInfo_AdapterType">어댑터 유형</sys:String>
-    <sys:String x:Key="GraphicsInfo_BitsPerPixel">픽셀당 비트 수</sys:String>
-    <sys:String x:Key="GraphicsInfo_CurrentRefreshRate">현재 새로 고침 속도</sys:String>
-    <sys:String x:Key="GraphicsInfo_CurrentResolution">현재 해상도</sys:String>
-    <sys:String x:Key="GraphicsInfo_Description">설명</sys:String>
-    <sys:String x:Key="GraphicsInfo_DeviceID">장치 ID</sys:String>
-    <sys:String x:Key="GraphicsInfo_GraphicsAdapter">그래픽 어댑터</sys:String>
-    <sys:String x:Key="GraphicsInfo_NumberOfColors">색상 수</sys:String>
-    <sys:String x:Key="GraphicsInfo_NumberOfDisplays">디스플레이 수</sys:String>
-    <sys:String x:Key="GraphicsInfo_SelectAdapter">어댑터 선택</sys:String>
-    <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine1">비디오 어댑터가 둘 이상 설치된 경우 드롭다운을 사용하여</sys:String>
-    <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine2">표시할 어댑터를 선택합니다.</sys:String>
     <!--  Hardware Information Page  -->
     <sys:String x:Key="HardwareInfo_BIOS">BIOS</sys:String>
     <sys:String x:Key="HardwareInfo_BiosManufacturer">BIOS 제조업체</sys:String>
@@ -229,7 +215,6 @@
     <sys:String x:Key="NavItem_DriveInfo">드라이브 정보</sys:String>
     <sys:String x:Key="NavItem_Environment">환경</sys:String>
     <sys:String x:Key="NavItem_Exit">종료</sys:String>
-    <sys:String x:Key="NavItem_GraphicsInfo">그래픽 정보</sys:String>
     <sys:String x:Key="NavItem_HardwareInfo">하드웨어 정보</sys:String>
     <sys:String x:Key="NavItem_Settings">설정</sys:String>
     <sys:String x:Key="NavItem_WindowsInfo">Windows 정보</sys:String>
@@ -237,7 +222,6 @@
     <sys:String x:Key="NavTitle_BuildHistory">빌드 기록</sys:String>
     <sys:String x:Key="NavTitle_DriveInfo">디스크 드라이브 정보</sys:String>
     <sys:String x:Key="NavTitle_Environment">환경 변수</sys:String>
-    <sys:String x:Key="NavTitle_GraphicsInfo">그래픽 (비디오) 정보</sys:String>
     <sys:String x:Key="NavTitle_HardwareInfo">하드웨어 정보</sys:String>
     <sys:String x:Key="NavTitle_Settings">설정</sys:String>
     <sys:String x:Key="NavTitle_WindowsInfo">Windows 정보</sys:String>
@@ -266,8 +250,7 @@
     <sys:String x:Key="SettingsEnum_Navigation_About">정보</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_DriveInfo">드라이브 정보</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Environment">환경</sys:String>
-    <sys:String x:Key="SettingsEnum_Navigation_GraphicsInfo">그래픽 정보</sys:String>
-    <sys:String x:Key="SettingsEnum_Navigation_HardwareInfo">히드웨어 정보</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_HardwareInfo">하드웨어 정보</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_History">사용 내역</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Settings">설정</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_WindowsInfo">Windows 정보</sys:String>
@@ -334,7 +317,6 @@
     <sys:String x:Key="SettingsItem_ShowRemovableDrives">이동식 드라이브 포함</sys:String>
     <sys:String x:Key="SettingsItem_ShowSerialNumber">일련 번호 열 표시</sys:String>
     <sys:String x:Key="SettingsItem_ShowTypeColumn">유형 열 표시</sys:String>
-    <sys:String x:Key="SettingsItem_ShowVideoSelector">그래픽 (비디오) 페이지에 비디오 어댑터 선택기 표시</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">화면 중앙에 창을 두고 시작</sys:String>
     <sys:String x:Key="SettingsItem_Theme">테마</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine1">현재 언어의 문자열 수를 기본값 (en-US)과 비교하여 나타냅니다.</sys:String>

@@ -137,21 +137,6 @@
     <sys:String x:Key="EnvironmentInfo_Filter">Filtrar</sys:String>
     <sys:String x:Key="EnvironmentInfo_Value">Valor</sys:String>
     <sys:String x:Key="EnvironmentInfo_Variable">Variable</sys:String>
-    <!--  Graphics Information Page  -->
-    <sys:String x:Key="GraphicsInfo_AdapterType">Tipo de adaptador</sys:String>
-    <sys:String x:Key="GraphicsInfo_AdapterRAM">RAM del adaptador</sys:String>
-    <sys:String x:Key="GraphicsInfo_BitsPerPixel">Bits por píxel</sys:String>
-    <sys:String x:Key="GraphicsInfo_CurrentRefreshRate">Frecuencia de actualización actual</sys:String>
-    <sys:String x:Key="GraphicsInfo_CurrentResolution">Resolución actual</sys:String>
-    <sys:String x:Key="GraphicsInfo_Description">Descripción</sys:String>
-    <sys:String x:Key="GraphicsInfo_DeviceID">ID del dispositivo</sys:String>
-    <sys:String x:Key="GraphicsInfo_GraphicsAdapter">Adaptador gráfico</sys:String>
-    <sys:String x:Key="GraphicsInfo_NumberOfColors">Número de colores</sys:String>
-    <sys:String x:Key="GraphicsInfo_NumberOfDisplays">Número de pantallas</sys:String>
-    <sys:String x:Key="GraphicsInfo_SelectAdapter">Seleccionar adaptador</sys:String>
-    <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine1">Si hay más de un adaptador de vídeo instalado</sys:String>
-    <sys:String x:Key="GraphicsInfo_SelectAdapterToolTipLine2">utilice el menú desplegable para seleccionar el adaptador que desea mostrar.</sys:String>
-    <sys:String x:Key="GraphicsInfo_Unknown">Desconocido</sys:String>
     <!--  Hardware Information Page  -->
     <sys:String x:Key="HardwareInfo_BIOS">BIOS</sys:String>
     <sys:String x:Key="HardwareInfo_BiosManufacturer">Fabricante de BIOS</sys:String>
@@ -231,7 +216,6 @@
     <sys:String x:Key="NavItem_DriveInfo">Especificaciones de la unidad de disco</sys:String>
     <sys:String x:Key="NavItem_Environment">Variables de entorno</sys:String>
     <sys:String x:Key="NavItem_Exit">Salir</sys:String>
-    <sys:String x:Key="NavItem_GraphicsInfo">Especificaciones de vídeo</sys:String>
     <sys:String x:Key="NavItem_HardwareInfo">Especificaciones de hardware</sys:String>
     <sys:String x:Key="NavItem_Settings">Configuración</sys:String>
     <sys:String x:Key="NavItem_WindowsInfo">Especificaciones de Windows</sys:String>
@@ -239,7 +223,6 @@
     <sys:String x:Key="NavTitle_BuildHistory">Historial de compilación de Windows</sys:String>
     <sys:String x:Key="NavTitle_DriveInfo">Especificaciones de la unidad de disco</sys:String>
     <sys:String x:Key="NavTitle_Environment">Variables de entorno</sys:String>
-    <sys:String x:Key="NavTitle_GraphicsInfo">Especificaciones de vídeo</sys:String>
     <sys:String x:Key="NavTitle_HardwareInfo">Especificaciones de hardware</sys:String>
     <sys:String x:Key="NavTitle_Settings">Configuración</sys:String>
     <sys:String x:Key="NavTitle_WindowsInfo">Especificaciones de Windows</sys:String>
@@ -268,7 +251,6 @@
     <sys:String x:Key="SettingsEnum_Navigation_About">Información</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_DriveInfo">Información de la unidad</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Environment">Variables de entorno</sys:String>
-    <sys:String x:Key="SettingsEnum_Navigation_GraphicsInfo">Información de gráficos</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_HardwareInfo">Información de hardware</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_History">Historial de compilación de Windows</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Configuración</sys:String>
@@ -337,7 +319,6 @@
     <sys:String x:Key="SettingsItem_ShowRemovableDrives">Incluir unidades extraíbles</sys:String>
     <sys:String x:Key="SettingsItem_ShowSerialNumber">Mostrar columna de número de serie</sys:String>
     <sys:String x:Key="SettingsItem_ShowTypeColumn">Mostrar columna Tipo</sys:String>
-    <sys:String x:Key="SettingsItem_ShowVideoSelector">Mostrar el selector de adaptador de vídeo en la página Vídeo (Gráficos).</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">Comience con la ventana centrada en la pantalla</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Tema</sys:String>
     <sys:String x:Key="SettingsItem_UISize">Tamaño de la interfaz de usuario</sys:String>
