@@ -41,14 +41,6 @@ take a significant amount of time. The time required for each display will depen
 and options selected.
 
 
-Graphics Information
-====================
-The Graphics (Video) Information page shows information about the graphics adapter (video card).
-Information for each graphics adapter can be displayed if more than one graphics adapter is present.
-Information displayed includes the adapter name, type and description. The current resolution, refresh
-rate and adapter RAM are also displayed.
-
-
 Environment Variables
 =====================
 The Environment page shows the current environmental variables. The Filter box at the top can be used
