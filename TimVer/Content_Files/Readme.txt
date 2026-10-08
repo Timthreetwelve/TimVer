@@ -168,8 +168,6 @@ TimVer uses the following packages:
 
     * OctoKit https://github.com/octokit/octokit.net
 
-    * GitKraken was used for everything Git related. https://www.gitkraken.com/
-
     * Inno Setup was used to create the installer. https://jrsoftware.org/isinfo.php
 
     * Visual Studio Community was used throughout the development of TimVer. https://visualstudio.microsoft.com/vs/community/
