@@ -75,13 +75,24 @@
                   FontFamily="{Binding SelectedFont,
                                        Source={x:Static config:UserSettings.Setting}}"
                   FontSize="14"
+                  HorizontalScrollBarVisibility="Disabled"
                   IsReadOnly="True"
                   ItemsSource="{Binding EnvVariableList}">
+            
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Variable}"
+                                    Width="Auto"
                                     Header="{DynamicResource EnvironmentInfo_Variable}" />
                 <DataGridTextColumn Binding="{Binding Value}"
-                                    Header="{DynamicResource EnvironmentInfo_Value}" />
+                                    Width="*"
+                                    Header="{DynamicResource EnvironmentInfo_Value}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap" />
+                            <Setter Property="TextTrimming" Value="None" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <!--#endregion-->
